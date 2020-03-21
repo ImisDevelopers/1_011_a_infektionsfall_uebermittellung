@@ -1,8 +1,5 @@
 # User-specific stuff
-/.idea
-/.gradle
-.idea
-.gradle
+
 
 # CMake
 cmake-build-*/

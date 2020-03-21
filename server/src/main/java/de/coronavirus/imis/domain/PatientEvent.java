@@ -30,7 +30,7 @@ public class PatientEvent {
     private Illness illness;
 
     @ManyToOne
-    private Test test;
+    private LabTest labTest;
 
     private Timestamp eventTimestamp;
 

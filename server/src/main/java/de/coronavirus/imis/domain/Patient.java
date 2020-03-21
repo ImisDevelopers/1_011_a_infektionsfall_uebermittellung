@@ -31,7 +31,7 @@ public class Patient {
     private String comment;
     private String occupation;
 
-    @OneToMany
+    @OneToMany(mappedBy = "patient")
     List<PatientEvent> events;
 
     @OneToMany

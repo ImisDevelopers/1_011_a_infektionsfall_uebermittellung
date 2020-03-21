@@ -16,8 +16,8 @@ public class Laboratory extends Institution {
     @GeneratedValue
     private Long id;
 
-   /* @OneToMany
-    private List<Test> assignedTest;
-*/
+    @OneToMany(mappedBy = "laboratory")
+    private List<LabTest> assignedLabTest;
+
 
 }

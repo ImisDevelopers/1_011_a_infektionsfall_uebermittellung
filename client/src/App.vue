@@ -2,6 +2,10 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <ExampleComponent/> -->
+    <!-- <router-link to="/lab-results">Go to RESULTS</router-link>
+    <router-link to="/all-data">All data</router-link>
+    <router-view></router-view>
+    <h1>1337</h1> -->
     <a-layout id="components-layout-demo-responsive">
         <div class="logo" />
 
@@ -10,60 +14,47 @@
           <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
             <a-menu-item key="1" v-on:click="menumode=1">
               <a-icon type="user" />
-              <span class="nav-text">Instutition Hinzufügen</span>
+              <span class="nav-text">
+                <router-link to="add-institution">Instutition Hinzufügen</router-link>
+              </span>
             </a-menu-item>
             <a-menu-item key="2" v-on:click="menumode=2">
               <a-icon type="video-camera" />
-              <span class="nav-text">ExampleComponent</span>
+              <span class="nav-text">
+                <router-link to="example-component" class="nav-text">ExampleComponent</router-link>
+              </span>
             </a-menu-item>
             <a-menu-item key="3" v-on:click="menumode=3">
               <a-icon type="upload" />
-              <span class="nav-text">Laborresultate</span>
+              <span class="nav-text">
+                <router-link to="lab-results" class="nav-text">Laborresultate</router-link>
+              </span>
             </a-menu-item>
             <a-menu-item key="4" v-on:click="menumode=4">
               <a-icon type="user" />
-              <span class="nav-text">Patientendaten</span>
+              <span class="nav-text">
+                <router-link to="patient-data" class="nav-text">Patientendaten</router-link>
+              </span>
             </a-menu-item>
             <a-menu-item key="5" v-on:click="menumode=5">
               <a-icon type="video-camera" />
-              <span class="nav-text">Test-Komponente</span>
+              <span class="nav-text">
+                <router-link to="test-components" class="nav-text">Test-Komponente</router-link>
+              </span>
             </a-menu-item>
             <a-menu-item key="6" v-on:click="menumode=6">
               <a-icon type="account-group" />
-              <span class="nav-text">Alle Daten einsehen</span>
+              <span class="nav-text">
+                <router-link to="all-data" class="nav-text">Alle Daten einsehen</router-link>
+              </span>
             </a-menu-item>
           </a-menu>
         </a-layout-header>
         <a-layout-content :style="{ margin: '0px auto' }">
 
-          <a-div v-if="menumode==1" >
+          <a-div>
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <AddInstitutionComponent/>
-            </div>
-          </a-div>
-          <a-div v-else-if="menumode==2" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <ExampleComponent/>
-            </div>
-          </a-div>
-          <a-div v-else-if="menumode==3" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <LabResultComponent/>
-            </div>
-          </a-div>
-          <a-div v-else-if="menumode==4" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <PatientDataComponent/>
-            </div>
-          </a-div>
-          <a-div v-else-if="menumode==5" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <TestingComponent/>
-            </div>
-          </a-div>
-          <a-div v-else-if="menumode==6" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <ViewAllDataComponent/>
+              <router-view></router-view>
             </div>
           </a-div>
         </a-layout-content>
@@ -77,22 +68,10 @@
 
 <script>
 
-import ExampleComponent from './components/ExampleComponent.vue';
-import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
-import TestingComponent from './components/TestingComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
-import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
-import ViewAllDataComponent from './components/ViewAllDataComponent.vue';
-import AddInstitutionComponent from "./components/AddInstitutionComponent";
-
 export default {
   name: 'App',
   components: {
-    PatientDataComponent,
-    LabResultComponent,
-    ExampleComponent,
-    AddInstitutionComponent,
-    TestingComponent,
-    ViewAllDataComponent,
+    // Components
   },
   methods: {
     onCollapse(collapsed, type) {

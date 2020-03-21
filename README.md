@@ -12,7 +12,9 @@ _DO NOT COMMIT TO MASTER_
 1. Docker
   - Linux: https://docs.docker.com/install/
   - Mac : https://docs.docker.com/docker-for-mac/install/
-  - Windows: https://docs.docker.com/docker-for-windows/install/
+  - Windows:
+    - Pro/Enterprise: https://docs.docker.com/docker-for-windows/install/
+    - Home: https://docs.docker.com/toolbox/toolbox_install_windows/
 2. JDK 11 (Java)
   - https://adoptopenjdk.net/ 
 3. NPM/YARN

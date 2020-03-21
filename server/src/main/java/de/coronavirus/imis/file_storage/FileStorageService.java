@@ -1,11 +1,15 @@
 package de.coronavirus.imis.file_storage;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
+
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -51,6 +55,31 @@ public class FileStorageService {
         }
 
         throw new FileNotFoundException("The file by the identifier: " + _id + " was not found");
+    }
+
+    public Path replaceFileById(String _id, MultipartFile file) {
+
+        try {
+            String subdirectory = "/" + _id + "/";
+            String full_directory = this.reportPath + subdirectory;
+            Path directory = this.getFolderPath( full_directory );
+
+            // clean the directory
+            File folder_to_wipe = new File(directory.toString());
+            FileUtils.cleanDirectory(folder_to_wipe);
+
+            // store file on server disk
+            byte[] bytes = file.getBytes();
+            Path file_path = Paths.get(directory + file.getOriginalFilename());
+            Files.write(file_path, bytes);
+            // return file path
+            return file_path;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Boolean deleteFileByPath(Path path){

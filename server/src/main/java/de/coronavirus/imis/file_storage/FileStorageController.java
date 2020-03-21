@@ -7,17 +7,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.UUID;
 
-/**
- * Rest interface for file uploads.
- */
 @RestController
 public class FileStorageController {
 
+    // Instance of the storage service.
     private final FileStorageService fileStorageService;
 
     @Autowired
@@ -25,13 +25,27 @@ public class FileStorageController {
         this.fileStorageService = fileStorageService;
     }
 
+
+    /***
+     * Endpoint to upload a file.
+     * @param file: The file to upload.
+     * @param testId: The id of the test report the file belongs to.
+     * @param redirectAttributes: Used for redirection.
+     * @return A redirection.
+     */
     @PostMapping("/test_report/{testId}")
     public String uploadFile(
             @RequestParam("file") MultipartFile file,
-            @PathVariable("testId") UUID testId,
+            @PathVariable("testId") String testId,
             RedirectAttributes redirectAttributes
     ) {
-        // fileStorageService.store(file, fileId);
+        try {
+            fileStorageService.addFileById(testId, file);
+        } catch (Exception e) {
+            return "The following error was encountered during file saving: "
+                    + e;
+        }
+
         redirectAttributes.addFlashAttribute(
                 "message",
                 "You successfully uploaded "
@@ -42,52 +56,47 @@ public class FileStorageController {
         return "redirect:/";
     }
 
-    @PutMapping("/test_report/{testId}")
-    public String updateFile(
-            @RequestParam("file") MultipartFile file,
-            @PathVariable("testId") UUID testId,
-            RedirectAttributes redirectAttributes
-    ) {
-        // fileStorageService.update(file, testId);
-        redirectAttributes.addFlashAttribute(
-                "message",
-                "You successfully uploaded "
-                        + file.getOriginalFilename()
-                        + "!"
-        );
-
-        return "redirect:/";
-    }
-
+    /***
+     * Endpoint to receive a test report.
+     * @param testId: The id of the test report to retrieve.
+     * @return The test report.
+     */
     @GetMapping("/test_report/{testId}")
-    public ResponseEntity<Resource> getTestReport(@PathVariable UUID testId) {
-        // Resource testReport = fileStorageService.getTestReport(testId);
+    public ResponseEntity<File> getTestReport(@PathVariable String testId) {
+        File testReport;
 
-        /*
+        try {
+            testReport = fileStorageService.getFileById(testId);
+        } catch (FileNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
         return ResponseEntity.ok().header(
                 HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\""
-                        + testReport.getFilename()
+                        + testReport.getName()
                         + "\""
         ).body(testReport);
-         */
     }
 
-
+    /*
     @GetMapping("/test_report/file/{fileId}")
     public ResponseEntity<Resource> getFile(@PathVariable UUID fileId) {
-        // Resource file = fileStorageService.getFile(fileId);
+        Resource file = fileStorageService.getFile(fileId);
 
-        /*
         return ResponseEntity.ok().header(
                 HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\""
                         + file.getFilename()
                         + "\""
         ).body(file);
-         */
     }
+    */
 
+    /***
+     * Deletes a test report.
+     * @param testId: The id of the test report to delete.
+     * @return A message stating the success of the deletion.
+     */
     @DeleteMapping("/test_report/{testId}")
     public ResponseEntity<HttpStatus> deleteTestReport(
             @PathVariable UUID testId
@@ -99,6 +108,7 @@ public class FileStorageController {
         // Resource file = fileStorageService.getFile(fileId);
     }
 
+    /*
     @DeleteMapping("/test_report/file/{fileId}")
     public ResponseEntity<HttpStatus> deleteFile(@PathVariable UUID fileId) {
 
@@ -106,4 +116,5 @@ public class FileStorageController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+     */
 }

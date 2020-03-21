@@ -30,10 +30,18 @@ public class LabTestController {
                 createLabTestRequest.getLabInternalId()));
     }
 
+    // FIXME/TODO: Move this to /patient/{id}/labtest and use /{id} for getLabTestForId below?
     @GetMapping("/{id}")
     public Set<LabTest> getLabTestForPatient(@PathVariable("id") String patientId) {
         return service.getAllLabTestForPatient(patientId);
     }
+
+    /*
+    @GetMapping("/{id}")
+    public ResponseEntity<LabTest> getLabTestForId(@PathVariable("id") String id) {
+        return service.findLabTestById(id).map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }*/
 
 
 }

@@ -6,16 +6,24 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 
 import lombok.Data;
-import lombok.Generated;
+
 
 @Entity
 @Data
 public class TestReport {
     @Id
-    @Generated
-    private Long id;
+    public Long id;
 
-    @Lob
-    byte[] additionalData;
+    public String filePath;
+
+
+    public void setID(Long id){
+        this.id = id;
+    }
+
+    public void setFilePath(String filePath){
+        this.filePath = filePath;
+    }
+
 }
 

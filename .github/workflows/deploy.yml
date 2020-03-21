@@ -17,6 +17,7 @@ on:
 # Environment variables available to all jobs and steps in this workflow
 env:
   GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
+  GKE_PROJECT_ID: onyx-yeti-271818
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: de-west3-a
@@ -50,7 +51,7 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |
-        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
+        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" .
 

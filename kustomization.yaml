@@ -6,3 +6,7 @@ commonLabels:
   name: imis
 resources:
 - .k8s/deployment.yaml
+images:
+- name: imis
+  newName: gcr.io/onyx-yeti-271818/imis
+  newTag: latest

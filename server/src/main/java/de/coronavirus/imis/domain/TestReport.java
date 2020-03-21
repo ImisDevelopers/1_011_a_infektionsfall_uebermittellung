@@ -4,20 +4,21 @@ package de.coronavirus.imis.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Table;
 
-import lombok.Data;
+
+
 
 
 @Entity
-@Data
+@Table(name = "test_report")
 public class TestReport {
     @Id
     public Long id;
 
     public String filePath;
 
-
-    public void setID(Long id){
+    public void setId(Long id){
         this.id = id;
     }
 

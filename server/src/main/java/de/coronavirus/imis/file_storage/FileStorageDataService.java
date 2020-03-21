@@ -1,64 +1,34 @@
 package de.coronavirus.imis.file_storage;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import de.coronavirus.imis.domain.TestReport;
+import de.coronavirus.imis.example.FileStorageDataRepository;
+import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
+@Service
 public class FileStorageDataService {
 
-    public void addTestReport(Long testID, String filePath){
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory('');
-        EntityManager entitymanager = emfactory.createEntityManager( );
-        entitymanager.getTransaction( ).begin( );
+    private FileStorageDataRepository fileStorageDataRepository;
 
+    public FileStorageDataService(FileStorageDataRepository fileStorageDataRepository) {
+        this.fileStorageDataRepository = fileStorageDataRepository;
+    }
+
+    public TestReport getTestReport(Long id) {
+        return fileStorageDataRepository.findById(id);
+    }
+
+    public TestReport createTestReport(Long id, String filePath) {
         TestReport testReport = new TestReport();
-        testReport.setID(testID);
+        testReport.setId(id);
         testReport.setFilePath(filePath);
-
-        entitymanager.persist( testReport );
-        entitymanager.getTransaction( ).commit( );
-        entitymanager.close( );
-        emfactory.close( );
+        return fileStorageDataRepository.save(testReport);
     }
 
-    public TestReport getTestReport(Long testID){
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory('');
-        EntityManager entitymanager = emfactory.createEntityManager( );
-        entitymanager.getTransaction( ).begin( );
-
-        TestReport testReport = entitymanager.find(TestReport.id, testID);
-        entitymanager.close( );
-        emfactory.close( );
-
-        return(testReport);
+    public void deleteTestReport(Long id){
+        TestReport testReport = getTestReport(id);
+        fileStorageDataRepository.delete(testReport);
     }
 
-    public void updateTestReport(Long testID, String filePath){
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory('');
-        EntityManager entitymanager = emfactory.createEntityManager( );
-        entitymanager.getTransaction( ).begin( );
-
-        TestReport testReport = entitymanager.find(TestReport.id, testID);
-        testReport.setFilePath(filePath);
-        entitymanager.getTransaction( ).commit( );
-
-        entitymanager.close( );
-        emfactory.close( );
-    }
-
-    public void deleteTestReport(Long testID){
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory('');
-        EntityManager entitymanager = emfactory.createEntityManager( );
-        entitymanager.getTransaction( ).begin( );
-
-        TestReport testReport = entitymanager.find(TestReport.id, testID);
-        entitymanager.remove(testReport);
-
-        entitymanager.getTransaction( ).commit( );
-        entitymanager.close( );
-        emfactory.close( );
-    }
 }

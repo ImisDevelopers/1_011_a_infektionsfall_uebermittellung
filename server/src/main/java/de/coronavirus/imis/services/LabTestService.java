@@ -6,15 +6,10 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.domain.PatientEvent;
-import de.coronavirus.imis.domain.PatientNotFoundException;
-import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.repositories.LabTestRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 
@@ -36,7 +31,7 @@ public class LabTestService {
     @Transactional
     public LabTest createLabTest(String patientId, Long labId, String labInternalId) {
         final Patient patient = patientService.findPatientById(patientId).orElseThrow(PatientNotFoundException::new);
-        final Laboratory laboratory = laboratoryRepository.findById(labId).orElseThrow(PatientNotFoundException::new);
+        final Laboratory laboratory = laboratoryRepository.findById(labId).orElseThrow(LaboratoryNotFoundException::new);
         final LabTest labTest = LabTest.builder().
                 laboratory(laboratory).testStatus(TestStatus.TEST_SUBMITTED)
                 .laborTestID(labInternalId)

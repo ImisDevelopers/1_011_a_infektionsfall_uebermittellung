@@ -50,7 +50,7 @@ public class PatientService {
                 .id(id)
                 .build();
 
-        patientRepository.save(mappedPatient);
+        patientRepository.saveAndFlush(mappedPatient);
         eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), EventType.SUSPECTED);
         return mappedPatient;
     }

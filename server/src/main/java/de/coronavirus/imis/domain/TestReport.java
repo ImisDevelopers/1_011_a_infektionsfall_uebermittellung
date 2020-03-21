@@ -1,10 +1,14 @@
 package de.coronavirus.imis.domain;
 
 
+import java.io.Serializable;
+import java.nio.file.Path;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.nio.file.Path;
+
+import lombok.NoArgsConstructor;
 
 
 /***
@@ -12,14 +16,15 @@ import java.nio.file.Path;
  */
 @Entity
 @Table(name = "test_report")
-public class TestReport {
+@NoArgsConstructor
+public class TestReport implements Serializable {
 
     // ID of the test.
     @Id
     public Long id;
 
     // Path to the location of the report in the file system.
-    public Path filePath;
+    public String filePath;
 
     /***
      * Initalizes a new test report.
@@ -28,14 +33,14 @@ public class TestReport {
      */
     public TestReport(Long id, Path filePath) {
         this.id = id;
-        this.filePath = filePath;
+        this.filePath = filePath.toAbsolutePath().toString();
     }
 
     /***
      * Sets the id of the report.
      * @param id: Id of the report.
      */
-    public void setId(Long id){
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,8 +48,8 @@ public class TestReport {
      * Sets the file path of the report.
      * @param filePath: File path to the file system.
      */
-    public void setFilePath(Path filePath){
-        this.filePath = filePath;
+    public void setFilePath(Path filePath) {
+        this.filePath = filePath.toAbsolutePath().toString();
     }
 }
 

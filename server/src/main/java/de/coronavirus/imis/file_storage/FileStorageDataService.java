@@ -3,7 +3,6 @@ package de.coronavirus.imis.file_storage;
 import de.coronavirus.imis.domain.TestReport;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.Path;
 import java.util.Optional;
 
 /***
@@ -37,32 +36,32 @@ public class FileStorageDataService {
     /***
      * Creates a test report and saves it in the database.
      * @param id: Id of the test report.
-     * @param filePath: Path of the test report into the file system.
+     * @param file: Binary data of the test report.
      */
-    void createTestReport(Long id, Path filePath) {
-        TestReport testReport = new TestReport(id, filePath);
+    void createTestReport(Long id, byte[] file) {
+        TestReport testReport = new TestReport(id, file);
         fileStorageDataRepository.save(testReport);
     }
 
     /***
      * Updates a test report in the database.
      * @param id: Id of the test report.
-     * @param filePath: Path to the test report.
+     * @param file: Binary data of the test report.
      */
-    void updateTestReport(Long id, Path filePath) {
+    void updateTestReport(Long id, byte[] file) {
         Optional<TestReport> optionalTestReport = getTestReport(id);
 
         optionalTestReport.ifPresent(testReport -> {
-            testReport.setFilePath(filePath);
+            testReport.setFilePath(file);
             fileStorageDataRepository.save(testReport);
         });
     }
 
     /***
-     * Deletes a test repoert in the database.
+     * Deletes a test report in the database.
      * @param id: Id of the test report.
      */
-    public void deleteTestReport(Long id){
+    void deleteTestReport(Long id){
         fileStorageDataRepository.deleteById(id);
     }
 }

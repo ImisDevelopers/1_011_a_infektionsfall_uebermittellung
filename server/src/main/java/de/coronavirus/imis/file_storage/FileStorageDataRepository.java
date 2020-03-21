@@ -4,8 +4,6 @@ import de.coronavirus.imis.domain.TestReport;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
-
 /***
  * Repository for file storage.
  */

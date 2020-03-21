@@ -1,16 +1,14 @@
 package de.coronavirus.imis.file_storage;
 
+import de.coronavirus.imis.domain.TestReport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 @RestController
 public class FileStorageController {
@@ -90,20 +88,15 @@ public class FileStorageController {
      * @return The test report.
      */
     @GetMapping("/test_report/{testId}")
-    public ResponseEntity<File> getTestReport(@PathVariable Long testId) {
-        File testReport;
+    public ResponseEntity<TestReport> getTestReport(@PathVariable Long testId) {
+        TestReport testReport;
 
         try {
             testReport = fileStorageService.getFileById(testId);
         } catch (FileNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.ok().header(
-                HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\""
-                        + testReport.getName()
-                        + "\""
-        ).body(testReport);
+        return ResponseEntity.ok().body(testReport);
     }
 
 
@@ -116,11 +109,7 @@ public class FileStorageController {
     public ResponseEntity<HttpStatus> deleteTestReport(
             @PathVariable Long testId
     ) {
-        try {
-            fileStorageService.deleteFileById(testId);
-        } catch (IOException e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        fileStorageService.deleteFileById(testId);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }

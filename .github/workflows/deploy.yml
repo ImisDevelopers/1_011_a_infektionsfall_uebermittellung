@@ -16,8 +16,7 @@ on:
 
 # Environment variables available to all jobs and steps in this workflow
 env:
-  GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
-  GKE_PROJECT_ID: onyx-yeti-271818
+  GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: europe-west3-b

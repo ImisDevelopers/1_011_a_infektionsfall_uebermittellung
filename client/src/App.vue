@@ -4,9 +4,8 @@
     <!-- <ExampleComponent/> -->
     <a-layout id="components-layout-demo-responsive">
         <div class="logo" />
-
       <a-layout>
-        <a-layout-header :style="{ background: '#fff', padding: 0 }">
+        <a-layout-header :style="{ background: '#fff', padding: 0}">
           <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
             <a-menu-item key="1" v-on:click="menumode=1">
               <a-icon type="user" />
@@ -29,12 +28,12 @@
               <span class="nav-text">Test-Komponente</span>
             </a-menu-item>
             <a-menu-item key="6" v-on:click="menumode=6">
-              <a-icon type="account-group" />
+              <a-icon type="user" />
               <span class="nav-text">Alle Daten einsehen</span>
             </a-menu-item>
           </a-menu>
         </a-layout-header>
-        <a-layout-content :style="{ margin: '0px auto' }">
+        <a-layout-content :style="{ margin: '0px auto', width:'100%'  }">
 
           <a-div v-if="menumode==1" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
@@ -104,7 +103,7 @@ export default {
   },
   data: function() {
     return {
-      menumode: 0
+      menumode: 1
     };
   }
 }

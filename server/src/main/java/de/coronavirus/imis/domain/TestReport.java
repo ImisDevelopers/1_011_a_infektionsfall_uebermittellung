@@ -3,8 +3,8 @@ package de.coronavirus.imis.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
-import java.nio.file.Path;
 
 
 /***
@@ -18,17 +18,17 @@ public class TestReport {
     @Id
     public Long id;
 
-    // Path to the location of the report in the file system.
-    public Path filePath;
+    @Lob
+    public byte[] file;
 
     /***
      * Initalizes a new test report.
      * @param id: Id of the report.
-     * @param filePath: File path of the report.
+     * @param file: Binary data of the report.
      */
-    public TestReport(Long id, Path filePath) {
+    public TestReport(Long id, byte[] file) {
         this.id = id;
-        this.filePath = filePath;
+        this.file = file;
     }
 
     /***
@@ -41,10 +41,10 @@ public class TestReport {
 
     /***
      * Sets the file path of the report.
-     * @param filePath: File path to the file system.
+     * @param file: Binary data of the report.
      */
-    public void setFilePath(Path filePath){
-        this.filePath = filePath;
+    public void setFilePath(byte[] file){
+        this.file = file;
     }
 }
 

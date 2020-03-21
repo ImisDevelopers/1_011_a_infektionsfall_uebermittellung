@@ -5,7 +5,7 @@ services:
     container_name: postgres_container
     image: postgres
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: imis
       POSTGRES_PASSWORD: password
       POSTGRES_DB: imis
     ports:

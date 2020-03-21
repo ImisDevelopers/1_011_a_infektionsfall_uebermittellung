@@ -9,20 +9,15 @@ _DO NOT COMMIT TO MASTER_
  - Persistence: PostgreSQL
  
 ## Local development setup
-#### Start PostgreSQL in docker container (before starting application): 
+1.  Start PostgreSQL in docker container (before starting application): 
 ```docker-compose up```
-
-#### Initialize gradle wrapper: 
+2. Initialize gradle wrapper: 
 ```gradle wrapper```
-
-#### Run application
-```./gradlew bootrun```
-
-#### Test application
-```./gradlew test```
-
-#### Build application
+3. Build application
 ```./gradlew clean build```
-
-#### Start local development server for vue.js development
+4. Test application
+```./gradlew test```
+5. Run application
+```./gradlew bootrun```
+6. Start local development server for vue.js development
 ```./gradlew serve```

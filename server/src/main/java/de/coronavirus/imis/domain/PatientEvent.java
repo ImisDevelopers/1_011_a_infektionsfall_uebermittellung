@@ -31,12 +31,11 @@ public class PatientEvent {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Patient patient;
 
-/*    @ManyToOne
-    private Institution testInstitution;*/
-
+    @ManyToOne
+    private Doctor responsibleDoctor;
 
     private String illness;
 

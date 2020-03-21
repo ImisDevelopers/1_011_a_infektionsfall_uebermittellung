@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.AllArgsConstructor;
 
 import de.coronavirus.imis.api.dto.CreateLabTestDto;
+import de.coronavirus.imis.api.dto.UpdateStatusDTO;
 import de.coronavirus.imis.domain.LabTest;
+import de.coronavirus.imis.domain.PatientEvent;
 import de.coronavirus.imis.services.LabTestService;
 
 @RestController
@@ -37,8 +39,8 @@ public class LabTestController {
     }
 
     @PutMapping("/{id}")
-    public void updateTestStatus(@PathVariable("id") String id){
-
+    public PatientEvent updateTestStatus(@PathVariable("id") String id, @RequestBody UpdateStatusDTO statusDTO) {
+        return service.updateLapStatus(id, statusDTO.getUpdatedStatus());
     }
 
 

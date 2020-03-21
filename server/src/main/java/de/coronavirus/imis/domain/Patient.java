@@ -20,7 +20,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @JsonDeserialize(builder = Patient.PatientBuilder.class)
 @Data
-@Builder @NoArgsConstructor @AllArgsConstructor
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Patient {
 
 
@@ -41,6 +43,7 @@ public class Patient {
     private String occupation;
     private String insuranceCompany;
     private String insuranceMembershipNumber;
+    private boolean confirmed;
 
     @OneToMany(mappedBy = "patient")
     @JsonIgnore

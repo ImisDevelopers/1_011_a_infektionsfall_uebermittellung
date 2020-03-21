@@ -18,7 +18,9 @@ _DO NOT COMMIT TO MASTER_
 3. NPM/YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
  
- 
+## How to run this server?
+Install Docker and run: `docker-compose up`
+
 ## Local development setup
 1. Shell öffnen 
 1.  Start PostgreSQL in docker container (before starting application): 

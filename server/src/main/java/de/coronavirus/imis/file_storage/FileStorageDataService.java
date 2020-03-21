@@ -52,7 +52,7 @@ public class FileStorageDataService {
         Optional<TestReport> optionalTestReport = getTestReport(id);
 
         optionalTestReport.ifPresent(testReport -> {
-            testReport.setFilePath(file);
+            testReport.setFile(file);
             fileStorageDataRepository.save(testReport);
         });
     }

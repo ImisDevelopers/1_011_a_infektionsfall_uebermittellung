@@ -2,10 +2,10 @@ package de.coronavirus.imis.domain;
 
 
 import java.io.Serializable;
-import java.nio.file.Path;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import lombok.NoArgsConstructor;
@@ -23,17 +23,18 @@ public class TestReport implements Serializable {
     @Id
     public Long id;
 
-    // Path to the location of the report in the file system.
-    public String filePath;
+    // Binary of the test files.
+    @Lob
+    public byte[] file;
 
     /***
-     * Initalizes a new test report.
+     * Initializes a new test report.
      * @param id: Id of the report.
-     * @param filePath: File path of the report.
+     * @param file: Binary of the test files.
      */
-    public TestReport(Long id, Path filePath) {
+    public TestReport(Long id, byte[] file) {
         this.id = id;
-        this.filePath = filePath.toAbsolutePath().toString();
+        this.file = file;
     }
 
     /***
@@ -46,10 +47,10 @@ public class TestReport implements Serializable {
 
     /***
      * Sets the file path of the report.
-     * @param filePath: File path to the file system.
+     * @param file: Binary of the test files.
      */
-    public void setFilePath(Path filePath) {
-        this.filePath = filePath.toAbsolutePath().toString();
+    public void setFile(byte[] file) {
+        this.file = file;
     }
 }
 

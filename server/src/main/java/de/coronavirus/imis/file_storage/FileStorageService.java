@@ -1,10 +1,6 @@
 package de.coronavirus.imis.file_storage;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 import de.coronavirus.imis.domain.TestReport;
@@ -78,30 +74,5 @@ public class FileStorageService {
      */
     void deleteFileById(Long _id) {
         fileStorageDataService.deleteTestReport(_id);
-    }
-
-    private Path getFolderPath(String string_path) throws FileNotFoundException {
-        // create path object
-        Path path = Paths.get(string_path);
-
-        // if the path exits return path
-        if (Files.exists(path)) {
-            return path;
-
-            // else create directory to path
-        } else {
-
-            File folder = new File(string_path);
-            boolean bool = folder.mkdirs();
-
-            if (bool) {
-                return path;
-            } else {
-                throw new FileNotFoundException(
-                        "Directory could not be created, check permission to " +
-                                "create directories"
-                );
-            }
-        }
     }
 }

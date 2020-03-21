@@ -12,15 +12,17 @@
     <h3>Create an Example Entity</h3>
     <form @submit="create" autocomplete="off">
       <span>Content:</span>
-      <a-button>Create</a-button>
+      <input v-model="content"/>
+      <button>Create</button>
     </form>
   </div>
 </template>
 
-<script>
+// Labs erstellen Berichte zu Tests/ProbeIDs
 
+<script>
 export default {
-  name: 'ExampleComponent',
+  name: 'LabResultComponent',
   props: {
     msg: String
   },

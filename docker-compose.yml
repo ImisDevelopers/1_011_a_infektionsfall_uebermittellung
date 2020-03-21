@@ -27,7 +27,7 @@ services:
       - postgres
     ports:
       - "8080:8080"
-    entrypoint: ["sh","/app/gradlew", "serve"]
+    entrypoint: ["gradle", "serve"]
 
         #web:
           #build: client/.

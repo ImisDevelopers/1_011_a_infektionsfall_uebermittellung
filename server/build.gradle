@@ -45,6 +45,6 @@ bootJar {
 
 bootJar.dependsOn(':client:assemble')
 
-test {
+/*test {
     useJUnitPlatform()
-}
+}*/

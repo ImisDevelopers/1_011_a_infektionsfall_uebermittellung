@@ -23,15 +23,15 @@ public class PatientEventService {
     private static Illness corona = Illness.builder().displayName("corona").build();
 
 
-    private PatientEventRepository patientEventRepository;
+    private final PatientEventRepository patientEventRepository;
 
     public void createInitialPatientEvent(Patient patient, Optional<Illness> illness,
             EventType eventType) {
-        var concreteIllnes = illness.orElse(corona);
         PatientEvent event = PatientEvent.builder().eventTimestamp(Timestamp.from(Instant.now()))
                 .eventType(eventType)
-                .illness(concreteIllnes)
-                .patient(patient).build();
+                .illness("corona")
+                .patient(patient)
+                .build();
         patientEventRepository.save(event);
     }
 
@@ -40,7 +40,7 @@ public class PatientEventService {
         PatientEvent event = PatientEvent.builder().eventTimestamp(Timestamp.from(Instant.now()))
                 .eventType(EventType.TEST_SUBMITTED)
                 .labTest(labTest)
-                .illness(concreteIllnes)
+                .illness("corona")
                 .patient(patient).build();
         patientEventRepository.saveAndFlush(event);
     }

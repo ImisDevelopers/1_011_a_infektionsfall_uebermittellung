@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: imis
+  name: imis-client
   labels:
-    app: imis
+    app: imis-client
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: imis
+      app: imis-client
   template:
     metadata:
       labels:
-        app: imis
+        app: imis-client
     spec:
       containers:
       - name: imis-client
-        image: $clientimage
+        image: client-image
         ports:
         - containerPort: 80

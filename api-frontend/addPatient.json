@@ -1,13 +1,13 @@
 {
-  city: "essen",
-  email: "bt.@testde",
-  firstName: "test",
-  gender: "männlich",
-  houseNumber: "1",
-  insuranceCompany: undefined,
-  insuranceMembershipNumber: undefined,
-  name: "test",
-  phone: "",
-  street: "test",
-  zip: "45134"
+  "city": "essen",
+  "email": "bt.@testde",
+  "firstName": "test",
+  "gender": "männlich",
+  "houseNumber": "1",
+  "insuranceCompany": undefined,
+  "insuranceMembershipNumber": undefined,
+  "name": "test",
+  "phone": "",
+  "street": "test",
+  "zip": "45134"
 }

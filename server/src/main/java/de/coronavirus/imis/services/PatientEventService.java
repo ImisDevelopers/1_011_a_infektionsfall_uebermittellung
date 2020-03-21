@@ -36,7 +36,6 @@ public class PatientEventService {
     }
 
     public void createLabTestEvent(Patient patient, LabTest labTest, Optional<Illness> illness) {
-        var concreteIllnes = illness.orElse(corona);
         PatientEvent event = PatientEvent.builder().eventTimestamp(Timestamp.from(Instant.now()))
                 .eventType(EventType.TEST_SUBMITTED)
                 .labTest(labTest)

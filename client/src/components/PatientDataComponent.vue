@@ -24,8 +24,8 @@
           ]"
           placeholder="Select an option and change input text above"
           >
-          <a-select-option value="weiblich">weiblich</a-select-option>
-          <a-select-option value="männlich">männlich</a-select-option>
+          <a-select-option value="female">weiblich</a-select-option>
+          <a-select-option value="male">männlich</a-select-option>
           <a-select-option value="divers">divers</a-select-option>
         </a-select>
       </a-form-item>

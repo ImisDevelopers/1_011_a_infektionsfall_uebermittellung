@@ -6,7 +6,7 @@ RUN gradle build --no-daemon
 FROM openjdk:11-jre-slim
 
 VOLUME /tmp
-ADD build/libs/ims.jar app.jar
+ADD server/build/libs/ims.jar app.jar
 ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dspring.profiles.active=production"
 RUN sh -c 'touch /app.jar'
 ENTRYPOINT ["java", "-Xmx64m", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar" ]

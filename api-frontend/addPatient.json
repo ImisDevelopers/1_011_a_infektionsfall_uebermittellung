@@ -1,13 +1,36 @@
 {
-  "city": "essen",
-  "email": "bt.@testde",
-  "firstName": "test",
-  "gender": "männlich",
-  "houseNumber": "1",
-  "insuranceCompany": undefined,
-  "insuranceMembershipNumber": undefined,
-  "name": "test",
-  "phone": "",
-  "street": "test",
-  "zip": "45134"
+  "gender": "weiblich",
+  "birthDate": "2020-03-01T13:28:13.201Z",
+  "lastName": "LastName",
+  "firstName": "FirstName",
+  "street": "Street",
+  "houseNumber": "HouseNr",
+  "zip": "PLZ",
+  "city": "City",
+  "email": "email@address.com",
+  "phone": "telefonNr",
+  "insuranceCompany": "insurance",
+  "insuranceMembershipNumber": "insuranceMembershipNr",
+  "cough": "true",
+  "fatigue": "true",
+  "fever": "less-38deg",
+  "shortnessOfBreath": "true",
+  "soreThroat": "false",
+  "cold": "true",
+  "limbPain": "true",
+  "headaches": "true",
+  "diarrhea": "false",
+  "symptoms": "slow",
+  "riskAreas": [
+    "Southcorea",
+    "China",
+    "France"
+  ],
+  "coronaContacts": "false",
+  "preIllnesses": [
+    "cancer",
+    "circulatory disorder"
+  ],
+  "weakenedImmuneSystem": "false",
+  "fluImmunization": "true"
 }

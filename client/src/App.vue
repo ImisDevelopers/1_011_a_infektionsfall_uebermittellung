@@ -3,6 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <!-- <ExampleComponent/> -->
     <PatientDataComponent/>
+    <TestingComponent/>
     <ViewAllDataComponent/>
   </div>
 </template>
@@ -10,8 +11,8 @@
 <script>
 
 // import ExampleComponent from './components/ExampleComponent.vue';
-import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
-// import TestingComponent from './components/LabResultComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
+// import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
+import TestingComponent from './components/TestingComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 // import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
 import ViewAllDataComponent from './components/ViewAllDataComponent.vue'; // Admin Übersicht über alle Daten (RKI? Bundesamt?)
 
@@ -19,8 +20,8 @@ export default {
   name: 'App',
   components: {
     // ExampleComponent,
-    PatientDataComponent,
-    // TestingComponent,
+    // PatientDataComponent,
+    TestingComponent,
     // LabResultComponent,
     ViewAllDataComponent,
   }

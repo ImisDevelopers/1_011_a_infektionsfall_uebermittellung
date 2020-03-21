@@ -57,7 +57,7 @@ jobs:
           --build-arg GITHUB_REF="$GITHUB_REF" .
     - name: Build server
       run: |
-        cd server && docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$SERVER_IMAGE":"$GITHUB_SHA" \
+        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$SERVER_IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" .
 

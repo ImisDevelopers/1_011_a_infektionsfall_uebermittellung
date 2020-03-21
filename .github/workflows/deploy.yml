@@ -21,6 +21,8 @@ on:
 env:
   GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
+  CLOUD_SQL_SERVICE_ACCOUNT: ${{ secrets.CLOUD_SQL_SERVICE_ACCOUNT }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: europe-west3-b
   GKE_CLUSTER: cluster-1
@@ -31,7 +33,7 @@ env:
 
 jobs:
   setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
 
@@ -78,10 +80,12 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
+        echo -n ${CLOUD_SQL_SERVICE_ACCOUNT} | base64 -D > credentials.json
+        kubectl create secret generic cloudsql --from-file=credentials.json=credentials.json
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
         ./kustomize edit set image "client-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$CLIENT_IMAGE:${GITHUB_SHA}"
         ./kustomize edit set image "server-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:${GITHUB_SHA}"
-        ./kustomize edit add secret postgress --from-literal=password=${POSTGRES_PASSWORD}
+        ./kustomize edit add secret postgres --from-literal=password=${POSTGRES_PASSWORD}
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide

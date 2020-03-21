@@ -20,8 +20,37 @@ spec:
         ports:
         - containerPort: 80
         env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: production
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql:localhost:5432
+          - name: SPRING_DATASOURCE_USERNAME
+            value: postgres
           - name: SPRING_DATASOURCE_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: postgres
                 key: password
+        volumeMounts:
+        - name: cloudsql-instance-credentials
+          mountPath: /secrets/cloudsql
+          readOnly: true
+      - name: cloudsql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.14
+        command: ["/cloud_sql_proxy",
+                  "-instances=challenge-11=tcp:5432",
+          # If running on a VPC, the Cloud SQL proxy can connect via Private IP. See:
+          # https://cloud.google.com/sql/docs/mysql/private-ip for more info.
+          # "-ip_address_types=PRIVATE",
+                  "-credential_file=/secrets/cloudsql/credentials.json"]
+        securityContext:
+          runAsUser: 2  # non-root user
+          allowPrivilegeEscalation: false
+        volumeMounts:
+        - name: cloudsql-instance-credentials
+          mountPath: /secrets/cloudsql
+          readOnly: true
+      volumes:
+        - name: cloudsql-instance-credentials
+          secret:
+            secretName: cloudsql

@@ -12,7 +12,7 @@ resources:
 images:
 - name: client-image
   newName: gcr.io/onyx-yeti-271818/imis-client
-  newTag: latest
+  newTag: 9ed87c1e6a857ca9976179e37f3a33285a2850fc
 - name: server-image
   newName: gcr.io/onyx-yeti-271818/imis-server
-  newTag: latest
+  newTag: 9ed87c1e6a857ca9976179e37f3a33285a2850fc

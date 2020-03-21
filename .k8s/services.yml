@@ -8,6 +8,7 @@ spec:
   ports:
   - protocol: TCP
     port: 8080
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: Service
@@ -19,3 +20,4 @@ spec:
   ports:
   - protocol: TCP
     port: 80
+  type: LoadBalancer

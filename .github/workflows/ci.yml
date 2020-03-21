@@ -1,4 +1,4 @@
-name: Build and test
+name: Build and Test
 
 on:
   push:
@@ -15,7 +15,7 @@ env:
 
 jobs:
   setup-build-publish-deploy:
-    name: Setup, Build and Test
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-java@v1.3.0

@@ -1,6 +1,7 @@
 package de.coronavirus.imis.json;
 
 import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.services.PatientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

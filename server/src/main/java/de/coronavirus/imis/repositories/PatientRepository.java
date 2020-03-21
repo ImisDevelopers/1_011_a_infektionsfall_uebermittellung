@@ -1,4 +1,4 @@
-package de.coronavirus.imis.json;
+package de.coronavirus.imis.repositories;
 
 import de.coronavirus.imis.domain.Patient;
 import org.springframework.data.repository.CrudRepository;

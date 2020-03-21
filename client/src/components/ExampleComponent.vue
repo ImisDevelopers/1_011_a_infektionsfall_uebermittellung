@@ -12,13 +12,13 @@
     <h3>Create an Example Entity</h3>
     <form @submit="create" autocomplete="off">
       <span>Content:</span>
-      <input v-model="content"/>
-      <button>Create</button>
+      <a-button>Create</a-button>
     </form>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'ExampleComponent',
   props: {

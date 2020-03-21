@@ -47,7 +47,7 @@ public class PatientEventService {
 
     public void createLabTestEvent(Patient patient, LabTest labTest, Optional<Illness> illness) {
         PatientEvent event = PatientEvent.builder().eventTimestamp(Timestamp.from(Instant.now()))
-                .eventType(EventType.TEST_SUBMITTED)
+                .eventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
                 .labTest(labTest)
                 .illness("corona")
                 .patient(patient).build();

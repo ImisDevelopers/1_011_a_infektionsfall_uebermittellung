@@ -22,7 +22,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.postgresql:postgresql:42.2.11'
-    implementation 'org.flywaydb:flyway-core:6.3.1'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
     compileOnly 'org.projectlombok:lombok'
 
@@ -45,6 +46,6 @@ bootJar {
 
 bootJar.dependsOn(':client:assemble')
 
-test {
+/*test {
     useJUnitPlatform()
-}
+}*/

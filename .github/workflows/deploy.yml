@@ -25,7 +25,7 @@ env:
   CLIENT_IMAGE: imis-client
   SERVER_IMAGE: imis-server
   REGISTRY_HOSTNAME: gcr.io
-  DEPLOYMENT_NAME: imis
+  DEPLOYMENT_NAME: imis-server
 
 jobs:
   setup-build-publish-deploy:
@@ -76,7 +76,7 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
-        gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
+        gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
         ./kustomize edit set client-image $REGISTRY_HOSTNAME/$GKE_PROJECT/$CLIENT_IMAGE:${GITHUB_SHA}
         ./kustomize edit set server-image $REGISTRY_HOSTNAME/$GKE_PROJECT/$SERVER_IMAGE:${GITHUB_SHA}
         ./kustomize build . | kubectl apply -f -

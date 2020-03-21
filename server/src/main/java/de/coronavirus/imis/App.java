@@ -8,7 +8,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan(basePackages = "de.coronavirus.imis.api")
 public class App {
 
     public static void main(String[] args) {

@@ -5,8 +5,12 @@ commonLabels:
   app: imis
   name: imis
 resources:
-- .k8s/deployment.yaml
+- .k8s/deployment-server.yaml
+- .k8s/deployment-client.yaml
 images:
-- name: imis
-  newName: gcr.io/onyx-yeti-271818/imis
+- name: client-image
+  newName: gcr.io/onyx-yeti-271818/imis-client
+  newTag: latest
+- name: server-image
+  newName: gcr.io/onyx-yeti-271818/imis-server
   newTag: latest

@@ -1,0 +1,21 @@
+
+spring:
+  profiles: development
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: imis
+    password: password
+    initialization-mode: always
+    platform: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+server:
+  port: 80
+---
+spring:
+  profiles: production

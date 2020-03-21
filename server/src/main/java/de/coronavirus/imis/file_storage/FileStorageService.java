@@ -10,19 +10,33 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+/***
+ * Service class for saving uploaded files to the file system.
+ */
 @Service
 public class FileStorageService {
 
+    /***
+     * Path for testReports.
+     */
     private String reportPath = "/reports/";
 
     FileStorageService(){
 
     }
 
-    public void addFileById(String _id, MultipartFile file) throws Exception {
+    /***
+     * Saves a file identified by an id.
+     * @param _id: The identifier of the file.
+     * @param file: The binary of the file.
+     * @throws Exception
+     */
+    void addFileById(String _id, MultipartFile file) throws Exception {
 
-        // we do not safe the documents with the unique id as name, to maintain the original file name,
-        // without risking double file identifiers. The folder location is unique
+        // we do not safe the documents with the unique id as name, to maintain
+        // the original file name,
+        // without risking double file identifiers. The folder location is
+        // unique
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
         Path directory = this.getFolderPath( full_directory );
@@ -33,7 +47,13 @@ public class FileStorageService {
         Files.write(file_path, bytes);
     }
 
-    public File getFileById(String _id) throws FileNotFoundException {
+    /***
+     * Gets a file from the file system by an id.
+     * @param _id: The identifier of the file.
+     * @return The returned file.
+     * @throws FileNotFoundException
+     */
+    File getFileById(String _id) throws FileNotFoundException {
         // create path by Id
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
@@ -43,15 +63,24 @@ public class FileStorageService {
         File [] files = folder.listFiles();
 
         // the folder should only have a single file
+        assert files != null;
         if (files.length >= 1) {
             // if a file is found return file
             return files[1];
         }
 
-        throw new FileNotFoundException("The file by the identifier: " + _id + " was not found");
+        throw new FileNotFoundException(
+                "The file by the identifier: " + _id + " was not found"
+        );
     }
 
-    public void replaceFileById(String _id, MultipartFile file) throws IOException {
+    /***
+     * Replace a file identified by an id.
+     * @param _id: The identifier of the file.
+     * @param file: The new file.
+     * @throws IOException
+     */
+    void replaceFileById(String _id, MultipartFile file) throws IOException {
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
         Path directory = this.getFolderPath( full_directory );
@@ -66,7 +95,12 @@ public class FileStorageService {
         Files.write(file_path, bytes);
     }
 
-    public void deleteFileById(String _id) throws IOException {
+    /***
+     * Delete a file given its id.
+     * @param _id: The unique identifier of a file to be deleted.
+     * @throws IOException
+     */
+    void deleteFileById(String _id) throws IOException {
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
         Path directory = this.getFolderPath( full_directory );
@@ -77,7 +111,6 @@ public class FileStorageService {
     }
 
     private Path getFolderPath(String string_path) throws FileNotFoundException {
-
         // create path object
         Path path = Paths.get(string_path);
 
@@ -91,13 +124,14 @@ public class FileStorageService {
             File folder = new File(string_path);
             boolean bool = folder.mkdirs();
 
-            if(bool){
+            if(bool) {
                 return path;
-            }else{
-                throw new FileNotFoundException("Directory could not be created, check permission to create directories");
+            } else {
+                throw new FileNotFoundException(
+                        "Directory could not be created, check permission to " +
+                                "create directories"
+                );
             }
         }
     }
-
-
 }

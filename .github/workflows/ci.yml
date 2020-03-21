@@ -17,9 +17,10 @@ jobs:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
     steps:
-
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: olafurpg/setup-scala@v7
+      with:
+        java-version: adopt@1.11
+    - uses: actions/checkout@v2
 
     # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |

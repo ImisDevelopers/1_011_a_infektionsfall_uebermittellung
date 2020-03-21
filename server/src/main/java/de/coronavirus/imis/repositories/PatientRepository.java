@@ -1,17 +1,10 @@
 package de.coronavirus.imis.repositories;
 
-import de.coronavirus.imis.domain.Patient;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import de.coronavirus.imis.domain.Patient;
 
-@Repository
-public interface PatientRepository extends CrudRepository<Patient, Long> {
+public interface PatientRepository extends JpaRepository<Patient, String> {
 
-    @Override
-    Optional<Patient> findById(Long id);
-
-    @Override
-    Iterable<Patient> findAll();
 }

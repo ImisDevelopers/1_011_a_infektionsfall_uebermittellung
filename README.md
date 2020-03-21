@@ -20,7 +20,6 @@ _DO NOT COMMIT TO MASTER_
 3. NPM/YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
  
- 
 ## Local development setup
 1. Shell öffnen 
 1. Make sure your $JAVA_PATH is set correctly
@@ -36,3 +35,8 @@ _DO NOT COMMIT TO MASTER_
 ```./gradlew bootjrun```
 1. Start local development server for vue.js development
 ```./gradlew serve```
+
+## API communication
+
+An API developed by the backend is served via swagger on the server: http://localhost/swagger-ui.html
+If you have a new API that should be created add them into the api-frontend folder.

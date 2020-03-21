@@ -2,10 +2,6 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <ExampleComponent/> -->
-    <!-- <router-link to="/lab-results">Go to RESULTS</router-link>
-    <router-link to="/all-data">All data</router-link>
-    <router-view></router-view>
-    <h1>1337</h1> -->
     <a-layout id="components-layout-demo-responsive">
         <div class="logo" />
       <a-layout>

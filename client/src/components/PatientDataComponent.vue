@@ -66,23 +66,23 @@
       <!-- Teil 2 -->
       <!-- Leiden Sie an Husten? -->
       <a-form-item label="Leiden Sie an Husten?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Leiden Sie an Abgeschlagenheit? -->
       <a-form-item label="Leiden Sie an Abgeschlagenheit?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Leiden Sie an Fieber? -->
       <a-form-item label="Leiden Sie an Fieber?">
-        <a-select> 
+        <a-select>
           <a-select-option value="false">Nein, ich habe kein Fieber</a-select-option>
           <a-select-option value="less-38deg">Ja, bis 38°C</a-select-option>
           <a-select-option value="more-38deg">Ja, über 38°C</a-select-option>
@@ -91,47 +91,47 @@
 
       <!-- Leiden Sie an akuter Luftnot? -->
       <a-form-item label="Leiden Sie an akuter Luftnot?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Leiden Sie an Halsschmerzen oder Halskratzen? -->
       <a-form-item label="Leiden Sie an Halsschmerzen oder Halskratzen?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein, ich habe keine Halsschmerzen</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Leiden Sie an Schnupfen?-->
       <a-form-item label="Leiden Sie an Schnupfen?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein, ich habe keinen Schnupfen</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Leiden Sie an Gliederschmerzen? -->
       <a-form-item label="Leiden Sie an Gliederschmerzen?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein, ich habe keine Gliederschmerzen</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Leiden Sie an Kopfschmerzen? -->
       <a-form-item label="Leiden Sie an Kopfschmerzen?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein, ich habe keine Kopfschmerzen</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Leiden Sie an Durchfall? -->
       <a-form-item label="Leiden Sie an Durchfall?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein, ich habe keinen Durchfall</a-select-option>
         </a-select>
@@ -139,7 +139,7 @@
 
       <!-- Wie schnell sind die Beschwerden aufgetreten? -->
       <a-form-item label="Wie schnell sind die Beschwerden aufgetreten?">
-        <a-select> 
+        <a-select>
           <a-select-option value="suddenly">Plötzlich, innerhalb von einem Tag</a-select-option>
           <a-select-option value="slow">Langsam, innerhalb von mehreren Tagen</a-select-option>
         </a-select>
@@ -147,14 +147,23 @@
 
       <!-- Haben Sie sich wirklich in einem Risikogebiet für Coronavirus aufgehalten? -->
       <a-form-item label="Haben Sie sich wirklich in einem Risikogebiet für Coronavirus aufgehalten?">
-        <a-form-select mode="multiple" v-model="selected" :options="pre_illnesses"></a-form-select>
+        <a-select mode="multiple">
+          <a-select-option value="Iran">Ja, im Iran</a-select-option>
+          <a-select-option value="China">Ja, in China</a-select-option>
+          <a-select-option value="Southcorea">Ja, in Südkorea</a-select-option>
+          <a-select-option value="France">Ja, in Frankreich</a-select-option>
+          <a-select-option value="Austria">Ja, in Österreich</a-select-option>
+          <a-select-option value="Spain">Ja, in Spanien</a-select-option>
+          <a-select-option value="USA">Ja, in USA: Kalofornien, Washington oder New York</a-select-option>
+          <a-select-option value="false">Nein</a-select-option>
+        </a-select>
       </a-form-item>
 
       <!-- ggf. Aufenthaltszeitraum ergänzen -->
 
       <!-- Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt? -->
       <a-form-item label="Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein</a-select-option>
         </a-select>
@@ -162,12 +171,26 @@
 
       <!-- Sie sehen eine Liste an Vorerkrankungen. An welchen Erkrankungen leiden Sie? -->
       <a-form-item label="Sie sehen eine Liste an Vorerkrankungen. An welchen Erkrankungen leiden Sie?">
-				<a-form-select mode="multiple" v-model="selected" :options="risk_areas"></a-form-select>
+				<a-select mode="multiple">
+          <a-select-option value="heart disease">Herzerkrankungen</a-select-option>
+          <a-select-option value="lung disease">Lungenerkrankungen</a-select-option>
+          <a-select-option value="circulatory disorder">Kreislauf-/Gefäßerkrankungen</a-select-option>
+          <a-select-option value="blood disease">Bluterkrankungen oder erhöhte Blutungsneigung</a-select-option>
+          <a-select-option value="cancer">Krebserkrankungen</a-select-option>
+          <a-select-option value="bone disease">Erkrankungen der Knochen, Muskeln oder des Bindegewebes</a-select-option>
+          <a-select-option value="mental illness">Psychische, neurologische Erkrankungen</a-select-option>
+          <a-select-option value="metabolic disease">Stoffwechselerkrankungen (z.B. Diabetes)</a-select-option>
+          <a-select-option value="enteropathy">Magen-/Darmerkrankungen</a-select-option>
+          <a-select-option value="hepatic disease">Erkrankungen der Leber oder Gallenwege</a-select-option>
+          <a-select-option value="kidney disease">Nieren-/Harnwegserkrankungen</a-select-option>
+          <a-select-option value="other disease">Andere Vorerkrankungen</a-select-option>
+          <a-select-option value="false">Keine Vorerkrankungen</a-select-option>
+        </a-select>
 			</a-form-item>
-      
+
       <!-- Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem? -->
       <a-form-item label="Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein</a-select-option>
         </a-select>
@@ -175,17 +198,17 @@
 
       <!-- Haben Sie für diese Saison eine Influenza-Impfung erhalten? -->
       <a-form-item label="Haben Sie für diese Saison eine Influenza-Impfung erhalten?">
-        <a-select> 
+        <a-select>
           <a-select-option value="true">Ja</a-select-option>
           <a-select-option value="false">Nein</a-select-option>
         </a-select>
       </a-form-item>
-      
+
       <!-- Datenschutzerklärung Bestätigung-->
       <a-form-item>
 				<a-checkbox>Ich erkläre mich mit der Übermittlung meiner Daten zur weiteren Verarbeitung einverstanden.</a-checkbox>
       </a-form-item>
-      
+
       <!-- Submit Button -->
       <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
         <a-button type="primary" html-type="submit">

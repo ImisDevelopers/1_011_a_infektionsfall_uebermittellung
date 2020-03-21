@@ -11,15 +11,19 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
-@Value
 @JsonDeserialize(builder = Patient.PatientBuilder.class)
-@Builder
+@Data
+@Builder @NoArgsConstructor @AllArgsConstructor
 public class Patient {
+
+
     @Id
     private String id;
 

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,18 +31,15 @@ public class LabTestController {
                 createLabTestRequest.getLabInternalId()));
     }
 
-    // FIXME/TODO: Move this to /patient/{id}/labtest and use /{id} for getLabTestForId below?
-    @GetMapping("/{id}")
+    @GetMapping("/patient/{id}")
     public Set<LabTest> getLabTestForPatient(@PathVariable("id") String patientId) {
         return service.getAllLabTestForPatient(patientId);
     }
 
-    /*
-    @GetMapping("/{id}")
-    public ResponseEntity<LabTest> getLabTestForId(@PathVariable("id") String id) {
-        return service.findLabTestById(id).map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }*/
+    @PutMapping("/{id}")
+    public void updateTestStatus(@PathVariable("id") String id){
+
+    }
 
 
 }

@@ -199,7 +199,7 @@ const columns = [
 const data = [
   {
     gender: "weiblich",
-    birthDate: "2020-03-01",
+    birthDate: "2020-03-01T13:28:13.201Z",
     lastName: "LastName",
     firstName: "FirstName",
     street: "Street",

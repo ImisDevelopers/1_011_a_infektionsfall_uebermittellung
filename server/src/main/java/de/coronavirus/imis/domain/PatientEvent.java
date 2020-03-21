@@ -2,7 +2,6 @@ package de.coronavirus.imis.domain;
 
 
 import java.sql.Timestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,20 +9,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
+@Getter
+@Setter
+@Accessors(chain = true)
 public class PatientEvent {
 
     @Id
@@ -31,14 +25,14 @@ public class PatientEvent {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Patient patient;
 
-/*    @ManyToOne
-    private Institution testInstitution;*/
+    @ManyToOne
+    private Doctor responsibleDoctor;
 
-
-    private String illness;
+    @Enumerated(EnumType.STRING)
+    private Illness illness;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private LabTest labTest;
@@ -50,13 +44,6 @@ public class PatientEvent {
 
     private String comment;
     private String accomodation;
-
-    @JsonPOJOBuilder(withPrefix = "")
-    public static final class PatientEventBuilder {
-        // needed for jackson deserialization
-    }
-
-
 }
 
 

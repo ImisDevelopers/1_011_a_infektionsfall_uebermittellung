@@ -65,7 +65,7 @@ public class PatientEventService {
 
 
         final Doctor doctor = doctorRepository.findById(doctorId).orElseGet(() ->
-                doctorRepository.save(Doctor.builder().id(Long.valueOf(doctorId)).build())
+                doctorRepository.save(Doctor.builder().id(doctorId).build())
         );
         var event = PatientEvent.builder().eventTimestamp(Timestamp.from(Instant.now()))
                 .eventType(EventType.SCHEDULED_FOR_TESTING)

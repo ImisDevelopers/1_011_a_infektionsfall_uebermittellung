@@ -30,7 +30,7 @@
         <a-layout-header :style="{ background: '#fff', padding: 0 }" />
         <a-layout-content :style="{ margin: '0px auto' }">
           <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-            <AddInstitutionComponent/>
+            <TestingComponent/>
           </div>
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
@@ -45,18 +45,18 @@
 
 // import ExampleComponent from './components/ExampleComponent.vue';
 // import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
-// import TestingComponent from './components/TestingComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
+import TestingComponent from './components/TestingComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 // import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
 import ViewAllDataComponent from './components/ViewAllDataComponent.vue';
-import AddInstitutionComponent from "./components/AddInstitutionComponent"; // Admin Übersicht über alle Daten (RKI? Bundesamt?)
+// import AddInstitutionComponent from "./components/AddInstitutionComponent";
 
 export default {
   name: 'App',
   components: {
-    AddInstitutionComponent,
+    // AddInstitutionComponent,
     // ExampleComponent,
     // PatientDataComponent,
-    // TestingComponent,
+    TestingComponent,
     // LabResultComponent,
     ViewAllDataComponent,
   },

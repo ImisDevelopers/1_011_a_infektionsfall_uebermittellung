@@ -19,3 +19,9 @@ spec:
         image: server-image
         ports:
         - containerPort: 80
+        env:
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: password

@@ -16,3 +16,8 @@ images:
 - name: server-image
   newName: gcr.io/onyx-yeti-271818/imis-server
   newTag: latest
+secretGenerator:
+- literals:
+  - password=${POSTGRES_PASSWORD}
+  name: postgress
+  type: Opaque

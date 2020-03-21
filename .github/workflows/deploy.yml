@@ -76,8 +76,8 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
-        ./kustomize edit set client-image $REGISTRY_HOSTNAME/$GKE_PROJECT/$CLIENT_IMAGE:${GITHUB_SHA}
-        ./kustomize edit set server-image $REGISTRY_HOSTNAME/$GKE_PROJECT/$SERVER_IMAGE:${GITHUB_SHA}
+        ./kustomize edit set client-image "$REGISTRY_HOSTNAME/$GKE_PROJECT/$CLIENT_IMAGE:${GITHUB_SHA}"
+        ./kustomize edit set server-image "$REGISTRY_HOSTNAME/$GKE_PROJECT/$SERVER_IMAGE:${GITHUB_SHA}"
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide

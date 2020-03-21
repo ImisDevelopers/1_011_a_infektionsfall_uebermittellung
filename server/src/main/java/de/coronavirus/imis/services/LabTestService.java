@@ -54,7 +54,7 @@ public class LabTestService {
     }
 
     @Transactional
-    public PatientEvent updateLapStatus(String testId, final String statusString) {
+    public PatientEvent updateTestStatus(String testId, final String statusString) {
         TestStatus statusToSet = TestStatus.valueOf(statusString.toUpperCase());
         var labTest = labTestRepository.findById(testId).orElseThrow();
         final List<PatientEvent> event = eventService.getForLabTest(labTest);

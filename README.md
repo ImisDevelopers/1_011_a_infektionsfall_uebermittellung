@@ -21,7 +21,8 @@ _DO NOT COMMIT TO MASTER_
  
 ## Local development setup
 1. Shell öffnen 
-1.  Start PostgreSQL in docker container (before starting application): 
+1. Make sure your $JAVA_PATH is set correctly
+1. Start PostgreSQL in docker container (before starting application): 
 ```docker-compose up -d ```
 1. Download Gradle wrapper
 ```gradle wrapper```
@@ -30,6 +31,6 @@ _DO NOT COMMIT TO MASTER_
 1. Test application
 ```./gradlew test```
 1. Run application (including frontend) 
-```./gradlew bootrun```
+```./gradlew bootjrun```
 1. Start local development server for vue.js development
 ```./gradlew serve```

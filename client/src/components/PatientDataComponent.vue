@@ -66,12 +66,12 @@
       <!-- Teil 2 -->
       <!-- Leiden Sie an Husten? -->
       <a-form-item label="Leiden Sie an Husten?">
-        <a-switch v-decorator="['cough', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked  v-decorator="['cough', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Leiden Sie an Abgeschlagenheit? -->
       <a-form-item label="Leiden Sie an Abgeschlagenheit?">
-        <a-switch :loading=false v-decorator="['fatigue', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked  v-decorator="['fatigue', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Leiden Sie an Fieber? -->
@@ -85,32 +85,32 @@
 
       <!-- Leiden Sie an akuter Luftnot? -->
       <a-form-item label="Leiden Sie an akuter Luftnot?">
-        <a-switch v-decorator="['breathlessness', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked v-decorator="['shortnessOfBreath', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Leiden Sie an Halsschmerzen oder Halskratzen? -->
       <a-form-item label="Leiden Sie an Halsschmerzen oder Halskratzen?">
-        <a-switch v-decorator="['sore_throat', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked v-decorator="['soreThroat', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Leiden Sie an Schnupfen?-->
       <a-form-item label="Leiden Sie an Schnupfen?">
-        <a-switch v-decorator="['cold', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked v-decorator="['cold', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Leiden Sie an Gliederschmerzen? -->
       <a-form-item label="Leiden Sie an Gliederschmerzen?">
-        <a-switch v-decorator="['limb_pain', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked v-decorator="['limbPain', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Leiden Sie an Kopfschmerzen? -->
       <a-form-item label="Leiden Sie an Kopfschmerzen?">
-        <a-switch v-decorator="['headache', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked v-decorator="['headaches', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Leiden Sie an Durchfall? -->
       <a-form-item label="Leiden Sie an Durchfall?">
-        <a-switch v-decorator="['diarrhoea', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked v-decorator="['diarrhea', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Wie schnell sind die Beschwerden aufgetreten? -->
@@ -139,7 +139,7 @@
 
       <!-- Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt? -->
       <a-form-item label="Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt?">
-        <a-switch v-decorator="['contact_with_infected', { rules: [{ required: false }] }]" />
+        <a-switch defaultChecked v-decorator="['coronaContacts', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Sie sehen eine Liste an Vorerkrankungen. An welchen Erkrankungen leiden Sie? -->
@@ -163,12 +163,12 @@
 
       <!-- Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem? -->
       <a-form-item label="Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem?">
-        <a-switch v-decorator="['weak_immune_system', { rules: [{ required: false }] }]" />
+        <a-switch v-decorator="['weakenedImmuneSystem', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Haben Sie für diese Saison eine Influenza-Impfung erhalten? -->
       <a-form-item label="Haben Sie für diese Saison eine Influenza-Impfung erhalten?">
-        <a-switch v-decorator="['flue_vaccination', { rules: [{ required: false }] }]" />
+        <a-switch v-decorator="['fluImmunization', { rules: [{ required: false }] }]" />
       </a-form-item>
 
       <!-- Datenschutzerklärung Bestätigung-->

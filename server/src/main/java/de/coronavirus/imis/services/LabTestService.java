@@ -6,27 +6,28 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
-import de.coronavirus.imis.domain.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.RequiredArgsConstructor;
+
+import de.coronavirus.imis.domain.LabTest;
+import de.coronavirus.imis.domain.Laboratory;
+import de.coronavirus.imis.domain.LaboratoryNotFoundException;
+import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.domain.PatientEvent;
+import de.coronavirus.imis.domain.PatientNotFoundException;
+import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.repositories.LabTestRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 
 @Component
+@RequiredArgsConstructor
 public class LabTestService {
     private final PatientService patientService;
     private final PatientEventService eventService;
     private final LaboratoryRepository laboratoryRepository;
     private final LabTestRepository labTestRepository;
 
-    @Autowired
-    public LabTestService(final PatientService patientService, final PatientEventService eventService, final LaboratoryRepository laboratoryRepository, final LabTestRepository labTestRepository) {
-        this.patientService = patientService;
-        this.eventService = eventService;
-        this.laboratoryRepository = laboratoryRepository;
-        this.labTestRepository = labTestRepository;
-    }
 
     @Transactional
     public LabTest createLabTest(String patientId, Long labId, String labInternalId) {
@@ -36,8 +37,9 @@ public class LabTestService {
                 laboratory(laboratory).testStatus(TestStatus.TEST_SUBMITTED)
                 .laborTestID(labInternalId)
                 .build();
+        labTestRepository.save(labTest);
         eventService.createLabTestEvent(patient, labTest, Optional.empty());
-        return labTestRepository.save(labTest);
+        return labTest;
     }
 
     @Transactional

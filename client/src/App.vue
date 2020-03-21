@@ -31,6 +31,10 @@
               <a-icon type="user" />
               <span class="nav-text">Alle Daten einsehen</span>
             </a-menu-item>
+            <a-menu-item key="7" v-on:click="menumode=7">
+              <a-icon type="user" />
+              <span class="nav-text">Öffentliche Statistik</span>
+            </a-menu-item>
           </a-menu>
         </a-layout-header>
         <a-layout-content :style="{ margin: '0px auto', width:'100%'  }">
@@ -65,6 +69,11 @@
               <ViewAllDataComponent/>
             </div>
           </a-div>
+          <a-div v-else-if="menumode==7" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <PublicStatisticsComponent/>
+            </div>
+          </a-div>
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
           IMIS ©2020 Created by WeVsVirus
@@ -82,10 +91,12 @@ import TestingComponent from './components/TestingComponent.vue'; // TestStation
 import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
 import ViewAllDataComponent from './components/ViewAllDataComponent.vue';
 import AddInstitutionComponent from "./components/AddInstitutionComponent";
+import PublicStatisticsComponent from "./components/PublicStatisticsComponent";
 
 export default {
   name: 'App',
   components: {
+    PublicStatisticsComponent,
     PatientDataComponent,
     LabResultComponent,
     ExampleComponent,

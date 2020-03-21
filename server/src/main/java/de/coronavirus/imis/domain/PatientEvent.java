@@ -12,19 +12,20 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
 
 @Entity
-@Data
-@NoArgsConstructor
+@Value
+@JsonDeserialize(builder = PatientEvent.PatientEventBuilder.class)
 @Builder
 public class PatientEvent {
 
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
     @ManyToOne
@@ -46,6 +47,11 @@ public class PatientEvent {
 
     private String comment;
     private String accomodation;
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class PatientEventBuilder {
+        // needed for jackson deserialization
+    }
 
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
+import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.services.PatientService;
 

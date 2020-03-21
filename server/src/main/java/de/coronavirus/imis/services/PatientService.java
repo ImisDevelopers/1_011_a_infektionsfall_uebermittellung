@@ -13,7 +13,6 @@ import com.google.common.hash.Hashing;
 
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.Illness;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.repositories.PatientRepository;
 
@@ -22,7 +21,6 @@ public class PatientService {
     private PatientRepository patientRepository;
     private PatientEventService eventService;
 
-    private static Illness corona = Illness.builder().displayName("corona").build();
 
     public PatientService(PatientRepository patientRepository) {
         this.patientRepository = patientRepository;
@@ -53,7 +51,7 @@ public class PatientService {
                 .build();
 
         patientRepository.save(mappedPatient);
-        eventService.createInitialPatientEvent(mappedPatient, corona, EventType.SUSPECTED);
+        eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), EventType.SUSPECTED);
         return mappedPatient;
     }
 }

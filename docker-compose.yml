@@ -20,7 +20,7 @@ services:
     networks:
       - postgres
     ports:
-      - "80:4000"
+      - "80:80"
   web:
     build: .
     networks:

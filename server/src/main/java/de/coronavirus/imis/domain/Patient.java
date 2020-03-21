@@ -34,5 +34,8 @@ public class Patient {
     @OneToMany
     List<PatientEvent> events;
 
+    @OneToMany
+    private List<Illness> preExistingConditions;
+
 
 }

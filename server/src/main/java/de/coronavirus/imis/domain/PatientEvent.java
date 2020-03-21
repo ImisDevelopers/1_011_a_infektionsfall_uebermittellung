@@ -29,6 +29,9 @@ public class PatientEvent {
     @ManyToOne
     private Illness illness;
 
+    @ManyToOne
+    private Test test;
+
     private Timestamp eventTimestamp;
 
     @Enumerated(EnumType.STRING)

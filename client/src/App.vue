@@ -36,36 +36,36 @@
         </a-layout-header>
         <a-layout-content :style="{ margin: '0px auto' }">
 
-          <a-div v-if="menumode==1" >
+          <div v-if="menumode==1" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
               <AddInstitutionComponent/>
             </div>
-          </a-div>
-          <a-div v-else-if="menumode==2" >
+          </div>
+          <div v-else-if="menumode==2" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
               <ExampleComponent/>
             </div>
-          </a-div>
-          <a-div v-else-if="menumode==3" >
+          </div>
+          <div v-else-if="menumode==3" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
               <LabResultComponent/>
             </div>
-          </a-div>
-          <a-div v-else-if="menumode==4" >
+          </div>
+          <div v-else-if="menumode==4" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
               <PatientDataComponent/>
             </div>
-          </a-div>
-          <a-div v-else-if="menumode==5" >
+          </div>
+          <div v-else-if="menumode==5" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
               <TestingComponent/>
             </div>
-          </a-div>
-          <a-div v-else-if="menumode==6" >
+          </div>
+          <div v-else-if="menumode==6" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
               <ViewAllDataComponent/>
             </div>
-          </a-div>
+          </div>
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
           IMIS ©2020 Created by WeVsVirus

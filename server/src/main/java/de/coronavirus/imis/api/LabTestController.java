@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 
-import de.coronavirus.imis.api.dto.CreateLabTestDto;
+import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.domain.LabTest;
 import de.coronavirus.imis.services.LabTestService;
 
@@ -25,7 +25,7 @@ public class LabTestController {
     private final LabTestService service;
 
     @PostMapping
-    public ResponseEntity<LabTest> createTestForPatient(@RequestBody CreateLabTestDto createLabTestRequest) {
+    public ResponseEntity<LabTest> createTestForPatient(@RequestBody CreateLabTestDTO createLabTestRequest) {
         return ResponseEntity.ok(service.createLabTest(createLabTestRequest.getPatientId(),
                 Long.valueOf(createLabTestRequest.getLaboratoryId()),
                 createLabTestRequest.getLabInternalId()));

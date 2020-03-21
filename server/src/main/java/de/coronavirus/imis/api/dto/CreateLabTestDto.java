@@ -3,7 +3,7 @@ package de.coronavirus.imis.api.dto;
 import lombok.Data;
 
 @Data
-public class CreateLabTestDto {
+public class CreateLabTestDTO {
     private String patientId;
     private String laboratoryId;
     private String labInternalId;

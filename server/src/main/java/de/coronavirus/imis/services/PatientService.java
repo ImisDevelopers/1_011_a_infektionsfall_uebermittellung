@@ -1,29 +1,25 @@
 package de.coronavirus.imis.services;
 
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-
-import javax.transaction.Transactional;
-
-import org.springframework.stereotype.Service;
-
 import com.google.common.hash.Hashing;
-
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.repositories.PatientRepository;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class PatientService {
+
     private PatientRepository patientRepository;
     private PatientEventService eventService;
 
-
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, PatientEventService eventService) {
         this.patientRepository = patientRepository;
+        this.eventService = eventService;
     }
 
     public Iterable<Patient> getAllPatients() {
@@ -34,23 +30,36 @@ public class PatientService {
         return patientRepository.findById(id);
     }
 
-    @Transactional
     public Patient addPatient(final CreatePatientDTO dto) {
-
-
-        var dateParsed = LocalDateTime.parse(dto.getBirthDate(), DateTimeFormatter.ISO_INSTANT).toLocalDate();
-        var id = Hashing.sha256().hashString(dto.getFirstName() + dto.getLastName() + dto.getZip()
-                + dateParsed, StandardCharsets.UTF_8).toString();
-        var mappedPatient = Patient.builder().city(dto.getCity()).email(dto.getEmail())
-                .firstName(dto.getFirstName()).lastName(dto.getLastName()).gender(dto.getGender())
-                .houseNumber(dto.getHouseNumber()).street(dto.getStreet()).zip(dto.getZip())
-                .insuranceCompany(dto.getInsuranceCompany())
-                .dateOfBirth(dateParsed)
-                .insuranceMembershipNumber(dto.getInsuranceMembershipNumber())
-                .id(id)
-                .build();
-
-        patientRepository.saveAndFlush(mappedPatient);
+        var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
+        var id = Hashing.sha256()
+                .hashString(dto.getFirstName() + dto.getLastName() + dto.getPostalCode() + dateParsed, StandardCharsets.UTF_8)
+                .toString();
+        var mappedPatient = new Patient()
+                .setId(id)
+                .setFirstName(dto.getFirstName())
+                .setLastName(dto.getLastName())
+                .setGender(dto.getGender())
+                .setDateOfBirth(dateParsed)
+                .setEmail(dto.getEmail())
+                .setPhoneNumber(dto.getPhoneNumber())
+                .setStreet(dto.getStreet())
+                .setHouseNumber(dto.getHouseNumber())
+                .setCity(dto.getCity())
+                .setHouseNumber(dto.getHouseNumber())
+                .setStreet(dto.getStreet())
+                .setZip(dto.getPostalCode())
+                .setCity(dto.getCity())
+                .setInsuranceCompany(dto.getInsuranceCompany())
+                .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())
+                .setFluImmunization(dto.getFluImmunization())
+                .setSpeedOfSymptomsOutbreak(dto.getSpeedOfSymptomsOutbreak())
+                .setSymptoms(dto.getSymptoms())
+                .setCoronaContacts(dto.getCoronaContacts())
+                .setRiskAreas(dto.getRiskAreas())
+                .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
+                .setPreIllnesses(dto.getPreIllnesses());
+        mappedPatient = patientRepository.save(mappedPatient);
         eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), EventType.SUSPECTED);
         return mappedPatient;
     }

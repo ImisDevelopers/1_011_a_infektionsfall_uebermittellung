@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import de.coronavirus.imis.domain.Patient;
 
+@Repository
 public interface PatientRepository extends JpaRepository<Patient, String> {
 
 }

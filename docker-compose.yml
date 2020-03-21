@@ -21,14 +21,21 @@ services:
       - postgres
     ports:
       - "80:4000"
-
   web:
     build: .
     networks:
       - postgres
-    entrypoint: ["sh", "/app/gradlew", "serve"]
     ports:
       - "8080:8080"
+    entrypoint: ["sh","/app/gradlew", "serve"]
+
+        #web:
+          #build: client/.
+        # networks:
+        #- postgres
+        #entrypoint: ["sh", "/app/gradlew", "serve"]
+        #ports:
+        #- "8080:8080"
 
 
 networks:

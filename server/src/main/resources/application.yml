@@ -19,3 +19,11 @@ server:
 ---
 spring:
   profiles: production
+  datasource:
+    driver-class-name: org.postgresql.Driver
+---
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb

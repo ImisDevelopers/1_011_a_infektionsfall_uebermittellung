@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: imis-ingress
   annotations:
+    kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:

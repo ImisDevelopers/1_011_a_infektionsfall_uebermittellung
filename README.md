@@ -8,16 +8,26 @@ _DO NOT COMMIT TO MASTER_
  - Frontend: Vue.js
  - Persistence: PostgreSQL
  
+## Benötigte Tools
+1. Docker
+  - Linux: https://docs.docker.com/install/
+  - Mac : https://docs.docker.com/docker-for-mac/install/
+  - Windows: https://docs.docker.com/docker-for-windows/install/
+2. JDK 11 (Java)
+  - https://adoptopenjdk.net/ 
+3. NPM/YARN
+  - https://classic.yarnpkg.com/en/docs/install#mac-stable 
+ 
+ 
 ## Local development setup
+0. Shell öffnen 
 1.  Start PostgreSQL in docker container (before starting application): 
-```docker-compose up```
-2. Initialize gradle wrapper: 
-```gradle wrapper```
-3. Build application
+```docker-compose up -d ```
+2. Build application
 ```./gradlew clean build```
-4. Test application
+3. Test application
 ```./gradlew test```
-5. Run application
+4. Run application (including frontend) 
 ```./gradlew bootrun```
-6. Start local development server for vue.js development
+5. Start local development server for vue.js development
 ```./gradlew serve```

@@ -36,7 +36,7 @@ Install Docker and run: `docker-compose up`
 1. Test application
 ```./gradlew test```
 1. Run application (including frontend) 
-```./gradlew bootjrun```
+```./gradlew bootRun```
 1. Start local development server for vue.js development
 ```./gradlew serve```
 

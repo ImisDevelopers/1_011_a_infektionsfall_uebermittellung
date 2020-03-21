@@ -2,6 +2,7 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <ExampleComponent/> -->
+    <ViewAllDataComponent/>
     <a-layout id="components-layout-demo-responsive">
       <a-layout-sider
         breakpoint="lg"
@@ -55,7 +56,7 @@ export default {
     // PatientDataComponent,
     TestingComponent,
     // LabResultComponent,
-    // ViewAllDataComponent,
+    ViewAllDataComponent,
   },
   methods: {
     onCollapse(collapsed, type) {

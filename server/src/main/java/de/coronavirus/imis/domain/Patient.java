@@ -37,6 +37,7 @@ public class Patient {
 
     private String insuranceCompany;
     private String insuranceMembershipNumber;
+    private boolean confirmed;
 
     private Boolean fluImmunization;
     private String speedOfSymptomsOutbreak;

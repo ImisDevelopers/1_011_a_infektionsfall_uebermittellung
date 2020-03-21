@@ -25,8 +25,11 @@ public class PatientEvent {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Patient patient;
+
+    @ManyToOne
+    private Doctor responsibleDoctor;
 
     @Enumerated(EnumType.STRING)
     private Illness illness;

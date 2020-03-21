@@ -5,27 +5,38 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.List;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+/***
+ * Service class for saving uploaded files to the file system.
+ */
 @Service
 public class FileStorageService {
 
+    /***
+     * Path for testReports.
+     */
     private String reportPath = "/reports/";
 
     FileStorageService(){
 
     }
 
-    public Path addFileById(String _id, MultipartFile file) throws Exception {
+    /***
+     * Saves a file identified by an id.
+     * @param _id: The identifier of the file.
+     * @param file: The binary of the file.
+     * @throws Exception
+     */
+    void addFileById(String _id, MultipartFile file) throws Exception {
 
-        // we do not safe the documents with the unique id as name, to maintain the original file name,
-        // without risking double file identifiers. The folder location is unique
+        // we do not safe the documents with the unique id as name, to maintain
+        // the original file name,
+        // without risking double file identifiers. The folder location is
+        // unique
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
         Path directory = this.getFolderPath( full_directory );
@@ -34,12 +45,15 @@ public class FileStorageService {
         byte[] bytes = file.getBytes();
         Path file_path = Paths.get(directory + file.getOriginalFilename());
         Files.write(file_path, bytes);
-
-        // return file path
-        return file_path;
     }
 
-    public File getFileById(String _id) throws FileNotFoundException {
+    /***
+     * Gets a file from the file system by an id.
+     * @param _id: The identifier of the file.
+     * @return The returned file.
+     * @throws FileNotFoundException
+     */
+    File getFileById(String _id) throws FileNotFoundException {
         // create path by Id
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
@@ -49,70 +63,54 @@ public class FileStorageService {
         File [] files = folder.listFiles();
 
         // the folder should only have a single file
+        assert files != null;
         if (files.length >= 1) {
             // if a file is found return file
             return files[1];
         }
 
-        throw new FileNotFoundException("The file by the identifier: " + _id + " was not found");
+        throw new FileNotFoundException(
+                "The file by the identifier: " + _id + " was not found"
+        );
     }
 
-    public Path replaceFileById(String _id, MultipartFile file) {
+    /***
+     * Replace a file identified by an id.
+     * @param _id: The identifier of the file.
+     * @param file: The new file.
+     * @throws IOException
+     */
+    void replaceFileById(String _id, MultipartFile file) throws IOException {
+        String subdirectory = "/" + _id + "/";
+        String full_directory = this.reportPath + subdirectory;
+        Path directory = this.getFolderPath( full_directory );
 
-        try {
-            String subdirectory = "/" + _id + "/";
-            String full_directory = this.reportPath + subdirectory;
-            Path directory = this.getFolderPath( full_directory );
+        // clean the directory
+        File folder_to_wipe = new File(directory.toString());
+        FileUtils.cleanDirectory(folder_to_wipe);
 
-            // clean the directory
-            File folder_to_wipe = new File(directory.toString());
-            FileUtils.cleanDirectory(folder_to_wipe);
-
-            // store file on server disk
-            byte[] bytes = file.getBytes();
-            Path file_path = Paths.get(directory + file.getOriginalFilename());
-            Files.write(file_path, bytes);
-            // return file path
-            return file_path;
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // store file on server disk
+        byte[] bytes = file.getBytes();
+        Path file_path = Paths.get(directory + file.getOriginalFilename());
+        Files.write(file_path, bytes);
     }
 
-    public Boolean deleteFileByPath(Path path){
-        // create file from path
-        File file = new File (path.toString());
-        // delete file
-        return file.delete();
-    }
+    /***
+     * Delete a file given its id.
+     * @param _id: The unique identifier of a file to be deleted.
+     * @throws IOException
+     */
+    void deleteFileById(String _id) throws IOException {
+        String subdirectory = "/" + _id + "/";
+        String full_directory = this.reportPath + subdirectory;
+        Path directory = this.getFolderPath( full_directory );
 
-    public Boolean deleteFileByPath(String path){
-        // create file from string
-        File file = new File (path);
-        // delete file
-        return file.delete();
-    }
-
-    public File getFileByPath (Path path) throws FileNotFoundException {
-        // create file from path
-        File file = new File(path.toString());
-
-        // check if file exists
-        boolean exists = file.exists();
-
-        if(exists) {
-            return file;
-        } else {
-            throw new FileNotFoundException("The file with the path: " + path + " was not found");
-        }
-
+        // clean the directory
+        File folder_to_wipe = new File(directory.toString());
+        FileUtils.cleanDirectory(folder_to_wipe);
     }
 
     private Path getFolderPath(String string_path) throws FileNotFoundException {
-
         // create path object
         Path path = Paths.get(string_path);
 
@@ -126,13 +124,14 @@ public class FileStorageService {
             File folder = new File(string_path);
             boolean bool = folder.mkdirs();
 
-            if(bool){
+            if(bool) {
                 return path;
-            }else{
-                throw new FileNotFoundException("Directory could not be created, check permission to create directories");
+            } else {
+                throw new FileNotFoundException(
+                        "Directory could not be created, check permission to " +
+                                "create directories"
+                );
             }
         }
     }
-
-
 }

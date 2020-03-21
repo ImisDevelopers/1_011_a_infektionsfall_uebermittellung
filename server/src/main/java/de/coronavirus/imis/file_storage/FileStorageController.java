@@ -1,18 +1,16 @@
 package de.coronavirus.imis.file_storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.UUID;
+import java.io.IOException;
 
 @RestController
 public class FileStorageController {
@@ -57,6 +55,36 @@ public class FileStorageController {
     }
 
     /***
+     * Endpoint to update a file.
+     * @param file: The file to update.
+     * @param testId: The id of the test report the file belongs to.
+     * @param redirectAttributes: Used for redirection.
+     * @return A redirection.
+     */
+    @PutMapping("/test_report/{testId}")
+    public String updateFile(
+            @RequestParam("file") MultipartFile file,
+            @PathVariable("testId") String testId,
+            RedirectAttributes redirectAttributes
+    ) {
+        try {
+            fileStorageService.replaceFileById(testId, file);
+        } catch (Exception e) {
+            return "The following error was encountered during file update: "
+                    + e;
+        }
+
+        redirectAttributes.addFlashAttribute(
+                "message",
+                "You successfully uploaded "
+                        + file.getOriginalFilename()
+                        + "!"
+        );
+
+        return "redirect:/";
+    }
+
+    /***
      * Endpoint to receive a test report.
      * @param testId: The id of the test report to retrieve.
      * @return The test report.
@@ -78,19 +106,6 @@ public class FileStorageController {
         ).body(testReport);
     }
 
-    /*
-    @GetMapping("/test_report/file/{fileId}")
-    public ResponseEntity<Resource> getFile(@PathVariable UUID fileId) {
-        Resource file = fileStorageService.getFile(fileId);
-
-        return ResponseEntity.ok().header(
-                HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\""
-                        + file.getFilename()
-                        + "\""
-        ).body(file);
-    }
-    */
 
     /***
      * Deletes a test report.
@@ -99,22 +114,14 @@ public class FileStorageController {
      */
     @DeleteMapping("/test_report/{testId}")
     public ResponseEntity<HttpStatus> deleteTestReport(
-            @PathVariable UUID testId
+            @PathVariable String testId
     ) {
-
-        // fileStorageService.deleteTestReport(testId);
-
-        return new ResponseEntity<>(HttpStatus.OK);
-        // Resource file = fileStorageService.getFile(fileId);
-    }
-
-    /*
-    @DeleteMapping("/test_report/file/{fileId}")
-    public ResponseEntity<HttpStatus> deleteFile(@PathVariable UUID fileId) {
-
-        // fileStorageService.deleteFile(fileId);
+        try {
+            fileStorageService.deleteFileById(testId);
+        } catch (IOException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-     */
 }

@@ -2,6 +2,7 @@ package de.coronavirus.imis.services;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -42,6 +43,10 @@ public class PatientEventService {
                 .illness(concreteIllnes)
                 .patient(patient).build();
         patientEventRepository.saveAndFlush(event);
+    }
+
+    public List<PatientEvent> getAllForPatient(Patient patient) {
+        return patientEventRepository.findAllByPatient(patient);
     }
 
 

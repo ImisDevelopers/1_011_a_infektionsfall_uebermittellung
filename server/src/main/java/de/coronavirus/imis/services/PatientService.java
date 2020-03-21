@@ -3,6 +3,7 @@ package de.coronavirus.imis.services;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -30,6 +31,10 @@ public class PatientService {
 
     public Iterable<Patient> getAllPatients() {
         return patientRepository.findAll();
+    }
+
+    public List<Object[]> getCasesGroupedZip() {
+        return patientRepository.getCasesGroupedZip();
     }
 
     public Optional<Patient> findPatientById(String id) {

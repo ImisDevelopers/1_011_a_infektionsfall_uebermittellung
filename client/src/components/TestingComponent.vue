@@ -1,28 +1,41 @@
 <template>
-  <div>
-    <h3>Example Entities</h3>
-    <div v-if="entities.length === 0">
-      No Example Entities created yet...
-    </div>
-    <div v-else v-for="(entity, idx) in entities" :key="idx">
-      <span>{{entity.id}}</span>
-      <span>......</span>
-      <span>{{entity.content}}</span>
-    </div>
-    <h3>Create an Example Entity</h3>
-    <form @submit="create" autocomplete="off">
-      <span>Content:</span>
-      <input v-model="content"/>
-      <button>Create</button>
-    </form>
-  </div>
+  <a-card style="max-width: 1020px">
+    <a-tabs defaultActiveKey="1">
+      <a-tab-pane tab="Stammdaten" key="1">
+        <PatientDataComponent />
+      </a-tab-pane>
+      <a-tab-pane tab="Untersuchungen" key="2" forceRender>
+        <a-timeline>
+          <!-- List all the events recorded corresponding to the patient over time -->
+          <a-timeline-item>2020-03-01 Stammdaten Angelegt</a-timeline-item>
+          <a-timeline-item>2020-03-01 Patient als Risikokontakt zur Erstanamnese vorstellig geworden</a-timeline-item>
+          <a-timeline-item>2020-03-01 Coronavirus Test: ID-12yt2109t9023810293</a-timeline-item>
+          <a-timeline-item
+            color="green"
+          >2020-03-02 Befund unauffällig (Test: ID-12yt2109t9023810293)</a-timeline-item>
+          <a-timeline-item>2020-03-08 Patient aufgrund von akuten Beschwerden erneut vorstellig geworden</a-timeline-item>
+          <a-timeline-item>2020-03-08 Coronavirus Test: ID-581a-bqwlkab9031499</a-timeline-item>
+          <a-timeline-item color="red">2020-03-09 Befund positiv (Test: ID-581a-bqwlkab9031499)</a-timeline-item>
+          <a-timeline-item>2020-03-09 Gesundheitamt Neustadt verhängt Quarantäne</a-timeline-item>
+          <a-timeline-item>2020-03-17 Patient zur Coronakontrolluntersuchung vorstellig geworden</a-timeline-item>
+          <a-timeline-item
+            slot="dot"
+            type="clock-circle-o"
+            style="font-size: 16px;"
+          >2020-03-17 Coronavirus Test: ID-581a-bqwlkab9031499</a-timeline-item>
+        </a-timeline>
+      </a-tab-pane>
+    </a-tabs>
+  </a-card>
 </template>
 
-// TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu 
-
 <script>
+//  TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
+
+import PatientDataComponent from "./PatientDataComponent.vue"; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
+
 export default {
-  name: 'TestingComponent',
+  name: "TestingComponent",
   props: {
     msg: String
   },
@@ -30,40 +43,13 @@ export default {
     return {
       entities: [],
       content: ""
-    }
+    };
   },
-  methods: {
-    create(e) {
-      e.preventDefault();
-      if (this.content.length > 0) {
-        fetch('/exampleEntities',
-                {
-                  method: 'POST',
-                  body: JSON.stringify({ content: this.content }),
-                  headers: {
-                    'Content-Type': 'application/json'
-                  }
-                })
-        .then((response) => {
-          return response.json();
-        })
-        .then((entity) => {
-          this.entities.push(entity);
-        });
-        this.content = "";
-      }
-    }
-  },
-  created() {
-    fetch('/exampleEntities')
-    .then((response) => {
-      return response.json();
-    })
-    .then((entities) => {
-      this.entities.push(...entities);
-    });
+  methods: {},
+  components: {
+    PatientDataComponent
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

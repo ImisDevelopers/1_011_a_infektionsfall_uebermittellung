@@ -1,41 +1,54 @@
 package de.coronavirus.imis.domain;
 
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Value;
+
 
 @Entity
-@Data
+@Value
+@JsonDeserialize(builder = Patient.PatientBuilder.class)
+@Builder
 public class Patient {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     private String lastName;
     private String firstName;
     private String gender;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String email;
     private String phoneNumber;
     private String street;
-    private Integer postalCode;
+    private String zip;
     private String houseNumber;
     private String city;
     private String comment;
     private String occupation;
+    private String insuranceCompany;
+    private String insuranceMembershipNumber;
 
     @OneToMany(mappedBy = "patient")
+    @JsonIgnore
     List<PatientEvent> events;
 
     @OneToMany
     private List<Illness> preExistingConditions;
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class PatientBuilder {
+
+    }
 
 
 }

@@ -16,6 +16,6 @@ public class TestReport {
     private Long id;
 
     @Lob
-    byte[] additionalData;
+    private byte[] additionalData;
 }
 

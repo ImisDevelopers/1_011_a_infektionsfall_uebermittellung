@@ -1,11 +1,13 @@
 package de.coronavirus.imis.domain;
 
 public enum EventType {
+    REGISTERED,
     SUSPECTED,
     TEST_SUBMITTED,
     TEST_FINISHED_POSITIVE,
     TEST_FINISHED_NEGATIVE,
     TEST_FINISHED_RECOVERED,
     TEST_FINISHED_NOT_RECOVERED,
-    PATIENT_DEAD
+    PATIENT_DEAD,
+    DOCTORS_VISIT,
 }

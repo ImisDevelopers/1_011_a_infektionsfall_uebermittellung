@@ -34,7 +34,7 @@ public class FileStorageController {
     @PostMapping("/test_report/{testId}")
     public String uploadFile(
             @RequestParam("file") MultipartFile file,
-            @PathVariable("testId") String testId,
+            @PathVariable("testId") Long testId,
             RedirectAttributes redirectAttributes
     ) {
         try {
@@ -64,7 +64,7 @@ public class FileStorageController {
     @PutMapping("/test_report/{testId}")
     public String updateFile(
             @RequestParam("file") MultipartFile file,
-            @PathVariable("testId") String testId,
+            @PathVariable("testId") Long testId,
             RedirectAttributes redirectAttributes
     ) {
         try {
@@ -90,7 +90,7 @@ public class FileStorageController {
      * @return The test report.
      */
     @GetMapping("/test_report/{testId}")
-    public ResponseEntity<File> getTestReport(@PathVariable String testId) {
+    public ResponseEntity<File> getTestReport(@PathVariable Long testId) {
         File testReport;
 
         try {
@@ -114,7 +114,7 @@ public class FileStorageController {
      */
     @DeleteMapping("/test_report/{testId}")
     public ResponseEntity<HttpStatus> deleteTestReport(
-            @PathVariable String testId
+            @PathVariable Long testId
     ) {
         try {
             fileStorageService.deleteFileById(testId);

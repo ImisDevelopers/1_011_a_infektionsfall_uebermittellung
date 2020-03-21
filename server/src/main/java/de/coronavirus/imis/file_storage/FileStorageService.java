@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
 
+import de.coronavirus.imis.domain.TestReport;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,8 +24,12 @@ public class FileStorageService {
      */
     private String reportPath = "/reports/";
 
-    FileStorageService(){
+    // Instance of the data storage service.
+    private final FileStorageDataService fileStorageDataService;
 
+    @Autowired
+    public FileStorageService(FileStorageDataService fileStorageDataService) {
+        this.fileStorageDataService = fileStorageDataService;
     }
 
     /***
@@ -31,7 +38,7 @@ public class FileStorageService {
      * @param file: The binary of the file.
      * @throws Exception
      */
-    void addFileById(String _id, MultipartFile file) throws Exception {
+    void addFileById(Long _id, MultipartFile file) throws Exception {
 
         // we do not safe the documents with the unique id as name, to maintain
         // the original file name,
@@ -45,6 +52,8 @@ public class FileStorageService {
         byte[] bytes = file.getBytes();
         Path file_path = Paths.get(directory + file.getOriginalFilename());
         Files.write(file_path, bytes);
+
+        fileStorageDataService.createTestReport(_id, file_path);
     }
 
     /***
@@ -53,21 +62,30 @@ public class FileStorageService {
      * @return The returned file.
      * @throws FileNotFoundException
      */
-    File getFileById(String _id) throws FileNotFoundException {
-        // create path by Id
-        String subdirectory = "/" + _id + "/";
-        String full_directory = this.reportPath + subdirectory;
+    File getFileById(Long _id) throws FileNotFoundException {
+        Optional<TestReport> optionalTestReport =
+                fileStorageDataService.getTestReport(_id);
 
-        // get the files in directory
-        File folder = new File(full_directory);
-        File [] files = folder.listFiles();
 
-        // the folder should only have a single file
-        assert files != null;
-        if (files.length >= 1) {
-            // if a file is found return file
-            return files[1];
+        if (optionalTestReport.isPresent()) {
+            TestReport testReport = optionalTestReport.get();
+
+            // create path by Id
+            String subdirectory = "/" + _id + "/";
+            String full_directory = this.reportPath + subdirectory;
+
+            // get the files in directory
+            File folder = new File(testReport.filePath.toString());
+            File [] files = folder.listFiles();
+
+            // the folder should only have a single file
+            assert files != null;
+            if (files.length >= 1) {
+                // if a file is found return file
+                return files[1];
+            }
         }
+
 
         throw new FileNotFoundException(
                 "The file by the identifier: " + _id + " was not found"
@@ -80,7 +98,7 @@ public class FileStorageService {
      * @param file: The new file.
      * @throws IOException
      */
-    void replaceFileById(String _id, MultipartFile file) throws IOException {
+    void replaceFileById(Long _id, MultipartFile file) throws IOException {
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
         Path directory = this.getFolderPath( full_directory );
@@ -93,6 +111,8 @@ public class FileStorageService {
         byte[] bytes = file.getBytes();
         Path file_path = Paths.get(directory + file.getOriginalFilename());
         Files.write(file_path, bytes);
+
+        fileStorageDataService.updateTestReport(_id, file_path);
     }
 
     /***
@@ -100,7 +120,7 @@ public class FileStorageService {
      * @param _id: The unique identifier of a file to be deleted.
      * @throws IOException
      */
-    void deleteFileById(String _id) throws IOException {
+    void deleteFileById(Long _id) throws IOException {
         String subdirectory = "/" + _id + "/";
         String full_directory = this.reportPath + subdirectory;
         Path directory = this.getFolderPath( full_directory );
@@ -108,6 +128,8 @@ public class FileStorageService {
         // clean the directory
         File folder_to_wipe = new File(directory.toString());
         FileUtils.cleanDirectory(folder_to_wipe);
+
+        fileStorageDataService.deleteTestReport(_id);
     }
 
     private Path getFolderPath(String string_path) throws FileNotFoundException {

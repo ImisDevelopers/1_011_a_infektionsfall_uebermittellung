@@ -5,11 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.List;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +19,7 @@ public class FileStorageService {
 
     }
 
-    public Path addFileById(String _id, MultipartFile file) throws Exception {
+    public void addFileById(String _id, MultipartFile file) throws Exception {
 
         // we do not safe the documents with the unique id as name, to maintain the original file name,
         // without risking double file identifiers. The folder location is unique
@@ -34,9 +31,6 @@ public class FileStorageService {
         byte[] bytes = file.getBytes();
         Path file_path = Paths.get(directory + file.getOriginalFilename());
         Files.write(file_path, bytes);
-
-        // return file path
-        return file_path;
     }
 
     public File getFileById(String _id) throws FileNotFoundException {
@@ -57,58 +51,29 @@ public class FileStorageService {
         throw new FileNotFoundException("The file by the identifier: " + _id + " was not found");
     }
 
-    public Path replaceFileById(String _id, MultipartFile file) {
+    public void replaceFileById(String _id, MultipartFile file) throws IOException {
+        String subdirectory = "/" + _id + "/";
+        String full_directory = this.reportPath + subdirectory;
+        Path directory = this.getFolderPath( full_directory );
 
-        try {
-            String subdirectory = "/" + _id + "/";
-            String full_directory = this.reportPath + subdirectory;
-            Path directory = this.getFolderPath( full_directory );
+        // clean the directory
+        File folder_to_wipe = new File(directory.toString());
+        FileUtils.cleanDirectory(folder_to_wipe);
 
-            // clean the directory
-            File folder_to_wipe = new File(directory.toString());
-            FileUtils.cleanDirectory(folder_to_wipe);
-
-            // store file on server disk
-            byte[] bytes = file.getBytes();
-            Path file_path = Paths.get(directory + file.getOriginalFilename());
-            Files.write(file_path, bytes);
-            // return file path
-            return file_path;
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // store file on server disk
+        byte[] bytes = file.getBytes();
+        Path file_path = Paths.get(directory + file.getOriginalFilename());
+        Files.write(file_path, bytes);
     }
 
-    public Boolean deleteFileByPath(Path path){
-        // create file from path
-        File file = new File (path.toString());
-        // delete file
-        return file.delete();
-    }
+    public void deleteFileById(String _id) throws IOException {
+        String subdirectory = "/" + _id + "/";
+        String full_directory = this.reportPath + subdirectory;
+        Path directory = this.getFolderPath( full_directory );
 
-    public Boolean deleteFileByPath(String path){
-        // create file from string
-        File file = new File (path);
-        // delete file
-        return file.delete();
-    }
-
-    public File getFileByPath (Path path) throws FileNotFoundException {
-        // create file from path
-        File file = new File(path.toString());
-
-        // check if file exists
-        boolean exists = file.exists();
-
-        if(exists) {
-            return file;
-        } else {
-            throw new FileNotFoundException("The file with the path: " + path + " was not found");
-        }
-
+        // clean the directory
+        File folder_to_wipe = new File(directory.toString());
+        FileUtils.cleanDirectory(folder_to_wipe);
     }
 
     private Path getFolderPath(String string_path) throws FileNotFoundException {

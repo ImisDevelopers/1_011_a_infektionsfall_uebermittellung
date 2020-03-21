@@ -1,1 +1,3 @@
 rootProject.name = 'infektionsfall_uebermittellung'
+include 'client'
+include 'server'

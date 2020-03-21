@@ -1,10 +1,10 @@
-package de.coronavirus.infektionsfall_uebermittellung;
+package de.coronavirus.imis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InfektionsfallUebermittellungApplicationTests {
+class AppTests {
 
     @Test
     void contextLoads() {

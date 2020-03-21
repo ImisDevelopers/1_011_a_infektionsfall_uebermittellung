@@ -1,6 +1,8 @@
 package de.coronavirus.imis.services;
 
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 import de.coronavirus.imis.domain.LabTest;
 import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.domain.PatientEvent;
 import de.coronavirus.imis.domain.PatientNotFoundException;
 import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.repositories.LabTestRepository;
@@ -40,6 +43,13 @@ public class LabTestService {
                 .build();
         eventService.createLabTestEvent(patient, labTest, Optional.empty());
         return labTestRepository.save(labTest);
+    }
+
+    @Transactional
+    public Set<LabTest> getAllLabTestForPatient(String patiendId) {
+        final Patient patient = patientService.findPatientById(patiendId).orElseThrow(PatientNotFoundException::new);
+        final var events = eventService.getAllForPatient(patient);
+        return events.stream().map(PatientEvent::getLabTest).collect(Collectors.toSet());
     }
 
 }

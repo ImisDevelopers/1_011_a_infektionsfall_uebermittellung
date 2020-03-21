@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -37,7 +38,7 @@ public class PatientEvent {
     @ManyToOne
     private Illness illness;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private LabTest labTest;
 
     private Timestamp eventTimestamp;

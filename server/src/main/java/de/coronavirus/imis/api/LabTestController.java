@@ -1,7 +1,10 @@
 package de.coronavirus.imis.api;
 
+import java.util.Set;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +31,8 @@ public class LabTestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LabTest> getLabTestForPatient(String patientId) {
-        return null;
+    public Set<LabTest> getLabTestForPatient(@PathVariable("id") String patientId) {
+        return service.getAllLabTestForPatient(patientId);
     }
 
 

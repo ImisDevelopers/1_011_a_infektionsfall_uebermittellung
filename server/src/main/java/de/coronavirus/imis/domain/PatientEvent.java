@@ -23,8 +23,8 @@ public class PatientEvent {
     @ManyToOne
     private Patient patient;
 
-    @ManyToOne
-    private Institution testInstitution;
+/*    @ManyToOne
+    private Institution testInstitution;*/
 
     @ManyToOne
     private Illness illness;
@@ -35,7 +35,7 @@ public class PatientEvent {
     private Timestamp eventTimestamp;
 
     @Enumerated(EnumType.STRING)
-    private PatientEvent eventType;
+    private EventType eventType;
 
     private String comment;
     private String accomodation;

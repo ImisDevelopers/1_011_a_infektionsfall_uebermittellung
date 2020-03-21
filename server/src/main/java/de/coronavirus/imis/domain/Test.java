@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -17,9 +18,12 @@ public class Test {
     private String laborTestID;
 
     @ManyToOne
-    private Institution laboratory;
+    private Laboratory laboratory;
 
     private TestStatus testStatus;
+
+    @OneToOne
+    private TestReport report;
 
 
 }

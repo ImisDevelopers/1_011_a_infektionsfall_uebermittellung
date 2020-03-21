@@ -2,36 +2,70 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <ExampleComponent/> -->
-    <ViewAllDataComponent/>
     <a-layout id="components-layout-demo-responsive">
-      <a-layout-sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        @collapse="onCollapse"
-        @breakpoint="onBreakpoint"
-      >
         <div class="logo" />
-        <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
-          <a-menu-item key="1">
-            <a-icon type="user" />
-            <span class="nav-text">Verdachtsfälle</span>
-          </a-menu-item>
-          <a-menu-item key="2">
-            <a-icon type="video-camera" />
-            <span class="nav-text">Coronatests</span>
-          </a-menu-item>
-          <a-menu-item key="3">
-            <a-icon type="upload" />
-            <span class="nav-text">Befundupload</span>
-          </a-menu-item>
-        </a-menu>
-      </a-layout-sider>
+
       <a-layout>
-        <a-layout-header :style="{ background: '#fff', padding: 0 }" />
+        <a-layout-header :style="{ background: '#fff', padding: 0 }">
+          <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
+            <a-menu-item key="1" v-on:click="menumode=1">
+              <a-icon type="user" />
+              <span class="nav-text">Instutition Hinzufügen</span>
+            </a-menu-item>
+            <a-menu-item key="2" v-on:click="menumode=2">
+              <a-icon type="video-camera" />
+              <span class="nav-text">ExampleComponent</span>
+            </a-menu-item>
+            <a-menu-item key="3" v-on:click="menumode=3">
+              <a-icon type="upload" />
+              <span class="nav-text">Laborresultate</span>
+            </a-menu-item>
+            <a-menu-item key="4" v-on:click="menumode=4">
+              <a-icon type="user" />
+              <span class="nav-text">Patientendaten</span>
+            </a-menu-item>
+            <a-menu-item key="5" v-on:click="menumode=5">
+              <a-icon type="video-camera" />
+              <span class="nav-text">Test-Komponente</span>
+            </a-menu-item>
+            <a-menu-item key="6" v-on:click="menumode=6">
+              <a-icon type="account-group" />
+              <span class="nav-text">Alle Daten einsehen</span>
+            </a-menu-item>
+          </a-menu>
+        </a-layout-header>
         <a-layout-content :style="{ margin: '0px auto' }">
-          <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-            <TestingComponent/>
-          </div>
+
+          <a-div v-if="menumode==1" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <AddInstitutionComponent/>
+            </div>
+          </a-div>
+          <a-div v-else-if="menumode==2" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <ExampleComponent/>
+            </div>
+          </a-div>
+          <a-div v-else-if="menumode==3" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <LabResultComponent/>
+            </div>
+          </a-div>
+          <a-div v-else-if="menumode==4" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <PatientDataComponent/>
+            </div>
+          </a-div>
+          <a-div v-else-if="menumode==5" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <TestingComponent/>
+            </div>
+          </a-div>
+          <a-div v-else-if="menumode==6" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <ViewAllDataComponent/>
+            </div>
+          </a-div>
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
           IMIS ©2020 Created by WeVsVirus
@@ -43,21 +77,21 @@
 
 <script>
 
-// import ExampleComponent from './components/ExampleComponent.vue';
-// import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
+import ExampleComponent from './components/ExampleComponent.vue';
+import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
 import TestingComponent from './components/TestingComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
-// import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
+import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
 import ViewAllDataComponent from './components/ViewAllDataComponent.vue';
-// import AddInstitutionComponent from "./components/AddInstitutionComponent";
+import AddInstitutionComponent from "./components/AddInstitutionComponent";
 
 export default {
   name: 'App',
   components: {
-    // AddInstitutionComponent,
-    // ExampleComponent,
-    // PatientDataComponent,
+    PatientDataComponent,
+    LabResultComponent,
+    ExampleComponent,
+    AddInstitutionComponent,
     TestingComponent,
-    // LabResultComponent,
     ViewAllDataComponent,
   },
   methods: {
@@ -68,6 +102,11 @@ export default {
       console.log(broken);
     },
   },
+  data: function() {
+    return {
+      menumode: 0
+    };
+  }
 }
 </script>
 

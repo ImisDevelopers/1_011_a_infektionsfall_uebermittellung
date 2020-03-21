@@ -8,14 +8,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
+
 
 @Entity
-@Data
+@Value
+@JsonDeserialize(builder = Patient.PatientBuilder.class)
 @Builder
-@NoArgsConstructor
 public class Patient {
     @Id
     private String id;
@@ -36,10 +39,16 @@ public class Patient {
     private String insuranceMembershipNumber;
 
     @OneToMany(mappedBy = "patient")
+    @JsonIgnore
     List<PatientEvent> events;
 
     @OneToMany
     private List<Illness> preExistingConditions;
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class PatientBuilder {
+
+    }
 
 
 }

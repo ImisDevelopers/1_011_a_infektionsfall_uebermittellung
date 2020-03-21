@@ -3,18 +3,26 @@ package de.coronavirus.imis.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
+
 
 @Entity
-@Data
+@Value
+@JsonDeserialize(builder = Illness.IllnesBuilder.class)
 @Builder
-@NoArgsConstructor
 public class Illness {
     @Id
     private String icdCode;
     private String displayName;
     private String comment;
+
+
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class IllnesBuilder {
+
+    }
 
 }

@@ -1,4 +1,4 @@
-package de.coronavirus.imis.api;
+package de.coronavirus.imis.api.dto;
 
 import java.util.List;
 

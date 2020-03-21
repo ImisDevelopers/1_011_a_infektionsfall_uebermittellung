@@ -6,18 +6,25 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.Builder;
+import lombok.Value;
 
 @Entity
-@Data
+@Value
+@JsonDeserialize(builder = LabTest.LabTestBuilder.class)
+@Builder
 public class LabTest {
     @Id
     @GeneratedValue
-    private Long id;
+    private String id;
 
     private String laborTestID;
 
     @ManyToOne
+    @JsonIgnore
     private Laboratory laboratory;
 
     private TestStatus testStatus;
@@ -25,5 +32,9 @@ public class LabTest {
     @OneToOne
     private TestReport report;
 
+    @JsonPOJOBuilder(withPrefix = "")
+    public static final class LabTestBuilder {
+
+    }
 
 }

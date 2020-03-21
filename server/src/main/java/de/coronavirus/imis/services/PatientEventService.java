@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.repositories.PatientRepository;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -29,9 +30,8 @@ public class PatientEventService {
 
     private static Illness corona = Illness.builder().displayName("corona").build();
 
-
     private final PatientEventRepository patientEventRepository;
-    private final PatientService patientRepository;
+    private final PatientRepository patientRepository;
     private final LaboratoryRepository laboratoryRepository;
     private final DoctorRepository doctorRepository;
 
@@ -56,7 +56,7 @@ public class PatientEventService {
 
     @Transactional
     public PatientEvent createScheduledEvent(String patientId, String labId, String doctorId) {
-        final Patient patient = patientRepository.findPatientById(patientId).orElseThrow(PatientNotFoundException::new);
+        final Patient patient = patientRepository.findById(patientId).orElseThrow(PatientNotFoundException::new);
         final Laboratory laboratory = laboratoryRepository.findById(Long.valueOf(labId)).orElseGet(() -> {
             Laboratory lab = new Laboratory();
             lab.setId(Long.valueOf(labId));
@@ -65,7 +65,7 @@ public class PatientEventService {
 
 
         final Doctor doctor = doctorRepository.findById(doctorId).orElseGet(() ->
-                doctorRepository.save(Doctor.builder().id(Long.valueOf(doctorId)).build())
+                doctorRepository.save(Doctor.builder().id(doctorId).build())
         );
         var event = PatientEvent.builder().eventTimestamp(Timestamp.from(Instant.now()))
                 .eventType(EventType.SCHEDULED_FOR_TESTING)

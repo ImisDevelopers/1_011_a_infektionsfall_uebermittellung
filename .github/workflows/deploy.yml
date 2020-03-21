@@ -1,13 +1,3 @@
-# This workflow will build a docker container, publish it to Google Container Registry, and deploy it to GKE when a release is created
-#
-# To configure this workflow:
-#
-# 1. Ensure that your repository contains the necessary configuration for your Google Kubernetes Engine cluster, including deployment.yml, kustomization.yml, service.yml, etc.
-#
-# 2. Set up secrets in your workspace: GKE_PROJECT with the name of the project, GKE_EMAIL with the service account email, GKE_KEY with the Base64 encoded JSON service account key (https://github.com/GoogleCloudPlatform/github-actions/tree/docs/service-account-key/setup-gcloud#inputs).
-#
-# 3. Change the values for the GKE_ZONE, GKE_CLUSTER, IMAGE, REGISTRY_HOSTNAME and DEPLOYMENT_NAME environment variables (below).
-
 name: Build and Deploy to GKE
 
 on:
@@ -28,7 +18,7 @@ env:
   GKE_CLUSTER: cluster-1
   CLIENT_IMAGE: imis-client
   SERVER_IMAGE: imis-server
-  REGISTRY_HOSTNAME: gcr.io
+  REGISTRY_HOSTNAME: eu.gcr.io
   DEPLOYMENT_NAME: imis-server
 
 jobs:
@@ -61,7 +51,7 @@ jobs:
           --build-arg GITHUB_REF="$GITHUB_REF" .)
     - name: Build server
       run: |
-        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$SERVER_IMAGE":"$GITHUB_SHA" \
+        docker build -f Dockerfile.prod -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$SERVER_IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" .
 
@@ -80,9 +70,9 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
-        echo -n ${CLOUD_SQL_SERVICE_ACCOUNT} | base64 -D > credentials.json
-        kubectl create secret generic cloudsql --from-file=credentials.json=credentials.json
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
+        echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" | base64 -d > credentials.json
+        kubectl get secret cloudsql || kubectl create secret generic cloudsql --from-file=credentials.json=credentials.json
         ./kustomize edit set image "client-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$CLIENT_IMAGE:${GITHUB_SHA}"
         ./kustomize edit set image "server-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:${GITHUB_SHA}"
         ./kustomize edit add secret postgres --from-literal=password=${POSTGRES_PASSWORD}

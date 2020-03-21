@@ -13,15 +13,17 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
-@Value
-@JsonDeserialize(builder = PatientEvent.PatientEventBuilder.class)
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class PatientEvent {
 
     @Id
@@ -29,14 +31,13 @@ public class PatientEvent {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Patient patient;
 
-/*    @ManyToOne
-    private Institution testInstitution;*/
-
     @ManyToOne
-    private Illness illness;
+    private Doctor responsibleDoctor;
+
+    private String illness;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private LabTest labTest;

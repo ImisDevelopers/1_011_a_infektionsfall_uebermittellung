@@ -66,6 +66,9 @@
                                         <tr>
                                             <td>Erstaufnahme:</td><td>2020-02-22</td>
                                         </tr>
+                                        <tr>
+                                            <td><a-button>Test erneut anordnen</a-button></td>
+                                        </tr>
                                     </table>
                                 </a-card>
                             </a-col>

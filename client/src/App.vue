@@ -9,72 +9,72 @@
         <a-layout-header :style="{ background: '#fff', padding: 0 }">
           <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
             <a-menu-item key="1" v-on:click="menumode=1">
-              <a-icon type="user" />
-              <span class="nav-text">Instutition Hinzufügen</span>
+              <router-link to="/add-institution">
+                <a-icon type="user" />
+                <span class="nav-text">Instutition Hinzufügen</span>
+              </router-link>
             </a-menu-item>
-            <a-menu-item key="2" v-on:click="menumode=2">
-              <a-icon type="video-camera" />
-              <span class="nav-text">ExampleComponent</span>
-            </a-menu-item>
-            <a-menu-item key="3" v-on:click="menumode=3">
-              <a-icon type="upload" />
-              <span class="nav-text">Laborresultate</span>
-            </a-menu-item>
-            <a-menu-item key="4" v-on:click="menumode=4">
-              <a-icon type="user" />
-              <span class="nav-text">Patienten-Aufnahme</span>
-            </a-menu-item>
-            <a-menu-item key="5" v-on:click="menumode=5">
-              <a-icon type="video-camera" />
-              <span class="nav-text">Patienten-Daten</span>
-            </a-menu-item>
-            <a-menu-item key="6" v-on:click="menumode=6">
-              <a-icon type="user" />
-              <span class="nav-text">Alle Daten einsehen</span>
-            </a-menu-item>
-            <a-menu-item key="7" v-on:click="menumode=7">
-              <a-icon type="user" />
-              <span class="nav-text">Öffentliche Statistiken</span>
-            </a-menu-item>
+
+   
+              <a-menu-item key="2" v-on:click="menumode=2">
+                <router-link to="/example-component">
+                  <a-icon type="video-camera" />
+                  <span class="nav-text">ExampleComponent</span>
+                </router-link>
+              </a-menu-item>
+ 
+
+            
+              <a-menu-item key="3" v-on:click="menumode=3">
+                <router-link to="/lab-result">
+                  <a-icon type="upload" />
+                  <span class="nav-text">Laborresultate</span>
+                </router-link>
+              </a-menu-item>
+
+
+
+              <a-menu-item key="4" v-on:click="menumode=4">
+                <router-link to="/patient-data">
+                  <a-icon type="user" />
+                  <span class="nav-text">Patienten-Aufnahme</span>
+                </router-link>
+              </a-menu-item>
+
+
+
+              <a-menu-item key="5" v-on:click="menumode=5">
+                <router-link to="/patient-data">
+                  <a-icon type="video-camera" />
+                  <span class="nav-text">Patienten-Daten</span>
+                </router-link>
+              </a-menu-item>
+
+          
+
+              <a-menu-item key="6" v-on:click="menumode=6">
+                <router-link to="/all-data">
+                  <a-icon type="user" />
+                  <span class="nav-text">Alle Daten einsehen</span>
+                </router-link>
+              </a-menu-item>
+
+            
+
+              <a-menu-item key="7" v-on:click="menumode=7">
+                <router-link to="/public-statistics">
+                  <a-icon type="user" />
+                  <span class="nav-text">Öffentliche Statistiken</span>
+                </router-link>
+              </a-menu-item>
           </a-menu>
         </a-layout-header>
         <a-layout-content :style="{ margin: '0px auto' }">
 
-          <div v-if="menumode==1" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <AddInstitutionComponent/>
-            </div>
+          <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+            <router-view></router-view>
           </div>
-          <div v-else-if="menumode==2" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <ExampleComponent/>
-            </div>
-          </div>
-          <div v-else-if="menumode==3" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <LabResultComponent/>
-            </div>
-          </div>
-          <div v-else-if="menumode==4" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <PatientDataComponent/>
-            </div>
-          </div>
-          <div v-else-if="menumode==5" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <PatientOverviewComponent/>
-            </div>
-          </div>
-          <div v-else-if="menumode==6" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <ViewAllDataComponent/>
-            </div>
-          </div>
-          <div v-else-if="menumode==7" >
-            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <PublicStatisticsComponent/>
-            </div>
-          </div>
+      
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
           IMIS ©2020 Created by WeVsVirus
@@ -86,25 +86,10 @@
 
 <script>
 
-import ExampleComponent from './components/ExampleComponent.vue';
-import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
-import PatientOverviewComponent from './components/PatientOverviewComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
-import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
-import ViewAllDataComponent from './components/ViewAllDataComponent.vue';
-import AddInstitutionComponent from "./components/AddInstitutionComponent";
-import PublicStatisticsComponent from "./components/PublicStatisticsComponent";
 
 export default {
   name: 'App',
-  components: {
-    PatientDataComponent,
-    LabResultComponent,
-    ExampleComponent,
-    AddInstitutionComponent,
-    PatientOverviewComponent,
-    ViewAllDataComponent,
-    PublicStatisticsComponent
-  },
+
   methods: {
     onCollapse(collapsed, type) {
       console.log(collapsed, type);

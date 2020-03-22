@@ -1,7 +1,7 @@
 <template>
     <div>
+        <a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0"/>
         <a-card class="table-container">
-            <a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0"/>
             <a-table :columns="columns" :dataSource="data" >
             </a-table>
             <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">

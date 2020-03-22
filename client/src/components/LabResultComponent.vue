@@ -60,7 +60,7 @@
             </a-form-item>
             <a-divider />
             <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-              <a-button type="primary" html-type="submit">
+              <a-button type="primary" html-type="submit" @click="handleTestResultSubmit('success')">
                 Abschicken
               </a-button>
             </a-form-item>
@@ -114,6 +114,21 @@ export default {
     handleLabSubmit() {
       this.isLoggedIn = true
       this.activeKey = "2";
+    },
+    handleTestResultSubmit(type) {
+      const sampleID = "89534823"
+      const testResult = "negativ"
+
+      // Check notification type (success, info, warning, error)
+      if (type === "success") {
+      var notification = {
+          message: 'Probe wurde erfolgreich mit Patienten verknüpft.',
+          description: `Die Proben ID ist ${sampleID} und das Testresultat is ${testResult}.`,
+      }
+      }
+
+      // Show notification
+      this.$notification[type](notification);
     },
     handleChange({ file, fileList }) {
       if (file.status !== 'uploading') {

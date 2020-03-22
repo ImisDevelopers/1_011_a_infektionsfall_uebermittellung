@@ -28,15 +28,15 @@ public class PatientEventService {
     private final DoctorRepository doctorRepository;
 
     public PatientEventService(PatientEventRepository patientEventRepository,
-                               LaboratoryRepository laboratoryRepository, DoctorRepository doctorRepository) {
+            LaboratoryRepository laboratoryRepository, DoctorRepository doctorRepository) {
         this.patientEventRepository = patientEventRepository;
         this.laboratoryRepository = laboratoryRepository;
         this.doctorRepository = doctorRepository;
     }
 
     public void createInitialPatientEvent(Patient patient,
-                                          Optional<Illness> illness,
-                                          EventType eventType) {
+            Optional<Illness> illness,
+            EventType eventType) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         PatientEvent event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
@@ -47,7 +47,7 @@ public class PatientEventService {
     }
 
     public void createLabTestEvent(Patient patient, LabTest labTest,
-                                   Optional<Illness> illness) {
+            Optional<Illness> illness) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         PatientEvent event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
@@ -86,7 +86,7 @@ public class PatientEventService {
     }
 
 
-    public List<PatientEvent> findFirstByPatientOrderByEventTimestampDesc(Patient patient) {
-       return patientEventRepository.findFirstByPatientOrderByEventTimestampDesc(patient);
+    public PatientEvent findFirstByPatientOrderByEventTimestampDesc(Patient patient) {
+        return patientEventRepository.findFirstByPatientOrderByEventTimestampDesc(patient);
     }
 }

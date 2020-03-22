@@ -1,13 +1,14 @@
 package de.coronavirus.imis.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
 import java.util.List;
+
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,7 +33,7 @@ public class Patient {
     private String phoneNumber;
     private String street;
     private String houseNumber;
-    private String zip;
+    private Integer zip;
     private String city;
 
     private String insuranceCompany;

@@ -42,7 +42,8 @@ Install Docker and run: `docker-compose up`
 1. Start local development server for vue.js development
 ```./gradlew serve```
 ## Quickstart for Backendserver
-```docker-compose -f docker-compose.yml -f docker-compose.frontend_dev.yml up 
+```docker-compose -f docker-compose.yml -f docker-compose.frontend_dev.yml up ```
+
 ## API communication
 
 An API developed by the backend is served via swagger on the server: http://localhost/swagger-ui.html

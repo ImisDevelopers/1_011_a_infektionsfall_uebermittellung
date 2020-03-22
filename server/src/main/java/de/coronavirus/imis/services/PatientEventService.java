@@ -87,7 +87,6 @@ public class PatientEventService {
 
 
     public List<PatientEvent> findFirstByPatientOrderByEventTimestampDesc(Patient patient) {
-        // todo
-        return null;
+       return patientEventRepository.findFirstByPatientOrderByEventTimestampDesc(patient);
     }
 }

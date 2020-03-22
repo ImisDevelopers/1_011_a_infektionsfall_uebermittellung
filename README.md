@@ -1,5 +1,8 @@
 # 1_011_a_infektionsfall_uebermittellung
 
+  * [Demo](https://imis-prototyp.de)
+  * [Swagger API](https://api.imis-prototyp.de/)
+
 ## General Guidelines
 _DO NOT COMMIT TO MASTER_ 
 

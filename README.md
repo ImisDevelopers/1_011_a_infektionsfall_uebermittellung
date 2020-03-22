@@ -7,6 +7,7 @@ _DO NOT COMMIT TO MASTER_
  - Backend: Spring Boot
  - Frontend: Vue.js
  - Persistence: PostgreSQL
+ - Deployment: GKE
  
 ## Benötigte Tools
 1. Docker
@@ -44,3 +45,6 @@ Install Docker and run: `docker-compose up`
 
 An API developed by the backend is served via swagger on the server: http://localhost/swagger-ui.html
 If you have a new API that should be created add them into the api-frontend folder.
+
+## CI system
+All commits to `dev`, `master`, `feature/*` and all PRs will be CI checked.

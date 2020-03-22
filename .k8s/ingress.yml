@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: imis-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: imis-client
+          servicePort: 8080
+      - path: /api
+        backend:
+          serviceName: imis-server
+          servicePort: 80

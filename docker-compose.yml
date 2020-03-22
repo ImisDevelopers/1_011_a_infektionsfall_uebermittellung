@@ -2,7 +2,6 @@ version: '3.5'
 
 services:
   postgres:
-    container_name: postgres_container
     image: postgres
     environment:
       POSTGRES_USER: imis
@@ -22,21 +21,11 @@ services:
     ports:
       - "80:80"
   web:
-    build: .
+    build: client
     networks:
       - postgres
     ports:
       - "8080:8080"
-    entrypoint: ["gradle", "serve"]
-
-        #web:
-          #build: client/.
-        # networks:
-        #- postgres
-        #entrypoint: ["sh", "/app/gradlew", "serve"]
-        #ports:
-        #- "8080:8080"
-
 
 networks:
   postgres:

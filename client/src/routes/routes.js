@@ -7,13 +7,16 @@ import PublicStatisticsComponent from "../components/PublicStatisticsComponent";
 import PatientOverviewComponent from '../components/PatientOverviewComponent.vue';
 import ProbeComponent from "../components/ProbeComponent"; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 
+ const HealthCheck = {template: '<p>OK</p>'}
+
 export const routes = [
+    { path: '/health', component: HealthCheck},
     { path: '*', redirect: '/patient-data' },
     {
         path: '/lab-result',
         component: LabResultComponent
     },
-    {       
+    {
         path: '/add-institution',
         component: AddInstitutionComponent,
     },
@@ -21,7 +24,7 @@ export const routes = [
         path: '/public-statistics',
         component: PublicStatisticsComponent
     },
-    {        
+    {
         path:'/patient-data',
         component: PatientDataComponent
     },

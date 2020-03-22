@@ -138,7 +138,7 @@
           <a-row :gutter="16" type="flex" justify="end">
             <a-col>
               <a-button type="default" html-type="submit">
-                Nichts Anordnen - nur anlegen
+                Nichts Anordnen (nur Anlegen)
               </a-button>
             </a-col>
             <a-col>
@@ -147,8 +147,8 @@
               </a-button>
             </a-col>
             <a-col>
-              <a-button type="primary" html-type="submit"> <!-- Platzhalter-->
-                 Test+Quarantäne Anordnen
+              <a-button type="primary" html-type="submit" @click="handleTestQuarantineSubmit('success')"> <!-- Platzhalter-->
+                 Test + Quarantäne Anordnen
               </a-button>
             </a-col>
           </a-row>
@@ -227,12 +227,27 @@
         selectedPreIllnesses,
         RISK_AREAS,
         selectedRiskAreas,
-        response: null
+        response: null,
       }
     },
     methods: {
       onCheck(e) {
         this.checked = e.target.checked;
+      },
+      handleTestQuarantineSubmit(type) {
+        const patID = "12389384"
+
+        // Check notification type (success, info, warning, error)
+        if (type === "success") {
+          var notification = {
+            message: 'Test & Quarantäne wurde erfolgreich angeordnet.',
+            description:
+              `Patienten ID: ${patID}`,
+          }
+        }
+
+        // Show notification
+        this.$notification[type](notification);
       },
       handleSubmit(e) {
         e.preventDefault();
@@ -279,5 +294,34 @@
     text-align: left;
     padding: 24px;
     width: 100%;
+  }
+
+  .form-container {
+    -webkit-animation: fadeOutUp 4s ease;
+    animation: fadeOutUp 4s ease;
+  }
+
+  @-webkit-keyframes fadeOutUp {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+
+  @keyframes fadeOutUp {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
   }
 </style>

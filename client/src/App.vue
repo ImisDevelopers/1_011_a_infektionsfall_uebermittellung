@@ -6,7 +6,7 @@
         <div class="logo" />
 
       <a-layout>
-        <a-layout-header :style="{ background: '#fff', padding: 0 }">
+        <a-layout-header :style="{ background: '#fff', padding: 0, header: 'auto' }">
           <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
             <a-menu-item key="1" v-on:click="menumode=1">
               <router-link to="/patient-data">

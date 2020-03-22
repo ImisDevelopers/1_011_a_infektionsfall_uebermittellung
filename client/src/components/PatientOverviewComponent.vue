@@ -79,8 +79,9 @@
                                             22.3.2020
                                         </a-col>
                                     </a-row>
-                                    <a-row :gutter="8" style="margin-top: 8px;">
-                                        <a-col span="6" offset="18">
+                                    <a-divider />
+                                    <a-row type="flex" justify="end" :gutter="8" style="margin-top: 8px;">
+                                        <a-col>
                                             <a-button type="primary" @click="requestTestAgain('success')">Test erneut anordnen</a-button>
                                         </a-col>
                                     </a-row>

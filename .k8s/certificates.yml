@@ -13,11 +13,3 @@ metadata:
 spec:
   domains:
   - api.imis-prototyp.de
----
-apiVersion: networking.gke.io/v1beta1
-kind: ManagedCertificate
-metadata:
-  name: www-imis-prototyp-de-certs
-spec:
-  domains:
-  - www.imis-prototyp.de

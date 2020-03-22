@@ -34,7 +34,8 @@ public class PatientEventService {
         this.doctorRepository = doctorRepository;
     }
 
-    public void createInitialPatientEvent(Patient patient, Optional<Illness> illness,
+    public void createInitialPatientEvent(Patient patient,
+            Optional<Illness> illness,
             EventType eventType) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         PatientEvent event = new PatientEvent()
@@ -45,7 +46,8 @@ public class PatientEventService {
         patientEventRepository.save(event);
     }
 
-    public void createLabTestEvent(Patient patient, LabTest labTest, Optional<Illness> illness) {
+    public void createLabTestEvent(Patient patient, LabTest labTest,
+            Optional<Illness> illness) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         PatientEvent event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
@@ -72,9 +74,7 @@ public class PatientEventService {
                 .setIllness(Illness.CORONA)
                 .setResponsibleDoctor(doctor)
                 .setPatient(patient);
-
         return patientEventRepository.save(event);
-
     }
 
     public List<PatientEvent> getAllForPatient(Patient patient) {

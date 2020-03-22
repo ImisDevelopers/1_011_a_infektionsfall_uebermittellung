@@ -1,15 +1,19 @@
 package de.coronavirus.imis.services;
 
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.google.common.hash.Hashing;
+
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.repositories.PatientRepository;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.springframework.stereotype.Service;
 
 @Service
 public class PatientService {
@@ -22,7 +26,7 @@ public class PatientService {
         this.eventService = eventService;
     }
 
-    public Iterable<Patient> getAllPatients() {
+    public List<Patient> getAllPatients() {
         return patientRepository.findAll();
     }
 

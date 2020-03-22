@@ -6,7 +6,8 @@ metadata:
     kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
     networking.gke.io/managed-certificates: api-imis-prototyp-de-certs,imis-prototyp-de-certs
     kubernetes.io/ingress.allow-http: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /index.html
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
 spec:
   tls:
   - hosts:
@@ -26,7 +27,7 @@ spec:
   - host: imis-prototyp.de
     http:
       paths:
-      - path: /*
+      - path: /(.*)
         backend:
           serviceName: imis-client
           servicePort: 80

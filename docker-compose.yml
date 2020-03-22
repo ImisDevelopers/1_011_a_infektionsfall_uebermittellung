@@ -18,22 +18,17 @@ services:
       context: client
       dockerfile: Dockerfile.prod
     ports:
-    - "80:8080"
-#  core:
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
-#    build: .
-#    networks:
-#      - postgres
-#    ports:
-#      - "80:80"
-#  web:
-#    build: .
-#    networks:
-#      - postgres
-#    ports:
-#      - "8080:8080"
-#    entrypoint: ["gradle", "serve"]
+    - "8080:8080"
+  core:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+    networks:
+      - postgres
+    ports:
+      - "80:80"
 
         #web:
           #build: client/.

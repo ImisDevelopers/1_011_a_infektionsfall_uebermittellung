@@ -1,8 +1,79 @@
-<template>
-  <a-card style="max-width: 1020px">
+<template style="margin: auto">
+  <div>
+    <a-input-search placeholder="Suche Patienten" style="width: 200px"/>
+  <a-card style="max-width: 1020px; margin: auto">
     <a-tabs defaultActiveKey="1">
       <a-tab-pane tab="Stammdaten" key="1">
-        <PatientDataComponent />
+        <!-- display user data here-->
+        <div>
+          <row gutter="16">
+            <a-col span="8">
+              <a-card title="Allgemein" bordered="false" align="left">
+               <table style="border-collapse: separate; border-spacing:15px">
+                 <tr>
+                   <td>Vorname:</td><td>{{firstName}}</td>
+                 </tr>
+                 <tr>
+                   <td>Nachname:</td><td>{{lastName}}</td>
+                 </tr>
+                 <tr>
+                   <td>Geburtsdatum:</td><td>{{dateOfBirth}}</td>
+                 </tr>
+                 <tr>
+                   <td>Geschlecht:</td><td>{{gender}}</td>
+                 </tr>
+               </table>
+              </a-card>
+            </a-col>
+            <a-col span="8">
+              <a-card title="Adresse" bordered="false" align="left">
+                <table style="border-collapse: separate; border-spacing:15px">
+                  <tr>
+                    <td>Straße:</td><td>{{street}}</td>
+                  </tr>
+                  <tr>
+                    <td>Hausnummer:</td><td>{{houseNumber}}</td>
+                  </tr>
+                  <tr>
+                    <td>PLZ:</td><td>{{zip}}</td>
+                  </tr>
+                  <tr>
+                    <td>Ort:</td><td>{{city}}</td>
+                  </tr>
+                </table>
+              </a-card>
+            </a-col>
+            <a-col span="8">
+              <a-card title="Kontakt" bordered="false" align="left">
+                <table style="border-collapse: separate; border-spacing:15px">
+                  <tr>
+                    <td>Telefonnummer:</td><td>{{phoneNumber}}</td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td><td>{{email}}</td>
+                  </tr>
+                </table>
+              </a-card>
+            </a-col>
+          </row>
+          <row gutter="16">
+            <a-col span="24">
+              <a-card title="Status: Verdachtsfall" align="left">
+                <table style="border-collapse: separate; border-spacing:15px">
+                  <tr>
+                    <td>COVID-19-Test:</td><td>Ausstehend</td> <td>Testdatum:</td><td>-</td>
+                  </tr>
+                  <tr>
+                    <td>Erstaufnahme:</td><td>2020-02-22</td>
+                  </tr>
+                </table>
+              </a-card>
+            </a-col>
+          </row>
+        </div>
+        <br>
+        <br>
+        <!--<a-table :columns="columns" :dataSource="data"> </a-table>-->
       </a-tab-pane>
       <a-tab-pane tab="Untersuchungen" key="2" forceRender>
         <a-timeline>
@@ -27,12 +98,21 @@
       </a-tab-pane>
     </a-tabs>
   </a-card>
+  </div>
 </template>
 
 <script>
-//  TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 
-import PatientDataComponent from "./PatientDataComponent.vue"; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
+const firstName = "Max";
+const lastName = "Mustermann";
+const dateOfBirth = "1995-03-21";
+const gender = "männlich";
+const email = "max@mustermann.de";
+const phoneNumber = "+49 12354566";
+const street = "Musterstraße";
+const zip = "12345";
+const houseNumber = "1";
+const city = "Musterstadt";
 
 export default {
   name: "TestingComponent",
@@ -42,12 +122,22 @@ export default {
   data() {
     return {
       entities: [],
-      content: ""
+      content: "",
+      firstName,
+      lastName,
+      dateOfBirth,
+      gender,
+      email,
+      phoneNumber,
+      street,
+      zip,
+      houseNumber,
+      city
     };
   },
   methods: {},
   components: {
-    PatientDataComponent
+
   }
 };
 </script>

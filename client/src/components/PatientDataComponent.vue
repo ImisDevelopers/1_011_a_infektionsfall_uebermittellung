@@ -1,223 +1,248 @@
 <template>
-  <div class="wrapper">
-    <div v-if="!response">
-      <div>
-        Sehr geehrte Mitbürgerinnen und Mitbürger,
-        <br>
-        <br>
-        Sie füllen diesen Fragebogen aus, weil Sie grippale Beschwerden haben. Von den Beschwerden her lässt sich eine Infektion mit dem Corona-Virus kaum von den weit verbreiteten Erregern der Grippe und Erkältung unterscheiden.
-        <br>
-        <br>
-        Daher möchten wir Sie nicht nur nach Ihren Beschwerden, sondern auch nach kürzlichen Kontakten zu bestätigten COVID-19-Fällen und kürzlichen Reisen fragen. Damit kann die Ärztin bzw. der Arzt besser einschätzen, ob ein Risiko für eine Coronavirus-Infektion besteht.
-        <br>
-        <br>
-        Wir bitten Sie daher, die folgenden Fragen gewissenhaft auszufüllen. Nach dem Abschicken der Befragung erhalten Sie das Ergebnis in Form eines Hinweises über den weiteren Ablauf.
-        <br>
-        <br>
-      </div>
+  <div>
+    <!--  Anweisungen -->
+    <div style="text-align:left; width: 50%; margin:auto" >
+      Sehr geehrte Mitbürgerinnen und Mitbürger,
+      <br>
+      <br>
+      Sie füllen diesen Fragebogen aus, weil Sie grippale Beschwerden haben. Von den Beschwerden her lässt sich eine Infektion mit dem Corona-Virus kaum von den weit verbreiteten Erregern der Grippe und Erkältung unterscheiden.
+      <br>
+      <br>
+      Daher möchten wir Sie nicht nur nach Ihren Beschwerden, sondern auch nach kürzlichen Kontakten zu bestätigten COVID-19-Fällen und kürzlichen Reisen fragen. Damit kann die Ärztin bzw. der Arzt besser einschätzen, ob ein Risiko für eine Coronavirus-Infektion besteht.
+      <br>
+      <br>
+      Wir bitten Sie daher, die folgenden Fragen gewissenhaft auszufüllen. Nach dem Abschicken der Befragung erhalten Sie das Ergebnis in Form eines Hinweises über den weiteren Ablauf.
+      <br>
+      <br>
+      <br>
+    </div>
 
-      <a-form :form="form" :layout="'horizontal'" :labelCol="{span: 6}" :wrapperCol="{span: 14, offset: 2}" @submit="handleSubmit">
+    <!-- Stammdatenerfassung -->
+    <a-form :form="form" layout="vertical" style="text-align:left; margin:auto; width:70%" @submit="handleSubmit">
+      <a-form-item label="Geschlecht">
+        <a-select v-decorator="[
+        'gender',
+        { rules: [{ required: true, message: 'Please select your gender!' }] },
+        ]"
+        placeholder="Select an option and change input text above"
+        >
+        <a-select-option value="female">weiblich</a-select-option>
+        <a-select-option value="male">männlich</a-select-option>
+        <a-select-option value="divers">divers</a-select-option>
+      </a-select>
+    </a-form-item>
+    <a-form-item label="Geburtsdatum" >
+      <a-date-picker :format="dateFormat" v-decorator="['birthDate', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="Name">
+      <a-input v-decorator="['lastName', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="Vorname">
+      <a-input v-decorator="['firstName', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="Straße">
+      <a-input v-decorator="['street', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="Hausnr.">
+      <a-input v-decorator="['houseNumber', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="PLZ">
+      <a-input v-decorator="['zip', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="Ort">
+      <a-input v-decorator="['city', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="E-mail">
+      <a-input v-decorator="['email', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="Telefon">
+      <a-input v-decorator="['phone', { rules: [{ required: true }] }]" />
+    </a-form-item>
+    <a-form-item label="Krankenkasse">
+      <a-input v-decorator="['insuranceCompany']" />
+    </a-form-item>
+    <a-form-item label="Versichertennr.">
+      <a-input v-decorator="['insuranceMembershipNumber']" />
+    </a-form-item>
+
+      <!--
+    <br>Bitte kreuzen Sie alle Symptome an, die aufgetreten sind:<br>
+    <a-form-item name="checkbox-group">
+      <a-checkbox-group>
         <a-row>
-          <a-col :md="12">
-            <a-form-item label="Nachname">
-              <a-input v-decorator="['lastName', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Vorname">
-              <a-input v-decorator="['firstName', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label='Geschlecht'>
-              <a-radio-group v-decorator="['gender', { rules: [{ required: true }] }]" buttonStyle="solid">
-                <a-radio value='male'>Männl.</a-radio>
-                <a-radio value='female'>Weibl.</a-radio>
-              </a-radio-group>
-            </a-form-item>
-            <a-form-item label="Geburtsdatum">
-              <a-date-picker :format="dateFormat" v-decorator="['dateOfBirth', { rules: [{ required: true }] }]"
-                             placeholder="Datum wählen"
-              />
-            </a-form-item>
-            <a-form-item label="Krankenkasse">
-              <a-input v-decorator="['insuranceCompany']" />
-            </a-form-item>
-            <a-form-item label="Versichertenr.">
-              <a-input v-decorator="['insuranceMembershipNumber']" />
-            </a-form-item>
+          <a-col>
+            <a-checkbox value="cough" v-decorator="['cough', { rules: [{ required: false }] }]">Husten</a-checkbox>
           </a-col>
-          <a-col :md="12">
-            <a-form-item label="E-mail">
-              <a-input v-decorator="['email', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Telefon">
-              <a-input v-decorator="['phoneNumber', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Straße">
-              <a-input v-decorator="['street', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Hausnr.">
-              <a-input v-decorator="['houseNumber', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="PLZ">
-              <a-input v-decorator="['postalCode', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Ort">
-              <a-input v-decorator="['city', { rules: [{ required: true }] }]" />
-            </a-form-item>
+          <a-col>
+            <a-checkbox value="fatigue" v-decorator="['fatigue', { rules: [{ required: false }] }]">Abgeschlagenheit</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="shortnessOfBreath" v-decorator="['shortnessOfBreath', { rules: [{ required: false }] }]">Atemnot</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="soreThroat" v-decorator="['soreThroat', { rules: [{ required: false }] }]">Halsschmerzen oder Kratzen im Hals</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="cold" v-decorator="['cold', { rules: [{ required: false }] }]">Schnupfen</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="limbPain" v-decorator="['limbPain', { rules: [{ required: false }] }]">Gliederschmerzen</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="headaches" v-decorator="['headaches', { rules: [{ required: false }] }]">Kopfschmerzen</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="diarrhea" v-decorator="['diarrhea', { rules: [{ required: false }] }]">Durchfall</a-checkbox>
           </a-col>
         </a-row>
-        <a-collapse>
-          <a-collapse-panel header="Infektionskette" key="1">
-            <a-form-item label="Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt?"
-                         :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
-              <a-radio-group v-decorator="['coronaContacts', { rules: [{ required: false }] }]" >
-                <a-radio value="true">Ja</a-radio>
-                <a-radio value="false">Nein</a-radio>
-              </a-radio-group>
-            </a-form-item>
-
-            <a-form-item label="Haben Sie sich in einem / mehreren der folgenden Risikogebiete für Coronavirus aufgehalten?"
-                         :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
-              <span v-for="(riskArea, idx) in RISK_AREAS" :key="idx">
-                <a-col :span="12">
-                  <a-checkbox v-model="selectedRiskAreas[riskArea.key]">{{riskArea.description}}</a-checkbox>
-                 </a-col>
-              </span>
-            </a-form-item>
-            <!-- ggf. Aufenthaltszeitraum ergänzen -->
-          </a-collapse-panel>
-
-          <a-collapse-panel header="Symptome" key="2">
-            <a-form-item label="Leiden sie unter einem oder mehreren der folgenden Symptome?"
-                         :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
-              <span v-for="(symptom, idx) in SYMPTOMS" :key="idx">
-                <a-col :span="12">
-                  <a-checkbox v-model="selectedSymptoms[symptom.key]">{{symptom.description}}</a-checkbox>
-                 </a-col>
-              </span>
-            </a-form-item>
-
-            <a-form-item label="Wie schnell sind die Beschwerden aufgetreten?"
-                         :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
-              <a-radio-group v-decorator="['speedOfSymptomsOutbreak', { rules: [{ required: false }] }]" >
-                <a-radio value="suddenly">Plötzlich, innerhalb von einem Tag</a-radio>
-                <a-radio value="slow">Langsam, innerhalb von mehreren Tagen</a-radio>
-              </a-radio-group>
-            </a-form-item>
-
-            <a-form-item label="Haben Sie für diese Saison eine Influenza-Impfung erhalten?"
-                         :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
-              <a-radio-group v-decorator="['fluImmunization', { rules: [{ required: false }] }]" >
-                <a-radio value="true">Ja</a-radio>
-                <a-radio value="false">Nein</a-radio>
-              </a-radio-group>
-            </a-form-item>
-
-          </a-collapse-panel>
-          <a-collapse-panel header="Vorerkrankungen" key="3">
-            <a-form-item label="Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem?"
-                         :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
-              <a-radio-group v-decorator="['weakenedImmuneSystem', { rules: [{ required: false }] }]" >
-                <a-radio value="true">Ja</a-radio>
-                <a-radio value="false">Nein</a-radio>
-              </a-radio-group>
-            </a-form-item>
-
-            <a-form-item label="Leiden Sie an einer / mehreren der folgenden Erkrankungen?"
-                         :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
-              <span v-for="(illness, idx) in ILLNESSES" :key="idx">
-                <a-col :span="12">
-                  <a-checkbox v-model="selectedPreIllnesses[illness.key]">{{illness.description}}</a-checkbox>
-                 </a-col>
-              </span>
-            </a-form-item>
-          </a-collapse-panel>
-        </a-collapse>
-
-        <!-- Datenschutzerklärung Bestätigung-->
-        <br>
-        <a-form-item>
-          <a-checkbox @change="onCheck">Ich erkläre mich mit der Übermittlung meiner Daten zur weiteren Verarbeitung einverstanden.</a-checkbox>
-        </a-form-item>
-
-        <!-- Submit Button -->
-        <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-          <a-button type="primary" html-type="submit">
-            Submit
-          </a-button>
-        </a-form-item>
-      </a-form>
-    </div>
-    <div v-else>
-      <div>Der Patient wurde erfolgreich registriert.</div>
+        </a-checkbox-group>
+    </a-form-item>
       <br>
-      <div>Die Patienten Id lautet: {{response.id}}</div>
-    </div>
-  </div>
+      -->
+      <!-- Leiden Sie an Fieber? -->
+      <a-form-item label="Leiden Sie an Fieber?">
+        <a-select v-decorator="['fever', { rules: [{ required: false }] }]" >
+          <a-select-option value="false">Nein, ich habe kein Fieber</a-select-option>
+          <a-select-option value="less-38deg">Ja, bis 38°C</a-select-option>
+          <a-select-option value="more-38deg">Ja, über 38°C</a-select-option>
+        </a-select>
+      </a-form-item>
+      <br>
+      <!-- Wie schnell sind die Beschwerden aufgetreten? -->
+      <a-form-item label="Wie schnell sind die Beschwerden aufgetreten?">
+        <a-select v-decorator="['symptoms', { rules: [{ required: false }] }]" >
+          <a-select-option value="suddenly">Plötzlich, innerhalb von einem Tag</a-select-option>
+          <a-select-option value="slow">Langsam, innerhalb von mehreren Tagen</a-select-option>
+        </a-select>
+      </a-form-item>
+
+
+
+    <a-form-item label="Leiden Sie an Husten?">
+      <a-switch  v-decorator="['cough', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an Abgeschlagenheit?">
+      <a-switch  v-decorator="['fatigue', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an Fieber?">
+      <a-select v-decorator="['fever', { rules: [{ required: false }] }]" >
+        <a-select-option value="false">Nein, ich habe kein Fieber</a-select-option>
+        <a-select-option value="less-38deg">Ja, bis 38°C</a-select-option>
+        <a-select-option value="more-38deg">Ja, über 38°C</a-select-option>
+      </a-select>
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an akuter Luftnot?">
+      <a-switch v-decorator="['shortnessOfBreath', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an Halsschmerzen oder Halskratzen?">
+      <a-switch v-decorator="['soreThroat', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an Schnupfen?">
+      <a-switch v-decorator="['cold', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an Gliederschmerzen?">
+      <a-switch v-decorator="['limbPain', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an Kopfschmerzen?">
+      <a-switch v-decorator="['headaches', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Leiden Sie an Durchfall?">
+      <a-switch v-decorator="['diarrhea', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <a-form-item label="Wie schnell sind die Beschwerden aufgetreten?">
+      <a-select v-decorator="['symptoms', { rules: [{ required: false }] }]" >
+        <a-select-option value="suddenly">Plötzlich, innerhalb von einem Tag</a-select-option>
+        <a-select-option value="slow">Langsam, innerhalb von mehreren Tagen</a-select-option>
+      </a-select>
+    </a-form-item>
+
+      <!-- Teil 3 - Rahmen-->
+      <br>Weitere Informationen<br>
+
+    <!-- Haben Sie sich wirklich in einem Risikogebiet für Coronavirus aufgehalten? -->
+    <a-form-item label="Haben Sie sich wirklich in einem Risikogebiet für Coronavirus aufgehalten?">
+      <a-select v-decorator="['riskAreas', { rules: [{ required: false }] }]" mode="multiple">
+        <a-select-option value="Iran">Ja, im Iran</a-select-option>
+        <a-select-option value="Italy">Ja, in Italien</a-select-option>
+        <a-select-option value="China">Ja, in China</a-select-option>
+        <a-select-option value="Southcorea">Ja, in Südkorea</a-select-option>
+        <a-select-option value="France">Ja, in Frankreich</a-select-option>
+        <a-select-option value="Austria">Ja, in Österreich</a-select-option>
+        <a-select-option value="Spain">Ja, in Spanien</a-select-option>
+        <a-select-option value="USA">Ja, in USA: Kalofornien, Washington oder New York</a-select-option>
+        <a-select-option value="false">Nein</a-select-option>
+      </a-select>
+    </a-form-item>
+
+    <!-- ggf. Aufenthaltszeitraum ergänzen -->
+
+    <!-- Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt? -->
+    <a-form-item label="Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt?">
+      <a-switch v-decorator="['coronaContacts', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <!-- Sie sehen eine Liste an Vorerkrankungen. An welchen Erkrankungen leiden Sie? -->
+    <a-form-item label="Sie sehen eine Liste an Vorerkrankungen. An welchen Erkrankungen leiden Sie?">
+      <a-select mode="multiple" v-decorator="['preIllnesses', { rules: [{ required: false }] }]" >
+        <a-select-option value="heart disease">Herzerkrankungen</a-select-option>
+        <a-select-option value="lung disease">Lungenerkrankungen</a-select-option>
+        <a-select-option value="circulatory disorder">Kreislauf-/Gefäßerkrankungen</a-select-option>
+        <a-select-option value="blood disease">Bluterkrankungen oder erhöhte Blutungsneigung</a-select-option>
+        <a-select-option value="cancer">Krebserkrankungen</a-select-option>
+        <a-select-option value="bone disease">Erkrankungen der Knochen, Muskeln oder des Bindegewebes</a-select-option>
+        <a-select-option value="mental illness">Psychische, neurologische Erkrankungen</a-select-option>
+        <a-select-option value="metabolic disease">Stoffwechselerkrankungen (z.B. Diabetes)</a-select-option>
+        <a-select-option value="enteropathy">Magen-/Darmerkrankungen</a-select-option>
+        <a-select-option value="hepatic disease">Erkrankungen der Leber oder Gallenwege</a-select-option>
+        <a-select-option value="kidney disease">Nieren-/Harnwegserkrankungen</a-select-option>
+        <a-select-option value="other disease">Andere Vorerkrankungen</a-select-option>
+        <a-select-option value="false">Keine Vorerkrankungen</a-select-option>
+      </a-select>
+    </a-form-item>
+
+    <!-- Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem? -->
+    <a-form-item label="Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem?">
+      <a-switch v-decorator="['weakenedImmuneSystem', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <!-- Haben Sie für diese Saison eine Influenza-Impfung erhalten? -->
+    <a-form-item label="Haben Sie für diese Saison eine Influenza-Impfung erhalten?">
+      <a-switch v-decorator="['fluImmunization', { rules: [{ required: false }] }]" />
+    </a-form-item>
+
+    <!-- Datenschutzerklärung Bestätigung-->
+    <a-form-item>
+      <a-checkbox @change="onCheck">Ich erkläre mich mit der Übermittlung meiner Daten zur weiteren Verarbeitung einverstanden.</a-checkbox>
+    </a-form-item>
+
+    <!-- Submit Button -->
+    <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
+      <a-button type="primary" html-type="submit">
+        Submit
+      </a-button>
+    </a-form-item>
+  </a-form>
+</div>
 </template>
 
 <!-- Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new -->
 
 <script>
-
-  const SYMPTOMS = [
-    {key: 'SORE_THROAT', description: 'Halsschmerzen'},
-    {key: 'HEADACHES', description: 'Kopfschmerzen'},
-    {key: 'FATIGUE', description: 'Abgeschlagenheit'},
-    {key: 'COUGHT', description: 'Husten'},
-    {key: 'COLD', description: 'Schnupfen'},
-    {key: 'LIMB_PAIN', description: 'Gliederschmerzen'},
-    {key: 'DIARRHEA', description: 'Durchfall'},
-    {key: 'SHORTNESS_OF_BREATH', description: 'Luftnot'},
-    {key: 'LESS_38_DEG', description: 'Fieber bis 38°C'},
-    {key: 'MORE_38_DEG', description: 'Fieber über 38°C'}
-  ];
-
-  const ILLNESSES = [
-    { key: "HEART_DISEASE", description: "Herzerkrankungen"},
-    { key: "LUNG_DISEASE", description: "Lungenerkrankungen"},
-    { key: "CIRCULATORY_DISORDER", description: "Kreislauf-/Gefäßerkrankungen"},
-    { key: "BLOOD_DISEASE", description: "Bluterkrankungen oder erhöhte Blutungsneigung"},
-    { key: "CANCER", description: "Krebserkrankungen"},
-    { key: "BONE_DISEASE", description: "Erkrankungen der Knochen, Muskeln oder des Bindegewebes"},
-    { key: "MENTAL_ILLNESS", description: "Psychische, neurologische Erkrankungen"},
-    { key: "METABOLIC_DISEASE", description: "Stoffwechselerkrankungen (z.B. Diabetes)"},
-    { key: "ENTEROPATHY", description: "Magen-/Darmerkrankungen"},
-    { key: "HEPATIC_DISEASE", description: "Erkrankungen der Leber oder Gallenwege"},
-    { key: "KIDNEY_DISEASE", description: "Nieren-/Harnwegserkrankungen"},
-    { key: "OTHER_DISEASE", description: "Andere Vorerkrankungen"}
-  ];
-
-  const RISK_AREAS = [
-    {key: "IRAN", description: "Iran" },
-    {key: "CHINA", description: "China" },
-    {key: "SOUTHCOREA", description: "Südkorea" },
-    {key: "FRACE", description: "Frankreich" },
-    {key: "AUSTRIA", description: "Österreich" },
-    {key: "SPAIN", description: "Spanien" },
-    {key: "USA", description: "USA: Kalofornien, Washington oder New York" }
-  ];
-
   export default {
     name: 'PatientDataComponent',
     data() {
-      const selectedSymptoms = {};
-      SYMPTOMS.forEach(symptom => { selectedSymptoms[symptom.key] = false });
-
-      const selectedPreIllnesses = {};
-      ILLNESSES.forEach(illness => { selectedPreIllnesses[illness.key] = false });
-
-      const selectedRiskAreas = {};
-      RISK_AREAS.forEach(riskArea => { selectedRiskAreas[riskArea.key] = false });
-
       return {
         dateFormat: 'DD/MM/YYYY',
         form: this.$form.createForm(this, { name: 'coordinated' }),
-        SYMPTOMS,
-        selectedSymptoms,
-        ILLNESSES,
-        selectedPreIllnesses,
-        RISK_AREAS,
-        selectedRiskAreas,
-        response: null
       }
     },
     methods: {
@@ -226,47 +251,27 @@
       },
       handleSubmit(e) {
         e.preventDefault();
-
-        const symptoms = SYMPTOMS.filter(symptom => this.selectedSymptoms[symptom.key]).map(symptom => symptom.key);
-        const preIllnesses = ILLNESSES.filter(illness => this.selectedPreIllnesses[illness.key]).map(illness => illness.key);
-        const riskAreas = RISK_AREAS.filter(riskArea => this.selectedRiskAreas[riskArea.key]).map(riskArea => riskArea.key);
-
         this.form.validateFields((err, values) => {
-          if (!this.checked) {
-            // TODO: Show user that this has to be accepted
-            console.error("Must accept.");
-            return;
-          }
 
-          if (!err) {
-            const request = {
-              ...values,
-              dateOfBirth: values['dateOfBirth'].format("YYYY-MM-DD") + " 00",
-              symptoms,
-              preIllnesses,
-              riskAreas
+          if(this.checked === true){
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+                console.log(this.responseText)
             };
-
-            fetch("/patients", {
-              method: "POST",
-              body: JSON.stringify(request),
-              headers: {
-                'Content-Type': 'application/json'
-              }})
-            .then((response) => response.json())
-            .then((data) => {
-              this.response = data;
-            })
+            xhr.open("POST", "/patients", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({values}));
+          }
+          if (!err) {
+            console.log('Received values of form: ', values);
           }
         });
-      }
-    }
+      },
+    },
   }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .wrapper {
-    text-align: left;
-    padding: 24px;
-  }
 </style>

@@ -18,19 +18,19 @@ spec:
       - name: imis-client
         image: client-image
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         readinessProbe:
           httpGet:
-            path: /actuator/health
-            port: 8080
+            path: /
+            port: 80
           initialDelaySeconds: 10
           timeoutSeconds: 2
           periodSeconds: 3
           failureThreshold: 1
         livenessProbe:
             httpGet:
-              path: /actuator/health
-              port: 8080
+              path: /
+              port: 80
             initialDelaySeconds: 20
             timeoutSeconds: 2
             periodSeconds: 8

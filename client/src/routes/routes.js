@@ -8,7 +8,7 @@ import PatientOverviewComponent from '../components/PatientOverviewComponent.vue
 import ProbeComponent from "../components/ProbeComponent"; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 
 export const routes = [
-    { path: '*', redirect: '/add-patient' },
+    { path: '*', redirect: '/patient-data' },
     {
         path: '/lab-result',
         component: LabResultComponent

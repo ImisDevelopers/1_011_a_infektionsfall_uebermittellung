@@ -60,9 +60,9 @@ public class PatientEventService {
 
     @Transactional
     public PatientEvent createScheduledEvent(Patient patient, String labId, String doctorId) {
-        final Laboratory laboratory = laboratoryRepository.findById(Long.valueOf(labId)).orElseGet(() -> {
+        final Laboratory laboratory = laboratoryRepository.findById(labId).orElseGet(() -> {
             Laboratory lab = new Laboratory();
-            lab.setId(Long.valueOf(labId));
+            lab.setId(labId);
             return laboratoryRepository.save(lab);
         });
         final Doctor doctor = doctorRepository.findById(doctorId).orElseGet(() ->

@@ -81,7 +81,7 @@
                                     </a-row>
                                     <a-row :gutter="8" style="margin-top: 8px;">
                                         <a-col span="6" offset="18">
-                                            <a-button type="primary">Test erneut anordnen</a-button>
+                                            <a-button type="primary" @click="requestTestAgain('success')">Test erneut anordnen</a-button>
                                         </a-col>
                                     </a-row>
                                 </a-card>
@@ -153,7 +153,23 @@
                 insuranceMembershipNumber
             };
         },
-        methods: {},
+        methods: {
+            requestTestAgain(type) {
+                // const patID = "12389384"
+
+                // Check notification type (success, info, warning, error)
+                if (type === "success") {
+                var notification = {
+                    message: 'Der Test wurde erneut angefordert.',
+                    // description:
+                    // `Patienten ID: ${patID}`,
+                }
+                }
+
+                // Show notification
+                this.$notification[type](notification);
+            },
+        },
         components: {
 
         }

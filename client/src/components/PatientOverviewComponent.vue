@@ -94,20 +94,22 @@
                     <!--<a-table :columns="columns" :dataSource="data"> </a-table>-->
                 </a-tab-pane>
                 <a-tab-pane tab="Verlauf" key="2" forceRender>
-                    <a-timeline style="text-align: left; margin-left: 40px">
-                        <!-- List all the events recorded corresponding to the patient over time -->
-                        <a-timeline-item>10.03.2020 Patient aufgenommen, Test angeordnet</a-timeline-item>
-                        <a-timeline-item>11.03.2020 Coronavirus Test: ID-12yt2109t9023810293</a-timeline-item>
-                        <a-timeline-item color="red">11.03.2020 Befund positiv (ID-12yt2109t9023810293)</a-timeline-item>
-                        <a-timeline-item>11.03.2020 Gesundheitamt Neustadt verhängt Quarantäne</a-timeline-item>
-                        <a-timeline-item>15.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
-                        <a-timeline-item>15.03.2020 Coronavirus Test: ID-12yt2109t1523810293</a-timeline-item>
-                        <a-timeline-item color="green">16.03.2020 Befund unauffällig (ID-12yt2109t1523810293)</a-timeline-item>
-                        <a-timeline-item>21.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
-                        <a-timeline-item>21.03.2020 Coronavirus Test: ID-12yt2109t152ab10293</a-timeline-item>
-                        <a-timeline-item color="green">22.03.2020 Befund unauffällig (ID-12yt2109t152ab10293)</a-timeline-item>
-                        <a-timeline-item color="green">22.03.2020 Patient genesen</a-timeline-item>
-                    </a-timeline>
+                    <a-card>
+                        <a-timeline style="text-align: left; margin-left: 40px">
+                            <!-- List all the events recorded corresponding to the patient over time -->
+                            <a-timeline-item>10.03.2020 Patient aufgenommen, Test angeordnet</a-timeline-item>
+                            <a-timeline-item>11.03.2020 Coronavirus Test: ID-12yt2109t9023810293</a-timeline-item>
+                            <a-timeline-item color="red">11.03.2020 Befund positiv (ID-12yt2109t9023810293)</a-timeline-item>
+                            <a-timeline-item>11.03.2020 Gesundheitamt Neustadt verhängt Quarantäne</a-timeline-item>
+                            <a-timeline-item>15.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
+                            <a-timeline-item>15.03.2020 Coronavirus Test: ID-12yt2109t1523810293</a-timeline-item>
+                            <a-timeline-item color="green">16.03.2020 Befund unauffällig (ID-12yt2109t1523810293)</a-timeline-item>
+                            <a-timeline-item>21.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
+                            <a-timeline-item>21.03.2020 Coronavirus Test: ID-12yt2109t152ab10293</a-timeline-item>
+                            <a-timeline-item color="green">22.03.2020 Befund unauffällig (ID-12yt2109t152ab10293)</a-timeline-item>
+                            <a-timeline-item color="green">22.03.2020 Patient genesen</a-timeline-item>
+                        </a-timeline>
+                    </a-card>
                 </a-tab-pane>
             </a-tabs>
         </div>

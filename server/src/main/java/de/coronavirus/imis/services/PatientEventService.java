@@ -69,6 +69,7 @@ public class PatientEventService {
         var event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
                 .setEventType(EventType.SCHEDULED_FOR_TESTING)
+                .setIllness(Illness.CORONA)
                 .setResponsibleDoctor(doctor)
                 .setPatient(patient);
 

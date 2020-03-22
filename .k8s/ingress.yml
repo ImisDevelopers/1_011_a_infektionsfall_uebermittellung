@@ -30,4 +30,4 @@ spec:
       - path: /*
         backend:
           serviceName: imis-client
-          servicePort: 80
+          servicePort: 8080

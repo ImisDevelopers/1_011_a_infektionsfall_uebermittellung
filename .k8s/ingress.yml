@@ -7,29 +7,21 @@ metadata:
     # networking.gke.io/managed-certificates: imis-prototyp-de-certs
     # nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  #tls:
-  #- secretName: imis-prototyp-de-certs
-  #- secretName: www-imis-prototyp-de-certs
-  #- secretName: api-imis-prototyp-de-certs
+  tls:
+  - secretName: imis-prototyp-de-certs
+  - secretName: api-imis-prototyp-de-certs
   rules:
   - host: api.imis-prototyp.de
     http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: imis-server
           servicePort: 8080
   - host: imis-prototyp.de
     http:
       paths:
-      - path: /
-        backend:
-          serviceName: imis-client
-          servicePort: 80
-  - host: www.imis-prototyp.de
-    http:
-      paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: imis-client
           servicePort: 80

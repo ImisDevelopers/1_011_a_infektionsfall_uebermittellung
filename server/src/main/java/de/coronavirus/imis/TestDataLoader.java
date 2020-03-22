@@ -1,12 +1,10 @@
 package de.coronavirus.imis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.coronavirus.imis.api.dto.AggregationResultZip;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.services.InstitutionService;
-import de.coronavirus.imis.services.LabTestService;
-import de.coronavirus.imis.services.PatientEventService;
-import de.coronavirus.imis.services.PatientService;
+import de.coronavirus.imis.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -28,13 +26,15 @@ public class TestDataLoader implements ApplicationRunner {
     private final InstitutionService institutionService;
     private final LabTestService labTestService;
     private final PatientEventService eventService;
+    private final StatsService statsService;
 
     @Autowired
-    public TestDataLoader(PatientService patientService, InstitutionService institutionService, LabTestService labTestService, PatientEventService eventService) {
+    public TestDataLoader(PatientService patientService, InstitutionService institutionService, LabTestService labTestService, PatientEventService eventService, StatsService statsService) {
         this.patientService = patientService;
         this.institutionService = institutionService;
         this.labTestService = labTestService;
         this.eventService = eventService;
+        this.statsService = statsService;
     }
 
     static Object makeDTO(String testFileName, Class clazz)
@@ -80,9 +80,18 @@ public class TestDataLoader implements ApplicationRunner {
             final String labInternalTestId = "42";
             var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), labInternalTestId);
 
+
             // LAB HAS RESULT AND SOTRES IT
             // FIXME: 22.03.20 report cannot be attached
             labTestService.updateTestStatus(labTest.getId(), "TEST_POSITIVE");
+
+            // HEALTH OFFICE WANTS TO SEE ALL DATA
+            var allPatients = patientService.getAllPatients();
+
+            // RKI WANTS SO SEE STATS FOR ZIP
+            var patiensByZip = statsService.resultZipList(0, 9999999);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

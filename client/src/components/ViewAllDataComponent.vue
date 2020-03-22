@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="table-container">
       <a-table :columns="columns" :dataSource="data">
         <span slot="riskAreas" slot-scope="riskAreas">
           <a-tag
@@ -261,6 +261,12 @@ h3 {
 }
 span {
   margin: 10px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
 }
 
 </style>

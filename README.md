@@ -20,8 +20,9 @@ _DO NOT COMMIT TO MASTER_
   - https://adoptopenjdk.net/ 
 3. NPM/YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
- 
 
+## Additional Documentation
+[Google Docs](https://docs.google.com/document/d/1nEf7WGs6BJ9qcHcuUoVzV1i01kIPH0ENQihb6B7yiI4/edit?usp=sharing)
 ## How to run this server?
 Install Docker and run: `docker-compose up`
 

@@ -1,5 +1,17 @@
 package de.coronavirus.imis.services;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Component;
+
+import lombok.RequiredArgsConstructor;
+
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.LabTest;
 import de.coronavirus.imis.domain.Laboratory;
@@ -11,13 +23,6 @@ import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.repositories.LabTestRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
@@ -56,13 +61,15 @@ public class LabTestService {
         final List<PatientEvent> event = eventService.getForLabTest(labTest);
         labTest.setTestStatus(statusToSet);
         var eventType = testStatusToEvent(statusToSet);
-        var patient = event.stream().map(PatientEvent::getPatient).findFirst().orElse(null);
-        var doctor = event.stream().map(PatientEvent::getResponsibleDoctor).findFirst().orElse(null);
+        var patient = event.stream().map(PatientEvent::getPatient).findFirst().orElseThrow();
+        var doctor = event.stream().map(PatientEvent::getResponsibleDoctor)
+                .filter(Objects::nonNull).findFirst();
+
         var changeEvent = new PatientEvent()
                 .setEventType(eventType)
                 .setLabTest(labTest)
-                .setResponsibleDoctor(doctor)
                 .setPatient(patient);
+        doctor.ifPresent(changeEvent::setResponsibleDoctor);
         return eventRepository.save(changeEvent);
     }
 

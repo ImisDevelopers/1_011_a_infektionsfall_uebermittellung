@@ -78,9 +78,11 @@ public class TestDataLoader implements ApplicationRunner {
 
             // LAB RECEIVES SAMPLE AND PROCESSES IT
             final String labInternalTestId = "42";
-            labTestService.createLabTest(person.getId(), laboratory.getId(), labInternalTestId);
+            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), labInternalTestId);
 
-            
+            // LAB HAS RESULT AND SOTRES IT
+            // FIXME: 22.03.20 report cannot be attached
+            labTestService.updateTestStatus(labTest.getId(), "TEST_POSITIVE");
         } catch (IOException e) {
             e.printStackTrace();
         }

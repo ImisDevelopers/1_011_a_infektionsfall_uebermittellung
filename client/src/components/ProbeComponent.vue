@@ -36,8 +36,8 @@
                                     placeholder="z.B 1337-4237-9438"
                             />
                         </a-form-item>
-                        <a-form-item label=" ">
-                            <a-button style="width:100%">Patient in der Datenbank suchen</a-button>
+                        <a-form-item :wrapper-col="{ span: 18, offset: 6 }">
+                            <a-input-search placeholder="Suche Patienten" style="width: 100%"/>
                         </a-form-item>
                         <a-form-item label="Proben-ID">
                             <a-input

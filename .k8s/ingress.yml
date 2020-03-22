@@ -4,7 +4,8 @@ metadata:
   name: imis-ingress
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
-    networking.gke.io/managed-certificates: imis-prototyp-de-certs,api-imis-prototyp-de-certs
+    networking.gke.io/managed-certificates: api-imis-prototyp-de-certs,imis-prototyp-de-certs
+    kubernetes.io/ingress.allow-http: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:

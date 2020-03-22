@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="table-container">
+    <a-card class="table-container">
       <a-table :columns="columns" :dataSource="data" :scroll="{ x: 4050 }">
         <span slot="riskAreas" slot-scope="riskAreas">
           <a-tag
@@ -19,7 +19,7 @@
           </a-tag>
         </span>
       </a-table>
-    </div>
+    </a-card>
 
   </div>
 </template>
@@ -292,8 +292,8 @@ span {
 
 .table-container {
   width: 100%;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
+  /* overflow-x: scroll;
+  scroll-behavior: smooth; */
 }
 
 </style>

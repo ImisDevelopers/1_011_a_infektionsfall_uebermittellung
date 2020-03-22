@@ -1,7 +1,7 @@
 <template style="margin: auto">
     <div>
         <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>
-        <a-card style="max-width: 1020px; margin: auto">
+        <div style="max-width: 1020px; margin: auto">
             <a-tabs defaultActiveKey="1">
                 <a-tab-pane tab="Stammdaten" key="1">
                     <!-- display user data here-->
@@ -109,7 +109,7 @@
                     </a-timeline>
                 </a-tab-pane>
             </a-tabs>
-        </a-card>
+        </div>
     </div>
 </template>
 

@@ -2,7 +2,7 @@
   <div>
     <a-tabs defaultActiveKey="1" v-model="activeKey" @change="callback">
       <a-tab-pane tab="1. Laboranmeldung" key="1">
-        <a-card style="min-width: 500px; width: auto; margin: 2rem auto; min-height: 300px">
+        <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
           <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
             <p>Bitte melden Sie sich hier mit Laborkennung und Passwort an um einen Test als positiv / negativ zu kennzeichnen.</p>
             <!-- <a-divider orientation="left" style="margin-top: 2rem;">Laboranmeldung</a-divider> -->
@@ -28,7 +28,7 @@
         </a-card>
       </a-tab-pane>
       <a-tab-pane tab="2. Testresultat eingeben" :disabled="isLoggedIn === false ? 'disabled' : false" key="2" forceRender>
-        <a-card style="min-width: 500px; width: auto; margin: 2rem auto; min-height: 300px">
+        <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
           <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" @submit="handleSubmit">
             <a-form-item label="Proben-ID">
               <a-input

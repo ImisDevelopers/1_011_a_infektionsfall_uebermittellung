@@ -27,7 +27,7 @@ public class PatientEventService {
     private final LaboratoryRepository laboratoryRepository;
     private final DoctorRepository doctorRepository;
 
-    public PatientEventService(PatientEventRepository patientEventRepository, PatientService patientRepository,
+    public PatientEventService(PatientEventRepository patientEventRepository,
             LaboratoryRepository laboratoryRepository, DoctorRepository doctorRepository) {
         this.patientEventRepository = patientEventRepository;
         this.laboratoryRepository = laboratoryRepository;

@@ -13,21 +13,27 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-  core:
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
-    build: .
-    networks:
-      - postgres
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile.prod
     ports:
-      - "80:80"
-  web:
-    build: .
-    networks:
-      - postgres
-    ports:
-      - "8080:8080"
-    entrypoint: ["gradle", "serve"]
+    - "80:8080"
+#  core:
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+#    build: .
+#    networks:
+#      - postgres
+#    ports:
+#      - "80:80"
+#  web:
+#    build: .
+#    networks:
+#      - postgres
+#    ports:
+#      - "8080:8080"
+#    entrypoint: ["gradle", "serve"]
 
         #web:
           #build: client/.

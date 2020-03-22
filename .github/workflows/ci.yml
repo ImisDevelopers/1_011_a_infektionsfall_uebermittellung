@@ -1,0 +1,34 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+    - feature/*
+    - master
+    - dev
+  pull_request:
+    branches: [ master ]
+
+# Environment variables available to all jobs and steps in this workflow
+env:
+  GITHUB_SHA: ${{ github.sha }}
+
+jobs:
+  setup-build-publish-deploy:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-java@v1.3.0
+      with:
+        java-version: 1.11
+    - uses: actions/checkout@v2
+
+    # Configure docker to use the gcloud command-line tool as a credential helper
+    - run: |
+        (cd server && gradle clean test)
+        (cd client && gradle build)
+
+    # Build the Docker image
+    - name: Build
+      run: |
+        docker-compose build

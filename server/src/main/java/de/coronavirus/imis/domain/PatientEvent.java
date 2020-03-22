@@ -2,25 +2,22 @@ package de.coronavirus.imis.domain;
 
 
 import java.sql.Timestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import lombok.Builder;
-import lombok.Value;
-
 @Entity
-@Value
-@JsonDeserialize(builder = PatientEvent.PatientEventBuilder.class)
-@Builder
+@Getter
+@Setter
+@Accessors(chain = true)
 public class PatientEvent {
 
     @Id
@@ -28,16 +25,16 @@ public class PatientEvent {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Patient patient;
 
-/*    @ManyToOne
-    private Institution testInstitution;*/
-
     @ManyToOne
+    private Doctor responsibleDoctor;
+
+    @Enumerated(EnumType.STRING)
     private Illness illness;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private LabTest labTest;
 
     private Timestamp eventTimestamp;
@@ -47,13 +44,6 @@ public class PatientEvent {
 
     private String comment;
     private String accomodation;
-
-    @JsonPOJOBuilder(withPrefix = "")
-    public static final class PatientEventBuilder {
-        // needed for jackson deserialization
-    }
-
-
 }
 
 

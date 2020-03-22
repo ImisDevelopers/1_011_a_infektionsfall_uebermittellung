@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  core:
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+    build: .
+    networks:
+      - postgres
+    ports:
+      - "80:80"

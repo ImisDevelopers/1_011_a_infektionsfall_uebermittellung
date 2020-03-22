@@ -3,57 +3,87 @@ package de.coronavirus.imis.services;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
-
-import javax.transaction.Transactional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.google.common.hash.Hashing;
+import lombok.extern.slf4j.Slf4j;
 
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.Illness;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.repositories.PatientRepository;
 
 @Service
+@Slf4j
 public class PatientService {
+
     private PatientRepository patientRepository;
     private PatientEventService eventService;
 
-    private static Illness corona = Illness.builder().displayName("corona").build();
-
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, PatientEventService eventService) {
         this.patientRepository = patientRepository;
+        this.eventService = eventService;
     }
 
-    public Iterable<Patient> getAllPatients() {
-        return patientRepository.findAll();
+    public List<Patient> getAllPatients() {
+        var patients = patientRepository.findAll();
+        return patients.stream().map(patient -> {
+            var lastEvent = eventService.findFirstByPatientOrderByEventTimestampDesc(patient);
+            patient.setEvents(List.of(lastEvent));
+            return patient;
+        }).collect(Collectors.toList());
     }
 
     public Optional<Patient> findPatientById(String id) {
         return patientRepository.findById(id);
     }
 
-    @Transactional
     public Patient addPatient(final CreatePatientDTO dto) {
-
-
-        var dateParsed = LocalDateTime.parse(dto.getBirthDate(), DateTimeFormatter.ISO_INSTANT).toLocalDate();
-        var id = Hashing.sha256().hashString(dto.getFirstName() + dto.getLastName() + dto.getZip()
-                + dateParsed, StandardCharsets.UTF_8).toString();
-        var mappedPatient = Patient.builder().city(dto.getCity()).email(dto.getEmail())
-                .firstName(dto.getFirstName()).lastName(dto.getLastName()).gender(dto.getGender())
-                .houseNumber(dto.getHouseNumber()).street(dto.getStreet()).zip(dto.getZip())
-                .insuranceCompany(dto.getInsuranceCompany())
-                .dateOfBirth(dateParsed)
-                .insuranceMembershipNumber(dto.getInsuranceMembershipNumber())
-                .id(id)
-                .build();
-
-        patientRepository.save(mappedPatient);
-        eventService.createInitialPatientEvent(mappedPatient, corona, EventType.SUSPECTED);
+        var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
+        var id = Hashing.sha256()
+                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed, StandardCharsets.UTF_8)
+                .toString();
+        var mappedPatient = new Patient()
+                .setId(id)
+                .setFirstName(dto.getFirstName())
+                .setLastName(dto.getLastName())
+                .setGender(dto.getGender())
+                .setDateOfBirth(dateParsed)
+                .setEmail(dto.getEmail())
+                .setPhoneNumber(dto.getPhoneNumber())
+                .setStreet(dto.getStreet())
+                .setHouseNumber(dto.getHouseNumber())
+                .setCity(dto.getCity())
+                .setHouseNumber(dto.getHouseNumber())
+                .setStreet(dto.getStreet())
+                .setZip(dto.getZip())
+                .setCity(dto.getCity())
+                .setInsuranceCompany(dto.getInsuranceCompany())
+                .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())
+                .setFluImmunization(dto.getFluImmunization())
+                .setSpeedOfSymptomsOutbreak(dto.getSpeedOfSymptomsOutbreak())
+                .setSymptoms(dto.getSymptoms())
+                .setCoronaContacts(dto.getCoronaContacts())
+                .setRiskAreas(dto.getRiskAreas())
+                .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
+                .setPreIllnesses(dto.getPreIllnesses());
+        mappedPatient = patientRepository.save(mappedPatient);
+        log.info("inserting patient with id {}", mappedPatient.getId());
+        eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), EventType.SUSPECTED);
+        log.info("inserted event for patient {}", mappedPatient);
         return mappedPatient;
+    }
+
+    private Integer parseIntegerSafe(String toParse) {
+        try {
+            return Integer.parseInt(toParse);
+        } catch (Exception e) {
+            log.error("error parsing integer");
+        }
+        return Integer.MIN_VALUE;
     }
 }

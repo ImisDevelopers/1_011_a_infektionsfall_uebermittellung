@@ -4,21 +4,22 @@ package de.coronavirus.imis.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import lombok.Builder;
-import lombok.Value;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 
 @Entity
-@Value
-@JsonDeserialize(builder = Patient.PatientBuilder.class)
-@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@Accessors(chain = true)
 public class Patient {
     @Id
     private String id;
@@ -27,28 +28,34 @@ public class Patient {
     private String firstName;
     private String gender;
     private LocalDate dateOfBirth;
+
     private String email;
     private String phoneNumber;
     private String street;
-    private String zip;
     private String houseNumber;
+    private Integer zip;
     private String city;
-    private String comment;
-    private String occupation;
+
     private String insuranceCompany;
     private String insuranceMembershipNumber;
+    private boolean confirmed;
+
+    private Boolean fluImmunization;
+    private String speedOfSymptomsOutbreak;
+    @Convert(converter = StringListConverter.class)
+    private List<String> symptoms;
+
+    private Boolean coronaContacts;
+    @Convert(converter = StringListConverter.class)
+    private List<String> riskAreas;
+
+    private Boolean weakenedImmuneSystem;
+    @Convert(converter = StringListConverter.class)
+    private List<String> preIllnesses;
+
+    private String comment;
+    private String occupation;
 
     @OneToMany(mappedBy = "patient")
-    @JsonIgnore
     List<PatientEvent> events;
-
-    @OneToMany
-    private List<Illness> preExistingConditions;
-
-    @JsonPOJOBuilder(withPrefix = "")
-    public static final class PatientBuilder {
-
-    }
-
-
 }

@@ -6,33 +6,28 @@ import lombok.Data;
 
 @Data
 public class CreatePatientDTO {
+    private String lastName;
+    private String firstName;
+    private String gender;
+    private String dateOfBirth;
 
-    public String gender;
-    public String birthDate;
-    public String lastName;
-    public String firstName;
-    public String street;
-    public String houseNumber;
-    public String zip;
-    public String city;
-    public String email;
-    public String phone;
-    public String insuranceCompany;
-    public String insuranceMembershipNumber;
-    public String cough;
-    public String fatigue;
-    public String fever;
-    public String shortnessOfBreath;
-    public String soreThroat;
-    public String cold;
-    public String limbPain;
-    public String headaches;
-    public String diarrhea;
-    public String symptoms;
-    public List<String> riskAreas;
-    public String coronaContacts;
-    public List<String> preIllnesses;
-    public String weakenedImmuneSystem;
-    public String fluImmunization;
+    private String email;
+    private String phoneNumber;
+    private String street;
+    private String houseNumber;
+    private Integer zip;
+    private String city;
 
+    private String insuranceCompany;
+    private String insuranceMembershipNumber;
+
+    private Boolean fluImmunization;
+    private String speedOfSymptomsOutbreak;
+    private List<String> symptoms;
+
+    private Boolean coronaContacts;
+    private List<String> riskAreas;
+
+    private Boolean weakenedImmuneSystem;
+    private List<String> preIllnesses;
 }

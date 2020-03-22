@@ -1,20 +1,73 @@
 <template>
   <div>
-    <h3>Example Entities</h3>
-    <div v-if="entities.length === 0">
-      No Example Entities created yet...
-    </div>
-    <div v-else v-for="(entity, idx) in entities" :key="idx">
-      <span>{{entity.id}}</span>
-      <span>......</span>
-      <span>{{entity.content}}</span>
-    </div>
-    <h3>Create an Example Entity</h3>
-    <form @submit="create" autocomplete="off">
-      <span>Content:</span>
-      <input v-model="content"/>
-      <button>Create</button>
-    </form>
+    <a-tabs defaultActiveKey="1" v-model="activeKey" @change="callback">
+      <a-tab-pane tab="1. Laboranmeldung" key="1">
+        <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
+          <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
+            <p>Bitte melden Sie sich hier mit Laborkennung und Passwort an um einen Test als positiv / negativ zu kennzeichnen.</p>
+            <!-- <a-divider orientation="left" style="margin-top: 2rem;">Laboranmeldung</a-divider> -->
+            <a-form-item label="Laborkennung">
+              <a-input
+                v-decorator="['note', { rules: [{ required: true, message: 'Bitte geben Sie Ihre Laborkennung ein.' }] }]"
+                placeholder="z.B 1337-4237-9438"
+              />
+            </a-form-item>
+            <a-form-item label="Passwort">
+              <a-input
+                v-decorator="['note', { rules: [{ required: true, message: 'Bitte geben Sie Ihr Passwort ein.' }] }]"
+                type="password"
+              />
+            </a-form-item>
+            <a-divider />
+            <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+              <a-button type="primary" html-type="submit" @click="handleLabSubmit">
+                Abschicken
+              </a-button>
+            </a-form-item>
+          </a-form>
+        </a-card>
+      </a-tab-pane>
+      <a-tab-pane tab="2. Testresultat eingeben" :disabled="isLoggedIn === false ? 'disabled' : false" key="2" forceRender>
+        <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
+          <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" @submit="handleSubmit">
+            <a-form-item label="Proben-ID">
+              <a-input
+                v-decorator="['note', { rules: [{ required: true, message: 'Bitte geben Sie Ihre Test-ID ein.' }] }]"
+                placeholder="z.B 1337-4237-9438"
+              />
+            </a-form-item>
+            <a-form-item label="Testresultat">
+              <a-radio-group v-decorator="['radio-group']">
+                <a-radio value="true">
+                  Positiv
+                </a-radio>
+                <a-radio value="false">
+                  Negativ
+                </a-radio>
+              </a-radio-group>
+            </a-form-item>
+            <a-form-item label="Kommentar">
+              <a-textarea
+                v-model="value"
+                placeholder="Kommentar hinzufügen"
+                :autoSize="{ minRows: 3, maxRows: 5 }"
+              />
+            </a-form-item>
+            <a-form-item label="Report hochladen:">
+              <a-upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76">
+                <a-button> <a-icon type="upload" /> Upload </a-button>
+              </a-upload>
+            </a-form-item>
+            <a-divider />
+            <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+              <a-button type="primary" html-type="submit" @click="handleTestResultSubmit('success')">
+                Abschicken
+              </a-button>
+            </a-form-item>
+          </a-form>
+        </a-card>
+      </a-tab-pane>
+    </a-tabs>
   </div>
 </template>
 
@@ -29,7 +82,12 @@ export default {
   data() {
     return {
       entities: [],
-      content: ""
+      content: "",
+      activeKey: "1",
+      isLoggedIn: false,
+      headers: {
+        authorization: 'authorization-text',
+      },
     }
   },
   methods: {
@@ -52,7 +110,31 @@ export default {
         });
         this.content = "";
       }
-    }
+    },
+    handleLabSubmit() {
+      this.isLoggedIn = true
+      this.activeKey = "2";
+    },
+    handleTestResultSubmit(type) {
+      const sampleID = "89534823"
+      const testResult = "negativ"
+
+      // Check notification type (success, info, warning, error)
+      if (type === "success") {
+      var notification = {
+          message: 'Probe wurde erfolgreich mit Patienten verknüpft.',
+          description: `Die Proben ID ist ${sampleID} und das Testresultat is ${testResult}.`,
+      }
+      }
+
+      // Show notification
+      this.$notification[type](notification);
+    },
+    handleChange({ file, fileList }) {
+      if (file.status !== 'uploading') {
+        console.log(file, fileList);
+      }
+    },
   },
   created() {
     fetch('/exampleEntities')

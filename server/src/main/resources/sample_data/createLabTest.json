@@ -1,0 +1,5 @@
+{
+  "labInternalId": "string",
+  "laboratoryId": "string",
+  "patientId": "string"
+}

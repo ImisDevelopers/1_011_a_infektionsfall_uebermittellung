@@ -1,5 +1,8 @@
 # 1_011_a_infektionsfall_uebermittellung
 
+  * [Demo](https://imis-prototyp.de)
+  * [Swagger API](https://api.imis-prototyp.de/)
+
 ## General Guidelines
 _DO NOT COMMIT TO MASTER_ 
 
@@ -7,6 +10,7 @@ _DO NOT COMMIT TO MASTER_
  - Backend: Spring Boot
  - Frontend: Vue.js
  - Persistence: PostgreSQL
+ - Deployment: GKE
  
 ## Benötigte Tools
 1. Docker
@@ -19,10 +23,10 @@ _DO NOT COMMIT TO MASTER_
   - https://adoptopenjdk.net/ 
 3. NPM/YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
- 
-## Architecture Overview
-A technical description of the application can be found [here](Architecture_overview.md)
 
+
+## Additional Documentation
+[Google Docs](https://docs.google.com/document/d/1nEf7WGs6BJ9qcHcuUoVzV1i01kIPH0ENQihb6B7yiI4/edit?usp=sharing)
 ## How to run this server?
 Install Docker and run: `docker-compose up`
 
@@ -41,8 +45,13 @@ Install Docker and run: `docker-compose up`
 ```./gradlew bootRun```
 1. Start local development server for vue.js development
 ```./gradlew serve```
+## Quickstart for Backendserver to enable Frontend Development
+```docker-compose -f docker-compose.yml -f docker-compose.frontend_dev.yml up ```
 
 ## API communication
 
 An API developed by the backend is served via swagger on the server: http://localhost/swagger-ui.html
 If you have a new API that should be created add them into the api-frontend folder.
+
+## CI system
+All commits to `dev`, `master`, `feature/*` and all PRs will be CI checked.

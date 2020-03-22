@@ -3,8 +3,10 @@ package de.coronavirus.imis;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.coronavirus.imis.api.dto.AggregationResultZip;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
+import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.services.*;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.List;
 
 
 @Component
@@ -51,8 +54,15 @@ public class TestDataLoader implements ApplicationRunner {
         return mapper.readValue(str, clazz);
     }
 
+
     public void run(ApplicationArguments args) {
         try {
+            for (int i = 0; i < 10; i++) {
+                var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
+                patientService.addPatient(createPersonDTO);
+            }
+
+
             // SETUP OUR WORLD
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
             var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO);

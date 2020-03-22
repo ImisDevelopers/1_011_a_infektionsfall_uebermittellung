@@ -1,4 +1,6 @@
 import json
+import os
+import pathlib
 import string
 from random import randint, randrange, choice, sample, getrandbits
 
@@ -88,9 +90,12 @@ def gen_person():
 
 
 def main():
-    persons = [gen_person() for _ in range(2)]
-    with open('persons.json', 'w') as f:
-        json.dump(persons, f)
+    pathlib.Path('persons').mkdir(parents=True, exist_ok=True)
 
-    if __name__ == '__main__':
-        main()
+    for i in range(3):
+        with open(f'persons/person{i}.json', 'w+') as f:
+            json.dump(gen_person(), f)
+
+
+if __name__ == '__main__':
+    main()

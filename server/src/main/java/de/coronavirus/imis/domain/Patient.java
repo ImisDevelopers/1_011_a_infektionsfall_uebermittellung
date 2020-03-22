@@ -56,6 +56,5 @@ public class Patient {
     private String occupation;
 
     @OneToMany(mappedBy = "patient")
-    @JsonIgnore
     List<PatientEvent> events;
 }

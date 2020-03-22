@@ -54,7 +54,7 @@
                         </a-form-item>
                         <a-divider />
                         <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-                            <a-button type="primary" html-type="submit">
+                            <a-button type="primary" html-type="submit" @click="handleLinkSampleSubmit('success')">
                                 Verknüpfen
                             </a-button>
                         </a-form-item>
@@ -104,6 +104,21 @@
                         });
                     this.content = "";
                 }
+            },
+            handleLinkSampleSubmit(type) {
+                const patID = "12389384"
+                const sampleID = "89534823"
+
+                // Check notification type (success, info, warning, error)
+                if (type === "success") {
+                var notification = {
+                    message: 'Probe wurde erfolgreich mit Patienten verknüpft.',
+                    description: `Patienten ID: ${patID} & Proben ID: ${sampleID}.`,
+                }
+                }
+
+                // Show notification
+                this.$notification[type](notification);
             },
             handleLabSubmit() {
                 this.isLoggedIn = true

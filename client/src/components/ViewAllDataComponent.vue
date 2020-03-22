@@ -319,7 +319,32 @@
             "riskAreas": ["Madrid"],
             "weakenedImmuneSystem": false,
             "preIllnesses": ["cancer"]
-        }
+        },
+        {
+            id: "1024142341",
+            status: "Genesen",
+            timestamp: "18.3.2020 10:50",
+            birthDate: "17.3.1980",
+            phone: "011 41241",
+          "lastName": "Winkler", 
+          "firstName": "Karl", 
+          "gender": "m\u00e4nnlich", 
+          "dateOfBirth": "1981-06-29 07", 
+          "email": "K@gmx.de", 
+          "phoneNumber": "797701058010", 
+          "street": "Haidth\u00f6heAarweg", 
+          "houseNumber": 90, 
+          "zip": "26410040", 
+          "city": "Bochum", 
+          "insuranceCompany": "AOK", 
+          "insuranceMembershipNumber": "Y541473732", 
+          "fluImmunization": false, 
+          "speedOfSymptomsOutbreak": "Langsam", 
+          "symptoms": ["Fieber", "Halschmerzen", "Erk\u00e4ltung", "Schnupfen", "Husten", "Gelenkschmerzen", "Kopfschmerzen", "Atemschwierigkeiten"], 
+          "coronaContacts": false, 
+          "riskAreas": ["Hubei"], 
+          "weakenedImmuneSystem": true, 
+          "preIllnesses": ["cancer"]}
     ];
 
     export default {

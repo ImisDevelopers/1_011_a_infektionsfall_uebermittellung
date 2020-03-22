@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-tabs defaultActiveKey="1" v-model="activeKey" @change="callback">
-      <a-tab-pane tab="Laboranmeldung" key="1">
+      <a-tab-pane tab="1. Laboranmeldung" key="1">
         <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
           <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
             <p>Bitte melden Sie sich hier mit Laborkennung und Passwort an um einen Test als positiv / negativ zu kennzeichnen.</p>
@@ -27,7 +27,7 @@
           </a-form>
         </a-card>
       </a-tab-pane>
-      <a-tab-pane tab="Testresultat eingeben" :disabled="isLoggedIn === false ? 'disabled' : false" key="2" forceRender>
+      <a-tab-pane tab="2. Testresultat eingeben" :disabled="isLoggedIn === false ? 'disabled' : false" key="2" forceRender>
         <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
           <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" @submit="handleSubmit">
             <a-form-item label="Proben-ID">
@@ -45,6 +45,18 @@
                   Negativ
                 </a-radio>
               </a-radio-group>
+            </a-form-item>
+            <a-form-item label="Kommentar">
+              <a-textarea
+                v-model="value"
+                placeholder="Kommentar hinzufügen"
+                :autoSize="{ minRows: 3, maxRows: 5 }"
+              />
+            </a-form-item>
+            <a-form-item label="Report hochladen:">
+              <a-upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76">
+                <a-button> <a-icon type="upload" /> Upload </a-button>
+              </a-upload>
             </a-form-item>
             <a-divider />
             <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
@@ -72,7 +84,10 @@ export default {
       entities: [],
       content: "",
       activeKey: "1",
-      isLoggedIn: false
+      isLoggedIn: false,
+      headers: {
+        authorization: 'authorization-text',
+      },
     }
   },
   methods: {
@@ -99,7 +114,12 @@ export default {
     handleLabSubmit() {
       this.isLoggedIn = true
       this.activeKey = "2";
-    }
+    },
+    handleChange({ file, fileList }) {
+      if (file.status !== 'uploading') {
+        console.log(file, fileList);
+      }
+    },
   },
   created() {
     fetch('/exampleEntities')

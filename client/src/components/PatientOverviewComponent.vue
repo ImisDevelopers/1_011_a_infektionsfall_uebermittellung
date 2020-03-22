@@ -1,6 +1,6 @@
 <template style="margin: auto">
     <div>
-        <a-input-search placeholder="Suche Patienten" style="width: 200px"/>
+        <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>
         <a-card style="max-width: 1020px; margin: auto">
             <a-tabs defaultActiveKey="1">
                 <a-tab-pane tab="Stammdaten" key="1">
@@ -112,7 +112,7 @@
 
 <script>
 
-    const uuid = "#2685896";
+    const uuid = "#2685896023";
     const firstName = "Max";
     const lastName = "Mustermann";
     const dateOfBirth = "1995-03-21";

@@ -19,7 +19,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
 server:
-  port: 80
+  port: 8080
 ---
 spring:
   profiles: production

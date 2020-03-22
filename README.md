@@ -20,6 +20,8 @@ _DO NOT COMMIT TO MASTER_
 3. NPM/YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
  
+## Architecture Overview
+A technical description of the application can be found [here](Architecture_overview.md)
 
 ## How to run this server?
 Install Docker and run: `docker-compose up`

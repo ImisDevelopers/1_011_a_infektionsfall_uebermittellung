@@ -1,6 +1,6 @@
 <template style="margin: auto">
     <div>
-        <a-input-search placeholder="Suche Patienten" style="max-width: 1020px; width: 100%"/>
+        <a-input-search placeholder="Suche Patienten" style="width: 200px"/>
         <a-card style="max-width: 1020px; margin: auto">
             <a-tabs defaultActiveKey="1">
                 <a-tab-pane tab="Stammdaten" key="1">

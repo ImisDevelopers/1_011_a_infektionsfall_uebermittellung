@@ -135,7 +135,7 @@
 
         <!-- Submit Button -->
         <a-form-item :wrapperCol="{ span: 24, offset: 0 }" >
-          <a-row :gutter="16" type="flex" justify="start">
+          <a-row :gutter="16" type="flex" justify="end">
             <a-col>
               <a-button type="default" html-type="submit">
                 Nichts Anordnen - nur anlegen

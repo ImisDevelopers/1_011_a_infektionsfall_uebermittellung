@@ -1,5 +1,4 @@
 import json
-import os
 import pathlib
 import string
 from random import randint, randrange, choice, sample, getrandbits
@@ -42,7 +41,10 @@ def gen_date_of_birth():
     year = 2020 - randint(15, 95)
     month = randrange(12) + 1
     day = randrange(28) + 1 if month == 2 else randrange(31) + 1
-    return f'{year}-{month}-{day}'
+    a = "{:02}".format(day)
+    b = "{:02}".format(month)
+    c = "{:02}".format(randint(1, 23))
+    return f'{year}-{b}-{a} {c}'
 
 
 def rand_num_str(len=10):
@@ -78,10 +80,10 @@ def gen_person():
         'city': choice(cities),
         'insuranceCompany': choice(insurance_companies),
         'insuranceMembershipNumber': insurance_number(),
-        'fluImmunization': choice(['Ja', 'Nein']),
+        'fluImmunization': bool(getrandbits(1)),
         'speedOfSymptomsOutbreak': choice(['Langsam', 'Mittel', 'Schnell']),
         'symptoms': sample(symptoms, randint(0, len(symptoms))),
-        'coronaContacts': choice(['Ja', 'Nein']),
+        'coronaContacts': bool(getrandbits(1)),
 
         'riskAreas': [choice(riscAreas)],
         'weakenedImmuneSystem': bool(getrandbits(1)),
@@ -92,7 +94,7 @@ def gen_person():
 def main():
     pathlib.Path('persons').mkdir(parents=True, exist_ok=True)
 
-    for i in range(3):
+    for i in range(100):
         with open(f'persons/person{i}.json', 'w+') as f:
             json.dump(gen_person(), f)
 

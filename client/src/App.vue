@@ -10,7 +10,7 @@
           <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
             <a-menu-item key="1" v-on:click="menumode=1">
               <router-link to="/patient-data">
-                <a-icon type="user" />
+                <a-icon type="user-add" />
                 <span class="nav-text">Patient Aufnehmen</span>
               </router-link>
             </a-menu-item>
@@ -18,7 +18,7 @@
    
               <a-menu-item key="2" v-on:click="menumode=2">
                 <router-link to="/probe-component">
-                  <a-icon type="video-camera" />
+                  <a-icon type="deployment-unit" />
                   <span class="nav-text">Probe Zuordnen</span>
                 </router-link>
               </a-menu-item>
@@ -26,7 +26,7 @@
             
               <a-menu-item key="3" v-on:click="menumode=3">
                 <router-link to="/lab-result">
-                  <a-icon type="upload" />
+                  <a-icon type="experiment" />
                   <span class="nav-text">Laborresultate</span>
                 </router-link>
               </a-menu-item>
@@ -44,8 +44,8 @@
 
               <a-menu-item key="5" v-on:click="menumode=6">
                 <router-link to="/all-data">
-                  <a-icon type="user" />
-                  <span class="nav-text">Alle Daten einsehen</span>
+                  <a-icon type="team" />
+                  <span class="nav-text">Alle Patienten</span>
                 </router-link>
               </a-menu-item>
 
@@ -53,7 +53,7 @@
 
               <a-menu-item key="6" v-on:click="menumode=7">
                 <router-link to="/public-statistics">
-                  <a-icon type="user" />
+                  <a-icon type="stock" />
                   <span class="nav-text">Öffentliche Statistiken</span>
                 </router-link>
               </a-menu-item>

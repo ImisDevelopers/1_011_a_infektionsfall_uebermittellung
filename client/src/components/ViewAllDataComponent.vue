@@ -321,11 +321,11 @@
             "preIllnesses": ["cancer"]
         },
         {
-            id: "1024142341",
-            status: "Genesen",
-            timestamp: "18.3.2020 10:50",
-            birthDate: "17.3.1980",
-            phone: "011 41241",
+          id: "1024142341",
+          status: "Genesen",
+          timestamp: "18.3.2020 10:50",
+          birthDate: "17.3.1980",
+          phone: "011 41241",
           "lastName": "Winkler", 
           "firstName": "Karl", 
           "gender": "m\u00e4nnlich", 
@@ -344,7 +344,42 @@
           "coronaContacts": false, 
           "riskAreas": ["Hubei"], 
           "weakenedImmuneSystem": true, 
-          "preIllnesses": ["cancer"]}
+          "preIllnesses": ["cancer"]
+        },
+        {
+          id: "5124142341",
+          status: "Verdachtsfall",
+          timestamp: "21.3.2020 12:50",
+          birthDate: "17.6.1970",
+          phone: "551 12412",
+          "lastName":"Wagner",
+          "firstName":"Susanne",
+          "gender":"weiblich",
+          "dateOfBirth":"1932-09-07 12",
+          "email":"S@t-online.de",
+          "phoneNumber":"0669898850",
+          "street":"Nordufer",
+          "houseNumber":84,
+          "zip":"82510744",
+          "city":"Kiel",
+          "insuranceCompany":"IKK Nord",
+          "insuranceMembershipNumber":"M644638868",
+          "fluImmunization":true,
+          "speedOfSymptomsOutbreak":"Langsam",
+          "symptoms":[
+              "Husten",
+              "Halschmerzen",
+              "Gelenkschmerzen"
+          ],
+          "coronaContacts":true,
+          "riskAreas":[
+              "GrandEst"
+          ],
+          "weakenedImmuneSystem":true,
+          "preIllnesses":[
+              "diabetes"
+          ]
+        }
     ];
 
     export default {

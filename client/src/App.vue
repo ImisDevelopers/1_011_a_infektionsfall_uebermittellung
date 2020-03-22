@@ -29,8 +29,12 @@
               <span class="nav-text">Patienten-Daten</span>
             </a-menu-item>
             <a-menu-item key="6" v-on:click="menumode=6">
-              <a-icon type="account-group" />
+              <a-icon type="user" />
               <span class="nav-text">Alle Daten einsehen</span>
+            </a-menu-item>
+            <a-menu-item key="7" v-on:click="menumode=7">
+              <a-icon type="user" />
+              <span class="nav-text">Öffentliche Statistiken</span>
             </a-menu-item>
           </a-menu>
         </a-layout-header>
@@ -66,6 +70,11 @@
               <ViewAllDataComponent/>
             </div>
           </div>
+          <div v-else-if="menumode==7" >
+            <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
+              <PublicStatisticsComponent/>
+            </div>
+          </div>
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
           IMIS ©2020 Created by WeVsVirus
@@ -83,6 +92,7 @@ import TestingComponent from './components/TestingComponent.vue'; // TestStation
 import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
 import ViewAllDataComponent from './components/ViewAllDataComponent.vue';
 import AddInstitutionComponent from "./components/AddInstitutionComponent";
+import PublicStatisticsComponent from "./components/PublicStatisticsComponent";
 
 export default {
   name: 'App',
@@ -93,6 +103,7 @@ export default {
     AddInstitutionComponent,
     TestingComponent,
     ViewAllDataComponent,
+    PublicStatisticsComponent
   },
   methods: {
     onCollapse(collapsed, type) {
@@ -104,7 +115,7 @@ export default {
   },
   data: function() {
     return {
-      menumode: 0
+      menumode: 1
     };
   }
 }

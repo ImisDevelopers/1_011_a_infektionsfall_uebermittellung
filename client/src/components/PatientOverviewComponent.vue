@@ -44,13 +44,19 @@
                                 </a-card>
                             </a-col>
                             <a-col span="8">
-                                <a-card title="Kontakt" bordered="false" align="left">
+                                <a-card title="Kontakt & Versicherung" bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
                                             <td>Telefonnummer:</td><td>{{phoneNumber}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Email:</td><td>{{email}}</td>
+                                            <td>Email:</td><td><a href="">{{email}}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Versicherung:</td><td>{{insuranceCompany}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>V-Nr:</td><td>{{insuranceMembershipNumber}}</td>
                                         </tr>
                                     </table>
                                 </a-card>
@@ -117,6 +123,8 @@
     const zip = "12345";
     const houseNumber = "1";
     const city = "Musterstadt";
+    const insuranceCompany = "Musterversicherung";
+    const insuranceMembershipNumber = "45687912";
 
     export default {
         name: "TestingComponent",
@@ -137,7 +145,9 @@
                 zip,
                 houseNumber,
                 city,
-                uuid
+                uuid,
+                insuranceCompany,
+                insuranceMembershipNumber
             };
         },
         methods: {},

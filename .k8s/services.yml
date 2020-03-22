@@ -3,19 +3,23 @@ kind: Service
 metadata:
   name: imis-client
 spec:
+  type: LoadBalancer
   selector:
     app: imis-client
   ports:
   - protocol: TCP
     port: 8080
+    targetPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: imis-server
 spec:
+  type: LoadBalancer
   selector:
     app: imis-server
   ports:
   - protocol: TCP
     port: 8080
+    targetPort: 8080

@@ -1,0 +1,11 @@
+{
+  "institutionType": "LABORATORY",
+  "name": "Labor123",
+  "street": "Hauptstraße",
+  "houseNumber": "12",
+  "zip": "2453543",
+  "city": "Berlin",
+  "email": "email@example.de",
+  "phoneNumber": "123456",
+  "comment": "this is a comment"
+}

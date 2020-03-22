@@ -1,0 +1,15 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: imis-prototyp-de-certs
+spec:
+  domains:
+  - imis-prototyp.de
+---
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: api-imis-prototyp-de-certs
+spec:
+  domains:
+  - api.imis-prototyp.de

@@ -19,8 +19,10 @@
           </a-tag>
         </span>
       </a-table>
+      <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">
+        <a-button type="primary" >CSV exportieren</a-button>
+      </div>
     </a-card>
-
   </div>
 </template>
 

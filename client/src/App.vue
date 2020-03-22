@@ -21,11 +21,11 @@
             </a-menu-item>
             <a-menu-item key="4" v-on:click="menumode=4">
               <a-icon type="user" />
-              <span class="nav-text">Patientendaten</span>
+              <span class="nav-text">Patienten-Aufnahme</span>
             </a-menu-item>
             <a-menu-item key="5" v-on:click="menumode=5">
               <a-icon type="video-camera" />
-              <span class="nav-text">Test-Komponente</span>
+              <span class="nav-text">Patienten-Daten</span>
             </a-menu-item>
             <a-menu-item key="6" v-on:click="menumode=6">
               <a-icon type="user" />

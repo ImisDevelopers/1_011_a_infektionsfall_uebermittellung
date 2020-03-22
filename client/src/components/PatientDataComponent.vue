@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--  Anweisungen -->
-    <div>
+    <div style="text-align:left; width: 50%; margin:auto" >
       Sehr geehrte Mitbürgerinnen und Mitbürger,
       <br>
       <br>
@@ -13,10 +13,12 @@
       <br>
       Wir bitten Sie daher, die folgenden Fragen gewissenhaft auszufüllen. Nach dem Abschicken der Befragung erhalten Sie das Ergebnis in Form eines Hinweises über den weiteren Ablauf.
       <br>
+      <br>
+      <br>
     </div>
 
     <!-- Stammdatenerfassung -->
-    <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }" @submit="handleSubmit">
+    <a-form :form="form" layout="vertical" style="text-align:left; margin:auto; width:70%" @submit="handleSubmit">
       <a-form-item label="Geschlecht">
         <a-select v-decorator="[
         'gender',
@@ -63,18 +65,67 @@
       <a-input v-decorator="['insuranceMembershipNumber']" />
     </a-form-item>
 
-    <!-- Teil 2 -->
-    <!-- Leiden Sie an Husten? -->
+      <!--
+    <br>Bitte kreuzen Sie alle Symptome an, die aufgetreten sind:<br>
+    <a-form-item name="checkbox-group">
+      <a-checkbox-group>
+        <a-row>
+          <a-col>
+            <a-checkbox value="cough" v-decorator="['cough', { rules: [{ required: false }] }]">Husten</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="fatigue" v-decorator="['fatigue', { rules: [{ required: false }] }]">Abgeschlagenheit</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="shortnessOfBreath" v-decorator="['shortnessOfBreath', { rules: [{ required: false }] }]">Atemnot</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="soreThroat" v-decorator="['soreThroat', { rules: [{ required: false }] }]">Halsschmerzen oder Kratzen im Hals</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="cold" v-decorator="['cold', { rules: [{ required: false }] }]">Schnupfen</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="limbPain" v-decorator="['limbPain', { rules: [{ required: false }] }]">Gliederschmerzen</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="headaches" v-decorator="['headaches', { rules: [{ required: false }] }]">Kopfschmerzen</a-checkbox>
+          </a-col>
+          <a-col>
+            <a-checkbox value="diarrhea" v-decorator="['diarrhea', { rules: [{ required: false }] }]">Durchfall</a-checkbox>
+          </a-col>
+        </a-row>
+        </a-checkbox-group>
+    </a-form-item>
+      <br>
+      -->
+      <!-- Leiden Sie an Fieber? -->
+      <a-form-item label="Leiden Sie an Fieber?">
+        <a-select v-decorator="['fever', { rules: [{ required: false }] }]" >
+          <a-select-option value="false">Nein, ich habe kein Fieber</a-select-option>
+          <a-select-option value="less-38deg">Ja, bis 38°C</a-select-option>
+          <a-select-option value="more-38deg">Ja, über 38°C</a-select-option>
+        </a-select>
+      </a-form-item>
+      <br>
+      <!-- Wie schnell sind die Beschwerden aufgetreten? -->
+      <a-form-item label="Wie schnell sind die Beschwerden aufgetreten?">
+        <a-select v-decorator="['symptoms', { rules: [{ required: false }] }]" >
+          <a-select-option value="suddenly">Plötzlich, innerhalb von einem Tag</a-select-option>
+          <a-select-option value="slow">Langsam, innerhalb von mehreren Tagen</a-select-option>
+        </a-select>
+      </a-form-item>
+
+
+
     <a-form-item label="Leiden Sie an Husten?">
       <a-switch  v-decorator="['cough', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Leiden Sie an Abgeschlagenheit? -->
     <a-form-item label="Leiden Sie an Abgeschlagenheit?">
       <a-switch  v-decorator="['fatigue', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Leiden Sie an Fieber? -->
     <a-form-item label="Leiden Sie an Fieber?">
       <a-select v-decorator="['fever', { rules: [{ required: false }] }]" >
         <a-select-option value="false">Nein, ich habe kein Fieber</a-select-option>
@@ -83,37 +134,30 @@
       </a-select>
     </a-form-item>
 
-    <!-- Leiden Sie an akuter Luftnot? -->
     <a-form-item label="Leiden Sie an akuter Luftnot?">
       <a-switch v-decorator="['shortnessOfBreath', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Leiden Sie an Halsschmerzen oder Halskratzen? -->
     <a-form-item label="Leiden Sie an Halsschmerzen oder Halskratzen?">
       <a-switch v-decorator="['soreThroat', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Leiden Sie an Schnupfen?-->
     <a-form-item label="Leiden Sie an Schnupfen?">
       <a-switch v-decorator="['cold', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Leiden Sie an Gliederschmerzen? -->
     <a-form-item label="Leiden Sie an Gliederschmerzen?">
       <a-switch v-decorator="['limbPain', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Leiden Sie an Kopfschmerzen? -->
     <a-form-item label="Leiden Sie an Kopfschmerzen?">
       <a-switch v-decorator="['headaches', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Leiden Sie an Durchfall? -->
     <a-form-item label="Leiden Sie an Durchfall?">
       <a-switch v-decorator="['diarrhea', { rules: [{ required: false }] }]" />
     </a-form-item>
 
-    <!-- Wie schnell sind die Beschwerden aufgetreten? -->
     <a-form-item label="Wie schnell sind die Beschwerden aufgetreten?">
       <a-select v-decorator="['symptoms', { rules: [{ required: false }] }]" >
         <a-select-option value="suddenly">Plötzlich, innerhalb von einem Tag</a-select-option>
@@ -121,10 +165,14 @@
       </a-select>
     </a-form-item>
 
+      <!-- Teil 3 - Rahmen-->
+      <br>Weitere Informationen<br>
+
     <!-- Haben Sie sich wirklich in einem Risikogebiet für Coronavirus aufgehalten? -->
     <a-form-item label="Haben Sie sich wirklich in einem Risikogebiet für Coronavirus aufgehalten?">
       <a-select v-decorator="['riskAreas', { rules: [{ required: false }] }]" mode="multiple">
         <a-select-option value="Iran">Ja, im Iran</a-select-option>
+        <a-select-option value="Italy">Ja, in Italien</a-select-option>
         <a-select-option value="China">Ja, in China</a-select-option>
         <a-select-option value="Southcorea">Ja, in Südkorea</a-select-option>
         <a-select-option value="France">Ja, in Frankreich</a-select-option>

@@ -1,4 +1,4 @@
-from random import randint, randrange, choice
+from random import randint, randrange, choice, getrandbits
 
 last_names = ['Peters', 'Müller', 'Schulz', 'Schulze', 'Weber', 'Wagner', 'Richter', 'Klein', 'Bauer', 'Schröder',
               'Lange', 'Winkler', 'Winter']
@@ -8,7 +8,25 @@ female_fist_names = ['Jana', 'Lisa', 'Anna', 'Annika', 'Petra', 'Marie', 'Susann
 
 genders = ['männlich', 'weiblich']
 
-email_providers = ['sender', 'postmailer', ]
+email_providers = ['t-online', 'posteo', 'gmail', 'gmx', 'web']
+
+streets = [
+    "Aarhusweg",
+    "Im Kramersfeld"
+    "Aaröstraße",
+    "Haidthöhe"
+    "Aarweg",
+    "Schernerweg",
+    "Aastwiete",
+    "Abbachstraße",
+    "Niekampsweg",
+    "Abbendiekshof",
+    "Bückerheide",
+    "Nordstraße",
+    "Nordtstraße",
+    "Nordufer"]
+
+cities = ['Berlin', 'München', 'Hamburg', 'Köln', 'Düsseldorf', 'Kiel', 'Freiburg', 'Bochum', 'Frankfurt']
 
 
 def gen_date_of_birth():
@@ -18,7 +36,13 @@ def gen_date_of_birth():
     return f'{year}-{month}-{day}'
 
 
+def rand_num_str(len=10):
+    return ''.join([str(randint(0, 10)) for _ in range(len)])
 
+
+riscAreas = ['', 'GrandEst', 'Hubei', 'Tirol', 'Madrid', 'New York']
+
+preIllnesses = ['', 'cancer', 'circulatory disorder', 'diabetes']
 
 
 def main():
@@ -31,11 +55,11 @@ def main():
         'gender': gender,
         'dateOfBirth': gen_date_of_birth(),
         'email': f'{firstName[0]}@{choice(email_providers)}.de',
-        'phoneNumber': 'telefonNr',
-        'street': 'Street',
-        'houseNumber': 'HouseNr',
-        'zip': '654321',
-        'city': 'City',
+        'phoneNumber': rand_num_str(),
+        'street': choice(streets),
+        'houseNumber': randint(0, 100),
+        'zip': rand_num_str(7),
+        'city': choice(cities),
         'insuranceCompany': 'insurance',
         'insuranceMembershipNumber': 'insuranceMembershipNr',
         'fluImmunization': 'true',
@@ -45,16 +69,9 @@ def main():
             'cough'
         ],
         'coronaContacts': 'false',
-        'riskAreas': [
-            'Southcorea',
-            'China',
-            'France'
-        ],
-        'weakenedImmuneSystem': 'false',
-        'preIllnesses': [
-            'cancer',
-            'circulatory disorder'
-        ]
+        'riskAreas': [choice(riscAreas)],
+        'weakenedImmuneSystem': bool(getrandbits(1)),
+        'preIllnesses': [choice(preIllnesses)]
     }
 
 

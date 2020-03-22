@@ -79,6 +79,8 @@ public class TestDataLoader implements ApplicationRunner {
             // LAB RECEIVES SAMPLE AND PROCESSES IT
             final String labInternalTestId = "42";
             labTestService.createLabTest(person.getId(), laboratory.getId(), labInternalTestId);
+
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

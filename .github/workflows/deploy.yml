@@ -18,7 +18,6 @@ env:
   CLIENT_IMAGE: imis-client
   SERVER_IMAGE: imis-server
   REGISTRY_HOSTNAME: eu.gcr.io
-  DEPLOYMENT_NAME: imis-server
 
 jobs:
   setup-build-publish-deploy:
@@ -76,5 +75,6 @@ jobs:
         ./kustomize edit set image "server-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:${GITHUB_SHA}"
         ./kustomize edit add secret postgres --from-literal=password=${POSTGRES_PASSWORD}
         ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
+        kubectl rollout status deployment/imis-client
+        kubectl rollout status deployment/imis-server
         kubectl get services -o wide

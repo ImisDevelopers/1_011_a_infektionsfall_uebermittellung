@@ -61,7 +61,7 @@
         </a-layout-header>
         <a-layout-content style="margin: '0px auto'; box-sizing: border-box; padding: 2rem 4rem; width: 100%;">
 
-          <div :style="{ padding: '0px', background: '#fff', minHeight: '360px', width: '100%' }">
+          <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
             <router-view></router-view>
           </div>
       

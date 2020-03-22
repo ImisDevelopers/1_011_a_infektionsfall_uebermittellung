@@ -1,9 +1,15 @@
-![IMIS Cover](client/public/web-imis.png)
+[![IMIS Cover](client/public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
 
   * [Demo](https://imis-prototyp.de)
   * [Swagger API](https://api.imis-prototyp.de/)
   * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)
-
+ 
+Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.org/)-Hackathon. 
+ 
+  * [Organization - Google Docs](https://docs.google.com/document/d/1nEf7WGs6BJ9qcHcuUoVzV1i01kIPH0ENQihb6B7yiI4/edit?usp=sharing)
+  * [DevPost submission](https://devpost.com/software/imis-infektions-melde-und-informations-system)
+  * Mit freundlicher Unterstützung von [https://covidmeldeprozess.de/](https://covidmeldeprozess.de/)
+  
 # Development
 ![Build](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=dev) and ![Deployment](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Deploy%20to%20GKE/badge.svg?branch=dev)
 
@@ -29,9 +35,6 @@ Development happens in `dev` using feature branches and PR.
 3. NPM/YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
 
-
-## Additional Documentation
-[Google Docs](https://docs.google.com/document/d/1nEf7WGs6BJ9qcHcuUoVzV1i01kIPH0ENQihb6B7yiI4/edit?usp=sharing)
 ## How to run this server?
 Install Docker and run: `docker-compose up`
 

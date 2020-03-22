@@ -45,7 +45,7 @@ public class PatientService {
     public Patient addPatient(final CreatePatientDTO dto) {
         var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
         var id = Hashing.sha256()
-                .hashString(dto.getFirstName() + dto.getLastName() + dto.getPostalCode() + dateParsed, StandardCharsets.UTF_8)
+                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed, StandardCharsets.UTF_8)
                 .toString();
         var mappedPatient = new Patient()
                 .setId(id)
@@ -60,7 +60,7 @@ public class PatientService {
                 .setCity(dto.getCity())
                 .setHouseNumber(dto.getHouseNumber())
                 .setStreet(dto.getStreet())
-                .setZip(Integer.valueOf(dto.getPostalCode()))
+                .setZip(dto.getZip())
                 .setCity(dto.getCity())
                 .setInsuranceCompany(dto.getInsuranceCompany())
                 .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())

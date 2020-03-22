@@ -64,18 +64,26 @@
                         </a-row>
                         <a-row :gutter="8" style="margin-top: 8px;">
                             <a-col span="24">
-                                <a-card title="Status: Verdachtsfall" align="left">
-                                    <table style="border-collapse: separate; border-spacing:15px">
-                                        <tr>
-                                            <td>COVID-19-Test:</td><td>Ausstehend</td> <td>Testdatum:</td><td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Erstaufnahme:</td><td>2020-02-22</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a-button>Test erneut anordnen</a-button></td>
-                                        </tr>
-                                    </table>
+                                <a-card title="Status: Genesen" align="left">
+                                    <a-row :gutter="8" style="margin-top: 8px;">
+                                        <a-col span="6">
+                                            Erstaufnahme:
+                                        </a-col>
+                                        <a-col span="6">
+                                            10.3.2020
+                                        </a-col>
+                                        <a-col span="6">
+                                            Testdatum:
+                                        </a-col>
+                                        <a-col span="6">
+                                            22.3.2020
+                                        </a-col>
+                                    </a-row>
+                                    <a-row :gutter="8" style="margin-top: 8px;">
+                                        <a-col span="6" offset="18">
+                                            <a-button type="primary">Test erneut anordnen</a-button>
+                                        </a-col>
+                                    </a-row>
                                 </a-card>
                             </a-col>
                         </a-row>
@@ -84,25 +92,20 @@
                     <br>
                     <!--<a-table :columns="columns" :dataSource="data"> </a-table>-->
                 </a-tab-pane>
-                <a-tab-pane tab="Untersuchungen" key="2" forceRender>
-                    <a-timeline>
+                <a-tab-pane tab="Verlauf" key="2" forceRender>
+                    <a-timeline style="text-align: left; margin-left: 40px">
                         <!-- List all the events recorded corresponding to the patient over time -->
-                        <a-timeline-item>2020-03-01 Stammdaten Angelegt</a-timeline-item>
-                        <a-timeline-item>2020-03-01 Patient als Risikokontakt zur Erstanamnese vorstellig geworden</a-timeline-item>
-                        <a-timeline-item>2020-03-01 Coronavirus Test: ID-12yt2109t9023810293</a-timeline-item>
-                        <a-timeline-item
-                                color="green"
-                        >2020-03-02 Befund unauffällig (Test: ID-12yt2109t9023810293)</a-timeline-item>
-                        <a-timeline-item>2020-03-08 Patient aufgrund von akuten Beschwerden erneut vorstellig geworden</a-timeline-item>
-                        <a-timeline-item>2020-03-08 Coronavirus Test: ID-581a-bqwlkab9031499</a-timeline-item>
-                        <a-timeline-item color="red">2020-03-09 Befund positiv (Test: ID-581a-bqwlkab9031499)</a-timeline-item>
-                        <a-timeline-item>2020-03-09 Gesundheitamt Neustadt verhängt Quarantäne</a-timeline-item>
-                        <a-timeline-item>2020-03-17 Patient zur Coronakontrolluntersuchung vorstellig geworden</a-timeline-item>
-                        <a-timeline-item
-                                slot="dot"
-                                type="clock-circle-o"
-                                style="font-size: 16px;"
-                        >2020-03-17 Coronavirus Test: ID-581a-bqwlkab9031499</a-timeline-item>
+                        <a-timeline-item>10.03.2020 Patient aufgenommen, Test angeordnet</a-timeline-item>
+                        <a-timeline-item>11.03.2020 Coronavirus Test: ID-12yt2109t9023810293</a-timeline-item>
+                        <a-timeline-item color="red">11.03.2020 Befund positiv (ID-12yt2109t9023810293)</a-timeline-item>
+                        <a-timeline-item>11.03.2020 Gesundheitamt Neustadt verhängt Quarantäne</a-timeline-item>
+                        <a-timeline-item>15.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
+                        <a-timeline-item>15.03.2020 Coronavirus Test: ID-12yt2109t1523810293</a-timeline-item>
+                        <a-timeline-item color="green">16.03.2020 Befund unauffällig (ID-12yt2109t1523810293)</a-timeline-item>
+                        <a-timeline-item>21.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
+                        <a-timeline-item>21.03.2020 Coronavirus Test: ID-12yt2109t152ab10293</a-timeline-item>
+                        <a-timeline-item color="green">22.03.2020 Befund unauffällig (ID-12yt2109t152ab10293)</a-timeline-item>
+                        <a-timeline-item color="green">22.03.2020 Patient genesen</a-timeline-item>
                     </a-timeline>
                 </a-tab-pane>
             </a-tabs>
@@ -115,7 +118,7 @@
     const uuid = "#2685896023";
     const firstName = "Max";
     const lastName = "Mustermann";
-    const dateOfBirth = "1995-03-21";
+    const dateOfBirth = "21.3.1995";
     const gender = "männlich";
     const email = "max@mustermann.de";
     const phoneNumber = "+49 12354566";

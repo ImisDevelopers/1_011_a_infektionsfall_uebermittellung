@@ -450,6 +450,41 @@
           "preIllnesses":[
               "diabetes"
           ]
+        },
+        {
+          id: "0124124123",
+          status: "Genesen",
+          timestamp: "21.3.2020 09:30",
+          birthDate: "11.4.1999",
+          phone: "194 01241",
+          "lastName":"Weber",
+          "firstName":"Susanne",
+          "gender":"weiblich",
+          "dateOfBirth":"1957-11-17 12",
+          "email":"S@t-online.de",
+          "phoneNumber":"36410026036",
+          "street":"Schernerweg",
+          "houseNumber":46,
+          "zip":"00107364",
+          "city":"D\u00fcsseldorf",
+          "insuranceCompany":"AOK",
+          "insuranceMembershipNumber":"H527577983",
+          "fluImmunization":true,
+          "speedOfSymptomsOutbreak":"Langsam",
+          "symptoms":[
+              "Husten",
+              "Erk\u00e4ltung",
+              "Fieber",
+              "Schnupfen"
+          ],
+          "coronaContacts":false,
+          "riskAreas":[
+              ""
+          ],
+          "weakenedImmuneSystem":false,
+          "preIllnesses":[
+              "diabetes"
+          ]
         }
     ];
 

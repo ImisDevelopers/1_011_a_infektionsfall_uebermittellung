@@ -379,6 +379,40 @@
           "preIllnesses":[
               "diabetes"
           ]
+        },
+        {
+          id: "1241241201",
+          status: "Negativ getestet",
+          timestamp: "15.3.2020 14:50",
+          birthDate: "12.9.1984",
+          phone: "123 01241",
+          "lastName":"Schulz",
+          "firstName":"Daniela",
+          "gender":"weiblich",
+          "dateOfBirth":"1992-03-12 14",
+          "email":"D@web.de",
+          "phoneNumber":"8009156938",
+          "street":"B\u00fcckerheide",
+          "houseNumber":54,
+          "zip":"10642805",
+          "city":"Berlin",
+          "insuranceCompany":"Techniker Krankenkasse",
+          "insuranceMembershipNumber":"A725638005",
+          "fluImmunization":true,
+          "speedOfSymptomsOutbreak":"Langsam",
+          "symptoms":[
+              "Gelenkschmerzen",
+              "Erk\u00e4ltung",
+              "Fieber"
+          ],
+          "coronaContacts":true,
+          "riskAreas":[
+              "Madrid"
+          ],
+          "weakenedImmuneSystem":true,
+          "preIllnesses":[
+              "cancer"
+          ]
         }
     ];
 

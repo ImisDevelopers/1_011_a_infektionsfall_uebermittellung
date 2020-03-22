@@ -32,6 +32,11 @@
 <script>
 const columns = [
   {
+    title: 'ID',
+    dataIndex: 'id',
+    key: 'id'
+  },
+  {
     title: 'Nachname',
     dataIndex: 'lastName',
     key: 'lastName'
@@ -45,6 +50,16 @@ const columns = [
     title: 'Geschlecht',
     dataIndex: 'gender',
     key: 'gender'
+  },
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status'
+  },
+  {
+    title: 'Zeitpunkt',
+    dataIndex: 'timestamp',
+    key: 'timestamp'
   },
   {
     title: 'Geburtsdatum',
@@ -190,15 +205,16 @@ const columns = [
 
 const data = [
   {
+    id: "2837917348",
     gender: "weiblich",
-    birthDate: "2020-03-01",
-    lastName: "LastName",
-    firstName: "FirstName",
-    street: "Street",
-    houseNumber: "HouseNr",
-    city: "City",
-    email: "email@address.com",
-    phone: "telefonNr"
+    birthDate: "15.4.1982",
+    status: "Testergebnis ausstehend",
+    timestamp: "22.3.2020 11:20",
+    lastName: "Musterfrau",
+    firstName: "Marie",
+    city: "Musterstadt",
+    email: "marie.musterfrau@gmail.com",
+    phone: "0151 123456789"
   }
 ];
 

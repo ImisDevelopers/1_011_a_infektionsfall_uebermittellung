@@ -5,7 +5,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import de.coronavirus.imis.domain.PatientEvent;
 import org.springframework.stereotype.Service;
 
 import com.google.common.hash.Hashing;
@@ -27,7 +29,12 @@ public class PatientService {
     }
 
     public List<Patient> getAllPatients() {
-        return patientRepository.findAll();
+        var patients = patientRepository.findAll();
+        return patients.stream().map(patient -> {
+            var lastEvent = eventService.findFirstByPatientOrderByEventTimestampDesc(patient);
+            patient.setEvents(lastEvent);
+            return patient;
+        }).collect(Collectors.toList());
     }
 
     public Optional<Patient> findPatientById(String id) {

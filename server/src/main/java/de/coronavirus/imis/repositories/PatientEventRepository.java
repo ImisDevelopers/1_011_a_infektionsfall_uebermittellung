@@ -14,4 +14,5 @@ public interface PatientEventRepository extends JpaRepository<PatientEvent, Stri
 
     List<PatientEvent> findAllByPatient(Patient patient);
     List<PatientEvent> findPatientEventByLabTest(LabTest labTest);
+    List<PatientEvent> findFirstByPatientOrderByEventTimestampDesc(Patient patient);
 }

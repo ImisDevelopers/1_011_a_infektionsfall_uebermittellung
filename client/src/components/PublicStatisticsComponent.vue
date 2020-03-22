@@ -1,10 +1,12 @@
 <template>
     <div>
-        <button>Export CSV</button><!-- dummy -->
-        <div class="table-container">
+        <a-card class="table-container">
+            <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">
+                <a-button>CSV exportieren</a-button>
+            </div>
             <a-table :columns="columns" :dataSource="data" >
             </a-table>
-        </div>
+        </a-card>
 
     </div>
 </template>

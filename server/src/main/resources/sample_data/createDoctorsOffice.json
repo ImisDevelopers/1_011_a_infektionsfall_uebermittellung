@@ -1,0 +1,11 @@
+{
+  "institutionType": "DOCTORS_OFFICE",
+  "name": "Doktor123",
+  "street": "Bahnhofstraße",
+  "houseNumber": "13",
+  "zip": "54252",
+  "city": "Frankfurt",
+  "email": "doctor@example.de",
+  "phoneNumber": "57657654535",
+  "comment": "this is a comment from the doctor"
+}

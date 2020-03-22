@@ -54,10 +54,19 @@ public class TestDataLoader implements ApplicationRunner {
             var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);
             var person = patientService.addPatient(createPersonDTO);
 
-            var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createInstitution.json", CreateInstitutionDTO.class);
+            var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
             var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO);
 
-            CreateLabTestDTO createLabTestDTO = new CreateLabTestDTO();
+            var createDoctorsOfficeDTO = (CreateInstitutionDTO) makeDTO("createDoctorsOffice.json", CreateInstitutionDTO.class);
+            var doctorsOffice = institutionService.createDoctorInstitution(createDoctorsOfficeDTO);
+
+            var createTestSiteDTO = (CreateInstitutionDTO) makeDTO("createTestSite.json", CreateInstitutionDTO.class);
+            var testSite = institutionService.createTestSiteInstitution(createTestSiteDTO);
+
+            var createClinicDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
+            var clinic = institutionService.createClinicInstitution(createClinicDTO);
+
+
             labTestService.createLabTest(person.getId(), laboratory.getId(), "42");
         } catch (IOException e) {
             e.printStackTrace();

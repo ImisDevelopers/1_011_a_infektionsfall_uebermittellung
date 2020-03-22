@@ -26,7 +26,7 @@ public class LabTestController {
     @PostMapping
     public ResponseEntity<LabTest> createTestForPatient(@RequestBody CreateLabTestDTO createLabTestRequest) {
         return ResponseEntity.ok(service.createLabTest(createLabTestRequest.getPatientId(),
-                Long.valueOf(createLabTestRequest.getLaboratoryId()),
+                createLabTestRequest.getLaboratoryId(),
                 createLabTestRequest.getLabInternalId()));
     }
 

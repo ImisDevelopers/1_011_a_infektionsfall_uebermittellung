@@ -19,6 +19,7 @@
             key: 'zip',
             width: 10,
             sorter: (a, b) => a.zip - b.zip,
+            defaultSortOrder: "ascend",
         },
         {
             title: 'Aktive Fälle (Infizierte)',
@@ -63,6 +64,41 @@
             suspicion: "342",
             recovered: "1435",
             deaths: "12",
+        },
+        {
+            zip: "17458",
+            active: "54",
+            suspicion: "68",
+            recovered: "125",
+            deaths: "14",
+        },
+        {
+            zip: "48569",
+            active: "256",
+            suspicion: "123",
+            recovered: "48",
+            deaths: "5",
+        },
+        {
+            zip: "45369",
+            active: "12",
+            suspicion: "25",
+            recovered: "2",
+            deaths: "0",
+        },
+        {
+            zip: "43985",
+            active: "36",
+            suspicion: "21",
+            recovered: "3",
+            deaths: "7",
+        },
+        {
+            zip: "68524",
+            active: "3425",
+            suspicion: "1258",
+            recovered: "125",
+            deaths: "35",
         }
     ];
     export default {

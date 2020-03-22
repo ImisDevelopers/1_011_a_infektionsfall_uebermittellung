@@ -45,7 +45,7 @@ public class TestDataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         // Generate patients
         try {
-            CreatePatientDTO patientDTO = mapper.readValue(readFile("person.json"), CreatePatientDTO.class);
+            CreatePatientDTO patientDTO = mapper.readValue(readFile("sample_data/createPerson.json"), CreatePatientDTO.class);
             patientService.addPatient(patientDTO);
         } catch (IOException e) {
             e.printStackTrace();

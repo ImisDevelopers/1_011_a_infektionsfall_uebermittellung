@@ -30,7 +30,7 @@ public class LabTestService {
 
 
     @Transactional
-    public LabTest createLabTest(String patientId, Long labId, String labInternalId) {
+    public LabTest createLabTest(String patientId, String labId, String labInternalId) {
         final Patient patient = patientService.findPatientById(patientId).orElseThrow(PatientNotFoundException::new);
         final Laboratory laboratory = laboratoryRepository.findById(labId).orElseThrow(LaboratoryNotFoundException::new);
         final LabTest labTest = LabTest.builder().

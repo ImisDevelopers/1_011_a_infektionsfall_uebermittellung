@@ -6,5 +6,5 @@ import de.coronavirus.imis.domain.Laboratory;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LaboratoryRepository extends JpaRepository<Laboratory,Long> {
+public interface LaboratoryRepository extends JpaRepository<Laboratory, String> {
 }

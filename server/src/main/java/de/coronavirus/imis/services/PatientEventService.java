@@ -28,15 +28,15 @@ public class PatientEventService {
     private final DoctorRepository doctorRepository;
 
     public PatientEventService(PatientEventRepository patientEventRepository,
-                               LaboratoryRepository laboratoryRepository, DoctorRepository doctorRepository) {
+            LaboratoryRepository laboratoryRepository, DoctorRepository doctorRepository) {
         this.patientEventRepository = patientEventRepository;
         this.laboratoryRepository = laboratoryRepository;
         this.doctorRepository = doctorRepository;
     }
 
     public void createInitialPatientEvent(Patient patient,
-                                          Optional<Illness> illness,
-                                          EventType eventType) {
+            Optional<Illness> illness,
+            EventType eventType) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         PatientEvent event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
@@ -47,7 +47,7 @@ public class PatientEventService {
     }
 
     public void createLabTestEvent(Patient patient, LabTest labTest,
-                                   Optional<Illness> illness) {
+            Optional<Illness> illness) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         PatientEvent event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
@@ -60,9 +60,9 @@ public class PatientEventService {
 
     @Transactional
     public PatientEvent createScheduledEvent(Patient patient, String labId, String doctorId) {
-        final Laboratory laboratory = laboratoryRepository.findById(Long.valueOf(labId)).orElseGet(() -> {
+        final Laboratory laboratory = laboratoryRepository.findById(labId).orElseGet(() -> {
             Laboratory lab = new Laboratory();
-            lab.setId(Long.valueOf(labId));
+            lab.setId(labId);
             return laboratoryRepository.save(lab);
         });
         final Doctor doctor = doctorRepository.findById(doctorId).orElseGet(() ->
@@ -86,7 +86,7 @@ public class PatientEventService {
     }
 
 
-    public List<PatientEvent> findFirstByPatientOrderByEventTimestampDesc(Patient patient) {
-       return patientEventRepository.findFirstByPatientOrderByEventTimestampDesc(patient);
+    public PatientEvent findFirstByPatientOrderByEventTimestampDesc(Patient patient) {
+        return patientEventRepository.findFirstByPatientOrderByEventTimestampDesc(patient);
     }
 }

@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import de.coronavirus.imis.domain.PatientEvent;
 import org.springframework.stereotype.Service;
 
 import com.google.common.hash.Hashing;
+import lombok.extern.slf4j.Slf4j;
 
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.domain.EventType;
@@ -18,6 +18,7 @@ import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.repositories.PatientRepository;
 
 @Service
+@Slf4j
 public class PatientService {
 
     private PatientRepository patientRepository;
@@ -32,7 +33,7 @@ public class PatientService {
         var patients = patientRepository.findAll();
         return patients.stream().map(patient -> {
             var lastEvent = eventService.findFirstByPatientOrderByEventTimestampDesc(patient);
-            patient.setEvents(lastEvent);
+            patient.setEvents(List.of(lastEvent));
             return patient;
         }).collect(Collectors.toList());
     }
@@ -59,7 +60,7 @@ public class PatientService {
                 .setCity(dto.getCity())
                 .setHouseNumber(dto.getHouseNumber())
                 .setStreet(dto.getStreet())
-                .setZip(dto.getPostalCode())
+                .setZip(Integer.valueOf(dto.getPostalCode()))
                 .setCity(dto.getCity())
                 .setInsuranceCompany(dto.getInsuranceCompany())
                 .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())
@@ -71,7 +72,18 @@ public class PatientService {
                 .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
                 .setPreIllnesses(dto.getPreIllnesses());
         mappedPatient = patientRepository.save(mappedPatient);
+        log.info("inserting patient with id {}", mappedPatient.getId());
         eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), EventType.SUSPECTED);
+        log.info("inserted event for patient {}", mappedPatient);
         return mappedPatient;
+    }
+
+    private Integer parseIntegerSafe(String toParse) {
+        try {
+            return Integer.parseInt(toParse);
+        } catch (Exception e) {
+            log.error("error parsing integer");
+        }
+        return Integer.MIN_VALUE;
     }
 }

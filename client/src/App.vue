@@ -62,7 +62,7 @@
           </div>
           <div v-else-if="menumode==5" >
             <div :style="{ padding: '0px', background: '#fff', minHeight: '360px' }">
-              <TestingComponent/>
+              <PatientOverviewComponent/>
             </div>
           </div>
           <div v-else-if="menumode==6" >
@@ -88,7 +88,7 @@
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import PatientDataComponent from './components/PatientDataComponent.vue'; // Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new
-import TestingComponent from './components/TestingComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
+import PatientOverviewComponent from './components/PatientOverviewComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 import LabResultComponent from './components/LabResultComponent.vue'; // Labs erstellen Berichte zu Tests/ProbeIDs
 import ViewAllDataComponent from './components/ViewAllDataComponent.vue';
 import AddInstitutionComponent from "./components/AddInstitutionComponent";
@@ -101,7 +101,7 @@ export default {
     LabResultComponent,
     ExampleComponent,
     AddInstitutionComponent,
-    TestingComponent,
+    PatientOverviewComponent,
     ViewAllDataComponent,
     PublicStatisticsComponent
   },

@@ -6,7 +6,7 @@
                 <a-tab-pane tab="Stammdaten" key="1">
                     <!-- display user data here-->
                     <div>
-                        <row gutter="16">
+                        <a-row :gutter="8">
                             <a-col span="8">
                                 <a-card title="Allgemein" bordered="false" align="left" :extra="uuid">
                                     <table style="border-collapse: separate; border-spacing:15px">
@@ -61,8 +61,8 @@
                                     </table>
                                 </a-card>
                             </a-col>
-                        </row>
-                        <row gutter="16">
+                        </a-row>
+                        <a-row :gutter="8" style="margin-top: 8px;">
                             <a-col span="24">
                                 <a-card title="Status: Verdachtsfall" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
@@ -78,7 +78,7 @@
                                     </table>
                                 </a-card>
                             </a-col>
-                        </row>
+                        </a-row>
                     </div>
                     <br>
                     <br>

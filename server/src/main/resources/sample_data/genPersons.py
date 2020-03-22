@@ -1,4 +1,4 @@
-from random import randint, randrange, choice
+from random import randint, randrange, choice, sample
 
 last_names = ['Peters', 'Müller', 'Schulz', 'Schulze', 'Weber', 'Wagner', 'Richter', 'Klein', 'Bauer', 'Schröder',
               'Lange', 'Winkler', 'Winter']
@@ -10,6 +10,9 @@ genders = ['männlich', 'weiblich']
 
 email_providers = ['sender', 'postmailer', ]
 
+insurance_companies = ['AOK', 'Barmer', 'Techniker Krankenkasse', 'IKK Nord', 'KNAPPSCHAFT', 'DAK Gesundheit']
+
+symptoms = ['Husten', 'Fieber', 'Schnupfen', 'Erkältung', 'Atemschwierigkeiten', 'Kopfschmerzen', 'Halschmerzen', 'Gelenkschmerzen'] 
 
 def gen_date_of_birth():
     year = 2020 - randint(15, 95)
@@ -17,9 +20,11 @@ def gen_date_of_birth():
     day = randrange(28) + 1 if month == 2 else randrange(31) + 1
     return f'{year}-{month}-{day}'
 
-
-
-
+def insurance_number():
+    upper_alphabet = string.ascii_uppercase
+    random_letter = random.choice(upper_alphabet)
+    number = randint(100000000,999999999)
+    return f'{random_letter}{number}'
 
 def main():
     gender = choice(genders)
@@ -36,15 +41,12 @@ def main():
         'houseNumber': 'HouseNr',
         'zip': '654321',
         'city': 'City',
-        'insuranceCompany': 'insurance',
-        'insuranceMembershipNumber': 'insuranceMembershipNr',
-        'fluImmunization': 'true',
-        'speedOfSymptomsOutbreak': 'slow',
-        'symptoms': [
-            'cold',
-            'cough'
-        ],
-        'coronaContacts': 'false',
+        'insuranceCompany': choice(insurance_companies),
+        'insuranceMembershipNumber': insurance_number(),
+        'fluImmunization': choice(['Ja', 'Nein']),
+        'speedOfSymptomsOutbreak': choice(['Langsam', 'Mittel', 'Schnell']),
+        'symptoms': sample(symptoms, random.randint(0, len(symptoms))),
+        'coronaContacts': choice(['Ja', 'Nein']),
         'riskAreas': [
             'Southcorea',
             'China',

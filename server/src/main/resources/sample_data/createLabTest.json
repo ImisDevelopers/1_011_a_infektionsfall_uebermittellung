@@ -1,5 +1,5 @@
 {
-  "patientId":  "7c4cd94c982a266cb7295968a05ca7231e678648093ea43b4da5b660c85b64c4",
-  "laboratoryId": todo
-  "labInternalId": "42",
+  "labInternalId": "string",
+  "laboratoryId": "string",
+  "patientId": "string"
 }

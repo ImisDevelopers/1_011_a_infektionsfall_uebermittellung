@@ -13,6 +13,12 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile.prod
+    ports:
+    - "8080:8080"
 #  core:
 #    environment:
 #      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis

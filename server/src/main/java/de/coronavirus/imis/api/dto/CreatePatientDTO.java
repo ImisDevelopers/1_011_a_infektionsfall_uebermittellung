@@ -15,7 +15,7 @@ public class CreatePatientDTO {
     private String phoneNumber;
     private String street;
     private String houseNumber;
-    private String postalCode;
+    private Integer zip;
     private String city;
 
     private String insuranceCompany;

@@ -1,5 +1,5 @@
 {
-  "lastName": "LastName",
+  "lastName": "foobar",
   "firstName": "abcdef",
   "gender": "weiblich",
   "dateOfBirth": "2012-02-22 10",
@@ -7,7 +7,7 @@
   "phoneNumber": "telefonNr",
   "street": "Street",
   "houseNumber": "HouseNr",
-  "postalCode": "PLZ",
+  "zip": "654321",
   "city": "City",
   "insuranceCompany": "insurance",
   "insuranceMembershipNumber": "insuranceMembershipNr",

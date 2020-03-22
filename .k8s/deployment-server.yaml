@@ -18,7 +18,7 @@ spec:
       - name: imis-server
         image: server-image
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: production
@@ -38,15 +38,15 @@ spec:
         readinessProbe:
           httpGet:
             path: /actuator/health
-            port: 80
+            port: 8080
           initialDelaySeconds: 10
           timeoutSeconds: 2
           periodSeconds: 3
           failureThreshold: 1
         livenessProbe:
             httpGet:
-              path: /actuator//health
-              port: 80
+              path: /actuator/health
+              port: 8080
             initialDelaySeconds: 20
             timeoutSeconds: 2
             periodSeconds: 8

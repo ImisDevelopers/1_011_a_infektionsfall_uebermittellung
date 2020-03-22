@@ -16,4 +16,4 @@ spec:
       - path: /api
         backend:
           serviceName: imis-server
-          servicePort: 80
+          servicePort: 8080

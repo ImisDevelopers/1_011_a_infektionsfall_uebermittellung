@@ -1,3 +1,4 @@
+import json
 import string
 from random import randint, randrange, choice, sample, getrandbits
 
@@ -58,11 +59,10 @@ def insurance_number():
     return f'{random_letter}{number}'
 
 
-def main():
+def gen_person():
     gender = choice(genders)
     firstName = choice(male_first_names) if gender == 'männlich' else choice(female_fist_names)
-
-    person = {
+    return {
         'lastName': choice(last_names),
         'firstName': firstName,
         'gender': gender,
@@ -84,8 +84,13 @@ def main():
         'riskAreas': [choice(riscAreas)],
         'weakenedImmuneSystem': bool(getrandbits(1)),
         'preIllnesses': [choice(preIllnesses)]
-
     }
+
+
+def main():
+    persons = [gen_person() for _ in range(2)]
+    with open('persons.json', 'w') as f:
+        json.dump(persons, f)
 
     if __name__ == '__main__':
         main()

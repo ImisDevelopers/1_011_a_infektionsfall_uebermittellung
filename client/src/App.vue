@@ -44,7 +44,7 @@
 
 
               <a-menu-item key="5" v-on:click="menumode=5">
-                <router-link to="/patient-data">
+                <router-link to="/patient-overview">
                   <a-icon type="video-camera" />
                   <span class="nav-text">Patienten-Daten</span>
                 </router-link>

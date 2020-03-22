@@ -8,7 +8,7 @@
                     <div>
                         <row gutter="16">
                             <a-col span="8">
-                                <a-card title="Allgemein" bordered="false" align="left" :extra="uuid">
+                                <a-card title="Allgemein" bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
                                             <td>Vorname:</td><td>{{firstName}}</td>
@@ -106,7 +106,6 @@
 
 <script>
 
-    const uuid = "#2685896";
     const firstName = "Max";
     const lastName = "Mustermann";
     const dateOfBirth = "1995-03-21";
@@ -136,8 +135,7 @@
                 street,
                 zip,
                 houseNumber,
-                city,
-                uuid
+                city
             };
         },
         methods: {},

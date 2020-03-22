@@ -9,19 +9,20 @@
         <a-layout-header :style="{ background: '#fff', padding: 0 }">
           <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
             <a-menu-item key="1" v-on:click="menumode=1">
-              <router-link to="/patient-data">
+              <router-link to="/add-institution">
                 <a-icon type="user" />
-                <span class="nav-text">Patient Aufnehmen</span>
+                <span class="nav-text">Instutition Hinzufügen</span>
               </router-link>
             </a-menu-item>
 
    
               <a-menu-item key="2" v-on:click="menumode=2">
-                <router-link to="/probe-component">
+                <router-link to="/example-component">
                   <a-icon type="video-camera" />
-                  <span class="nav-text">Probe Zuordnen</span>
+                  <span class="nav-text">ExampleComponent</span>
                 </router-link>
               </a-menu-item>
+ 
 
             
               <a-menu-item key="3" v-on:click="menumode=3">
@@ -34,15 +35,24 @@
 
 
               <a-menu-item key="4" v-on:click="menumode=4">
-                <router-link to="/patient-overview">
+                <router-link to="/patient-data">
                   <a-icon type="user" />
+                  <span class="nav-text">Patienten-Aufnahme</span>
+                </router-link>
+              </a-menu-item>
+
+
+
+              <a-menu-item key="5" v-on:click="menumode=5">
+                <router-link to="/patient-overview">
+                  <a-icon type="video-camera" />
                   <span class="nav-text">Patienten-Daten</span>
                 </router-link>
               </a-menu-item>
 
           
 
-              <a-menu-item key="5" v-on:click="menumode=6">
+              <a-menu-item key="6" v-on:click="menumode=6">
                 <router-link to="/all-data">
                   <a-icon type="user" />
                   <span class="nav-text">Alle Daten einsehen</span>
@@ -51,7 +61,7 @@
 
             
 
-              <a-menu-item key="6" v-on:click="menumode=7">
+              <a-menu-item key="7" v-on:click="menumode=7">
                 <router-link to="/public-statistics">
                   <a-icon type="user" />
                   <span class="nav-text">Öffentliche Statistiken</span>

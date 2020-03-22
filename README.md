@@ -1,10 +1,16 @@
-# 1_011_a_infektionsfall_uebermittellung
+# IMIS
+
+![IMIS Cover](client/public/web-imis.png)
 
   * [Demo](https://imis-prototyp.de)
   * [Swagger API](https://api.imis-prototyp.de/)
+  * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)
+
+# Development
 
 ## General Guidelines
 _DO NOT COMMIT TO MASTER_ 
+Development happens in `dev` using feature branches and PR.
 
 ## Tech Stack
  - Backend: Spring Boot

@@ -13,33 +13,26 @@ export const routes = [
         path: '/lab-result',
         component: LabResultComponent
     },
-
-
     {       
         path: '/add-institution',
         component: AddInstitutionComponent,
     },
-
     {
         path: '/public-statistics',
         component: PublicStatisticsComponent
     },
-
     {        
         path:'/patient-data',
         component: PatientDataComponent
     },
-
     {
         path:'/patient-overview',
         component: PatientOverviewComponent
     },
-
     {
         path: '/all-data',
         component: ViewAllDataComponent
     },
-
     {
         path: '/example-component',
         component: ExampleComponent

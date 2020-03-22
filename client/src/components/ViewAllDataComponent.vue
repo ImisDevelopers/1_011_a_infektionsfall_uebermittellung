@@ -1,7 +1,8 @@
 <template>
   <div>
     <a-card class="table-container">
-      <a-table :columns="columns" :dataSource="data" :scroll="{ x: 4050 }">
+      <a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0"/>
+      <a-table :columns="columns" :dataSource="data">
         <span slot="riskAreas" slot-scope="riskAreas">
           <a-tag
             v-for="riskArea in riskAreas"
@@ -19,8 +20,10 @@
           </a-tag>
         </span>
       </a-table>
+      <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">
+        <a-button type="primary" >CSV exportieren</a-button>
+      </div>
     </a-card>
-
   </div>
 </template>
 
@@ -31,65 +34,55 @@ const columns = [
   {
     title: 'Nachname',
     dataIndex: 'lastName',
-    key: 'lastName',
-    fixed: 'left',
-    width: 150,
+    key: 'lastName'
   },
   {
     title: 'Vorname',
     dataIndex: 'firstName',
-    key: 'firstName',
-    // width: 150,
+    key: 'firstName'
   },
   {
     title: 'Geschlecht',
     dataIndex: 'gender',
-    key: 'gender',
-    width: 150,
+    key: 'gender'
   },
   {
     title: 'Geburtsdatum',
     dataIndex: 'birthDate',
-    key: 'birthDate',
-    width: 150,
+    key: 'birthDate'
   },
-  {
+/*  {
     title: 'Straße',
     dataIndex: 'street',
-    key: 'street',
-    width: 150,
+    key: 'street'
   },
   {
     title: 'Hausnummer',
     dataIndex: 'houseNumber',
-    key: 'houseNumber',
-    width: 150,
+    key: 'houseNumber'
   },
   {
     title: 'PLZ',
     dataIndex: 'zip',
     key: 'zip',
     width: 150,
-  },
+  },*/
   {
     title: 'Stadt',
     dataIndex: 'city',
-    key: 'city',
-    width: 150,
+    key: 'city'
   },
   {
     title: 'E-Mail',
     dataIndex: 'email',
-    key: 'email',
-    width: 150,
+    key: 'email'
   },
   {
     title: 'Telefon',
     dataIndex: 'phone',
-    key: 'phone',
-    width: 150,
+    key: 'phone'
   },
-  {
+/*  {
     title: 'Krankenkasse',
     dataIndex: 'insuranceCompany',
     key: 'insuranceCompany',
@@ -192,7 +185,7 @@ const columns = [
     dataIndex: 'fluImmunization',
     key: 'fluImmunization',
     width: 150,
-  },
+  },*/
 ];
 
 const data = [
@@ -203,34 +196,9 @@ const data = [
     firstName: "FirstName",
     street: "Street",
     houseNumber: "HouseNr",
-    zip: "PLZ",
     city: "City",
     email: "email@address.com",
-    phone: "telefonNr",
-    insuranceCompany: "insurance",
-    insuranceMembershipNumber: "insuranceMembershipNr",
-    cough: "true",
-    fatigue: "true",
-    fever: "less-38deg",
-    shortnessOfBreath: "true",
-    soreThroat: "false",
-    cold: "true",
-    limbPain: "true",
-    headaches: "true",
-    diarrhea: "false",
-    symptoms: "slow",
-    riskAreas: [
-      "Southcorea",
-      "China",
-      "France"
-    ],
-    coronaContacts: "false",
-    preIllnesses: [
-      "cancer",
-      "circulatory disorder"
-    ],
-    weakenedImmuneSystem: "false",
-    fluImmunization: "true"
+    phone: "telefonNr"
   }
 ];
 

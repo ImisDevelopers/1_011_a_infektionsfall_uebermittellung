@@ -5,7 +5,6 @@ on:
     branches:
     - master
     - dev
-    - feature/deployment
 
 # Environment variables available to all jobs and steps in this workflow
 env:

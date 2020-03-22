@@ -1,0 +1,31 @@
+{
+  "lastName": "LastName",
+  "firstName": "abcdef",
+  "gender": "weiblich",
+  "dateOfBirth": "2012-02-22 10",
+  "email": "email@address.com",
+  "phoneNumber": "telefonNr",
+  "street": "Street",
+  "houseNumber": "HouseNr",
+  "postalCode": "PLZ",
+  "city": "City",
+  "insuranceCompany": "insurance",
+  "insuranceMembershipNumber": "insuranceMembershipNr",
+  "fluImmunization": "true",
+  "speedOfSymptomsOutbreak": "slow",
+  "symptoms": [
+    "cold",
+    "cough"
+  ],
+  "coronaContacts": "false",
+  "riskAreas": [
+    "Southcorea",
+    "China",
+    "France"
+  ],
+  "weakenedImmuneSystem": "false",
+  "preIllnesses": [
+    "cancer",
+    "circulatory disorder"
+  ]
+}

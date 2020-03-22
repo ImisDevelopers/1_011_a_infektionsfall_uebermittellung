@@ -23,7 +23,7 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: production
           - name: SPRING_DATASOURCE_URL
-            value: jdbc:postgresql:localhost:5432
+            value: jdbc:postgresql://localhost:5432/postgres
           - name: SPRING_DATASOURCE_USERNAME
             value: postgres
           - name: SPRING_DATASOURCE_PASSWORD

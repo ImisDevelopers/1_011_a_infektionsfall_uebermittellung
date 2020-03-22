@@ -413,6 +413,43 @@
           "preIllnesses":[
               "cancer"
           ]
+        },
+        {
+          id: "1241204321",
+          status: "Positiv getestet",
+          timestamp: "12.3.2020 11:25",
+          birthDate: "12.8.1953",
+          phone: "021 15122",
+          "lastName":"Richter",
+          "firstName":"Annika",
+          "gender":"weiblich",
+          "dateOfBirth":"1970-11-14 03",
+          "email":"A@t-online.de",
+          "phoneNumber":"102849239510",
+          "street":"Haidth\u00f6heAarweg",
+          "houseNumber":68,
+          "zip":"51008206",
+          "city":"Frankfurt",
+          "insuranceCompany":"Barmer",
+          "insuranceMembershipNumber":"O321710526",
+          "fluImmunization":true,
+          "speedOfSymptomsOutbreak":"Langsam",
+          "symptoms":[
+              "Gelenkschmerzen",
+              "Kopfschmerzen",
+              "Erk\u00e4ltung",
+              "Fieber",
+              "Schnupfen",
+              "Husten"
+          ],
+          "coronaContacts":true,
+          "riskAreas":[
+              "Hubei"
+          ],
+          "weakenedImmuneSystem":true,
+          "preIllnesses":[
+              "diabetes"
+          ]
         }
     ];
 

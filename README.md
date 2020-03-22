@@ -8,6 +8,7 @@ Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.
  
   * [Organization - Google Docs](https://docs.google.com/document/d/1nEf7WGs6BJ9qcHcuUoVzV1i01kIPH0ENQihb6B7yiI4/edit?usp=sharing)
   * [DevPost submission](https://devpost.com/software/imis-infektions-melde-und-informations-system)
+  * Mit freundlicher Unterstützung von [https://covidmeldeprozess.de/](https://covidmeldeprozess.de/)
   
 # Development
 ![Build](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=dev) and ![Deployment](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Deploy%20to%20GKE/badge.svg?branch=dev)

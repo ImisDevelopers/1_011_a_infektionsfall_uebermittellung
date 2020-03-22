@@ -66,7 +66,11 @@ public class PatientEventService {
             return laboratoryRepository.save(lab);
         });
         final Doctor doctor = doctorRepository.findById(doctorId).orElseGet(() ->
-                doctorRepository.save(Doctor.builder().id(doctorId).build())
+                {
+                    var newDoctor = new Doctor();
+                    newDoctor.setId(doctorId);
+                    return doctorRepository.save(newDoctor);
+                }
         );
         var event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))

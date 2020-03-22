@@ -3,19 +3,9 @@
     <div v-if="!response">
       <!--  Anweisungen -->
       <div>
-        Sehr geehrte Mitbürgerinnen und Mitbürger,
-        <br>
-        <br>
-        Sie füllen diesen Fragebogen aus, weil Sie grippale Beschwerden haben. Von den Beschwerden her lässt sich eine Infektion mit dem Corona-Virus kaum von den weit verbreiteten Erregern der Grippe und Erkältung unterscheiden.
-        <br>
-        <br>
-        Daher möchten wir Sie nicht nur nach Ihren Beschwerden, sondern auch nach kürzlichen Kontakten zu bestätigten COVID-19-Fällen und kürzlichen Reisen fragen. Damit kann die Ärztin bzw. der Arzt besser einschätzen, ob ein Risiko für eine Coronavirus-Infektion besteht.
-        <br>
-        <br>
-        Wir bitten Sie daher, die folgenden Fragen gewissenhaft auszufüllen. Nach dem Abschicken der Befragung erhalten Sie das Ergebnis in Form eines Hinweises über den weiteren Ablauf.
-        <br>
-        <br>
-        <br>
+        <h3 :wrapperCol="{span: 22, offset: 2}">
+          Nehmen Sie hier neue Patienten auf. Bitte füllen Sie den Bogen vollständig aus. <br>
+        </h3>
       </div>
 
       <a-form :form="form" :layout="'horizontal'" :labelCol="{span: 6}" :wrapperCol="{span: 14, offset: 2}" @submit="handleSubmit">
@@ -31,6 +21,7 @@
               <a-radio-group v-decorator="['gender', { rules: [{ required: true }] }]" buttonStyle="solid">
                 <a-radio value='male'>Männl.</a-radio>
                 <a-radio value='female'>Weibl.</a-radio>
+                <a-radio value='divers'>Div.</a-radio>
               </a-radio-group>
             </a-form-item>
             <a-form-item label="Geburtsdatum">
@@ -137,14 +128,28 @@
         <!-- Datenschutzerklärung Bestätigung-->
         <br>
         <a-form-item>
-          <a-checkbox @change="onCheck">Ich erkläre mich mit der Übermittlung meiner Daten zur weiteren Verarbeitung einverstanden.</a-checkbox>
+          <a-checkbox @change="onCheck">Datenschutzerklärung gelesen und verstanden</a-checkbox>
         </a-form-item>
 
         <!-- Submit Button -->
-        <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-          <a-button type="primary" html-type="submit">
-            Submit
-          </a-button>
+        <a-form-item :wrapperCol="{ span: 10, offset: 2 }" >
+          <a-row>
+            <a-col>
+              <a-button type="primary" html-type="submit">
+                Nichts Anordnen - nur anlegen
+              </a-button>
+            </a-col>
+            <a-col>
+              <a-button type="primary" html-type="submit"> <!-- Platzhalter-->
+                Quarantäne Anordnen
+              </a-button>
+            </a-col>
+            <a-col>
+              <a-button type="primary" html-type="submit" style="background-color: green"> <!-- Platzhalter-->
+                 Test+Quarantäne Anordnen
+              </a-button>
+            </a-col>
+          </a-row>
         </a-form-item>
       </a-form>
     </div>
@@ -190,6 +195,7 @@
 
   const RISK_AREAS = [
     {key: "IRAN", description: "Iran" },
+    {key: "ITALY", description: "Italien" },
     {key: "CHINA", description: "China" },
     {key: "SOUTHCOREA", description: "Südkorea" },
     {key: "FRACE", description: "Frankreich" },
@@ -270,5 +276,6 @@
   .wrapper {
     text-align: left;
     padding: 24px;
+    width: 100%;
   }
 </style>

@@ -236,8 +236,8 @@
       },
       handleTestQuarantineSubmit(type) {
         const patID = "12389384"
-        // Show notification
 
+        // Check notification type (success, info, warning, error)
         if (type === "success") {
           var notification = {
             message: 'Test & Quarantäne wurde erfolgreich angeordnet.',
@@ -246,6 +246,7 @@
           }
         }
 
+        // Show notification
         this.$notification[type](notification);
       },
       handleSubmit(e) {

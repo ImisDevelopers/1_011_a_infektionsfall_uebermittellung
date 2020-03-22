@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="table-container">
-      <a-table :columns="columns" :dataSource="data" :scroll="{ x: 4050 }">
+    <a-card class="table-container">
+      <a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0"/>
+      <a-table :columns="columns" :dataSource="data">
         <span slot="riskAreas" slot-scope="riskAreas">
           <a-tag
             v-for="riskArea in riskAreas"
@@ -19,8 +20,10 @@
           </a-tag>
         </span>
       </a-table>
-    </div>
-
+      <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">
+        <a-button type="primary" >CSV exportieren</a-button>
+      </div>
+    </a-card>
   </div>
 </template>
 
@@ -29,67 +32,72 @@
 <script>
 const columns = [
   {
+    title: 'ID',
+    dataIndex: 'id',
+    key: 'id'
+  },
+  {
     title: 'Nachname',
     dataIndex: 'lastName',
-    key: 'lastName',
-    fixed: 'left',
-    width: 150,
+    key: 'lastName'
   },
   {
     title: 'Vorname',
     dataIndex: 'firstName',
-    key: 'firstName',
-    // width: 150,
+    key: 'firstName'
   },
   {
     title: 'Geschlecht',
     dataIndex: 'gender',
-    key: 'gender',
-    width: 150,
+    key: 'gender'
+  },
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status'
+  },
+  {
+    title: 'Zeitpunkt',
+    dataIndex: 'timestamp',
+    key: 'timestamp'
   },
   {
     title: 'Geburtsdatum',
     dataIndex: 'birthDate',
-    key: 'birthDate',
-    width: 150,
+    key: 'birthDate'
   },
-  {
+/*  {
     title: 'Straße',
     dataIndex: 'street',
-    key: 'street',
-    width: 150,
+    key: 'street'
   },
   {
     title: 'Hausnummer',
     dataIndex: 'houseNumber',
-    key: 'houseNumber',
-    width: 150,
+    key: 'houseNumber'
   },
   {
     title: 'PLZ',
     dataIndex: 'zip',
     key: 'zip',
     width: 150,
-  },
+  },*/
   {
     title: 'Stadt',
     dataIndex: 'city',
-    key: 'city',
-    width: 150,
+    key: 'city'
   },
   {
     title: 'E-Mail',
     dataIndex: 'email',
-    key: 'email',
-    width: 150,
+    key: 'email'
   },
   {
     title: 'Telefon',
     dataIndex: 'phone',
-    key: 'phone',
-    width: 150,
+    key: 'phone'
   },
-  {
+/*  {
     title: 'Krankenkasse',
     dataIndex: 'insuranceCompany',
     key: 'insuranceCompany',
@@ -192,45 +200,21 @@ const columns = [
     dataIndex: 'fluImmunization',
     key: 'fluImmunization',
     width: 150,
-  },
+  },*/
 ];
 
 const data = [
   {
+    id: "2837917348",
     gender: "weiblich",
-    birthDate: "2020-03-01",
-    lastName: "LastName",
-    firstName: "FirstName",
-    street: "Street",
-    houseNumber: "HouseNr",
-    zip: "PLZ",
-    city: "City",
-    email: "email@address.com",
-    phone: "telefonNr",
-    insuranceCompany: "insurance",
-    insuranceMembershipNumber: "insuranceMembershipNr",
-    cough: "true",
-    fatigue: "true",
-    fever: "less-38deg",
-    shortnessOfBreath: "true",
-    soreThroat: "false",
-    cold: "true",
-    limbPain: "true",
-    headaches: "true",
-    diarrhea: "false",
-    symptoms: "slow",
-    riskAreas: [
-      "Southcorea",
-      "China",
-      "France"
-    ],
-    coronaContacts: "false",
-    preIllnesses: [
-      "cancer",
-      "circulatory disorder"
-    ],
-    weakenedImmuneSystem: "false",
-    fluImmunization: "true"
+    birthDate: "15.4.1982",
+    status: "Testergebnis ausstehend",
+    timestamp: "22.3.2020 11:20",
+    lastName: "Musterfrau",
+    firstName: "Marie",
+    city: "Musterstadt",
+    email: "marie.musterfrau@gmail.com",
+    phone: "0151 123456789"
   }
 ];
 
@@ -292,8 +276,8 @@ span {
 
 .table-container {
   width: 100%;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
+  /* overflow-x: scroll;
+  scroll-behavior: smooth; */
 }
 
 </style>

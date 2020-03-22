@@ -129,25 +129,25 @@
 
         <!-- Datenschutzerklärung Bestätigung-->
         <br>
-        <a-form-item>
+        <a-form-item :wrapperCol="{ span: 24, offset: 0 }">
           <a-checkbox @change="onCheck">Datenschutzerklärung gelesen und verstanden</a-checkbox>
         </a-form-item>
 
         <!-- Submit Button -->
-        <a-form-item :wrapperCol="{ span: 10, offset: 2 }" >
-          <a-row>
+        <a-form-item :wrapperCol="{ span: 24, offset: 0 }" >
+          <a-row :gutter="16" type="flex" justify="end">
             <a-col>
-              <a-button type="primary" html-type="submit">
+              <a-button type="default" html-type="submit">
                 Nichts Anordnen - nur anlegen
               </a-button>
             </a-col>
             <a-col>
-              <a-button type="primary" html-type="submit"> <!-- Platzhalter-->
+              <a-button type="default" html-type="submit"> <!-- Platzhalter-->
                 Quarantäne Anordnen
               </a-button>
             </a-col>
             <a-col>
-              <a-button type="primary" html-type="submit" style="background-color: green"> <!-- Platzhalter-->
+              <a-button type="primary" html-type="submit"> <!-- Platzhalter-->
                  Test+Quarantäne Anordnen
               </a-button>
             </a-col>

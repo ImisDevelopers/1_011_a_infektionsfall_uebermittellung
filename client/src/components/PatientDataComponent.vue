@@ -9,56 +9,58 @@
       </div>
 
       <a-form :form="form" :layout="'horizontal'" :labelCol="{span: 6}" :wrapperCol="{span: 14, offset: 2}" @submit="handleSubmit">
-        <a-row>
-          <a-col :md="12">
-            <a-form-item label="Nachname">
-              <a-input v-decorator="['lastName', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Vorname">
-              <a-input v-decorator="['firstName', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label='Geschlecht'>
-              <a-radio-group v-decorator="['gender', { rules: [{ required: true }] }]" buttonStyle="solid">
-                <a-radio value='male'>Männl.</a-radio>
-                <a-radio value='female'>Weibl.</a-radio>
-                <a-radio value='divers'>Div.</a-radio>
-              </a-radio-group>
-            </a-form-item>
-            <a-form-item label="Geburtsdatum">
-              <a-date-picker :format="dateFormat" v-decorator="['dateOfBirth', { rules: [{ required: true }] }]"
-                             placeholder="Datum wählen"
-              />
-            </a-form-item>
-            <a-form-item label="Krankenkasse">
-              <a-input v-decorator="['insuranceCompany']" />
-            </a-form-item>
-            <a-form-item label="Versichertenr.">
-              <a-input v-decorator="['insuranceMembershipNumber']" />
-            </a-form-item>
-          </a-col>
-          <a-col :md="12">
-            <a-form-item label="E-mail">
-              <a-input v-decorator="['email', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Telefon">
-              <a-input v-decorator="['phoneNumber', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Straße">
-              <a-input v-decorator="['street', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Hausnr.">
-              <a-input v-decorator="['houseNumber', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="PLZ">
-              <a-input v-decorator="['postalCode', { rules: [{ required: true }] }]" />
-            </a-form-item>
-            <a-form-item label="Ort">
-              <a-input v-decorator="['city', { rules: [{ required: true }] }]" />
-            </a-form-item>
-          </a-col>
-        </a-row>
-        <a-collapse>
-          <a-collapse-panel header="Infektionskette" key="1">
+        <a-collapse defaultActiveKey="1">
+          <a-collapse-panel header="Allgemeines" key="1">
+            <a-row>
+              <a-col :md="12">
+                <a-form-item label="Nachname">
+                  <a-input v-decorator="['lastName', { rules: [{ required: true }] }]" />
+                </a-form-item>
+                <a-form-item label="Vorname">
+                  <a-input v-decorator="['firstName', { rules: [{ required: true }] }]" />
+                </a-form-item>
+                <a-form-item label='Geschlecht'>
+                  <a-radio-group v-decorator="['gender', { rules: [{ required: true }] }]" buttonStyle="solid">
+                    <a-radio value='male'>Männl.</a-radio>
+                    <a-radio value='female'>Weibl.</a-radio>
+                    <a-radio value='divers'>Div.</a-radio>
+                  </a-radio-group>
+                </a-form-item>
+                <a-form-item label="Geburtsdatum">
+                  <a-date-picker :format="dateFormat" v-decorator="['dateOfBirth', { rules: [{ required: true }] }]"
+                                placeholder="Datum wählen"
+                  />
+                </a-form-item>
+                <a-form-item label="Krankenkasse">
+                  <a-input v-decorator="['insuranceCompany']" />
+                </a-form-item>
+                <a-form-item label="Versichertenr.">
+                  <a-input v-decorator="['insuranceMembershipNumber']" />
+                </a-form-item>
+              </a-col>
+              <a-col :md="12">
+                <a-form-item label="E-mail">
+                  <a-input v-decorator="['email', { rules: [{ required: true }] }]" />
+                </a-form-item>
+                <a-form-item label="Telefon">
+                  <a-input v-decorator="['phoneNumber', { rules: [{ required: true }] }]" />
+                </a-form-item>
+                <a-form-item label="Straße">
+                  <a-input v-decorator="['street', { rules: [{ required: true }] }]" />
+                </a-form-item>
+                <a-form-item label="Hausnr.">
+                  <a-input v-decorator="['houseNumber', { rules: [{ required: true }] }]" />
+                </a-form-item>
+                <a-form-item label="PLZ">
+                  <a-input v-decorator="['postalCode', { rules: [{ required: true }] }]" />
+                </a-form-item>
+                <a-form-item label="Ort">
+                  <a-input v-decorator="['city', { rules: [{ required: true }] }]" />
+                </a-form-item>
+              </a-col>
+            </a-row>
+          </a-collapse-panel>
+          <a-collapse-panel header="Infektionskette" key="2">
             <a-form-item label="Haben Sie Kontakt mit einem bestätigten Corona-Patienten gehabt?"
                          :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
               <a-radio-group v-decorator="['coronaContacts', { rules: [{ required: false }] }]" >
@@ -78,7 +80,7 @@
             <!-- ggf. Aufenthaltszeitraum ergänzen -->
           </a-collapse-panel>
 
-          <a-collapse-panel header="Symptome" key="2">
+          <a-collapse-panel header="Symptome" key="3">
             <a-form-item label="Leiden sie unter einem oder mehreren der folgenden Symptome?"
                          :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
                 <span v-for="(symptom, idx) in SYMPTOMS" :key="idx">
@@ -105,7 +107,7 @@
             </a-form-item>
 
           </a-collapse-panel>
-          <a-collapse-panel header="Vorerkrankungen" key="3">
+          <a-collapse-panel header="Vorerkrankungen" key="4">
             <a-form-item label="Haben Sie aufgrund einer Erkrankung ein geschwächtes Immunsystem?"
                          :labelCol="{div: 24}" :wrapperCol="{div: 24}" >
               <a-radio-group v-decorator="['weakenedImmuneSystem', { rules: [{ required: false }] }]" >

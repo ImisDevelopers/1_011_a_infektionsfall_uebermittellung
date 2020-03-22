@@ -3,20 +3,25 @@ kind: Ingress
 metadata:
   name: imis-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.global-static-ip-name: "web-static-ip"
+    # networking.gke.io/managed-certificates: imis-prototyp-de-certs
+    # nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  tls:
+  - secretName: imis-prototyp-de-certs
+  - secretName: api-imis-prototyp-de-certs
   rules:
   - host: imis-prototyp.de
     http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: imis-client
           servicePort: 8080
   - host: api.imis-prototyp.de
     http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: imis-server
           servicePort: 8080

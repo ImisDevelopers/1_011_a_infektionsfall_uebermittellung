@@ -4,10 +4,11 @@ import LabResultComponent from '../components/LabResultComponent.vue'; // Labs e
 import ViewAllDataComponent from '../components/ViewAllDataComponent.vue';
 import AddInstitutionComponent from "../components/AddInstitutionComponent";
 import PublicStatisticsComponent from "../components/PublicStatisticsComponent";
-import PatientOverviewComponent from '../components/PatientOverviewComponent.vue'; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
+import PatientOverviewComponent from '../components/PatientOverviewComponent.vue';
+import ProbeComponent from "../components/ProbeComponent"; // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 
 export const routes = [
-    { path: '*', redirect: '/add-institution' },
+    { path: '*', redirect: '/add-patient' },
     {
         path: '/lab-result',
         component: LabResultComponent
@@ -42,5 +43,9 @@ export const routes = [
     {
         path: '/example-component',
         component: ExampleComponent
+    },
+    {
+        path: '/probe-component',
+        component: ProbeComponent
     },
 ]

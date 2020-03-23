@@ -41,6 +41,13 @@
         <span class="nav-text">Öffentliche Statistiken</span>
       </router-link>
     </a-menu-item>
+
+    <a-menu-item key="7" v-on:click="menumode = 7">
+      <router-link to="/add-institution">
+        <a-icon type="home" />
+        <span class="nav-text">Instutition hinzufügen</span>
+      </router-link>
+    </a-menu-item>
   </a-menu>
 </template>
 

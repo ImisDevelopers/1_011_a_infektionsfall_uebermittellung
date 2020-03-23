@@ -85,10 +85,7 @@
                 </a-form-item>
                 <a-form-item label="PLZ">
                   <a-input
-                    v-decorator="[
-                      'postalCode',
-                      { rules: [{ required: true }] }
-                    ]"
+                    v-decorator="['zip', { rules: [{ required: true }] }]"
                   />
                 </a-form-item>
                 <a-form-item label="Ort">
@@ -385,6 +382,28 @@ export default {
           return;
         }
 
+        // TODO: Remove this when we go to production
+        [
+          "lastName",
+          "firstName",
+          "email",
+          "phoneNumber",
+          "street",
+          "houseNumber",
+          "zip",
+          "city",
+          "insuranceCompany",
+          "insuranceMembershipNumber"
+        ].forEach(key => {
+          values[key] =
+            Math.random()
+              .toString(36)
+              .substring(2, 15) +
+            Math.random()
+              .toString(36)
+              .substring(2, 15);
+        });
+
         if (!err) {
           const request = {
             ...values,
@@ -393,6 +412,8 @@ export default {
             preIllnesses,
             riskAreas
           };
+
+          console.log(request);
 
           fetch("/patients", {
             method: "POST",

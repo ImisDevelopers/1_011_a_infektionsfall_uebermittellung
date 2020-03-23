@@ -15,9 +15,9 @@
                           placeholder="Bitte wählen..."
                 >
                     <a-select-option value="LABORATORY">Labor</a-select-option>
-                    <a-select-option value="DOCTORS-OFFICE">Arztpraxis</a-select-option>
+                    <a-select-option value="DOCTORS_OFFICE">Arztpraxis</a-select-option>
                     <a-select-option value="CLINIC">Klinik</a-select-option>
-                    <a-select-option value="TEST-SITE">Teststelle</a-select-option>
+                    <a-select-option value="TEST_SITE">Teststelle</a-select-option>
                 </a-select>
             </a-form-item>
             <a-form-item label="Name">
@@ -83,8 +83,8 @@
 
                     // TODO: Send request to BE if checked === true
                     if (this.checked === true) {
-                        Api.postInstitution(values).then(res => {
-                            this.$message.info('Created!' + res);
+                        Api.postInstitution(values).then(() => {
+                            this.$message.info('Created your Institution!');
                         }).catch(err => this.$message.info(err));
                     }
 

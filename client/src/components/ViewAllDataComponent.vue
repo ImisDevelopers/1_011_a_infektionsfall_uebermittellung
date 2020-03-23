@@ -34,7 +34,9 @@
         {
             title: 'ID',
             dataIndex: 'id',
-            key: 'id'
+            key: 'id',
+            sorter: (a, b) => a.id - b.id,
+            defaultSortOrder: "ascend",
         },
         {
             title: 'Nachname',
@@ -66,22 +68,6 @@
             dataIndex: 'birthDate',
             key: 'birthDate'
         },
-        /*  {
-            title: 'Straße',
-            dataIndex: 'street',
-            key: 'street'
-          },
-          {
-            title: 'Hausnummer',
-            dataIndex: 'houseNumber',
-            key: 'houseNumber'
-          },
-          {
-            title: 'PLZ',
-            dataIndex: 'zip',
-            key: 'zip',
-            width: 150,
-          },*/
         {
             title: 'Stadt',
             dataIndex: 'city',
@@ -97,110 +83,6 @@
             dataIndex: 'phone',
             key: 'phone'
         },
-        /*  {
-            title: 'Krankenkasse',
-            dataIndex: 'insuranceCompany',
-            key: 'insuranceCompany',
-            width: 150,
-          },
-          {
-            title: 'Versicherungsnummer',
-            dataIndex: 'insuranceMembershipNumber',
-            key: 'insuranceMembershipNumber',
-            width: 150,
-          },
-          {
-            title: 'Husten',
-            dataIndex: 'cough',
-            key: 'cough',
-            width: 150,
-          },
-          {
-            title: 'Abgeschlagenheit',
-            dataIndex: 'fatigue',
-            key: 'fatigue',
-            width: 150,
-          },
-          {
-            title: 'Fieber',
-            dataIndex: 'fever',
-            key: 'fever',
-            width: 150,
-          },
-          {
-            title: 'Luftnot',
-            dataIndex: 'shortnessOfBreath',
-            key: 'shortnessOfBreath',
-            width: 150,
-          },
-          {
-            title: 'Halskratzen',
-            dataIndex: 'soreThroat',
-            key: 'soreThroat',
-            width: 150,
-          },
-          {
-            title: 'Schnupfen',
-            dataIndex: 'cold',
-            key: 'cold',
-            width: 150,
-          },
-          {
-            title: 'Gliederschmerzen',
-            dataIndex: 'limbPain',
-            key: 'limbPain',
-            width: 150,
-          },
-          {
-            title: 'Kopfschmerzen',
-            dataIndex: 'headaches',
-            key: 'headaches',
-            width: 150,
-          },
-          {
-            title: 'Durchfall',
-            dataIndex: 'diarrhea',
-            key: 'diarrhea',
-            width: 150,
-          },
-          {
-            title: 'Beschwerden Auftrittsgeschw.',
-            dataIndex: 'symptoms',
-            key: 'symptoms',
-            width: 150,
-          },
-          {
-            title: 'Risikogebiet für Coronavirus',
-            dataIndex: 'riskAreas',
-            key: 'riskAreas',
-            scopedSlots: { customRender: 'riskAreas' },
-            width: 150,
-          },
-          {
-            title: 'Kontakt mit Corona-Patienten',
-            dataIndex: 'coronaContacts',
-            key: 'coronaContacts',
-            width: 150,
-          },
-          {
-            title: 'Vorerkrankungen',
-            dataIndex: 'preIllnesses',
-            key: 'preIllnesses',
-            scopedSlots: { customRender: 'preIllnesses' },
-            width: 150,
-          },
-          {
-            title: 'Geschwächtes Immunsystem',
-            dataIndex: 'weakenedImmuneSystem',
-            key: 'weakenedImmuneSystem',
-            width: 150,
-          },
-          {
-            title: 'Influenza-Impfung (2019/2020)',
-            dataIndex: 'fluImmunization',
-            key: 'fluImmunization',
-            width: 150,
-          },*/
     ];
 
     const data = [

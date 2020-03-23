@@ -2,7 +2,7 @@
   <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
     <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
       <p>{{ title }}</p>
-      <a-form-item label="Laborkennung">
+      <a-form-item label="Kennung">
         <a-input
           v-decorator="[
             'note',
@@ -10,7 +10,7 @@
               rules: [
                 {
                   required: true,
-                  message: 'Bitte geben Sie Ihre Laborkennung ein.'
+                  message: 'Bitte geben Sie Ihre Kennung ein.'
                 }
               ]
             }

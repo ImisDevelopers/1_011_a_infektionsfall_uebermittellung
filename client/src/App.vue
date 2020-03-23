@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div class="prototype-warning">
+      Dies ist ein Prototyp - Eingetragene Daten werden vor dem Absenden
+      randomisiert.
+    </div>
+
     <a-layout id="components-layout-demo-responsive">
       <div class="logo" />
       <Navigation />
@@ -41,5 +46,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.prototype-warning {
+  border: 2px solid red;
+  font-size: 20px;
+  background-color: #ffdddd;
 }
 </style>

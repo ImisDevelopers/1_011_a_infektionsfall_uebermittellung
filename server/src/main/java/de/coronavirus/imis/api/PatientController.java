@@ -42,7 +42,4 @@ public class PatientController {
     public List<Patient> getAllPatients(){
         return patientService.getAllPatients();
     }
-
-
-
 }

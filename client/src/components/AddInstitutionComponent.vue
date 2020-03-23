@@ -9,8 +9,8 @@
         <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }" @submit="handleSubmit">
             <a-form-item label="Typ">
                 <a-select v-decorator="[
-            'gender',
-            { rules: [{ required: true, message: 'Please select your gender!' }] },
+            'institutionType',
+            { rules: [{ required: true, message: 'Please select your institution type!' }] },
           ]"
                           placeholder="Bitte wählen..."
                 >
@@ -63,6 +63,8 @@
 <!-- Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new -->
 
 <script>
+    import Api from '../api/Api';
+
     export default {
         name: 'AddInstitutionComponent',
         data() {
@@ -78,7 +80,14 @@
             handleSubmit(e) {
                 e.preventDefault();
                 this.form.validateFields((err, values) => {
+
                     // TODO: Send request to BE if checked === true
+                    if (this.checked === true) {
+                        Api.postInstitution(values).then(res => {
+                            this.$message.info('Created!' + res);
+                        }).catch(err => this.$message.info(err));
+                    }
+
                     // JSON.stringify(values);
                     if (!err) {
                         console.log('Received values of form: ', values);

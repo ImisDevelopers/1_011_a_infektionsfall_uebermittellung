@@ -1,70 +1,19 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <ExampleComponent/> -->
     <a-layout id="components-layout-demo-responsive">
-        <div class="logo" />
-
+      <div class="logo" />
+      <Navigation />
       <a-layout>
-        <a-layout-header :style="{ background: '#fff', padding: 0, height: 'auto' }">
-          <a-menu theme="dark" mode="horizontal"  :defaultSelectedKeys="['1']">
-            <a-menu-item key="1" v-on:click="menumode=1">
-              <router-link to="/patient-data">
-                <a-icon type="user-add" />
-                <span class="nav-text">Patient Aufnehmen</span>
-              </router-link>
-            </a-menu-item>
-
-   
-              <a-menu-item key="2" v-on:click="menumode=2">
-                <router-link to="/probe-component">
-                  <a-icon type="deployment-unit" />
-                  <span class="nav-text">Probe Zuordnen</span>
-                </router-link>
-              </a-menu-item>
-
-            
-              <a-menu-item key="3" v-on:click="menumode=3">
-                <router-link to="/lab-result">
-                  <a-icon type="experiment" />
-                  <span class="nav-text">Laborresultate</span>
-                </router-link>
-              </a-menu-item>
-
-
-
-              <a-menu-item key="4" v-on:click="menumode=4">
-                <router-link to="/patient-overview">
-                  <a-icon type="user" />
-                  <span class="nav-text">Patienten-Daten</span>
-                </router-link>
-              </a-menu-item>
-
-          
-
-              <a-menu-item key="5" v-on:click="menumode=6">
-                <router-link to="/all-data">
-                  <a-icon type="team" />
-                  <span class="nav-text">Alle Patienten</span>
-                </router-link>
-              </a-menu-item>
-
-            
-
-              <a-menu-item key="6" v-on:click="menumode=7">
-                <router-link to="/public-statistics">
-                  <a-icon type="stock" />
-                  <span class="nav-text">Öffentliche Statistiken</span>
-                </router-link>
-              </a-menu-item>
-          </a-menu>
+        <a-layout-header
+          :style="{ background: '#fff', padding: 0, height: 'auto' }"
+        >
         </a-layout-header>
-        <a-layout-content style="margin: '0px auto'; box-sizing: border-box; padding: 2rem 4rem; width: 100%; min-height: calc(100vh - 46px - 69px);">
-
+        <a-layout-content
+          style="margin: '0px auto'; box-sizing: border-box; padding: 2rem 4rem; width: 100%; min-height: calc(100vh - 46px - 69px);"
+        >
           <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
             <router-view></router-view>
           </div>
-      
         </a-layout-content>
         <a-layout-footer style="textAlign: center">
           IMIS ©2020 Created by WeVsVirus
@@ -75,25 +24,14 @@
 </template>
 
 <script>
-
+import Navigation from "./components/Navigation";
 
 export default {
-  name: 'App',
-
-  methods: {
-    onCollapse(collapsed, type) {
-      console.log(collapsed, type);
-    },
-    onBreakpoint(broken) {
-      console.log(broken);
-    },
+  components: {
+    Navigation
   },
-  data: function() {
-    return {
-      menumode: 1
-    };
-  }
-}
+  name: "App"
+};
 </script>
 
 <style>
@@ -103,6 +41,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /* margin-top: 60px; */
 }
 </style>

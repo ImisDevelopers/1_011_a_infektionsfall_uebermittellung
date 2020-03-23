@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Login from "./laboratory/Login";
-import LinkSampleAndPatient from "./laboratory/LinkSampleAndPatient";
+import Login from "../laboratory/Login";
+import LinkSampleAndPatient from "../laboratory/LinkSampleAndPatient";
 
 export default {
   name: "LinkSampleAndPatientPage",

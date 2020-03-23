@@ -1,7 +1,7 @@
 <template>
   <a-menu theme="dark" mode="horizontal" :defaultSelectedKeys="['1']">
     <a-menu-item key="1" v-on:click="menumode = 1">
-      <router-link to="/patient-data">
+      <router-link to="/register-patient">
         <a-icon type="user-add" />
         <span class="nav-text">Patient Aufnehmen</span>
       </router-link>

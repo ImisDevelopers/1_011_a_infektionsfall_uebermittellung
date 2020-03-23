@@ -15,7 +15,7 @@
     </a-menu-item>
 
     <a-menu-item key="3" v-on:click="menumode = 3">
-      <router-link to="/lab-result">
+      <router-link to="/link-test-result">
         <a-icon type="experiment" />
         <span class="nav-text">Laborresultate</span>
       </router-link>

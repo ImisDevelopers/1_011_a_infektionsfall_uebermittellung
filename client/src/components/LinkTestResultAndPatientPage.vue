@@ -5,17 +5,17 @@
         <Login
           @on-login-success="onLoginSuccess"
           :title="
-            'Bitte melden Sie sich hier mit Kennung und Passwort an um eine Probe einem Patienten zuzuordnen.'
+            'Bitte melden Sie sich hier mit Laborkennung und Passwort an um einen Test als positiv / negativ zu kennzeichnen.'
           "
         />
       </a-tab-pane>
       <a-tab-pane
-        tab="2. Probe zuordnen"
+        tab="2. Testresultat zuordnen"
         key="2"
         forceRender
         :disabled="!isLoggedIn"
       >
-        <LinkSampleAndPatient />
+        <LinkTestResultAndPatient />
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -23,13 +23,13 @@
 
 <script>
 import Login from "./laboratory/Login";
-import LinkSampleAndPatient from "./laboratory/LinkSampleAndPatient";
+import LinkTestResultAndPatient from "./laboratory/LinkTestResultAndPatient";
 
 export default {
-  name: "LinkSampleAndPatientPage",
+  name: "LinkTestResultAndPatientPage",
   components: {
     Login,
-    LinkSampleAndPatient
+    LinkTestResultAndPatient
   },
   data() {
     return {
@@ -46,4 +46,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style></style>

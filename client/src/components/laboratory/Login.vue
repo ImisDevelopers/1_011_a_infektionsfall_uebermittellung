@@ -1,11 +1,7 @@
 <template>
   <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
     <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
-      <p>
-        Bitte melden Sie sich hier mit Kennung und Passwort an um eine Probe
-        einem Patienten zuzuordnen.
-      </p>
-      <!-- <a-divider orientation="left" style="margin-top: 2rem;">Laboranmeldung</a-divider> -->
+      <p>{{ title }}</p>
       <a-form-item label="Laborkennung">
         <a-input
           v-decorator="[
@@ -53,6 +49,9 @@
 
 export default {
   name: "Login",
+  props: {
+    title: String
+  },
   methods: {
     handleLogin(e) {
       e.preventDefault();

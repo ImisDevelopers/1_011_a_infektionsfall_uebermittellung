@@ -2,12 +2,7 @@ name: Build and Deploy to GKE
 
 on:
   release:
-    types:
-      - published
-      - unpublished
-      - created
-      - edited
-      - prereleased
+    types: [published]
 
 # Environment variables available to all jobs and steps in this workflow
 env:

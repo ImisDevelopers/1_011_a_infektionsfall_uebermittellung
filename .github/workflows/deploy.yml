@@ -1,10 +1,8 @@
 name: Build and Deploy to GKE
 
 on:
-  push:
-    branches:
-    - master
-    - dev
+  release:
+    types: [published]
 
 # Environment variables available to all jobs and steps in this workflow
 env:

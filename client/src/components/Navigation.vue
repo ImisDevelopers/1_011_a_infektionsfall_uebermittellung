@@ -54,11 +54,6 @@
 <script>
 export default {
   name: "Navigation",
-  data: function() {
-    return {
-      menumode: 1
-    };
-  },
   methods: {
     onCollapse(collapsed, type) {
       console.log(collapsed, type);

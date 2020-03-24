@@ -23,7 +23,7 @@
         />
       </a-form-item>
       <a-form-item label="Proben-ID">
-        <a-input
+        <BarcodeInput
           v-decorator="[
             'note',
             {
@@ -57,8 +57,11 @@
 <script>
 // TODO: Use form from ant and to get the values from the <form> (see PatientDataCompontent)
 
+import BarcodeInput from "../BarcodeInput";
+
 export default {
   name: "LinkSampleAndPatient",
+  components: {BarcodeInput},
   methods: {
     handleSubmit(e) {
       e.preventDefault();
@@ -84,7 +87,7 @@ export default {
       }
       this.$notification[type](notification);
     }
-  }
+  },
 };
 </script>
 

@@ -1,80 +1,118 @@
 <template>
-  <div>
-    <div>
-      Registrieren Sie hier Ihre eigene Instutition in IMIS.
+  <div class="wrapper">
+    <div v-if="!createdInstitution">
+      <h3>
+        Registrieren Sie hier eine neue Instutition in IMIS.
+      </h3>
+      <a-card>
+        <a-form
+          :form="form"
+          :layout="'horizontal'"
+          :labelCol="{ span: 6 }"
+          :wrapperCol="{ span: 14, offset: 2 }"
+          @submit="handleSubmit"
+        >
+          <a-row>
+            <a-col :md="12">
+              <a-form-item label="Typ">
+                <a-select
+                  v-decorator="[
+                    'institutionType',
+                    {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Please select your institution type!'
+                        }
+                      ]
+                    }
+                  ]"
+                  placeholder="Bitte wählen..."
+                >
+                  <a-select-option value="LABORATORY">Labor</a-select-option>
+                  <a-select-option value="DOCTORS_OFFICE"
+                    >Arztpraxis</a-select-option
+                  >
+                  <a-select-option value="CLINIC">Klinik</a-select-option>
+                  <a-select-option value="TEST_SITE"
+                    >Teststelle</a-select-option
+                  >
+                </a-select>
+              </a-form-item>
+              <a-form-item label="Name">
+                <a-input
+                  v-decorator="['name', { rules: [{ required: true }] }]"
+                />
+              </a-form-item>
+              <a-form-item label="Straße">
+                <a-input
+                  v-decorator="['street', { rules: [{ required: true }] }]"
+                />
+              </a-form-item>
+              <a-form-item label="Hausnr.">
+                <a-input
+                  v-decorator="['houseNumber', { rules: [{ required: true }] }]"
+                />
+              </a-form-item>
+            </a-col>
+            <a-col :md="12">
+              <a-form-item label="PLZ">
+                <a-input
+                  v-decorator="['zip', { rules: [{ required: true }] }]"
+                />
+              </a-form-item>
+              <a-form-item label="Ort">
+                <a-input
+                  v-decorator="['city', { rules: [{ required: true }] }]"
+                />
+              </a-form-item>
+              <a-form-item label="E-mail">
+                <a-input
+                  v-decorator="['email', { rules: [{ required: true }] }]"
+                />
+              </a-form-item>
+              <a-form-item label="Telefon">
+                <a-input
+                  v-decorator="['phoneNumber', { rules: [{ required: true }] }]"
+                />
+              </a-form-item>
+            </a-col>
+          </a-row>
+          <a-form-item
+            label="Anmerkungen"
+            :labelCol="{ span: 5, pull: 2 }"
+            :wrapperCol="{ span: 19, pull: 1 }"
+          >
+            <a-input v-decorator="['comment']" />
+          </a-form-item>
+          <!-- Datenschutzerklärung Bestätigung-->
+          <a-form-item>
+            <a-checkbox @change="onCheck">
+              <span :class="dataProcessingClass">
+                Ich erkläre mich mit der Übermittlung dieser Daten zur weiteren
+                Verarbeitung einverstanden.
+              </span>
+            </a-checkbox>
+          </a-form-item>
+
+          <!-- Submit Button -->
+          <a-form-item :wrapperCol="{ span: 24, offset: 0 }">
+            <a-row :gutter="16" type="flex" justify="end">
+              <a-col>
+                <a-button type="primary" html-type="submit">
+                  Registrieren
+                </a-button>
+              </a-col>
+            </a-row>
+          </a-form-item>
+        </a-form>
+      </a-card>
     </div>
-
-    <a-form
-      :form="form"
-      :label-col="{ span: 5 }"
-      :wrapper-col="{ span: 12 }"
-      @submit="handleSubmit"
-    >
-      <a-form-item label="Typ">
-        <a-select
-          v-decorator="[
-            'institutionType',
-            {
-              rules: [
-                {
-                  required: true,
-                  message: 'Please select your institution type!'
-                }
-              ]
-            }
-          ]"
-          placeholder="Bitte wählen..."
-        >
-          <a-select-option value="LABORATORY">Labor</a-select-option>
-          <a-select-option value="DOCTORS_OFFICE">Arztpraxis</a-select-option>
-          <a-select-option value="CLINIC">Klinik</a-select-option>
-          <a-select-option value="TEST_SITE">Teststelle</a-select-option>
-        </a-select>
-      </a-form-item>
-      <a-form-item label="Name">
-        <a-input v-decorator="['name', { rules: [{ required: true }] }]" />
-      </a-form-item>
-      <a-form-item label="Straße">
-        <a-input v-decorator="['street', { rules: [{ required: true }] }]" />
-      </a-form-item>
-      <a-form-item label="Hausnr.">
-        <a-input
-          v-decorator="['houseNumber', { rules: [{ required: true }] }]"
-        />
-      </a-form-item>
-      <a-form-item label="PLZ">
-        <a-input v-decorator="['zip', { rules: [{ required: true }] }]" />
-      </a-form-item>
-      <a-form-item label="Ort">
-        <a-input v-decorator="['city', { rules: [{ required: true }] }]" />
-      </a-form-item>
-      <a-form-item label="E-mail">
-        <a-input v-decorator="['email', { rules: [{ required: true }] }]" />
-      </a-form-item>
-      <a-form-item label="Telefon">
-        <a-input
-          v-decorator="['phoneNumber', { rules: [{ required: true }] }]"
-        />
-      </a-form-item>
-      <a-form-item label="Anmerkungen">
-        <a-input v-decorator="['comment']" />
-      </a-form-item>
-
-      <!-- Datenschutzerklärung Bestätigung-->
-      <a-form-item>
-        <a-checkbox @change="onCheck"
-          >Ich erkläre mich mit der Übermittlung dieser Daten zur weiteren
-          Verarbeitung einverstanden.</a-checkbox
-        >
-      </a-form-item>
-
-      <!-- Submit Button -->
-      <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-        <a-button type="primary" html-type="submit">
-          Registrieren
-        </a-button>
-      </a-form-item>
-    </a-form>
+    <div v-else>
+      <div>Die Institution wurde erfolgreich registriert.</div>
+      <br />
+      <div>Die Instituions ID lautet: {{ createdInstitution.id }}</div>
+    </div>
   </div>
 </template>
 
@@ -86,7 +124,9 @@ export default {
   name: "RegisterInstitutionPage",
   data() {
     return {
-      form: this.$form.createForm(this, { name: "coordinated" })
+      form: this.$form.createForm(this, { name: "coordinated" }),
+      createdInstitution: null,
+      dataProcessingClass: ""
     };
   },
   methods: {
@@ -97,6 +137,13 @@ export default {
       e.preventDefault();
 
       this.form.validateFields((err, values) => {
+        if (!this.checked) {
+          this.dataProcessingClass = "data-processing-not-selected";
+          return;
+        } else if (err) {
+          return;
+        }
+
         // TODO: Remove this when we go to production
         randomizeProperties(
           [
@@ -105,7 +152,7 @@ export default {
             "phoneNumber",
             "street",
             "houseNumber",
-            "zip",
+            { key: "zip", type: "number" },
             "city"
           ],
           values
@@ -113,10 +160,22 @@ export default {
 
         if (this.checked === true) {
           Api.postInstitution(values)
-            .then(() => {
-              this.$message.info("Created your Institution!");
+            .then(institution => {
+              this.createdInstitution = institution;
+
+              const notification = {
+                message: "Institution registriert.",
+                description: "Die Institution wurde erfolgreich registriert."
+              };
+              this.$notification["success"](notification);
             })
-            .catch(err => this.$message.info(err));
+            .catch(err => {
+              const notification = {
+                message: "Fehler beim Registrieren der Institution.",
+                description: err.message
+              };
+              this.$notification["error"](notification);
+            });
         }
       });
     }
@@ -124,4 +183,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrapper {
+  text-align: left;
+  padding: 24px;
+  width: 100%;
+}
+.data-processing-not-selected {
+  color: red;
+}
+</style>

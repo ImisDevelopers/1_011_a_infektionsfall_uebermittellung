@@ -1,12 +1,10 @@
 <template>
   <div class="wrapper">
-    <div v-if="!response">
-      <div>
-        <h3 :wrapperCol="{ span: 22, offset: 2 }">
-          Nehmen Sie hier neue Patienten auf. Bitte füllen Sie den Bogen
-          vollständig aus. <br />
-        </h3>
-      </div>
+    <div v-if="!createdPatient">
+      <h3>
+        Registrieren Sie hier neue Patienten in IMIS. Bitte füllen Sie den Bogen
+        vollständig aus.
+      </h3>
 
       <a-form
         :form="form"
@@ -216,33 +214,20 @@
         <!-- Datenschutzerklärung Bestätigung-->
         <br />
         <a-form-item :wrapperCol="{ span: 24, offset: 0 }">
-          <a-checkbox @change="onCheck"
-            >Datenschutzerklärung gelesen und verstanden</a-checkbox
-          >
+          <a-checkbox @change="onCheck">
+            <span :class="dataProcessingClass">
+              Ich erkläre mich mit der Übermittlung dieser Daten zur weiteren
+              Verarbeitung einverstanden.
+            </span>
+          </a-checkbox>
         </a-form-item>
 
         <!-- Submit Button -->
         <a-form-item :wrapperCol="{ span: 24, offset: 0 }">
           <a-row :gutter="16" type="flex" justify="end">
             <a-col>
-              <a-button type="default" html-type="submit">
-                Nichts Anordnen (nur Anlegen)
-              </a-button>
-            </a-col>
-            <a-col>
-              <a-button type="default" html-type="submit">
-                <!-- Platzhalter-->
-                Quarantäne Anordnen
-              </a-button>
-            </a-col>
-            <a-col>
-              <a-button
-                type="primary"
-                html-type="submit"
-                @click="handleTestQuarantineSubmit('success')"
-              >
-                <!-- Platzhalter-->
-                Test + Quarantäne Anordnen
+              <a-button type="primary" html-type="submit">
+                Patient registrieren + Test anordnen
               </a-button>
             </a-col>
           </a-row>
@@ -252,7 +237,7 @@
     <div v-else>
       <div>Der Patient wurde erfolgreich registriert.</div>
       <br />
-      <div>Die Patienten Id lautet: {{ response.id }}</div>
+      <div>Die Patienten ID lautet: {{ createdPatient.id }}</div>
     </div>
   </div>
 </template>
@@ -261,6 +246,7 @@
 
 <script>
 import { randomizeProperties } from "../../util/randomize";
+import Api from "../../api/Api";
 
 const SYMPTOMS = [
   { key: "SORE_THROAT", description: "Halsschmerzen" },
@@ -343,44 +329,22 @@ export default {
       selectedPreIllnesses,
       RISK_AREAS,
       selectedRiskAreas,
-      response: null
+      createdPatient: null,
+      dataProcessingClass: ""
     };
   },
   methods: {
     onCheck(e) {
       this.checked = e.target.checked;
     },
-    handleTestQuarantineSubmit(type) {
-      const patID = "12389384";
-
-      // Check notification type (success, info, warning, error)
-      if (type === "success") {
-        var notification = {
-          message: "Test & Quarantäne wurde erfolgreich angeordnet.",
-          description: `Patienten ID: ${patID}`
-        };
-      }
-
-      // Show notification
-      this.$notification[type](notification);
-    },
     handleSubmit(e) {
       e.preventDefault();
 
-      const symptoms = SYMPTOMS.filter(
-        symptom => this.selectedSymptoms[symptom.key]
-      ).map(symptom => symptom.key);
-      const preIllnesses = ILLNESSES.filter(
-        illness => this.selectedPreIllnesses[illness.key]
-      ).map(illness => illness.key);
-      const riskAreas = RISK_AREAS.filter(
-        riskArea => this.selectedRiskAreas[riskArea.key]
-      ).map(riskArea => riskArea.key);
-
       this.form.validateFields((err, values) => {
         if (!this.checked) {
-          // TODO: Show user that this has to be accepted
-          console.error("Must accept.");
+          this.dataProcessingClass = "data-processing-not-selected";
+          return;
+        } else if (err) {
           return;
         }
 
@@ -393,37 +357,49 @@ export default {
             "phoneNumber",
             "street",
             "houseNumber",
-            "zip",
             "city",
+            { key: "zip", type: "number" },
             "insuranceCompany",
             "insuranceMembershipNumber"
           ],
           values
         );
 
-        if (!err) {
-          const request = {
-            ...values,
-            dateOfBirth: values["dateOfBirth"].format("YYYY-MM-DD") + " 00",
-            symptoms,
-            preIllnesses,
-            riskAreas
-          };
+        const symptoms = SYMPTOMS.filter(
+          symptom => this.selectedSymptoms[symptom.key]
+        ).map(symptom => symptom.key);
+        const preIllnesses = ILLNESSES.filter(
+          illness => this.selectedPreIllnesses[illness.key]
+        ).map(illness => illness.key);
+        const riskAreas = RISK_AREAS.filter(
+          riskArea => this.selectedRiskAreas[riskArea.key]
+        ).map(riskArea => riskArea.key);
 
-          console.log(request);
+        const request = {
+          ...values,
+          dateOfBirth: values["dateOfBirth"].format("YYYY-MM-DD") + " 00",
+          symptoms,
+          preIllnesses,
+          riskAreas
+        };
 
-          fetch("/patients", {
-            method: "POST",
-            body: JSON.stringify(request),
-            headers: {
-              "Content-Type": "application/json"
-            }
+        Api.postPatient(request)
+          .then(response => {
+            this.createdPatient = response;
+
+            const notification = {
+              message: "Patient registriert.",
+              description: "Der Patient wurde erfolgreich registriert."
+            };
+            this.$notification["success"](notification);
           })
-            .then(response => response.json())
-            .then(data => {
-              this.response = data;
-            });
-        }
+          .catch(err => {
+            const notification = {
+              message: "Fehler beim Registrieren des Patienten.",
+              description: err.message
+            };
+            this.$notification["error"](notification);
+          });
       });
     }
   }
@@ -436,33 +412,7 @@ export default {
   padding: 24px;
   width: 100%;
 }
-
-.form-container {
-  -webkit-animation: fadeOutUp 4s ease;
-  animation: fadeOutUp 4s ease;
-}
-
-@-webkit-keyframes fadeOutUp {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-}
-
-@keyframes fadeOutUp {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
+.data-processing-not-selected {
+  color: red;
 }
 </style>

@@ -91,7 +91,7 @@ class Api {
   }
 
   putLabtest({ updatedTestStatus }) {
-    return this.postCall("/labtest", updatedTestStatus);
+    return this.postCall("/labtest", { updatedTestStatus });
   }
 
   getLabtestByPatient(patientId) {

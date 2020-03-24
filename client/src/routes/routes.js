@@ -1,9 +1,9 @@
-import RegisterPatientPage from "../components/page/RegisterPatientPage.vue";
-import LinkTestResultAndPatientPage from "../components/page/LinkTestResultAndPatientPage.vue";
+import LinkTestResultAndPatientPage from "../components/page/LinkTestResultAndPatientPage";
 import LinkSampleAndPatientPage from "../components/page/LinkSampleAndPatientPage";
+import RegisterInstitutionPage from "../components/page/RegisterInstitutionPage";
+import RegisterPatientPage from "../components/page/RegisterPatientPage";
 
 import ViewAllDataComponent from "../components/ViewAllDataComponent.vue";
-import AddInstitutionComponent from "../components/AddInstitutionComponent";
 import PublicStatisticsComponent from "../components/PublicStatisticsComponent";
 import PatientOverviewComponent from "../components/PatientOverviewComponent.vue";
 
@@ -14,8 +14,8 @@ export const routes = [
     component: LinkTestResultAndPatientPage
   },
   {
-    path: "/add-institution",
-    component: AddInstitutionComponent
+    path: "/register-institution",
+    component: RegisterInstitutionPage
   },
   {
     path: "/public-statistics",

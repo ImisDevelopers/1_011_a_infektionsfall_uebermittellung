@@ -1,11 +1,9 @@
 <template>
   <div>
-    <!--  Anweisungen -->
     <div>
-      Fügen Sie hier Ihre eigene Instutition hinzu.
+      Registrieren Sie hier Ihre eigene Instutition in IMIS.
     </div>
 
-    <!-- Stammdatenerfassung -->
     <a-form
       :form="form"
       :label-col="{ span: 5 }"
@@ -73,23 +71,21 @@
       <!-- Submit Button -->
       <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
         <a-button type="primary" html-type="submit">
-          Submit
+          Registrieren
         </a-button>
       </a-form-item>
     </a-form>
   </div>
 </template>
 
-<!-- Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new -->
-
 <script>
-import Api from "../api/Api";
+import Api from "../../api/Api";
+import { randomizeProperties } from "../../util/randomize";
 
 export default {
-  name: "AddInstitutionComponent",
+  name: "RegisterInstitutionPage",
   data() {
     return {
-      dateFormat: "DD/MM/YYYY",
       form: this.$form.createForm(this, { name: "coordinated" })
     };
   },
@@ -99,20 +95,28 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
+
       this.form.validateFields((err, values) => {
-        // TODO: Send request to BE if checked === true
+        // TODO: Remove this when we go to production
+        randomizeProperties(
+          [
+            "name",
+            "email",
+            "phoneNumber",
+            "street",
+            "houseNumber",
+            "zip",
+            "city"
+          ],
+          values
+        );
+
         if (this.checked === true) {
           Api.postInstitution(values)
-            .then((res) => {
-              console.log(res);
+            .then(() => {
               this.$message.info("Created your Institution!");
             })
             .catch(err => this.$message.info(err));
-        }
-
-        // JSON.stringify(values);
-        if (!err) {
-          console.log("Received values of form: ", values);
         }
       });
     }
@@ -120,5 +124,4 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped></style>

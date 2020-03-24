@@ -1,65 +1,71 @@
 <template>
-  <a-menu theme="dark" mode="horizontal" :defaultSelectedKeys="['1']">
-    <a-menu-item key="1">
-      <router-link to="/register-patient">
-        <a-icon type="user-add" />
-        <span class="nav-text">Patient Aufnehmen</span>
-      </router-link>
-    </a-menu-item>
-
-    <a-menu-item key="2">
-      <router-link to="/link-sample-and-patient">
-        <a-icon type="deployment-unit" />
-        <span class="nav-text">Probe Zuordnen</span>
-      </router-link>
-    </a-menu-item>
-
-    <a-menu-item key="3">
-      <router-link to="/link-test-result">
-        <a-icon type="experiment" />
-        <span class="nav-text">Laborresultate</span>
-      </router-link>
-    </a-menu-item>
-
-    <a-menu-item key="4">
-      <router-link to="/patient-overview">
-        <a-icon type="user" />
-        <span class="nav-text">Patienten-Daten</span>
-      </router-link>
-    </a-menu-item>
-
-    <a-menu-item key="5">
-      <router-link to="/all-data">
-        <a-icon type="team" />
-        <span class="nav-text">Alle Patienten</span>
-      </router-link>
-    </a-menu-item>
-
-    <a-menu-item key="6">
-      <router-link to="/public-statistics">
-        <a-icon type="stock" />
-        <span class="nav-text">Öffentliche Statistiken</span>
-      </router-link>
-    </a-menu-item>
-
-    <a-menu-item key="7">
-      <router-link to="/add-institution">
-        <a-icon type="home" />
-        <span class="nav-text">Instutition hinzufügen</span>
+  <a-menu theme="dark" mode="horizontal" :selectedKeys="[key]">
+    <a-menu-item v-for="item in items" :key="item.key" @click="onClick">
+      <router-link :to="item.url">
+        <a-icon :type="item.type" />
+        <span class="nav-text">{{ item.text }}</span>
       </router-link>
     </a-menu-item>
   </a-menu>
 </template>
 
 <script>
+const items = [
+  {
+    key: "1",
+    url: "/register-patient",
+    type: "user-add",
+    text: "Patient Registrieren"
+  },
+  {
+    key: "2",
+    url: "/link-sample-and-patient",
+    type: "deployment-unit",
+    text: "Probe Zuordnen"
+  },
+  {
+    key: "3",
+    url: "/link-test-result",
+    type: "experiment",
+    text: "Laborresultate"
+  },
+  { key: "4", url: "/patient-overview", type: "user", text: "Patienten-Daten" },
+  { key: "5", url: "/all-data", type: "team", text: "Alle Patienten" },
+  {
+    key: "6",
+    url: "/public-statistics",
+    type: "stock",
+    text: "Öffentliche Statistiken"
+  },
+  {
+    key: "7",
+    url: "/register-institution",
+    type: "home",
+    text: "Instutition Registrieren"
+  }
+];
+
 export default {
   name: "Navigation",
+  data() {
+    return {
+      key: "1",
+      items
+    };
+  },
   methods: {
-    onCollapse(collapsed, type) {
-      console.log(collapsed, type);
-    },
-    onBreakpoint(broken) {
-      console.log(broken);
+    onClick(e) {
+      this.key = e.key;
+    }
+  },
+  created() {
+    const itemIndex = this.items.findIndex(
+      item => item.url === window.location.pathname
+    );
+    if (itemIndex !== -1) {
+      this.key = this.items[itemIndex].key;
+    } else {
+      this.key = "1";
     }
   }
 };

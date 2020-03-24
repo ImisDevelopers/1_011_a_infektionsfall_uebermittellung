@@ -260,6 +260,8 @@
 <!-- Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new -->
 
 <script>
+import { randomizeProperties } from "../../util/randomize";
+
 const SYMPTOMS = [
   { key: "SORE_THROAT", description: "Halsschmerzen" },
   { key: "HEADACHES", description: "Kopfschmerzen" },
@@ -383,26 +385,21 @@ export default {
         }
 
         // TODO: Remove this when we go to production
-        [
-          "lastName",
-          "firstName",
-          "email",
-          "phoneNumber",
-          "street",
-          "houseNumber",
-          "zip",
-          "city",
-          "insuranceCompany",
-          "insuranceMembershipNumber"
-        ].forEach(key => {
-          values[key] =
-            Math.random()
-              .toString(36)
-              .substring(2, 15) +
-            Math.random()
-              .toString(36)
-              .substring(2, 15);
-        });
+        randomizeProperties(
+          [
+            "lastName",
+            "firstName",
+            "email",
+            "phoneNumber",
+            "street",
+            "houseNumber",
+            "zip",
+            "city",
+            "insuranceCompany",
+            "insuranceMembershipNumber"
+          ],
+          values
+        );
 
         if (!err) {
           const request = {

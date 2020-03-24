@@ -74,7 +74,7 @@ class Api {
 
   postTestReport(id, file) {
 
-    data = new FormData()
+    const data = new FormData()
     data.append('file', file)
 
 

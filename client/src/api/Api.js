@@ -17,7 +17,7 @@ class Api {
         "Content-Type": "application/json"
       }
     }).then(response => {
-      return response.text();
+      return response.json();
     });
   }
 

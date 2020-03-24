@@ -9,6 +9,7 @@ env:
   GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
   CLOUD_SQL_SERVICE_ACCOUNT: ${{ secrets.CLOUD_SQL_SERVICE_ACCOUNT }}
+  CLOUD_STORE_SERVICE_ACCOUNT: ${{ secrets.CLOUD_STORE_SERVICE_ACCOUNT }}
   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: europe-west3-b
@@ -67,8 +68,10 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
-        echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" | base64 -d > credentials.json
-        kubectl get secret cloudsql || kubectl create secret generic cloudsql --from-file=credentials.json=credentials.json
+        echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" | base64 -d > sql-credentials.json
+        kubectl get secret cloudsql || kubectl create secret generic cloudsql --from-file=credentials.json=sql-credentials.json
+        echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" | base64 -d > store-credentials.json
+        kubectl get secret cloudstore || kubectl create secret generic cloudstore --from-file=credentials.json=store-credentials.json
         ./kustomize edit set image "client-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$CLIENT_IMAGE:${GITHUB_SHA}"
         ./kustomize edit set image "server-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:${GITHUB_SHA}"
         ./kustomize edit add secret postgres --from-literal=password=${POSTGRES_PASSWORD}

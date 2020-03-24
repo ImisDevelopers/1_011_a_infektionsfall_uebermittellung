@@ -72,14 +72,26 @@ class Api {
     return this.getCall(`/test_report/${testId}`);
   }
 
-  // TODO: postTestReport, putTestReport | how to handle multipart/form-data in fetch ?!
+  postTestReport(id, file) {
+
+    data = new FormData()
+    data.append('file', file)
+
+
+    return fetch(`${this.BASE_URL}/test_reports/${encodeURI(id)}`, {
+          method: "POST",          
+          body: data
+        }).then(response => {
+          return response.json();
+        });
+  }
 
   getTestReport(testId) {
-    return this.getCall(`/test_report/${testId}`);
+    return this.getCall(`/test_reports/${testId}`);
   }
 
   deleteTestReport(testId) {
-    return this.deleteCall(`/test_report/${testId}`);
+    return this.deleteCall(`/test_reports/${testId}`);
   }
 
   postInstitution(institution) {

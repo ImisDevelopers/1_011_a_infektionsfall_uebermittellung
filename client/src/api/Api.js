@@ -4,14 +4,14 @@ class Api {
       location.host.includes("localhost") ||
       location.host.includes("127.0.0.1")
     ) {
-      this.BASE_URL = "http://localhost:8080";
+      this.BASE_URL = "https://api.imis-prototyp.de";
     } else {
       this.BASE_URL = "https://api.imis-prototyp.de";
     }
   }
 
   getCall(url) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
+    return fetch(`${this.BASE_URL}${encodeURI(url)}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -22,7 +22,7 @@ class Api {
   }
 
   postCall(url, body) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
+    return fetch(`${this.BASE_URL}${encodeURI(url)}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -34,7 +34,7 @@ class Api {
   }
 
   putCall(url, body) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
+    return fetch(`${this.BASE_URL}${encodeURI(url)}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -46,7 +46,7 @@ class Api {
   }
 
   deleteCall(url) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
+    return fetch(`${this.BASE_URL}${encodeURI(url)}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"

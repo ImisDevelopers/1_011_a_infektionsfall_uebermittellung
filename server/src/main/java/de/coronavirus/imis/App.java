@@ -2,7 +2,6 @@ package de.coronavirus.imis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -21,7 +20,9 @@ public class App {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/*").allowedOrigins("https://imis-prototyp.de/");
+                registry.addMapping("/**")
+                        .allowedOrigins("https://imis-prototyp.de", "http://localhost:8080")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
     }

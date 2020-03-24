@@ -4,9 +4,9 @@ class Api {
       location.host.includes("localhost") ||
       location.host.includes("127.0.0.1")
     ) {
-      this.BASE_URL = "";
+      this.BASE_URL = "http://localhost:8080";
     } else {
-      this.BASE_URL = "https://api.imis-prototyp.de"
+      this.BASE_URL = "https://api.imis-prototyp.de";
     }
   }
 
@@ -17,7 +17,7 @@ class Api {
         "Content-Type": "application/json"
       }
     }).then(response => {
-      return response.json();
+      return response.text();
     });
   }
 

@@ -1,11 +1,11 @@
 <template>
   <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
-    <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
+    <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" :form="form">
       <p>{{ title }}</p>
       <a-form-item label="Kennung">
         <a-input
           v-decorator="[
-            'note',
+            'id',
             {
               rules: [
                 {
@@ -21,7 +21,7 @@
       <a-form-item label="Passwort">
         <a-input
           v-decorator="[
-            'note',
+            'password',
             {
               rules: [
                 {
@@ -32,6 +32,7 @@
             }
           ]"
           type="password"
+          placeholder="**********"
         />
       </a-form-item>
       <a-divider />
@@ -41,6 +42,10 @@
         </a-button>
       </a-form-item>
     </a-form>
+    <p class="test-acess">
+      Testzugang: Kennung <i><b>1234</b></i
+      >, Password <i><b>asdf</b></i>
+    </p>
   </a-card>
 </template>
 
@@ -52,17 +57,36 @@ export default {
   props: {
     title: String
   },
+  data() {
+    return {
+      form: this.$form.createForm(this)
+    };
+  },
   methods: {
     handleLogin(e) {
       e.preventDefault();
 
-      // TODO: Send login request
-      console.log("Handle login.");
+      this.form.validateFields((err, values) => {
+        if (err) {
+          return;
+        }
 
-      this.$emit("on-login-success");
+        if (values.id === "1234" && values.password === "asdf") {
+          this.$emit("on-login-success");
+        } else {
+          this.$notification["error"]({
+            message: "Login Fehler",
+            description: "Kennung und / oder Password nicht korrekt."
+          });
+        }
+      });
     }
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+.test-acess {
+  color: red;
+}
+</style>

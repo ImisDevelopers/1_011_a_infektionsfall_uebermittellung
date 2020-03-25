@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="currentPath.includes('/')">
+    <div v-if="this.$route.path === '/'">
       <LandingPage/>
     </div>
     <div v-else>

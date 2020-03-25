@@ -29,7 +29,6 @@ public class LabTestService {
 
     private final PatientService patientService;
     private final PatientEventService eventService;
-    private final TestReportService testReportService;
     private final LaboratoryRepository laboratoryRepository;
     private final LabTestRepository labTestRepository;
     private final PatientEventRepository eventRepository;
@@ -68,6 +67,7 @@ public class LabTestService {
         var labTest = labTestRepository.findById(testId)
                 .orElseThrow(LabTestNotFoundException::new);
         labTest.setTestStatus(statusToSet);
+        labTest.setReport(file);
 
         final List<PatientEvent> event = eventService.getForLabTest(labTest);
         var eventType = testStatusToEvent(statusToSet);
@@ -90,8 +90,6 @@ public class LabTestService {
                 .ifPresent(changeEvent::setResponsibleDoctor);
 
         eventRepository.save(changeEvent);
-
-        Optional.ofNullable(file).ifPresent((bytes) -> testReportService.addTestReport(labTest.getId(), bytes));
 
         return labTest;
     }

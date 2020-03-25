@@ -73,31 +73,7 @@ class Api {
     });
   }
 
-  getTestReports(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
-  }
-
-  postTestReport(id, file) {
-    const data = new FormData();
-    data.append("file", file);
-
-    return fetch(`${this.BASE_URL}/test_reports/${encodeURI(id)}`, {
-      method: "POST",
-      body: data
-    }).then(response => {
-      return response.json();
-    });
-  }
-
-  getTestReport(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
-  }
-
-  deleteTestReport(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.DELETE);
-  }
-
-  getLabtestByPatient(patientId) {
+  getLabTestByPatient(patientId) {
     return this.executeRequest(`/labtest/patient/${patientId}`, METHOD.GET);
   }
 

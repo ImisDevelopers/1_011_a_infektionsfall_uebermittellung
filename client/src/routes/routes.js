@@ -9,9 +9,9 @@ import PatientOverviewComponent from "../components/PatientOverviewComponent.vue
 import LandingPage from "../components/LandingPage";
 
 export const routes = [
-  { path: "*", redirect: "/home" },
+  { path: "*", redirect: "/" },
   {
-    path: "/home",
+    path: "/",
     component: LandingPage
   },
   {

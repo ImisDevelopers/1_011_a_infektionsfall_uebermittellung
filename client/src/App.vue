@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="currentPath.includes('/home')">
+    <div v-if="currentPath.includes('/')">
       <LandingPage/>
     </div>
     <div v-else>

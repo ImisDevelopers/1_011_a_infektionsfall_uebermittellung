@@ -2,10 +2,9 @@ package de.coronavirus.imis.services;
 
 import de.coronavirus.imis.domain.TestReport;
 import de.coronavirus.imis.repositories.TestReportRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 /***
  * Implements functionality to save files related to a test to the database.
@@ -33,21 +32,21 @@ public class TestReportService {
     }
 
     /***
-     * Returns a test report by its id from the database.
-     * @param id: The id of the desired test report.
+     * Returns a test report by its testId from the database.
+     * @param testId: The testId of the desired test report.
      * @return the desired test report.
      */
-    public Optional<TestReport> findTestReportById(String id) {
-        return testReportRepository.findById(id);
+    public Optional<TestReport> findTestReportByTestId(String testId) {
+        return testReportRepository.findByTestId(testId);
     }
 
     /***
      * Creates a test report and saves it in the database.
-     * @param id: Id of the test report.
+     * @param testId: Id of the test report.
      * @param file: Binary data of the test report.
      */
-    public TestReport addTestReport(String id, byte[] file) {
-        TestReport testReport = new TestReport(id, file);
+    public TestReport addTestReport(String testId, byte[] file) {
+        TestReport testReport = new TestReport(testId, file);
         testReportRepository.save(testReport);
         return testReport;
     }

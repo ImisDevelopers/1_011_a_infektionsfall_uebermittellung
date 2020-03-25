@@ -19,7 +19,7 @@ const items = [
   },
   {
     key: "2",
-    url: "prototype/link-test-and-patient",
+    url: "/prototype/link-test-and-patient",
     type: "deployment-unit",
     text: "Test Zuordnen"
   },

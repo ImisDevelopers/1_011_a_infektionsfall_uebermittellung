@@ -1,3 +1,10 @@
+const METHOD = {
+  GET: "GET",
+  POST: "POST",
+  PUT: "PUT",
+  DELETE: "DELETE"
+};
+
 class Api {
   constructor() {
     if (
@@ -10,58 +17,52 @@ class Api {
     }
   }
 
-  getCall(url) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
-      method: "GET",
+  executeRequest(url, method, body) {
+    const options = {
+      method: method,
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(response => {
-      return response.json();
-    });
-  }
+    };
 
-  postCall(url, body) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-    }).then(response => {
-      return response.json();
-    });
-  }
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
 
-  putCall(url, body) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-    }).then(response => {
-      return response.json();
-    });
-  }
-
-  deleteCall(url) {
-    return fetch(encodeURI(`${this.BASE_URL}/${url}`), {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
+    return fetch(encodeURI(`${this.BASE_URL}/${url}`), options).then(
+      response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          console.error(response);
+          throw new Error(`An error occured: Status ${response.status}`);
+        }
       }
-    }).then(response => {
-      return response.json();
-    });
+    );
   }
 
   /*
-   * ----------------------------------
+   * -----------IMPLEMENTED IN UI-----------
+   */
+
+  postInstitution(institution) {
+    return this.executeRequest("/institutions", METHOD.POST, institution);
+  }
+
+  postPatient(patient) {
+    return this.executeRequest("/patients", METHOD.POST, patient);
+  }
+
+  postLabTest(labtest) {
+    return this.executeRequest("/labtests", METHOD.POST, labtest);
+  }
+
+  /*
+   * ---------NOT IMPLEMENTED IN UI---------
    */
 
   postDoctorCreateAppointment({ doctorId, laboratoryId, patientId }) {
-    return this.postCall("/doctor/create_appointment", {
+    return this.executeRequest("/doctor/create_appointment", METHOD.POST, {
       doctorId,
       laboratoryId,
       patientId
@@ -69,50 +70,49 @@ class Api {
   }
 
   getTestReports(testId) {
-    return this.getCall(`/test_report/${testId}`);
+    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
   }
 
-  // TODO: postTestReport, putTestReport | how to handle multipart/form-data in fetch ?!
+  postTestReport(id, file) {
+    const data = new FormData();
+    data.append("file", file);
+
+    return fetch(`${this.BASE_URL}/test_reports/${encodeURI(id)}`, {
+      method: "POST",
+      body: data
+    }).then(response => {
+      return response.json();
+    });
+  }
 
   getTestReport(testId) {
-    return this.getCall(`/test_report/${testId}`);
+    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
   }
 
   deleteTestReport(testId) {
-    return this.deleteCall(`/test_report/${testId}`);
-  }
-
-  postInstitution(institution) {
-    return this.postCall("/institutions", institution);
-  }
-
-  postLabtest(labtest) {
-    return this.postCall("/labtest", labtest);
+    return this.executeRequest(`/test_reports/${testId}`, METHOD.DELETE);
   }
 
   putLabtest({ updatedTestStatus }) {
-    return this.postCall("/labtest", updatedTestStatus);
+    return this.executeRequest("/labtest", METHOD.PUT, updatedTestStatus);
   }
 
   getLabtestByPatient(patientId) {
-    return this.getCall(`/labtest/patient/${patientId}`);
+    return this.executeRequest(`/labtest/patient/${patientId}`, METHOD.GET);
   }
 
   getPatients() {
-    return this.getCall("/patients");
-  }
-
-  postPatient(patient) {
-    return this.postCall("/patients", patient);
+    return this.executeRequest("/patients", METHOD.GET);
   }
 
   getPatient(id) {
-    return this.getCall(`/patients/${id}`);
+    return this.executeRequest(`/patients/${id}`, METHOD.GET);
   }
 
   getStats(lowerBoundsZip, upperBoundsZip) {
-    return this.getCall(
-      `/stats?lowerBoundsZip=${lowerBoundsZip}&upperBoundsZips=${upperBoundsZip}`
+    return this.executeRequest(
+      `/stats?lowerBoundsZip=${lowerBoundsZip}&upperBoundsZips=${upperBoundsZip}`,
+      METHOD.GET
     );
   }
 }

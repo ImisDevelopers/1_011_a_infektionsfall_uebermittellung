@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/labtest")
+@RequestMapping("/labtests")
 @AllArgsConstructor
 public class LabTestController {
 
@@ -25,19 +25,22 @@ public class LabTestController {
 
     @PostMapping
     public ResponseEntity<LabTest> createTestForPatient(@RequestBody CreateLabTestDTO createLabTestRequest) {
-        return ResponseEntity.ok(service.createLabTest(createLabTestRequest.getPatientId(),
+        return ResponseEntity.ok(service.createLabTest(
+                createLabTestRequest.getPatientId(),
                 createLabTestRequest.getLaboratoryId(),
-                createLabTestRequest.getLabInternalId()));
+                createLabTestRequest.getTestId(),
+                createLabTestRequest.getComment())
+        );
     }
 
     @GetMapping("/patient/{id}")
     public Set<LabTest> getLabTestForPatient(@PathVariable("id") String patientId) {
-        return service.getAllLabTestForPatient(patientId);
+        return service.getAllLabsTestForPatient(patientId);
     }
 
     @PutMapping("/{id}")
     public PatientEvent updateTestStatus(@PathVariable("id") String id, @RequestBody UpdateTestStatusDTO statusDTO) {
-        return service.updateTestStatus(id, statusDTO.getUpdatedTestStatus());
+        return service.updateTestStatus(id, statusDTO.getStatus());
     }
 
 

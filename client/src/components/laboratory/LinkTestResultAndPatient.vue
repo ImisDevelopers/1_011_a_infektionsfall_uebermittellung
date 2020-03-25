@@ -5,7 +5,7 @@
       :wrapper-col="{ span: 18 }"
       @submit="handleSubmit"
     >
-      <a-form-item label="Proben-ID">
+      <a-form-item label="Test-ID">
         <a-input
           v-decorator="[
             'note',

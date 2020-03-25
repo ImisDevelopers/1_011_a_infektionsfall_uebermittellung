@@ -1,17 +1,5 @@
 package de.coronavirus.imis.services;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
-
-import org.springframework.stereotype.Component;
-
-import lombok.RequiredArgsConstructor;
-
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.LabTest;
 import de.coronavirus.imis.domain.Laboratory;
@@ -23,32 +11,47 @@ import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.repositories.LabTestRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import javax.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class LabTestService {
+
     private final PatientService patientService;
     private final PatientEventService eventService;
     private final LaboratoryRepository laboratoryRepository;
     private final LabTestRepository labTestRepository;
     private final PatientEventRepository eventRepository;
 
-
     @Transactional
-    public LabTest createLabTest(String patientId, String labId, String labInternalId) {
-        final Patient patient = patientService.findPatientById(patientId).orElseThrow(PatientNotFoundException::new);
-        final Laboratory laboratory = laboratoryRepository.findById(labId).orElseThrow(LaboratoryNotFoundException::new);
-        final LabTest labTest = LabTest.builder().
-                laboratory(laboratory).testStatus(TestStatus.TEST_SUBMITTED)
-                .laborTestID(labInternalId)
+    public LabTest createLabTest(String patientId, String laboratoryId, String testId, String comment) {
+        final Patient patient = patientService
+                .findPatientById(patientId)
+                .orElseThrow(PatientNotFoundException::new);
+        final Laboratory laboratory = laboratoryRepository
+                .findById(laboratoryId)
+                .orElseThrow(LaboratoryNotFoundException::new);
+        final LabTest labTest = LabTest.builder()
+                .laboratory(laboratory)
+                .testStatus(TestStatus.TEST_SUBMITTED)
+                .testId(testId)
+                .comment(comment)
                 .build();
+
         labTestRepository.save(labTest);
         eventService.createLabTestEvent(patient, labTest, Optional.empty());
         return labTest;
     }
 
     @Transactional
-    public Set<LabTest> getAllLabTestForPatient(String patiendId) {
+    public Set<LabTest> getAllLabsTestForPatient(String patiendId) {
         final Patient patient = patientService.findPatientById(patiendId).orElseThrow(PatientNotFoundException::new);
         final var events = eventService.getAllForPatient(patient);
         return events.stream().map(PatientEvent::getLabTest).collect(Collectors.toSet());

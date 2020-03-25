@@ -47,7 +47,6 @@ public class TestDataLoader implements ApplicationRunner {
         Resource resource = new ClassPathResource("sample_data" + File.separator + testFileName);
         File file = resource.getFile();
 
-
         byte[] encoded = Files.readAllBytes(file.toPath());
 
         String str = new String(encoded, Charset.defaultCharset());
@@ -61,7 +60,6 @@ public class TestDataLoader implements ApplicationRunner {
                 var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
                 patientService.addPatient(createPersonDTO);
             }
-
 
             // SETUP OUR WORLD
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
@@ -87,8 +85,9 @@ public class TestDataLoader implements ApplicationRunner {
             eventService.createScheduledEvent(person, laboratory.getId(), doctorsOffice.getId());
 
             // LAB RECEIVES SAMPLE AND PROCESSES IT
-            final String labInternalTestId = "42";
-            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), labInternalTestId);
+            final String testId = "42";
+            final String comment = "comment";
+            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment);
 
 
             // LAB HAS RESULT AND SOTRES IT

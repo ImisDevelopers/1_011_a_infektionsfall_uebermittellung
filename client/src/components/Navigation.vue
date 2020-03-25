@@ -13,33 +13,33 @@
 const items = [
   {
     key: "1",
-    url: "/register-patient",
+    url: "/prototype/register-patient",
     type: "user-add",
     text: "Patient Registrieren"
   },
   {
     key: "2",
-    url: "/link-sample-and-patient",
+    url: "/prototype/link-sample-and-patient",
     type: "deployment-unit",
     text: "Probe Zuordnen"
   },
   {
     key: "3",
-    url: "/link-test-result",
+    url: "/prototype/link-test-result",
     type: "experiment",
     text: "Laborresultate"
   },
-  { key: "4", url: "/patient-overview", type: "user", text: "Patienten-Daten" },
-  { key: "5", url: "/all-data", type: "team", text: "Alle Patienten" },
+  { key: "4", url: "/prototype/patient-overview", type: "user", text: "Patienten-Daten" },
+  { key: "5", url: "/prototype/all-data", type: "team", text: "Alle Patienten" },
   {
     key: "6",
-    url: "/public-statistics",
+    url: "/prototype/public-statistics",
     type: "stock",
     text: "Öffentliche Statistiken"
   },
   {
     key: "7",
-    url: "/register-institution",
+    url: "/prototype/register-institution",
     type: "home",
     text: "Instutition Registrieren"
   }

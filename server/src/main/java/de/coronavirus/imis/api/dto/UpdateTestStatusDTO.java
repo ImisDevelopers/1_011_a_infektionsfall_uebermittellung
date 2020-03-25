@@ -5,4 +5,6 @@ import lombok.Data;
 @Data
 public class UpdateTestStatusDTO {
     private String status;
+    private String comment;
+    private byte[] file;
 }

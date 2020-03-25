@@ -58,7 +58,8 @@
     <div v-else>
       <div>Der Test wurde erfolgreich angelegt.</div>
       <br />
-      <div>Die Test ID lautet: {{ createdLabTest.id }}</div>
+      <div>Test ID: {{ createdLabTest.id }}</div>
+      <div>Test Status: {{ createdLabTest.testStatus }}</div>
     </div>
   </a-card>
 </template>

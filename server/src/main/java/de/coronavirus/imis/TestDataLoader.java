@@ -92,7 +92,7 @@ public class TestDataLoader implements ApplicationRunner {
 
             // LAB HAS RESULT AND SOTRES IT
             // FIXME: 22.03.20 report cannot be attached
-            labTestService.updateTestStatus(labTest.getId(), "TEST_POSITIVE");
+            labTestService.updateTestStatus(labTest.getId(), "TEST_POSITIVE", comment, null);
 
             // HEALTH OFFICE WANTS TO SEE ALL DATA
             var allPatients = patientService.getAllPatients();

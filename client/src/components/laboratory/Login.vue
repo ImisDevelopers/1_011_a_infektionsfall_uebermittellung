@@ -49,7 +49,6 @@
 </template>
 
 <script>
-// TODO: Use form from ant and to get the values from the <form> (see PatientDataCompontent)
 
 export default {
   name: "Login",

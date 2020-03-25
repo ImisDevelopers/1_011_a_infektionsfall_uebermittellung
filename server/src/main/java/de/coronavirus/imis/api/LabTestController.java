@@ -39,9 +39,12 @@ public class LabTestController {
     }
 
     @PutMapping("/{id}")
-    public PatientEvent updateTestStatus(@PathVariable("id") String id, @RequestBody UpdateTestStatusDTO statusDTO) {
-        return service.updateTestStatus(id, statusDTO.getStatus());
+    public ResponseEntity<LabTest> updateTestStatus(@PathVariable("id") String id, @RequestBody UpdateTestStatusDTO statusDTO) {
+        return ResponseEntity.ok(service.updateTestStatus(
+                id,
+                statusDTO.getStatus(),
+                statusDTO.getComment(),
+                statusDTO.getFile())
+        );
     }
-
-
 }

@@ -45,16 +45,20 @@ class Api {
    * -----------IMPLEMENTED IN UI-----------
    */
 
-  postInstitution(institution) {
-    return this.executeRequest("/institutions", METHOD.POST, institution);
+  postInstitution(request) {
+    return this.executeRequest("/institutions", METHOD.POST, request);
   }
 
-  postPatient(patient) {
-    return this.executeRequest("/patients", METHOD.POST, patient);
+  postPatient(request) {
+    return this.executeRequest("/patients", METHOD.POST, request);
   }
 
-  postLabTest(labtest) {
-    return this.executeRequest("/labtests", METHOD.POST, labtest);
+  postLabTest(request) {
+    return this.executeRequest("/labtests", METHOD.POST, request);
+  }
+
+  putLabTest(testId, request) {
+    return this.executeRequest(`/labtests/${testId}`, METHOD.PUT, request);
   }
 
   /*
@@ -91,10 +95,6 @@ class Api {
 
   deleteTestReport(testId) {
     return this.executeRequest(`/test_reports/${testId}`, METHOD.DELETE);
-  }
-
-  putLabtest({ updatedTestStatus }) {
-    return this.executeRequest("/labtest", METHOD.PUT, updatedTestStatus);
   }
 
   getLabtestByPatient(patientId) {

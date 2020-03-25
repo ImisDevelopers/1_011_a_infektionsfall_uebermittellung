@@ -2,6 +2,7 @@ package de.coronavirus.imis.domain;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
@@ -18,9 +19,8 @@ import lombok.*;
 @AllArgsConstructor
 public class TestReport {
 
-    // ID of the test.
     @Id
-    private String id;
+    private String testId;
 
     // Binary of the test files.
     @Lob

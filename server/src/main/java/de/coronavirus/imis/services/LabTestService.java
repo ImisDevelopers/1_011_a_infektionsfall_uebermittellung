@@ -2,6 +2,7 @@ package de.coronavirus.imis.services;
 
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.LabTest;
+import de.coronavirus.imis.domain.LabTestNotFoundException;
 import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.domain.LaboratoryNotFoundException;
 import de.coronavirus.imis.domain.Patient;
@@ -18,14 +19,17 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class LabTestService {
 
     private final PatientService patientService;
     private final PatientEventService eventService;
+    private final TestReportService testReportService;
     private final LaboratoryRepository laboratoryRepository;
     private final LabTestRepository labTestRepository;
     private final PatientEventRepository eventRepository;
@@ -58,22 +62,38 @@ public class LabTestService {
     }
 
     @Transactional
-    public PatientEvent updateTestStatus(String testId, final String statusString) {
+    public LabTest updateTestStatus(final String testId, final String statusString, final String comment, final byte[] file) {
         TestStatus statusToSet = TestStatus.valueOf(statusString.toUpperCase());
-        var labTest = labTestRepository.findById(testId).orElseThrow();
-        final List<PatientEvent> event = eventService.getForLabTest(labTest);
+
+        var labTest = labTestRepository.findById(testId)
+                .orElseThrow(LabTestNotFoundException::new);
         labTest.setTestStatus(statusToSet);
+
+        final List<PatientEvent> event = eventService.getForLabTest(labTest);
         var eventType = testStatusToEvent(statusToSet);
-        var patient = event.stream().map(PatientEvent::getPatient).findFirst().orElseThrow();
-        var doctor = event.stream().map(PatientEvent::getResponsibleDoctor)
-                .filter(Objects::nonNull).findFirst();
+
+        var patient = event.stream()
+                .map(PatientEvent::getPatient)
+                .findFirst()
+                .orElseThrow();
 
         var changeEvent = new PatientEvent()
                 .setEventType(eventType)
                 .setLabTest(labTest)
-                .setPatient(patient);
-        doctor.ifPresent(changeEvent::setResponsibleDoctor);
-        return eventRepository.save(changeEvent);
+                .setPatient(patient)
+                .setComment(comment);
+
+        event.stream()
+                .map(PatientEvent::getResponsibleDoctor)
+                .filter(Objects::nonNull)
+                .findFirst()
+                .ifPresent(changeEvent::setResponsibleDoctor);
+
+        eventRepository.save(changeEvent);
+
+        Optional.ofNullable(file).ifPresent((bytes) -> testReportService.addTestReport(labTest.getId(), bytes));
+
+        return labTest;
     }
 
     private EventType testStatusToEvent(TestStatus input) {

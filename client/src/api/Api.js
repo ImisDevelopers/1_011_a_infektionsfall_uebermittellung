@@ -42,7 +42,23 @@ class Api {
   }
 
   /*
-   * ----------------------------------
+   * -----------IMPLEMENTED IN UI-----------
+   */
+
+  postInstitution(institution) {
+    return this.executeRequest("/institutions", METHOD.POST, institution);
+  }
+
+  postPatient(patient) {
+    return this.executeRequest("/patients", METHOD.POST, patient);
+  }
+
+  postLabTest(labtest) {
+    return this.executeRequest("/labtests", METHOD.POST, labtest);
+  }
+
+  /*
+   * ---------NOT IMPLEMENTED IN UI---------
    */
 
   postDoctorCreateAppointment({ doctorId, laboratoryId, patientId }) {
@@ -77,14 +93,6 @@ class Api {
     return this.executeRequest(`/test_reports/${testId}`, METHOD.DELETE);
   }
 
-  postInstitution(institution) {
-    return this.executeRequest("/institutions", METHOD.POST, institution);
-  }
-
-  postLabtest(labtest) {
-    return this.executeRequest("/labtest", METHOD.POST, labtest);
-  }
-
   putLabtest({ updatedTestStatus }) {
     return this.executeRequest("/labtest", METHOD.PUT, updatedTestStatus);
   }
@@ -95,10 +103,6 @@ class Api {
 
   getPatients() {
     return this.executeRequest("/patients", METHOD.GET);
-  }
-
-  postPatient(patient) {
-    return this.executeRequest("/patients", METHOD.POST, patient);
   }
 
   getPatient(id) {

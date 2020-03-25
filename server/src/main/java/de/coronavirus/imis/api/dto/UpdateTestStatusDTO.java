@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class UpdateTestStatusDTO {
-    private String updatedTestStatus;
+    private String status;
 }

@@ -6,5 +6,6 @@ import lombok.Data;
 public class CreateLabTestDTO {
     private String patientId;
     private String laboratoryId;
-    private String labInternalId;
+    private String testId;
+    private String comment;
 }

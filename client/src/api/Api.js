@@ -42,7 +42,27 @@ class Api {
   }
 
   /*
-   * ----------------------------------
+   * -----------IMPLEMENTED IN UI-----------
+   */
+
+  postInstitution(request) {
+    return this.executeRequest("/institutions", METHOD.POST, request);
+  }
+
+  postPatient(request) {
+    return this.executeRequest("/patients", METHOD.POST, request);
+  }
+
+  postLabTest(request) {
+    return this.executeRequest("/labtests", METHOD.POST, request);
+  }
+
+  putLabTest(testId, request) {
+    return this.executeRequest(`/labtests/${testId}`, METHOD.PUT, request);
+  }
+
+  /*
+   * ---------NOT IMPLEMENTED IN UI---------
    */
 
   postDoctorCreateAppointment({ doctorId, laboratoryId, patientId }) {
@@ -74,19 +94,7 @@ class Api {
   }
 
   deleteTestReport(testId) {
-    return this.executeRequest(`/test_report/${testId}`, METHOD.DELETE);
-  }
-
-  postInstitution(institution) {
-    return this.executeRequest("/institutions", METHOD.POST, institution);
-  }
-
-  postLabtest(labtest) {
-    return this.executeRequest("/labtest", METHOD.POST, labtest);
-  }
-
-  putLabtest({ updatedTestStatus }) {
-    return this.executeRequest("/labtest", METHOD.PUT, updatedTestStatus);
+    return this.executeRequest(`/test_reports/${testId}`, METHOD.DELETE);
   }
 
   getLabtestByPatient(patientId) {
@@ -95,10 +103,6 @@ class Api {
 
   getPatients() {
     return this.executeRequest("/patients", METHOD.GET);
-  }
-
-  postPatient(patient) {
-    return this.executeRequest("/patients", METHOD.POST, patient);
   }
 
   getPatient(id) {

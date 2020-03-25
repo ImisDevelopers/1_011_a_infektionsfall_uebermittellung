@@ -1,5 +1,5 @@
 import LinkTestResultAndPatientPage from "../components/page/LinkTestResultAndPatientPage";
-import LinkSampleAndPatientPage from "../components/page/LinkSampleAndPatientPage";
+import LinkTestAndPatientPage from "../components/page/LinkTestAndPatientPage";
 import RegisterInstitutionPage from "../components/page/RegisterInstitutionPage";
 import RegisterPatientPage from "../components/page/RegisterPatientPage";
 
@@ -34,7 +34,7 @@ export const routes = [
     component: ViewAllDataComponent
   },
   {
-    path: "/link-sample-and-patient",
-    component: LinkSampleAndPatientPage
+    path: "/link-test-and-patient",
+    component: LinkTestAndPatientPage
   }
 ];

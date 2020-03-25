@@ -1,5 +1,6 @@
 {
-  "labInternalId": "string",
+  "testId": "string",
   "laboratoryId": "string",
-  "patientId": "string"
+  "patientId": "string",
+  "comment": "string"
 }

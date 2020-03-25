@@ -1,14 +1,14 @@
 package de.coronavirus.imis.api;
 
-import com.google.cloud.storage.Blob;
+import de.coronavirus.imis.domain.TestReport;
 import de.coronavirus.imis.services.TestReportService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/test_reports")
@@ -19,39 +19,16 @@ public class TestReportController {
     private final TestReportService testReportService;
 
     /***
-     * Endpoint to upload a file.
-     * @param file: The file to upload.
-     * @param id: The id of the test report the file belongs to.
-     * @return A redirection.
-     */
-    @PostMapping("/{id}")
-    public ResponseEntity<HttpStatus> uploadTestReport(
-            @RequestParam("file") MultipartFile file,
-            @PathVariable("id") String id
-    ) {
-        try {
-            testReportService.addTestReport(id, file.getBytes());
-        } catch (Exception e) {
-            return ResponseEntity.status(500).build();
-        }
-
-        return ResponseEntity.ok().build();
-    }
-
-    /***
      * Endpoint to receive a test report.
-     * @param id: The id of the test report to retrieve.
+     * @param testId: The testId of the test report to retrieve.
      * @return The test report.
      */
-    @GetMapping("/{id}")
-    public ResponseEntity<byte[]> getTestReport(
-            @PathVariable String id
-    ) {
-        byte[] testReport = testReportService
-                .findTestReportById(id)
-                .getContent();
-
-        return ResponseEntity.ok().body(testReport);
+    @GetMapping("/{testId}")
+    public ResponseEntity<TestReport> getTestReport(@PathVariable String testId) {
+        return testReportService
+                .findTestReportByTestId(testId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     /***
@@ -59,7 +36,7 @@ public class TestReportController {
      * @return All saved test reports..
      */
     @GetMapping()
-    public List<Blob> getAllTestReports() {
+    public List<TestReport> getAllTestReports() {
         return testReportService.getAllTestReports();
     }
 }

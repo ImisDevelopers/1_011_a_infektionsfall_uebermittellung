@@ -6,15 +6,12 @@
     </div>
 
     <a-layout id="components-layout-demo-responsive">
-      <div class="logo" />
-      <Navigation />
       <a-layout>
-        <a-layout-header
-          :style="{ background: '#fff', padding: 0, height: 'auto' }"
-        >
+        <a-layout-header style="height: auto">
+          <Navigation />
         </a-layout-header>
         <a-layout-content
-          style="margin: '0px auto'; box-sizing: border-box; padding: 2rem 4rem; width: 100%; min-height: calc(100vh - 46px - 69px);"
+          style="margin: auto; box-sizing: border-box; padding: 0rem 4rem; width: 100%;"
         >
           <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
             <router-view></router-view>
@@ -51,6 +48,11 @@ export default {
 .prototype-warning {
   border: 2px solid red;
   font-size: 20px;
+  height: 35px;
   background-color: #ffdddd;
 }
+
+  #components-layout-demo-responsive {
+    height: calc(100vh - 35px);
+  }
 </style>

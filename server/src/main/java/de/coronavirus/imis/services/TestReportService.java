@@ -1,11 +1,12 @@
 package de.coronavirus.imis.services;
 
-import de.coronavirus.imis.domain.TestReport;
-import de.coronavirus.imis.repositories.TestReportRepository;
+import com.google.api.gax.paging.Page;
+import com.google.cloud.storage.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /***
  * Implements functionality to save files related to a test to the database.
@@ -13,23 +14,23 @@ import java.util.Optional;
 @Service
 public class TestReportService {
 
-    // The data repository.
-    private TestReportRepository testReportRepository;
-
-    /***
-     * Initializes the service with its repository.
-     * @param testReportRepository: The data repository.
-     */
-    public TestReportService(TestReportRepository testReportRepository) {
-        this.testReportRepository = testReportRepository;
-    }
+    @Autowired
+    private Storage storage = StorageOptions.getDefaultInstance().getService();
+    private Bucket bucket = storage.create(BucketInfo.of("test_reports"));
 
     /***
      * Returns all saved test reports.
      * @return all saved test reports.
      */
-    public List<TestReport> getAllTestReports() {
-        return testReportRepository.findAll();
+    public List<Blob> getAllTestReports() {
+        List<Blob> result = new ArrayList<>();
+        Page<Blob> blobs = bucket.list();
+
+        for (Blob blob: blobs.getValues()) {
+            result.add(blob);
+        }
+
+        return result;
     }
 
     /***
@@ -37,8 +38,8 @@ public class TestReportService {
      * @param id: The id of the desired test report.
      * @return the desired test report.
      */
-    public Optional<TestReport> findTestReportById(String id) {
-        return testReportRepository.findById(id);
+    public Blob findTestReportById(String id) {
+        return storage.get(BlobId.of(bucket.getName(), id));
     }
 
     /***
@@ -46,9 +47,9 @@ public class TestReportService {
      * @param id: Id of the test report.
      * @param file: Binary data of the test report.
      */
-    public TestReport addTestReport(String id, byte[] file) {
-        TestReport testReport = new TestReport(id, file);
-        testReportRepository.save(testReport);
-        return testReport;
+    public void addTestReport(String id, byte[] file) {
+        BlobId blobId = BlobId.of(bucket.getName(), id);
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
+        storage.create(blobInfo, file);
     }
 }

@@ -1,8 +1,9 @@
 package de.coronavirus.imis.api;
 
-import de.coronavirus.imis.domain.TestReport;
+import com.google.cloud.storage.Blob;
 import de.coronavirus.imis.services.TestReportService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,19 +25,17 @@ public class TestReportController {
      * @return A redirection.
      */
     @PostMapping("/{id}")
-    public ResponseEntity<TestReport> uploadTestReport(
+    public ResponseEntity<HttpStatus> uploadTestReport(
             @RequestParam("file") MultipartFile file,
             @PathVariable("id") String id
     ) {
-        TestReport testReport;
         try {
-            testReport = testReportService
-                    .addTestReport(id, file.getBytes());
+            testReportService.addTestReport(id, file.getBytes());
         } catch (Exception e) {
             return ResponseEntity.status(500).build();
         }
 
-        return ResponseEntity.ok().body(testReport);
+        return ResponseEntity.ok().build();
     }
 
     /***
@@ -45,13 +44,14 @@ public class TestReportController {
      * @return The test report.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<TestReport> getTestReport(
+    public ResponseEntity<byte[]> getTestReport(
             @PathVariable String id
     ) {
-        return testReportService
+        byte[] testReport = testReportService
                 .findTestReportById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .getContent();
+
+        return ResponseEntity.ok().body(testReport);
     }
 
     /***
@@ -59,7 +59,7 @@ public class TestReportController {
      * @return All saved test reports..
      */
     @GetMapping()
-    public List<TestReport> getAllTestReports() {
+    public List<Blob> getAllTestReports() {
         return testReportService.getAllTestReports();
     }
 }

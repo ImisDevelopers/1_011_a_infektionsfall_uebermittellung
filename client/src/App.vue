@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div class="prototype-warning">
-      Dies ist ein Prototyp - Eingetragene Daten werden vor dem Absenden
-      randomisiert.
-    </div>
+    <a-layout>
+      <div class="prototype-warning">
+        Dies ist ein Prototyp - Eingetragene Daten werden vor dem Absenden
+        randomisiert.
+      </div>
 
-    <a-layout id="components-layout-demo-responsive">
-      <a-layout>
+      <a-layout style="min-height: calc(100vh - 35px);">
         <a-layout-header style="height: auto">
           <Navigation />
         </a-layout-header>
@@ -51,8 +51,4 @@ export default {
   height: 35px;
   background-color: #ffdddd;
 }
-
-  #components-layout-demo-responsive {
-    height: calc(100vh - 35px);
-  }
 </style>

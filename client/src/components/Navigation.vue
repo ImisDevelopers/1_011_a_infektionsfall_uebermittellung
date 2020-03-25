@@ -19,15 +19,15 @@ const items = [
   },
   {
     key: "2",
-    url: "/prototype/link-sample-and-patient",
+    url: "/prototype/link-test-and-patient",
     type: "deployment-unit",
-    text: "Probe Zuordnen"
+    text: "Test Zuordnen"
   },
   {
     key: "3",
     url: "/prototype/link-test-result",
     type: "experiment",
-    text: "Laborresultate"
+    text: "Testresultat Zuordnen"
   },
   { key: "4", url: "/prototype/patient-overview", type: "user", text: "Patienten-Daten" },
   { key: "5", url: "/prototype/all-data", type: "team", text: "Alle Patienten" },

@@ -1,19 +1,17 @@
 package de.coronavirus.imis.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.GenericGenerator;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Data
@@ -27,14 +25,15 @@ public class LabTest {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
-
-    private String laborTestID;
+    private String testId;
 
     @ManyToOne
     @JsonIgnore
     private Laboratory laboratory;
 
     private TestStatus testStatus;
+
+    private String comment;
 
     @OneToOne
     private TestReport report;

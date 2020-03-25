@@ -2,12 +2,13 @@ package de.coronavirus.imis.api;
 
 import de.coronavirus.imis.domain.TestReport;
 import de.coronavirus.imis.services.TestReportService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/test_reports")
@@ -18,38 +19,14 @@ public class TestReportController {
     private final TestReportService testReportService;
 
     /***
-     * Endpoint to upload a file.
-     * @param file: The file to upload.
-     * @param id: The id of the test report the file belongs to.
-     * @return A redirection.
-     */
-    @PostMapping("/{id}")
-    public ResponseEntity<TestReport> uploadTestReport(
-            @RequestParam("file") MultipartFile file,
-            @PathVariable("id") String id
-    ) {
-        TestReport testReport;
-        try {
-            testReport = testReportService
-                    .addTestReport(id, file.getBytes());
-        } catch (Exception e) {
-            return ResponseEntity.status(500).build();
-        }
-
-        return ResponseEntity.ok().body(testReport);
-    }
-
-    /***
      * Endpoint to receive a test report.
-     * @param id: The id of the test report to retrieve.
+     * @param testId: The testId of the test report to retrieve.
      * @return The test report.
      */
-    @GetMapping("/{id}")
-    public ResponseEntity<TestReport> getTestReport(
-            @PathVariable String id
-    ) {
+    @GetMapping("/{testId}")
+    public ResponseEntity<TestReport> getTestReport(@PathVariable String testId) {
         return testReportService
-                .findTestReportById(id)
+                .findTestReportByTestId(testId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

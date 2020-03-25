@@ -37,7 +37,7 @@ public class LabTest {
     private TestStatus testStatus;
 
     @OneToOne
-    private TestReport report;
+    private byte[] report;
 
     @JsonPOJOBuilder(withPrefix = "")
     public static final class LabTestBuilder {

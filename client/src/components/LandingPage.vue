@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="inner-body">
         <header>
             <a-row type="flex" justify="space-between" align="middle">
                 <a-col>
@@ -30,14 +30,26 @@
         </header>
         <main>
             <section>
-                <a-row :gutter="32">
+                <a-row :gutter="32" type="flex">
                     <a-col :span="12">
-                        <a-divider class="headline-divider" orientation="left">Problem</a-divider>
-                        <p>Die COVID-19 Pandemie stellt für das bestehende Infektionsmeldewesen in Deutschland eine immense Herausforderung dar. Ärzte und über 400 Gesundheitsämter benutzen gegenwärtig einen uneinheitlichen Mix aus Fax, E-Mails und Excel Tabellen um Fälle zusammenzutragen. Verspätet Meldungen an das RKI und überlastete Gesundheitsämter sind die Folge. So wurden laut RKI von einigen Gesundheitsämtern sogar keine Zahlen für dieses Wochenende übermittelt. Diese ungenaue Datenlage sorgt für eine große Unsicherheit und macht es schwer, angemessen auf die Krise zu reagieren.</p>
+                        <a-card title="Problem" :bordered="false">
+                            <p>Die COVID-19 Pandemie stellt für das bestehende Infektionsmeldewesen in Deutschland eine immense Herausforderung dar. Ärzte und über 400 Gesundheitsämter benutzen gegenwärtig einen uneinheitlichen Mix aus Fax, E-Mails und Excel Tabellen um Fälle zusammenzutragen. Verspätet Meldungen an das RKI und überlastete Gesundheitsämter sind die Folge. So wurden laut RKI von einigen Gesundheitsämtern sogar keine Zahlen für dieses Wochenende übermittelt. Diese ungenaue Datenlage sorgt für eine große Unsicherheit und macht es schwer, angemessen auf die Krise zu reagieren.</p>
+                        </a-card>
+                        <a-card title="Lösung" :bordered="false">
+                            <p>IMIS beschleunigt den Meldeprozess und sorgt damit für eine Entlastung in Gesundheitsämtern, Krankenhäusern und Laboren. Die Meldungen werden zentral erfasst und können in Echtzeit statistisch ausgewertet werden. IMIS schafft eine Vereinheitlichung des Meldeprozesses in Deutschland. IMIS stellt darüber hinaus Echtzeitdaten für Entscheidungsträger auf Landes- und Bundeseben zur Verfügung.</p>
+                        </a-card>
                     </a-col>
-                    <a-col :span="12">
-                        <a-divider class="headline-divider" orientation="left">Lösung</a-divider>
-                        <p>IMIS beschleunigt den Meldeprozess und sorgt damit für eine Entlastung in Gesundheitsämtern, Krankenhäusern und Laboren. Die Meldungen werden zentral erfasst und können in Echtzeit statistisch ausgewertet werden. IMIS schafft eine Vereinheitlichung des Meldeprozesses in Deutschland. IMIS stellt darüber hinaus Echtzeitdaten für Entscheidungsträger auf Landes- und Bundeseben zur Verfügung.</p>
+                    <a-col :span="12" style="height: 100%">
+                        <a-card :bordered="false">
+                            <a-carousel arrows dotsClass="slick-dots slick-thumb">
+                                <a slot="customPaging" slot-scope="props">
+                                    <img :src="getImgUrl(props.i)" />
+                                </a>
+                                <div v-for="(item, i) in 5" :key="i">
+                                    <img :src="require(`@/assets/carousel/carousel-image-${i+1}.png`)" />
+                                </div>
+                            </a-carousel>
+                        </a-card>
                     </a-col>
                 </a-row>
             </section>
@@ -68,7 +80,7 @@
         data() {
             return {
                 visible: false,
-                videoHeight: "auto"
+                videoHeight: "auto",
             };
         },
         name: "LandingPage",
@@ -76,11 +88,23 @@
             showVideo() {
                 this.visible = true;
             },
+            getImgUrl(i) {
+                return require(`@/assets/carousel/carousel-image-${i+1}.png`);
+            },
         }
     }
 </script>
 
 <style scoped>
+    .inner-body {
+        background-color: #f5f5f5;
+        min-height: 100vh;
+    }
+
+    section {
+        padding: 2rem 0;
+    }
+
     p {
         text-align: left;
         line-height: 1.5rem;
@@ -89,7 +113,6 @@
     header {
         box-sizing: border-box;
         padding: 1rem 4rem;
-        padding-bottom: 5rem;
     }
 
     header h2 {
@@ -114,40 +137,32 @@
         padding: 1rem 4rem;
     }
 
-    .headline-divider {
-        font-size: 1.4rem;
+    .ant-card {
+        margin-bottom: 2rem;
     }
 
-    .main {
-        background-color: whitesmoke;
-        margin: 0 auto;
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+    .ant-carousel >>> .slick-dots {
+        height: auto;
     }
 
-    .left-part {
-        display:table-cell;
-        width: 60vw;
-        height: 100vh;
-        vertical-align: center;
-        text-align: left;
-        padding: 1%;
+    .ant-carousel >>> .slick-slide img {
+        display: block;
+        margin: auto;
+        max-width: 100%;
     }
 
-    .transition {
-        display: table-cell;
-        background-image: linear-gradient(80deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, lightgrey 50%, lightgrey 100%);
-        width: 15vw;
-        height: 100vh;
+    .ant-carousel >>> .slick-thumb li {
+        width: 60px;
+        height: 45px;
     }
 
-    .right-part {
-        display: table-cell;
-        width: 25vw;
-        height: 100vh;
-        background-color: lightgrey;
-        text-align: left;
-        vertical-align: middle;
+    .ant-carousel >>> .slick-thumb li img {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(100%);
+    }
+
+    .ant-carousel >>> .slick-thumb li.slick-active img {
+        filter: grayscale(0%);
     }
 </style>

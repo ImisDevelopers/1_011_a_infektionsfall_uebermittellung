@@ -1,4 +1,4 @@
-package de.coronavirus.imis;
+package de.coronavirus.imis.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .http(Integer.parseInt(environment.getProperty("server.http.port", "8080"))) // http port defined in yml config file
                 .mapsTo(Integer.parseInt(environment.getProperty("server.port", "443"))); // https port defined in yml config file
 
-        http.requiresChannel().anyRequest().requiresSecure();
+        http.requiresChannel()
+                .antMatchers("/actuator/health").requiresInsecure()
+                .anyRequest().requiresSecure();
     }
 }

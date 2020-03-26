@@ -1,17 +1,16 @@
 <template>
   <div id="app">
     <div v-if="this.$route.path === '/'">
-      <LandingPage/>
+      <LandingPage />
     </div>
     <div v-else>
       <a-layout id="components-layout-demo-responsive">
         <a-layout>
-          <a-layout-header
-                  style="height: auto">
-          <Navigation />
+          <a-layout-header style="height: auto">
+            <Navigation />
           </a-layout-header>
           <a-layout-content
-                  style="margin: auto; box-sizing: border-box; padding: 0rem 4rem; width: 100%;"
+            style="margin: auto; box-sizing: border-box; padding: 0rem 4rem; width: 100%;"
           >
             <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
               <router-view></router-view>
@@ -30,23 +29,21 @@
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 
-  export default {
-    components: {
-      Navigation,
-      LandingPage,
-    },
-    data() {
-      return {
-
-      }
-    },
-    computed: {
-      currentPath: function() {
-        return location.pathname
-      }
-    },
-    name: "App"
-  }
+export default {
+  components: {
+    Navigation,
+    LandingPage
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    currentPath: function() {
+      return location.pathname;
+    }
+  },
+  name: "App"
+};
 </script>
 
 <style>
@@ -65,7 +62,7 @@ import LandingPage from "./components/LandingPage";
   background-color: #ffdddd;
 }
 
-  #components-layout-demo-responsive{
-    height: 100vh;
-  }
+#components-layout-demo-responsive {
+  min-height: 100vh;
+}
 </style>

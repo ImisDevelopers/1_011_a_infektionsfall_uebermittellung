@@ -39,18 +39,18 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           timeoutSeconds: 2
           periodSeconds: 3
           failureThreshold: 1
         livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8080
-            initialDelaySeconds: 20
-            timeoutSeconds: 2
-            periodSeconds: 8
-            failureThreshold: 1
+          httpGet:
+            path: /actuator/health
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 2
+          periodSeconds: 8
+          failureThreshold: 1
       - name: cloudsql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.14
         command: ["/cloud_sql_proxy",

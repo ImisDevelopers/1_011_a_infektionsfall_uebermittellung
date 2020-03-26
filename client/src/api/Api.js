@@ -11,7 +11,7 @@ class Api {
       location.host.includes("localhost") ||
       location.host.includes("127.0.0.1")
     ) {
-      this.BASE_URL = "http://localhost:8080";
+      this.BASE_URL = "http://localhost:80";
     } else {
       this.BASE_URL = "https://api.imis-prototyp.de";
     }

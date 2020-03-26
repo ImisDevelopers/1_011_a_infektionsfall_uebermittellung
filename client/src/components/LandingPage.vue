@@ -7,6 +7,7 @@
             src="../assets/logo.png"
             aspect-ratio="1.7"
             style="vertical-align: middle"
+            height="140"
           />
           <span style="margin-left: 15px">Schnell. Einfach. Zuverlässig.</span>
         </h1>
@@ -36,12 +37,10 @@
         </table>
       </div>
       <br>
-      <!--
       <div>
-        <h2 style="text-align: center">Unsere Vision</h2>
+        <h2 style="text-align: center; width:80%">Unsere Vision</h2>
         <img src="../assets/vision.png" width="80%"/>
       </div>
-      -->
       <br />
     </div>
     <div class="transition"></div>

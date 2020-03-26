@@ -43,9 +43,7 @@
       </a-form-item>
     </a-form>
     <p class="test-acess">
-      Testzugang <br>
-      Username: <i><b>1234</b></i><br>
-      Password <i><b>asdf</b></i>
+      Testzugang <i><b>1234</b></i> mit Password <i><b>asdf</b></i>
     </p>
   </a-card>
 </template>

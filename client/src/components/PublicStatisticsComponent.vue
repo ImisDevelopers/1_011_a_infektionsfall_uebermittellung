@@ -119,7 +119,7 @@
             create(e) {
                 e.preventDefault();
                 if (this.content.length > 0) {
-                    fetch('/exampleEntities',
+                    /*fetch('/exampleEntities',
                         {
                             method: 'POST',
                             body: JSON.stringify({ content: this.content }),
@@ -132,19 +132,19 @@
                         })
                         .then((entity) => {
                             this.entities.push(entity);
-                        });
+                        });*/
                     this.content = "";
                 }
             }
         },
         created() {
-            fetch('/exampleEntities')
+            /*fetch('/exampleEntities')
                 .then((response) => {
                     return response.json();
                 })
                 .then((entities) => {
                     this.entities.push(...entities);
-                });
+                });*/
         }
     }
 </script>

@@ -7,21 +7,22 @@
         :wrapper-col="{ span: 18 }"
         @submit="handleSubmit"
       >
-        <BarcodeInput
-					label="Test-ID"
-					placeholder="z.B 1337-4237-9438"
-					:validation="[
-						'testId',
-						{
-							rules: [
-								{
-									required: true,
-									message: 'Bitte geben Sie Ihre Test-ID ein.'
-								}
-							]
-						}
-					]"
+        <a-form-item label="Test-ID">
+          <a-input
+            v-decorator="[
+              'testId',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte geben Sie Ihre Test-ID ein.'
+                  }
+                ]
+              }
+            ]"
+            placeholder="z.B 1337-4237-9438"
           />
+        </a-form-item>
         <a-form-item label="Testresultat">
           <a-radio-group
             v-decorator="[
@@ -52,13 +53,13 @@
           />
         </a-form-item>
         <a-form-item :wrapper-col="{ span: 24 }">
-          <a-upload
+          <!--<a-upload
             :accept="'pdf'"
             :beforeUpload="beforeUpload"
             :multiple="false"
-          >
-            <a-button> <a-icon type="upload" />Test Report hochladen</a-button>
-          </a-upload>
+          >-->
+            <a-button v-on:click="uploadHint()"><a-icon type="upload" />Test Report hochladen</a-button>
+          <!--</a-upload>-->
         </a-form-item>
         <a-divider />
         <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
@@ -79,11 +80,9 @@
 
 <script>
 import Api from "../../api/Api";
-import BarcodeInput from "../BarcodeInput";
 
 export default {
   name: "LinkTestResultAndPatient",
-  components: {BarcodeInput},
   props: {
     laboratoryId: {
       type: String,
@@ -98,6 +97,12 @@ export default {
     };
   },
   methods: {
+    uploadHint() {
+        const notification = {
+          message: "Das Labor kann hier den Bericht mit hochladen. Aus Sicherheitsgründen ist diese Funktion im Prototyp deaktiviert."
+        };
+        this.$notification["info"](notification);
+    },
     beforeUpload(file) {
       const setFileBytes = fileBytes => {
         this.fileBytes = fileBytes;

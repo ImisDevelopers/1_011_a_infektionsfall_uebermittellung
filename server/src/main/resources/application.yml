@@ -27,6 +27,10 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     url: jdbc:postgresql:localhost:5432
+  cloud:
+    gcp:
+      credentials:
+        location: file:/usr/local/cloud-store/credentials.json
 ---
 spring:
   profiles: test

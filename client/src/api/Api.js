@@ -42,7 +42,27 @@ class Api {
   }
 
   /*
-   * ----------------------------------
+   * -----------IMPLEMENTED IN UI-----------
+   */
+
+  postInstitution(request) {
+    return this.executeRequest("/institutions", METHOD.POST, request);
+  }
+
+  postPatient(request) {
+    return this.executeRequest("/patients", METHOD.POST, request);
+  }
+
+  postLabTest(request) {
+    return this.executeRequest("/labtests", METHOD.POST, request);
+  }
+
+  putLabTest(testId, request) {
+    return this.executeRequest(`/labtests/${testId}`, METHOD.PUT, request);
+  }
+
+  /*
+   * ---------NOT IMPLEMENTED IN UI---------
    */
 
   postDoctorCreateAppointment({ doctorId, laboratoryId, patientId }) {
@@ -53,52 +73,12 @@ class Api {
     });
   }
 
-  getTestReports(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
-  }
-
-  postTestReport(id, file) {
-    const data = new FormData();
-    data.append("file", file);
-
-    return fetch(`${this.BASE_URL}/test_reports/${encodeURI(id)}`, {
-      method: "POST",
-      body: data
-    }).then(response => {
-      return response.json();
-    });
-  }
-
-  getTestReport(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
-  }
-
-  deleteTestReport(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.DELETE);
-  }
-
-  postInstitution(institution) {
-    return this.executeRequest("/institutions", METHOD.POST, institution);
-  }
-
-  postLabtest(labtest) {
-    return this.executeRequest("/labtest", METHOD.POST, labtest);
-  }
-
-  putLabtest({ updatedTestStatus }) {
-    return this.executeRequest("/labtest", METHOD.PUT, updatedTestStatus);
-  }
-
-  getLabtestByPatient(patientId) {
+  getLabTestByPatient(patientId) {
     return this.executeRequest(`/labtest/patient/${patientId}`, METHOD.GET);
   }
 
   getPatients() {
     return this.executeRequest("/patients", METHOD.GET);
-  }
-
-  postPatient(patient) {
-    return this.executeRequest("/patients", METHOD.POST, patient);
   }
 
   getPatient(id) {

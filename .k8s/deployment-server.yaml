@@ -32,8 +32,8 @@ spec:
                 name: postgres
                 key: password
         volumeMounts:
-        - name: cloudsql-instance-credentials
-          mountPath: /secrets/cloudsql
+        - name: cloudstore-service-account
+          mountPath: /usr/local/cloud-store
           readOnly: true
         readinessProbe:
           httpGet:
@@ -70,3 +70,6 @@ spec:
         - name: cloudsql-instance-credentials
           secret:
             secretName: cloudsql
+        - name: cloudstore-service-account
+          secret:
+            secretName: cloudstore

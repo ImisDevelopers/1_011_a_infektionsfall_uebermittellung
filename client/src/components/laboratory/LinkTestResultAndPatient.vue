@@ -53,13 +53,13 @@
           />
         </a-form-item>
         <a-form-item :wrapper-col="{ span: 24 }">
-          <a-upload
+          <!--<a-upload
             :accept="'pdf'"
             :beforeUpload="beforeUpload"
             :multiple="false"
-          >
-            <a-button> <a-icon type="upload" />Test Report hochladen</a-button>
-          </a-upload>
+          >-->
+            <a-button v-on:click="uploadHint()"><a-icon type="upload" />Test Report hochladen</a-button>
+          <!--</a-upload>-->
         </a-form-item>
         <a-divider />
         <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
@@ -91,6 +91,12 @@ export default {
     };
   },
   methods: {
+    uploadHint() {
+        const notification = {
+          message: "Das Labor kann hier den Bericht mit hochladen. Aus Sicherheitsgründen ist diese Funktion im Prototyp deaktiviert."
+        };
+        this.$notification["info"](notification);
+    },
     beforeUpload(file) {
       const setFileBytes = fileBytes => {
         this.fileBytes = fileBytes;

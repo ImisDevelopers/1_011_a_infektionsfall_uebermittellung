@@ -118,7 +118,7 @@
 
 <script>
 import Api from "../../api/Api";
-import { randomizeProperties } from "../../util/randomize";
+import { anonymizeProperties } from "../../util/randomize";
 
 export default {
   name: "RegisterInstitutionPage",
@@ -145,9 +145,8 @@ export default {
         }
 
         // TODO: Remove this when we go to production
-        randomizeProperties(
+        anonymizeProperties(
           [
-            "name",
             "email",
             "phoneNumber",
             "street",

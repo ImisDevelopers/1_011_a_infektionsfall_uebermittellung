@@ -7,21 +7,22 @@
         :wrapper-col="{ span: 18 }"
         @submit="handleSubmit"
       >
-        <BarcodeInput
-					label="Test-ID"
-					placeholder="z.B 1337-4237-9438"
-					:validation="[
-						'testId',
-						{
-							rules: [
-								{
-									required: true,
-									message: 'Bitte geben Sie Ihre Test-ID ein.'
-								}
-							]
-						}
-					]"
+        <a-form-item label="Test-ID">
+          <a-input
+            v-decorator="[
+              'testId',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte geben Sie Ihre Test-ID ein.'
+                  }
+                ]
+              }
+            ]"
+            placeholder="z.B 1337-4237-9438"
           />
+        </a-form-item>
         <a-form-item label="Testresultat">
           <a-radio-group
             v-decorator="[
@@ -79,11 +80,9 @@
 
 <script>
 import Api from "../../api/Api";
-import BarcodeInput from "../BarcodeInput";
 
 export default {
   name: "LinkTestResultAndPatient",
-  components: {BarcodeInput},
   data() {
     return {
       form: this.$form.createForm(this),

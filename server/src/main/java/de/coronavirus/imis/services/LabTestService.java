@@ -1,8 +1,20 @@
 package de.coronavirus.imis.services;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Component;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.domain.LabTestNotFoundException;
 import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.domain.LaboratoryNotFoundException;
 import de.coronavirus.imis.domain.Patient;
@@ -12,15 +24,6 @@ import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.repositories.LabTestRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
@@ -61,11 +64,13 @@ public class LabTestService {
     }
 
     @Transactional
-    public LabTest updateTestStatus(final String testId, final String statusString, final String comment, final byte[] file) {
+    public LabTest updateTestStatus(final String testId, final String laboratoryId
+            , final String statusString, final String comment, final byte[] file) {
         TestStatus statusToSet = TestStatus.valueOf(statusString.toUpperCase());
 
-        var labTest = labTestRepository.findById(testId)
-                .orElseThrow(LabTestNotFoundException::new);
+        var labTest = labTestRepository.findFirstByTestIdAndLaboratoryId(testId,
+                laboratoryId).orElseThrow();
+
         labTest.setTestStatus(statusToSet);
         labTest.setReport(file);
 

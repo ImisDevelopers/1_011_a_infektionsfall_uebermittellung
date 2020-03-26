@@ -52,6 +52,23 @@ public class InstitutionService {
         return this.laboratoryRepository.saveAndFlush(laboratory);
     }
 
+    // TODO remove after MVP
+    @Transactional
+    public Laboratory createLaboratoryInstitution(CreateInstitutionDTO institutionDTO, String id) {
+        var laboratory = new Laboratory();
+        laboratory.setName(institutionDTO.getName());
+        laboratory.setStreet(institutionDTO.getStreet());
+        laboratory.setHouseNumber(institutionDTO.getHouseNumber());
+        laboratory.setZip(institutionDTO.getZip());
+        laboratory.setCity(institutionDTO.getCity());
+        laboratory.setEmail(institutionDTO.getEmail());
+        laboratory.setPhoneNumber(institutionDTO.getPhoneNumber());
+        laboratory.setComment(institutionDTO.getComment());
+        laboratory.setId(id);
+
+        return this.laboratoryRepository.saveAndFlush(laboratory);
+    }
+
     @Transactional
     public Clinic createClinicInstitution(CreateInstitutionDTO institutionDTO) {
         var clinic = new Clinic();

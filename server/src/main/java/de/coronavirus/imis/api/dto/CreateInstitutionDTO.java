@@ -14,4 +14,5 @@ public class CreateInstitutionDTO {
     private String email;
     private String phoneNumber;
     private String comment;
+    private String id;
 }

@@ -7,5 +7,6 @@
   "city": "Köln",
   "email": "clinic@example.de",
   "phoneNumber": "43345",
-  "comment": "this is a comment for the clinic"
+  "comment": "this is a comment for the clinic",
+  "id": "asdfa"
 }

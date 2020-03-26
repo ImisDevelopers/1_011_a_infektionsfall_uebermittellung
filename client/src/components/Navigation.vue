@@ -13,9 +13,9 @@
 const items = [
   {
     key: "0",
-    url: "/self-register",
-    type: "user-add",
-    text: "Selbstmeldung"
+    url: "/register-institution",
+    type: "home",
+    text: "Instutition Registrieren"
   },
   {
     key: "1",
@@ -27,7 +27,7 @@ const items = [
     key: "2",
     url: "/link-test-and-patient",
     type: "deployment-unit",
-    text: "Test Zuordnen"
+    text: "Probe Zuordnen"
   },
   {
     key: "3",
@@ -45,10 +45,10 @@ const items = [
   },
   {
     key: "7",
-    url: "/register-institution",
-    type: "home",
-    text: "Instutition Registrieren"
-  }
+    url: "/self-register",
+    type: "user-add",
+    text: "Selbstmeldung"
+  },
 ];
 
 export default {

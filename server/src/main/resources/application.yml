@@ -4,6 +4,8 @@ spring:
 ---
 spring:
   profiles: development
+  autoconfigure:
+    exclude: org.springframework.cloud.gcp.autoconfigure.storage.GcpStorageAutoConfiguration
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/imis

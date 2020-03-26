@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -57,5 +58,6 @@ public class Patient {
     private String occupation;
 
     @OneToMany(mappedBy = "patient")
+    @JsonBackReference
     List<PatientEvent> events;
 }

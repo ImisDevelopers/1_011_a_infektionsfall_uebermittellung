@@ -46,19 +46,19 @@ class Api {
    */
 
   postInstitution(request) {
-    return this.executeRequest("/institutions", METHOD.POST, request);
+    return this.executeRequest("institutions", METHOD.POST, request);
   }
 
   postPatient(request) {
-    return this.executeRequest("/patients", METHOD.POST, request);
+    return this.executeRequest("patients", METHOD.POST, request);
   }
 
   postLabTest(request) {
-    return this.executeRequest("/labtests", METHOD.POST, request);
+    return this.executeRequest("labtests", METHOD.POST, request);
   }
 
   putLabTest(testId, request) {
-    return this.executeRequest(`/labtests/${testId}`, METHOD.PUT, request);
+    return this.executeRequest(`labtests/${testId}`, METHOD.PUT, request);
   }
 
   /*
@@ -66,7 +66,7 @@ class Api {
    */
 
   postDoctorCreateAppointment({ doctorId, laboratoryId, patientId }) {
-    return this.executeRequest("/doctor/create_appointment", METHOD.POST, {
+    return this.executeRequest("doctor/create_appointment", METHOD.POST, {
       doctorId,
       laboratoryId,
       patientId
@@ -74,20 +74,20 @@ class Api {
   }
 
   getLabTestByPatient(patientId) {
-    return this.executeRequest(`/labtest/patient/${patientId}`, METHOD.GET);
+    return this.executeRequest(`labtest/patient/${patientId}`, METHOD.GET);
   }
 
   getPatients() {
-    return this.executeRequest("/patients", METHOD.GET);
+    return this.executeRequest("patients", METHOD.GET);
   }
 
   getPatient(id) {
-    return this.executeRequest(`/patients/${id}`, METHOD.GET);
+    return this.executeRequest(`patients/${id}`, METHOD.GET);
   }
 
   getStats(lowerBoundsZip, upperBoundsZip) {
     return this.executeRequest(
-      `/stats?lowerBoundsZip=${lowerBoundsZip}&upperBoundsZips=${upperBoundsZip}`,
+      `stats?lowerBoundsZip=${lowerBoundsZip}&upperBoundsZips=${upperBoundsZip}`,
       METHOD.GET
     );
   }

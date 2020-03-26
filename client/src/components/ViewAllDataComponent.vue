@@ -26,6 +26,7 @@
 // TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu
 
 <script>
+import Api from "../api/Api";
 const columns = [
   {
     title: "ID",
@@ -367,28 +368,9 @@ export default {
     };
   },
   methods: {
-    create(e) {
-      e.preventDefault();
-      if (this.content.length > 0) {
-        fetch("/exampleEntities", {
-          method: "POST",
-          body: JSON.stringify({ content: this.content }),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-          .then(response => {
-            return response.json();
-          })
-          .then(entity => {
-            this.entities.push(entity);
-          });
-        this.content = "";
-      }
-    }
   },
   created() {
-    fetch("/exampleEntities")
+    Api.getPatients()
       .then(response => {
         return response.json();
       })

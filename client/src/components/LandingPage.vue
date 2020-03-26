@@ -15,8 +15,12 @@
                     </a-row>
                 </a-col>
                 <a-col>
-                    <a-button type="primary" @click="showVideo" class="cta">Video ansehen</a-button>
-                    <a-modal title="Wie IMIS funktioniert" class="video-wrapper" v-model="visible">
+                    <a-button type="default" @click="showGithub" class="cta">GitHub</a-button>
+                    <a-modal title="IMIS ist Open Source" class="video-wrapper" v-model="githubVisible">
+                        IMIS ist ein Open Source Projekt. <a href="https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung" target="_blank">Fork me</a> auf Github und wirke an IMIS mit.
+                    </a-modal>
+                    <a-button type="default" @click="showVideo" class="cta">Video ansehen</a-button>
+                    <a-modal title="Wie IMIS funktioniert" class="video-wrapper" v-model="videoVisible">
                         <template slot="footer"></template>
                         <iframe allowfullscreen="true" class="video" id="youtube" :style="{width: '100%', height: '260px' }" src="https://www.youtube.com/embed/XIIlMh3Lbsc">Video vom Browser nicht unterstützt.</iframe>
                     </a-modal>
@@ -79,14 +83,18 @@
         },
         data() {
             return {
-                visible: false,
+                videoVisible: false,
+                githubVisible: false,
                 videoHeight: "auto",
             };
         },
         name: "LandingPage",
         methods: {
             showVideo() {
-                this.visible = true;
+                this.videoVisible = true;
+            },
+            showGithub() {
+                this.githubVisible = true;
             },
             getImgUrl(i) {
                 return require(`@/assets/carousel/carousel-image-${i+1}.png`);

@@ -15,7 +15,7 @@
         forceRender
         :disabled="!isLoggedIn"
       >
-        <LinkTestResultAndPatient />
+        <LinkTestResultAndPatient :laboratoryId="laboratoryId" />
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -34,11 +34,13 @@ export default {
   data() {
     return {
       activeKey: "1",
-      isLoggedIn: false
+      isLoggedIn: false,
+      laboratoryId: ""
     };
   },
   methods: {
-    onLoginSuccess() {
+    onLoginSuccess(laboratoryId) {
+      this.laboratoryId = laboratoryId;
       this.isLoggedIn = true;
       this.activeKey = "2";
     }

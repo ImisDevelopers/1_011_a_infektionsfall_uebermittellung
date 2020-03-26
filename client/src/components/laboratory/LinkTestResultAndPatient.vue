@@ -84,6 +84,12 @@ import BarcodeInput from "../BarcodeInput";
 export default {
   name: "LinkTestResultAndPatient",
   components: {BarcodeInput},
+  props: {
+    laboratoryId: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       form: this.$form.createForm(this),
@@ -120,6 +126,7 @@ export default {
 
         const { testId } = values;
         const request = {
+          testId,
           status:
             values.testResult === "positive"
               ? "TEST_POSITIVE"
@@ -127,8 +134,8 @@ export default {
           comment: values.comment,
           file: this.fileBytes
         };
-
-        Api.putLabTest(testId, request)
+        // TODO this was just for MVP
+        Api.putLabTest(this.laboratoryId, request)
           .then(labTest => {
             this.updatedLabTest = labTest;
 

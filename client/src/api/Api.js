@@ -57,8 +57,8 @@ class Api {
     return this.executeRequest("labtests", METHOD.POST, request);
   }
 
-  putLabTest(testId, request) {
-    return this.executeRequest(`labtests/${testId}`, METHOD.PUT, request);
+  putLabTest(laboratoryId, request) {
+    return this.executeRequest(`labtests/${laboratoryId}`, METHOD.PUT, request);
   }
 
   /*

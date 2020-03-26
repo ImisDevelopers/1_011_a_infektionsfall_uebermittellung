@@ -373,7 +373,11 @@ export default {
     Api.getPatients()
       .then(patients => {
         console.log(patients)
-        this.data = patients.reverse();
+        this.data = patients.reverse()
+                .map(patient => ({
+                  ...patient,
+                  status: patient.events ? patient.events[patient.events.length -1].eventType : '',
+                }));
       });
   }
 };

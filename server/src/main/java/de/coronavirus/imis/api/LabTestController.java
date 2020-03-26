@@ -38,10 +38,11 @@ public class LabTestController {
         return service.getAllLabsTestForPatient(patientId);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<LabTest> updateTestStatus(@PathVariable("id") String id, @RequestBody UpdateTestStatusDTO statusDTO) {
+    @PutMapping("/{laboratoryId}")
+    public ResponseEntity<LabTest> updateTestStatus(@PathVariable("laboratoryId") String laboratoryId, @RequestBody UpdateTestStatusDTO statusDTO) {
         return ResponseEntity.ok(service.updateTestStatus(
-                id,
+                statusDTO.getTestId(),
+                laboratoryId,
                 statusDTO.getStatus(),
                 statusDTO.getComment(),
                 statusDTO.getFile())

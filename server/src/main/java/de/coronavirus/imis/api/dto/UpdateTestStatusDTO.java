@@ -6,5 +6,6 @@ import lombok.Data;
 public class UpdateTestStatusDTO {
     private String status;
     private String comment;
+    private String testId;
     private byte[] file;
 }

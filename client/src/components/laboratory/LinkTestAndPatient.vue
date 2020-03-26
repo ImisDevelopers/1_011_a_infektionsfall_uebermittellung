@@ -68,7 +68,7 @@ import BarcodeInput from "../BarcodeInput";
 
 export default {
   name: "LinkTestAndPatient",
-  components: {BarcodeInput },
+  components: {BarcodeInput},
   props: {
     laboratoryId: {
       type: String,
@@ -89,7 +89,6 @@ export default {
         if (err) {
           return;
         }
-
         const request = {
           ...values,
           laboratoryId: this.laboratoryId

@@ -25,6 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.requiresChannel()
                 .antMatchers("/actuator/health").requiresInsecure()
-                .anyRequest().requiresSecure();
+                .anyRequest()
+                .requiresSecure();
+        http.authorizeRequests().antMatchers("/**").permitAll()
+                .and().httpBasic().disable();
     }
 }

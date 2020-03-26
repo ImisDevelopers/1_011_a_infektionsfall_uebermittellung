@@ -376,7 +376,7 @@ export default {
       })
       .then(entities => {
         this.entities.push(...entities);
-      });*/
+      });
   }
 };
 </script>

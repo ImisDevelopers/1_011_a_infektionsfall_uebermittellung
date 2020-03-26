@@ -28,13 +28,13 @@
 <script>
 import Api from "../api/Api";
 const columns = [
-  {
-    title: "ID",
-    dataIndex: "id",
-    key: "id",
-    sorter: (a, b) => a.id - b.id,
-    defaultSortOrder: "ascend"
-  },
+  // {
+  //   // title: "ID",
+  //   dataIndex: "id",
+  //   key: "id",
+
+  //   defaultSortOrder: "ascend"
+  // },
   {
     title: "Nachname",
     dataIndex: "lastName",
@@ -42,6 +42,7 @@ const columns = [
   },
   {
     title: "Vorname",
+    sorter: (a, b) => a.firstName - b.firstName,
     dataIndex: "firstName",
     key: "firstName"
   },
@@ -82,7 +83,7 @@ const columns = [
   }
 ];
 
-const data = [
+/*const data = [
   {
     id: "2837917348",
     gender: "weiblich",
@@ -353,29 +354,27 @@ const data = [
     preIllnesses: ["diabetes"]
   }
 ];
+*/
 
 export default {
-  name: "TestingComponent",
+  name: "ViewAllDataComponent",
   props: {
     msg: String
   },
   data() {
     return {
-      entities: [],
       content: "",
       columns,
-      data
+      data: []
     };
   },
   methods: {
   },
   created() {
     Api.getPatients()
-      .then(response => {
-        return response.json();
-      })
-      .then(entities => {
-        this.entities.push(...entities);
+      .then(patients => {
+        console.log(patients)
+        this.data = patients.reverse();
       });
   }
 };

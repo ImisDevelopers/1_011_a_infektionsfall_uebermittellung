@@ -53,8 +53,10 @@ Install Docker and run: `docker-compose up`
 ```./gradlew bootRun```
 1. Start local development server for vue.js development
 ```./gradlew serve```
-## Quickstart for Backendserver to enable Frontend Development
-```docker-compose -f docker-compose.yml -f docker-compose.frontend_dev.yml up ```
+## Quickstart for frontend development
+```docker-compose -f docker-compose.yml -f docker-compose.yml up -d db core```
+## Quickstart for backend development
+```docker-compose -f docker-compose.yml -f docker-compose.yml up -d db client```
 
 ## API communication
 

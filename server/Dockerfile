@@ -1,4 +1,4 @@
-FROM gradle:6.0.1-jdk11
+FROM gradle:6.2.2-jdk11
 ADD . /app
 WORKDIR /app
 RUN gradle build clean

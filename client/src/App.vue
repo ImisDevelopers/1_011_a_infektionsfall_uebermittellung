@@ -64,4 +64,8 @@ import LandingPage from "./components/LandingPage";
   height: 35px;
   background-color: #ffdddd;
 }
+
+  #components-layout-demo-responsive{
+    height: 100vh;
+  }
 </style>

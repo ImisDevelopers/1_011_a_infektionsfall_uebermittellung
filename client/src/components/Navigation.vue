@@ -11,8 +11,15 @@
 
 <script>
 const items = [
+
   {
     key: "0",
+    url: "/prototype/register-institution",
+    type: "home",
+    text: "Instutition Registrieren"
+  },
+  {
+    key: "1",
     url: "/prototype/register-patient",
     type: "user-add",
     text: "Patient Registrieren"
@@ -24,24 +31,18 @@ const items = [
     text: "Probe Zuordnen"
   },
   {
-    key: "2",
+    key: "3",
     url: "/prototype/link-test-result",
     type: "experiment",
     text: "Testresultat Zuordnen"
   },
-  { key: "3", url: "/prototype/patient-overview", type: "user", text: "Patienten-Daten" },
-  { key: "4", url: "/prototype/all-data", type: "team", text: "Alle Patienten" },
+  { key: "4", url: "/prototype/patient-overview", type: "user", text: "Patienten-Daten" },
+  { key: "5", url: "/prototype/all-data", type: "team", text: "Alle Patienten" },
   {
-    key: "5",
+    key: "6",
     url: "/prototype/public-statistics",
     type: "stock",
     text: "Öffentliche Statistiken"
-  },
-  {
-    key: "6",
-    url: "/prototype/register-institution",
-    type: "home",
-    text: "Instutition Registrieren"
   }
 ];
 

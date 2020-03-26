@@ -12,13 +12,14 @@
         </h1>
         <br />
         <table>
-          <tr>
+          <tr style="vertical-align: middle;">
             <td width="60%">
               <iframe
                 allowfullscreen="true"
                 id="youtube"
                 v-bind:style="{ width: '100%', height: (38 / 16) * 9 + 'vw' }"
                 src="https://www.youtube.com/embed/XIIlMh3Lbsc"
+                style="vertical-align: top"
                 >Video vom Browser nicht unterstützt.
               </iframe>
             </td>
@@ -30,23 +31,28 @@
               <div style="padding-left: 50px; text-align: justify">
                 {{ paragraph2 }}
               </div>
-              <br />
-              <a
-                style="padding-left: 50px;"
-                href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
-                >Mehr im DevPost</a
-              >
             </td>
           </tr>
         </table>
       </div>
+      <br>
+      <!--
       <div>
-        <img src="../assets/vision.png" width="75%" />
+        <h2 style="text-align: center">Unsere Vision</h2>
+        <img src="../assets/vision.png" width="80%"/>
       </div>
+      -->
       <br />
     </div>
     <div class="transition"></div>
     <div class="right-part">
+      <table style="position: absolute; top: 5px;">
+        <tr>
+          <td><a-button type="primary" block="true"  href="mailto:imis-team@gmx.de" icon="mail" shape="round">Kontakt</a-button></td>
+          <td><a-button type="primary" block="true" href="https://devpost.com/software/imis-infektions-melde-und-informations-system" icon="bulb" shape="round">DevPost</a-button></td>
+          <td><a-button type="primary" block="true" href="https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung" icon="tool" shape="round">GitHub</a-button></td>
+        </tr>
+      </table>
       <h1>Hier geht's zur Live-Demo:</h1>
       <a-button
         type="primary"
@@ -89,7 +95,6 @@ export default {
   display: table-cell;
   width: 70vw;
   height: 100vh;
-  vertical-align: center;
   text-align: left;
   padding: 1%;
 }

@@ -14,7 +14,7 @@
 			</div>
 		</div>
 		<div class="scanner-input">
-			<a-select @change="handleDeviceChange" labelInValue :value="device">
+			<a-select @change="handleDeviceChange" labelInValue :value="device" v-if="devices.length > 0">
 				<a-select-option v-for="d in devices" :key="d.deviceId">{{d.label}}</a-select-option>
 			</a-select>
 			<div class="cancel-button" v-if="result.length === 0">
@@ -44,11 +44,20 @@ export default {
 		},
 		startScanning() {
       if (this.device) {
-				this.codeReader.decodeOnceFromVideoDevice(this.device.key, 'video')
-					.then(result => {
-						this.result = result.text;
-						// this.startScanning()  # TODO should it stop after first detection?
-					})
+        try {
+					this.codeReader.decodeOnceFromVideoDevice(this.device.key, 'video')
+						.then(result => {
+							this.result = result.text;
+							// this.startScanning()  # TODO should it stop after first detection?
+						})
+				} catch (err) {
+          console.log('notificaiton')
+          console.log(err);
+          this.$notification['error']({
+            title: 'No Camera',
+            description: 'No Camera or no Camera Permissions',
+          })
+				}
       }
 		},
 		useResult() {
@@ -60,14 +69,23 @@ export default {
 	},
   created: async function() {
     try {
-			this.devices = await this.codeReader.listVideoInputDevices();
-			this.device = {
-				key: this.devices[0].deviceId,
-				label: this.devices[0].label,
-      };
+			if (!navigator.mediaDevices.enumerateDevices) {
+				this.device = {key: undefined, label: 'Camera'}
+			} else {
+        this.devices = await this.codeReader.listVideoInputDevices();
+        this.device = {
+          key: this.devices[0].deviceId,
+          label: this.devices[0].label,
+        };
+			}
 			this.startScanning();
 		} catch (err) {
+      console.log('notificaiton')
       console.log(err);
+      this.$notification['error']({
+				title: 'No Camera',
+				description: 'No Camera or no Camera Permissions',
+      })
 		}
 
 

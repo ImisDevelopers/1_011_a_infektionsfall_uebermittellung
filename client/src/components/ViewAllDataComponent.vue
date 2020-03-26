@@ -28,13 +28,6 @@
 <script>
 import Api from "../api/Api";
 const columns = [
-  // {
-  //   // title: "ID",
-  //   dataIndex: "id",
-  //   key: "id",
-
-  //   defaultSortOrder: "ascend"
-  // },
   {
     title: "Nachname",
     dataIndex: "lastName",
@@ -80,7 +73,13 @@ const columns = [
     title: "Telefon",
     dataIndex: "phone",
     key: "phone"
-  }
+  },
+  {
+    title: "ID",
+    dataIndex: "id",
+    key: "id",
+    defaultSortOrder: "ascend"
+  },
 ];
 
 /*const data = [

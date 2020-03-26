@@ -1,16 +1,16 @@
 <template>
   <div>
     <a-tabs defaultActiveKey="1" v-model="activeKey">
-      <a-tab-pane tab="1. Laboranmeldung" key="1" :disabled="isLoggedIn">
+      <a-tab-pane tab="1. Anmeldung" key="1" :disabled="isLoggedIn">
         <Login
           @on-login-success="onLoginSuccess"
           :title="
-            'Bitte melden Sie sich hier mit Laborkennung und Passwort an um einen Test einem Patienten zuzuordnen.'
+            'Bitte melden Sie sich hier mit Kennung und Passwort an um eine Probe einem Patienten zuzuordnen.'
           "
         />
       </a-tab-pane>
       <a-tab-pane
-        tab="2. Test zuordnen"
+        tab="2. Probe zuordnen"
         key="2"
         forceRender
         :disabled="!isLoggedIn"

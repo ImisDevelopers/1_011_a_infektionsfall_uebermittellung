@@ -12,7 +12,7 @@
 <script>
 const items = [
   {
-    key: "1",
+    key: "0",
     url: "/prototype/register-patient",
     type: "user-add",
     text: "Patient Registrieren"
@@ -21,24 +21,24 @@ const items = [
     key: "2",
     url: "/prototype/link-test-and-patient",
     type: "deployment-unit",
-    text: "Test Zuordnen"
+    text: "Probe Zuordnen"
   },
   {
-    key: "3",
+    key: "2",
     url: "/prototype/link-test-result",
     type: "experiment",
     text: "Testresultat Zuordnen"
   },
-  { key: "4", url: "/prototype/patient-overview", type: "user", text: "Patienten-Daten" },
-  { key: "5", url: "/prototype/all-data", type: "team", text: "Alle Patienten" },
+  { key: "3", url: "/prototype/patient-overview", type: "user", text: "Patienten-Daten" },
+  { key: "4", url: "/prototype/all-data", type: "team", text: "Alle Patienten" },
   {
-    key: "6",
+    key: "5",
     url: "/prototype/public-statistics",
     type: "stock",
     text: "Öffentliche Statistiken"
   },
   {
-    key: "7",
+    key: "6",
     url: "/prototype/register-institution",
     type: "home",
     text: "Instutition Registrieren"

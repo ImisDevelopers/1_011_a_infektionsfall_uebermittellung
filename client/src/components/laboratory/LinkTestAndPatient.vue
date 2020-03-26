@@ -8,9 +8,10 @@
         :form="form"
         @submit="handleSubmit"
       >
-        <a-form-item label="Patienten-ID">
-          <a-input
-            v-decorator="[
+        <BarcodeInput
+          placeholder="z.B 1337-4237-9438"
+          label="Patienten-ID"
+          :validation="[
               'patientId',
               {
                 rules: [
@@ -21,12 +22,11 @@
                 ]
               }
             ]"
-            placeholder="z.B 1337-4237-9438"
           />
-        </a-form-item>
-        <a-form-item label="Test-ID">
-          <a-input
-            v-decorator="[
+        <BarcodeInput
+          label="Test-ID"
+          placeholder="z.B ae48-hr43-sk97"
+          :validation="[
               'testId',
               {
                 rules: [
@@ -37,9 +37,7 @@
                 ]
               }
             ]"
-            placeholder="z.B ae48-hr43-sk97"
-          />
-        </a-form-item>
+        />
         <a-form-item label="Kommentar">
           <a-textarea
             v-decorator="['comment']"
@@ -66,9 +64,11 @@
 
 <script>
 import Api from "../../api/Api";
+import BarcodeInput from "../BarcodeInput";
 
 export default {
   name: "LinkTestAndPatient",
+  components: {BarcodeInput },
   props: {
     laboratoryId: {
       type: String,

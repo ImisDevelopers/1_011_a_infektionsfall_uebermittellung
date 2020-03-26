@@ -1,7 +1,7 @@
 version: '3.5'
 
 services:
-  db:
+  postgres:
     image: postgres
     environment:
       POSTGRES_USER: imis
@@ -20,14 +20,9 @@ services:
 
   server:
     build:
-      context: server
+      context: .
       dockerfile: Dockerfile.prod
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
-      - SPRING_
     ports:
     - "8080:8080"
-
-networks:
-  postgres:
-    driver: bridge

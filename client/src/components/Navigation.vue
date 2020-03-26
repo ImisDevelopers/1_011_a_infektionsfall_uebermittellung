@@ -43,12 +43,6 @@ const items = [
     type: "stock",
     text: "Öffentliche Statistiken"
   },
-  {
-    key: "7",
-    url: "/self-register",
-    type: "user-add",
-    text: "Selbstmeldung"
-  },
 ];
 
 export default {

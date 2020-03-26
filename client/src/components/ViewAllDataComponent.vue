@@ -49,16 +49,16 @@ const columns = [
     dataIndex: "status",
     key: "status"
   },
-  {
-    title: "Zeitpunkt",
-    dataIndex: "timestamp",
-    key: "timestamp"
-  },
-  {
-    title: "Geburtsdatum",
-    dataIndex: "birthDate",
-    key: "birthDate"
-  },
+  // {
+  //   title: "Zeitpunkt",
+  //   dataIndex: "timestamp",
+  //   key: "timestamp"
+  // },
+  // {
+  //   title: "Geburtsdatum",
+  //   dataIndex: "birthDate",
+  //   key: "birthDate"
+  // },
   {
     title: "Stadt",
     dataIndex: "city",
@@ -69,11 +69,11 @@ const columns = [
     dataIndex: "email",
     key: "email"
   },
-  {
-    title: "Telefon",
-    dataIndex: "phone",
-    key: "phone"
-  },
+  // {
+  //   title: "Telefon",
+  //   dataIndex: "phone",
+  //   key: "phone"
+  // },
   {
     title: "ID",
     dataIndex: "id",

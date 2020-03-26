@@ -56,7 +56,7 @@ public class TestDataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 5; i++) {
                 var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
                 patientService.addPatient(createPersonDTO);
             }

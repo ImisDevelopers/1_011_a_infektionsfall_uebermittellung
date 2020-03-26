@@ -43,7 +43,9 @@
       </a-form-item>
     </a-form>
     <p class="test-acess">
-      Testzugang mit Password <i><b>asdf</b></i>
+      Testzugang <br>
+      Username: <i><b>1234</b></i><br>
+      Password <i><b>asdf</b></i>
     </p>
   </a-card>
 </template>
@@ -69,7 +71,7 @@ export default {
           return;
         }
 
-        if (values.id && values.password === "asdf") {
+        if (values.id === '1234' && values.password === "asdf") {
           this.$emit("on-login-success", values.id);
         } else {
           this.$notification["error"]({

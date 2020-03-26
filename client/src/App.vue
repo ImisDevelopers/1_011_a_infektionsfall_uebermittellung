@@ -3,7 +3,7 @@
     <a-layout>
       <div class="prototype-warning">
         Dies ist ein Prototyp - Eingetragene Daten werden vor dem Absenden
-        randomisiert.
+        anonymisiert.
       </div>
 
       <a-layout style="min-height: calc(100vh - 35px);">

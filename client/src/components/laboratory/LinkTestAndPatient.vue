@@ -9,7 +9,7 @@
         @submit="handleSubmit"
       >
         <BarcodeInput
-          placeholder="z.B 1337-4237-9438"
+          placeholder="z.B 43A78F0B"
           label="Patienten-ID"
           :validation="[
               'patientId',

@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-
+import java.util.UUID;
 
 
 @Service
@@ -33,7 +33,7 @@ public class InstitutionService {
        doctor.setEmail(institutionDTO.getEmail());
        doctor.setPhoneNumber(institutionDTO.getPhoneNumber());
        doctor.setComment(institutionDTO.getComment());
-
+       doctor.setId(UUID.randomUUID().toString());
        return this.doctorRepository.saveAndFlush(doctor);
     }
 
@@ -48,11 +48,12 @@ public class InstitutionService {
         laboratory.setEmail(institutionDTO.getEmail());
         laboratory.setPhoneNumber(institutionDTO.getPhoneNumber());
         laboratory.setComment(institutionDTO.getComment());
-
+        laboratory.setId(UUID.randomUUID().toString());
         return this.laboratoryRepository.saveAndFlush(laboratory);
     }
 
-    // TODO remove after MVP
+    // TODO remove after MVP and set UUID as generator in Institution and remove generated UUID in this service
+    //      ask @jonathangpk
     @Transactional
     public Laboratory createLaboratoryInstitution(CreateInstitutionDTO institutionDTO, String id) {
         var laboratory = new Laboratory();
@@ -80,6 +81,7 @@ public class InstitutionService {
         clinic.setEmail(institutionDTO.getEmail());
         clinic.setPhoneNumber(institutionDTO.getPhoneNumber());
         clinic.setComment(institutionDTO.getComment());
+        clinic.setId(UUID.randomUUID().toString());
 
         return this.clinicRepository.saveAndFlush(clinic);
     }
@@ -95,6 +97,7 @@ public class InstitutionService {
         testSite.setEmail(institutionDTO.getEmail());
         testSite.setPhoneNumber(institutionDTO.getPhoneNumber());
         testSite.setComment(institutionDTO.getComment());
+        testSite.setId(UUID.randomUUID().toString());
 
         return this.testSiteRepository.saveAndFlush(testSite);
     }

@@ -24,24 +24,28 @@ const items = [
     text: "Probe Zuordnen"
   },
   {
-    key: "2",
+    key: "3",
     url: "/prototype/link-test-result",
     type: "experiment",
     text: "Testresultat Zuordnen"
   },
-  { key: "3", url: "/prototype/patient-overview", type: "user", text: "Patienten-Daten" },
-  { key: "4", url: "/prototype/all-data", type: "team", text: "Alle Patienten" },
+  {
+    key: "4",
+    url: "/prototype/patient-overview",
+    type: "user",
+    text: "Patienten-Daten"
+  },
   {
     key: "5",
-    url: "/prototype/public-statistics",
-    type: "stock",
-    text: "Öffentliche Statistiken"
+    url: "/prototype/all-data",
+    type: "team",
+    text: "Alle Patienten"
   },
   {
     key: "6",
-    url: "/prototype/register-institution",
-    type: "home",
-    text: "Instutition Registrieren"
+    url: "/prototype/public-statistics",
+    type: "stock",
+    text: "Öffentliche Statistiken"
   }
 ];
 

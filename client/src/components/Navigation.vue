@@ -12,6 +12,12 @@
 <script>
 const items = [
   {
+    key: "0",
+    url: "/self-register",
+    type: "user-add",
+    text: "Selbstmeldung"
+  },
+  {
     key: "1",
     url: "/register-patient",
     type: "user-add",

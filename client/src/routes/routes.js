@@ -6,6 +6,7 @@ import RegisterPatientPage from "../components/page/RegisterPatientPage";
 import ViewAllDataComponent from "../components/ViewAllDataComponent.vue";
 import PublicStatisticsComponent from "../components/PublicStatisticsComponent";
 import PatientOverviewComponent from "../components/PatientOverviewComponent.vue";
+import SelfRegisterComponent from "../components/SelfRegisterComponent";
 
 export const routes = [
   { path: "*", redirect: "/register-patient" },
@@ -36,5 +37,9 @@ export const routes = [
   {
     path: "/link-test-and-patient",
     component: LinkTestAndPatientPage
+  },
+  {
+    path: "/self-register",
+    component: SelfRegisterComponent
   }
 ];

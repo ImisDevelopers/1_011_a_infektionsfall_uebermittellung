@@ -133,7 +133,7 @@
     const insuranceMembershipNumber = "45687912";
 
     export default {
-        name: "TestingComponent",
+        name: "PatientOverviewComponent",
         props: {
             msg: String
         },

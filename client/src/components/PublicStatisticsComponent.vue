@@ -103,7 +103,7 @@
         }
     ];
     export default {
-        name: 'TestingComponent',
+        name: 'PublicStatisticsComponent',
         props: {
             msg: String
         },

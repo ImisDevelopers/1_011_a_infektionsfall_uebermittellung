@@ -70,15 +70,12 @@ import Api from "../../api/Api";
 export default {
   name: "LinkTestAndPatient",
   props: {
-    laboratoryId: {
-      type: String,
-      required: true
-    }
   },
   data() {
     return {
       form: this.$form.createForm(this),
-      createdLabTest: null
+      createdLabTest: null,
+      laboratoryId: "123",
     };
   },
   methods: {

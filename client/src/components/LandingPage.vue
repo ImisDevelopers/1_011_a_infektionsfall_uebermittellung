@@ -45,7 +45,7 @@
     </div>
     <div class="transition"></div>
     <div class="right-part">
-      <table style="position: absolute; top: 5px;">
+      <table style="position: absolute; top: 1rem; right: 1rem;">
         <tr>
           <td><a-button type="primary" block="true"  href="mailto:imis-team@gmx.de" icon="mail" shape="round">Kontakt</a-button></td>
           <td><a-button type="primary" block="true" href="https://devpost.com/software/imis-infektions-melde-und-informations-system" icon="bulb" shape="round">DevPost</a-button></td>
@@ -83,41 +83,42 @@ export default {
 
 <style>
 .main {
-  background-color: whitesmoke;
-  margin: 0 auto;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    background-color: whitesmoke;
+    margin: 0 auto;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .left-part {
-  display: table-cell;
-  width: 70vw;
-  height: 100vh;
-  text-align: left;
-  padding: 1%;
+    display: table-cell;
+    width: 70vw;
+    height: 100vh;
+    text-align: left;
+    padding: 1%;
 }
 
 .transition {
-  display: table-cell;
-  background-image: linear-gradient(
-    80deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0) 50%,
-    lightgrey 50%,
-    lightgrey 100%
-  );
-  width: 10vw;
-  height: 100vh;
+    display: table-cell;
+    background-image: linear-gradient(
+        85deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 50%,
+        lightgrey 50%,
+        lightgrey 100%
+    );
+    width: 10vw;
+    height: 100%;
 }
 
 .right-part {
-  display: table-cell;
-  width: 20vw;
-  height: 100vh;
-  background-color: lightgrey;
-  text-align: left;
-  vertical-align: middle;
-  padding-right: 40px;
+    display: table-cell;
+    width: 20vw;
+    height: 100vh;
+    background-color: lightgrey;
+    text-align: left;
+    vertical-align: middle;
+    padding-right: 40px;
 }
 </style>

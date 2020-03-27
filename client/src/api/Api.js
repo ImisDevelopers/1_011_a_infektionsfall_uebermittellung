@@ -13,7 +13,7 @@ class Api {
     ) {
       this.BASE_URL = "http://localhost:80";
     } else {
-      this.BASE_URL = "https://api.imis-prototyp.de";
+      this.BASE_URL = "http://35.246.194.158:8080";
     }
   }
 

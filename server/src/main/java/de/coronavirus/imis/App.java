@@ -21,7 +21,7 @@ public class App {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://imis-prototyp.de", "http://localhost:8080")
+                        .allowedOrigins("https://imis-prototyp.de", "http://imis-prototyp.de", "http://localhost:8080")
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };

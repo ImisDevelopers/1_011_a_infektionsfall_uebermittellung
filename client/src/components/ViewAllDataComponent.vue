@@ -30,12 +30,13 @@ import Api from "../api/Api";
 const columns = [
   {
     title: "Nachname",
+    sorter: (a, b) => a.lastName.localeCompare(b.lastName),
     dataIndex: "lastName",
     key: "lastName"
   },
   {
     title: "Vorname",
-    sorter: (a, b) => a.firstName - b.firstName,
+    sorter: (a, b) => a.firstName.localeCompare(b.firstName),
     dataIndex: "firstName",
     key: "firstName"
   },
@@ -46,6 +47,7 @@ const columns = [
   },
   {
     title: "Status",
+    sorter: (a, b) => a.status.localeCompare(b.status),
     dataIndex: "status",
     key: "status"
   },
@@ -82,7 +84,7 @@ const columns = [
   },
 ];
 
-/*const data = [
+const data = [
   {
     id: "2837917348",
     gender: "weiblich",
@@ -92,20 +94,20 @@ const columns = [
     lastName: "Musterfrau",
     firstName: "Marie",
     city: "Musterstadt",
-    email: "marie.musterfrau@gmail.com",
-    phone: "0151 123456789"
+    email: "marie.musterfrau@example.com",
+    phone: "0151 1234"
   },
   {
     id: "2837916548",
-    status: "Verdachtsfall",
+    status: "Wartet auf Probenname",
     timestamp: "20.3.2020 09:20",
     birthDate: "05.11.1985",
-    phone: "0154 78082517",
+    phone: "0154 7808",
     lastName: "Klein",
     firstName: "Kai",
     gender: "m\u00e4nnlich",
     dateOfBirth: "1927-4-5",
-    email: "K@gmail.de",
+    email: "K@example.com",
     phoneNumber: "55510674222",
     street: "Nordstra\u00dfe",
     houseNumber: 43,
@@ -126,12 +128,12 @@ const columns = [
     status: "Verdachtsfall",
     timestamp: "20.3.2020 10:20",
     birthDate: "05.10.1987",
-    phone: "0154 78082517",
+    phone: "0154 7808",
     lastName: "Bauer",
     firstName: "Annika",
     gender: "weiblich",
     dateOfBirth: "1945-09-24 04",
-    email: "A@posteo.de",
+    email: "A@example.com",
     phoneNumber: "702109108075",
     street: "Haidth\u00f6heAarweg",
     houseNumber: 31,
@@ -159,12 +161,12 @@ const columns = [
     status: "Positiv getestet",
     timestamp: "20.3.2020 10:15",
     birthDate: "17.6.1990",
-    phone: "040 880066",
+    phone: "040 8800",
     lastName: "Schr\u00f6der",
     firstName: "Marie",
     gender: "weiblich",
     dateOfBirth: "1961-07-29 11",
-    email: "M@gmail.de",
+    email: "M@example.com",
     phoneNumber: "0265321169",
     street: "Niekampsweg",
     houseNumber: 43,
@@ -185,12 +187,12 @@ const columns = [
     status: "Genesen",
     timestamp: "20.3.2020 10:15",
     birthDate: "17.6.1955",
-    phone: "011 880066",
+    phone: "011 8800",
     lastName: "Winter",
     firstName: "Kai",
     gender: "m\u00e4nnlich",
     dateOfBirth: "1941-02-20 05",
-    email: "K@t-online.de",
+    email: "K@example.com",
     phoneNumber: "3466899914",
     street: "Nordtstra\u00dfe",
     houseNumber: 28,
@@ -211,12 +213,12 @@ const columns = [
     status: "Genesen",
     timestamp: "18.3.2020 10:50",
     birthDate: "17.3.1980",
-    phone: "011 41241",
+    phone: "011 4124",
     lastName: "Winkler",
     firstName: "Karl",
     gender: "m\u00e4nnlich",
     dateOfBirth: "1981-06-29 07",
-    email: "K@gmx.de",
+    email: "K@example.com",
     phoneNumber: "797701058010",
     street: "Haidth\u00f6heAarweg",
     houseNumber: 90,
@@ -246,12 +248,12 @@ const columns = [
     status: "Verdachtsfall",
     timestamp: "21.3.2020 12:50",
     birthDate: "17.6.1970",
-    phone: "551 12412",
+    phone: "551 1241",
     lastName: "Wagner",
     firstName: "Susanne",
     gender: "weiblich",
     dateOfBirth: "1932-09-07 12",
-    email: "S@t-online.de",
+    email: "S@example.com",
     phoneNumber: "0669898850",
     street: "Nordufer",
     houseNumber: 84,
@@ -272,12 +274,12 @@ const columns = [
     status: "Negativ getestet",
     timestamp: "15.3.2020 14:50",
     birthDate: "12.9.1984",
-    phone: "123 01241",
+    phone: "123 0124",
     lastName: "Schulz",
     firstName: "Daniela",
     gender: "weiblich",
     dateOfBirth: "1992-03-12 14",
-    email: "D@web.de",
+    email: "D@example.com",
     phoneNumber: "8009156938",
     street: "B\u00fcckerheide",
     houseNumber: 54,
@@ -298,12 +300,12 @@ const columns = [
     status: "Positiv getestet",
     timestamp: "12.3.2020 11:25",
     birthDate: "12.8.1953",
-    phone: "021 15122",
+    phone: "021 1512",
     lastName: "Richter",
     firstName: "Annika",
     gender: "weiblich",
     dateOfBirth: "1970-11-14 03",
-    email: "A@t-online.de",
+    email: "A@example.com",
     phoneNumber: "102849239510",
     street: "Haidth\u00f6heAarweg",
     houseNumber: 68,
@@ -331,12 +333,12 @@ const columns = [
     status: "Genesen",
     timestamp: "21.3.2020 09:30",
     birthDate: "11.4.1999",
-    phone: "194 01241",
+    phone: "194 0124",
     lastName: "Weber",
     firstName: "Susanne",
     gender: "weiblich",
     dateOfBirth: "1957-11-17 12",
-    email: "S@t-online.de",
+    email: "S@example.com",
     phoneNumber: "36410026036",
     street: "Schernerweg",
     houseNumber: 46,
@@ -353,7 +355,6 @@ const columns = [
     preIllnesses: ["diabetes"]
   }
 ];
-*/
 
 export default {
   name: "ViewAllDataComponent",
@@ -364,7 +365,7 @@ export default {
     return {
       content: "",
       columns,
-      data: []
+      data: data
     };
   },
   methods: {

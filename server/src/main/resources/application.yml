@@ -33,6 +33,9 @@ spring:
     gcp:
       credentials:
         location: file:/usr/local/cloud-store/credentials.json
+management:
+  server:
+    port: 8081
 ---
 spring:
   profiles: test

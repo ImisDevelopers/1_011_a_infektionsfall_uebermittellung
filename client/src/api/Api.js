@@ -61,6 +61,10 @@ class Api {
     return this.executeRequest(`labtests/${laboratoryId}`, METHOD.PUT, request);
   }
 
+  postAuthentication(request) {
+    return this.executeRequest("authorize", METHOD.POST, request);
+  }
+
   /*
    * ---------NOT IMPLEMENTED IN UI---------
    */

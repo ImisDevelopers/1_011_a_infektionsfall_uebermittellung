@@ -1,10 +1,10 @@
 <template>
-  <a-card style="width: 500px; margin: 4rem auto; min-height: 300px;">
-    <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" :form="form">
-      <p class="login-header">Login</p>
-      <a-form-item label="Kennung">
-        <a-input
-            v-decorator="[
+    <a-card style="width: 500px; margin: 4rem auto; min-height: 300px;">
+        <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" :form="form">
+            <p class="login-header">Login</p>
+            <a-form-item label="Kennung">
+                <a-input
+                        v-decorator="[
             'id',
             {
               rules: [
@@ -15,12 +15,12 @@
               ]
             }
           ]"
-            placeholder="z.B 1337-4237-9438"
-        />
-      </a-form-item>
-      <a-form-item label="Passwort">
-        <a-input
-            v-decorator="[
+                        placeholder="z.B 1337-4237-9438"
+                />
+            </a-form-item>
+            <a-form-item label="Passwort">
+                <a-input
+                        v-decorator="[
             'password',
             {
               rules: [
@@ -31,80 +31,90 @@
               ]
             }
           ]"
-            type="password"
-            placeholder="**********"
-        />
-      </a-form-item>
-      <a-divider/>
-      <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-        <a-button type="primary" html-type="submit" @click="handleLogin">
-          Einloggen
-        </a-button>
-      </a-form-item>
-    </a-form>
-    <p class="test-acess">
-      Testzugang <i><b>1234</b></i> mit Password <i><b>asdf</b></i>
-    </p>
-  </a-card>
+                        type="password"
+                        placeholder="**********"
+                />
+            </a-form-item>
+            <a-divider/>
+            <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+                <a-button type="primary" html-type="submit" @click="handleLogin">
+                    Einloggen
+                </a-button>
+            </a-form-item>
+        </a-form>
+        <p class="test-acess">
+            Testzugang <i><b>1234</b></i> mit Password <i><b>asdf</b></i>
+        </p>
+    </a-card>
 </template>
 
 <script>
 
 import { authenticationStore } from "../util/auth";
+import Api from "../api/Api";
 
 export default {
-  name: "Login",
-  created() {
-    authenticationStore.clearAuthentication();
-  },
-  props: {},
-  data() {
-    return {
-      form: this.$form.createForm(this),
-      authenticationStore: authenticationStore
-    };
-  },
-  methods: {
-    handleLogin(e) {
-      e.preventDefault();
+    name: "Login",
+    created() {
+        authenticationStore.clearAuthentication();
+    },
+    props: {},
+    data() {
+        return {
+            form: this.$form.createForm(this),
+            authenticationStore: authenticationStore
+        };
+    },
+    methods: {
+        handleLogin(e) {
+            e.preventDefault();
 
-      this.form.validateFields((err, values) => {
-        if (err) {
-          return;
-        }
+            this.form.validateFields((err, values) => {
+                if (err) {
+                    return;
+                }
 
-        if (values.id === '1234' && values.password === "asdf") {
-          // Query param
-          let forwardToPath = this.$route.query.forwardTo;
-          if (!forwardToPath) {
-            // TODO: Where to forward to when user directly accessed the login page?
-            forwardToPath = "/prototype/register-patient";
-          }
-          localStorage.setItem("user", "test"); // TODO: Call Backend
-          authenticationStore.user =  { // TODO: Decode JWT to get user object
-            token: "test",
-            name: "test"
-          };
-          this.$router.push({path: forwardToPath});
-        } else {
-          this.$notification["error"]({
-            message: "Login Fehler",
-            description: "Kennung und / oder Password nicht korrekt."
-          });
+                if (values.id === '1234' && values.password === "asdf") {
+                    // Query param
+                    let forwardToPath = this.$route.query.forwardTo;
+                    if (!forwardToPath) {
+                        // TODO: Where to forward to when user directly accessed the login page?
+                        forwardToPath = "/prototype/register-patient";
+                    }
+                    Api.postAuthentication().then((user, error) => {
+                        if (error) {
+                            console.error("Error at login: ");
+                            console.error(error);
+                            return;
+                        }
+                        authenticationStore.user = user;
+                        localStorage.setItem("user", user);
+                    });
+                    // localStorage.setItem("user", "test"); // TODO: Call Backend
+                    // authenticationStore.user = { // TODO: Decode JWT to get user object
+                    //     token: "test",
+                    //     name: "test"
+                    // };
+                    this.$router.push({path: forwardToPath});
+                } else {
+                    this.$notification["error"]({
+                        message: "Login Fehler",
+                        description: "Kennung und / oder Password nicht korrekt."
+                    });
+                }
+            });
         }
-      });
     }
-  }
 };
 </script>
 
 <style scoped>
 .test-acess {
-  color: red;
+    color: red;
 }
 
 .login-header {
-  font-size: 28px;
-  font-weight: 300;
+    font-size: 28px;
+    font-weight: 300;
 }
 </style>

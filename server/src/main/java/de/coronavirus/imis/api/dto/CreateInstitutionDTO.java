@@ -19,15 +19,15 @@ public class CreateInstitutionDTO {
 
     public static CreateInstitutionDTO fromRegisterRequest(RegisterUserRequest registerUserRequest) {
         CreateInstitutionDTO dto = new CreateInstitutionDTO();
-        dto.setInstitutionType(registerUserRequest.getInstitutionType());
-        dto.setName(registerUserRequest.getName());
-        dto.setStreet(registerUserRequest.getStreet());
-        dto.setHouseNumber(registerUserRequest.getHouseNumber());
-        dto.setZip(registerUserRequest.getZip());
-        dto.setCity(registerUserRequest.getCity());
-        dto.setEmail(registerUserRequest.getEmail());
-        dto.setPhoneNumber(registerUserRequest.getPhoneNumber());
-        dto.setComment(registerUserRequest.getComment());
+        dto.setInstitutionType(registerUserRequest.institutionType());
+        dto.setName(registerUserRequest.name());
+        dto.setStreet(registerUserRequest.street());
+        dto.setHouseNumber(registerUserRequest.houseNumber());
+        dto.setZip(registerUserRequest.zip());
+        dto.setCity(registerUserRequest.city());
+        dto.setEmail(registerUserRequest.email());
+        dto.setPhoneNumber(registerUserRequest.phoneNumber());
+        dto.setComment(registerUserRequest.comment());
         return dto;
     }
 }

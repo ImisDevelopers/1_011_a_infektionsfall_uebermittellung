@@ -9,6 +9,7 @@ import "ant-design-vue/dist/antd.css";
 // application imports
 import App from "./App.vue";
 import { routes } from "./routes/routes";
+import { authenticationStore } from "./util/auth";
 
 Vue.use(Antd);
 Vue.use(VueRouter);
@@ -32,6 +33,8 @@ router.beforeEach((to, from, next) => {
 
   next();
 });
+
+authenticationStore.initAuthentication();
 
 new Vue({
   router,

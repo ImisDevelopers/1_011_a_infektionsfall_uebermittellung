@@ -50,12 +50,18 @@
 
 <script>
 
+import { authenticationStore } from "../util/auth";
+
 export default {
   name: "Login",
+  created() {
+    authenticationStore.clearAuthentication();
+  },
   props: {},
   data() {
     return {
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this),
+      authenticationStore: authenticationStore
     };
   },
   methods: {
@@ -75,6 +81,10 @@ export default {
             forwardToPath = "/prototype/register-patient";
           }
           localStorage.setItem("user", "test"); // TODO: Call Backend
+          authenticationStore.user =  { // TODO: Decode JWT to get user object
+            token: "test",
+            name: "test"
+          };
           this.$router.push({path: forwardToPath});
         } else {
           this.$notification["error"]({

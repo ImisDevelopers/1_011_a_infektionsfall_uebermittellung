@@ -1,5 +1,5 @@
 <template>
-  <a-menu theme="dark" mode="horizontal" :selectedKeys="[key]">
+  <a-menu theme="dark" mode="horizontal" :selectedKeys="[key]" v-if="authenticationStore.user">
     <a-menu-item v-for="item in items" :key="item.key" @click="onClick">
       <router-link :to="item.url">
         <a-icon :type="item.type" />
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { authenticationStore } from "../util/auth";
+
 const items = [
   {
     key: "0",
@@ -46,6 +48,12 @@ const items = [
     url: "/prototype/public-statistics",
     type: "stock",
     text: "Öffentliche Statistiken"
+  },
+  {
+    key: "7",
+    url: "/login",
+    type: "logout",
+    text: "Logout"
   }
 ];
 
@@ -54,7 +62,8 @@ export default {
   data() {
     return {
       key: "1",
-      items
+      items,
+      authenticationStore: authenticationStore
     };
   },
   methods: {

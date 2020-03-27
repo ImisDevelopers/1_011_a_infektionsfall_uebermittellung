@@ -19,6 +19,20 @@ const router = new VueRouter({
   routes
 });
 
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ["/", "/login", "/prototype/public-statistics"];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem("user");
+
+  if (authRequired && !loggedIn) {
+    console.log("Forwarding to login.");
+    return next("/login?forwardTo=" + encodeURI(to.path));
+  }
+
+  next();
+});
+
 new Vue({
   router,
   render: h => h(App)

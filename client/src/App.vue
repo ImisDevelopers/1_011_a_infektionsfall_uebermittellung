@@ -10,7 +10,7 @@
             <Navigation />
           </a-layout-header>
           <a-layout-content
-            style="margin: auto; box-sizing: border-box; padding: 0rem 4rem; width: 100%;"
+            style="margin: auto; box-sizing: border-box; padding: 0 4rem; width: 100%;"
           >
             <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
               <router-view></router-view>

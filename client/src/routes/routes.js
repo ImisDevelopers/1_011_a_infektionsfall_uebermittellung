@@ -1,5 +1,3 @@
-import LinkTestResultAndPatientPage from "../components/page/LinkTestResultAndPatientPage";
-import LinkTestAndPatientPage from "../components/page/LinkTestAndPatientPage";
 import RegisterInstitutionPage from "../components/page/RegisterInstitutionPage";
 import RegisterPatientPage from "../components/page/RegisterPatientPage";
 
@@ -7,6 +5,9 @@ import ViewAllDataComponent from "../components/ViewAllDataComponent.vue";
 import PublicStatisticsComponent from "../components/PublicStatisticsComponent";
 import PatientOverviewComponent from "../components/PatientOverviewComponent.vue";
 import LandingPage from "../components/LandingPage";
+import Login from "../components/Login";
+import LinkTestAndPatient from "../components/laboratory/LinkTestAndPatient";
+import LinkTestResultAndPatient from "../components/laboratory/LinkTestResultAndPatient";
 
 export const routes = [
   { path: "*", redirect: "/" },
@@ -15,12 +16,16 @@ export const routes = [
     component: LandingPage
   },
   {
+    path: "/login",
+    component: Login
+  },
+  {
     path: "/prototype",
     component: RegisterPatientPage
   },
   {
     path: "/prototype/link-test-result",
-    component: LinkTestResultAndPatientPage
+    component: LinkTestResultAndPatient
   },
   {
     path: "/prototype/register-institution",
@@ -44,6 +49,6 @@ export const routes = [
   },
   {
     path: "/prototype/link-test-and-patient",
-    component: LinkTestAndPatientPage
+    component: LinkTestAndPatient
   }
 ];

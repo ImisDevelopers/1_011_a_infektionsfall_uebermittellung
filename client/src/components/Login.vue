@@ -1,10 +1,10 @@
 <template>
-  <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
+  <a-card style="width: 500px; margin: 4rem auto; min-height: 300px;">
     <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" :form="form">
-      <p>{{ title }}</p>
+      <p class="login-header">Login</p>
       <a-form-item label="Kennung">
         <a-input
-          v-decorator="[
+            v-decorator="[
             'id',
             {
               rules: [
@@ -15,12 +15,12 @@
               ]
             }
           ]"
-          placeholder="z.B 1337-4237-9438"
+            placeholder="z.B 1337-4237-9438"
         />
       </a-form-item>
       <a-form-item label="Passwort">
         <a-input
-          v-decorator="[
+            v-decorator="[
             'password',
             {
               rules: [
@@ -31,11 +31,11 @@
               ]
             }
           ]"
-          type="password"
-          placeholder="**********"
+            type="password"
+            placeholder="**********"
         />
       </a-form-item>
-      <a-divider />
+      <a-divider/>
       <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
         <a-button type="primary" html-type="submit" @click="handleLogin">
           Einloggen
@@ -52,9 +52,7 @@
 
 export default {
   name: "Login",
-  props: {
-    title: String
-  },
+  props: {},
   data() {
     return {
       form: this.$form.createForm(this)
@@ -70,7 +68,14 @@ export default {
         }
 
         if (values.id === '1234' && values.password === "asdf") {
-          this.$emit("on-login-success", values.id);
+          // Query param
+          let forwardToPath = this.$route.query.forwardTo;
+          if (!forwardToPath) {
+            // TODO: Where to forward to when user directly accessed the login page?
+            forwardToPath = "/prototype/register-patient";
+          }
+          localStorage.setItem("user", "test"); // TODO: Call Backend
+          this.$router.push({path: forwardToPath});
         } else {
           this.$notification["error"]({
             message: "Login Fehler",
@@ -86,5 +91,10 @@ export default {
 <style scoped>
 .test-acess {
   color: red;
+}
+
+.login-header {
+  font-size: 28px;
+  font-weight: 300;
 }
 </style>

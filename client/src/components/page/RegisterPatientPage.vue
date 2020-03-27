@@ -411,6 +411,7 @@ export default {
   padding: 24px;
   width: 100%;
 }
+
 .data-processing-not-selected {
   color: red;
 }

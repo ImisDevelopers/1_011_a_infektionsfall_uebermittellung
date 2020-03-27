@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class TestSite extends Institution {
+public class TestSite extends InstitutionImpl {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")

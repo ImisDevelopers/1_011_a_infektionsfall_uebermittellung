@@ -17,14 +17,14 @@ public class InstitutionController {
     @PostMapping
     public ResponseEntity<InstitutionDTO> createInstitution(@RequestBody CreateInstitutionDTO createInstitutionDTO) {
 
-        var builder = InstitutionDTO.builder();
+        var dto = new InstitutionDTO();
 
         var type = createInstitutionDTO.getInstitutionType();
 
         switch (type) {
             case LABORATORY:
                 var laboratory = this.institutionService.createLaboratoryInstitution(createInstitutionDTO);
-                builder = builder
+                dto = dto
                         .id(laboratory.getId())
                         .institutionType(type)
                         .name(laboratory.getName())
@@ -38,7 +38,7 @@ public class InstitutionController {
                 break;
             case TEST_SITE:
                 var testSite = this.institutionService.createTestSiteInstitution(createInstitutionDTO);
-                builder = builder
+                dto = dto
                         .id(testSite.getId())
                         .institutionType(type)
                         .name(testSite.getName())
@@ -52,7 +52,7 @@ public class InstitutionController {
                 break;
             case CLINIC:
                 var clinic = this.institutionService.createClinicInstitution(createInstitutionDTO);
-                builder = builder
+                dto = dto
                         .id(clinic.getId())
                         .institutionType(type)
                         .name(clinic.getName())
@@ -66,7 +66,7 @@ public class InstitutionController {
                 break;
             case DOCTORS_OFFICE:
                 var doctor = this.institutionService.createDoctorInstitution(createInstitutionDTO);
-                builder = builder
+                dto = dto
                         .id(doctor.getId())
                         .institutionType(type)
                         .name(doctor.getName())
@@ -81,6 +81,6 @@ public class InstitutionController {
         }
 
 
-        return ResponseEntity.ok(builder.build());
+        return ResponseEntity.ok(dto);
     }
 }

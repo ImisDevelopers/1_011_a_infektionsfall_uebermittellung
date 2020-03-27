@@ -81,14 +81,21 @@ export default {
                         // TODO: Where to forward to when user directly accessed the login page?
                         forwardToPath = "/prototype/register-patient";
                     }
-                    Api.postAuthentication().then((user, error) => {
+                    Api.postAuthentication({
+                        userName: values.id,
+                        password: values.password
+                    }).then((tokenObject, error) => {
                         if (error) {
                             console.error("Error at login: ");
                             console.error(error);
                             return;
                         }
-                        authenticationStore.user = user;
-                        localStorage.setItem("user", user);
+                        const token = tokenObject.token;
+                        // TODO: Parse token
+                        authenticationStore.user = {
+                            token: token,
+                        };
+                        localStorage.setItem("user", token);
                     });
                     // localStorage.setItem("user", "test"); // TODO: Call Backend
                     // authenticationStore.user = { // TODO: Decode JWT to get user object

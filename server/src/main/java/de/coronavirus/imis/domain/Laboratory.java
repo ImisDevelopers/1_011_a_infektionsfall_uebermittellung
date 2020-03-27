@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Laboratory extends Institution {
+public class Laboratory extends InstitutionImpl {
 
 
     @OneToMany(mappedBy = "laboratory")

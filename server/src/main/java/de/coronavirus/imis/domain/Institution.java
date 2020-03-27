@@ -1,31 +1,21 @@
 package de.coronavirus.imis.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+public interface Institution {
+    String getId();
 
-import org.hibernate.annotations.GenericGenerator;
+    String getName();
 
-import lombok.Data;
+    String getHouseNumber();
 
-@Data
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-abstract class Institution {
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private String id;
+    String getStreet();
 
-    private String name;
-    private String houseNumber;
-    private String street;
-    private String city;
-    private String zip;
-    private String email;
-    private String phoneNumber;
-    private String comment;
+    String getCity();
 
+    String getZip();
+
+    String getEmail();
+
+    String getPhoneNumber();
+
+    String getComment();
 }

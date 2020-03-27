@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import de.coronavirus.imis.api.dto.AuthRequestDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
 import de.coronavirus.imis.api.dto.TokenDTO;
+import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.services.AuthService;
 
 @RestController
@@ -31,10 +32,13 @@ public class AuthController {
                 .orElse(notAllowed);
     }
 
-    @PostMapping
-    public ResponseEntity registerUser(@RequestBody RegisterUserRequest registerUserRequest) {
-
-        return null;
+    @PostMapping("/register")
+    public ResponseEntity<User> registerUser(@RequestBody RegisterUserRequest registerUserRequest) {
+        var user = authService.registerUser(registerUserRequest);
+        if (user != null) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
 

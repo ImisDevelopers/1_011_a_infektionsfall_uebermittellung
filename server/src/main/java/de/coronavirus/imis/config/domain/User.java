@@ -23,11 +23,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "users")
 @Data
 @Builder
+@Accessors(fluent = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements UserDetails {

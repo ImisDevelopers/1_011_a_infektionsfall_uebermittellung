@@ -1,7 +1,8 @@
 package de.coronavirus.imis.api.dto;
 
-import de.coronavirus.imis.domain.InstitutionType;
 import lombok.Data;
+
+import de.coronavirus.imis.domain.InstitutionType;
 
 @Data
 public class CreateInstitutionDTO {
@@ -14,4 +15,18 @@ public class CreateInstitutionDTO {
     private String email;
     private String phoneNumber;
     private String comment;
+
+    public static CreateInstitutionDTO fromRegisterRequest(RegisterUserRequest registerUserRequest) {
+        CreateInstitutionDTO dto = new CreateInstitutionDTO();
+        dto.setInstitutionType(registerUserRequest.getInstitutionType());
+        dto.setName(registerUserRequest.getName());
+        dto.setStreet(registerUserRequest.getStreet());
+        dto.setHouseNumber(registerUserRequest.getHouseNumber());
+        dto.setZip(registerUserRequest.getZip());
+        dto.setCity(registerUserRequest.getCity());
+        dto.setEmail(registerUserRequest.getEmail());
+        dto.setPhoneNumber(registerUserRequest.getPhoneNumber());
+        dto.setComment(registerUserRequest.getComment());
+        return dto;
+    }
 }

@@ -51,10 +51,17 @@ const items = [
   },
   {
     key: "7",
-    url: "/login",
+    url: "/prototype/register-user",
+    type: "user-add",
+    text: "RegisterUser"
+  },
+  {
+    key: "8",
+    url: "/prototype/login",
     type: "logout",
     text: "Logout"
-  }
+  },
+
 ];
 
 export default {

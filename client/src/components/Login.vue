@@ -42,7 +42,7 @@
                 </a-button>
             </a-form-item>
         </a-form>
-        <p class="test-acess">
+        <p class="test-access">
             Testzugang <i><b>1234</b></i> mit Password <i><b>asdf</b></i>
         </p>
     </a-card>
@@ -90,6 +90,7 @@ export default {
                             console.error(error);
                             return;
                         }
+                        // TODO: Decode JWT to get user object
                         const token = tokenObject.token;
                         // TODO: Parse token
                         authenticationStore.user = {
@@ -97,11 +98,6 @@ export default {
                         };
                         localStorage.setItem("user", token);
                     });
-                    // localStorage.setItem("user", "test"); // TODO: Call Backend
-                    // authenticationStore.user = { // TODO: Decode JWT to get user object
-                    //     token: "test",
-                    //     name: "test"
-                    // };
                     this.$router.push({path: forwardToPath});
                 } else {
                     this.$notification["error"]({
@@ -116,7 +112,7 @@ export default {
 </script>
 
 <style scoped>
-.test-acess {
+.test-access {
     color: red;
 }
 

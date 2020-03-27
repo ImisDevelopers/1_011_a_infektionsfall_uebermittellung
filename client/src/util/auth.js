@@ -21,20 +21,20 @@ export const authenticationStore = {
     clearAuthentication() {
         authenticationStore.user = null;
         localStorage.removeItem("user");
+    },
+
+    /**
+     * Return header to be used in http requests against the backend
+     * @return {{Authorization: string}|{}}
+     */
+    getAuthHeader() {
+        // return authorization header with jwt token
+        let user = JSON.parse(localStorage.getItem("user"));
+
+        if (user && user.token) {
+            return {'Authorization': 'Bearer ' + user.token};
+        } else {
+            return {};
+        }
     }
 };
-
-/**
- * Return header to be used in http requests against the backend
- * @return {{Authorization: string}|{}}
- */
-export function getAuthHeader() {
-    // return authorization header with jwt token
-    let user = JSON.parse(localStorage.getItem('user'));
-
-    if (user && user.token) {
-        return {'Authorization': 'Bearer ' + user.token};
-    } else {
-        return {};
-    }
-}

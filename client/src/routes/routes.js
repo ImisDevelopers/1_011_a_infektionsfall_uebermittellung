@@ -8,6 +8,7 @@ import LandingPage from "../components/LandingPage";
 import Login from "../components/Login";
 import LinkTestAndPatient from "../components/laboratory/LinkTestAndPatient";
 import LinkTestResultAndPatient from "../components/laboratory/LinkTestResultAndPatient";
+import RegisterUser from "../components/RegisterUser";
 
 export const routes = [
   { path: "*", redirect: "/" },
@@ -16,8 +17,12 @@ export const routes = [
     component: LandingPage
   },
   {
-    path: "/login",
+    path: "/prototype/login",
     component: Login
+  },
+  {
+    path: "/prototype/register-user",
+    component: RegisterUser
   },
   {
     path: "/prototype",

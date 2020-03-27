@@ -1,3 +1,5 @@
+import { authenticationStore } from "../util/auth";
+
 const METHOD = {
   GET: "GET",
   POST: "POST",
@@ -21,7 +23,8 @@ class Api {
     const options = {
       method: method,
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authenticationStore.getAuthHeader()
       }
     };
 
@@ -62,7 +65,11 @@ class Api {
   }
 
   postAuthentication(request) {
-    return this.executeRequest("authorize", METHOD.POST, request);
+    return this.executeRequest("auth", METHOD.POST, request);
+  }
+
+  postRegister(request) {
+    return this.executeRequest("register", METHOD.POST, request);
   }
 
   /*

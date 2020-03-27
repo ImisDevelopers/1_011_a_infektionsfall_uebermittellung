@@ -245,7 +245,7 @@
 <!-- Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new -->
 
 <script>
-import { randomizeProperties } from "../../util/randomize";
+import { anonymizeProperties } from "../../util/randomize";
 import Api from "../../api/Api";
 
 const SYMPTOMS = [
@@ -349,10 +349,9 @@ export default {
         }
 
         // TODO: Remove this when we go to production
-        randomizeProperties(
+        anonymizeProperties(
           [
             "lastName",
-            "firstName",
             "email",
             "phoneNumber",
             "street",

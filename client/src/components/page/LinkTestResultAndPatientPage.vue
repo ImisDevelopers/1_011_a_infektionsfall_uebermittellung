@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-tabs defaultActiveKey="1" v-model="activeKey">
-      <a-tab-pane tab="1. Laboranmeldung" key="1" :disabled="isLoggedIn">
+      <a-tab-pane tab="1. Anmeldung" key="1" :disabled="isLoggedIn">
         <Login
           @on-login-success="onLoginSuccess"
           :title="
@@ -15,7 +15,7 @@
         forceRender
         :disabled="!isLoggedIn"
       >
-        <LinkTestResultAndPatient />
+        <LinkTestResultAndPatient :laboratoryId="laboratoryId" />
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -34,11 +34,13 @@ export default {
   data() {
     return {
       activeKey: "1",
-      isLoggedIn: false
+      isLoggedIn: false,
+      laboratoryId: ""
     };
   },
   methods: {
-    onLoginSuccess() {
+    onLoginSuccess(laboratoryId) {
+      this.laboratoryId = laboratoryId;
       this.isLoggedIn = true;
       this.activeKey = "2";
     }

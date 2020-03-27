@@ -7,6 +7,9 @@ plugins {
 group = 'de.coronavirus'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+ext {
+    set('springCloudVersion', "Hoxton.SR3")
+}
 
 configurations {
     compileOnly {
@@ -25,6 +28,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
+    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
     implementation 'org.postgresql:postgresql:42.2.11'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     implementation 'io.springfox:springfox-swagger2:2.9.2'
@@ -38,6 +42,12 @@ dependencies {
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
 

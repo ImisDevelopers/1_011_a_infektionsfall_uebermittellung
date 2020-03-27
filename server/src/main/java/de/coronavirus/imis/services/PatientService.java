@@ -46,7 +46,8 @@ public class PatientService {
         var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
         var id = Hashing.sha256()
                 .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed, StandardCharsets.UTF_8)
-                .toString();
+                .toString()
+                .substring(0, 8).toUpperCase();
         var mappedPatient = new Patient()
                 .setId(id)
                 .setFirstName(dto.getFirstName())

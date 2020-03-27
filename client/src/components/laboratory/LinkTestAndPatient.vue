@@ -21,7 +21,7 @@
                 ]
               }
             ]"
-            placeholder="z.B 1337-4237-9438"
+            placeholder="z.B 43A78F0B"
           />
         </a-form-item>
         <a-form-item label="Test-ID">
@@ -58,7 +58,8 @@
     <div v-else>
       <div>Der Test wurde erfolgreich angelegt.</div>
       <br />
-      <div>Die Test ID lautet: {{ createdLabTest.id }}</div>
+      <div>Test ID: {{ createdLabTest.id }}</div>
+      <div>Test Status: {{ createdLabTest.testStatus }}</div>
     </div>
   </a-card>
 </template>

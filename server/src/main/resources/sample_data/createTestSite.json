@@ -7,5 +7,6 @@
   "city": "Hamburg",
   "email": "test-place@example.de",
   "phoneNumber": "57657654535",
-  "comment": "this is a comment for the test site"
+  "comment": "this is a comment for the test site",
+  "id": "asdfa"
 }

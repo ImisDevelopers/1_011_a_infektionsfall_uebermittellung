@@ -43,13 +43,12 @@
       </a-form-item>
     </a-form>
     <p class="test-acess">
-      Testzugang mit Password <i><b>asdf</b></i>
+      Testzugang <i><b>1234</b></i> mit Password <i><b>asdf</b></i>
     </p>
   </a-card>
 </template>
 
 <script>
-// TODO: Use form from ant and to get the values from the <form> (see PatientDataCompontent)
 
 export default {
   name: "Login",
@@ -70,7 +69,7 @@ export default {
           return;
         }
 
-        if (values.id && values.password === "asdf") {
+        if (values.id === '1234' && values.password === "asdf") {
           this.$emit("on-login-success", values.id);
         } else {
           this.$notification["error"]({

@@ -4,6 +4,8 @@ spring:
 ---
 spring:
   profiles: development
+  autoconfigure:
+    exclude: org.springframework.cloud.gcp.autoconfigure.storage.GcpStorageAutoConfiguration
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/imis
@@ -27,6 +29,13 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     url: jdbc:postgresql:localhost:5432
+  cloud:
+    gcp:
+      credentials:
+        location: file:/usr/local/cloud-store/credentials.json
+management:
+  server:
+    port: 8081
 ---
 spring:
   profiles: test

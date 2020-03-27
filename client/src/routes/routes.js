@@ -6,35 +6,44 @@ import RegisterPatientPage from "../components/page/RegisterPatientPage";
 import ViewAllDataComponent from "../components/ViewAllDataComponent.vue";
 import PublicStatisticsComponent from "../components/PublicStatisticsComponent";
 import PatientOverviewComponent from "../components/PatientOverviewComponent.vue";
+import LandingPage from "../components/LandingPage";
 
 export const routes = [
-  { path: "*", redirect: "/register-patient" },
+  { path: "*", redirect: "/" },
   {
-    path: "/link-test-result",
-    component: LinkTestResultAndPatientPage
+    path: "/",
+    component: LandingPage
   },
   {
-    path: "/register-institution",
-    component: RegisterInstitutionPage
-  },
-  {
-    path: "/public-statistics",
-    component: PublicStatisticsComponent
-  },
-  {
-    path: "/register-patient",
+    path: "/prototype",
     component: RegisterPatientPage
   },
   {
-    path: "/patient-overview",
+    path: "/prototype/link-test-result",
+    component: LinkTestResultAndPatientPage
+  },
+  {
+    path: "/prototype/register-institution",
+    component: RegisterInstitutionPage
+  },
+  {
+    path: "/prototype/public-statistics",
+    component: PublicStatisticsComponent
+  },
+  {
+    path: "/prototype/register-patient",
+    component: RegisterPatientPage
+  },
+  {
+    path: "/prototype/patient-overview",
     component: PatientOverviewComponent
   },
   {
-    path: "/all-data",
+    path: "/prototype/all-data",
     component: ViewAllDataComponent
   },
   {
-    path: "/link-test-and-patient",
+    path: "/prototype/link-test-and-patient",
     component: LinkTestAndPatientPage
   }
 ];

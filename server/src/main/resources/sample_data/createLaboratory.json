@@ -7,5 +7,6 @@
   "city": "Berlin",
   "email": "email@example.de",
   "phoneNumber": "123456",
-  "comment": "this is a comment"
+  "comment": "this is a comment",
+  "id": "1234"
 }

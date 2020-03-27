@@ -15,6 +15,7 @@ public class CreateInstitutionDTO {
     private String email;
     private String phoneNumber;
     private String comment;
+    private String id;
 
     public static CreateInstitutionDTO fromRegisterRequest(RegisterUserRequest registerUserRequest) {
         CreateInstitutionDTO dto = new CreateInstitutionDTO();

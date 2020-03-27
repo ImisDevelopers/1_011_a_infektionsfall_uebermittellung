@@ -11,9 +11,9 @@ class Api {
       location.host.includes("localhost") ||
       location.host.includes("127.0.0.1")
     ) {
-      this.BASE_URL = "http://localhost:8080";
+      this.BASE_URL = "http://localhost:80";
     } else {
-      this.BASE_URL = "https://api.imis-prototyp.de";
+      this.BASE_URL = "http://35.246.194.158:8080";
     }
   }
 
@@ -45,16 +45,20 @@ class Api {
    * -----------IMPLEMENTED IN UI-----------
    */
 
-  postInstitution(institution) {
-    return this.executeRequest("/institutions", METHOD.POST, institution);
+  postInstitution(request) {
+    return this.executeRequest("institutions", METHOD.POST, request);
   }
 
-  postPatient(patient) {
-    return this.executeRequest("/patients", METHOD.POST, patient);
+  postPatient(request) {
+    return this.executeRequest("patients", METHOD.POST, request);
   }
 
-  postLabTest(labtest) {
-    return this.executeRequest("/labtests", METHOD.POST, labtest);
+  postLabTest(request) {
+    return this.executeRequest("labtests", METHOD.POST, request);
+  }
+
+  putLabTest(laboratoryId, request) {
+    return this.executeRequest(`labtests/${laboratoryId}`, METHOD.PUT, request);
   }
 
   /*
@@ -62,56 +66,28 @@ class Api {
    */
 
   postDoctorCreateAppointment({ doctorId, laboratoryId, patientId }) {
-    return this.executeRequest("/doctor/create_appointment", METHOD.POST, {
+    return this.executeRequest("doctor/create_appointment", METHOD.POST, {
       doctorId,
       laboratoryId,
       patientId
     });
   }
 
-  getTestReports(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
-  }
-
-  postTestReport(id, file) {
-    const data = new FormData();
-    data.append("file", file);
-
-    return fetch(`${this.BASE_URL}/test_reports/${encodeURI(id)}`, {
-      method: "POST",
-      body: data
-    }).then(response => {
-      return response.json();
-    });
-  }
-
-  getTestReport(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.GET);
-  }
-
-  deleteTestReport(testId) {
-    return this.executeRequest(`/test_reports/${testId}`, METHOD.DELETE);
-  }
-
-  putLabtest({ updatedTestStatus }) {
-    return this.executeRequest("/labtest", METHOD.PUT, updatedTestStatus);
-  }
-
-  getLabtestByPatient(patientId) {
-    return this.executeRequest(`/labtest/patient/${patientId}`, METHOD.GET);
+  getLabTestByPatient(patientId) {
+    return this.executeRequest(`labtest/patient/${patientId}`, METHOD.GET);
   }
 
   getPatients() {
-    return this.executeRequest("/patients", METHOD.GET);
+    return this.executeRequest("patients", METHOD.GET);
   }
 
   getPatient(id) {
-    return this.executeRequest(`/patients/${id}`, METHOD.GET);
+    return this.executeRequest(`patients/${id}`, METHOD.GET);
   }
 
   getStats(lowerBoundsZip, upperBoundsZip) {
     return this.executeRequest(
-      `/stats?lowerBoundsZip=${lowerBoundsZip}&upperBoundsZips=${upperBoundsZip}`,
+      `stats?lowerBoundsZip=${lowerBoundsZip}&upperBoundsZips=${upperBoundsZip}`,
       METHOD.GET
     );
   }

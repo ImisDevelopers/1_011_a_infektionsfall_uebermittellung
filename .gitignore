@@ -3,7 +3,7 @@
 /.gradle
 .idea
 .gradle
-
+.DS_Store
 # CMake
 cmake-build-*/
 

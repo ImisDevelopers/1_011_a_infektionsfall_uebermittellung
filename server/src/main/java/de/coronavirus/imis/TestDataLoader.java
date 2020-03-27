@@ -56,14 +56,14 @@ public class TestDataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 5; i++) {
                 var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
                 patientService.addPatient(createPersonDTO);
             }
 
             // SETUP OUR WORLD
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
-            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO);
+            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO, createLaboratoryDTO.getId());
 
             var createDoctorsOfficeDTO = (CreateInstitutionDTO) makeDTO("createDoctorsOffice.json", CreateInstitutionDTO.class);
             var doctorsOffice = institutionService.createDoctorInstitution(createDoctorsOfficeDTO);
@@ -92,7 +92,7 @@ public class TestDataLoader implements ApplicationRunner {
 
             // LAB HAS RESULT AND SOTRES IT
             // FIXME: 22.03.20 report cannot be attached
-            labTestService.updateTestStatus(labTest.getId(), "TEST_POSITIVE");
+            labTestService.updateTestStatus(testId, laboratory.getId(), "TEST_POSITIVE", comment, null);
 
             // HEALTH OFFICE WANTS TO SEE ALL DATA
             var allPatients = patientService.getAllPatients();

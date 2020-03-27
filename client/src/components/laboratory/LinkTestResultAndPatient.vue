@@ -1,84 +1,163 @@
 <template>
   <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
-    <a-form
-      :label-col="{ span: 6 }"
-      :wrapper-col="{ span: 18 }"
-      @submit="handleSubmit"
-    >
-      <a-form-item label="Test-ID">
-        <a-input
-          v-decorator="[
-            'note',
-            {
-              rules: [
-                { required: true, message: 'Bitte geben Sie Ihre Test-ID ein.' }
-              ]
-            }
-          ]"
-          placeholder="z.B 1337-4237-9438"
-        />
-      </a-form-item>
-      <a-form-item label="Testresultat">
-        <a-radio-group v-decorator="['radio-group']">
-          <a-radio value="true">
-            Positiv
-          </a-radio>
-          <a-radio value="false">
-            Negativ
-          </a-radio>
-        </a-radio-group>
-      </a-form-item>
-      <a-form-item label="Kommentar">
-        <a-textarea
-          placeholder="Kommentar hinzufügen"
-          :autoSize="{ minRows: 3, maxRows: 5 }"
-        />
-      </a-form-item>
-      <a-form-item :wrapper-col="{ span: 24 }">
-        <!-- TODO: FILE UPLOAD! -->
-        <a-upload action="https://www.mocky.io/v2/5cc8019d300000980a055e76">
-          <a-button> <a-icon type="upload" />Test Report hochladen</a-button>
-        </a-upload>
-      </a-form-item>
-      <a-divider />
-      <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-        <a-button type="primary" html-type="submit">
-          Speichern
-        </a-button>
-      </a-form-item>
-    </a-form>
+    <div v-if="!updatedLabTest">
+      <a-form
+        :form="form"
+        :label-col="{ span: 6 }"
+        :wrapper-col="{ span: 18 }"
+        @submit="handleSubmit"
+      >
+        <a-form-item label="Test-ID">
+          <a-input
+            v-decorator="[
+              'testId',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte geben Sie Ihre Test-ID ein.'
+                  }
+                ]
+              }
+            ]"
+            placeholder="z.B 1337-4237-9438"
+          />
+        </a-form-item>
+        <a-form-item label="Testresultat">
+          <a-radio-group
+            v-decorator="[
+              'testResult',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte geben Sie das Testresultat an.'
+                  }
+                ]
+              }
+            ]"
+          >
+            <a-radio value="positive">
+              Positiv
+            </a-radio>
+            <a-radio value="negative">
+              Negativ
+            </a-radio>
+          </a-radio-group>
+        </a-form-item>
+        <a-form-item label="Kommentar">
+          <a-textarea
+            placeholder="Kommentar hinzufügen"
+            :autoSize="{ minRows: 3, maxRows: 5 }"
+            v-decorator="['comment']"
+          />
+        </a-form-item>
+        <a-form-item :wrapper-col="{ span: 24 }">
+          <!--<a-upload
+            :accept="'pdf'"
+            :beforeUpload="beforeUpload"
+            :multiple="false"
+          >-->
+            <a-button v-on:click="uploadHint()"><a-icon type="upload" />Test Report hochladen</a-button>
+          <!--</a-upload>-->
+        </a-form-item>
+        <a-divider />
+        <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+          <a-button type="primary" html-type="submit">
+            Speichern
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </div>
+    <div v-else>
+      <div>Der Test wurde erfolgreich aktualisiert.</div>
+      <br />
+      <div>Test ID: {{ updatedLabTest.id }}</div>
+      <div>Test Status: {{ updatedLabTest.testStatus }}</div>
+    </div>
   </a-card>
 </template>
 
 <script>
-// TODO: Use form from ant and to get the values from the <form> (see PatientDataCompontent)
+import Api from "../../api/Api";
 
 export default {
   name: "LinkTestResultAndPatient",
+  props: {
+    laboratoryId: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      form: this.$form.createForm(this),
+      updatedLabTest: null,
+      fileBytes: null
+    };
+  },
   methods: {
+    uploadHint() {
+        const notification = {
+          message: "Das Labor kann hier den Bericht mit hochladen. Aus Sicherheitsgründen ist diese Funktion im Prototyp deaktiviert."
+        };
+        this.$notification["info"](notification);
+    },
+    beforeUpload(file) {
+      const setFileBytes = fileBytes => {
+        this.fileBytes = fileBytes;
+      };
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const utf8 = unescape(encodeURIComponent(e.target.result));
+        const array = [];
+        for (let i = 0; i < utf8.length; i++) {
+          array.push(utf8.charCodeAt(i));
+        }
+        setFileBytes(array);
+      };
+      reader.readAsDataURL(file);
+
+      return false;
+    },
     handleSubmit(e) {
       e.preventDefault();
 
-      // TODO: Send request to connect patient with test result
-      console.log("Handle connect patient with test result");
+      this.form.validateFields((err, values) => {
+        if (err) {
+          return;
+        }
 
-      const patientId = "198424989813";
-      const testResult = "negative";
+        const { testId } = values;
+        const request = {
+          testId,
+          status:
+            values.testResult === "positive"
+              ? "TEST_POSITIVE"
+              : "TEST_NEGATIVE",
+          comment: values.comment,
+          file: this.fileBytes
+        };
+        // TODO this was just for MVP
+        Api.putLabTest(this.laboratoryId, request)
+          .then(labTest => {
+            this.updatedLabTest = labTest;
 
-      // TODO: Handle response from server
-      const response = { type: "success" };
-      const { type } = response;
-
-      // Check notification type (success, info, warning, error)
-      const notification = {};
-      if (type === "success") {
-        notification.message = "Verknüpfung erfolgreich.";
-        notification.description = `Patienten ID: ${patientId} & Test Resultat: ${testResult}.`;
-      } else if (type === "error") {
-        notification.message = "Es is ein Fehler aufgetreten.";
-        notification.description = `Patienten ID: ${patientId} & Test Resultat: ${testResult}.`;
-      }
-      this.$notification[type](notification);
+            const notification = {
+              message: "Testergebnis hinzugefügt.",
+              description: "Das Testergebnis wurde erfolgreich hinzugefügt."
+            };
+            this.$notification["success"](notification);
+          })
+          .catch(err => {
+            const notification = {
+              message: "Fehler beim Hinzufügen des Testergebnisses.",
+              description: err.message
+            };
+            this.$notification["error"](notification);
+          });
+      });
     }
   }
 };

@@ -8,7 +8,7 @@ import "ant-design-vue/dist/antd.css";
 
 // application imports
 import App from "./App.vue";
-import { publicRoutes, routes } from "./routes/routes";
+import { routes } from "./routes/routes";
 import { authenticationStore } from "./util/auth";
 
 Vue.use(Antd);
@@ -16,26 +16,34 @@ Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
 const router = new VueRouter({
-  mode: "history",
-  routes
+    mode: "history",
+    routes
 });
 
 router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const authRequired = !publicRoutes.includes(to.path);
-  const loggedIn = localStorage.getItem("user");
+    // redirect to login page if not logged in and trying to access a restricted page
+    const user = authenticationStore.user;
 
-  if (authRequired && !loggedIn) {
-    console.log("Forwarding to login.");
-    return next("/prototype/login?forwardTo=" + encodeURI(to.path));
-  }
+    const route = routes.find(route => route.path === to.path);
 
-  next();
+    if (route && route.roles) {
+        if (!user.sub) {
+            console.log("User not logged in. Forwarding to login.");
+            return next("/prototype/login?forwardTo=" + encodeURI(to.path));
+        }
+        if (!authenticationStore.hasAnyRoleOf(route.roles)) {
+            console.log("User does not have any of the required roles " + route.roles + ". Forwarding to login.");
+            return next("/prototype/login?forwardTo=" + encodeURI(to.path));
+        }
+    }
+
+
+    next();
 });
 
 authenticationStore.initAuthentication();
 
 new Vue({
-  router,
-  render: h => h(App)
+    router,
+    render: h => h(App)
 }).$mount("#app");

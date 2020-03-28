@@ -1,17 +1,33 @@
 /**
  * Contains information about the logged in user
- * @type {{user: null}}
+ * @type {{getAuthDetailsFromToken(*): any, initAuthentication(): void, clearAuthentication(): void, user: ObjectConstructor, getAuthHeader(): ({Authorization: string}|{}), token: StringConstructor}}
  */
 export const authenticationStore = {
-    user: null,
+    // To the person converting this to typescript:
+    /*
+        User Object is structured as follows:
+        exp: 1585426165 (number)
+        iat: 1585422565 (number)
+        roles: Array [ "LABORATORY" ] (string[])
+        sub: "labor" (string) = username
+     */
+    user: Object,
+    token: String,
 
     /**
      * Parses the JWT from LocalStorage and fills the AuthenticationStore
      */
     initAuthentication() {
-        const user = localStorage.getItem("user");
-        if (user) {
-            authenticationStore.user = user;
+        const token = localStorage.getItem("token");
+        if (token) {
+            const user = this.getAuthDetailsFromToken(token);
+            if (user.exp * 1000 > new Date().getTime()) {
+                this.token = token;
+                this.user = user;
+            } else {
+                console.log("Token expired. Removing.");
+                localStorage.removeItem("token");
+            }
         }
     },
 
@@ -19,8 +35,28 @@ export const authenticationStore = {
      * Removes authentication from storage
      */
     clearAuthentication() {
-        authenticationStore.user = null;
+        this.user = null;
         localStorage.removeItem("user");
+    },
+
+    /**
+     * Parses the authentication token
+     * @param jwt token
+     * @return {any} user object; type definition see beginning of this file
+     */
+    getAuthDetailsFromToken(jwt) {
+        const jwtData = jwt.split(".")[1];
+        return JSON.parse(window.atob(jwtData));
+    },
+
+    /**
+     * Sets the authentication according to the jwt
+     * @param jwt token
+     */
+    setAuthentication(jwt) {
+        localStorage.setItem("token", jwt);
+        this.token = jwt;
+        this.user = this.getAuthDetailsFromToken(jwt);
     },
 
     /**
@@ -28,13 +64,26 @@ export const authenticationStore = {
      * @return {{Authorization: string}|{}}
      */
     getAuthHeader() {
-        // return authorization header with jwt token
-        let user = JSON.parse(localStorage.getItem("user"));
-
-        if (user && user.token) {
-            return {'Authorization': 'Bearer ' + user.token};
+        if (this.token) {
+            return {'Authorization': 'Bearer ' + this.token};
         } else {
             return {};
         }
+    },
+
+    /**
+     * Checks whether the user has any of the required roles
+     * @param roles
+     * @return {boolean} true if user has any of the required roles
+     */
+    hasAnyRoleOf(roles) {
+        let hasRequiredRole = false;
+        for (const requiredRole of roles) {
+            if (this.user.roles.includes(requiredRole)) {
+                hasRequiredRole = true;
+                break;
+            }
+        }
+        return hasRequiredRole;
     }
 };

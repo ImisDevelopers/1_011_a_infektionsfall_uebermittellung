@@ -15,7 +15,7 @@
                         }]}]"
                         placeholder="z.B 1337-4237-9438"
                 >
-                    <a-icon slot="prefix" type="user" />
+                    <a-icon slot="prefix" type="user"/>
                 </a-input>
             </a-form-item>
             <a-form-item label="Passwort">
@@ -26,7 +26,7 @@
                         type="password"
                         placeholder="**********"
                 >
-                    <a-icon slot="prefix" type="lock" />
+                    <a-icon slot="prefix" type="lock"/>
                 </a-input>
             </a-form-item>
             <a-divider/>
@@ -37,7 +37,7 @@
             </a-form-item>
         </a-form>
         <p class="test-access">
-            Testzugang <i><b>1234</b></i> mit Password <i><b>asdf</b></i>
+            Testzugang bitte <a>auf der Registrierungsseite</a> anlegen.
         </p>
     </a-card>
 </template>
@@ -72,38 +72,23 @@ export default {
                 let forwardToPath = this.$route.query.forwardTo;
                 if (!forwardToPath) {
                     // TODO: Where to forward to when user directly accessed the login page?
-                    forwardToPath = "/prototype/register-patient";
+                    forwardToPath = "/prototype/register-institution";
                 }
-                if (values.id === "1234" && values.password === "asdf") {
-                    // TODO: Entfernen, wenn auth läuft
-                    authenticationStore.user = {
-                        token: "test",
-                    };
-                    localStorage.setItem("user", "test");
+                Api.postAuthentication({
+                    userName: values.id,
+                    password: values.password
+                }).then(tokenObject => {
+                    const token = tokenObject.jwtToken;
+                    authenticationStore.setAuthentication(token);
                     this.$router.push({path: forwardToPath});
-                } else {
-                    Api.postAuthentication({
-                        userName: values.id,
-                        password: values.password
-                    }).then(tokenObject => {
-                        // TODO: Decode JWT to get user object
-                        const token = tokenObject.token;
-                        // TODO: Parse token
-                        authenticationStore.user = {
-                            token: token,
-                        };
-                        localStorage.setItem("user", token);
-                        this.$router.push({path: forwardToPath});
-                    }, error => {
-                        console.error("Error at login: ");
-                        console.error(error);
-                        this.$notification["error"]({
-                            message: "Login Fehler",
-                            description: "Kennung und / oder Password nicht korrekt."
-                        });
+                }, error => {
+                    console.error("Error at login: ");
+                    console.error(error);
+                    this.$notification["error"]({
+                        message: "Login Fehler",
+                        description: "Kennung und / oder Password nicht korrekt."
                     });
-                }
-
+                });
             });
         }
     }

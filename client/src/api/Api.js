@@ -12,9 +12,9 @@ class Api {
             location.host.includes("localhost") ||
             location.host.includes("127.0.0.1")
         ) {
-            // this.BASE_URL = "http://localhost:80";
+            this.BASE_URL = "http://localhost:80";
             // Alternative config to run the app locally without root; see proxy conf
-            this.BASE_URL = "http://localhost:8080/api";
+            // this.BASE_URL = "http://localhost:8080/api";
         } else {
             this.BASE_URL = "http://35.246.194.158:8080";
         }

@@ -37,7 +37,7 @@ public class AuthService {
     }
 
     private boolean checkPassword(String toCheck, String passwordFromDB) {
-        return encoder.encode(toCheck).equals(passwordFromDB);
+        return encoder.matches(toCheck, passwordFromDB);
     }
 
     @SneakyThrows

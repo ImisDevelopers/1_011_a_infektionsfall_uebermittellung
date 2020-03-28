@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "imis.client.fullname" . }}
+  labels:
+    {{- include "imis.client.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "imis.client.selectorLabels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "imis.server.fullname" . }}
+  labels:
+  {{- include "imis.server.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+  {{- include "imis.server.selectorLabels" . | nindent 4 }}

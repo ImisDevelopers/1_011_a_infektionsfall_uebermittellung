@@ -1,7 +1,7 @@
 [![IMIS Cover](client/public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
 
-  * [Demo](https://imis-prototyp.de)
-  * [Swagger API](https://api.imis-prototyp.de/)
+  * [Demo](http://imis-prototyp.de)
+  * [Swagger API](http://api.imis-prototyp.de/)
   * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)
  
 Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.org/)-Hackathon. 

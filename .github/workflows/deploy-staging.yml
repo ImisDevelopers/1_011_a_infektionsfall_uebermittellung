@@ -1,4 +1,4 @@
-name: Build and Deploy to GKE
+name: Staging
 
 on:
   push:
@@ -60,8 +60,10 @@ jobs:
         docker push "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:$GITHUB_SHA"
 
     # Deploy the Docker image to the GKE cluster
-    - name: Deploy
+    - name: Prepare Helm
       uses: azure/setup-helm@v1
+
+    - name: Deploy
       run: |
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
         echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" > chart/cloudsql.base64.json

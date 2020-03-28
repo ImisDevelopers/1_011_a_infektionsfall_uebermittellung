@@ -24,7 +24,7 @@ public class InstitutionController {
         switch (type) {
             case LABORATORY:
                 var laboratory = this.institutionService.createLaboratoryInstitution(createInstitutionDTO);
-                dto = dto
+                dto = InstitutionDTO.builder()
                         .id(laboratory.getId())
                         .institutionType(type)
                         .name(laboratory.getName())
@@ -34,11 +34,12 @@ public class InstitutionController {
                         .city(laboratory.getCity())
                         .email(laboratory.getEmail())
                         .phoneNumber(laboratory.getPhoneNumber())
-                        .comment(laboratory.getComment());
+                        .comment(laboratory.getComment())
+                        .build();
                 break;
             case TEST_SITE:
                 var testSite = this.institutionService.createTestSiteInstitution(createInstitutionDTO);
-                dto = dto
+                dto = InstitutionDTO.builder()
                         .id(testSite.getId())
                         .institutionType(type)
                         .name(testSite.getName())
@@ -48,11 +49,12 @@ public class InstitutionController {
                         .city(testSite.getCity())
                         .email(testSite.getEmail())
                         .phoneNumber(testSite.getPhoneNumber())
-                        .comment(testSite.getComment());
+                        .comment(testSite.getComment())
+                        .build();
                 break;
             case CLINIC:
                 var clinic = this.institutionService.createClinicInstitution(createInstitutionDTO);
-                dto = dto
+                dto = InstitutionDTO.builder()
                         .id(clinic.getId())
                         .institutionType(type)
                         .name(clinic.getName())
@@ -62,11 +64,12 @@ public class InstitutionController {
                         .city(clinic.getCity())
                         .email(clinic.getEmail())
                         .phoneNumber(clinic.getPhoneNumber())
-                        .comment(clinic.getComment());
+                        .comment(clinic.getComment())
+                        .build();
                 break;
             case DOCTORS_OFFICE:
                 var doctor = this.institutionService.createDoctorInstitution(createInstitutionDTO);
-                dto = dto
+                dto = InstitutionDTO.builder()
                         .id(doctor.getId())
                         .institutionType(type)
                         .name(doctor.getName())
@@ -76,7 +79,8 @@ public class InstitutionController {
                         .city(doctor.getCity())
                         .email(doctor.getEmail())
                         .phoneNumber(doctor.getPhoneNumber())
-                        .comment(doctor.getComment());
+                        .comment(doctor.getComment())
+                        .build();
                 break;
         }
 

@@ -45,8 +45,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/patient").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(),
                 InstitutionType.TEST_SITE.name())
-                .antMatchers("/*").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/**").permitAll();
         //@formatter:on
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }

@@ -1,8 +1,7 @@
 package de.coronavirus.imis.api.dto;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

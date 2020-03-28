@@ -45,7 +45,7 @@ public class AuthService {
         if (userRepository.findByUsername(registerUserRequest.getPassword()).isPresent()) {
             throw new UserAlreadyExistsException("user with name" + registerUserRequest.getUserName() + " already exists");
         }
-        var authority = authorityRepository.findFirstByRole(registerUserRequest.institutionType()).orElseThrow();
+        var authority = authorityRepository.findFirstByRole(registerUserRequest.getInstitutionType()).orElseThrow();
         var encodedPw = encoder.encode(registerUserRequest.getPassword());
         var user = new User().username(registerUserRequest.getUserName()).password(encodedPw).roles(List.of(authority));
         userRepository.save(user);

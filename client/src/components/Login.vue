@@ -36,9 +36,16 @@
                 </a-button>
             </a-form-item>
         </a-form>
-        <p class="test-access">
-            Testzugang bitte <a>auf der Registrierungsseite</a> anlegen.
-        </p>
+        <div>
+            <p>Testzugänge:</p>
+            <ul style="text-align: left">
+                <li>Labor-Zugang <strong>test_lab</strong> mit Passwort <strong>asdf</strong></li>
+                <li>Arzt-Zugang <strong>test_doctor</strong> mit Passwort <strong>asdf</strong></li>
+                <li>oder neuen Zugang
+                    <router-link to="/prototyp/register-institution">auf der Registrierungsseite anlegen</router-link>
+                </li>
+            </ul>
+        </div>
     </a-card>
 </template>
 
@@ -96,9 +103,6 @@ export default {
 </script>
 
 <style scoped>
-.test-access {
-    color: red;
-}
 
 .login-header {
     display: flex;

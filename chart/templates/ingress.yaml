@@ -4,32 +4,19 @@ metadata:
   name: {{ include  "imis.name" . }}-ingress
   labels:
   {{- include "imis.labels" . | nindent 4 }}
-  annotations:
-    ingress.kubernetes.io/static-ip: web-static-ip-{{- .Values.env }}
-    kubernetes.io/ingress.global-static-ip-name: web-static-ip-{{- .Values.env }}
-    kubernetes.io/ingress.allow-http: "true"
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-    networking.gke.io/managed-certificates: "{{- include "imis.certs.client.certName" . }},{{- include "imis.certs.server.certName" . }}"
 spec:
-  tls:
-  - secretName: "{{- include "imis.certs.client.certName" . }}"
-    hosts:
-    - "{{- .Values.ingress.client.domain }}"
-  - secretName: "{{- include "imis.certs.server.certName" . }}"
-    hosts:
-    - "{{- .Values.ingress.server.domain }}"
   rules:
   - host: "{{- .Values.ingress.server.domain }}"
     http:
       paths:
-      - path: /*
+      - path: /
         backend:
           serviceName: {{ include "imis.server.fullname" . }}
           servicePort: 8080
   - host: "{{- .Values.ingress.client.domain }}"
     http:
       paths:
-      - path: /*
+      - path: /
         backend:
           serviceName: {{ include "imis.client.fullname" . }}
           servicePort: 8080

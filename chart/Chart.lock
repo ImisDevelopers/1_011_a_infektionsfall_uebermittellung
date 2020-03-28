@@ -1,0 +1,6 @@
+dependencies:
+- name: traefik
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 1.86.2
+digest: sha256:192f709b62d1cee0f00d7c9edc2ed206d8f2527096beb45067530b55c0b64509
+generated: "2020-03-28T21:15:36.684603+01:00"

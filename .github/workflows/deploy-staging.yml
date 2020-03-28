@@ -71,8 +71,9 @@ jobs:
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
         echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" > chart/cloudsql.base64.json
         echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" > chart/cloudstore.base64.json
+        helm dependency build ./chart
         helm upgrade --install imis ./chart -f chart/values.staging.yml \
-          --set gitSha=${GITHUB_SHA} --set secrets.postgres=${POSTGRES_PASSWORD}
+          --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
         kubectl rollout status deployment/imis-client
         kubectl rollout status deployment/imis-server
         kubectl get services -o wide

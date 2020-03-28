@@ -20,3 +20,21 @@ secrets:
   cloudStore: "cloudstore.base64.json"
   cloudSql: "cloudsql.base64.json"
   postgres: ""
+
+traefik:
+  #loadBalancerIP: 35.195.246.134
+  #externalIP: 35.195.246.134
+  logLevel: info # debug
+  ssl:
+    enabled: true
+    enforced: true
+  acme:
+    enabled: true
+    challengeType: http-01
+    email: Michael@Sprauer.net
+    logging: true
+    staging: false
+    persistence:
+      enabled: true
+  rbac:
+    enabled: true

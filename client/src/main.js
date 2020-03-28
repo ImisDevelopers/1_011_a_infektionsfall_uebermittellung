@@ -8,7 +8,7 @@ import "ant-design-vue/dist/antd.css";
 
 // application imports
 import App from "./App.vue";
-import { routes } from "./routes/routes";
+import { publicRoutes, routes } from "./routes/routes";
 import { authenticationStore } from "./util/auth";
 
 Vue.use(Antd);
@@ -22,13 +22,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ["/", "/prototype/login", "/prototype/public-statistics"];
-  const authRequired = !publicPages.includes(to.path);
+  const authRequired = !publicRoutes.includes(to.path);
   const loggedIn = localStorage.getItem("user");
 
   if (authRequired && !loggedIn) {
     console.log("Forwarding to login.");
-    return next("/login?forwardTo=" + encodeURI(to.path));
+    return next("/prototype/login?forwardTo=" + encodeURI(to.path));
   }
 
   next();

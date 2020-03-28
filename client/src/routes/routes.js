@@ -8,7 +8,15 @@ import LandingPage from "../components/LandingPage";
 import Login from "../components/Login";
 import LinkTestAndPatient from "../components/laboratory/LinkTestAndPatient";
 import LinkTestResultAndPatient from "../components/laboratory/LinkTestResultAndPatient";
-import RegisterUser from "../components/RegisterUser";
+
+// These routes do not require authentication
+export const publicRoutes = [
+  "/",
+  "/prototype/login",
+  "/prototype/public-statistics",
+  // For demo purposes:
+  "/prototype/register-institution"
+];
 
 export const routes = [
   { path: "*", redirect: "/" },
@@ -19,10 +27,6 @@ export const routes = [
   {
     path: "/prototype/login",
     component: Login
-  },
-  {
-    path: "/prototype/register-user",
-    component: RegisterUser
   },
   {
     path: "/prototype",

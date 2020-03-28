@@ -51,9 +51,9 @@ const items = [
   },
   {
     key: "7",
-    url: "/prototype/register-user",
+    url: "/prototype/register-institution",
     type: "user-add",
-    text: "RegisterUser"
+    text: "Nutzer hinzufügen"
   },
   {
     key: "8",

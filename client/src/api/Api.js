@@ -38,7 +38,8 @@ class Api {
           return response.json();
         } else {
           console.error(response);
-          throw new Error(`An error occured: Status ${response.status}`);
+          // reject so error object (e.g. for status code) can be used by caller
+          return Promise.reject(response);
         }
       }
     );
@@ -49,7 +50,7 @@ class Api {
    */
 
   postInstitution(request) {
-    return this.executeRequest("institutions", METHOD.POST, request);
+    return this.executeRequest("register", METHOD.POST, request);
   }
 
   postPatient(request) {
@@ -66,10 +67,6 @@ class Api {
 
   postAuthentication(request) {
     return this.executeRequest("auth", METHOD.POST, request);
-  }
-
-  postRegister(request) {
-    return this.executeRequest("register", METHOD.POST, request);
   }
 
   /*

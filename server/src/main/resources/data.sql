@@ -1,7 +1,7 @@
 INSERT into users (id, password, username)
-values (1, 'asdf', 'test_lab');
+values (1, '$2y$10$50NQ8FBG.soMzekSp8JF9ODOTYxysxyJxzovUNtXkCbAjoJxl0nq2', 'test_lab');
 INSERT into users (id, password, username)
-values (2, 'asdf', 'test_doctor');
+values (2, '$2y$10$50NQ8FBG.soMzekSp8JF9ODOTYxysxyJxzovUNtXkCbAjoJxl0nq2', 'test_doctor');
 INSERT into authority(id, display_name, role)
 values (1, 'labor', 'LABORATORY');
 INSERT into authority(id, display_name, role)

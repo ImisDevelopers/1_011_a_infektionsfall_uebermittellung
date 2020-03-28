@@ -6,5 +6,8 @@ ingress:
     domain: api.staging.imis-prototyp.de
 
 traefik:
-  loadBalancerIP: 35.195.246.134
-  externalIP: 35.195.246.134
+  loadBalancerIP: 104.155.17.244
+  # externalIP: 35.195.246.134
+  service:
+    annotations:
+      kubernetes.io/ingress.global-static-ip-name: "staging-ingress"

@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - dev
+    - feature/staging-env
 
 # Environment variables available to all jobs and steps in this workflow
 env:

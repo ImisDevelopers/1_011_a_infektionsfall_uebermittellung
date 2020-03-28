@@ -63,6 +63,8 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Prepare Helm
       uses: azure/setup-helm@v1
+      with:
+        version: v3.1.2
 
     - name: Deploy
       run: |

@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "imis.client.labels" . | nindent 4 }}
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8080
       targetPort: 8080
@@ -21,7 +21,7 @@ metadata:
   labels:
   {{- include "imis.server.labels" . | nindent 4 }}
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 8080
     targetPort: 8080

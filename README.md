@@ -15,7 +15,11 @@ Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.
 
 ## General Guidelines
 _DO NOT COMMIT TO MASTER_ 
-Development happens in `dev` using feature branches and PR.
+
+Development happens in `dev` using feature branches and PR. `dev` branch is deployed at:
+
+   * [Staging Deployment](https://staging.imis-prototyp.de)
+   * [Staging API](https://api.staging.imis-prototyp.de)
 
 ## Tech Stack
  - Backend: Spring Boot

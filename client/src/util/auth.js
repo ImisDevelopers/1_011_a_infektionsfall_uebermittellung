@@ -13,6 +13,8 @@ export const authenticationStore = {
      */
     user: Object,
     token: String,
+    loginCallbacks: [], // list of callbacks with signature () => void
+    logoutCallbacks: [], // list of callbacks with signature () => void
 
     /**
      * Parses the JWT from LocalStorage and fills the AuthenticationStore
@@ -37,6 +39,9 @@ export const authenticationStore = {
     clearAuthentication() {
         this.user = null;
         localStorage.removeItem("user");
+        for (const logoutCallback of this.logoutCallbacks) {
+            logoutCallback();
+        }
     },
 
     /**
@@ -57,6 +62,9 @@ export const authenticationStore = {
         localStorage.setItem("token", jwt);
         this.token = jwt;
         this.user = this.getAuthDetailsFromToken(jwt);
+        for (const loginCallback of this.loginCallbacks) {
+            loginCallback();
+        }
     },
 
     /**
@@ -77,7 +85,7 @@ export const authenticationStore = {
      * @return {boolean} true if user has any of the required roles
      */
     hasAnyRoleOf(roles) {
-        if (!this.user.roles) {
+        if (!this.user || !this.user.roles) {
             return false;
         }
         let hasRequiredRole = false;

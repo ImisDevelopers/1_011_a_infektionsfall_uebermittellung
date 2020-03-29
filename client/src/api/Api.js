@@ -42,7 +42,11 @@ class Api {
         return fetch(encodeURI(`${this.BASE_URL}/${url}`), options).then(
             response => {
                 if (response.ok) {
-                    return response.json();
+                    // Do JSON parsing manually to handle empty server response (happens e.g. on register endpoint)
+                    // https://github.com/github/fetch/issues/268
+                    return response.text().then((text) => {
+                        return text ? JSON.parse(text) : {};
+                    });
                 } else {
                     console.error(response);
                     // reject so error object (e.g. for status code) can be used by caller

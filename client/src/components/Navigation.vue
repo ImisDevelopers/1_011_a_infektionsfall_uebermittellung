@@ -80,26 +80,35 @@ export default {
     methods: {
         onClick(e) {
             this.key = e.key;
+        },
+        populateNavigationItems() {
+            this.availableItems = this.allItems.filter(item => {
+                const route = routes.find(route => route.path === item.url);
+                if (route) {
+                    return !route.roles || this.authenticationStore.hasAnyRoleOf(route.roles);
+                } else {
+                    return false;
+                }
+            });
+            const itemIndex = this.availableItems.findIndex(
+                item => item.url === window.location.pathname
+            );
+            if (itemIndex !== -1) {
+                this.key = this.availableItems[itemIndex].key;
+            } else {
+                this.key = "1";
+            }
         }
     },
     created() {
-        this.availableItems = this.allItems.filter(item => {
-            const route = routes.find(route => route.path === item.url);
-            if (route) {
-                return !route.roles || this.authenticationStore.hasAnyRoleOf(route.roles);
-            } else {
-                return false;
-            }
+        this.populateNavigationItems();
+        this.authenticationStore.loginCallbacks.push(() => {
+            this.populateNavigationItems();
         });
-        const itemIndex = this.availableItems.findIndex(
-            item => item.url === window.location.pathname
-        );
-        if (itemIndex !== -1) {
-            this.key = this.availableItems[itemIndex].key;
-        } else {
-            this.key = "1";
-        }
-    }
+        this.authenticationStore.logoutCallbacks.push(() => {
+            this.populateNavigationItems();
+        });
+    },
 };
 </script>
 

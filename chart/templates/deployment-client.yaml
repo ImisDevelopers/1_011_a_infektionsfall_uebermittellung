@@ -5,7 +5,7 @@ metadata:
   labels:
   {{- include "imis.client.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
   {{- include "imis.client.selectorLabels" . | nindent 6 }}

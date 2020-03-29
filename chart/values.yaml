@@ -3,7 +3,6 @@
 # Declare variables to be passed into your templates.
 
 gitSha: "SHA" ## will be replaced during deployment
-replicaCount: 2
 nameOverride: ""
 env: "production"
 

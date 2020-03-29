@@ -2,6 +2,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+// error tracking imports
+import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
+
 // ui imports
 import Antd from "ant-design-vue";
 import "ant-design-vue/dist/antd.css";
@@ -14,6 +18,11 @@ import { authenticationStore } from "./util/auth";
 Vue.use(Antd);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
+
+Sentry.init({
+    dsn: 'https://fbc34fc7930a408c860ede02d9de000a@sentry.imis-prototyp.de/3',
+    integrations: [new Integrations.Vue({Vue, attachProps: true})],
+});
 
 const router = new VueRouter({
     mode: "history",

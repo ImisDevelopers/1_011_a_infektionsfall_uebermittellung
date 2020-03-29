@@ -20,6 +20,11 @@ spec:
         env:
         - name: CLUSTER_ENVIRONMENT
           value: {{ .Values.env }}
+        - name: SENTRY_DSN
+          valueFrom:
+            secretKeyRef:
+              name: sentry
+              key: frontend
         ports:
         - containerPort: 8080
         readinessProbe:

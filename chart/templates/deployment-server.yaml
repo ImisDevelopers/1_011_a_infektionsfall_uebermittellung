@@ -38,7 +38,7 @@ spec:
         - name: SENTRY_DSN
           valueFrom:
             secretKeyRef:
-              name: sentry
+              name: imis-sentry
               key: backend
         volumeMounts:
         - name: cloudstore-service-account

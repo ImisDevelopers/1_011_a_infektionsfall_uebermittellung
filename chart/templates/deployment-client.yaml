@@ -23,7 +23,7 @@ spec:
         - name: SENTRY_DSN
           valueFrom:
             secretKeyRef:
-              name: sentry
+              name: imis-sentry
               key: frontend
         ports:
         - containerPort: 8080

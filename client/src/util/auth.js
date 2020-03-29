@@ -77,6 +77,9 @@ export const authenticationStore = {
      * @return {boolean} true if user has any of the required roles
      */
     hasAnyRoleOf(roles) {
+        if (!this.user.roles) {
+            return false;
+        }
         let hasRequiredRole = false;
         for (const requiredRole of roles) {
             if (this.user.roles.includes(requiredRole)) {

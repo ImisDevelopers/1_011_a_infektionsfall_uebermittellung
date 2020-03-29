@@ -84,16 +84,13 @@ import Api from "../../api/Api";
 export default {
   name: "LinkTestResultAndPatient",
   props: {
-    laboratoryId: {
-      type: String,
-      required: true
-    }
   },
   data() {
     return {
       form: this.$form.createForm(this),
       updatedLabTest: null,
-      fileBytes: null
+      fileBytes: null,
+      laboratoryId: "123",
     };
   },
   methods: {

@@ -10,6 +10,6 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 @Entity
 @Data
-public class Doctor extends Institution {
+public class Doctor extends InstitutionImpl {
 
 }

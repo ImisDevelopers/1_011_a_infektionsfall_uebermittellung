@@ -15,8 +15,10 @@ class Api {
             this.BASE_URL = "http://localhost:80";
             // Alternative config to run the app locally without root; see proxy conf
             // this.BASE_URL = "http://localhost:8080/api";
+        } else if (location.host.startsWith("staging")) {
+            this.BASE_URL = "https://api.staging.imis-prototyp.de/";
         } else {
-            this.BASE_URL = "http://35.246.194.158:8080";
+            this.BASE_URL = "http://imis-prototyp.de:8080";
         }
     }
 

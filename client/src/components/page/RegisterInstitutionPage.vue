@@ -170,8 +170,6 @@ export default {
         handleSubmit(e) {
             e.preventDefault();
 
-            console.log(e);
-
             this.form.validateFields((err, values) => {
                 if (!this.checked) {
                     this.dataProcessingClass = "data-processing-not-selected";
@@ -194,11 +192,10 @@ export default {
                     values
                 );
 
-                console.error("anonymized");
+                console.log("Data was anonymized");
 
-                Api.postInstitution(values).then(institution => {
-                    this.createdInstitution = institution;
-
+                Api.postInstitution(values).then(() => {
+                    this.form.resetFields();
                     const notification = {
                         message: "Institution registriert.",
                         description: "Die Institution wurde erfolgreich registriert."

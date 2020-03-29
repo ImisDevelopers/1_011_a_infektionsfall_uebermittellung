@@ -70,13 +70,13 @@ Common server labels
 client Selector labels
 */}}
 {{- define "imis.client.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "imis.name" . }}
+app.kubernetes.io/name: {{ include "imis.name" . }}-client
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}{{/*
 server Selector labels
 */}}
 {{- define "imis.server.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "imis.name" . }}
+app.kubernetes.io/name: {{ include "imis.name" . }}-server
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 

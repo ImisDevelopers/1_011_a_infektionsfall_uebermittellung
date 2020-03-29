@@ -24,7 +24,7 @@ secrets:
 traefik:
   #loadBalancerIP: 35.195.246.134
   #externalIP: 35.195.246.134
-  replicas: 2
+  replicas: 1
   service:
     annotations:
       kubernetes.io/ingress.global-static-ip-name: "production-ingress"

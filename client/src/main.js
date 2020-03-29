@@ -19,10 +19,12 @@ Vue.use(Antd);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
-Sentry.init({
-    dsn: 'https://fbc34fc7930a408c860ede02d9de000a@sentry.imis-prototyp.de/3',
-    integrations: [new Integrations.Vue({Vue, attachProps: true})],
-});
+if (process.env.NODE_ENV != "development") {
+    Sentry.init({
+        dsn: 'https://fbc34fc7930a408c860ede02d9de000a@sentry.imis-prototyp.de/3',
+        integrations: [new Integrations.Vue({Vue, attachProps: true})],
+    })
+}
 
 const router = new VueRouter({
     mode: "history",

@@ -1,0 +1,13 @@
+env: staging
+ingress:
+  client:
+    domain: staging.imis-prototyp.de
+  server:
+    domain: api.staging.imis-prototyp.de
+
+traefik:
+  loadBalancerIP: 104.155.17.244
+  # externalIP: 35.195.246.134
+  service:
+    annotations:
+      kubernetes.io/ingress.global-static-ip-name: "staging-ingress"

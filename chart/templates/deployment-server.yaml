@@ -39,7 +39,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: imis-sentry
-              key: backend
+              key: backend_dsn
         volumeMounts:
         - name: cloudstore-service-account
           mountPath: /usr/local/cloud-store

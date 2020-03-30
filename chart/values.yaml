@@ -24,8 +24,7 @@ secrets:
     backend: ""
 
 traefik:
-  #loadBalancerIP: 35.195.246.134
-  #externalIP: 35.195.246.134
+  loadBalancerIP: 35.198.153.128
   replicas: 1
   service:
     annotations:

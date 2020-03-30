@@ -18,7 +18,7 @@ class Api {
         } else if (location.host.startsWith("staging")) {
             this.BASE_URL = "https://api.staging.imis-prototyp.de";
         } else {
-            this.BASE_URL = "http://imis-prototyp.de:8080";
+            this.BASE_URL = "https://imis-prototyp.de";
         }
     }
 

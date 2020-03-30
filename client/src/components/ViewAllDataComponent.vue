@@ -365,7 +365,7 @@ export default {
     return {
       content: "",
       columns,
-      data: data
+      data: [], // data
     };
   },
   methods: {

@@ -21,7 +21,7 @@ Vue.config.productionTip = false;
 
 if (process.env.NODE_ENV != "development") {
     Sentry.init({
-        dsn: 'https://fbc34fc7930a408c860ede02d9de000a@sentry.imis-prototyp.de/3',
+        dsn: 'https://d0517f472462409c99f7b82f571315f3@sentry.imis-prototyp.de/2',
         integrations: [new Integrations.Vue({Vue, attachProps: true})],
     })
 }

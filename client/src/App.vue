@@ -17,7 +17,8 @@
             </div>
           </a-layout-content>
           <a-layout-footer style="textAlign: center">
-            IMIS ©2020 Created by WeVsVirus
+            IMIS ©2020 with <a-icon type="heart" style="color:red;">❤</a-icon> by
+            <a-button type="link" href="https://wirvsvirushackathon.org" target="_blank" style="padding-left: 0">#WeVsVirus</a-button>
           </a-layout-footer>
         </a-layout>
       </a-layout>

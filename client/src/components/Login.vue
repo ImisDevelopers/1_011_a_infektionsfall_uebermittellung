@@ -39,11 +39,11 @@
         <div>
             <p>Testzugänge:</p>
             <ul style="text-align: left">
-                <li>Labor-Zugang <strong>test_lab</strong> mit Passwort <strong>asdf</strong></li>
-                <li>Arzt-Zugang <strong>test_doctor</strong> mit Passwort <strong>asdf</strong></li>
-                <li>oder neuen Zugang
-                    <router-link to="/prototype/register-institution">auf der Registrierungsseite anlegen</router-link>
-                </li>
+                <li>Demo-Zugang <strong>test_lab</strong> mit Passwort <strong>asdf</strong></li>
+<!--                <li>Arzt-Zugang <strong>test_doctor</strong> mit Passwort <strong>asdf</strong></li>-->
+<!--                <li>oder neuen Zugang-->
+<!--                    <router-link to="/prototype/register-institution">auf der Registrierungsseite anlegen</router-link>-->
+<!--                </li>-->
             </ul>
         </div>
     </a-card>

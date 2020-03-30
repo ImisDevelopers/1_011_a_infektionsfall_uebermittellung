@@ -11,7 +11,6 @@
         <a-form-item label="Labor">
           <a-auto-complete
                   :dataSource="laboratories"
-                  :value="selectedLaboratory"
                   @search="onSearch"
                   @focus="onSearch"
                   placeholder="input here"
@@ -96,7 +95,6 @@ export default {
     return {
       form: this.$form.createForm(this),
       createdLabTest: null,
-      selectedLaboratory: null,
       fetchedLaboratories: [],
       laboratories: [],
     };
@@ -144,7 +142,10 @@ export default {
       } else {
         this.laboratories = this.fetchedLaboratories
                 .filter(l => l.name.toLowerCase().startsWith(str.toLowerCase()))
-
+								.map(l => ({
+									value: l.id,
+									text: l.name,
+								}))
       }
       // if ()
     }

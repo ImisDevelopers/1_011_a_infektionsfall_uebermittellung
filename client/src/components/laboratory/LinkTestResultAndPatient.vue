@@ -7,6 +7,26 @@
         :wrapper-col="{ span: 18 }"
         @submit="handleSubmit"
       >
+        <a-form-item label="Labor">
+          <a-auto-complete
+                  :dataSource="laboratories"
+                  :value="selectedLaboratory"
+                  @search="onSearch"
+                  @focus="onSearch"
+                  placeholder="input here"
+                  v-decorator="[
+                    'laboratoryId',
+                    {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Bitte wählen Sie ein Labor aus.'
+                        }
+                      ]
+                    }
+                  ]"
+          />
+        </a-form-item>
         <a-form-item label="Test-ID">
           <a-input
             v-decorator="[
@@ -90,7 +110,9 @@ export default {
       form: this.$form.createForm(this),
       updatedLabTest: null,
       fileBytes: null,
-      laboratoryId: "123",
+      selectedLaboratory: null,
+      fetchedLaboratories: [],
+      laboratories: [],
     };
   },
   methods: {
@@ -137,7 +159,7 @@ export default {
           file: this.fileBytes
         };
         // TODO this was just for MVP
-        Api.putLabTest(this.laboratoryId, request)
+        Api.putLabTest(values.laboratoryId, request)
           .then(labTest => {
             this.updatedLabTest = labTest;
 
@@ -154,8 +176,24 @@ export default {
             };
             this.$notification["error"](notification);
           });
-      });
+      })
+    },
+    onSearch(str) {
+      if (!str) {
+        this.laboratories = this.fetchedLaboratories
+                .map(l => ({
+                  value: l.id,
+                  text: l.name,
+                }))
+      } else {
+        this.laboratories = this.fetchedLaboratories
+                .filter(l => l.name.toLowerCase().startsWith(str.toLowerCase()))
+
+      }
     }
+  },
+  async created() {
+    this.fetchedLaboratories = await Api.getLaboratories();
   }
 };
 </script>

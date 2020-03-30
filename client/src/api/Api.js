@@ -61,7 +61,7 @@ class Api {
      */
 
     postInstitution(request) {
-        return this.executeRequest("auth/register", METHOD.POST, request);
+        return this.executeRequest("institutions", METHOD.POST, request);
     }
 
     postPatient(request) {
@@ -94,6 +94,10 @@ class Api {
 
     getLabTestByPatient(patientId) {
         return this.executeRequest(`labtest/patient/${patientId}`, METHOD.GET);
+    }
+
+    getLaboratories() {
+        return this.executeRequest("institutions/laboratories", METHOD.GET)
     }
 
     getPatients() {

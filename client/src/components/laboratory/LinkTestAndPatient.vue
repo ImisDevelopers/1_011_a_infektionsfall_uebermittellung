@@ -8,6 +8,27 @@
         :form="form"
         @submit="handleSubmit"
       >
+        <a-form-item label="Labor">
+          <a-auto-complete
+                  :dataSource="laboratories"
+                  :value="selectedLaboratory"
+                  @search="onSearch"
+                  @focus="onSearch"
+                  placeholder="input here"
+                  v-decorator="[
+                    'laboratoryId',
+                    {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Bitte wählen Sie ein Labor aus.'
+                        }
+                      ]
+                    }
+                  ]"
+          />
+<!--                  @select="onSelect"-->
+        </a-form-item>
         <a-form-item label="Patienten-ID">
           <a-input
             v-decorator="[
@@ -75,7 +96,9 @@ export default {
     return {
       form: this.$form.createForm(this),
       createdLabTest: null,
-      laboratoryId: "123",
+      selectedLaboratory: null,
+      fetchedLaboratories: [],
+      laboratories: [],
     };
   },
   methods: {
@@ -89,7 +112,6 @@ export default {
 
         const request = {
           ...values,
-          laboratoryId: this.laboratoryId
         };
 
         Api.postLabTest(request)
@@ -111,7 +133,24 @@ export default {
             this.$notification["error"](notification);
           });
       });
+    },
+    onSearch(str) {
+      if (!str) {
+        this.laboratories = this.fetchedLaboratories
+                .map(l => ({
+                  value: l.id,
+                  text: l.name,
+                }))
+      } else {
+        this.laboratories = this.fetchedLaboratories
+                .filter(l => l.name.toLowerCase().startsWith(str.toLowerCase()))
+
+      }
+      // if ()
     }
+  },
+  async created() {
+    this.fetchedLaboratories = await Api.getLaboratories();
   }
 };
 </script>

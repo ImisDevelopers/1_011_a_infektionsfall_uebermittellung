@@ -13,6 +13,10 @@ spec:
     metadata:
       labels:
     {{- include "imis.server.selectorLabels" . | nindent 8 }}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /actuator/prometheus
+        prometheus.io/port: "8081"
     spec:
       containers:
       - name: imis-server

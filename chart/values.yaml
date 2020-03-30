@@ -25,7 +25,6 @@ secrets:
 
 traefik:
   #loadBalancerIP: 35.195.246.134
-  #externalIP: 35.195.246.134
   replicas: 1
   service:
     annotations:
@@ -44,3 +43,10 @@ traefik:
       enabled: true
   rbac:
     enabled: true
+  deployment:
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9100"
+  metrics:
+    prometheus:
+      enabled: true

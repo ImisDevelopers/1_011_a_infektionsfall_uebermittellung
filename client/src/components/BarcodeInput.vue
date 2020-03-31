@@ -1,6 +1,6 @@
 <template>
 	<a-form-item :label="label">
-		<a-input v-model="value" v-bind="$props" v-decorator="validation">
+		<a-input v-decorator="validation">
 			<a-tooltip slot="suffix" title="Scan Barcode/QR using your Camera">
 				<a-icon type="camera" style="color: rgba(0,0,0,.45)" v-on:click="showScanner = true" />
 			</a-tooltip>
@@ -20,7 +20,7 @@
 
 export default {
   name: 'BarcodeInput',
-	props: ['placeholder', 'validation', 'label'],
+	props: ['placeholder', 'validation', 'label', 'form'],
   components: {BarcodeScanner},
   data() {
 		return {
@@ -31,7 +31,10 @@ export default {
 	methods: {
 		onResult(result) {
 			if (result != null) {
-				this.value = result;
+        this.value = result;
+				this.form.setFieldsValue({
+					[this.validation[0]]: result,
+				})
 			}
 			this.showScanner = false;
 		},

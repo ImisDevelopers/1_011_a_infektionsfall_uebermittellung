@@ -9,39 +9,39 @@
       >
         <a-form-item label="Labor">
           <a-auto-complete
-                  :dataSource="laboratories"
-                  @search="onSearch"
-                  @focus="onSearch"
-                  placeholder="z.B. WirVsVirus Labor"
-                  v-decorator="[
-                    'laboratoryId',
-                    {
-                      rules: [
-                        {
-                          required: true,
-                          message: 'Bitte wählen Sie ein Labor aus.'
-                        }
-                      ]
-                    }
-                  ]"
-          />
-        </a-form-item>
-        <a-form-item label="Test-ID">
-          <a-input
+            :dataSource="laboratories"
+            @search="onSearch"
+            @focus="onSearch"
+            placeholder="z.B. WirVsVirus Labor"
             v-decorator="[
-              'testId',
+              'laboratoryId',
               {
                 rules: [
                   {
                     required: true,
-                    message: 'Bitte geben Sie Ihre Test-ID ein.'
+                    message: 'Bitte wählen Sie ein Labor aus.'
                   }
                 ]
               }
             ]"
-            placeholder="z.B 1337-4237-9438"
           />
         </a-form-item>
+        <BarcodeInput
+          label="Test-ID"
+          placeholder="z.B 1337-4237-9438"
+          :form="form"
+          :validation="[
+            'testId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie Ihre Test-ID ein.'
+                }
+              ]
+            }
+          ]"
+        />
         <a-form-item label="Testresultat">
           <a-radio-group
             v-decorator="[
@@ -99,9 +99,11 @@
 
 <script>
 import Api from "../../api/Api";
+import BarcodeInput from "../BarcodeInput";
 
 export default {
   name: "LinkTestResultAndPatient",
+  components: {BarcodeInput},
   props: {
   },
   data() {

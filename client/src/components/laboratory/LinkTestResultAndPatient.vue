@@ -1,5 +1,5 @@
 <template>
-  <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
+  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px">
     <div v-if="!updatedLabTest">
       <a-form
         :form="form"
@@ -12,7 +12,7 @@
                   :dataSource="laboratories"
                   @search="onSearch"
                   @focus="onSearch"
-                  placeholder="input here"
+                  placeholder="z.B. WirVsVirus Labor"
                   v-decorator="[
                     'laboratoryId',
                     {

@@ -1,6 +1,9 @@
 <template>
-    <a-menu theme="dark" mode="horizontal" :selectedKeys="[key]" v-if="authenticationStore.user">
-        <a-menu-item v-for="item in availableItems" :key="item.key" @click="onClick">
+    <a-menu theme="dark" mode="inline" :selectedKeys="[key]" v-if="authenticationStore.user">
+        <a-menu-item
+                v-for="item in availableItems"
+                :key="item.key"
+                @click="onClick">
             <router-link :to="item.url">
                 <a-icon :type="item.type"/>
                 <span class="nav-text">{{ item.text }}</span>

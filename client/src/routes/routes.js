@@ -1,7 +1,7 @@
 import RegisterInstitutionPage from "../components/page/RegisterInstitutionPage";
 import RegisterPatientPage from "../components/page/RegisterPatientPage";
 
-import ViewAllDataComponent from "../components/ViewAllDataComponent.vue";
+import ViewAllDataComponent from "../components/PatientListComponent.vue";
 import PublicStatisticsComponent from "../components/PublicStatisticsComponent";
 import PatientOverviewComponent from "../components/PatientOverviewComponent.vue";
 import LandingPage from "../components/LandingPage";

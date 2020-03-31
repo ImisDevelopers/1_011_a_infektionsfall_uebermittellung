@@ -1,5 +1,5 @@
 <template>
-  <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
+  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px">
     <div v-if="!createdLabTest">
       <a-form
         :label-col="{ span: 6 }"
@@ -8,6 +8,26 @@
         :form="form"
         @submit="handleSubmit"
       >
+        <a-form-item label="Labor">
+          <a-auto-complete
+                  :dataSource="laboratories"
+                  @search="onSearch"
+                  @focus="onSearch"
+                  placeholder="z.B. WirVsVirus Labor"
+                  v-decorator="[
+                    'laboratoryId',
+                    {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Bitte wählen Sie ein Labor aus.'
+                        }
+                      ]
+                    }
+                  ]"
+          />
+<!--                  @select="onSelect"-->
+        </a-form-item>
         <a-form-item label="Patienten-ID">
           <a-input
             v-decorator="[
@@ -75,7 +95,8 @@ export default {
     return {
       form: this.$form.createForm(this),
       createdLabTest: null,
-      laboratoryId: "123",
+      fetchedLaboratories: [],
+      laboratories: [],
     };
   },
   methods: {
@@ -89,7 +110,6 @@ export default {
 
         const request = {
           ...values,
-          laboratoryId: this.laboratoryId
         };
 
         Api.postLabTest(request)
@@ -111,7 +131,27 @@ export default {
             this.$notification["error"](notification);
           });
       });
+    },
+    onSearch(str) {
+      if (!str) {
+        this.laboratories = this.fetchedLaboratories
+                .map(l => ({
+                  value: l.id,
+                  text: l.name,
+                }))
+      } else {
+        this.laboratories = this.fetchedLaboratories
+                .filter(l => l.name.toLowerCase().startsWith(str.toLowerCase()))
+								.map(l => ({
+									value: l.id,
+									text: l.name,
+								}))
+      }
+      // if ()
     }
+  },
+  async created() {
+    this.fetchedLaboratories = await Api.getLaboratories();
   }
 };
 </script>

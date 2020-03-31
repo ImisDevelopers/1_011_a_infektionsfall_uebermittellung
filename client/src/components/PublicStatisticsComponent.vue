@@ -1,8 +1,8 @@
 <template>
     <div>
-        <a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0"/>
+        <a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0" />
         <a-card class="table-container">
-            <a-table :columns="columns" :dataSource="data" >
+            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}">
             </a-table>
             <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">
                 <a-button type="primary" >CSV exportieren</a-button>

@@ -9,18 +9,18 @@
                         :form="form"
                         :layout="'horizontal'"
                         :labelCol="{ span: 6 }"
-                        :wrapperCol="{ span: 14, offset: 2 }"
+                        :wrapperCol="{ span: 18}"
                         @submit="handleSubmit"
                 >
                     <a-row>
-                        <a-col :md="12">
+                        <a-col :lg="12">
                             <a-form-item label="Benutzername">
                                 <a-input v-decorator="['userName', { rules: [{ required: true }] }]">
                                     <a-icon slot="prefix" type="user"/>
                                 </a-input>
                             </a-form-item>
                         </a-col>
-                        <a-col :md="12">
+                        <a-col :lg="12">
                             <a-form-item label="Passwort">
                                 <a-input v-decorator="['password', { rules: [{ required: true }] }]" type="password">
                                     <a-icon slot="prefix" type="lock"/>
@@ -92,34 +92,40 @@
                                 />
                             </a-form-item>
                         </a-col>
+                        <a-col>
+                            <a-form-item
+                                    label="Anmerkungen"
+                                    :labelCol="{ span: 24}"
+                                    :wrapperCol="{ span: 24}"
+                            >
+                                <a-input v-decorator="['comment']"/>
+                            </a-form-item>
+                        </a-col>
+                        <a-col :xs="6" :md="3"></a-col>
+                        <a-col>
+                            <!-- Datenschutzerklärung Bestätigung-->
+                            <a-form-item >
+                                <a-checkbox @change="onCheck">
+                                  <span :class="dataProcessingClass">
+                                    Ich erkläre mich mit der Übermittlung dieser Daten zur weiteren
+                                    Verarbeitung einverstanden.
+                                  </span>
+                                </a-checkbox>
+                            </a-form-item>
+                        </a-col>
+                        <a-col>
+                            <!-- Submit Button -->
+                            <a-form-item :wrapperCol="{ span: 24, offset: 0 }">
+                                <a-row :gutter="16" type="flex" justify="end">
+                                    <a-col>
+                                        <a-button type="primary" html-type="submit">
+                                            Registrieren
+                                        </a-button>
+                                    </a-col>
+                                </a-row>
+                            </a-form-item>
+                        </a-col>
                     </a-row>
-                    <a-form-item
-                            label="Anmerkungen"
-                            :labelCol="{ span: 5, pull: 2 }"
-                            :wrapperCol="{ span: 19, pull: 1 }"
-                    >
-                        <a-input v-decorator="['comment']"/>
-                    </a-form-item>
-                    <!-- Datenschutzerklärung Bestätigung-->
-                    <a-form-item>
-                        <a-checkbox @change="onCheck">
-              <span :class="dataProcessingClass">
-                Ich erkläre mich mit der Übermittlung dieser Daten zur weiteren
-                Verarbeitung einverstanden.
-              </span>
-                        </a-checkbox>
-                    </a-form-item>
-
-                    <!-- Submit Button -->
-                    <a-form-item :wrapperCol="{ span: 24, offset: 0 }">
-                        <a-row :gutter="16" type="flex" justify="end">
-                            <a-col>
-                                <a-button type="primary" html-type="submit">
-                                    Registrieren
-                                </a-button>
-                            </a-col>
-                        </a-row>
-                    </a-form-item>
                 </a-form>
             </a-card>
         </div>
@@ -217,7 +223,7 @@ export default {
 <style scoped>
 .wrapper {
     text-align: left;
-    padding: 24px;
+    padding: 2%;
     width: 100%;
 }
 

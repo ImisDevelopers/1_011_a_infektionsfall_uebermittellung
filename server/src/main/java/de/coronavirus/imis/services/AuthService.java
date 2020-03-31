@@ -42,7 +42,7 @@ public class AuthService {
 
     @SneakyThrows
     public User registerUser(RegisterUserRequest registerUserRequest) {
-        if (userRepository.findByUsername(registerUserRequest.getPassword()).isPresent()) {
+        if (userRepository.findByUsername(registerUserRequest.getUserName()).isPresent()) {
             throw new UserAlreadyExistsException("user with name" + registerUserRequest.getUserName() + " already exists");
         }
         var authority = authorityRepository.findFirstByRole(registerUserRequest.getInstitutionType()).orElseThrow();

@@ -6,16 +6,42 @@
     <div v-else>
       <a-layout id="components-layout-demo-responsive">
         <a-layout>
-          <a-layout-header style="height: auto">
-            <Navigation />
-          </a-layout-header>
-          <a-layout-content
-            style="margin: auto; box-sizing: border-box; padding: 0 4rem; width: 100%;"
-          >
-            <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
-              <router-view></router-view>
+          <a-layout-header style="height: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0">
+
+            <div>
+              <a-icon
+                v-if="authenticationStore.user"
+                @click="showNavbar = !showNavbar"
+                type="menu"
+                style="color: white; padding: 1.5rem"
+              />
             </div>
-          </a-layout-content>
+            <span :style="{color: 'white', }">IMIS</span>
+            <div>
+              <a-icon
+                v-if="authenticationStore.user"
+                type="user"
+                style="color: #aaa; padding: 1.5rem"
+              />
+            </div>
+          </a-layout-header>
+          <a-layout>
+            <a-layout-sider
+              breakpoint="lg"
+              collapsed-width="0"
+              v-model="showNavbar"
+              :trigger="null"
+            >
+              <Navigation />
+            </a-layout-sider>
+            <a-layout-content
+              style="margin: auto; box-sizing: border-box; width: 100%;"
+            >
+              <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
+                <router-view></router-view>
+              </div>
+            </a-layout-content>
+          </a-layout>
           <a-layout-footer style="textAlign: center">
             IMIS ©2020 with <a-icon type="heart" style="color:red;">❤</a-icon> by
             <a-button type="link" href="https://wirvsvirushackathon.org" target="_blank" style="padding-left: 0">#WeVsVirus</a-button>
@@ -29,14 +55,20 @@
 <script>
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import ALayoutSider from "ant-design-vue/es/layout/Sider";
+import {authenticationStore} from "./util/auth";
 
 export default {
   components: {
+    ALayoutSider,
     Navigation,
     LandingPage
   },
   data() {
-    return {};
+    return {
+      showNavbar: false,
+      authenticationStore: authenticationStore,
+    };
   },
   computed: {
     currentPath: function() {
@@ -52,7 +84,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 

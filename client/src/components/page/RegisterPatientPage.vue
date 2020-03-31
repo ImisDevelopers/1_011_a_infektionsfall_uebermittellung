@@ -10,21 +10,21 @@
         :form="form"
         :layout="'horizontal'"
         :labelCol="{ span: 6 }"
-        :wrapperCol="{ span: 14, offset: 2 }"
+        :wrapperCol="{ span: 14}"
         @submit="handleSubmit"
       >
         <a-collapse defaultActiveKey="1">
           <a-collapse-panel header="Allgemeines" key="1">
             <a-row>
-              <a-col :md="12">
-                <a-form-item label="Nachname">
-                  <a-input
-                    v-decorator="['lastName', { rules: [{ required: true }] }]"
-                  />
-                </a-form-item>
+              <a-col :lg="12">
                 <a-form-item label="Vorname">
                   <a-input
                     v-decorator="['firstName', { rules: [{ required: true }] }]"
+                  />
+                </a-form-item>
+                <a-form-item label="Nachname">
+                  <a-input
+                    v-decorator="['lastName', { rules: [{ required: true }] }]"
                   />
                 </a-form-item>
                 <a-form-item label="Geschlecht">
@@ -54,7 +54,7 @@
                   <a-input v-decorator="['insuranceMembershipNumber']" />
                 </a-form-item>
               </a-col>
-              <a-col :md="12">
+              <a-col :lg="12">
                 <a-form-item label="E-mail">
                   <a-input
                     v-decorator="['email', { rules: [{ required: true }] }]"
@@ -100,15 +100,15 @@
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
-              <a-radio-group
-                v-decorator="[
-                  'coronaContacts',
-                  { rules: [{ required: false }] }
-                ]"
-              >
-                <a-radio value="true">Ja</a-radio>
-                <a-radio value="false">Nein</a-radio>
-              </a-radio-group>
+                  <a-radio-group
+                    v-decorator="[
+                      'coronaContacts',
+                      { rules: [{ required: false }] }
+                    ]"
+                  >
+                    <a-radio value="true">Ja</a-radio>
+                    <a-radio value="false">Nein</a-radio>
+                  </a-radio-group>
             </a-form-item>
 
             <a-form-item
@@ -116,13 +116,23 @@
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
-              <span v-for="(riskArea, idx) in RISK_AREAS" :key="idx">
-                <a-col :span="12">
-                  <a-checkbox v-model="selectedRiskAreas[riskArea.key]">{{
+              <a-row>
+                <a-col
+                  v-for="(riskArea, idx) in RISK_AREAS" :key="idx"
+                  :xs="24"
+                  :sm="12"
+                >
+                  <a-checkbox
+                    v-model="selectedRiskAreas[riskArea.key]">{{
                     riskArea.description
                   }}</a-checkbox>
                 </a-col>
-              </span>
+              </a-row>
+<!--              <a-checkbox-group-->
+<!--                name="Risk Areas"-->
+<!--                :options="RISK_AREAS"-->
+<!--                :v-model="selectedRiskAreas">-->
+<!--              </a-checkbox-group>-->
             </a-form-item>
             <!-- ggf. Aufenthaltszeitraum ergänzen -->
           </a-collapse-panel>
@@ -133,13 +143,16 @@
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
-              <span v-for="(symptom, idx) in SYMPTOMS" :key="idx">
-                <a-col :span="12">
+              <a-row>
+                <a-col
+                  v-for="(symptom, idx) in SYMPTOMS" :key="idx"
+                  :xs="24"
+                  :sm="12">
                   <a-checkbox v-model="selectedSymptoms[symptom.key]">{{
                     symptom.description
                   }}</a-checkbox>
                 </a-col>
-              </span>
+              </a-row>
             </a-form-item>
 
             <a-form-item
@@ -200,13 +213,17 @@
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
-              <span v-for="(illness, idx) in ILLNESSES" :key="idx">
-                <a-col :span="12">
+              <a-row>
+                <a-col
+                  v-for="(illness, idx) in SYMPTOMS" :key="idx"
+                  :xs="24"
+                  :sm="12"
+                >
                   <a-checkbox v-model="selectedPreIllnesses[illness.key]">{{
                     illness.description
                   }}</a-checkbox>
                 </a-col>
-              </span>
+              </a-row>
             </a-form-item>
           </a-collapse-panel>
         </a-collapse>
@@ -408,7 +425,7 @@ export default {
 <style scoped>
 .wrapper {
   text-align: left;
-  padding: 24px;
+  padding: 2%;
   width: 100%;
 }
 

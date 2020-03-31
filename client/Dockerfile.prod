@@ -3,6 +3,10 @@ WORKDIR /app
 COPY package*.json yarn.lock ./
 RUN yarn install
 COPY . .
+ARG SENTRY_FRONTEND_DSN
+ARG DEPLOY_ENV
+ENV SENTRY_FRONTEND_DSN $SENTRY_FRONTEND_DSN
+ENV DEPLOY_ENV $DEPLOY_ENV
 RUN yarn run build
 
 # production stage

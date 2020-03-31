@@ -2,10 +2,13 @@ package de.coronavirus.imis.api;
 
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.InstitutionDTO;
+import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.services.InstitutionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/institutions")
@@ -86,5 +89,10 @@ public class InstitutionController {
 
 
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/laboratories")
+    public List<Laboratory> getAllLaboratories() {
+        return institutionService.getAllLaboratories();
     }
 }

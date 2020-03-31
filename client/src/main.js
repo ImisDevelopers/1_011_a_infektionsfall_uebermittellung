@@ -19,9 +19,9 @@ Vue.use(Antd);
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 
-if (process.env.NODE_ENV != "development") {
+if (process.env.SENTRY_FRONTEND_DSN != "") {
     Sentry.init({
-        dsn: 'https://d0517f472462409c99f7b82f571315f3@sentry.imis-prototyp.de/2',
+        dsn: process.env.SENTRY_FRONTEND_DSN,
         integrations: [new Integrations.Vue({Vue, attachProps: true})],
     })
 }

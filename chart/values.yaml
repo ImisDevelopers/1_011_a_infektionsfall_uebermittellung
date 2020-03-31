@@ -43,3 +43,10 @@ traefik:
       enabled: true
   rbac:
     enabled: true
+  deployment:
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9100"
+  metrics:
+    prometheus:
+      enabled: true

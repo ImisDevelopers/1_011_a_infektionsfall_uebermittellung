@@ -1,5 +1,5 @@
 <template>
-  <a-card style="width: 500px; margin: 2rem auto; min-height: 300px">
+  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px">
     <div v-if="!updatedLabTest">
       <a-form
         :form="form"
@@ -7,6 +7,25 @@
         :wrapper-col="{ span: 18 }"
         @submit="handleSubmit"
       >
+        <a-form-item label="Labor">
+          <a-auto-complete
+                  :dataSource="laboratories"
+                  @search="onSearch"
+                  @focus="onSearch"
+                  placeholder="z.B. WirVsVirus Labor"
+                  v-decorator="[
+                    'laboratoryId',
+                    {
+                      rules: [
+                        {
+                          required: true,
+                          message: 'Bitte wählen Sie ein Labor aus.'
+                        }
+                      ]
+                    }
+                  ]"
+          />
+        </a-form-item>
         <a-form-item label="Test-ID">
           <a-input
             v-decorator="[
@@ -90,7 +109,8 @@ export default {
       form: this.$form.createForm(this),
       updatedLabTest: null,
       fileBytes: null,
-      laboratoryId: "123",
+      fetchedLaboratories: [],
+      laboratories: [],
     };
   },
   methods: {
@@ -137,7 +157,7 @@ export default {
           file: this.fileBytes
         };
         // TODO this was just for MVP
-        Api.putLabTest(this.laboratoryId, request)
+        Api.putLabTest(values.laboratoryId, request)
           .then(labTest => {
             this.updatedLabTest = labTest;
 
@@ -154,8 +174,27 @@ export default {
             };
             this.$notification["error"](notification);
           });
-      });
+      })
+    },
+    onSearch(str) {
+      if (!str) {
+        this.laboratories = this.fetchedLaboratories
+                .map(l => ({
+                  value: l.id,
+                  text: l.name,
+                }))
+      } else {
+        this.laboratories = this.fetchedLaboratories
+                .filter(l => l.name.toLowerCase().startsWith(str.toLowerCase()))
+                .map(l => ({
+                  value: l.id,
+                  text: l.name,
+                }))
+      }
     }
+  },
+  async created() {
+    this.fetchedLaboratories = await Api.getLaboratories();
   }
 };
 </script>

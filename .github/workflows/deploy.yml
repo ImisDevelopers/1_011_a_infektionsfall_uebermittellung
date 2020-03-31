@@ -1,4 +1,4 @@
-name: Build and Deploy to GKE
+name: Production
 
 on:
   release:
@@ -11,6 +11,8 @@ env:
   CLOUD_SQL_SERVICE_ACCOUNT: ${{ secrets.CLOUD_SQL_SERVICE_ACCOUNT }}
   CLOUD_STORE_SERVICE_ACCOUNT: ${{ secrets.CLOUD_STORE_SERVICE_ACCOUNT }}
   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  SENTRY_BACKEND_DSN: ${{ secrets.SENTRY_BACKEND_DSN }}
+  SENTRY_FRONTEND_DSN: ${{ secrets.SENTRY_FRONTEND_DSN }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: europe-west3-b
   GKE_CLUSTER: cluster-1
@@ -45,6 +47,7 @@ jobs:
       run: |
         (cd client && docker build -f Dockerfile.prod -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$CLIENT_IMAGE":"$GITHUB_SHA" \
           --build-arg SENTRY_FRONTEND_DSN="${SENTRY_FRONTEND_DSN}" \
+          --build-arg DEPLOY_ENV=production \
           --build-arg GITHUB_SHA="${GITHUB_SHA}" \
           --build-arg GITHUB_REF="${GITHUB_REF}" .)
     - name: Build server
@@ -60,24 +63,23 @@ jobs:
         docker push "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$CLIENT_IMAGE:$GITHUB_SHA"
         docker push "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:$GITHUB_SHA"
 
-    # Set up kustomize
-    - name: Set up Kustomize
-      run: |
-        curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-        chmod u+x ./kustomize
-
     # Deploy the Docker image to the GKE cluster
+    - name: Prepare Helm
+      uses: azure/setup-helm@v1
+      with:
+        version: v3.1.2
+
     - name: Deploy
       run: |
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
-        echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" | base64 -d > sql-credentials.json
-        kubectl get secret cloudsql || kubectl create secret generic cloudsql --from-file=credentials.json=sql-credentials.json
-        echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" | base64 -d > store-credentials.json
-        kubectl get secret cloudstore || kubectl create secret generic cloudstore --from-file=credentials.json=store-credentials.json
-        ./kustomize edit set image "client-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$CLIENT_IMAGE:${GITHUB_SHA}"
-        ./kustomize edit set image "server-image=$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:${GITHUB_SHA}"
-        ./kustomize edit add secret postgres --from-literal=password=${POSTGRES_PASSWORD}
-        ./kustomize build . | kubectl apply -f -
+        echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" > chart/cloudsql.base64.json
+        echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" > chart/cloudstore.base64.json
+        helm repo add stable https://kubernetes-charts.storage.googleapis.com
+        helm dependency build chart
+        helm upgrade --install imis chart \
+          --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)" \
+          --set "secrets.sentry.backend=${SENTRY_BACKEND_DSN}" \
+          --set "secrets.sentry.frontend=${SENTRY_FRONTEND_DSN}"
         kubectl rollout status deployment/imis-client
         kubectl rollout status deployment/imis-server
         kubectl get services -o wide

@@ -24,14 +24,12 @@ export default {
   components: {BarcodeScanner},
   data() {
 		return {
-			value: '',
 			showScanner: false,
 		}
 	},
 	methods: {
 		onResult(result) {
 			if (result != null) {
-        this.value = result;
 				this.form.setFieldsValue({
 					[this.validation[0]]: result,
 				})

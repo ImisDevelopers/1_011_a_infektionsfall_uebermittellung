@@ -1,0 +1,40 @@
+<template>
+  <a-layout-sider
+    breakpoint="md"
+  >
+    <a-menu theme="dark" mode="inline">
+      <a-menu-item
+        v-for="route in routes"
+        :key="route.path"
+        @click="onClick"
+      >
+        <router-link :to="'app/login'">
+          <a-icon type="route.meta.icon" />
+          <span class="nav-text">{{ route.meta.title }}</span>
+        </router-link>
+      </a-menu-item>
+      <a-menu-item>
+        <a-icon type="logout"/>
+        Logout
+      </a-menu-item>
+    </a-menu>
+  </a-layout-sider>
+</template>
+
+<script>
+
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { navigationRoutes } from '@/router'
+
+@Component
+export default class Navigation extends Vue {
+  data () {
+    return {
+      routes: navigationRoutes.filter(r => r.meta),
+    }
+  }
+}
+</script>
+
+<style></style>

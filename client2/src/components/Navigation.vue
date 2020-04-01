@@ -13,7 +13,9 @@
           <span class="nav-text">{{ route.meta.title }}</span>
         </router-link>
       </a-menu-item>
-      <a-menu-item>
+      <a-menu-item
+        @click="onLogout"
+      >
         <a-icon type="logout"/>
         Logout
       </a-menu-item>
@@ -33,6 +35,10 @@ export default class Navigation extends Vue {
     return {
       routes: navigationRoutes.filter(r => r.meta),
     }
+  }
+
+  onLogout () {
+    this.$store.dispatch('logout')
   }
 }
 </script>

@@ -6,7 +6,7 @@
         <a-layout>
           <Navigation />
           <a-layout-content
-            style="margin: auto; box-sizing: border-box; width: 100%;"
+            style="box-sizing: border-box; width: 100%; display: flex; justify-content: space-between; flex-direction: column;"
           >
             <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
               <router-view></router-view>

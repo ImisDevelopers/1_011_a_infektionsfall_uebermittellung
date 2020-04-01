@@ -67,7 +67,7 @@ export default class Login extends Vue {
       if (err) {
         return
       }
-      this.$store.dispatch('login', {
+      this.$store.dispatch('auth/login', {
         username: values.username,
         password: values.password,
       })

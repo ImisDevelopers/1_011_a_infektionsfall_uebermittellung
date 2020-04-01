@@ -3,14 +3,13 @@ import VueRouter, { Route } from 'vue-router'
 import Login from '../views/Login.vue'
 import LandingPage from '../views/LandingPage.vue'
 import AppRoot from '../views/AppRoot.vue'
-import Store from '@/store'
+import RegisterPatient from '../views/RegisterPatient.vue'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
-const state = Store.state
-
 const loginBeforeEnter = (to: Route, from: Route, next: Function) => {
-  if (state.jwtToken) {
+  if (store.getters.isAuthenticated) {
     next({ name: 'app' })
   } else {
     next()
@@ -44,6 +43,16 @@ const routes = [
     component: AppRoot,
     children: [
       {
+        name: 'register-patient',
+        path: 'register-patient',
+        component: RegisterPatient,
+        meta: {
+          icon: 'user-add',
+          title: 'Patient Registrieren',
+          authorities: [],
+        },
+      },
+      {
         path: '*',
         redirect: { name: 'app' },
       },
@@ -70,7 +79,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!state.jwtToken) {
+    if (!store.getters.isAuthenticated) {
       next({
         path: '/login',
         query: { redirect: to.fullPath },

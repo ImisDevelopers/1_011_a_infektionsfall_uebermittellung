@@ -19,6 +19,11 @@
         </a-layout>
       </a-layout>
     </a-layout>
+    <a-spin
+      v-if="this.$store.state.shared.loadingStatus > 0"
+      size="large"
+      style="position: fixed; bottom: 3rem; margin: 0 auto;"
+    />
   </div>
 </template>
 <script>
@@ -35,7 +40,11 @@ import Navigation from '@/components/Navigation.vue'
   },
 })
 export default class AppRoot extends Vue {
-
+  data () {
+    return {
+      loadingStatus: this.$store.state.shared.loadingStatus,
+    }
+  }
 }
 
 </script>

@@ -263,7 +263,7 @@
 
 <script>
 import Vue from 'vue'
-import { Api } from '../store/SwaggerApi'
+import Api from '../store/api'
 import Component from 'vue-class-component'
 
 export const anonymizeProperties = (keys, obj) => {
@@ -367,14 +367,13 @@ export default class RegisterPatient extends Vue {
   }
 
   handleSubmit (e) {
-    this.form.validateFields((err, values) => {
+    this.form.validateFields(async (err, values) => {
       if (!this.checked) {
         this.dataProcessingClass = 'data-processing-not-selected'
         return
       } else if (err) {
         return
       }
-
       // TODO: Remove this when we go to production
       anonymizeProperties(
         [
@@ -408,26 +407,7 @@ export default class RegisterPatient extends Vue {
         preIllnesses,
         riskAreas,
       }
-      const api = new Api({
-        baseUrl: 'http://localhost',
-      })
-      api.patients.addPatientUsingPost(request)
-        .then(response => {
-          this.createdPatient = response
-
-          const notification = {
-            message: 'Patient registriert.',
-            description: 'Der Patient wurde erfolgreich registriert.',
-          }
-          this.$notification.success(notification)
-        })
-        .catch(err => {
-          const notification = {
-            message: 'Fehler beim Registrieren des Patienten.',
-            description: err.message,
-          }
-          this.$notification.error(notification)
-        })
+      this.$store.dispatch('patient/registerPatient', request)
     })
   }
 }

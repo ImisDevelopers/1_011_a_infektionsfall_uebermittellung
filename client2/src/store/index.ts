@@ -1,15 +1,18 @@
 import Vue from 'vue'
-import Vuex, { Store } from 'vuex'
+import Vuex from 'vuex'
 import { authModule, AuthState } from './modules/auth.module'
+import { patientModule, PatientState } from '@/store/modules/patients.module'
+import { sharedModule, SharedState } from '@/store/modules/shared.module'
 
 Vue.use(Vuex)
 
 export interface State {
   auth: AuthState;
+  patient: PatientState;
+  shared: SharedState;
 }
 
 const store = new Vuex.Store({
-  // state: authModule.state,
   // mutations: {
   //   ...authModule.mutations,
   // },
@@ -23,8 +26,9 @@ const store = new Vuex.Store({
   },
   modules: {
     auth: authModule,
+    patient: patientModule,
+    shared: sharedModule,
   },
 })
 console.log(store)
-
 export default store

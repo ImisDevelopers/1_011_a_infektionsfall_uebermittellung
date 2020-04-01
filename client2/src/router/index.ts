@@ -4,6 +4,9 @@ import Login from '../views/Login.vue'
 import LandingPage from '../views/LandingPage.vue'
 import AppRoot from '../views/AppRoot.vue'
 import RegisterPatient from '../views/RegisterPatient.vue'
+import RegisterTest from '../views/RegisterTest.vue'
+import SubmitTestResult from '../views/SubmitTestResult.vue'
+import PatientList from '../views/PatientList.vue'
 import store from '@/store'
 
 Vue.use(VueRouter)
@@ -49,6 +52,36 @@ const routes = [
         meta: {
           icon: 'user-add',
           title: 'Patient Registrieren',
+          authorities: [],
+        },
+      },
+      {
+        name: 'register-test',
+        path: 'register-test',
+        component: RegisterTest,
+        meta: {
+          icon: 'deployment-unit',
+          title: 'Probe Zuordnen',
+          authorities: [],
+        },
+      },
+      {
+        name: 'submit-test-result',
+        path: 'submit-test-result',
+        component: SubmitTestResult,
+        meta: {
+          icon: 'experiment',
+          title: 'Testresultat Zuordnen',
+          authorities: [],
+        },
+      },
+      {
+        name: 'patient-list',
+        path: 'patient-list',
+        component: PatientList,
+        meta: {
+          icon: 'team',
+          title: 'Alle Patienten',
           authorities: [],
         },
       },

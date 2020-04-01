@@ -7,6 +7,7 @@
         v-for="route in routes"
         :key="route.path"
       >
+<!--        v-bind:class="{'ant-menu-item-selected': route.name === $route.name}" TODO this is to slow-->
         <router-link :to="{ name: route.name }">
           <a-icon :type="route.meta.icon" />
           <span class="nav-text">{{ route.meta.title }}</span>

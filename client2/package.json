@@ -1,5 +1,5 @@
 {
-  "name": "client2",
+  "name": "IMIS",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,9 @@
     "generate:api-client": "npx swagger-typescript-api -p http://localhost/v2/api-docs -o ./src/store -n SwaggerApi.ts"
   },
   "dependencies": {
+    "@sentry/browser": "^5.15.4",
+    "@sentry/integrations": "^5.15.4",
+    "@zxing/library": "^0.16.0",
     "ant-design-vue": "^1.5.0",
     "core-js": "^3.6.4",
     "register-service-worker": "^1.6.2",

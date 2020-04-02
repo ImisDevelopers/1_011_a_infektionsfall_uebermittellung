@@ -26,7 +26,7 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
             "AND lower(pat.phoneNumber) like lower(?6) " +
             "AND lower(pat.street) like lower(?7) " +
             "AND lower(pat.houseNumber) like lower(?8) " +
-            "AND lower(pat.zip) LIKE lower(?9)" +
+            "AND coalesce(pat.zip, 0) = coalesce(?9, 0)" +
             "AND lower(pat.city) like lower(?10) " +
             "AND lower(pat.insuranceCompany) like lower(?11) " +
             "AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
@@ -61,7 +61,7 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
             "AND lower(pat.phoneNumber) like lower(?6) " +
             "AND lower(pat.street) like lower(?7) " +
             "AND lower(pat.houseNumber) like lower(?8) " +
-            "AND lower(pat.zip) LIKE lower(?9)" +
+            "AND coalesce(pat.zip, 0) = coalesce(?9, 0)" +
             "AND lower(pat.city) like lower(?10) " +
             "AND lower(pat.insuranceCompany) like lower(?11) " +
             "AND lower(pat.insuranceMembershipNumber) like lower(?12) " +

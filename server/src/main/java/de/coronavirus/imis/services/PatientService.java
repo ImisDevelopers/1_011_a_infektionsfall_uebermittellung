@@ -113,7 +113,7 @@ public class PatientService {
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceMembershipNumber()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus().name()),
+                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()),
                 pageable);
         if (patientSearchParamsDTO.isIncludePatientEvents()) {
             return patients.stream().peek(patient -> {
@@ -141,6 +141,6 @@ public class PatientService {
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceMembershipNumber()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus().name()));
+                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
     }
 }

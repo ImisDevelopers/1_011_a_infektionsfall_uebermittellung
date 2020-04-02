@@ -19,7 +19,7 @@ const columns = [
     dataIndex: 'zip',
     key: 'zip',
     width: 10,
-    sorter: (a, b) => a.zip - b.zip,
+    sorter: (a: any, b: any) => a.zip - b.zip,
     defaultSortOrder: 'ascend',
   },
   {
@@ -27,28 +27,28 @@ const columns = [
     dataIndex: 'active',
     key: 'active',
     width: 10,
-    sorter: (a, b) => a.active - b.active,
+    sorter: (a: any, b: any) => a.active - b.active,
   },
   {
     title: 'Verdachtsfälle',
     dataIndex: 'suspicion',
     key: 'suspicion',
     width: 10,
-    sorter: (a, b) => a.suspicion - b.suspicion,
+    sorter: (a: any, b: any) => a.suspicion - b.suspicion,
   },
   {
     title: 'Genesene Fälle',
     dataIndex: 'recovered',
     key: 'recovered',
     width: 10,
-    sorter: (a, b) => a.recovered - b.recovered,
+    sorter: (a: any, b: any) => a.recovered - b.recovered,
   },
   {
     title: 'Verstorbene Fälle',
     dataIndex: 'deaths',
     key: 'deaths',
     width: 10,
-    sorter: (a, b) => a.deaths - b.deaths,
+    sorter: (a: any, b: any) => a.deaths - b.deaths,
   },
 ]
 const data = [

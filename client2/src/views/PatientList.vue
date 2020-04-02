@@ -33,8 +33,16 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Patient } from '@/store/SwaggerApi'
+import { mapGetters } from 'vuex'
 
-const columns = [
+type ColumnSchema = {
+  title: string;
+  dataIndex: string;
+  key: string;
+  defaultSortOrder?: string;
+}
+
+const columnsSchema: ColumnSchema[] = [
   {
     title: 'Nachname',
     // sorter: (a, b) => a.lastName.localeCompare(b.lastName),
@@ -76,17 +84,19 @@ const columns = [
   },
 ]
 
-@Component
+@Component({
+  computed: {
+    ...mapGetters('patient', ['patients']),
+  },
+})
 export default class PatientList extends Vue {
-  data () {
-    return {
-      content: '',
-      columns,
-    }
-  }
+  patients!: Patient[]
 
-  get patients (): Patient[] {
-    return this.$store.state.patient.patients
+  content = ''
+  colums: ColumnSchema[] = []
+
+  mounted () {
+    this.colums = columnsSchema
   }
 
   created () {

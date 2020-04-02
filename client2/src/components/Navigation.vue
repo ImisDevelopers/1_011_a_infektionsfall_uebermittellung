@@ -28,22 +28,26 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 import { navigationRoutes, AppRoute } from '../router'
 import { config } from '@/config'
-import {mapGetters, mapActions} from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
+import { InstitutionType } from '@/store/modules/auth.module'
 
-@Component({  
+@Component({
+  computed: {
+    ...mapGetters('auth', ['roles']),
+  },
   methods: {
-    ...mapActions('auth', ['logout'])
-  }
+    ...mapActions('auth', ['logout']),
+  },
 })
 export default class Navigation extends Vue {
-
   logout!: () => void
   routes!: AppRoute[]
+  roles!: InstitutionType[]
 
   data () {
     return {
       routes: navigationRoutes
-        .filter(r => config.showAllViews || r.meta?.navigationInfo?.authorities.includes(this.$store.state.auth.jwtData.roles[0])),
+        .filter(r => config.showAllViews || r.meta?.navigationInfo?.authorities.includes(this.roles[0])),
     }
   }
 

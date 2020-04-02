@@ -24,4 +24,10 @@ export const sharedModule: Module<SharedState, State> = {
   },
   actions: {},
 
+  getters: {
+    loadingStatus: function (state: SharedState) {
+      return state.loadingStatus
+    },
+  },
+
 }

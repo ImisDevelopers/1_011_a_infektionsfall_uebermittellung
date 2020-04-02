@@ -1,7 +1,9 @@
 package de.coronavirus.imis.services;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,8 @@ public class AuthService {
     public Optional<String> loginUserCreateToken(AuthRequestDTO dto) {
         var maybeUser = userRepository.findByUsername(dto.getUserName());
         if (maybeUser.isPresent() && checkPassword(dto.getPassword(), maybeUser.get().getPassword())) {
-            var role = maybeUser.get().getAuthorities().iterator().next().getAuthority();
+            var role = maybeUser.get().getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority).collect(Collectors.toList());
             return Optional.of(jwtProvider.createToken(maybeUser.get().getUsername(), role));
         }
         return Optional.empty();

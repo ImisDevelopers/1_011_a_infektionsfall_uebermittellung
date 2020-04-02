@@ -11,8 +11,8 @@ import org.hibernate.annotations.GenericGenerator;
 import lombok.Data;
 
 @Data
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity(name = "institution")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class InstitutionImpl implements Institution {
     @Id
     @GeneratedValue(generator = "uuid2")

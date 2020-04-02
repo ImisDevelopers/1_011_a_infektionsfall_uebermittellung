@@ -1,6 +1,6 @@
-import { Api } from '@/store/SwaggerApi'
+import { Api, RequestParams } from '@/store/SwaggerApi'
 
-let baseUrl
+let baseUrl: string
 if (
   location.host.includes('localhost') ||
   location.host.includes('127.0.0.1')
@@ -14,8 +14,51 @@ if (
   baseUrl = 'https://api.imis-prototyp.de'
 }
 
-const api = new Api({
-  baseUrl: baseUrl,
-})
 
-export default api
+/**
+ * The npm package that creates the swagger client does not have a option
+ * to change headers, but after sign in we have to set the jwt token
+ * To to this we have to reinitialize the Api.
+ *
+ * To ensure all components always use the current api we use a proxy that
+ * returns the correct Api object function
+ *
+ */
+
+const apiWrapper = {
+  api: new Api({
+    baseUrl: baseUrl,
+  }),
+}
+
+function createApiProxy (foo: Api): Api { // Proxy<Foo> is compatible with Foo
+  const handler = {
+    get: function (target: Api, prop: keyof Api, receiver: any) {
+      if (Api.prototype[prop] !== null) {
+        return apiWrapper.api[prop]
+      }
+
+      return Reflect.get(target, prop, receiver)
+    },
+  }
+  return new Proxy(foo, handler)
+}
+
+export function setBearerToken (token: string) {
+  apiWrapper.api = new Api({
+    baseUrl: baseUrl,
+    baseApiParams: {
+      headers: {
+        Bearer: token,
+      },
+    },
+  })
+}
+
+export function removeBearerToken() {
+  apiWrapper.api = new Api({
+    baseUrl: baseUrl,
+  })
+}
+
+export default createApiProxy(apiWrapper.api)

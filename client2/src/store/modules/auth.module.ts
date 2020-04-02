@@ -3,7 +3,7 @@ import { Module } from 'vuex'
 import router from '@/router'
 import { State } from '@/store'
 import { parseJwt } from '@/util'
-import Api from '../api'
+import Api, { removeBearerToken, setBearerToken } from '../api'
 import Notification from '@/util/notification'
 import { CreateInstitutionDTO } from '@/store/SwaggerApi'
 
@@ -32,15 +32,12 @@ export const authModule: Module<AuthState, State> = {
     loginSuccess (state, jwtToken) {
       state.jwtToken = jwtToken
       state.jwtData = parseJwt(jwtToken)
-      Api.setSecurityData({
-        headers: {
-          Bearer: jwtToken,
-        },
-      })
+      setBearerToken(jwtToken)
     },
     logoutSuccess (state) {
       state.jwtToken = undefined
       state.jwtData = undefined
+      removeBearerToken()
     },
   },
   actions: {

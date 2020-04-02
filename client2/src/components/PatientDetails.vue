@@ -116,11 +116,18 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Patient } from '../store/SwaggerApi'
+import { mapGetters } from 'vuex'
 
-@Component
+@Component({
+  computed: {
+    ...mapGetters('patient', ['patients']),
+  },
+})
 export default class PatientDetails extends Vue {
+  patients!: Patient[]
+
   get patient (): Patient | undefined {
-    return this.$store.state.patient.patients.find(p => p.id === this.$route.params.id)
+    return this.patients.find(p => p.id === this.$route.params.id)
   }
 
   requestTestAgain () {
@@ -131,7 +138,7 @@ export default class PatientDetails extends Vue {
     this.$notification.success(notification)
   }
 
-  timelineColor (eventType) {
+  timelineColor (eventType: any) {
     switch (eventType) {
       case 'TEST_FINISHED_POSITIVE': return 'red'
       case 'TEST_FINISHED_NEGATIVE': return 'green'

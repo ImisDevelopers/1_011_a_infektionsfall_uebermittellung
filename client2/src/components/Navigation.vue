@@ -29,21 +29,34 @@
 
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { navigationRoutes } from '../router'
+import { navigationRoutes, AppRoute } from '../router'
 import { config } from '@/config'
+import { mapActions, mapGetters } from 'vuex'
+import { InstitutionType } from '@/store/modules/auth.module'
 
-@Component
+@Component({
+  computed: {
+    ...mapGetters('auth', ['roles']),
+  },
+  methods: {
+    ...mapActions('auth', ['logout']),
+  },
+})
 export default class Navigation extends Vue {
+  logout!: () => void
+  routes!: AppRoute[]
+  roles!: InstitutionType[]
+
   data () {
     return {
       routes: navigationRoutes
         .filter(r => (config.showAllViews ||
-          this.$store.state.auth.jwtData.roles.some(a => r.meta?.navigationInfo?.authorities.includes(a)))),
+          this.roles.some(a => r.meta?.navigationInfo?.authorities.includes(a)))),
     }
   }
 
   onLogout () {
-    this.$store.dispatch('auth/logout')
+    this.logout()
   }
 }
 </script>

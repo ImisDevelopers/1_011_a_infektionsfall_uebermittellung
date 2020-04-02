@@ -20,31 +20,31 @@
       </a-layout>
     </a-layout>
     <a-spin
-      v-if="this.$store.state.shared.loadingStatus > 0"
+      v-if="loadingStatus > 0"
       size="large"
       style="position: fixed; bottom: 3rem; margin: 0 auto;"
     />
   </div>
 </template>
-<script>
+<script lang="ts">
 
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import Header from '@/components/Header.vue'
 import Navigation from '@/components/Navigation.vue'
+import { mapGetters } from 'vuex'
 
 @Component({
   components: {
     Header,
     Navigation,
   },
+  computed: {
+    ...mapGetters('shared', ['loadingStatus']),
+  },
 })
 export default class AppRoot extends Vue {
-  data () {
-    return {
-      loadingStatus: this.$store.state.shared.loadingStatus,
-    }
-  }
+  loadingStatus!: number
 }
 
 </script>

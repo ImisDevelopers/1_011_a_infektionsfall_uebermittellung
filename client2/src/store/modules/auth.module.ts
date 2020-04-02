@@ -85,5 +85,6 @@ export const authModule: Module<AuthState, State> = {
   },
   getters: {
     isAuthenticated: (state: AuthState) => !!state.jwtToken, // add is valid check expire date
+    roles: (state: AuthState) => state.jwtData?.roles,
   },
 }

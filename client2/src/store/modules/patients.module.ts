@@ -61,4 +61,9 @@ export const patientModule: Module<PatientState, State> = {
       commit('shared/finishedLoading', 'registerPatient', { root: true })
     },
   },
+  getters: {
+    patients: function (state) {
+      return state.patients
+    },
+  },
 }

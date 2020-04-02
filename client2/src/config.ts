@@ -1,3 +1,3 @@
 export const config = {
-  showAllViews: true, // when enabled all views are visible in the Navigation bar
+  showAllViews: false, // when enabled all views are visible in the Navigation bar
 }

@@ -39,7 +39,7 @@ export const patientModule: Module<PatientState, State> = {
           description: 'Patienten kontent nicht geladen werden',
         })
       }
-      commit('shared/finishedLoading', 'fechPatients', { root: true })
+      commit('shared/finishedLoading', 'fetchPatients', { root: true })
     },
     async registerPatient ({ commit }, patient) {
       commit('shared/startedLoading', 'registerPatient', { root: true })
@@ -61,5 +61,4 @@ export const patientModule: Module<PatientState, State> = {
       commit('shared/finishedLoading', 'registerPatient', { root: true })
     },
   },
-
 }

@@ -16,7 +16,10 @@
       <a-menu-item
         @click="onLogout"
       >
-        <a-icon type="logout"/>Logout
+        <a-icon type="logout"/>
+        <span class="nav-text">
+          Logout
+        </span>
       </a-menu-item>
     </a-menu>
   </a-layout-sider>
@@ -34,7 +37,8 @@ export default class Navigation extends Vue {
   data () {
     return {
       routes: navigationRoutes
-        .filter(r => config.showAllViews || r.meta?.navigationInfo?.authorities.includes(this.$store.state.auth.jwtData.roles[0])),
+        .filter(r => (config.showAllViews ||
+          this.$store.state.auth.jwtData.roles.some(a => r.meta?.navigationInfo?.authorities.includes(a)))),
     }
   }
 

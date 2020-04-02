@@ -35,7 +35,7 @@ export default class Navigation extends Vue {
     return {
       routes: navigationRoutes
         .filter(r => r.meta)
-        .filter(r => config.showAllViews || r.meta.authorities.includes(this.$store.state.auth.jwtData.roles[0])),
+        .filter(r => config.showAllViews || this.$store.state.auth.jwtData.roles.every(a => r.meta.authorities.includes(a))),
     }
   }
 

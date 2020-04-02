@@ -7,12 +7,16 @@ import Api from '../api'
 import Notification from '@/util/notification'
 import { CreateInstitutionDTO } from '@/store/SwaggerApi'
 
+export type InstitutionType = CreateInstitutionDTO['institutionType'];
+
 export interface AuthState {
   jwtToken?: string;
-  jwtData?: object;
+  jwtData?: {
+    roles: InstitutionType[];
+    exp: number;
+    [key: string]: any;
+  };
 }
-
-export type InstitutionType = CreateInstitutionDTO['institutionType'];
 
 interface AuthGetters {
   isAuthenticated: (state: AuthState) => void;

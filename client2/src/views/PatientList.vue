@@ -2,7 +2,11 @@
   <div>
     <a-card class="table-container">
       <a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0" />
-      <a-table :columns="columns" :dataSource="patients" :scroll="{x: 1, y: 0}">
+      <a-table
+        :columns="columns"
+        :dataSource="patients"
+        :scroll="{x: 1, y: 0}"
+      >
         <!--        <span slot="riskAreas" slot-scope="riskAreas">-->
         <!--          <a-tag v-for="riskArea in riskAreas" :key="riskArea">-->
         <!--            {{ riskArea }}-->
@@ -33,13 +37,13 @@ import { Patient } from '@/store/SwaggerApi'
 const columns = [
   {
     title: 'Nachname',
-    sorter: (a, b) => a.lastName.localeCompare(b.lastName),
+    // sorter: (a, b) => a.lastName.localeCompare(b.lastName),
     dataIndex: 'lastName',
     key: 'lastName',
   },
   {
     title: 'Vorname',
-    sorter: (a, b) => a.firstName.localeCompare(b.firstName),
+    // sorter: (a, b) => a.firstName.localeCompare(b.firstName),
     dataIndex: 'firstName',
     key: 'firstName',
   },
@@ -50,7 +54,7 @@ const columns = [
   },
   {
     title: 'Status',
-    sorter: (a, b) => a.status.localeCompare(b.status),
+    // sorter: (a, b) => a.status.localeCompare(b.status),
     dataIndex: 'status',
     key: 'status',
   },

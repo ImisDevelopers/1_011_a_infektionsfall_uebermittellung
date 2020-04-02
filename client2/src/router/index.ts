@@ -8,6 +8,8 @@ import RegisterTest from '../views/RegisterTest.vue'
 import SubmitTestResult from '../views/SubmitTestResult.vue'
 import TestList from '../views/TestList.vue'
 import PatientList from '../views/PatientList.vue'
+import PatientDetails from '@/components/PatientDetails.vue'
+import PublicStatistics from '@/views/PublicStatistics.vue'
 import store from '@/store'
 import { InstitutionType } from '@/store/modules/auth.module'
 
@@ -31,11 +33,21 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
 
 interface AppRoute extends RouteConfig {
   meta?: {
-    icon: string;
-    title: string;
-    authorities: InstitutionType[];
+    navigationInfo?: {
+      icon: string;
+      title: string;
+      authorities: InstitutionType[];
+    };
   };
 }
+
+const ALL_INSTITUTIONS: InstitutionType[] = [
+  'TEST_SITE',
+  'LABORATORY',
+  'DOCTORS_OFFICE',
+  'CLINIC',
+  'GOVERNMENT_AGENCY',
+]
 
 const appRoutes: AppRoute[] = [
   {
@@ -43,9 +55,11 @@ const appRoutes: AppRoute[] = [
     path: 'register-patient',
     component: RegisterPatient,
     meta: {
-      icon: 'user-add',
-      title: 'Patient Registrieren',
-      authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      navigationInfo: {
+        icon: 'user-add',
+        title: 'Patient Registrieren',
+        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      },
     },
   },
   {
@@ -53,9 +67,11 @@ const appRoutes: AppRoute[] = [
     path: 'register-test',
     component: RegisterTest,
     meta: {
-      icon: 'deployment-unit',
-      title: 'Probe Zuordnen',
-      authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      navigationInfo: {
+        icon: 'deployment-unit',
+        title: 'Probe Zuordnen',
+        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      },
     },
   },
   {
@@ -63,9 +79,11 @@ const appRoutes: AppRoute[] = [
     path: 'submit-test-result',
     component: SubmitTestResult,
     meta: {
-      icon: 'experiment',
-      title: 'Testresultat Zuordnen',
-      authorities: ['LABORATORY', 'TEST_SITE'],
+      navigationInfo: {
+        icon: 'experiment',
+        title: 'Testresultat Zuordnen',
+        authorities: ['LABORATORY', 'TEST_SITE'],
+      },
     },
   },
   {
@@ -73,9 +91,11 @@ const appRoutes: AppRoute[] = [
     path: 'test-list',
     component: TestList,
     meta: {
-      icon: 'unorderd-list',
-      title: 'Alle Tests',
-      authorities: ['LABORATORY', 'TEST_SITE'],
+      navigationInfo: {
+        icon: 'unorderd-list',
+        title: 'Alle Tests',
+        authorities: ['LABORATORY', 'TEST_SITE'],
+      },
     },
   },
   {
@@ -83,10 +103,29 @@ const appRoutes: AppRoute[] = [
     path: 'patient-list',
     component: PatientList,
     meta: {
-      icon: 'team',
-      title: 'Alle Patienten',
-      authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      navigationInfo: {
+        icon: 'team',
+        title: 'Alle Patienten',
+        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      },
     },
+  },
+  {
+    name: 'public-statistics',
+    path: 'public-statistics',
+    component: PublicStatistics,
+    meta: {
+      navigationInfo: {
+        icon: 'stock',
+        title: 'Statistiken',
+        authorities: ALL_INSTITUTIONS,
+      },
+    },
+  },
+  {
+    name: 'patient-detail',
+    path: 'patient/:id',
+    component: PatientDetails,
   },
   {
     path: '*',
@@ -123,7 +162,7 @@ const routes = [
 ]
 
 export const navigationRoutes = appRoutes
-  .filter(r => !r.path.includes('*') && r.meta !== undefined)
+  .filter(r => !r.path.includes('*') && r.meta?.navigationInfo)
 
 const router = new VueRouter({
   mode: 'history',

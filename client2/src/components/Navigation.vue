@@ -9,8 +9,8 @@
       >
 <!--        v-bind:class="{'ant-menu-item-selected': route.name === $route.name}" TODO this is to slow-->
         <router-link :to="{ name: route.name }">
-          <a-icon :type="route.meta.icon" />
-          <span class="nav-text">{{ route.meta.title }}</span>
+          <a-icon :type="route.meta.navigationInfo.icon" />
+          <span class="nav-text">{{ route.meta.navigationInfo.title }}</span>
         </router-link>
       </a-menu-item>
       <a-menu-item
@@ -34,7 +34,7 @@ export default class Navigation extends Vue {
   data () {
     return {
       routes: navigationRoutes
-        .filter(r => config.showAllViews || r.meta.authorities.includes(this.$store.state.auth.jwtData.roles[0])),
+        .filter(r => config.showAllViews || r.meta?.navigationInfo?.authorities.includes(this.$store.state.auth.jwtData.roles[0])),
     }
   }
 

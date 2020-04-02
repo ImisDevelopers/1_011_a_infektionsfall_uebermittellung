@@ -2,13 +2,13 @@
   <div>
     <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>
     <div style="max-width: 1020px; margin: auto">
-      <a-tabs defaultActiveKey="1">
+      <a-tabs defaultActiveKey="1" v-if="patient">
         <a-tab-pane tab="Stammdaten" key="1">
           <!-- display user data here-->
           <div>
             <a-row :gutter="8">
               <a-col span="8">
-                <a-card title="Allgemein" bordered="false" align="left" :extra="uuid">
+                <a-card title="Allgemein" bordered="false" align="left" :extra="this.patient.id">
                   <table style="border-collapse: separate; border-spacing:15px">
                     <tr>
                       <td>Vorname:</td><td>{{patient.firstName}}</td>
@@ -50,13 +50,13 @@
                       <td>Telefonnummer:</td><td>{{patient.phoneNumber}}</td>
                     </tr>
                     <tr>
-                      <td>Email:</td><td><a href="">{{patient.}}</a></td>
+                      <td>Email:</td><td><a href="">{{patient.email}}</a></td>
                     </tr>
                     <tr>
-                      <td>Versicherung:</td><td>{{insuranceCompany}}</td>
+                      <td>Versicherung:</td><td>{{patient.insuranceCompany}}</td>
                     </tr>
                     <tr>
-                      <td>V-Nr:</td><td>{{insuranceMembershipNumber}}</td>
+                      <td>V-Nr:</td><td>{{patient.insuranceMembershipNumber}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -64,7 +64,7 @@
             </a-row>
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
-                <a-card title="Status: Genesen" align="left">
+                <a-card :title="'Status: '+ this.patient.events.reverse()[0].eventType" align="left">
                   <a-row :gutter="8" style="margin-top: 8px;">
                     <a-col span="6">
                       Erstaufnahme:
@@ -95,19 +95,15 @@
         </a-tab-pane>
         <a-tab-pane tab="Verlauf" key="2" forceRender>
           <a-card>
-            <a-timeline style="text-align: left; margin-left: 40px">
+            <a-timeline style="text-align: left; margin-left: 40px" v-if="patient.events.length">
               <!-- List all the events recorded corresponding to the patient over time -->
-              <a-timeline-item>10.03.2020 Patient aufgenommen, Test angeordnet</a-timeline-item>
-              <a-timeline-item>11.03.2020 Coronavirus Test: ID-12yt2109t9023810293</a-timeline-item>
-              <a-timeline-item color="red">11.03.2020 Befund positiv (ID-12yt2109t9023810293)</a-timeline-item>
-              <a-timeline-item>11.03.2020 Gesundheitamt Neustadt verhängt Quarantäne</a-timeline-item>
-              <a-timeline-item>15.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
-              <a-timeline-item>15.03.2020 Coronavirus Test: ID-12yt2109t1523810293</a-timeline-item>
-              <a-timeline-item color="green">16.03.2020 Befund unauffällig (ID-12yt2109t1523810293)</a-timeline-item>
-              <a-timeline-item>21.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
-              <a-timeline-item>21.03.2020 Coronavirus Test: ID-12yt2109t152ab10293</a-timeline-item>
-              <a-timeline-item color="green">22.03.2020 Befund unauffällig (ID-12yt2109t152ab10293)</a-timeline-item>
-              <a-timeline-item color="green">22.03.2020 Patient genesen</a-timeline-item>
+              <a-timeline-item
+                v-for="event in this.patient.events"
+                :key="event.id"
+                :color="timelineColor(event.eventType)"
+              >
+                {{ new Date(event.eventTimestamp).toLocaleString() }}, {{ event.eventType }}
+              </a-timeline-item>
             </a-timeline>
           </a-card>
         </a-tab-pane>
@@ -123,7 +119,9 @@ import { Patient } from '../store/SwaggerApi'
 
 @Component
 export default class PatientDetails extends Vue {
-  patient: Patient | undefined;
+  get patient (): Patient | undefined {
+    return this.$store.state.patient.patients.find(p => p.id === this.$route.params.id)
+  }
 
   requestTestAgain () {
     const notification = {
@@ -131,6 +129,14 @@ export default class PatientDetails extends Vue {
       description: '',
     }
     this.$notification.success(notification)
+  }
+
+  timelineColor (eventType) {
+    switch (eventType) {
+      case 'TEST_FINISHED_POSITIVE': return 'red'
+      case 'TEST_FINISHED_NEGATIVE': return 'green'
+      default: return 'grey'
+    }
   }
 }
 </script>

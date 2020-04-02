@@ -5,6 +5,7 @@ import de.coronavirus.imis.api.dto.AggregationResultZip;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.services.*;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;

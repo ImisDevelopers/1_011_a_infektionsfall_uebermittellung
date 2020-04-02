@@ -12,8 +12,8 @@ import de.coronavirus.imis.domain.Patient;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, String> {
-    @Query("select pat from Patient pat where pat.zip >= ?1 and pat.zip <= ?2 ")
-    List<Patient> findAllByZipBetween(Integer lower, Integer upperBounds);
+    @Query("select pat from Patient pat where pat.zip between ?1 and ?2 ")
+    List<Patient> findAllByZipBetween(String lower, String upperBounds);
 
     @Query("select distinct pat from Patient pat " +
             "left join PatientEvent pe " +
@@ -26,9 +26,7 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
             "AND lower(pat.phoneNumber) like lower(?6) " +
             "AND lower(pat.street) like lower(?7) " +
             "AND lower(pat.houseNumber) like lower(?8) " +
-            "AND ((?9 IS NOT NULL " +
-            "AND coalesce(pat.zip, 0) = coalesce(?9, 0)" +
-            "OR ?9 IS NULL))" +
+            "AND lower(pat.zip) like lower(?9) " +
             "AND lower(pat.city) like lower(?10) " +
             "AND lower(pat.insuranceCompany) like lower(?11) " +
             "AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
@@ -43,7 +41,7 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
                                                String phoneNumber,
                                                String street,
                                                String houseNumber,
-                                               Integer zip,
+                                               String zip,
                                                String city,
                                                String insuranceCompany,
                                                String insuranceMembershipNumber,
@@ -63,9 +61,7 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
             "AND lower(pat.phoneNumber) like lower(?6) " +
             "AND lower(pat.street) like lower(?7) " +
             "AND lower(pat.houseNumber) like lower(?8) " +
-            "AND ((?9 IS NOT NULL " +
-            "AND coalesce(pat.zip, 0) = coalesce(?9, 0)" +
-            "OR ?9 IS NULL))" +
+            "AND lower(pat.zip) like lower(?9) " +
             "AND lower(pat.city) like lower(?10) " +
             "AND lower(pat.insuranceCompany) like lower(?11) " +
             "AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
@@ -80,7 +76,7 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
                                   String phoneNumber,
                                   String street,
                                   String houseNumber,
-                                  Integer zip,
+                                  String zip,
                                   String city,
                                   String insuranceCompany,
                                   String insuranceMembershipNumber,

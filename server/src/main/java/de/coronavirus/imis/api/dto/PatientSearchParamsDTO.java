@@ -14,7 +14,7 @@ public class PatientSearchParamsDTO {
     private String phoneNumber;
     private String street;
     private String houseNumber;
-    private Integer zip;
+    private String zip;
     private String city;
 
     private String insuranceCompany;

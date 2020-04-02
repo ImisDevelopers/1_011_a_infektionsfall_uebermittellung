@@ -110,7 +110,7 @@
             <div
                     style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end"
             >
-                <a-button type="primary" style="margin-right: 50px">CSV exportieren</a-button>
+                <a-button type="primary" style="margin-right: 50px" @click="downloadPatients">CSV exportieren</a-button>
                 <a-pagination
                         showSizeChanger
                         :pageSize.sync="form.pageSize"
@@ -128,6 +128,8 @@
 <script>
 import Api from "../api/Api";
 import { eventTypes } from "../util/event-types";
+import { downloadCsv } from "../util/export-service";
+import moment from "moment";
 
 const columns = [
     {
@@ -253,6 +255,41 @@ export default {
         },
         toggleAdvancedSearch() {
             this.showAdvancedSearch = !this.showAdvancedSearch;
+        },
+        downloadPatients: function () {
+            let formValues = {...this.form};
+            if (this.showAdvancedSearch) {
+                formValues = {...formValues, ...this.advancedForm}
+            }
+            if (!formValues.patientStatus) {
+                // Backend fails on empty string
+                formValues.patientStatus = null;
+            }
+            console.log(`Loading ${formValues.pageSize} patients of page ${formValues.offsetPage}`);
+            Api.countPatients(formValues).then(count => {
+                // Download all data that applies to the current filter
+                formValues.offsetPage = 0;
+                formValues.pageSize = count;
+                Api.queryPatients(formValues).then(result => {
+                    const header = "ID,Vorname,Nachname,Geschlecht,Status,Geburtsdatum,Stadt,E-Mail;Telefonnummer;" +
+                        "Straße;Hausnummer;Stadt;Versicherung;Versichertennummer;";
+                    const patients = result.map((patient) =>
+                        `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};${patient.patientStatus};`
+                        + `${patient.dateOfBirth};${patient.city};${patient.email};${patient.phoneNumber};${patient.street};`
+                        + `${patient.houseNumber};${patient.city};${patient.insuranceCompany};${patient.insuranceMembershipNumber}`
+                    ).join("\n");
+                    const filename = moment().format("YYYY_MM_DD") + "_patienten_export.csv";
+                    downloadCsv(header + "\n" + patients, filename);
+                }).catch(error => {
+                    console.error(error);
+                    const notification = {
+                        message: "Fehler beim Laden der Patientendaten.",
+                        description: error.message
+                    };
+                    this.$notification["error"](notification);
+                });
+            });
+
         }
     }
 };

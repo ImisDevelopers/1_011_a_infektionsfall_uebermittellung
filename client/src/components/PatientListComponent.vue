@@ -21,8 +21,8 @@
                     </a-select>
                 </a-form-item>
                 <a-form-item label="Status">
-                    <a-select style="width: 250px" placeholder="Status" v-model="form.status" >
-                        <a-select-option value="">Alle</a-select-option>
+                    <a-select style="width: 250px" placeholder="Status" v-model="form.patientStatus">
+                        <a-select-option :value="null">Alle</a-select-option>
                         <a-select-option v-for="eventType in eventTypes" :key="eventType.id">
                             <a-icon :type="eventType.icon" style="margin-right: 5px"/>
                             {{eventType.label}}
@@ -30,7 +30,7 @@
                     </a-select>
                 </a-form-item>
                 <a-form-item label="Stadt">
-                    <a-input v-model="form.city"  placeholder="Stadt">
+                    <a-input v-model="form.city" placeholder="Stadt">
                         <a-icon slot="prefix" type="home"/>
                     </a-input>
                 </a-form-item>
@@ -40,7 +40,7 @@
                     </a-input>
                 </a-form-item>
                 <a-form-item label="ID">
-                    <a-input v-model="form.id"  placeholder="ID">
+                    <a-input v-model="form.id" placeholder="ID">
                         <a-icon slot="prefix" type="hdd"/>
                     </a-input>
                 </a-form-item>
@@ -49,8 +49,16 @@
                     Suche
                 </a-button>
             </a-form>
-            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}">
-            </a-table>
+            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}"></a-table>
+            <div>
+                <a-pagination
+                        showSizeChanger
+                        :pageSize.sync="form.pageSize"
+                        @showSizeChange="onShowSizeChange"
+                        :total="count"
+                        v-model="currentPage"
+                />
+            </div>
             <div
                     style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;"
             >
@@ -166,12 +174,26 @@ export default {
                 firstName: "",
                 lastName: "",
                 gender: "",
-                status: "",
+                patientStatus: null,
                 city: "",
                 email: "",
-                id: ""
+                id: "",
+                order: "asc",
+                orderBy: "lastName",
+                phoneNumber: "",
+                street: "",
+                houseNumber: "",
+                zip: "",
+                insuranceCompany: "",
+                insuranceMembershipNumber: "",
+                doctorId: "",
+                laboratoryId: "",
+                offsetPage: 0,
+                pageSize: 4,
             },
             content: "",
+            count: 0,
+            currentPage: 0,
             columns,
             data: [], // data
             searchOpen: false,
@@ -179,20 +201,29 @@ export default {
         };
     },
     created() {
-        Api.getPatients()
-            .then(patients => {
-                this.data = patients.reverse()
-                    .map(patient => ({
-                        ...patient,
-                        status: patient.events ? patient.events[patient.events.length - 1].eventType : '',
-                    }));
-            });
+        this.loadPage();
     },
     methods: {
         handleSearch() {
+            this.loadPage();
+        },
+        loadPage() {
             console.log(this.form);
-            Api.queryPatients(this.form);
-        }
+            this.form.offsetPage = this.currentPage;
+            Api.countPatients(this.form).then(count => {
+                console.log(count);
+            });
+            Api.queryPatients(this.form).then(result => {
+                console.log(result);
+                this.data = result.map(patient => ({
+                    ...patient,
+                    status: patient.events ? patient.events[patient.events.length - 1].eventType : '',
+                }));
+            });
+        },
+        onShowSizeChange(current, pageSize) {
+            console.log(current, pageSize);
+        },
     }
 };
 </script>

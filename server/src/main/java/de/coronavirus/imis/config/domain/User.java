@@ -29,7 +29,7 @@ import de.coronavirus.imis.domain.InstitutionImpl;
 @Entity
 @Table(name = "users")
 @Data
-@Builder
+@Builder(toBuilder = true)
 @Accessors(fluent = true)
 @NoArgsConstructor
 @AllArgsConstructor

@@ -21,42 +21,32 @@
                         </a-select-option>
                     </a-select>
                 </a-form-item>
-                <a-form-item label="Stadt">
-                    <a-input v-model="form.city" placeholder="Stadt">
-                        <a-icon slot="prefix" type="home"/>
-                    </a-input>
-                </a-form-item>
                 <a-form-item label="ID">
                     <a-input v-model="form.id" placeholder="ID">
                         <a-icon slot="prefix" type="hdd"/>
                     </a-input>
                 </a-form-item>
-                <a-button icon="search" type="primary" style="margin-bottom: 5px" html-type="submit"
+                <a-button @click="toggleAdvancedSearch">
+                    <a-icon :type="showAdvancedSearch ? 'down' : 'right'"/>
+                    Erweiterte Suche
+                </a-button>
+                <a-button icon="search" type="primary" style="margin-bottom: 5px;" html-type="submit"
                           @click="handleSearch">
                     Suche
                 </a-button>
             </a-form>
-            <a-button @click="toggleAdvancedSearch" style="margin-bottom: 15px">
-                <a-icon :type="showAdvancedSearch ? 'down' : 'right'"/>
-                Erweiterte Suche
-            </a-button>
-            <!--            gender: "",-->
-            <!--            city: "",-->
-            <!--            email: "",-->
-            <!--            phoneNumber: "",-->
-            <!--            street: "",-->
-            <!--            houseNumber: "",-->
-            <!--            zip: "",-->
-            <!--            insuranceCompany: "",-->
-            <!--            insuranceMembershipNumber: "",-->
-            <!--            doctorId: "",-->
-            <!--            laboratoryId: "",-->
             <a-form class="search-container" :model="advancedForm" v-if="showAdvancedSearch">
                 <a-form-item label="Geschlecht">
                     <a-select v-model="form.gender" style="width: 120px" placeholder="Geschlecht">
                         <a-select-option value="">Alle</a-select-option>
-                        <a-select-option value="weiblich">Weiblich</a-select-option>
-                        <a-select-option value="männlich">Männlich</a-select-option>
+                        <a-select-option value="weiblich">
+                            <a-icon type="woman" style="margin-right: 5px"/>
+                            Weiblich
+                        </a-select-option>
+                        <a-select-option value="männlich">
+                            <a-icon type="man" style="margin-right: 5px"/>
+                            Männlich
+                        </a-select-option>
                         <a-select-option value="sonstiges">Sonstiges</a-select-option>
                     </a-select>
                 </a-form-item>
@@ -77,27 +67,27 @@
                 </a-form-item>
                 <a-form-item label="Straße">
                     <a-input v-model="advancedForm.street" placeholder="Straße">
-                        <a-icon slot="prefix" type="street"/>
+                        <a-icon slot="prefix" type="home"/>
                     </a-input>
                 </a-form-item>
-                <a-form-item label="Hausnummer">
-                    <a-input v-model="advancedForm.houseNumber" placeholder="Hausnummer">
-                        <a-icon slot="prefix" type="houseNumber"/>
+                <a-form-item label="Hausnummer" style="width: 100px">
+                    <a-input v-model="advancedForm.houseNumber" placeholder="Hausnr.">
+                        <a-icon slot="prefix" type="home"/>
                     </a-input>
                 </a-form-item>
-                <a-form-item label="Postleitzahl">
-                    <a-input v-model="advancedForm.zip" placeholder="Postleitzahl">
-                        <a-icon slot="prefix" type="zip"/>
+                <a-form-item label="Postleitzahl" style="width: 100px">
+                    <a-input v-model="advancedForm.zip" placeholder="PLZ">
+                        <a-icon slot="prefix" type="home"/>
                     </a-input>
                 </a-form-item>
                 <a-form-item label="Versicherung">
                     <a-input v-model="advancedForm.insuranceCompany" placeholder="Versicherung">
-                        <a-icon slot="prefix" type="insurance"/>
+                        <a-icon slot="prefix" type="hdd"/>
                     </a-input>
                 </a-form-item>
                 <a-form-item label="Versicherungsnummer">
                     <a-input v-model="advancedForm.insuranceMembershipNumber" placeholder="Versicherungsnummer">
-                        <a-icon slot="prefix" type="insuranceNumber"/>
+                        <a-icon slot="prefix" type="idcard"/>
                     </a-input>
                 </a-form-item>
                 <a-form-item label="Arzt-ID">
@@ -325,5 +315,9 @@ h3 {
 .search-container > * {
     margin: 0 10px;
     max-width: 250px;
+}
+
+.search-container > button {
+    margin-bottom: 5px;
 }
 </style>

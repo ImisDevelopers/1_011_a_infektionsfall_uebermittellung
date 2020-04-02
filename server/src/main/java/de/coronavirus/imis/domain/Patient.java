@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -43,6 +44,7 @@ public class Patient {
     private boolean confirmed;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private EventType patientStatus;
 
     private Boolean fluImmunization;

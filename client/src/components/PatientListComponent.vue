@@ -108,8 +108,9 @@
                     {{eventTypes.find(type => type.id === patientStatus).label}}
                 </div>
             </a-table>
-            <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end">
+            <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end; align-items: center">
                 <a-button type="primary" style="margin-right: 50px" @click="downloadPatients">CSV exportieren</a-button>
+                <span style="margin-right: 10px">{{count}} Patienten</span>
                 <a-pagination
                         showSizeChanger
                         :pageSize.sync="form.pageSize"

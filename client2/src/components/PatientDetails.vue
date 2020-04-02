@@ -50,7 +50,7 @@
                       <td>Telefonnummer:</td><td>{{patient.phoneNumber}}</td>
                     </tr>
                     <tr>
-                      <td>Email:</td><td><a href="">{{patient.email}}</a></td>
+                      <td>Email:</td><td><a href="">{{patient.}}</a></td>
                     </tr>
                     <tr>
                       <td>Versicherung:</td><td>{{insuranceCompany}}</td>
@@ -116,33 +116,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import { Patient } from '../store/SwaggerApi'
 
-export default {
-  name: 'PatientDetail',
-  props: {
-    patient: {
-      type: Object,
-      default: {},
-    },
-  },
-  methods: {
-    requestTestAgain (type) {
-      // const patID = "12389384"
+@Component
+export default class PatientDetails extends Vue {
+  patient: Patient | undefined;
 
-      // Check notification type (success, info, warning, error)
-      if (type === 'success') {
-        var notification = {
-          message: 'Der Test wurde erneut angefordert.',
-          // description:
-          // `Patienten ID: ${patID}`,
-        }
-      }
-
-      // Show notification
-      this.$notification[type](notification)
-    },
-  },
+  requestTestAgain () {
+    const notification = {
+      message: 'Der Test wurde erneut angefordert.',
+      description: '',
+    }
+    this.$notification.success(notification)
+  }
 }
 </script>
 

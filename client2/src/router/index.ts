@@ -123,7 +123,7 @@ const routes = [
 ]
 
 export const navigationRoutes = appRoutes
-  .filter(r => !r.path.includes('*'))
+  .filter(r => !r.path.includes('*') && r.meta !== undefined)
 
 const router = new VueRouter({
   mode: 'history',

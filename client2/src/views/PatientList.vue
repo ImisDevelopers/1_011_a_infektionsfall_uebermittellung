@@ -25,9 +25,10 @@
 
 <!--// TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu-->
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { Patient } from '@/store/SwaggerApi'
 
 const columns = [
   {
@@ -80,7 +81,7 @@ export default class PatientList extends Vue {
     }
   }
 
-  get patients () {
+  get patients (): Patient[] {
     return this.$store.state.patient.patients
   }
 

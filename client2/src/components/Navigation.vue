@@ -22,7 +22,7 @@
   </a-layout-sider>
 </template>
 
-<script>
+<script lang="ts">
 
 import Vue from 'vue'
 import Component from 'vue-class-component'
@@ -34,8 +34,7 @@ export default class Navigation extends Vue {
   data () {
     return {
       routes: navigationRoutes
-        .filter(r => r.meta)
-        .filter(r => config.showAllViews || this.$store.state.auth.jwtData.roles.every(a => r.meta.authorities.includes(a))),
+        .filter(r => config.showAllViews || r.meta.authorities.includes(this.$store.state.auth.jwtData.roles[0])),
     }
   }
 

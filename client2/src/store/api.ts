@@ -1,4 +1,4 @@
-import { Api, RequestParams } from '@/store/SwaggerApi'
+import { Api } from '@/store/SwaggerApi'
 
 let baseUrl: string
 if (
@@ -13,7 +13,6 @@ if (
 } else {
   baseUrl = 'https://api.imis-prototyp.de'
 }
-
 
 /**
  * The npm package that creates the swagger client does not have a option
@@ -55,7 +54,7 @@ export function setBearerToken (token: string) {
   })
 }
 
-export function removeBearerToken() {
+export function removeBearerToken () {
   apiWrapper.api = new Api({
     baseUrl: baseUrl,
   })

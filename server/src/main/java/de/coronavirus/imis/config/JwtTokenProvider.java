@@ -40,7 +40,7 @@ public class JwtTokenProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String username, String role) {
+    public String createToken(String username, List<String> role) {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put(ROLES, role);
         Date now = new Date();
@@ -52,6 +52,7 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
+
     // TODO: MAYBE do not load from the db -> store roles in token since tokens are
     public Authentication getAuthentication(String token) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(getUsername(token));

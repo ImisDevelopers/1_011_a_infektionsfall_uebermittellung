@@ -1,27 +1,34 @@
 package de.coronavirus.imis;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import de.coronavirus.imis.api.dto.AggregationResultZip;
-import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
-import de.coronavirus.imis.api.dto.CreateLabTestDTO;
-import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.services.*;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.List;
+
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+
+import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
+import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.config.domain.User;
+import de.coronavirus.imis.config.domain.UserRepository;
+import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.services.InstitutionService;
+import de.coronavirus.imis.services.LabTestService;
+import de.coronavirus.imis.services.PatientEventService;
+import de.coronavirus.imis.services.PatientService;
+import de.coronavirus.imis.services.StatsService;
 
 
 @Component
+@RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {
 
 
@@ -30,15 +37,9 @@ public class TestDataLoader implements ApplicationRunner {
     private final LabTestService labTestService;
     private final PatientEventService eventService;
     private final StatsService statsService;
+    private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
-    @Autowired
-    public TestDataLoader(PatientService patientService, InstitutionService institutionService, LabTestService labTestService, PatientEventService eventService, StatsService statsService) {
-        this.patientService = patientService;
-        this.institutionService = institutionService;
-        this.labTestService = labTestService;
-        this.eventService = eventService;
-        this.statsService = statsService;
-    }
 
     static Object makeDTO(String testFileName, Class clazz)
             throws IOException {
@@ -74,6 +75,10 @@ public class TestDataLoader implements ApplicationRunner {
             var createClinicDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
             var clinic = institutionService.createClinicInstitution(createClinicDTO);
 
+
+            var user= User.builder().userRole(UserRole.USER_ROLE_ADMIN).username("test_lab").institution(laboratory).id(1L)
+                    .password(encoder.encode("asdf")).build();
+            userRepository.saveAndFlush(user);
 
             // PERSON GETS SICK AND GOES TO THE DOCTOR
             // PERSON GETS REGISTERED

@@ -22,7 +22,7 @@
                 </a-form-item>
                 <a-form-item label="Status">
                     <a-select style="width: 250px" placeholder="Status" v-model="form.patientStatus">
-                        <a-select-option :value="null">Alle</a-select-option>
+                        <a-select-option value="">Alle</a-select-option>
                         <a-select-option v-for="eventType in eventTypes" :key="eventType.id">
                             <a-icon :type="eventType.icon" style="margin-right: 5px"/>
                             {{eventType.label}}
@@ -49,8 +49,12 @@
                     Suche
                 </a-button>
             </a-form>
-            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}"></a-table>
-            <div>
+            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}" :pagination="false"></a-table>
+            <div
+                    style="display: flex; width: 100%; margin: 15px 0;"
+            >
+                <a-button type="primary">CSV exportieren</a-button>
+                <span style="flex: 1 1 auto"></span>
                 <a-pagination
                         showSizeChanger
                         :pageSize.sync="form.pageSize"
@@ -58,11 +62,6 @@
                         :total="count"
                         v-model="currentPage"
                 />
-            </div>
-            <div
-                    style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;"
-            >
-                <a-button type="primary">CSV exportieren</a-button>
             </div>
         </a-card>
     </div>
@@ -174,7 +173,7 @@ export default {
                 firstName: "",
                 lastName: "",
                 gender: "",
-                patientStatus: null,
+                patientStatus: "",
                 city: "",
                 email: "",
                 id: "",
@@ -193,36 +192,45 @@ export default {
             },
             content: "",
             count: 0,
-            currentPage: 0,
+            currentPage: 1, // Starts at 1
             columns,
             data: [], // data
             searchOpen: false,
             eventTypes
         };
     },
+    watch: {
+        currentPage() {
+            this.loadPage();
+        },
+    },
     created() {
         this.loadPage();
     },
     methods: {
         handleSearch() {
+            this.currentPage = 1;
+            this.loadPage();
+        },
+        onShowSizeChange(current, pageSize) {
+            this.currentPage = current;
+            this.form.pageSize = pageSize;
             this.loadPage();
         },
         loadPage() {
-            console.log(this.form);
-            this.form.offsetPage = this.currentPage;
-            Api.countPatients(this.form).then(count => {
-                console.log(count);
+            this.form.offsetPage = this.currentPage - 1;
+            const formValues = {...this.form};
+            if (!formValues.patientStatus) {
+                // Backend fails on empty string
+                formValues.patientStatus = null;
+            }
+            console.log(`Loading ${formValues.pageSize} patients of page ${formValues.offsetPage}`);
+            Api.countPatients(formValues).then(count => {
+                this.count = count;
             });
-            Api.queryPatients(this.form).then(result => {
-                console.log(result);
-                this.data = result.map(patient => ({
-                    ...patient,
-                    status: patient.events ? patient.events[patient.events.length - 1].eventType : '',
-                }));
+            Api.queryPatients(formValues).then(result => {
+                this.data = result;
             });
-        },
-        onShowSizeChange(current, pageSize) {
-            console.log(current, pageSize);
         },
     }
 };

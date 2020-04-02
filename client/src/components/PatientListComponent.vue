@@ -242,6 +242,13 @@ export default {
             });
             Api.queryPatients(formValues).then(result => {
                 this.data = result;
+            }).catch(error => {
+                console.error(error);
+                const notification = {
+                    message: "Fehler beim Laden der Patientendaten.",
+                    description: error.message
+                };
+                this.$notification["error"](notification);
             });
         },
         toggleAdvancedSearch() {

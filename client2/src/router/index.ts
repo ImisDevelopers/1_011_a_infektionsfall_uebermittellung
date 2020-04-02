@@ -1,13 +1,15 @@
 import Vue from 'vue'
-import VueRouter, { Route } from 'vue-router'
+import VueRouter, { Route, RouteConfig } from 'vue-router'
 import Login from '../views/Login.vue'
 import LandingPage from '../views/LandingPage.vue'
 import AppRoot from '../views/AppRoot.vue'
 import RegisterPatient from '../views/RegisterPatient.vue'
 import RegisterTest from '../views/RegisterTest.vue'
 import SubmitTestResult from '../views/SubmitTestResult.vue'
+import TestList from '../views/TestList.vue'
 import PatientList from '../views/PatientList.vue'
 import store from '@/store'
+import { InstitutionType } from '@/store/modules/auth.module'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,71 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
   }
 }
 
+interface AppRoute extends RouteConfig {
+  meta?: {
+    icon: string;
+    title: string;
+    authorities: InstitutionType[];
+  };
+}
+
+const appRoutes: AppRoute[] = [
+  {
+    name: 'register-patient',
+    path: 'register-patient',
+    component: RegisterPatient,
+    meta: {
+      icon: 'user-add',
+      title: 'Patient Registrieren',
+      authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+    },
+  },
+  {
+    name: 'register-test',
+    path: 'register-test',
+    component: RegisterTest,
+    meta: {
+      icon: 'deployment-unit',
+      title: 'Probe Zuordnen',
+      authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+    },
+  },
+  {
+    name: 'submit-test-result',
+    path: 'submit-test-result',
+    component: SubmitTestResult,
+    meta: {
+      icon: 'experiment',
+      title: 'Testresultat Zuordnen',
+      authorities: ['LABORATORY', 'TEST_SITE'],
+    },
+  },
+  {
+    name: 'test-list',
+    path: 'test-list',
+    component: TestList,
+    meta: {
+      icon: 'unorderd-list',
+      title: 'Alle Tests',
+      authorities: ['LABORATORY', 'TEST_SITE'],
+    },
+  },
+  {
+    name: 'patient-list',
+    path: 'patient-list',
+    component: PatientList,
+    meta: {
+      icon: 'team',
+      title: 'Alle Patienten',
+      authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+    },
+  },
+  {
+    path: '*',
+    redirect: { name: 'app' },
+  },
+]
+
 const routes = [
   {
     path: '/',
@@ -44,52 +111,7 @@ const routes = [
     path: '/app',
     name: 'app',
     component: AppRoot,
-    children: [
-      {
-        name: 'register-patient',
-        path: 'register-patient',
-        component: RegisterPatient,
-        meta: {
-          icon: 'user-add',
-          title: 'Patient Registrieren',
-          authorities: [],
-        },
-      },
-      {
-        name: 'register-test',
-        path: 'register-test',
-        component: RegisterTest,
-        meta: {
-          icon: 'deployment-unit',
-          title: 'Probe Zuordnen',
-          authorities: [],
-        },
-      },
-      {
-        name: 'submit-test-result',
-        path: 'submit-test-result',
-        component: SubmitTestResult,
-        meta: {
-          icon: 'experiment',
-          title: 'Testresultat Zuordnen',
-          authorities: [],
-        },
-      },
-      {
-        name: 'patient-list',
-        path: 'patient-list',
-        component: PatientList,
-        meta: {
-          icon: 'team',
-          title: 'Alle Patienten',
-          authorities: [],
-        },
-      },
-      {
-        path: '*',
-        redirect: { name: 'app' },
-      },
-    ],
+    children: appRoutes,
     meta: {
       requiresAuth: true,
     },
@@ -100,9 +122,8 @@ const routes = [
   },
 ]
 
-export const navigationRoutes = routes
-  .filter(r => r.name === 'app')[0]?.children
-  ?.filter(r => !r.path.includes('*'))
+export const navigationRoutes = appRoutes
+  .filter(r => !r.path.includes('*'))
 
 const router = new VueRouter({
   mode: 'history',

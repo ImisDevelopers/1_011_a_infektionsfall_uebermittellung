@@ -27,12 +27,15 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { navigationRoutes } from '../router'
+import { config } from '@/config'
 
 @Component
 export default class Navigation extends Vue {
   data () {
     return {
-      routes: navigationRoutes.filter(r => r.meta),
+      routes: navigationRoutes
+        .filter(r => r.meta)
+        .filter(r => config.showAllViews || r.meta.authorities.includes(this.$store.state.auth.jwtData.roles[0])),
     }
   }
 

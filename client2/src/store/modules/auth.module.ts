@@ -5,11 +5,14 @@ import { State } from '@/store'
 import { parseJwt } from '@/util'
 import Api from '../api'
 import Notification from '@/util/notification'
+import { CreateInstitutionDTO } from '@/store/SwaggerApi'
 
 export interface AuthState {
   jwtToken?: string;
   jwtData?: object;
 }
+
+export type InstitutionType = CreateInstitutionDTO['institutionType'];
 
 interface AuthGetters {
   isAuthenticated: (state: AuthState) => void;

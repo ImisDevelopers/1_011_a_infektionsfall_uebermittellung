@@ -77,8 +77,11 @@ export default class PatientList extends Vue {
     return {
       content: '',
       columns,
-      patients: this.$store.state.patient.patients,
     }
+  }
+
+  get patients () {
+    return this.$store.state.patient.patients
   }
 
   created () {

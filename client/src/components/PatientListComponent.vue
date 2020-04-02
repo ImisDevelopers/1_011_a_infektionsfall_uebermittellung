@@ -192,7 +192,7 @@ export default {
                 order: "asc",
                 orderBy: "lastName",
                 offsetPage: 0,
-                pageSize: 4,
+                pageSize: 10,
             },
             advancedForm: {
                 gender: "",
@@ -244,7 +244,6 @@ export default {
                 // Backend fails on empty string
                 formValues.patientStatus = null;
             }
-            console.log(`Loading ${formValues.pageSize} patients of page ${formValues.offsetPage}`);
             Api.countPatients(formValues).then(count => {
                 this.count = count;
             });
@@ -271,7 +270,6 @@ export default {
                 // Backend fails on empty string
                 formValues.patientStatus = null;
             }
-            console.log(`Loading ${formValues.pageSize} patients of page ${formValues.offsetPage}`);
             Api.countPatients(formValues).then(count => {
                 // Download all data that applies to the current filter
                 formValues.offsetPage = 0;

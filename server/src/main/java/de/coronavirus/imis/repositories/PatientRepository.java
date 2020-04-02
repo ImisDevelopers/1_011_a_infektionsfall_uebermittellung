@@ -31,7 +31,8 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
             "AND lower(pat.insuranceCompany) like lower(?11) " +
             "AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
             "AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
-            "AND lower(coalesce(pe.labTest, '0')) like lower(?14) ")
+            "AND lower(coalesce(pe.labTest, '0')) like lower(?14) " +
+            "AND lower(pat.patientStatus) like lower(?15) ")
     List<Patient> findAllByPatientSearchParams(String firstName,
                                                String lastName,
                                                String id,
@@ -46,6 +47,7 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
                                                String insuranceMembershipNumber,
                                                String doctorId,
                                                String laboratoryId,
+                                               String patientStatus,
                                                Pageable pageable);
 
     @Query("select count(distinct pat) from Patient pat " +
@@ -64,7 +66,8 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
             "AND lower(pat.insuranceCompany) like lower(?11) " +
             "AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
             "AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
-            "AND lower(coalesce(pe.labTest, '0')) like lower(?14) ")
+            "AND lower(coalesce(pe.labTest, '0')) like lower(?14) " +
+            "AND lower(pat.patientStatus) like lower(?15) ")
     Long countPatientSearchParams(String firstName,
                                   String lastName,
                                   String id,
@@ -78,7 +81,8 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
                                   String insuranceCompany,
                                   String insuranceMembershipNumber,
                                   String doctorId,
-                                  String laboratoryId);
+                                  String laboratoryId,
+                                  String patientStatus);
 
 
 }

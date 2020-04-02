@@ -16,4 +16,9 @@ public class Clinic extends InstitutionImpl {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
+
+    @Override
+    public InstitutionType getType() {
+        return InstitutionType.CLINIC;
+    }
 }

@@ -19,4 +19,5 @@ public class CustomerUserDetailService implements UserDetailsService {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username: " + username + " not found"));
     }
+
 }

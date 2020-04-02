@@ -18,4 +18,6 @@ public interface Institution {
     String getPhoneNumber();
 
     String getComment();
+
+    InstitutionType getType();
 }

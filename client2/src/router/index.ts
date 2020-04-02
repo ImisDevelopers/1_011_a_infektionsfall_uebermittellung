@@ -12,6 +12,7 @@ import PatientDetails from '@/components/PatientDetails.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
 import store from '@/store'
 import { InstitutionType } from '@/store/modules/auth.module'
+import RegisterInstitution from '@/views/RegisterInstitution.vue'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,18 @@ const appRoutes: AppRoute[] = [
         icon: 'user-add',
         title: 'Patient Registrieren',
         authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      },
+    },
+  },
+  {
+    name: 'register-institution',
+    path: 'register-institution',
+    component: RegisterInstitution,
+    meta: {
+      navigationInfo: {
+        icon: 'user-add',
+        title: 'Institution Registrieren',
+        authorities: ALL_INSTITUTIONS,
       },
     },
   },

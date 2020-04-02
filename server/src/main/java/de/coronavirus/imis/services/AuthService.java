@@ -2,7 +2,6 @@ package de.coronavirus.imis.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,8 +29,8 @@ public class AuthService {
     public Optional<String> loginUserCreateToken(AuthRequestDTO dto) {
         var maybeUser = userRepository.findByUsername(dto.getUserName());
         if (maybeUser.isPresent() && checkPassword(dto.getPassword(), maybeUser.get().getPassword())) {
-            var roles = maybeUser.get().roles().stream().map(el -> el.getRole().toString()).collect(Collectors.toList());
-            return Optional.of(jwtProvider.createToken(maybeUser.get().getUsername(), roles));
+            var role = maybeUser.get().getAuthorities().iterator().next().getAuthority();
+            return Optional.of(jwtProvider.createToken(maybeUser.get().getUsername(), role));
         }
         return Optional.empty();
     }
@@ -45,8 +44,8 @@ public class AuthService {
         if (userRepository.findByUsername(registerUserRequest.getUserName()).isPresent()) {
             throw new UserAlreadyExistsException("user with name" + registerUserRequest.getUserName() + " already exists");
         }
-        var authority = authorityRepository.findFirstByRole(registerUserRequest.getInstitutionType()).orElseThrow();
         var encodedPw = encoder.encode(registerUserRequest.getPassword());
+
         var user = new User().username(registerUserRequest.getUserName()).password(encodedPw).roles(List.of(authority));
         userRepository.save(user);
         institutionService.createInstiution(registerUserRequest);

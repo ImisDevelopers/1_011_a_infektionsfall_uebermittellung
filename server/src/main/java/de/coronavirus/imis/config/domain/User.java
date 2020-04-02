@@ -1,17 +1,16 @@
 package de.coronavirus.imis.config.domain;
 
-import static java.util.stream.Collectors.toList;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -24,6 +23,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import de.coronavirus.imis.domain.InstitutionImpl;
 
 @Entity
 @Table(name = "users")
@@ -43,13 +44,15 @@ public class User implements UserDetails {
     @NotEmpty
     private String password;
 
-    @Builder.Default
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Authority> roles = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private InstitutionImpl institution;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream().map(role -> new SimpleGrantedAuthority(role.getRole().name())).collect(toList());
+        return List.of(new SimpleGrantedAuthority((this.institution.getType().name() + "__" + userRole.name()).toUpperCase()));
     }
 
     @Override

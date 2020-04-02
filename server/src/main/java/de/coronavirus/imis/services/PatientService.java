@@ -110,7 +110,6 @@ public class PatientService {
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getCity()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceCompany()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceMembershipNumber()),
-                patientSearchParamsDTO.isConfirmed(),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
                 pageable);
@@ -138,7 +137,6 @@ public class PatientService {
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getCity()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceCompany()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceMembershipNumber()),
-                patientSearchParamsDTO.isConfirmed(),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()));
     }

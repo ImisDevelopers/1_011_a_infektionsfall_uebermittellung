@@ -19,7 +19,6 @@ public class PatientSearchParamsDTO {
 
     private String insuranceCompany;
     private String insuranceMembershipNumber;
-    private boolean confirmed;
 
     private String order;
     private String orderBy;

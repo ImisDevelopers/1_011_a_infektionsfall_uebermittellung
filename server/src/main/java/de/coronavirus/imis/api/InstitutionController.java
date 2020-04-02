@@ -87,7 +87,6 @@ public class InstitutionController {
                 break;
         }
 
-
         return ResponseEntity.ok(dto);
     }
 

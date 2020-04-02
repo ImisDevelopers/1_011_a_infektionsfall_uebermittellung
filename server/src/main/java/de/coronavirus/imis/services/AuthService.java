@@ -1,6 +1,5 @@
 package de.coronavirus.imis.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +15,7 @@ import de.coronavirus.imis.config.domain.AuthorityRepository;
 import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserAlreadyExistsException;
 import de.coronavirus.imis.config.domain.UserRepository;
+import de.coronavirus.imis.domain.InstitutionImpl;
 
 @Service
 @RequiredArgsConstructor
@@ -45,10 +45,10 @@ public class AuthService {
             throw new UserAlreadyExistsException("user with name" + registerUserRequest.getUserName() + " already exists");
         }
         var encodedPw = encoder.encode(registerUserRequest.getPassword());
-
-        var user = new User().username(registerUserRequest.getUserName()).password(encodedPw).roles(List.of(authority));
+        var role = institutionService.getInstitution(registerUserRequest.getId(), registerUserRequest.getInstitutionType());
+        var user = new User().username(registerUserRequest.getUserName()).password(encodedPw).institution((InstitutionImpl) role);
         userRepository.save(user);
-        institutionService.createInstiution(registerUserRequest);
+        institutionService.createInstitution(registerUserRequest);
         return user;
     }
 

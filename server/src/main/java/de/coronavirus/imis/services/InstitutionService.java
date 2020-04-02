@@ -2,6 +2,9 @@ package de.coronavirus.imis.services;
 
 import static de.coronavirus.imis.api.dto.CreateInstitutionDTO.fromRegisterRequest;
 
+import java.util.List;
+import java.util.UUID;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -13,18 +16,13 @@ import de.coronavirus.imis.api.dto.RegisterUserRequest;
 import de.coronavirus.imis.domain.Clinic;
 import de.coronavirus.imis.domain.Doctor;
 import de.coronavirus.imis.domain.Institution;
+import de.coronavirus.imis.domain.InstitutionType;
 import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.domain.TestSite;
 import de.coronavirus.imis.repositories.ClinicRepository;
 import de.coronavirus.imis.repositories.DoctorRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.TestSiteRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.UUID;
 
 
 @Service
@@ -51,7 +49,7 @@ public class InstitutionService {
         doctor.setEmail(institutionDTO.getEmail());
         doctor.setPhoneNumber(institutionDTO.getPhoneNumber());
         doctor.setComment(institutionDTO.getComment());
-       doctor.setId(UUID.randomUUID().toString());
+        doctor.setId(UUID.randomUUID().toString());
         return this.doctorRepository.saveAndFlush(doctor);
     }
 
@@ -120,7 +118,7 @@ public class InstitutionService {
         return this.testSiteRepository.saveAndFlush(testSite);
     }
 
-    protected Institution createInstiution(RegisterUserRequest registerUserRequest) {
+    protected Institution createInstitution(RegisterUserRequest registerUserRequest) {
         var dto = fromRegisterRequest(registerUserRequest);
         Institution result = null;
         switch (dto.getInstitutionType()) {
@@ -135,6 +133,27 @@ public class InstitutionService {
                 break;
             case DOCTORS_OFFICE:
                 result = createDoctorInstitution(dto);
+                break;
+            case GOVERNMENT_AGENCY:
+                break;
+        }
+        return result;
+    }
+
+    protected Institution getInstitution(String id, InstitutionType type) {
+        Institution result = null;
+        switch (type) {
+            case CLINIC:
+                result = clinicRepository.getOne(id);
+                break;
+            case TEST_SITE:
+                result = testSiteRepository.getOne(id);
+                break;
+            case LABORATORY:
+                result = laboratoryRepository.getOne(id);
+                break;
+            case DOCTORS_OFFICE:
+                result = doctorRepository.getOne(id);
                 break;
             case GOVERNMENT_AGENCY:
                 break;

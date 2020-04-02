@@ -2,25 +2,25 @@
     <div>
         <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>
         <div style="max-width: 1020px; margin: auto">
-            <a-tabs defaultActiveKey="1">
+            <a-tabs defaultActiveKey="1" v-if="patient">
                 <a-tab-pane tab="Stammdaten" key="1">
                     <!-- display user data here-->
                     <div>
                         <a-row :gutter="8">
                             <a-col span="8">
-                                <a-card title="Allgemein" bordered="false" align="left" :extra="uuid">
+                                <a-card title="Allgemein" bordered="false" align="left" :extra="this.patient.id">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
-                                            <td>Vorname:</td><td>{{firstName}}</td>
+                                            <td>Vorname:</td><td>{{patient.firstName}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Nachname:</td><td>{{lastName}}</td>
+                                            <td>Nachname:</td><td>{{patient.lastName}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Geburtsdatum:</td><td>{{dateOfBirth}}</td>
+                                            <td>Geburtsdatum:</td><td>{{patient.dateOfBirth}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Geschlecht:</td><td>{{gender}}</td>
+                                            <td>Geschlecht:</td><td>{{patient.gender}}</td>
                                         </tr>
                                     </table>
                                 </a-card>
@@ -29,16 +29,16 @@
                                 <a-card title="Adresse" bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
-                                            <td>Straße:</td><td>{{street}}</td>
+                                            <td>Straße:</td><td>{{patient.street}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Hausnummer:</td><td>{{houseNumber}}</td>
+                                            <td>Hausnummer:</td><td>{{patient.houseNumber}}</td>
                                         </tr>
                                         <tr>
-                                            <td>PLZ:</td><td>{{zip}}</td>
+                                            <td>PLZ:</td><td>{{patient.zip}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Ort:</td><td>{{city}}</td>
+                                            <td>Ort:</td><td>{{patient.city}}</td>
                                         </tr>
                                     </table>
                                 </a-card>
@@ -47,16 +47,16 @@
                                 <a-card title="Kontakt & Versicherung" bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
-                                            <td>Telefonnummer:</td><td>{{phoneNumber}}</td>
+                                            <td>Telefonnummer:</td><td>{{patient.phoneNumber}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Email:</td><td><a href="">{{email}}</a></td>
+                                            <td>Email:</td><td><a href="">{{patient.email}}</a></td>
                                         </tr>
                                         <tr>
-                                            <td>Versicherung:</td><td>{{insuranceCompany}}</td>
+                                            <td>Versicherung:</td><td>{{patient.insuranceCompany}}</td>
                                         </tr>
                                         <tr>
-                                            <td>V-Nr:</td><td>{{insuranceMembershipNumber}}</td>
+                                            <td>V-Nr:</td><td>{{patient.insuranceMembershipNumber}}</td>
                                         </tr>
                                     </table>
                                 </a-card>
@@ -64,7 +64,7 @@
                         </a-row>
                         <a-row :gutter="8" style="margin-top: 8px;">
                             <a-col span="24">
-                                <a-card title="Status: Genesen" align="left">
+                                <a-card :title="'Status: '+ this.patient.events.reverse()[0].eventType" align="left">
                                     <a-row :gutter="8" style="margin-top: 8px;">
                                         <a-col span="6">
                                             Erstaufnahme:
@@ -95,19 +95,15 @@
                 </a-tab-pane>
                 <a-tab-pane tab="Verlauf" key="2" forceRender>
                     <a-card>
-                        <a-timeline style="text-align: left; margin-left: 40px">
+                        <a-timeline style="text-align: left; margin-left: 40px" v-if="patient.events.length">
                             <!-- List all the events recorded corresponding to the patient over time -->
-                            <a-timeline-item>10.03.2020 Patient aufgenommen, Test angeordnet</a-timeline-item>
-                            <a-timeline-item>11.03.2020 Coronavirus Test: ID-12yt2109t9023810293</a-timeline-item>
-                            <a-timeline-item color="red">11.03.2020 Befund positiv (ID-12yt2109t9023810293)</a-timeline-item>
-                            <a-timeline-item>11.03.2020 Gesundheitamt Neustadt verhängt Quarantäne</a-timeline-item>
-                            <a-timeline-item>15.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
-                            <a-timeline-item>15.03.2020 Coronavirus Test: ID-12yt2109t1523810293</a-timeline-item>
-                            <a-timeline-item color="green">16.03.2020 Befund unauffällig (ID-12yt2109t1523810293)</a-timeline-item>
-                            <a-timeline-item>21.03.2020 Erneute Testanordnung nach Quarantäne</a-timeline-item>
-                            <a-timeline-item>21.03.2020 Coronavirus Test: ID-12yt2109t152ab10293</a-timeline-item>
-                            <a-timeline-item color="green">22.03.2020 Befund unauffällig (ID-12yt2109t152ab10293)</a-timeline-item>
-                            <a-timeline-item color="green">22.03.2020 Patient genesen</a-timeline-item>
+                            <a-timeline-item
+                                    v-for="event in this.patient.events"
+                                    :key="event.id"
+                                    :color="timelineColor(event.eventType)"
+                            >
+                                {{ new Date(event.eventTimestamp).toLocaleString() }}, {{ event.eventType }}
+                            </a-timeline-item>
                         </a-timeline>
                     </a-card>
                 </a-tab-pane>
@@ -117,66 +113,62 @@
 </template>
 
 <script>
+import Api from "../api/Api";
+// const uuid = "#2685896023";
+// const firstName = "Max";
+// const lastName = "Mustermann";
+// const dateOfBirth = "21.3.1995";
+// const gender = "männlich";
+// const email = "max@mustermann.de";
+// const phoneNumber = "+49 12354566";
+// const street = "Musterstraße";
+// const zip = "12345";
+// const houseNumber = "1";
+// const city = "Musterstadt";
+// const insuranceCompany = "Musterversicherung";
+// const insuranceMembershipNumber = "45687912";
 
-    const uuid = "#2685896023";
-    const firstName = "Max";
-    const lastName = "Mustermann";
-    const dateOfBirth = "21.3.1995";
-    const gender = "männlich";
-    const email = "max@mustermann.de";
-    const phoneNumber = "+49 12354566";
-    const street = "Musterstraße";
-    const zip = "12345";
-    const houseNumber = "1";
-    const city = "Musterstadt";
-    const insuranceCompany = "Musterversicherung";
-    const insuranceMembershipNumber = "45687912";
+export default {
+    name: "PatientOverviewComponent",
+    props: {
+        msg: String,
+        patient: null,
+    },
+    data() {
+        return {
+            entities: [],
+            content: "",
+        };
+    },
+    methods: {
+        requestTestAgain(type) {
+            // const patID = "12389384"
 
-    export default {
-        name: "PatientOverviewComponent",
-        props: {
-            msg: String
+            // Check notification type (success, info, warning, error)
+            if (type === "success") {
+            var notification = {
+                message: 'Der Test wurde erneut angefordert.',
+                // description:
+                // `Patienten ID: ${patID}`,
+            }
+            }
+
+            // Show notification
+            this.$notification[type](notification);
         },
-        data() {
-            return {
-                entities: [],
-                content: "",
-                firstName,
-                lastName,
-                dateOfBirth,
-                gender,
-                email,
-                phoneNumber,
-                street,
-                zip,
-                houseNumber,
-                city,
-                uuid,
-                insuranceCompany,
-                insuranceMembershipNumber
-            };
-        },
-        methods: {
-            requestTestAgain(type) {
-                // const patID = "12389384"
-
-                // Check notification type (success, info, warning, error)
-                if (type === "success") {
-                var notification = {
-                    message: 'Der Test wurde erneut angefordert.',
-                    // description:
-                    // `Patienten ID: ${patID}`,
-                }
-                }
-
-                // Show notification
-                this.$notification[type](notification);
-            },
-        },
-        components: {
-
+        timelineColor(eventType) {
+            switch(eventType) {
+                case 'TEST_FINISHED_POSITIVE': return 'red';
+                case 'TEST_FINISHED_NEGATIVE': return 'green'
+                default: return 'grey';
+            }
         }
-    };
+    },
+    async created() {
+        const patients = await Api.getPatients()
+        this.patient = patients[patients.length - 1]
+    }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

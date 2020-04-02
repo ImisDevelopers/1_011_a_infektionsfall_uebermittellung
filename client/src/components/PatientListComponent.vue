@@ -12,14 +12,6 @@
                         <a-icon slot="prefix" type="user"/>
                     </a-input>
                 </a-form-item>
-                <a-form-item label="Geschlecht">
-                    <a-select v-model="form.gender" style="width: 120px" placeholder="Geschlecht">
-                        <a-select-option value="">Alle</a-select-option>
-                        <a-select-option value="weiblich">Weiblich</a-select-option>
-                        <a-select-option value="männlich">Männlich</a-select-option>
-                        <a-select-option value="sonstiges">Sonstiges</a-select-option>
-                    </a-select>
-                </a-form-item>
                 <a-form-item label="Status">
                     <a-select style="width: 250px" placeholder="Status" v-model="form.patientStatus">
                         <a-select-option value="">Alle</a-select-option>
@@ -34,11 +26,6 @@
                         <a-icon slot="prefix" type="home"/>
                     </a-input>
                 </a-form-item>
-                <a-form-item label="E-Mail">
-                    <a-input v-model="form.email" placeholder="E-Mail">
-                        <a-icon slot="prefix" type="mail"/>
-                    </a-input>
-                </a-form-item>
                 <a-form-item label="ID">
                     <a-input v-model="form.id" placeholder="ID">
                         <a-icon slot="prefix" type="hdd"/>
@@ -49,12 +36,86 @@
                     Suche
                 </a-button>
             </a-form>
+            <a-button @click="toggleAdvancedSearch" style="margin-bottom: 15px">
+                <a-icon :type="showAdvancedSearch ? 'down' : 'right'"/>
+                Erweiterte Suche
+            </a-button>
+            <!--            gender: "",-->
+            <!--            city: "",-->
+            <!--            email: "",-->
+            <!--            phoneNumber: "",-->
+            <!--            street: "",-->
+            <!--            houseNumber: "",-->
+            <!--            zip: "",-->
+            <!--            insuranceCompany: "",-->
+            <!--            insuranceMembershipNumber: "",-->
+            <!--            doctorId: "",-->
+            <!--            laboratoryId: "",-->
+            <a-form class="search-container" :model="advancedForm" v-if="showAdvancedSearch">
+                <a-form-item label="Geschlecht">
+                    <a-select v-model="form.gender" style="width: 120px" placeholder="Geschlecht">
+                        <a-select-option value="">Alle</a-select-option>
+                        <a-select-option value="weiblich">Weiblich</a-select-option>
+                        <a-select-option value="männlich">Männlich</a-select-option>
+                        <a-select-option value="sonstiges">Sonstiges</a-select-option>
+                    </a-select>
+                </a-form-item>
+                <a-form-item label="Stadt">
+                    <a-input v-model="advancedForm.city" placeholder="Stadt">
+                        <a-icon slot="prefix" type="home"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="E-Mail">
+                    <a-input v-model="advancedForm.email" placeholder="E-Mail">
+                        <a-icon slot="prefix" type="mail"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Telefonnummer">
+                    <a-input v-model="advancedForm.phoneNumber" placeholder="Telefonnummer">
+                        <a-icon slot="prefix" type="phone"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Straße">
+                    <a-input v-model="advancedForm.street" placeholder="Straße">
+                        <a-icon slot="prefix" type="street"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Hausnummer">
+                    <a-input v-model="advancedForm.houseNumber" placeholder="Hausnummer">
+                        <a-icon slot="prefix" type="houseNumber"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Postleitzahl">
+                    <a-input v-model="advancedForm.zip" placeholder="Postleitzahl">
+                        <a-icon slot="prefix" type="zip"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Versicherung">
+                    <a-input v-model="advancedForm.insuranceCompany" placeholder="Versicherung">
+                        <a-icon slot="prefix" type="insurance"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Versicherungsnummer">
+                    <a-input v-model="advancedForm.insuranceMembershipNumber" placeholder="Versicherungsnummer">
+                        <a-icon slot="prefix" type="insuranceNumber"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Arzt-ID">
+                    <a-input v-model="advancedForm.doctorId" placeholder="Arzt-ID">
+                        <a-icon slot="prefix" type="hdd"/>
+                    </a-input>
+                </a-form-item>
+                <a-form-item label="Labor-ID">
+                    <a-input v-model="advancedForm.laboratoryId" placeholder="Labor-ID">
+                        <a-icon slot="prefix" type="hdd"/>
+                    </a-input>
+                </a-form-item>
+            </a-form>
             <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}" :pagination="false"></a-table>
             <div
-                    style="display: flex; width: 100%; margin: 15px 0;"
+                    style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end"
             >
-                <a-button type="primary">CSV exportieren</a-button>
-                <span style="flex: 1 1 auto"></span>
+                <a-button type="primary" style="margin-right: 50px">CSV exportieren</a-button>
                 <a-pagination
                         showSizeChanger
                         :pageSize.sync="form.pageSize"
@@ -172,13 +233,17 @@ export default {
             form: {
                 firstName: "",
                 lastName: "",
-                gender: "",
                 patientStatus: "",
-                city: "",
-                email: "",
                 id: "",
                 order: "asc",
                 orderBy: "lastName",
+                offsetPage: 0,
+                pageSize: 4,
+            },
+            advancedForm: {
+                gender: "",
+                city: "",
+                email: "",
                 phoneNumber: "",
                 street: "",
                 houseNumber: "",
@@ -187,16 +252,14 @@ export default {
                 insuranceMembershipNumber: "",
                 doctorId: "",
                 laboratoryId: "",
-                offsetPage: 0,
-                pageSize: 4,
             },
             content: "",
             count: 0,
             currentPage: 1, // Starts at 1
             columns,
             data: [], // data
-            searchOpen: false,
-            eventTypes
+            showAdvancedSearch: false,
+            eventTypes,
         };
     },
     watch: {
@@ -219,7 +282,10 @@ export default {
         },
         loadPage() {
             this.form.offsetPage = this.currentPage - 1;
-            const formValues = {...this.form};
+            let formValues = {...this.form};
+            if (this.showAdvancedSearch) {
+                formValues = {...formValues, ...this.advancedForm}
+            }
             if (!formValues.patientStatus) {
                 // Backend fails on empty string
                 formValues.patientStatus = null;
@@ -232,6 +298,9 @@ export default {
                 this.data = result;
             });
         },
+        toggleAdvancedSearch() {
+            this.showAdvancedSearch = !this.showAdvancedSearch;
+        }
     }
 };
 </script>

@@ -11,7 +11,6 @@ import lombok.SneakyThrows;
 import de.coronavirus.imis.api.dto.AuthRequestDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
 import de.coronavirus.imis.config.JwtTokenProvider;
-import de.coronavirus.imis.config.domain.AuthorityRepository;
 import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserAlreadyExistsException;
 import de.coronavirus.imis.config.domain.UserRepository;
@@ -23,7 +22,6 @@ public class AuthService {
     private final JwtTokenProvider jwtProvider;
     private final PasswordEncoder encoder;
     private final UserRepository userRepository;
-    private final AuthorityRepository authorityRepository;
     private final InstitutionService institutionService;
 
     public Optional<String> loginUserCreateToken(AuthRequestDTO dto) {

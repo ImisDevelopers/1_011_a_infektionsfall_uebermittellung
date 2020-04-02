@@ -1,5 +1,8 @@
 package de.coronavirus.imis.config;
 
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +17,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import lombok.RequiredArgsConstructor;
 
+import de.coronavirus.imis.config.domain.UserRole;
 import de.coronavirus.imis.domain.InstitutionType;
 
 @Configuration
@@ -43,11 +47,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/patient").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(),
+                .antMatchers("/patients").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(),
                 InstitutionType.TEST_SITE.name())
                 .antMatchers("/doctor/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name())
-
-                .antMatchers("/**").permitAll();
+                .mvcMatchers(POST, "/labtest").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
+                .antMatchers("/labtest/patient/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
+                .mvcMatchers(PUT, "/labtest/*").hasRole(InstitutionType.LABORATORY.name())
+                .antMatchers("/stats").authenticated()
+                .antMatchers("/auth").permitAll()
+                .antMatchers("/auth/register").hasAuthority(UserRole.USER_ROLE_ADMIN.name())
+                .antMatchers("/institutions/*").hasAuthority(UserRole.USER_ROLE_ADMIN.name())
+                .antMatchers("/**").authenticated();
         //@formatter:on
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }

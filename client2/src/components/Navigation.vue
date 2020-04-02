@@ -26,11 +26,20 @@
 
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { navigationRoutes } from '../router'
+import { navigationRoutes, AppRoute } from '../router'
 import { config } from '@/config'
+import {mapGetters, mapActions} from 'vuex'
 
-@Component
+@Component({  
+  methods: {
+    ...mapActions('auth', ['logout'])
+  }
+})
 export default class Navigation extends Vue {
+
+  logout!: () => void
+  routes!: AppRoute[]
+
   data () {
     return {
       routes: navigationRoutes
@@ -39,7 +48,7 @@ export default class Navigation extends Vue {
   }
 
   onLogout () {
-    this.$store.dispatch('auth/logout')
+    this.logout()
   }
 }
 </script>

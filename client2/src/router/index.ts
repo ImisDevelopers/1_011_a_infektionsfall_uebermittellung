@@ -32,7 +32,7 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
   }
 }
 
-interface AppRoute extends RouteConfig {
+export interface AppRoute extends RouteConfig {
   meta?: {
     navigationInfo?: {
       icon: string;

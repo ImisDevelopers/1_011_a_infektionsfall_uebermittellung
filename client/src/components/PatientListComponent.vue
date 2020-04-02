@@ -101,7 +101,12 @@
                     </a-input>
                 </a-form-item>
             </a-form>
-            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}" :pagination="false"></a-table>
+            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}" :pagination="false">
+                <div slot="patientStatus" slot-scope="patientStatus">
+                    <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px"/>
+                    {{eventTypes.find(type => type.id === patientStatus).label}}
+                </div>
+            </a-table>
             <div
                     style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end"
             >
@@ -122,65 +127,16 @@
 
 <script>
 import Api from "../api/Api";
-
-const eventTypes = [
-    {
-        id: "REGISTERED",
-        label: "Registriert",
-        icon: "login"
-    }, {
-        id: "SUSPECTED",
-        label: "Verdachtsfall",
-        icon: "search"
-    }, {
-        id: "SCHEDULED_FOR_TESTING",
-        label: "Wartet auf Test",
-        icon: "team"
-    }, {
-        id: "TEST_SUBMITTED_IN_PROGRESS",
-        label: "Test eingereicht",
-        icon: "clock-circle"
-    }, {
-        id: "TEST_FINISHED_POSITIVE",
-        label: "Test positiv",
-        icon: "check"
-    }, {
-        id: "TEST_FINISHED_NEGATIVE",
-        label: "Test negativ",
-        icon: "stop"
-    }, {
-        id: "TEST_FINISHED_INVALID",
-        label: "Test invalide",
-        icon: "warning"
-    }, {
-        id: "TEST_FINISHED_RECOVERED",
-        label: "Getestet und erholt",
-        icon: "rollback"
-    }, {
-        id: "TEST_FINISHED_NOT_RECOVERED",
-        label: "Getestet und nicht erholt",
-        icon: "logout"
-    }, {
-        id: "PATIENT_DEAD",
-        label: "Verstorben",
-        icon: "cloud"
-    }, {
-        id: "DOCTORS_VISIT",
-        label: "Arztbesuch",
-        icon: "reconciliation"
-    },
-];
+import { eventTypes } from "../util/event-types";
 
 const columns = [
     {
         title: "Nachname",
-        sorter: (a, b) => a.lastName.localeCompare(b.lastName),
         dataIndex: "lastName",
         key: "lastName"
     },
     {
         title: "Vorname",
-        sorter: (a, b) => a.firstName.localeCompare(b.firstName),
         dataIndex: "firstName",
         key: "firstName"
     },
@@ -191,9 +147,9 @@ const columns = [
     },
     {
         title: "Status",
-        sorter: (a, b) => a.status.localeCompare(b.status),
-        dataIndex: "status",
-        key: "status"
+        dataIndex: "patientStatus",
+        key: "patientStatus",
+        scopedSlots: {customRender: 'patientStatus'},
     },
     {
         title: "Stadt",
@@ -249,7 +205,7 @@ export default {
             columns,
             data: [], // data
             showAdvancedSearch: false,
-            eventTypes,
+            eventTypes: eventTypes,
         };
     },
     watch: {

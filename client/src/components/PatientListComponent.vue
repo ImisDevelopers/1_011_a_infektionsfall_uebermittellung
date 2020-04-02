@@ -30,7 +30,7 @@
                     <a-icon :type="showAdvancedSearch ? 'down' : 'right'"/>
                     Erweiterte Suche
                 </a-button>
-                <a-button icon="search" type="primary" style="margin-bottom: 5px;" html-type="submit"
+                <a-button icon="search" type="primary" html-type="submit"
                           @click="handleSearch">
                     Suche
                 </a-button>
@@ -101,15 +101,14 @@
                     </a-input>
                 </a-form-item>
             </a-form>
-            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}" :pagination="false">
+            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}" :pagination="false"
+                     @change="handleTableChange">
                 <div slot="patientStatus" slot-scope="patientStatus">
                     <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px"/>
                     {{eventTypes.find(type => type.id === patientStatus).label}}
                 </div>
             </a-table>
-            <div
-                    style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end"
-            >
+            <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end">
                 <a-button type="primary" style="margin-right: 50px" @click="downloadPatients">CSV exportieren</a-button>
                 <a-pagination
                         showSizeChanger
@@ -135,39 +134,46 @@ const columns = [
     {
         title: "Nachname",
         dataIndex: "lastName",
-        key: "lastName"
+        key: "lastName",
+        sorter: true,
+        defaultSortOrder: "ascend"
     },
     {
         title: "Vorname",
         dataIndex: "firstName",
-        key: "firstName"
+        key: "firstName",
+        sorter: true
     },
     {
         title: "Geschlecht",
         dataIndex: "gender",
-        key: "gender"
+        key: "gender",
+        sorter: true
     },
     {
         title: "Status",
         dataIndex: "patientStatus",
         key: "patientStatus",
         scopedSlots: {customRender: 'patientStatus'},
+        sorter: true,
     },
     {
         title: "Stadt",
         dataIndex: "city",
-        key: "city"
+        key: "city",
+        sorter: true
     },
     {
         title: "E-Mail",
         dataIndex: "email",
-        key: "email"
+        key: "email",
+        sorter: true
     },
     {
         title: "ID",
         dataIndex: "id",
         key: "id",
-        defaultSortOrder: "ascend"
+        sorter: true
     },
 ];
 
@@ -256,7 +262,7 @@ export default {
         toggleAdvancedSearch() {
             this.showAdvancedSearch = !this.showAdvancedSearch;
         },
-        downloadPatients: function () {
+        downloadPatients() {
             let formValues = {...this.form};
             if (this.showAdvancedSearch) {
                 formValues = {...formValues, ...this.advancedForm}
@@ -290,7 +296,17 @@ export default {
                 });
             });
 
-        }
+        },
+        handleTableChange(pagination, filters, sorter) {
+            const sortKey = sorter.field ? sorter.field : "lastName";
+            let sortOrder = "asc";
+            if (sorter.order === "descend") {
+                sortOrder = "desc";
+            }
+            this.form.order = sortOrder;
+            this.form.orderBy = sortKey;
+            this.loadPage();
+        },
     }
 };
 </script>
@@ -319,5 +335,6 @@ h3 {
 
 .search-container > button {
     margin-bottom: 5px;
+    margin-top: 5px;
 }
 </style>

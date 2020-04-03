@@ -48,7 +48,7 @@ export function setBearerToken (token: string) {
     baseUrl: baseUrl,
     baseApiParams: {
       headers: {
-        Bearer: token,
+        Authorization: 'Bearer ' + token,
       },
     },
   })

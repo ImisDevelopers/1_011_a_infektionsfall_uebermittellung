@@ -91,13 +91,8 @@ const columnsSchema: ColumnSchema[] = [
 })
 export default class PatientList extends Vue {
   patients!: Patient[]
-
   content = ''
-  colums: ColumnSchema[] = []
-
-  mounted () {
-    this.colums = columnsSchema
-  }
+  columns = columnsSchema
 
   created () {
     this.$store.dispatch('patient/fetchPatients')

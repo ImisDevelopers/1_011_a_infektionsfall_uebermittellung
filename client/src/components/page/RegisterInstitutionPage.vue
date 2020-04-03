@@ -15,7 +15,7 @@
                     <a-row>
                         <a-col :lg="12">
                             <a-form-item label="Benutzername">
-                                <a-input v-decorator="['userName', { rules: [{ required: true }] }]">
+                                <a-input v-decorator="['username', { rules: [{ required: true }] }]">
                                     <a-icon slot="prefix" type="user"/>
                                 </a-input>
                             </a-form-item>

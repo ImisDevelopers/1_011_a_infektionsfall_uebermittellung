@@ -16,7 +16,7 @@ import RegisterInstitution from '@/views/RegisterInstitution.vue'
 
 Vue.use(VueRouter)
 
-const loginBeforeEnter = (to: Route, from: Route, next: Function) => {
+const checkNotAuthenticatedBeforeEnter = (to: Route, from: Route, next: Function) => {
   if (store.getters.isAuthenticated) {
     next({ name: 'app' })
   } else {
@@ -63,18 +63,18 @@ const appRoutes: AppRoute[] = [
       },
     },
   },
-  {
-    name: 'register-institution',
-    path: 'register-institution',
-    component: RegisterInstitution,
-    meta: {
-      navigationInfo: {
-        icon: 'user-add',
-        title: 'Institution Registrieren',
-        authorities: ALL_INSTITUTIONS,
-      },
-    },
-  },
+  // {
+  //   name: 'register-institution',
+  //   path: 'register-institution',
+  //   component: RegisterInstitution,
+  //   meta: {
+  //     navigationInfo: {
+  //       icon: 'user-add',
+  //       title: 'Institution Registrieren',
+  //       authorities: ALL_INSTITUTIONS,
+  //     },
+  //   },
+  // },
   {
     name: 'register-test',
     path: 'register-test',
@@ -156,8 +156,14 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
-    beforeEnter: loginBeforeEnter,
+    beforeEnter: checkNotAuthenticatedBeforeEnter,
     beforeRouteLeave: loginBeforeRouteLeave,
+  },
+  {
+    name: 'register-institution',
+    path: '/register-institution/:id',
+    component: RegisterInstitution,
+    beforeEnter: checkNotAuthenticatedBeforeEnter,
   },
   {
     path: '/app',

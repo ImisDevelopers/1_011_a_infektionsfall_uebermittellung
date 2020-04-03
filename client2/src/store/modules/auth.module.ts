@@ -44,7 +44,7 @@ export const authModule: Module<AuthState, State> = {
     async login ({ commit }, { username, password }) {
       // # TODO loading animation, encrypt jwt
       const token = await Api.auth.signInUserUsingPost({
-        userName: username,
+        username: username,
         password,
       })
       commit('loginSuccess', token.jwtToken)

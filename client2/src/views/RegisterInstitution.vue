@@ -15,7 +15,7 @@
           <a-row>
             <a-col :lg="12">
               <a-form-item label="Benutzername">
-                <a-input v-decorator="['userName', { rules: [{ required: true }] }]">
+                <a-input v-decorator="['username', { rules: [{ required: true }] }]">
                   <a-icon slot="prefix" type="user"/>
                 </a-input>
               </a-form-item>
@@ -197,16 +197,28 @@ export default {
           ],
           values,
         )
+        values = {
+          ...values,
+          user: {
+            username: values.username,
+            password: values.password,
+            userRole: 'USER_ROLE_ADMIN',
+          },
+        }
 
         console.log('Data was anonymized')
 
-        Api.institutions.createInstitutionUsingPost(values).then(() => {
+        Api.auth.registerInstitutionUsingPost(values).then(() => {
           this.form.resetFields()
           const notification = {
             message: 'Institution registriert.',
             description: 'Die Institution wurde erfolgreich registriert.',
           }
           this.$notification.success(notification)
+          this.$store.dispatch('auth/login', {
+            username: values.username,
+            password: values.password,
+          })
         }).catch(err => {
           const notification = {
             message: 'Fehler beim Registrieren der Institution.',

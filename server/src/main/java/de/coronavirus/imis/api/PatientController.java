@@ -39,7 +39,7 @@ public class PatientController {
     }
 
     @GetMapping
-    public List<Patient> getAllPatients(){
-        return patientService.getAllPatients();
+    public ResponseEntity<List<Patient>> getAllPatients(){
+        return ResponseEntity.ok(patientService.getAllPatients());
     }
 }

@@ -24,9 +24,16 @@ if (
  *
  */
 
+const baseHeaders = {
+  Origin: window.location.origin,
+}
+
 const apiWrapper = {
   api: new Api({
     baseUrl: baseUrl,
+    // baseApiParams: {
+    //   headers: baseHeaders,
+    // },
   }),
 }
 
@@ -48,6 +55,7 @@ export function setBearerToken (token: string) {
     baseUrl: baseUrl,
     baseApiParams: {
       headers: {
+        ...baseHeaders,
         Authorization: 'Bearer ' + token,
       },
     },

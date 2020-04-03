@@ -72,8 +72,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/**").permitAll();
         //@formatter:on
-        http.addFilterBefore(corsFilter(), SessionManagementFilter.class)
-            .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(corsFilter(), SessionManagementFilter.class);
     }
 
 

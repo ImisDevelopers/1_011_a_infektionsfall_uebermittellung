@@ -45,6 +45,7 @@
       <!--                    <router-link to="/prototype/register-institution">auf der Registrierungsseite anlegen</router-link>-->
       <!--                </li>-->
       <!--            </ul>-->
+      <router-link :to="{ name: 'register-institution', params: { id: 'demo' } }">Als Institution registrieren</router-link>
     </div>
   </a-card>
 </template>

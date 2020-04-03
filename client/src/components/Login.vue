@@ -82,7 +82,7 @@ export default {
                     forwardToPath = "/prototype/register-institution";
                 }
                 Api.postAuthentication({
-                    userName: values.id,
+                    username: values.id,
                     password: values.password
                 }).then(tokenObject => {
                     const token = tokenObject.jwtToken;

@@ -64,7 +64,7 @@ public class TestDataLoader implements ApplicationRunner {
 
             // SETUP OUR WORLD
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
-            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO, createLaboratoryDTO.getId());
+            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO);
 
             var createDoctorsOfficeDTO = (CreateInstitutionDTO) makeDTO("createDoctorsOffice.json", CreateInstitutionDTO.class);
             var doctorsOffice = institutionService.createDoctorInstitution(createDoctorsOfficeDTO);

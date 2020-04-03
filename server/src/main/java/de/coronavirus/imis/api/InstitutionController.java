@@ -2,6 +2,7 @@ package de.coronavirus.imis.api;
 
 import java.util.List;
 
+import de.coronavirus.imis.domain.Doctor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -100,5 +101,10 @@ public class InstitutionController {
     @GetMapping("/laboratories")
     public List<Laboratory> getAllLaboratories() {
         return institutionService.getAllLaboratories();
+    }
+
+    @GetMapping("/doctors")
+    public List<Doctor> getAllDoctors() {
+        return institutionService.getAllDoctors();
     }
 }

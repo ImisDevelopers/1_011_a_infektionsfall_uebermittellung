@@ -51,12 +51,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .httpBasic().disable()
                 .csrf().disable()
-                .addFilterBefore(corsFilter(), SessionManagementFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/patients").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(),
-                InstitutionType.TEST_SITE.name())
+                .antMatchers("/patients").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.TEST_SITE.name())
                 .antMatchers("/doctor/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name())
                 .mvcMatchers(POST, "/labtest").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
                 .antMatchers("/labtest/patient/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
@@ -65,9 +63,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth").permitAll()
                 .antMatchers("/auth/register").hasAuthority(UserRole.USER_ROLE_ADMIN.name())
                 .antMatchers("/institutions/*").hasAuthority(UserRole.USER_ROLE_ADMIN.name())
+                .antMatchers(
+                        "/v2/api-docs",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html",
+                        "/webjars/**" ,
+                        /*Probably not needed*/ "/swagger.json")
+                .permitAll()
                 .antMatchers("/**").permitAll();
         //@formatter:on
-        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(corsFilter(), SessionManagementFilter.class)
+            .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }
 
 

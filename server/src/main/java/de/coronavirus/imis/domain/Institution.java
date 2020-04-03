@@ -1,5 +1,9 @@
 package de.coronavirus.imis.domain;
 
+import de.coronavirus.imis.config.domain.User;
+
+import java.util.List;
+
 public interface Institution {
     String getId();
 
@@ -20,4 +24,6 @@ public interface Institution {
     String getComment();
 
     InstitutionType getType();
+
+    List<User> getUsers();
 }

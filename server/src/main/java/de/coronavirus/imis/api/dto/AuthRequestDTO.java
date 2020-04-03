@@ -9,7 +9,7 @@ import lombok.Data;
 public class AuthRequestDTO {
     @NotBlank
     @Email
-    private String userName;
+    private String username;
 
     @NotBlank
     private String password;

@@ -3,6 +3,8 @@ package de.coronavirus.imis.services;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
+import de.coronavirus.imis.domain.Institution;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ import de.coronavirus.imis.config.domain.UserAlreadyExistsException;
 import de.coronavirus.imis.config.domain.UserRepository;
 import de.coronavirus.imis.domain.InstitutionImpl;
 
+import javax.transaction.Transactional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -27,7 +31,7 @@ public class AuthService {
     private final InstitutionService institutionService;
 
     public Optional<String> loginUserCreateToken(AuthRequestDTO dto) {
-        var maybeUser = userRepository.findByUsername(dto.getUserName());
+        var maybeUser = userRepository.findByUsername(dto.getUsername());
         if (maybeUser.isPresent() && checkPassword(dto.getPassword(), maybeUser.get().getPassword())) {
             var role = maybeUser.get().getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority).collect(Collectors.toList());
@@ -41,16 +45,46 @@ public class AuthService {
     }
 
     @SneakyThrows
-    public User registerUser(RegisterUserRequest registerUserRequest) {
-        if (userRepository.findByUsername(registerUserRequest.getUserName()).isPresent()) {
-            throw new UserAlreadyExistsException("user with name" + registerUserRequest.getUserName() + " already exists");
+    public User registerUser(RegisterUserRequest registerUserRequest, String username) {
+        if (userRepository.findByUsername(registerUserRequest.getUsername()).isPresent()) {
+            throw new UserAlreadyExistsException("user with name" + registerUserRequest.getUsername() + " already exists");
         }
-        var encodedPw = encoder.encode(registerUserRequest.getPassword());
-        var role = institutionService.getInstitution(registerUserRequest.getId(), registerUserRequest.getInstitutionType());
-        var user = new User().username(registerUserRequest.getUserName()).password(encodedPw).institution((InstitutionImpl) role);
-        userRepository.save(user);
-        institutionService.createInstitution(registerUserRequest);
+
+        var authUser = userRepository.findByUsername(username).get();
+        var institution = institutionService.getInstitution(
+                authUser.getInstitutionId(),
+                authUser.getInstitutionType());
+
+        var user = createUser(registerUserRequest, institution);
         return user;
+    }
+
+    private User createUser(RegisterUserRequest userDTO, Institution institution) {
+        var encodedPw = encoder.encode(userDTO.getPassword());
+        var user = new User()
+                .username(userDTO.getUsername())
+                .password(encodedPw)
+                .institution((InstitutionImpl) institution)
+                .userRole(userDTO.getUserRole());
+        user = userRepository.save(user);
+        return user;
+    }
+
+    public Institution createInstitution(CreateInstitutionDTO createInstitutionDTO) {
+        var institution = institutionService.createInstitution(createInstitutionDTO);
+        var user = createUser(createInstitutionDTO.getUser(), institution);
+        institution = institutionService.getInstitution(user.getInstitutionId(), user.getInstitutionType());
+        return institution;
+    }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).get();
+    }
+
+    public Institution getInstitutionFromUser(String username) {
+        var user = getUserByUsername(username);
+        var institution = institutionService.getInstitution(user.getInstitutionId(), user.getInstitutionType());
+        return institution;
     }
 
 

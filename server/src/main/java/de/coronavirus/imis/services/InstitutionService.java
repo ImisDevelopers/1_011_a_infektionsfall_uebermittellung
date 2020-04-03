@@ -1,7 +1,5 @@
 package de.coronavirus.imis.services;
 
-import static de.coronavirus.imis.api.dto.CreateInstitutionDTO.fromRegisterRequest;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -37,6 +35,9 @@ public class InstitutionService {
         return laboratoryRepository.findAll();
     }
 
+    public List<Doctor> getAllDoctors() {
+        return doctorRepository.findAll();
+    }
 
     @Transactional
     public Doctor createDoctorInstitution(CreateInstitutionDTO institutionDTO) {
@@ -65,24 +66,6 @@ public class InstitutionService {
         laboratory.setPhoneNumber(institutionDTO.getPhoneNumber());
         laboratory.setComment(institutionDTO.getComment());
         laboratory.setId(UUID.randomUUID().toString());
-        return this.laboratoryRepository.saveAndFlush(laboratory);
-    }
-
-    // TODO remove after MVP and set UUID as generator in Institution and remove generated UUID in this service
-    //      ask @jonathangpk
-    @Transactional
-    public Laboratory createLaboratoryInstitution(CreateInstitutionDTO institutionDTO, String id) {
-        var laboratory = new Laboratory();
-        laboratory.setName(institutionDTO.getName());
-        laboratory.setStreet(institutionDTO.getStreet());
-        laboratory.setHouseNumber(institutionDTO.getHouseNumber());
-        laboratory.setZip(institutionDTO.getZip());
-        laboratory.setCity(institutionDTO.getCity());
-        laboratory.setEmail(institutionDTO.getEmail());
-        laboratory.setPhoneNumber(institutionDTO.getPhoneNumber());
-        laboratory.setComment(institutionDTO.getComment());
-        laboratory.setId(id);
-
         return this.laboratoryRepository.saveAndFlush(laboratory);
     }
 
@@ -118,8 +101,7 @@ public class InstitutionService {
         return this.testSiteRepository.saveAndFlush(testSite);
     }
 
-    protected Institution createInstitution(RegisterUserRequest registerUserRequest) {
-        var dto = fromRegisterRequest(registerUserRequest);
+    protected Institution createInstitution(CreateInstitutionDTO dto) {
         Institution result = null;
         switch (dto.getInstitutionType()) {
             case CLINIC:

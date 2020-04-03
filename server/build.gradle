@@ -38,6 +38,11 @@ dependencies {
     implementation 'com.googlecode.perfect-hashes:perfect-hashes:1.0'
     compile group: 'com.google.guava', name: 'guava', version: '28.2-jre'
 
+    compile("io.springfox:springfox-swagger2:2.9.2") {
+        exclude module: 'mapstruct' // necessary in my case to not end up with multiple mapstruct versions
+    }
+    compile "io.springfox:springfox-bean-validators:2.9.2"
+    compile "io.springfox:springfox-swagger-ui:2.9.2"
 
     compileOnly 'org.projectlombok:lombok'
 

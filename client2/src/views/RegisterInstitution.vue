@@ -137,11 +137,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Api from '../store/api'
 import { anonymizeProperties } from './RegisterPatient.vue'
+import { authModule } from '../store/modules/auth.module'
+import store from '@/store'
 
-function validatePasswordRepeat (password, passwordRepeat) {
+function validatePasswordRepeat (password: string, passwordRepeat: string) {
   if (password === passwordRepeat) {
     return {
       validateStatus: 'success',
@@ -215,7 +217,7 @@ export default {
             description: 'Die Institution wurde erfolgreich registriert.',
           }
           this.$notification.success(notification)
-          this.$store.dispatch('auth/login', {
+          this.$store.dispatch('authModule/login', {
             username: values.username,
             password: values.password,
           })

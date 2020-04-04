@@ -10,17 +10,23 @@ import TestList from '../views/TestList.vue'
 import PatientList from '../views/PatientList.vue'
 import PatientDetails from '@/components/PatientDetails.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
-import { authMapper, InstitutionType } from '@/store/modules/auth.module'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
+import { InstitutionType } from '@/models'
+import { authMapper } from '@/store/modules/auth.module'
 
 Vue.use(VueRouter)
 
-const authGetters = authMapper.mapGetters({
-  isAuthenticated: 'isAuthenticated',
-})
+// not working, maybe because of circular dependency, when router is not imported in auth.modele, it works
+// const authGetters = authMapper.mapGetters({
+//   isAuthenticated: 'isAuthenticated',
+// })
+
+function isAuthenticated () {
+  return window.localStorage.token
+}
 
 const checkNotAuthenticatedBeforeEnter = (to: Route, from: Route, next: Function) => {
-  if (authGetters.isAuthenticated) {
+  if (isAuthenticated()) {
     next({ name: 'app' })
   } else {
     next()
@@ -194,7 +200,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!authGetters.isAuthenticated) {
+    if (!isAuthenticated()) {
       next({
         path: '/login',
         query: { redirect: to.fullPath },

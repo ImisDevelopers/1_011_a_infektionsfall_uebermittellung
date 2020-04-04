@@ -20,7 +20,7 @@
       </a-layout>
     </a-layout>
     <a-spin
-      v-if="loadingStatus > 0"
+      v-if="isLoading"
       size="large"
       style="position: fixed; bottom: 3rem; margin: 0 auto;"
     />
@@ -39,12 +39,14 @@ import { mapGetters } from 'vuex'
     Header,
     Navigation,
   },
-  computed: {
-    ...mapGetters('shared', ['loadingStatus']),
-  },
 })
 export default class AppRoot extends Vue {
-  loadingStatus!: number
+  // TODO Connect to state and use http interceptor
+  data () {
+    return {
+      isLoading: false,
+    }
+  }
 }
 
 </script>

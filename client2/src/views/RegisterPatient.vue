@@ -215,7 +215,7 @@
             >
               <a-row>
                 <a-col
-                  v-for="(illness, idx) in SYMPTOMS" :key="idx"
+                  v-for="(illness, idx) in ILLNESS" :key="idx"
                   :xs="24"
                   :sm="12"
                 >
@@ -265,6 +265,8 @@
 import Vue from 'vue'
 import Api from '../store/api'
 import Component from 'vue-class-component'
+import { patientModule } from '../store/modules/patients.module'
+import store from '@/store'
 
 export const anonymizeProperties = (keys, obj) => {
   keys.forEach(key => {
@@ -332,6 +334,7 @@ const RISK_AREAS = [
 
 @Component
 export default class RegisterPatient extends Vue {
+  patientActions = patientModule.context(store).actions
   data () {
     const selectedSymptoms = {}
     SYMPTOMS.forEach(symptom => {
@@ -407,7 +410,7 @@ export default class RegisterPatient extends Vue {
         preIllnesses,
         riskAreas,
       }
-      this.$store.dispatch('patient/registerPatient', request)
+      this.patientActions.registerPatient(request)
     })
   }
 }

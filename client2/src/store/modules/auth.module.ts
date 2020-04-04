@@ -2,10 +2,8 @@ import router from '@/router'
 import { parseJwt } from '@/util'
 import Api, { removeBearerToken, setBearerToken } from '../api'
 import Notification from '@/util/notification'
-import { CreateInstitutionDTO } from '@/store/SwaggerApi'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
-
-export type InstitutionType = CreateInstitutionDTO['institutionType'];
+import { InstitutionType } from '@/models'
 
 interface JwtData {
   roles: InstitutionType[];
@@ -19,7 +17,7 @@ class AuthState {
 }
 
 class AuthGetters extends Getters<AuthState> {
-  isAuthenticated () {
+  isAuthenticated (): boolean {
     return !!this.state.jwtToken // add is valid check expire date
   }
 
@@ -52,7 +50,7 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
     if (token) {
       this.commit('loginSuccess', token)
       window.localStorage.setItem('token', '' + token)
-      // router.push({ name: 'app' })
+      router.push({ name: 'app' })
     }
   }
 

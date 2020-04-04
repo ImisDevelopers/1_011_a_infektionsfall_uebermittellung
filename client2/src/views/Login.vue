@@ -59,6 +59,8 @@ import store from '@/store'
 
 @Component
 export default class Login extends Vue {
+  authActions = authModule.context(store).actions
+
   data () {
     return {
       form: this.$form.createForm(this),

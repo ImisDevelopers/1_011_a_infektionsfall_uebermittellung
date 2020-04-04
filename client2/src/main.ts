@@ -4,10 +4,10 @@ import 'ant-design-vue/dist/antd.css'
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 
+import store from './store'
 import Root from './Root.vue'
 import './registerServiceWorker'
 import router from './router'
-import store from './store'
 import { authModule } from '@/store/modules/auth.module'
 
 Vue.config.productionTip = false

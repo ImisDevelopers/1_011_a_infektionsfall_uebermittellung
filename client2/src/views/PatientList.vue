@@ -33,7 +33,8 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Patient } from '@/store/SwaggerApi'
-import { mapGetters } from 'vuex'
+import { patientMapper, patientModule } from '@/store/modules/patients.module'
+import store from '@/store'
 
 type ColumnSchema = {
   title: string;
@@ -84,19 +85,24 @@ const columnsSchema: ColumnSchema[] = [
   },
 ]
 
-@Component({
+export default {
   computed: {
-    ...mapGetters('patient', ['patients']),
+    ...patientMapper.mapState({
+      patients: 'patients',
+    }),
   },
-})
-export default class PatientList extends Vue {
-  patients!: Patient[]
-  content = ''
-  columns = columnsSchema
-
+  data () {
+    return {
+      content: '',
+      columns: columnsSchema,
+    }
+  },
+  methods: patientMapper.mapActions({
+    fetchPatients: 'fetchPatients',
+  }),
   created () {
-    this.$store.dispatch('patient/fetchPatients')
-  }
+    this.fetchPatients()
+  },
 }
 </script>
 

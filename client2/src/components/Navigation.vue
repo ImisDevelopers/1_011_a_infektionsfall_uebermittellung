@@ -32,7 +32,9 @@ import Component from 'vue-class-component'
 import { navigationRoutes, AppRoute } from '../router'
 import { config } from '@/config'
 import { mapActions, mapGetters } from 'vuex'
-import { InstitutionType } from '@/store/modules/auth.module'
+import { authModule } from '@/store/modules/auth.module'
+import { InstitutionType } from '@/models'
+import store from '@/store'
 
 @Component({
   computed: {
@@ -46,6 +48,7 @@ export default class Navigation extends Vue {
   logout!: () => void
   routes!: AppRoute[]
   roles!: InstitutionType[]
+  authActions = authModule.context(store).actions
 
   data () {
     return {
@@ -56,7 +59,7 @@ export default class Navigation extends Vue {
   }
 
   onLogout () {
-    this.logout()
+    this.authActions.logout()
   }
 }
 </script>

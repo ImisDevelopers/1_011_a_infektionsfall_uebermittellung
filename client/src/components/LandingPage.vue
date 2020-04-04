@@ -174,7 +174,7 @@ export default {
 }
 
 .third-section {
-    padding: 40px 50px;
+    padding: 60px 50px;
     background: #2c3e50;
     display: flex;
     justify-content: center;
@@ -190,7 +190,10 @@ export default {
 }
 
 .link-section {
-    display: flex; justify-content: center; padding: 40px 20px; background: #d3d3d3;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #d3d3d3;
 }
 
 .link-section > i {
@@ -226,7 +229,7 @@ export default {
     }
 
     .hidden-mobile {
-        display: none!important;
+        display: none !important;
     }
 }
 

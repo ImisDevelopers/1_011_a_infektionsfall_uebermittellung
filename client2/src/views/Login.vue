@@ -67,8 +67,6 @@ export default class Login extends Vue {
     }
   }
 
-  authActions = authModule.context(store).actions
-
   handleLogin () {
     this.form.validateFields((err: any, values: any) => {
       if (err) {

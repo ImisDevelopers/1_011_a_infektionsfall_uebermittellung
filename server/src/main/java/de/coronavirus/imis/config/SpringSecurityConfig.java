@@ -22,11 +22,6 @@ import lombok.RequiredArgsConstructor;
 
 import de.coronavirus.imis.config.domain.UserRole;
 import de.coronavirus.imis.domain.InstitutionType;
-import org.springframework.security.web.session.SessionManagementFilter;
-import org.springframework.web.cors.CorsConfiguration;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity

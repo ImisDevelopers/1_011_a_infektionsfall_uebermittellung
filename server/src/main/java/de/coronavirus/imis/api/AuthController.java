@@ -73,7 +73,6 @@ public class AuthController {
             if (a.getAuthority().equals(UserRole.USER_ROLE_ADMIN.name())) {
                 return true;
             }
-
         }
         return false;
     }

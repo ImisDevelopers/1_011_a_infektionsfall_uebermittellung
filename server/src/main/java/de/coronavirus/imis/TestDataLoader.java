@@ -76,11 +76,20 @@ public class TestDataLoader implements ApplicationRunner {
             var clinic = institutionService.createClinicInstitution(createClinicDTO);
 
 
-            var user = User.builder().userRole(UserRole.USER_ROLE_ADMIN).username("test_lab").institution(laboratory).id(1L)
-                    .password(encoder.encode("asdf")).build();
+            var user = User.builder()
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .username("test_lab")
+                    .institution(laboratory)
+                    .password(encoder.encode("asdf"))
+                    .build();
             userRepository.saveAndFlush(user);
 
-            var testDoc = user.toBuilder().username("test_doctor").institution(doctorsOffice).password(encoder.encode("asdf")).build();
+            var testDoc = User.builder()
+                    .username("test_doctor")
+                    .institution(doctorsOffice)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
             userRepository.saveAndFlush(testDoc);
             // PERSON GETS SICK AND GOES TO THE DOCTOR
             // PERSON GETS REGISTERED

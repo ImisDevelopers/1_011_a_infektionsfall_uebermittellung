@@ -2,6 +2,9 @@ package de.coronavirus.imis.config;
 
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
+import static org.springframework.http.HttpMethod.OPTIONS;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.DELETE;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +23,10 @@ import lombok.RequiredArgsConstructor;
 import de.coronavirus.imis.config.domain.UserRole;
 import de.coronavirus.imis.domain.InstitutionType;
 import org.springframework.security.web.session.SessionManagementFilter;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -27,6 +34,13 @@ import org.springframework.security.web.session.SessionManagementFilter;
 @RequiredArgsConstructor
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenFilter filter;
+
+    private final List<String> allowedOrigins = Arrays.asList(new String[]{
+            "https://imis-prototyp.de",
+            "https://staging.imis-prototyp.de",
+            "http://imis-prototyp.de",
+            "http://localhost:8080",
+    });
 
     @Bean
     @Override
@@ -47,6 +61,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         //@formatter:off
         http
                 .httpBasic().disable()
@@ -68,12 +83,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/**",
                         "/swagger-ui.html",
                         "/webjars/**" ,
-                        /*Probably not needed*/ "/swagger.json")
-                .permitAll()
+                        /*Probably not needed*/ "/swagger.json").permitAll()
+
                 .antMatchers("/**").permitAll();
         //@formatter:on
-        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
-            .addFilterBefore(corsFilter(), SessionManagementFilter.class);
+        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterBefore(corsFilter(), SessionManagementFilter.class);
+
+     // TODO set strict rules
+        http.cors().configurationSource(request -> {
+            var config = new CorsConfiguration().applyPermitDefaultValues();
+//            config.addAllowedHeader("Authorization");
+//            config.addAllowedMethod(POST);
+//            config.addAllowedMethod(GET);
+//            config.addAllowedMethod(OPTIONS);
+//            config.addAllowedMethod(DELETE);
+//            config.addAllowedMethod(PUT);
+            config.setAllowedOrigins(allowedOrigins); // using with applyPermitDefaultValues not working
+            return config;
+        });
     }
 
 

@@ -1,4 +1,4 @@
-import { Api } from '@/store/SwaggerApi'
+import { Api, RequestParams } from '@/store/SwaggerApi'
 
 let baseUrl: string
 if (
@@ -24,16 +24,19 @@ if (
  *
  */
 
-const baseHeaders = {
-  Origin: window.location.origin,
+const baseApiParams: RequestParams = {
+  credentials: 'same-origin',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  redirect: 'follow',
+  referrerPolicy: 'no-referrer',
 }
 
 const apiWrapper = {
   api: new Api({
     baseUrl: baseUrl,
-    // baseApiParams: {
-    //   headers: baseHeaders,
-    // },
+    baseApiParams: baseApiParams,
   }),
 }
 
@@ -54,8 +57,9 @@ export function setBearerToken (token: string) {
   apiWrapper.api = new Api({
     baseUrl: baseUrl,
     baseApiParams: {
+      ...baseApiParams,
       headers: {
-        ...baseHeaders,
+        ...baseApiParams.headers,
         Authorization: 'Bearer ' + token,
       },
     },

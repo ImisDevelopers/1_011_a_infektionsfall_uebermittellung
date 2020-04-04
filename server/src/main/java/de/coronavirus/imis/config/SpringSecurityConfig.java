@@ -35,23 +35,10 @@ import java.util.List;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenFilter filter;
 
-    private final List<String> allowedOrigins = Arrays.asList(new String[]{
-            "https://imis-prototyp.de",
-            "https://staging.imis-prototyp.de",
-            "http://imis-prototyp.de",
-            "http://localhost:8080",
-    });
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
-    }
-
-    @Bean
-    CorsFilter corsFilter() {
-        CorsFilter filter = new CorsFilter();
-        return filter;
     }
 
     @Bean
@@ -69,6 +56,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                .antMatchers(OPTIONS, "/**").permitAll()
                 .antMatchers("/patients").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.TEST_SITE.name())
                 .antMatchers("/doctor/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name())
                 .mvcMatchers(POST, "/labtest").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
@@ -84,24 +72,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-ui.html",
                         "/webjars/**" ,
                         /*Probably not needed*/ "/swagger.json").permitAll()
-
                 .antMatchers("/**").permitAll();
         //@formatter:on
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
-//        http.addFilterBefore(corsFilter(), SessionManagementFilter.class);
-
-     // TODO set strict rules
-        http.cors().configurationSource(request -> {
-            var config = new CorsConfiguration().applyPermitDefaultValues();
-//            config.addAllowedHeader("Authorization");
-//            config.addAllowedMethod(POST);
-//            config.addAllowedMethod(GET);
-//            config.addAllowedMethod(OPTIONS);
-//            config.addAllowedMethod(DELETE);
-//            config.addAllowedMethod(PUT);
-            config.setAllowedOrigins(allowedOrigins); // using with applyPermitDefaultValues not working
-            return config;
-        });
     }
 
 

@@ -34,7 +34,7 @@
             >
               <Navigation />
             </a-layout-sider>
-            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; flex-direction: column; justify-content: space-between; width: 100%">
               <a-layout-content
                 style="margin: 0 auto; box-sizing: border-box; width: 100%;"
               >

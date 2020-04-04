@@ -91,6 +91,31 @@
                     v-decorator="['city', { rules: [{ required: true }] }]"
                   />
                 </a-form-item>
+                <a-form-item :wrapperCol="24" :labelCol="0">
+                  <a-checkbox @change="hasMedicalJob = !hasMedicalJob">
+                    Ich arbeite in einem Heilberuf
+                  </a-checkbox>
+                </a-form-item>
+                <a-form-item label="Beruf" v-if="hasMedicalJob" >
+                  <a-select v-decorator="['clinicJob']">
+                    <a-select-option
+                            v-for="job in CLINIC_JOBS"
+                            :key="job"
+                    >
+                      {{ job }}
+                    </a-select-option>
+                  </a-select>
+                </a-form-item>
+                <a-form-item label="Art" v-if="hasMedicalJob">
+                  <a-select v-decorator="['clinicWorkPlaceType']">
+                    <a-select-option
+                            v-for="type in CLINIC_JOB_TYPES"
+                            :key="type"
+                    >
+                      {{ type }}
+                    </a-select-option>
+                  </a-select>
+                </a-form-item>
               </a-col>
             </a-row>
           </a-collapse-panel>
@@ -215,7 +240,7 @@
             >
               <a-row>
                 <a-col
-                  v-for="(illness, idx) in SYMPTOMS" :key="idx"
+                  v-for="(illness, idx) in ILLNESSES" :key="idx"
                   :xs="24"
                   :sm="12"
                 >
@@ -264,6 +289,7 @@
 <script>
 import { anonymizeProperties } from "../../util/randomize";
 import Api from "../../api/Api";
+import AFormItem from "ant-design-vue/es/form/FormItem";
 
 const SYMPTOMS = [
   { key: "SORE_THROAT", description: "Halsschmerzen" },
@@ -319,8 +345,21 @@ const RISK_AREAS = [
   { key: "USA", description: "USA: Kalofornien, Washington oder New York" }
 ];
 
+const CLINIC_JOBS = [
+  'Altenpfleger',
+  'Arzt',
+  'Arzthelfer',
+  'Klinkpersonal',
+]
+const CLINIC_JOB_TYPES = [
+  'Niedergelassen',
+  'Klink',
+  'Ambulant',
+]
+
 export default {
   name: "RegisterPatientPage",
+  components: {AFormItem},
   data() {
     const selectedSymptoms = {};
     SYMPTOMS.forEach(symptom => {
@@ -347,7 +386,10 @@ export default {
       RISK_AREAS,
       selectedRiskAreas,
       createdPatient: null,
-      dataProcessingClass: ""
+      dataProcessingClass: "",
+      hasMedicalJob: false,
+      CLINIC_JOBS: CLINIC_JOBS,
+      CLINIC_JOB_TYPES: CLINIC_JOB_TYPES,
     };
   },
   methods: {

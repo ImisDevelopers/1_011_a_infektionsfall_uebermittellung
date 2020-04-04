@@ -61,7 +61,7 @@
         </div>
         <div class="second-section">
             <h1 style="margin: 0">Der IMIS-Meldeprozess - Einfach, Schnell, Zentral</h1>
-            <img src="../assets/imis-workflow.png" style="width: 80%; margin-top: 50px"/>
+            <img src="../assets/imis-workflow.png"/>
         </div>
         <div class="link-section">
             <a-button
@@ -70,7 +70,7 @@
                     shape="round"
                     icon="bulb"
                     size="large"
-                    href="/prototype/register-patient"
+                    href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
                     block
             >
                 <span class="hidden-mobile">Mehr Informationen?</span>
@@ -171,6 +171,12 @@ export default {
     padding: 60px 50px 100px 50px;
     text-align: center;
     background: white;
+}
+
+.second-section > img {
+    max-width: 1200px;
+    width: 80%;
+    margin-top: 50px;
 }
 
 .third-section {

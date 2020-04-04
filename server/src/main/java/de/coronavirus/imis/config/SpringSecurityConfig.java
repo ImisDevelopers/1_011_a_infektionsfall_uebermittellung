@@ -43,7 +43,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+        // FIXME route permissions
         //@formatter:off
         http
                 .httpBasic().disable()
@@ -51,6 +51,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                // OPTIONS matcher for CORS, do not delete
                 .antMatchers(OPTIONS, "/**").permitAll()
                 .antMatchers("/patients").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.TEST_SITE.name())
                 .antMatchers("/doctor/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name())

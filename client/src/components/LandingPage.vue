@@ -61,7 +61,7 @@
         </div>
         <div class="second-section">
             <h1 style="margin: 0">Der IMIS-Meldeprozess - Einfach, Schnell, Zentral</h1>
-            <img src="../assets/imis-workflow.png" style="width: 80%; margin-top: 50px"/>
+            <img src="../assets/imis-workflow.png"/>
         </div>
         <div class="link-section">
             <a-button
@@ -70,11 +70,11 @@
                     shape="round"
                     icon="bulb"
                     size="large"
-                    href="/prototype/register-patient"
+                    href="https://drive.google.com/file/d/1sATb_ff2r79Ts9hdNiH9Slsexv47aR3x/view?usp=sharing"
                     block
             >
-                <span class="hidden-mobile">Mehr Informationen?</span>
-                <span>Hier gehts zum Devpost!</span>
+                <span class="hidden-mobile">Hier geht's zu unserer Prozessübersicht</span>
+                <span class="hidden-desktop">Zur Prozessübersicht</span>
             </a-button>
         </div>
         <div class="third-section">
@@ -101,16 +101,17 @@
 
 <script>
 export default {
-    components: {},
-    data() {
-        return {
-            paragraph1:
-                "Das Sammeln und Verwalten der aktuellen Infektionszahlen erfordert extrem viel Zeit und Ressourcen. IMIS ist unsere Lösung für eine einfache Infektionsfall-Erfassung für Ärzte, Gesundheitsämter und Labore. Damit ermöglichen wir, dass wichtige Ressourcen an anderer Stelle besser eingesetzt werden können.",
-            paragraph2:
-                "Die COVID-19 Pandemie stellt für das bestehende Infektionsmeldewesen in Deutschland eine immense Herausforderung dar. Ärzte und über 400 Gesundheitsämter benutzen gegenwärtig einen uneinheitlichen Mix aus Fax, E-Mails und Excel Tabellen um Fälle zusammenzutragen. Verspätet Meldungen an das RKI und überlastete Gesundheitsämter sind die Folge. So wurden laut RKI von einigen Gesundheitsämtern sogar keine Zahlen für dieses Wochenende übermittelt. Diese ungenaue Datenlage sorgt für eine große Unsicherheit und macht es schwer, angemessen auf die Krise zu reagieren. "
-        };
-    },
-    name: "LandingPage"
+  components: {},
+  data() {
+    return {
+      paragraph1:
+        "Das Sammeln und Verwalten der aktuellen Infektionszahlen erfordert extrem viel Zeit und Ressourcen. IMIS ist unsere Lösung für eine schnelle, sichere und einfache Infektionsfall-Erfassung für Ärzte, Gesundheitsämter und Labore. Damit ermöglichen wir, dass wichtige Ressourcen frei werden, die dann an anderer Stelle gewinnbringend eingesetzt werden können.",
+      paragraph2:
+        "Die COVID-19-Pandemie stellt für das bestehende Infektionsmeldewesen in Deutschland eine immense Herausforderung dar. Ärzte und über 400 Gesundheitsämter benutzen gegenwärtig einen uneinheitlichen Mix aus Telefon, Fax, E-Mails und Excel-Tabellen, um Fälle zusammenzutragen. Eine starke Auslastung der Gesundheitsämter und verspätete Meldungen sind die Folge. So erhalten Entscheider häufig nur lückenhafte Statistiken. Diese Lage sorgt für Unsicherheit und macht es schwer, angemessen auf die Krise zu reagieren. ",
+
+    };
+  },
+  name: "LandingPage"
 };
 </script>
 
@@ -173,6 +174,12 @@ export default {
     background: white;
 }
 
+.second-section > img {
+    max-width: 1200px;
+    width: 80%;
+    margin-top: 50px;
+}
+
 .third-section {
     padding: 60px 50px;
     background: #2c3e50;
@@ -196,12 +203,14 @@ export default {
     background: #d3d3d3;
 }
 
-.link-section > i {
-    margin-right: 5px;
+.link-section span {
+    margin-left: 5px;
 }
 
-.link-section .hidden-mobile {
-    margin-right: 5px;
+@media (min-width: 1000px) {
+  .hidden-desktop {
+    display: none!important;
+  }
 }
 
 @media (max-width: 1000px) {

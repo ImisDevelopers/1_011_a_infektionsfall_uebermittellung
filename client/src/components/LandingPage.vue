@@ -86,7 +86,7 @@
                 />
             </div>
             <div>
-                <span>Presse-Kontakt:</span>
+                <span>Kontakt:</span>
                 <a-divider style="margin: 5px 0"></a-divider>
                 <span>Andrey Eganov</span>
                 <span>0681 / 500 66 72 0</span>

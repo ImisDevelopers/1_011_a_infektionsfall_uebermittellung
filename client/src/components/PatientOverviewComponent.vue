@@ -1,14 +1,14 @@
 <template style="margin: auto">
     <div>
-        <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>
-        <div style="max-width: 1020px; margin: auto">
+<!--        <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>-->
+        <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
             <a-tabs defaultActiveKey="1" v-if="patient">
                 <a-tab-pane tab="Stammdaten" key="1">
                     <!-- display user data here-->
                     <div>
-                        <a-row :gutter="8">
-                            <a-col span="8">
-                                <a-card title="Allgemein" bordered="false" align="left" :extra="this.patient.id">
+                        <a-row :gutter="8" >
+                            <a-col :span="24" :md="12">
+                                <a-card title="Allgemein" align="left" :extra="this.patient.id">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
                                             <td>Vorname:</td><td>{{patient.firstName}}</td>
@@ -25,7 +25,7 @@
                                     </table>
                                 </a-card>
                             </a-col>
-                            <a-col span="8">
+                            <a-col span="24" :md="12">
                                 <a-card title="Adresse" bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
@@ -43,7 +43,7 @@
                                     </table>
                                 </a-card>
                             </a-col>
-                            <a-col span="8">
+                            <a-col span="24">
                                 <a-card title="Kontakt & Versicherung" bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
@@ -132,12 +132,11 @@ export default {
     name: "PatientOverviewComponent",
     props: {
         msg: String,
-        patient: null,
     },
     data() {
         return {
-            entities: [],
             content: "",
+            patient: null,
         };
     },
     methods: {
@@ -165,8 +164,7 @@ export default {
         }
     },
     async created() {
-        const patients = await Api.getPatients()
-        this.patient = patients[patients.length - 1]
+        this.patient = await Api.getPatient(this.$route.params.id)
     }
 };
 </script>

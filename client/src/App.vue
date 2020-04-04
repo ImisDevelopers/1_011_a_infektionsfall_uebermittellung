@@ -34,18 +34,20 @@
             >
               <Navigation />
             </a-layout-sider>
-            <a-layout-content
-              style="margin: auto; box-sizing: border-box; width: 100%;"
-            >
-              <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
-                <router-view></router-view>
-              </div>
-            </a-layout-content>
+            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+              <a-layout-content
+                style="margin: 0 auto; box-sizing: border-box; width: 100%;"
+              >
+                <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
+                  <router-view></router-view>
+                </div>
+              </a-layout-content>
+              <a-layout-footer style="textAlign: center">
+                IMIS ©2020 with <a-icon type="heart" style="color:red;">❤</a-icon> by
+                <a-button type="link" href="https://wirvsvirushackathon.org" target="_blank" style="padding-left: 0">#WeVsVirus</a-button>
+              </a-layout-footer>
+            </div>
           </a-layout>
-          <a-layout-footer style="textAlign: center">
-            IMIS ©2020 with <a-icon type="heart" style="color:red;">❤</a-icon> by
-            <a-button type="link" href="https://wirvsvirushackathon.org" target="_blank" style="padding-left: 0">#WeVsVirus</a-button>
-          </a-layout-footer>
         </a-layout>
       </a-layout>
     </div>

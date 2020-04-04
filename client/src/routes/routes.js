@@ -58,7 +58,8 @@ export const routes = [
         roles: [LABORATORY, DOCTORS_OFFICE, CLINIC, TEST_SITE]
     },
     {
-        path: "/prototype/patient-overview",
+        path: "/prototype/patient-overview/:id",
+        name: 'patient-overview',
         component: PatientOverviewComponent,
         roles: [LABORATORY, DOCTORS_OFFICE, CLINIC, TEST_SITE, GOVERNMENT_AGENCY]
     },

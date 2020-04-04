@@ -101,8 +101,14 @@
                     </a-input>
                 </a-form-item>
             </a-form>
-            <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}" :pagination="false"
-                     @change="handleTableChange">
+            <a-table
+                :columns="columns"
+                :dataSource="data"
+                :scroll="{x: 1, y: 0}"
+                :pagination="false"
+                @change="handleTableChange"
+                :customRow="customRow"
+            >
                 <div slot="patientStatus" slot-scope="patientStatus">
                     <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px"/>
                     {{eventTypes.find(type => type.id === patientStatus).label}}
@@ -130,6 +136,7 @@ import Api from "../api/Api";
 import { eventTypes } from "../util/event-types";
 import { downloadCsv } from "../util/export-service";
 import moment from "moment";
+// import { router } from '@/main'
 
 const columns = [
     {
@@ -215,6 +222,11 @@ export default {
             data: [], // data
             showAdvancedSearch: false,
             eventTypes: eventTypes,
+            customRow: record => ({
+                on: {
+                    click: () => this.handlePatientClick(record),
+                },
+            }),
         };
     },
     watch: {
@@ -305,6 +317,9 @@ export default {
             this.form.order = sortOrder;
             this.form.orderBy = sortKey;
             this.loadPage();
+        },
+        handlePatientClick (patient) {
+            this.$router.push({name: 'patient-overview', params: { id: patient.id } })
         },
     }
 };

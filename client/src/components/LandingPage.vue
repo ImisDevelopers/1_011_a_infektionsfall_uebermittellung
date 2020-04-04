@@ -70,11 +70,11 @@
                     shape="round"
                     icon="bulb"
                     size="large"
-                    href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
+                    href="https://drive.google.com/file/d/1sATb_ff2r79Ts9hdNiH9Slsexv47aR3x/view?usp=sharing"
                     block
             >
-                <span class="hidden-mobile">Mehr Informationen?</span>
-                <span>Hier gehts zum Devpost!</span>
+                <span class="hidden-mobile">Hier geht's zu unserer Prozessübersicht</span>
+                <span class="hidden-desktop">Zur Prozessübersicht</span>
             </a-button>
         </div>
         <div class="third-section">
@@ -203,12 +203,14 @@ export default {
     background: #d3d3d3;
 }
 
-.link-section > i {
-    margin-right: 5px;
+.link-section span {
+    margin-left: 5px;
 }
 
-.link-section .hidden-mobile {
-    margin-right: 5px;
+@media (min-width: 1000px) {
+  .hidden-desktop {
+    display: none!important;
+  }
 }
 
 @media (max-width: 1000px) {

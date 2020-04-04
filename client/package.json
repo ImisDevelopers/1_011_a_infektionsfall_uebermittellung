@@ -14,7 +14,8 @@
     "ant-design-vue": "^1.4.12",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
-    "vue-router": "^3.1.6"
+    "vue-router": "^3.1.6",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",

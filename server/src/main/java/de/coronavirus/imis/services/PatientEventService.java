@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.repositories.PatientRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import de.coronavirus.imis.domain.Doctor;
@@ -21,23 +23,20 @@ import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
 
 @Service
+@AllArgsConstructor
 public class PatientEventService {
 
     private final PatientEventRepository patientEventRepository;
     private final LaboratoryRepository laboratoryRepository;
     private final DoctorRepository doctorRepository;
-
-    public PatientEventService(PatientEventRepository patientEventRepository,
-            LaboratoryRepository laboratoryRepository, DoctorRepository doctorRepository) {
-        this.patientEventRepository = patientEventRepository;
-        this.laboratoryRepository = laboratoryRepository;
-        this.doctorRepository = doctorRepository;
-    }
+    private final PatientRepository patientRepository;
 
     public void createInitialPatientEvent(Patient patient,
             Optional<Illness> illness,
             EventType eventType) {
         var concreteIllness = illness.orElse(Illness.CORONA);
+        patient.setPatientStatus(eventType);
+        patientRepository.save(patient);
         PatientEvent event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
                 .setEventType(eventType)
@@ -49,6 +48,8 @@ public class PatientEventService {
     public void createLabTestEvent(Patient patient, LabTest labTest,
             Optional<Illness> illness) {
         var concreteIllness = illness.orElse(Illness.CORONA);
+        patient.setPatientStatus(EventType.TEST_SUBMITTED_IN_PROGRESS);
+        patientRepository.save(patient);
         PatientEvent event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
                 .setEventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
@@ -72,6 +73,8 @@ public class PatientEventService {
                     return doctorRepository.save(newDoctor);
                 }
         );
+        patient.setPatientStatus(EventType.SCHEDULED_FOR_TESTING);
+        patientRepository.save(patient);
         var event = new PatientEvent()
                 .setEventTimestamp(Timestamp.from(Instant.now()))
                 .setEventType(EventType.SCHEDULED_FOR_TESTING)

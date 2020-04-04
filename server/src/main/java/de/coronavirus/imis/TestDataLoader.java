@@ -5,6 +5,7 @@ import de.coronavirus.imis.api.dto.AggregationResultZip;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.services.*;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,7 +99,7 @@ public class TestDataLoader implements ApplicationRunner {
             var allPatients = patientService.getAllPatients();
 
             // RKI WANTS SO SEE STATS FOR ZIP
-            var patiensByZip = statsService.resultZipList(0, 9999999);
+            var patiensByZip = statsService.resultZipList("0", "9999999");
 
 
         } catch (IOException e) {

@@ -1,16 +1,15 @@
 package de.coronavirus.imis.api.dto;
 
-import java.util.List;
-
 import de.coronavirus.imis.domain.EventType;
 import lombok.Data;
 
 @Data
-public class CreatePatientDTO {
-    private String lastName;
+public class PatientSearchParamsDTO {
+
     private String firstName;
+    private String lastName;
+    private String id;
     private String gender;
-    private String dateOfBirth;
 
     private String email;
     private String phoneNumber;
@@ -21,15 +20,17 @@ public class CreatePatientDTO {
 
     private String insuranceCompany;
     private String insuranceMembershipNumber;
+
+    private String order;
+    private String orderBy;
+
+    private Long offsetPage;
+    private Long pageSize;
+
+    private String doctorId;
+    private String laboratoryId;
+    private boolean includePatientEvents;
+
     private EventType patientStatus;
 
-    private Boolean fluImmunization;
-    private String speedOfSymptomsOutbreak;
-    private List<String> symptoms;
-
-    private Boolean coronaContacts;
-    private List<String> riskAreas;
-
-    private Boolean weakenedImmuneSystem;
-    private List<String> preIllnesses;
 }

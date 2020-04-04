@@ -50,10 +50,12 @@
   </a-card>
 </template>
 
-<script>
+<script lang="ts">
 
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { authModule } from '../store/modules/auth.module'
+import store from '@/store'
 
 @Component
 export default class Login extends Vue {
@@ -63,12 +65,14 @@ export default class Login extends Vue {
     }
   }
 
+  authActions = authModule.context(store).actions
+
   handleLogin () {
-    this.form.validateFields((err, values) => {
+    this.form.validateFields((err: any, values: any) => {
       if (err) {
         return
       }
-      this.$store.dispatch('auth/login', {
+      this.authActions.login({
         username: values.username,
         password: values.password,
       })

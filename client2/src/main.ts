@@ -8,6 +8,7 @@ import Root from './Root.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
+import { authModule } from '@/store/modules/auth.module'
 
 Vue.config.productionTip = false
 
@@ -20,7 +21,7 @@ if (process.env.SENTRY_FRONTEND_DSN) {
 
 Vue.use(Antd)
 
-store.dispatch('auth/init')
+authModule.context(store).actions.init()
 
 new Vue({
   router,

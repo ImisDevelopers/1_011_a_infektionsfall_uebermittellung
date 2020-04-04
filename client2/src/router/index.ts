@@ -10,14 +10,17 @@ import TestList from '../views/TestList.vue'
 import PatientList from '../views/PatientList.vue'
 import PatientDetails from '@/components/PatientDetails.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
-import store from '@/store'
-import { InstitutionType } from '@/store/modules/auth.module'
+import { authMapper, InstitutionType } from '@/store/modules/auth.module'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
 
 Vue.use(VueRouter)
 
+const authGetters = authMapper.mapGetters({
+  isAuthenticated: 'isAuthenticated',
+})
+
 const checkNotAuthenticatedBeforeEnter = (to: Route, from: Route, next: Function) => {
-  if (store.getters.isAuthenticated) {
+  if (authGetters.isAuthenticated) {
     next({ name: 'app' })
   } else {
     next()
@@ -191,7 +194,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters.isAuthenticated) {
+    if (!authGetters.isAuthenticated) {
       next({
         path: '/login',
         query: { redirect: to.fullPath },

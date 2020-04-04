@@ -1,87 +1,94 @@
-import { Module } from 'vuex'
-
 import router from '@/router'
-import { State } from '@/store'
 import { parseJwt } from '@/util'
 import Api, { removeBearerToken, setBearerToken } from '../api'
 import Notification from '@/util/notification'
 import { CreateInstitutionDTO } from '@/store/SwaggerApi'
+import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 
 export type InstitutionType = CreateInstitutionDTO['institutionType'];
 
-export interface AuthState {
-  jwtToken?: string;
-  jwtData?: {
-    roles: InstitutionType[];
-    exp: number;
-    [key: string]: any;
-  };
+interface JwtData {
+  roles: InstitutionType[];
+  exp: number;
+  [key: string]: any;
 }
 
-interface AuthGetters {
-  isAuthenticated: (state: AuthState) => void;
+class AuthState {
+  jwtToken: string | undefined = undefined
+  jwtData: JwtData | undefined = undefined
 }
 
-export const authModule: Module<AuthState, State> = {
-  namespaced: true,
-  state: {
-    jwtToken: undefined,
-    jwtData: undefined,
-  },
-  mutations: {
-    loginSuccess (state, jwtToken) {
-      state.jwtToken = jwtToken
-      state.jwtData = parseJwt(jwtToken)
-      setBearerToken(jwtToken)
-    },
-    logoutSuccess (state) {
-      state.jwtToken = undefined
-      state.jwtData = undefined
-      removeBearerToken()
-    },
-  },
-  actions: {
-    async login ({ commit }, { username, password }) {
-      // # TODO loading animation, encrypt jwt
-      const token = await Api.auth.signInUserUsingPost({
-        username: username,
-        password,
-      })
-      commit('loginSuccess', token.jwtToken)
-      window.localStorage.setItem('token', '' + token.jwtToken)
-      router.push({ name: 'app' })
-    },
-    async logout ({ commit }) {
-      // # TODO logout request
-      commit('logoutSuccess')
-      window.localStorage.clear()
-      router.push({ name: 'login' })
-    },
-    async tokenValidity () {
-      // TODO
-    },
-    async init ({ commit }) {
-      const jwtToken = window.localStorage.token
-      if (jwtToken) {
-        const decoded = parseJwt(jwtToken)
-        const now = new Date()
-        const tokenExpireDate = new Date(decoded.exp * 1000)
-        if (tokenExpireDate > now) {
-          commit('loginSuccess', jwtToken)
-        } else {
-          commit('tokenExpired')
-          const notification = {
-            message: 'Session Expired',
-            description: 'Ihre Sitzung ist abgelaufen',
-          }
-          Notification.info(notification)
-          window.localStorage.clear()
+class AuthGetters extends Getters<AuthState> {
+  isAuthenticated () {
+    return !!this.state.jwtToken // add is valid check expire date
+  }
+
+  roles () {
+    return this.state.jwtData?.roles
+  }
+}
+
+class AuthMutations extends Mutations<AuthState> {
+  loginSuccess (jwtToken: string) {
+    this.state.jwtToken = jwtToken
+    this.state.jwtData = parseJwt(jwtToken)
+    setBearerToken(jwtToken)
+  }
+
+  logoutSuccess () {
+    this.state.jwtToken = undefined
+    this.state.jwtData = undefined
+    removeBearerToken()
+  }
+}
+
+class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthActions> {
+  async login (payload: { username: string; password: string }) {
+    // # TODO loading animation, encrypt jwt
+    const token: string | undefined = (await Api.auth.signInUserUsingPost({
+      username: payload.username,
+      password: payload.password,
+    })).jwtToken
+    if (token) {
+      this.commit('loginSuccess', token)
+      window.localStorage.setItem('token', '' + token)
+      // router.push({ name: 'app' })
+    }
+  }
+
+  async logout () {
+    // # TODO logout request
+    this.commit('logoutSuccess')
+    window.localStorage.clear()
+    router.push({ name: 'login' })
+  }
+
+  async init () {
+    const jwtToken = window.localStorage.token
+    if (jwtToken) {
+      const decoded = parseJwt(jwtToken)
+      const now = new Date()
+      const tokenExpireDate = new Date(decoded.exp * 1000)
+      if (tokenExpireDate > now) {
+        this.commit('loginSuccess', jwtToken)
+      } else {
+        // this.commit('tokenExpired')
+        const notification = {
+          message: 'Session Expired',
+          description: 'Ihre Sitzung ist abgelaufen',
         }
+        Notification.info(notification)
+        window.localStorage.clear()
       }
-    },
-  },
-  getters: {
-    isAuthenticated: (state: AuthState) => !!state.jwtToken, // add is valid check expire date
-    roles: (state: AuthState) => state.jwtData?.roles,
-  },
+    }
+  }
 }
+
+export const authModule = new Module({
+  state: AuthState,
+  getters: AuthGetters,
+  mutations: AuthMutations,
+  actions: AuthActions,
+})
+
+export const authMapper = createMapper(authModule)

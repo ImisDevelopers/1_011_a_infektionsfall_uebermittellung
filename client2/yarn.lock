@@ -9812,6 +9812,11 @@ vue@^2.6.11:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
 
+vuex-smart-module@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/vuex-smart-module/-/vuex-smart-module-0.3.4.tgz#630b6ed18027c872d2046ca326c9e386ee6b4809"
+  integrity sha512-eAcj6BDqpKDBq5TZa2o2HlN5Ql4JNQ2OOl6QocGGciYNsmJIIit8U/zy0gMBRef5jBd6MeBL+gRCkUmhs5JdvQ==
+
 vuex@^3.1.2:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.3.tgz#f2ad73e3fb73691698b38c93f66e58e267947180"

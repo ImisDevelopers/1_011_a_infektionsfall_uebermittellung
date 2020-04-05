@@ -339,7 +339,7 @@ const RISK_AREAS = [
   { key: "USA", description: "USA: Kalofornien, Washington oder New York" }
 ];
 const RISK_OCCUPATIONS = [
-  { key: "NO_RISK_OCCUPATION", label: "Kein Risiko Beruf" },
+  { key: "NO_RISK_OCCUPATION", label: "Kein systemrelevanter Beruf" },
   { key: "FIRE_FIGHTER", label: "Feuerwehrmann/frau" },
   { key: "DOCTOR", label: "Ärzt/Ärztin" },
   { key: "NURSE", label: "Pflegepersonal" },

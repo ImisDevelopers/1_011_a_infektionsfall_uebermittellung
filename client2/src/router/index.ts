@@ -12,7 +12,6 @@ import PatientDetails from '@/components/PatientDetails.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
 import { InstitutionType } from '@/models'
-import { authMapper } from '@/store/modules/auth.module'
 
 Vue.use(VueRouter)
 
@@ -22,6 +21,7 @@ Vue.use(VueRouter)
 // })
 
 function isAuthenticated () {
+  // return authGetters.isAuthenticated()
   return window.localStorage.token
 }
 

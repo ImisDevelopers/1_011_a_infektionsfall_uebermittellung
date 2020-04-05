@@ -65,7 +65,6 @@ const Base = Vue.extend({
 })
 @Component
 export default class Login extends Base {
-
   data () {
     return {
       form: this.$form.createForm(this),

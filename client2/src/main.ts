@@ -4,11 +4,12 @@ import 'ant-design-vue/dist/antd.css'
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 
-import store from './store'
-import Root from './Root.vue'
-import './registerServiceWorker'
+// important to import router before the store and authModule!! otherwise it breaks
 import router from './router'
+import store from './store'
 import { authModule } from '@/store/modules/auth.module'
+import Root from './Root.vue'
+// import './registerServiceWorker' remove for now
 
 Vue.config.productionTip = false
 
@@ -21,7 +22,7 @@ if (process.env.SENTRY_FRONTEND_DSN) {
 
 Vue.use(Antd)
 
-// authModule.context(store).actions.init()
+authModule.context(store).actions.init()
 
 new Vue({
   router,

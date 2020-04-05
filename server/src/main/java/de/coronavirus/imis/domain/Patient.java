@@ -60,6 +60,9 @@ public class Patient {
     @Convert(converter = StringListConverter.class)
     private List<String> preIllnesses;
 
+    @Enumerated(EnumType.STRING)
+    private RiskOccupation riskOccupation;
+
     private String comment;
     private String occupation;
 

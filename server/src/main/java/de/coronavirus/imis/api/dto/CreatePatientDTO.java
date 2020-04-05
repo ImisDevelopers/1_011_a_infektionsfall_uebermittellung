@@ -32,4 +32,5 @@ public class CreatePatientDTO {
 
     private Boolean weakenedImmuneSystem;
     private List<String> preIllnesses;
+    private String riskOccupation;
 }

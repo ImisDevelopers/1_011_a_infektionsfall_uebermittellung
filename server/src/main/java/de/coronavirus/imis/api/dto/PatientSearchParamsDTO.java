@@ -33,4 +33,19 @@ public class PatientSearchParamsDTO {
 
     private EventType patientStatus;
 
+    public Long getPageSize() {
+        if (pageSize != null && pageSize > 0) {
+            return pageSize;
+        } else {
+            return 20L;
+        }
+    }
+
+    public Long getOffsetPage() {
+        if (offsetPage != null && offsetPage >= 0) {
+            return offsetPage;
+        } else {
+            return 0L;
+        }
+    }
 }

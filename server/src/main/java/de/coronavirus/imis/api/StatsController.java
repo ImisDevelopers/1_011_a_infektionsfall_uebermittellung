@@ -15,13 +15,13 @@ import de.coronavirus.imis.services.StatsService;
 @RestController
 @RequestMapping("/stats")
 @RequiredArgsConstructor
-public class StatsControler {
+public class StatsController {
     private final StatsService statsService;
 
     @GetMapping
     public List<AggregationResultZip> getForZip(@RequestParam("lowerBoundsZip") String lowerBounds,
             @RequestParam("upperBoundsZips") String upperBounds
     ) {
-        return statsService.resultZipList(Integer.valueOf(lowerBounds), Integer.valueOf(upperBounds));
+        return statsService.resultZipList(lowerBounds, upperBounds);
     }
 }

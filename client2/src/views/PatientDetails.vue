@@ -1,14 +1,13 @@
 <template style="margin: auto">
   <div>
-    <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>
-    <div style="max-width: 1020px; margin: auto">
+    <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
       <a-tabs defaultActiveKey="1" v-if="patient">
         <a-tab-pane tab="Stammdaten" key="1">
           <!-- display user data here-->
           <div>
-            <a-row :gutter="8">
-              <a-col span="8">
-                <a-card title="Allgemein" bordered="false" align="left" :extra="this.patient.id">
+            <a-row :gutter="8" >
+              <a-col :span="24" :md="12">
+                <a-card title="Allgemein" align="left" :extra="this.patient.id">
                   <table style="border-collapse: separate; border-spacing:15px">
                     <tr>
                       <td>Vorname:</td><td>{{patient.firstName}}</td>
@@ -25,7 +24,7 @@
                   </table>
                 </a-card>
               </a-col>
-              <a-col span="8">
+              <a-col span="24" :md="12">
                 <a-card title="Adresse" bordered="false" align="left">
                   <table style="border-collapse: separate; border-spacing:15px">
                     <tr>
@@ -43,7 +42,7 @@
                   </table>
                 </a-card>
               </a-col>
-              <a-col span="8">
+              <a-col span="24">
                 <a-card title="Kontakt & Versicherung" bordered="false" align="left">
                   <table style="border-collapse: separate; border-spacing:15px">
                     <tr>
@@ -64,7 +63,7 @@
             </a-row>
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
-                <a-card :title="'Status: '+ this.patient.events.reverse()[0].eventType" align="left">
+                <a-card :title="'Status: '+ this.patient.events[0].eventType" align="left">
                   <a-row :gutter="8" style="margin-top: 8px;">
                     <a-col span="6">
                       Erstaufnahme:
@@ -90,7 +89,6 @@
             </a-row>
           </div>
           <br>
-          <br>
           <!--<a-table :columns="columns" :dataSource="data"> </a-table>-->
         </a-tab-pane>
         <a-tab-pane tab="Verlauf" key="2" forceRender>
@@ -113,21 +111,26 @@
 </template>
 
 <script lang="ts">
+import { patientMapper } from '@/store/modules/patients.module'
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Patient } from '../store/SwaggerApi'
-import { mapGetters } from 'vuex'
 
-@Component({
+const Base = Vue.extend({
   computed: {
-    ...mapGetters('patient', ['patients']),
+    ...patientMapper.mapState({
+      patients: 'patients',
+    }),
   },
 })
-export default class PatientDetails extends Vue {
-  patients!: Patient[]
-
+@Component
+export default class PatientDetails extends Base {
   get patient (): Patient | undefined {
-    return this.patients.find(p => p.id === this.$route.params.id)
+    const patient = this.patients.find(p => p.id === this.$route.params.id)
+    if (patient) {
+      patient.events = patient.events?.reverse()
+    }
+    return patient
   }
 
   requestTestAgain () {

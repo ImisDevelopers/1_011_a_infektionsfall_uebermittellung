@@ -2,6 +2,7 @@ package de.coronavirus.imis.api;
 
 import java.util.List;
 
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,5 +42,16 @@ public class PatientController {
     @GetMapping
     public ResponseEntity<List<Patient>> getAllPatients(){
         return ResponseEntity.ok(patientService.getAllPatients());
+    }
+
+
+    @PostMapping("/query")
+    public List<Patient> queryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO){
+        return patientService.queryPatients(patientSearchParamsDTO);
+    }
+
+    @PostMapping("/query/count")
+    public Long countQueryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO){
+        return patientService.countQueryPatients(patientSearchParamsDTO);
     }
 }

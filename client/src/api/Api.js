@@ -64,6 +64,14 @@ class Api {
         return this.executeRequest("institutions", METHOD.POST, request);
     }
 
+    queryPatients(request) {
+        return this.executeRequest("patients/query", METHOD.POST, request);
+    }
+
+    countPatients(request) {
+        return this.executeRequest("patients/query/count", METHOD.POST, request);
+    }
+
     postPatient(request) {
         return this.executeRequest("patients", METHOD.POST, request);
     }

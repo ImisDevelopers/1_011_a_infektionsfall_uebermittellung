@@ -114,7 +114,7 @@ public class TestDataLoader implements ApplicationRunner {
             var allPatients = patientService.getAllPatients();
 
             // RKI WANTS SO SEE STATS FOR ZIP
-            var patiensByZip = statsService.resultZipList(0, 9999999);
+            var patiensByZip = statsService.resultZipList("0", "9999999");
 
 
         } catch (IOException e) {

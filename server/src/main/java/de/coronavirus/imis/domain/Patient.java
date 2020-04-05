@@ -4,10 +4,8 @@ package de.coronavirus.imis.domain;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -38,12 +36,16 @@ public class Patient {
     private String phoneNumber;
     private String street;
     private String houseNumber;
-    private Integer zip;
+    private String zip;
     private String city;
 
     private String insuranceCompany;
     private String insuranceMembershipNumber;
     private boolean confirmed;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private EventType patientStatus;
 
     private Boolean fluImmunization;
     private String speedOfSymptomsOutbreak;
@@ -57,6 +59,9 @@ public class Patient {
     private Boolean weakenedImmuneSystem;
     @Convert(converter = StringListConverter.class)
     private List<String> preIllnesses;
+
+    @Enumerated(EnumType.STRING)
+    private RiskOccupation riskOccupation;
 
     private String comment;
     private String occupation;

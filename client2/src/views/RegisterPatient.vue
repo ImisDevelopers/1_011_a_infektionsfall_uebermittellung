@@ -9,8 +9,8 @@
       <a-form
         :form="form"
         :layout="'horizontal'"
-        :labelCol="{ span: 6 }"
-        :wrapperCol="{ span: 14}"
+        :labelCol="{ span: 8 }"
+        :wrapperCol="{ span: 16}"
         @submit.prevent="handleSubmit"
       >
         <a-collapse defaultActiveKey="1">
@@ -90,6 +90,26 @@
                   <a-input
                     v-decorator="['city', { rules: [{ required: true }] }]"
                   />
+                </a-form-item>
+              </a-col>
+              <a-col :span="24">
+                <a-form-item
+                  label="Üben sie einen systemrelevanten Beruf aus?"
+                  required
+                  :labelCol="{ lg: 12 }"
+                  :wrapperCol="{ lg: 12 }"
+                >
+                  <a-select
+                    labelInValue
+                    v-model="selectedOccupation"
+                  >
+                    <a-select-option
+                      v-for="riskOccupation in RISK_OCCUPATIONS" :key="riskOccupation.key"
+                    >
+                      {{ riskOccupation.label }}
+                    </a-select-option>
+                  </a-select>
+
                 </a-form-item>
               </a-col>
             </a-row>
@@ -215,7 +235,7 @@
             >
               <a-row>
                 <a-col
-                  v-for="(illness, idx) in ILLNESS" :key="idx"
+                  v-for="(illness, idx) in ILLNESSES" :key="idx"
                   :xs="24"
                   :sm="12"
                 >
@@ -275,6 +295,15 @@ export const anonymizeProperties = (keys, obj) => {
     }
   })
 }
+
+const RISK_OCCUPATIONS = [
+  { key: 'NO_RISK_OCCUPATION', label: 'Kein systemrelevanter Beruf' },
+  { key: 'FIRE_FIGHTER', label: 'Feuerwehrmann/frau' },
+  { key: 'DOCTOR', label: 'Ärzt/Ärztin' },
+  { key: 'NURSE', label: 'Pflegepersonal' },
+  { key: 'CAREGIVER', label: 'Altenpflege' },
+  { key: 'POLICE', label: 'Polizei' },
+]
 
 const SYMPTOMS = [
   { key: 'SORE_THROAT', description: 'Halsschmerzen' },
@@ -355,6 +384,8 @@ export default class RegisterPatient extends Base {
       selectedRiskAreas[riskArea.key] = false
     })
 
+    const selectedOccupation = { key: 'NO_RISK_OCCUPATION', label: 'Kein Risiko Beruf' }
+
     return {
       dateFormat: 'DD/MM/YYYY',
       form: this.$form.createForm(this, { name: 'coordinated' }),
@@ -364,6 +395,8 @@ export default class RegisterPatient extends Base {
       selectedPreIllnesses,
       RISK_AREAS,
       selectedRiskAreas,
+      RISK_OCCUPATIONS,
+      selectedOccupation,
       createdPatient: null,
       dataProcessingClass: '',
     }
@@ -406,6 +439,7 @@ export default class RegisterPatient extends Base {
       const riskAreas = RISK_AREAS.filter(
         riskArea => this.selectedRiskAreas[riskArea.key],
       ).map(riskArea => riskArea.key)
+      const riskOccupation = this.selectedOccupation.key
 
       const request = {
         ...values,
@@ -413,6 +447,7 @@ export default class RegisterPatient extends Base {
         symptoms,
         preIllnesses,
         riskAreas,
+        riskOccupation,
       }
       this.registerPatient(request)
     })

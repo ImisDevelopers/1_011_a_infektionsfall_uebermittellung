@@ -1,5 +1,5 @@
 <template>
-    <a-menu theme="dark" mode="inline" :selectedKeys="[key]" v-if="authenticationStore.user">
+    <a-menu theme="dark" mode="inline" :selectedKeys="[key]" :defaultSelectedKeys="[defaultKey]" v-if="authenticationStore.user">
         <a-menu-item
                 v-for="item in availableItems"
                 :key="item.key"
@@ -18,7 +18,7 @@ import { routes } from "../routes/routes";
 
 const allItems = [
     {
-        key: "0",
+        key: "1",
         url: "/prototype/register-patient",
         type: "user-add",
         text: "Patient Registrieren"
@@ -74,6 +74,7 @@ export default {
     data() {
         return {
             key: "1",
+            defaultKey: "1",
             availableItems,
             allItems,
             authenticationStore: authenticationStore,

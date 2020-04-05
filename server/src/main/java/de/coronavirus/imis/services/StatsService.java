@@ -22,7 +22,7 @@ public class StatsService {
     private final PatientEventRepository patientEventRepository;
 
     @Transactional(readOnly = true)
-    public List<AggregationResultZip> resultZipList(Integer lowerBounds, Integer upperBounds) {
+    public List<AggregationResultZip> resultZipList(String lowerBounds, String upperBounds) {
         final List<Patient> patientIds = patientRepository.
                 findAllByZipBetween(lowerBounds, upperBounds);
         var events = patientIds.stream().map(patient ->

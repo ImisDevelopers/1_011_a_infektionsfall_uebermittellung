@@ -1,11 +1,11 @@
 <template>
   <a-form-item :label="label">
     <a-input v-decorator="validation">
-      <a-tooltip slot="suffix" title="Scan Barcode/QR using your Camera">
-        <a-icon type="camera" style="color: rgba(0,0,0,.45)" v-on:click="showScanner = true" />
-      </a-tooltip>
+<!--      <a-tooltip slot="suffix" title="Scan Barcode/QR using your Camera">-->
+<!--        <a-icon type="camera" style="color: rgba(0,0,0,.45)" v-on:click="showScanner = true" />-->
+<!--      </a-tooltip>-->
     </a-input>
-    <BarcodeScanner v-if="showScanner" @result="onResult" />
+<!--    <BarcodeScanner v-if="showScanner" @result="onResult" />-->
   </a-form-item>
 </template>
 
@@ -16,12 +16,12 @@
    * props:
    * - validation: put in v-decorator object
    */
-import BarcodeScanner from './BarcodeScanner'
+// import BarcodeScanner from './BarcodeScanner'
 
 export default {
   name: 'BarcodeInput',
   props: ['placeholder', 'validation', 'label', 'form'],
-  components: { BarcodeScanner },
+  // components: { BarcodeScanner },
   data () {
     return {
       showScanner: false,

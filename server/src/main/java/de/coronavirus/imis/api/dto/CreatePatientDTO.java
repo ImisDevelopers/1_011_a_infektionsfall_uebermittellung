@@ -2,6 +2,7 @@ package de.coronavirus.imis.api.dto;
 
 import java.util.List;
 
+import de.coronavirus.imis.domain.EventType;
 import lombok.Data;
 
 @Data
@@ -15,11 +16,12 @@ public class CreatePatientDTO {
     private String phoneNumber;
     private String street;
     private String houseNumber;
-    private Integer zip;
+    private String zip;
     private String city;
 
     private String insuranceCompany;
     private String insuranceMembershipNumber;
+    private EventType patientStatus;
 
     private Boolean fluImmunization;
     private String speedOfSymptomsOutbreak;
@@ -30,4 +32,5 @@ public class CreatePatientDTO {
 
     private Boolean weakenedImmuneSystem;
     private List<String> preIllnesses;
+    private String riskOccupation;
 }

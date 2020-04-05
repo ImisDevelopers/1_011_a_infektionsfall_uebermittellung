@@ -2,7 +2,11 @@
   <a-layout-sider
     breakpoint="md"
   >
-    <a-menu theme="dark" mode="inline" style="text-align: left;">
+    <a-menu
+      theme="dark"
+      mode="inline"
+      style="text-align: left;"
+    > <!--TODO :defaultSelectedKeys="[asdf]"-->
       <a-menu-item
         v-for="route in routes"
         :key="route.path"

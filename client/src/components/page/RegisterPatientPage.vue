@@ -92,17 +92,14 @@
                   />
                 </a-form-item>
               </a-col>
-            </a-row>
-            <a-row :span="24">
-              <!-- <a-col> -->
+              <a-col :span="24">
                 <a-form-item
-                      label="Üben sie einen Beruf mit hohem Risiko aus?"
+                  label="Üben sie einen Beruf mit hohem Risiko aus?"
                       required
-                      :labelCol="{ div: 24 }"
-                      :wrapperCol="{ div: 22 }"
+                  :labelCol="{ lg: 12 }"
+                  :wrapperCol="{ lg: 12 }"
                 >
                   <a-select
-                    :span="22"
                     labelInValue
                     v-model="selectedOccupation"
                   >
@@ -114,7 +111,7 @@
                   </a-select>
 
                 </a-form-item>
-              <!-- </a-col> -->
+              </a-col>
             </a-row>
           </a-collapse-panel>
           <a-collapse-panel header="Infektionskette" key="2">

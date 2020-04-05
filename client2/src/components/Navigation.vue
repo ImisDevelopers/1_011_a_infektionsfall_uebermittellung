@@ -32,34 +32,36 @@ import Component from 'vue-class-component'
 import { navigationRoutes, AppRoute } from '../router'
 import { config } from '@/config'
 import { mapActions, mapGetters } from 'vuex'
-import { authModule } from '@/store/modules/auth.module'
+import { authMapper, authModule } from '@/store/modules/auth.module'
 import { InstitutionType } from '@/models'
 import store from '@/store'
 
-@Component({
+const Base = Vue.extend({
   computed: {
-    ...mapGetters('auth', ['roles']),
+    ...authMapper.mapGetters({
+      roles: 'roles',
+    }),
   },
   methods: {
-    ...mapActions('auth', ['logout']),
+    ...authMapper.mapActions({
+      logout: 'logout',
+    }),
   },
 })
-export default class Navigation extends Vue {
-  logout!: () => void
-  routes!: AppRoute[]
-  roles!: InstitutionType[]
-  authActions = authModule.context(store).actions
+@Component
+export default class Navigation extends Base {
+  routes!: AppRoute[] // TODO get from state
 
   data () {
     return {
       routes: navigationRoutes
         .filter(r => (config.showAllViews ||
-          this.roles.some(a => r.meta?.navigationInfo?.authorities.includes(a)))),
+          this.roles().some(a => r.meta?.navigationInfo?.authorities.includes(a)))),
     }
   }
 
   onLogout () {
-    this.authActions.logout()
+    this.logout()
   }
 }
 </script>

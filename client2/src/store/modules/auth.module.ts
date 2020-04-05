@@ -22,7 +22,7 @@ class AuthGetters extends Getters<AuthState> {
   }
 
   roles () {
-    return this.state.jwtData?.roles
+    return this.state.jwtData?.roles || []
   }
 }
 

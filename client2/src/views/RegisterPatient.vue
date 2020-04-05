@@ -263,10 +263,8 @@
 
 <script>
 import Vue from 'vue'
-import Api from '../store/api'
 import Component from 'vue-class-component'
-import { patientModule } from '../store/modules/patients.module'
-import store from '@/store'
+import { patientMapper } from '../store/modules/patients.module'
 
 export const anonymizeProperties = (keys, obj) => {
   keys.forEach(key => {
@@ -332,9 +330,15 @@ const RISK_AREAS = [
   { key: 'USA', description: 'USA: Kalofornien, Washington oder New York' },
 ]
 
+const Base = Vue.extend({
+  methods: {
+    ...patientMapper.mapActions({
+      registerPatient: 'registerPatient',
+    }),
+  },
+})
 @Component
-export default class RegisterPatient extends Vue {
-  patientActions = patientModule.context(store).actions
+export default class RegisterPatient extends Base {
   data () {
     const selectedSymptoms = {}
     SYMPTOMS.forEach(symptom => {
@@ -410,7 +414,7 @@ export default class RegisterPatient extends Vue {
         preIllnesses,
         riskAreas,
       }
-      this.patientActions.registerPatient(request)
+      this.registerPatient(request)
     })
   }
 }

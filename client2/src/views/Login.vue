@@ -54,12 +54,17 @@
 
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { authModule } from '../store/modules/auth.module'
-import store from '@/store'
+import { authMapper } from '../store/modules/auth.module'
 
+const Base = Vue.extend({
+  methods: {
+    ...authMapper.mapActions({
+      login: 'login',
+    }),
+  },
+})
 @Component
-export default class Login extends Vue {
-  authActions = authModule.context(store).actions
+export default class Login extends Base {
 
   data () {
     return {
@@ -72,7 +77,7 @@ export default class Login extends Vue {
       if (err) {
         return
       }
-      this.authActions.login({
+      this.login({
         username: values.username,
         password: values.password,
       })

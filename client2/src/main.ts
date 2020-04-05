@@ -21,7 +21,7 @@ if (process.env.SENTRY_FRONTEND_DSN) {
 
 Vue.use(Antd)
 
-authModule.context(store).actions.init()
+// authModule.context(store).actions.init()
 
 new Vue({
   router,

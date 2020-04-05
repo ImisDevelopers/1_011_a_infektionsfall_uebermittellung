@@ -9,12 +9,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Strings;
 import com.google.common.hash.Hashing;
 import lombok.extern.slf4j.Slf4j;
 
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.domain.RiskOccupation;
 import de.coronavirus.imis.repositories.PatientRepository;
 
 @Service
@@ -48,6 +50,7 @@ public class PatientService {
                 .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed, StandardCharsets.UTF_8)
                 .toString()
                 .substring(0, 8).toUpperCase();
+        var occupation = determineRiskOcc(dto.getRiskOccupation());
         var mappedPatient = new Patient()
                 .setId(id)
                 .setFirstName(dto.getFirstName())
@@ -71,6 +74,7 @@ public class PatientService {
                 .setCoronaContacts(dto.getCoronaContacts())
                 .setRiskAreas(dto.getRiskAreas())
                 .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
+                .setRiskOccupation(occupation)
                 .setPreIllnesses(dto.getPreIllnesses());
         mappedPatient = patientRepository.save(mappedPatient);
         log.info("inserting patient with id {}", mappedPatient.getId());
@@ -86,5 +90,17 @@ public class PatientService {
             log.error("error parsing integer");
         }
         return Integer.MIN_VALUE;
+    }
+
+    private RiskOccupation determineRiskOcc(String occ) {
+        if (Strings.isNullOrEmpty(occ)) {
+            return RiskOccupation.NO_RISK_OCCUPATION;
+        }
+        try {
+            return RiskOccupation.valueOf(occ);
+        } catch (Exception e) {
+            log.error("error determining risk occupation for {}", occ);
+        }
+        return RiskOccupation.NO_RISK_OCCUPATION;
     }
 }

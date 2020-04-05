@@ -134,6 +134,25 @@
 <!--                :v-model="selectedRiskAreas">-->
 <!--              </a-checkbox-group>-->
             </a-form-item>
+            <a-form-item
+                    label="Üben sie einen Beruf mit hohem Risiko aus?"
+                    :labelCol="{ div: 24 }"
+                    :wrapperCol="{ div: 24 }"
+            >
+              <a-row>
+                <a-col
+                        v-for="(riskOccupation, idx) in RISK_OCCUPATIONS" :key="idx"
+                        :xs="24"
+                        :sm="12"
+                >
+                  <a-checkbox
+                          v-model="selectedOccupation[riskOccupation.key]">{{
+                    riskOccupation.description
+                    }}</a-checkbox>
+                </a-col>
+              </a-row>
+            </a-form-item>
+
             <!-- ggf. Aufenthaltszeitraum ergänzen -->
           </a-collapse-panel>
 
@@ -262,10 +281,10 @@
 <!-- Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new -->
 
 <script>
-import { anonymizeProperties } from "../../util/randomize";
-import Api from "../../api/Api";
+    import {anonymizeProperties} from "../../util/randomize";
+    import Api from "../../api/Api";
 
-const SYMPTOMS = [
+    const SYMPTOMS = [
   { key: "SORE_THROAT", description: "Halsschmerzen" },
   { key: "HEADACHES", description: "Kopfschmerzen" },
   { key: "FATIGUE", description: "Abgeschlagenheit" },
@@ -318,6 +337,14 @@ const RISK_AREAS = [
   { key: "SPAIN", description: "Spanien" },
   { key: "USA", description: "USA: Kalofornien, Washington oder New York" }
 ];
+const RISK_OCCUPATIONS = [
+  { key: "NO_RISK_OCCUPATION", description: "Kein Risiko Beruf" },
+  { key: "FIRE_FIGHTER", description: "Feuerwehrmann/frau" },
+  { key: "DOCTOR", description: "Ärzt/Ärztin" },
+  { key: "NURSE", description: "Pflegepersonal" },
+  { key: "CAREGIVER", description: "Altenpflege" },
+  { key: "POLICE", description: "Polizei" },
+ ];
 
 export default {
   name: "RegisterPatientPage",
@@ -336,6 +363,7 @@ export default {
     RISK_AREAS.forEach(riskArea => {
       selectedRiskAreas[riskArea.key] = false;
     });
+    const selectedOccupation={};
 
     return {
       dateFormat: "DD/MM/YYYY",
@@ -346,6 +374,8 @@ export default {
       selectedPreIllnesses,
       RISK_AREAS,
       selectedRiskAreas,
+      RISK_OCCUPATIONS,
+      selectedOccupation,
       createdPatient: null,
       dataProcessingClass: ""
     };
@@ -390,13 +420,17 @@ export default {
         const riskAreas = RISK_AREAS.filter(
           riskArea => this.selectedRiskAreas[riskArea.key]
         ).map(riskArea => riskArea.key);
-
+        const riskOccupation=RISK_OCCUPATIONS.filter(
+                riskOcc=>this.selectedOccupation[riskOcc.key]
+        ).map(riskOcc=>riskOcc.key)[0]
+        console.error("hello")
         const request = {
           ...values,
           dateOfBirth: values["dateOfBirth"].format("YYYY-MM-DD") + " 00",
           symptoms,
           preIllnesses,
-          riskAreas
+          riskAreas,
+          riskOccupation
         };
 
         Api.postPatient(request)

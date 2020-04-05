@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -57,6 +59,9 @@ public class Patient {
     private Boolean weakenedImmuneSystem;
     @Convert(converter = StringListConverter.class)
     private List<String> preIllnesses;
+
+    @Enumerated(EnumType.STRING)
+    private RiskOccupation riskOccupation;
 
     private String comment;
     private String occupation;

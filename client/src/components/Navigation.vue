@@ -73,7 +73,7 @@ export default {
     name: "Navigation",
     data() {
         return {
-            key: "1",
+            key: "0",
             availableItems,
             allItems,
             authenticationStore: authenticationStore,

@@ -1,28 +1,20 @@
 package de.coronavirus.imis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.coronavirus.imis.api.dto.AggregationResultZip;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
-import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.services.*;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.util.List;
+import java.io.*;
 
 
 @Component
+@Slf4j
 public class TestDataLoader implements ApplicationRunner {
 
 
@@ -41,37 +33,61 @@ public class TestDataLoader implements ApplicationRunner {
         this.statsService = statsService;
     }
 
-    static Object makeDTO(String testFileName, Class clazz)
+    static <T> Object makeDTO(String testFileName, Class<T> clazz)
             throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
-        Resource resource = new ClassPathResource("sample_data" + File.separator + testFileName);
-        File file = resource.getFile();
+        final String string = getAsString(testFileName);
+        return mapper.readValue(string, clazz);
+    }
 
-        byte[] encoded = Files.readAllBytes(file.toPath());
-
-        String str = new String(encoded, Charset.defaultCharset());
-        return mapper.readValue(str, clazz);
+    static String getAsString(String resourcePath) throws IOException {
+        final String fullResourcePath = "sample_data" + File.separator + resourcePath;
+        // getResourceAsStream never throws IOException. Instead it returns null
+        final InputStream inputStream = TestDataLoader.class.getClassLoader().getResourceAsStream(fullResourcePath);
+        if (inputStream == null) {
+            throw new IOException("Ressource " + resourcePath + " nicht vorhanden.");
+        }
+        try (
+                final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))
+        ) {
+            final StringBuilder content = new StringBuilder();
+            var line = bufferedReader.readLine();
+            while (line != null) {
+                content.append(line).append(System.lineSeparator());
+                line = bufferedReader.readLine();
+            }
+            return content.toString();
+        } catch (Exception e) {
+            throw new IOException("Konnte Ressource " + resourcePath + " nicht lesen.", e);
+        }
     }
 
 
     public void run(ApplicationArguments args) {
+        log.info("Creating test data");
         try {
+
+            log.info("Inserting patients");
             for (int i = 0; i < 5; i++) {
                 var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
                 patientService.addPatient(createPersonDTO);
             }
 
             // SETUP OUR WORLD
+            log.info("Inserting laboratory");
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
             var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO, createLaboratoryDTO.getId());
 
+            log.info("Inserting doctor");
             var createDoctorsOfficeDTO = (CreateInstitutionDTO) makeDTO("createDoctorsOffice.json", CreateInstitutionDTO.class);
             var doctorsOffice = institutionService.createDoctorInstitution(createDoctorsOfficeDTO);
 
+            log.info("Inserting test site");
             var createTestSiteDTO = (CreateInstitutionDTO) makeDTO("createTestSite.json", CreateInstitutionDTO.class);
             var testSite = institutionService.createTestSiteInstitution(createTestSiteDTO);
 
+            log.info("Inserting clinic");
             var createClinicDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
             var clinic = institutionService.createClinicInstitution(createClinicDTO);
 
@@ -103,7 +119,8 @@ public class TestDataLoader implements ApplicationRunner {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Error creating test data", e);
         }
+        log.info("Finished creating test data");
     }
 }

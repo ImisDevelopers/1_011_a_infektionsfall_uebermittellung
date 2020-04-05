@@ -94,8 +94,8 @@
               </a-col>
               <a-col :span="24">
                 <a-form-item
-                  label="Üben sie einen Beruf mit hohem Risiko aus?"
-                      required
+                  label="Üben sie einen systemrelevanten Beruf aus?"
+                  required
                   :labelCol="{ lg: 12 }"
                   :wrapperCol="{ lg: 12 }"
                 >

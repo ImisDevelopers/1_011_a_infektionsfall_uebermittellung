@@ -9,8 +9,8 @@
       <a-form
         :form="form"
         :layout="'horizontal'"
-        :labelCol="{ span: 6 }"
-        :wrapperCol="{ span: 14}"
+        :labelCol="{ span: 8 }"
+        :wrapperCol="{ span: 16}"
         @submit="handleSubmit"
       >
         <a-collapse defaultActiveKey="1">
@@ -93,6 +93,29 @@
                 </a-form-item>
               </a-col>
             </a-row>
+            <a-row :span="24">
+              <!-- <a-col> -->
+                <a-form-item
+                      label="Üben sie einen Beruf mit hohem Risiko aus?"
+                      required
+                      :labelCol="{ div: 24 }"
+                      :wrapperCol="{ div: 22 }"
+                >
+                  <a-select
+                    :span="22"
+                    labelInValue
+                    v-model="selectedOccupation"
+                  >
+                    <a-select-option
+                      v-for="riskOccupation in RISK_OCCUPATIONS" :key="riskOccupation.key"
+                    >
+                      {{ riskOccupation.label }}
+                    </a-select-option>
+                  </a-select>
+
+                </a-form-item>
+              <!-- </a-col> -->
+            </a-row>
           </a-collapse-panel>
           <a-collapse-panel header="Infektionskette" key="2">
             <a-form-item
@@ -134,25 +157,6 @@
 <!--                :v-model="selectedRiskAreas">-->
 <!--              </a-checkbox-group>-->
             </a-form-item>
-            <a-form-item
-                    label="Üben sie einen Beruf mit hohem Risiko aus?"
-                    :labelCol="{ div: 24 }"
-                    :wrapperCol="{ div: 24 }"
-            >
-              <a-row>
-                <a-col
-                        v-for="(riskOccupation, idx) in RISK_OCCUPATIONS" :key="idx"
-                        :xs="24"
-                        :sm="12"
-                >
-                  <a-checkbox
-                          v-model="selectedOccupation[riskOccupation.key]">{{
-                    riskOccupation.description
-                    }}</a-checkbox>
-                </a-col>
-              </a-row>
-            </a-form-item>
-
             <!-- ggf. Aufenthaltszeitraum ergänzen -->
           </a-collapse-panel>
 
@@ -338,12 +342,12 @@ const RISK_AREAS = [
   { key: "USA", description: "USA: Kalofornien, Washington oder New York" }
 ];
 const RISK_OCCUPATIONS = [
-  { key: "NO_RISK_OCCUPATION", description: "Kein Risiko Beruf" },
-  { key: "FIRE_FIGHTER", description: "Feuerwehrmann/frau" },
-  { key: "DOCTOR", description: "Ärzt/Ärztin" },
-  { key: "NURSE", description: "Pflegepersonal" },
-  { key: "CAREGIVER", description: "Altenpflege" },
-  { key: "POLICE", description: "Polizei" },
+  { key: "NO_RISK_OCCUPATION", label: "Kein Risiko Beruf" },
+  { key: "FIRE_FIGHTER", label: "Feuerwehrmann/frau" },
+  { key: "DOCTOR", label: "Ärzt/Ärztin" },
+  { key: "NURSE", label: "Pflegepersonal" },
+  { key: "CAREGIVER", label: "Altenpflege" },
+  { key: "POLICE", label: "Polizei" },
  ];
 
 export default {
@@ -363,7 +367,7 @@ export default {
     RISK_AREAS.forEach(riskArea => {
       selectedRiskAreas[riskArea.key] = false;
     });
-    const selectedOccupation={};
+    const selectedOccupation = { key: "NO_RISK_OCCUPATION", label: "Kein Risiko Beruf" };
 
     return {
       dateFormat: "DD/MM/YYYY",
@@ -420,9 +424,7 @@ export default {
         const riskAreas = RISK_AREAS.filter(
           riskArea => this.selectedRiskAreas[riskArea.key]
         ).map(riskArea => riskArea.key);
-        const riskOccupation=RISK_OCCUPATIONS.filter(
-                riskOcc=>this.selectedOccupation[riskOcc.key]
-        ).map(riskOcc=>riskOcc.key)[0]
+        const riskOccupation = this.selectedOccupation.key
         console.error("hello")
         const request = {
           ...values,

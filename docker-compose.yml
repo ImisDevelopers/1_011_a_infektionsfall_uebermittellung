@@ -13,31 +13,31 @@ services:
     networks:
       - postgres
     restart: unless-stopped
-#  client:
-#    build:
-#      context: client
-#      dockerfile: Dockerfile.prod
-#    ports:
-#    - "8080:8080"
-#  core:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile.prod
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
-#    networks:
-#      - postgres
-#    ports:
-#      - "80:80"
-#
-#        #web:
-#          #build: client/.
-#        # networks:
-#        #- postgres
-#        #entrypoint: ["sh", "/app/gradlew", "serve"]
-#        #ports:
-#        #- "8080:8080"
-#
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile.prod
+    ports:
+    - "8080:8080"
+  core:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+    networks:
+      - postgres
+    ports:
+      - "80:80"
+
+        #web:
+          #build: client/.
+        # networks:
+        #- postgres
+        #entrypoint: ["sh", "/app/gradlew", "serve"]
+        #ports:
+        #- "8080:8080"
+
 #
 networks:
   postgres:

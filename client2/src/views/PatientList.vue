@@ -103,25 +103,28 @@
         </a-form-item>
       </a-form>
       <a-table
-        :columns="columns"
+        :columns="columnsSchema"
         :dataSource="patients"
         :scroll="{x: 1, y: 0}"
+        rowKey="id"
+        :customRow="customRow"
+        @change="handleTableChange"
       >
-        <!--        <span slot="riskAreas" slot-scope="riskAreas">-->
-        <!--          <a-tag v-for="riskArea in riskAreas" :key="riskArea">-->
-        <!--            {{ riskArea }}-->
-        <!--          </a-tag>-->
-        <!--        </span>-->
-        <!--        <span slot="preIllnesses" slot-scope="preIllnesses">-->
-        <!--          <a-tag v-for="preIllness in preIllnesses" :key="preIllness">-->
-        <!--            {{ preIllness }}-->
-        <!--          </a-tag>-->
-        <!--        </span>-->
+        <div slot="patientStatus" slot-scope="patientStatus">
+          <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px"/>
+          {{eventTypes.find(type => type.id === patientStatus).label}}
+        </div>
       </a-table>
-      <div
-        style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;"
-      >
-        <a-button type="primary">CSV exportieren</a-button>
+      <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end; align-items: center">
+        <a-button type="primary" style="margin-right: 50px" @click="downloadPatients">CSV exportieren</a-button>
+        <span style="margin-right: 10px">{{count}} Patienten</span>
+        <a-pagination
+          showSizeChanger
+          :pageSize.sync="form.pageSize"
+          @showSizeChange="onShowSizeChange"
+          :total="count"
+          v-model="currentPage"
+        />
       </div>
     </a-card>
   </div>
@@ -190,7 +193,6 @@ const columnsSchema: ColumnSchema[] = [
 ]
 
 export default Vue.extend({
-  name: 'ViewAllDataComponent',
   computed: {
     ...patientMapper.mapState({
       patients: 'patients',
@@ -247,6 +249,9 @@ export default Vue.extend({
     ...patientMapper.mapActions({
       fetchPatients: 'fetchPatients',
     }),
+    ...patientMapper.mapMutations({
+      setPatiens: 'setPatients',
+    }),
     handleSearch () {
       this.currentPage = 1
       this.loadPage()
@@ -266,11 +271,11 @@ export default Vue.extend({
         // Backend fails on empty string
         formValues.patientStatus = null
       }
-      Api.countPatients(formValues).then(count => {
+      Api.patients.countQueryPatientsUsingPost(formValues).then(count => {
         this.count = count
       })
-      Api.queryPatients(formValues).then(result => {
-        this.data = result
+      Api.patients.queryPatientsUsingPost(formValues).then((result: Patient[]) => {
+        this.setPatiens(result)
       }).catch(error => {
         console.error(error)
         const notification = {

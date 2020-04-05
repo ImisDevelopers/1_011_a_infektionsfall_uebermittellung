@@ -1,7 +1,8 @@
-import { CreatePatientDTO, Patient } from '@/store/SwaggerApi'
-import Api from '../api'
+import router from '@/router'
+import { Patient } from '@/store/SwaggerApi'
 import Notification from '@/util/notification'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
+import Api from '../api'
 
 // export interface PatientState {
 //   patients: Patient[];
@@ -48,13 +49,16 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
   async registerPatient (patient: Patient) {
     // commit('shared/startedLoading', 'registerPatient', { root: true })
     try {
-      const res = await Api.patients.addPatientUsingPost(patient)
-      this.commit('setPatient', res)
+      const patientResponse = await Api.patients.addPatientUsingPost(patient)
+      this.commit('setPatient', patientResponse)
       const notification = {
         message: 'Patient registriert.',
         description: 'Der Patient wurde erfolgreich registriert.',
       }
       Notification.success(notification)
+      if (patientResponse.id) {
+        router.push({ name: 'patient-detail', params: { id: patientResponse.id } })
+      }
     } catch (err) {
       const notification = {
         message: 'Fehler beim Registrieren des Patienten.',

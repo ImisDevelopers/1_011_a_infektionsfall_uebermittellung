@@ -7,8 +7,8 @@
 # CMake
 cmake-build-*/
 
-client2/src/store/SwaggerApi.ts
-client/src/store/SwaggerApi.ts
+# TODO
+#client/src/store/SwaggerApi.ts
 
 # File-based project format
 *.iws

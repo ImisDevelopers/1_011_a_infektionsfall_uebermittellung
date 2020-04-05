@@ -38,11 +38,11 @@
                 <div style="display: flex;">
                     <h2 style="color: white;">Das Infektionsmelde- und Informationssystem</h2>
                 </div>
-                <div style="text-align: justify; font-size: 16px">
+                <div style="text-align: left; font-size: 16px">
                     {{ paragraph1 }}
                 </div>
                 <br/>
-                <div style="text-align: justify">
+                <div style="text-align: left">
                     {{ paragraph2 }}
                 </div>
             </div>

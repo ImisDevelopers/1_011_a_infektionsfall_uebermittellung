@@ -29,6 +29,9 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     url: jdbc:postgresql:localhost:5432
+  jpa:
+    hibernate:
+      ddl-auto: update
   cloud:
     gcp:
       credentials:

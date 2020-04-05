@@ -31,7 +31,7 @@ spring:
     url: jdbc:postgresql:localhost:5432
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
   cloud:
     gcp:
       credentials:

@@ -1,62 +1,73 @@
 <template style="margin: auto">
     <div>
-<!--        <a-input-search placeholder="Suche Patienten" style="width: 100%; max-width: 1020px"/>-->
         <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
             <a-tabs defaultActiveKey="1" v-if="patient">
                 <a-tab-pane tab="Stammdaten" key="1">
                     <!-- display user data here-->
                     <div>
-                        <a-row :gutter="8" >
+                        <a-row :gutter="8">
                             <a-col :span="24" :md="12">
                                 <a-card title="Allgemein" align="left" :extra="this.patient.id">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
-                                            <td>Vorname:</td><td>{{patient.firstName}}</td>
+                                            <td>Vorname:</td>
+                                            <td>{{patient.firstName}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Nachname:</td><td>{{patient.lastName}}</td>
+                                            <td>Nachname:</td>
+                                            <td>{{patient.lastName}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Geburtsdatum:</td><td>{{patient.dateOfBirth}}</td>
+                                            <td>Geburtsdatum:</td>
+                                            <td>{{patient.dateOfBirth}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Geschlecht:</td><td>{{patient.gender}}</td>
+                                            <td>Geschlecht:</td>
+                                            <td>{{patient.gender}}</td>
                                         </tr>
                                     </table>
                                 </a-card>
                             </a-col>
                             <a-col span="24" :md="12">
-                                <a-card title="Adresse" bordered="false" align="left">
+                                <a-card title="Adresse" :bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
-                                            <td>Straße:</td><td>{{patient.street}}</td>
+                                            <td>Straße:</td>
+                                            <td>{{patient.street}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Hausnummer:</td><td>{{patient.houseNumber}}</td>
+                                            <td>Hausnummer:</td>
+                                            <td>{{patient.houseNumber}}</td>
                                         </tr>
                                         <tr>
-                                            <td>PLZ:</td><td>{{patient.zip}}</td>
+                                            <td>PLZ:</td>
+                                            <td>{{patient.zip}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Ort:</td><td>{{patient.city}}</td>
+                                            <td>Ort:</td>
+                                            <td>{{patient.city}}</td>
                                         </tr>
                                     </table>
                                 </a-card>
                             </a-col>
                             <a-col span="24">
-                                <a-card title="Kontakt & Versicherung" bordered="false" align="left">
+                                <a-card title="Kontakt & Versicherung" :bordered="false" align="left">
                                     <table style="border-collapse: separate; border-spacing:15px">
                                         <tr>
-                                            <td>Telefonnummer:</td><td>{{patient.phoneNumber}}</td>
+                                            <td>Telefonnummer:</td>
+                                            <td>{{patient.phoneNumber}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Email:</td><td><a href="">{{patient.email}}</a></td>
+                                            <td>Email:</td>
+                                            <td><a href="">{{patient.email}}</a></td>
                                         </tr>
                                         <tr>
-                                            <td>Versicherung:</td><td>{{patient.insuranceCompany}}</td>
+                                            <td>Versicherung:</td>
+                                            <td>{{patient.insuranceCompany}}</td>
                                         </tr>
                                         <tr>
-                                            <td>V-Nr:</td><td>{{patient.insuranceMembershipNumber}}</td>
+                                            <td>V-Nr:</td>
+                                            <td>{{patient.insuranceMembershipNumber}}</td>
                                         </tr>
                                     </table>
                                 </a-card>
@@ -64,7 +75,7 @@
                         </a-row>
                         <a-row :gutter="8" style="margin-top: 8px;">
                             <a-col span="24">
-                                <a-card :title="'Status: '+ this.patient.events.reverse()[0].eventType" align="left">
+                                <a-card :title="'Status: '+ patientStatus" align="left">
                                     <a-row :gutter="8" style="margin-top: 8px;">
                                         <a-col span="6">
                                             Erstaufnahme:
@@ -79,10 +90,12 @@
                                             22.3.2020
                                         </a-col>
                                     </a-row>
-                                    <a-divider />
+                                    <a-divider/>
                                     <a-row type="flex" justify="end" :gutter="8" style="margin-top: 8px;">
                                         <a-col>
-                                            <a-button type="primary" @click="requestTestAgain('success')">Test erneut anordnen</a-button>
+                                            <a-button type="primary" @click="requestTestAgain('success')">
+                                                Test erneut anordnen
+                                            </a-button>
                                         </a-col>
                                     </a-row>
                                 </a-card>
@@ -91,7 +104,6 @@
                     </div>
                     <br>
                     <br>
-                    <!--<a-table :columns="columns" :dataSource="data"> </a-table>-->
                 </a-tab-pane>
                 <a-tab-pane tab="Verlauf" key="2" forceRender>
                     <a-card>
@@ -114,6 +126,7 @@
 
 <script>
 import Api from "../api/Api";
+import { eventTypes } from "../util/event-types";
 // const uuid = "#2685896023";
 // const firstName = "Max";
 // const lastName = "Mustermann";
@@ -137,6 +150,8 @@ export default {
         return {
             content: "",
             patient: null,
+            patientStatus: "",
+            eventTypes: eventTypes,
         };
     },
     methods: {
@@ -145,36 +160,43 @@ export default {
 
             // Check notification type (success, info, warning, error)
             if (type === "success") {
-            var notification = {
-                message: 'Der Test wurde erneut angefordert.',
-                // description:
-                // `Patienten ID: ${patID}`,
-            }
+                var notification = {
+                    message: 'Der Test wurde erneut angefordert.',
+                    // description:
+                    // `Patienten ID: ${patID}`,
+                }
             }
 
             // Show notification
             this.$notification[type](notification);
         },
         timelineColor(eventType) {
-            switch(eventType) {
-                case 'TEST_FINISHED_POSITIVE': return 'red';
-                case 'TEST_FINISHED_NEGATIVE': return 'green'
-                default: return 'grey';
+            switch (eventType) {
+                case 'TEST_FINISHED_POSITIVE':
+                    return 'red';
+                case 'TEST_FINISHED_NEGATIVE':
+                    return 'green';
+                default:
+                    return 'grey';
             }
         }
     },
     async created() {
-        this.patient = await Api.getPatient(this.$route.params.id)
+        this.patient = await Api.getPatient(this.$route.params.id);
+        this.patient.events.reverse();
+        const eventType = this.patient.events[0].eventType;
+        this.patientStatus = eventTypes.find(type => type.id === eventType).label
     }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    h3 {
-        margin: 20px 10px;
-    }
-    span {
-        margin: 10px;
-    }
+h3 {
+    margin: 20px 10px;
+}
+
+span {
+    margin: 10px;
+}
 </style>

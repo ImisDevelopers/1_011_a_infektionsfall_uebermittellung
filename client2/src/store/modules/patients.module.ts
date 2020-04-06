@@ -61,6 +61,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
         router.push({ name: 'patient-detail', params: { id: patientResponse.id } })
       }
     } catch (err) {
+      console.log(err)
       const notification = {
         message: 'Fehler beim Registrieren des Patienten.',
         description: err.message,

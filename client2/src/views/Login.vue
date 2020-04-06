@@ -53,8 +53,8 @@
 
 <script lang="ts">
 
-import { authMapper } from '@/store/modules/auth.module'
 import Vue from 'vue'
+import { authMapper } from '@/store/modules/auth.module'
 
 export default Vue.extend({
   name: 'Login',
@@ -75,12 +75,6 @@ export default Vue.extend({
         this.login({
           username: values.username,
           password: values.password,
-        }).catch(error => {
-          console.error(error)
-          this.$notification.error({
-            message: 'Login fehlgeschlagen',
-            description: 'Logindaten fehlerhaft',
-          })
         })
       })
     },

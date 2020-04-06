@@ -1,14 +1,14 @@
 import AccountView from '@/views/Account.vue'
 import Vue from 'vue'
 import VueRouter, { Route, RouteConfig } from 'vue-router'
-import Login from '../views/Login.vue'
-import LandingPage from '../views/LandingPage.vue'
-import AppRoot from '../views/AppRoot.vue'
-import RegisterPatient from '../views/RegisterPatient.vue'
-import RegisterTest from '../views/RegisterTest.vue'
-import SubmitTestResult from '../views/SubmitTestResult.vue'
-import TestList from '../views/TestList.vue'
-import PatientList from '../views/PatientList.vue'
+import Login from '@/views/Login.vue'
+import LandingPage from '@/views/LandingPage.vue'
+import AppRoot from '@/views/AppRoot.vue'
+import RegisterPatient from '@/views/RegisterPatient.vue'
+import RegisterTest from '@/views/RegisterTest.vue'
+import SubmitTestResult from '@/views/SubmitTestResult.vue'
+import TestList from '@/views/TestList.vue'
+import PatientList from '@/views/PatientList.vue'
 import PatientDetails from '@/views/PatientDetails.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
@@ -192,6 +192,7 @@ const routes = [
     name: 'app',
     component: AppRoot,
     children: appRoutes,
+    redirect: { name: 'account' },
     meta: {
       requiresAuth: true,
     },

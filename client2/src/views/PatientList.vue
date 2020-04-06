@@ -170,10 +170,10 @@ const columnsSchema: ColumnSchema[] = [
   },
   {
     title: 'Status',
-    // sorter: (a, b) => a.status.localeCompare(b.status),
-    dataIndex: 'status',
-    key: 'status',
+    dataIndex: 'patientStatus',
+    key: 'patientStatus',
     scopedSlots: { customRender: 'patientStatus' },
+    sorter: true,
   },
   {
     title: 'Stadt',

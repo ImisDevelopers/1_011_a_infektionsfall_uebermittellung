@@ -128,7 +128,6 @@
 import { patientMapper } from '@/store/modules/patients.module'
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { mapState } from 'vuex'
 import { Patient } from '../api/SwaggerApi'
 import { eventTypes } from '@/util/event-types'
 

@@ -285,16 +285,7 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { patientMapper } from '../store/modules/patients.module'
-
-export const anonymizeProperties = (keys, obj) => {
-  keys.forEach(key => {
-    if (typeof key === 'string' && obj[key]) {
-      obj[key] = obj[key].substr(0, 1) + '**********'
-    } else if (typeof key === 'object' && key.type === 'number' && obj[key]) {
-      obj[key.key] = 11111
-    }
-  })
-}
+import { anonymizeProperties } from '@/util'
 
 const RISK_OCCUPATIONS = [
   { key: 'NO_RISK_OCCUPATION', label: 'Kein systemrelevanter Beruf' },

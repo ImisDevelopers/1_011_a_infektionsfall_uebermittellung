@@ -10,7 +10,7 @@
           :layout="'horizontal'"
           :labelCol="{ span: 6 }"
           :wrapperCol="{ span: 18}"
-          @submit="handleSubmit"
+          @submit.prevent="handleSubmit"
         >
           <a-row>
             <a-col :lg="12">
@@ -138,10 +138,9 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import Api from '@/api'
-import { anonymizeProperties } from './RegisterPatient.vue'
-import { authModule } from '../store/modules/auth.module'
-import store from '@/store'
+import { anonymizeProperties } from '@/util'
 
 function validatePasswordRepeat(password: string, passwordRepeat: string) {
   if (password === passwordRepeat) {
@@ -156,29 +155,28 @@ function validatePasswordRepeat(password: string, passwordRepeat: string) {
   }
 }
 
-export default {
+export default Vue.extend({
   name: 'RegisterInstitutionPage',
   data() {
     return {
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdInstitution: null,
       dataProcessingClass: '',
+      checked: false,
       passwordRepeat: {},
     }
   },
   methods: {
-    onCheck(e) {
+    onCheck(e: any) {
       this.checked = e.target.checked
     },
     // For Explanation of dynamic form validation
     // see https://www.antdv.com/components/form/#components-form-demo-handle-form-data-manually
-    handlePasswordRepeatChange(event) {
+    handlePasswordRepeatChange(event: any) {
       this.passwordRepeat = validatePasswordRepeat(this.form.getFieldValue('password'), event.target.value)
     },
-    handleSubmit(e) {
-      e.preventDefault()
-
-      this.form.validateFields((err, values) => {
+    handleSubmit() {
+      this.form.validateFields((err: any, values: any) => {
         if (!this.checked) {
           this.dataProcessingClass = 'data-processing-not-selected'
           return
@@ -231,7 +229,7 @@ export default {
       })
     },
   },
-}
+})
 </script>
 
 <style scoped>

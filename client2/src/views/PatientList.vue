@@ -136,7 +136,7 @@
 import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { Patient } from '@/api/SwaggerApi'
+import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
 import { patientMapper, patientModule } from '@/store/modules/patients.module'
 import { eventTypes } from '@/util/event-types'
 import { downloadCsv } from '@/util/export-service'
@@ -165,7 +165,9 @@ const columnsSchema: Partial<Column>[] = [
     title: 'Status',
     dataIndex: 'patientStatus',
     key: 'patientStatus',
-    scopedSlots: { customRender: 'patientStatus' },
+    scopedSlots: {
+      customRender: 'patientStatus',
+    },
     sorter: true,
   },
   {
@@ -186,18 +188,24 @@ const columnsSchema: Partial<Column>[] = [
   },
 ]
 
+interface State {
+  form: Partial<PatientSearchParamsDTO>;
+  advancedForm: Partial<PatientSearchParamsDTO>;
+  [key: string]: any;
+}
+
 export default Vue.extend({
   computed: {
     ...patientMapper.mapState({
       patients: 'patients',
     }),
   },
-  data() {
+  data(): State {
     return {
       form: {
         firstName: '',
         lastName: '',
-        patientStatus: null || '',
+        patientStatus: undefined,
         id: '',
         order: 'asc',
         orderBy: 'lastName',
@@ -256,9 +264,9 @@ export default Vue.extend({
       if (this.showAdvancedSearch) {
         formValues = { ...formValues, ...this.advancedForm }
       }
-      if (formValues.patientStatus === '') {
+      if (formValues.patientStatus) {
         // Backend fails on empty string
-        formValues.patientStatus = null
+        formValues.patientStatus = undefined
       }
       Api.patients.countQueryPatientsUsingPost(formValues).then(count => {
         this.count = count
@@ -284,7 +292,7 @@ export default Vue.extend({
       }
       if (!formValues.patientStatus) {
         // Backend fails on empty string
-        formValues.patientStatus = null
+        formValues.patientStatus = undefined
       }
       Api.patients.countQueryPatientsUsingPost(formValues).then(count => {
         // Download all data that applies to the current filter
@@ -300,7 +308,7 @@ export default Vue.extend({
           ).join('\n')
           const filename = moment().format('YYYY_MM_DD') + '_patienten_export.csv'
           downloadCsv(header + '\n' + patients, filename)
-        }).catch((error: any) => {
+        }).catch((error: Error) => {
           console.error(error)
           const notification = {
             message: 'Fehler beim Laden der Patientendaten.',
@@ -310,7 +318,7 @@ export default Vue.extend({
         })
       })
     },
-    handleTableChange(pagination: number, filters: any, sorter: any) {
+    handleTableChange(pagination: any, filters: any, sorter: any) {
       const sortKey = sorter.field ? sorter.field : 'lastName'
       let sortOrder = 'asc'
       if (sorter.order === 'descend') {

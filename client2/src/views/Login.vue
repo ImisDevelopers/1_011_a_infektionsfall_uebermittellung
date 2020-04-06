@@ -61,35 +61,31 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import Component from 'vue-class-component'
 import { authMapper } from '../store/modules/auth.module'
 
-const Base = Vue.extend({
+export default Vue.extend({
+  data() {
+    return {
+      x: '',
+      form: this.$form.createForm(this),
+    }
+  },
   methods: {
     ...authMapper.mapActions({
       login: 'login',
     }),
+    handleLogin() {
+      this.form.validateFields((err: any, values: any) => {
+        if (err) {
+          return
+        }
+        this.login({
+          username: values.username,
+          password: values.password,
+        })
+      })
+    },
   },
 })
-@Component
-export default class Login extends Base {
-  data() {
-    return {
-      form: this.$form.createForm(this),
-    }
-  }
-
-  handleLogin() {
-    this.form.validateFields((err: any, values: any) => {
-      if (err) {
-        return
-      }
-      this.login({
-        username: values.username,
-        password: values.password,
-      })
-    })
-  }
-}
 
 </script>

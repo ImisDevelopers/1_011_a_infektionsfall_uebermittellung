@@ -281,13 +281,16 @@
 
 <!-- Stammdatenerhebung nach Vorbild:  https://my.living-apps.de/gateway/apps/5e6b6ac2a94d7e7d40bb4827/new -->
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { patientMapper } from '../store/modules/patients.module'
 import { anonymizeProperties } from '@/util'
 
-const RISK_OCCUPATIONS = [
+type KeyDescription = { key: string; description: string };
+type KeyLabel = { key: string; label: string };
+
+const RISK_OCCUPATIONS: KeyLabel[] = [
   { key: 'NO_RISK_OCCUPATION', label: 'Kein systemrelevanter Beruf' },
   { key: 'FIRE_FIGHTER', label: 'Feuerwehrmann/frau' },
   { key: 'DOCTOR', label: 'Ärzt/Ärztin' },
@@ -296,7 +299,7 @@ const RISK_OCCUPATIONS = [
   { key: 'POLICE', label: 'Polizei' },
 ]
 
-const SYMPTOMS = [
+const SYMPTOMS: KeyDescription[] = [
   { key: 'SORE_THROAT', description: 'Halsschmerzen' },
   { key: 'HEADACHES', description: 'Kopfschmerzen' },
   { key: 'FATIGUE', description: 'Abgeschlagenheit' },
@@ -309,7 +312,7 @@ const SYMPTOMS = [
   { key: 'MORE_38_DEG', description: 'Fieber über 38°C' },
 ]
 
-const ILLNESSES = [
+const ILLNESSES: KeyDescription[] = [
   { key: 'HEART_DISEASE', description: 'Herzerkrankungen' },
   { key: 'LUNG_DISEASE', description: 'Lungenerkrankungen' },
   { key: 'CIRCULATORY_DISORDER', description: 'Kreislauf-/Gefäßerkrankungen' },
@@ -339,7 +342,7 @@ const ILLNESSES = [
   { key: 'OTHER_DISEASE', description: 'Andere Vorerkrankungen' },
 ]
 
-const RISK_AREAS = [
+const RISK_AREAS: KeyDescription[] = [
   { key: 'IRAN', description: 'Iran' },
   { key: 'ITALY', description: 'Italien' },
   { key: 'CHINA', description: 'China' },
@@ -350,27 +353,19 @@ const RISK_AREAS = [
   { key: 'USA', description: 'USA: Kalofornien, Washington oder New York' },
 ]
 
-const Base = Vue.extend({
-  methods: {
-    ...patientMapper.mapActions({
-      registerPatient: 'registerPatient',
-    }),
-  },
-})
-@Component
-export default class RegisterPatient extends Base {
+export default Vue.extend({
   data() {
-    const selectedSymptoms = {}
+    const selectedSymptoms: any = {}
     SYMPTOMS.forEach(symptom => {
       selectedSymptoms[symptom.key] = false
     })
 
-    const selectedPreIllnesses = {}
+    const selectedPreIllnesses: any = {}
     ILLNESSES.forEach(illness => {
       selectedPreIllnesses[illness.key] = false
     })
 
-    const selectedRiskAreas = {}
+    const selectedRiskAreas: any = {}
     RISK_AREAS.forEach(riskArea => {
       selectedRiskAreas[riskArea.key] = false
     })
@@ -390,60 +385,64 @@ export default class RegisterPatient extends Base {
       selectedOccupation,
       createdPatient: null,
       dataProcessingClass: '',
+      checked: false,
     }
-  }
+  },
+  methods: {
+    ...patientMapper.mapActions({
+      registerPatient: 'registerPatient',
+    }),
+    onCheck(e: any) {
+      this.checked = e.target.checked
+    },
+    handleSubmit() {
+      this.form.validateFields(async(err: Error, values: any) => {
+        if (!this.checked) {
+          this.dataProcessingClass = 'data-processing-not-selected'
+          return
+        } else if (err) {
+          return
+        }
+        // TODO: Remove this when we go to production
+        anonymizeProperties(
+          [
+            'lastName',
+            'email',
+            'phoneNumber',
+            'street',
+            'houseNumber',
+            'city',
+            { key: 'zip', type: 'number' },
+            'insuranceCompany',
+            'insuranceMembershipNumber',
+          ],
+          values,
+        )
 
-  onCheck(e) {
-    this.checked = e.target.checked
-  }
+        const symptoms = SYMPTOMS.filter(
+          symptom => this.selectedSymptoms[symptom.key],
+        ).map(symptom => symptom.key)
+        const preIllnesses = ILLNESSES.filter(
+          illness => this.selectedPreIllnesses[illness.key],
+        ).map(illness => illness.key)
+        const riskAreas = RISK_AREAS.filter(
+          riskArea => this.selectedRiskAreas[riskArea.key],
+        ).map(riskArea => riskArea.key)
+        const riskOccupation = this.selectedOccupation.key
 
-  handleSubmit(e) {
-    this.form.validateFields(async(err, values) => {
-      if (!this.checked) {
-        this.dataProcessingClass = 'data-processing-not-selected'
-        return
-      } else if (err) {
-        return
-      }
-      // TODO: Remove this when we go to production
-      anonymizeProperties(
-        [
-          'lastName',
-          'email',
-          'phoneNumber',
-          'street',
-          'houseNumber',
-          'city',
-          { key: 'zip', type: 'number' },
-          'insuranceCompany',
-          'insuranceMembershipNumber',
-        ],
-        values,
-      )
-
-      const symptoms = SYMPTOMS.filter(
-        symptom => this.selectedSymptoms[symptom.key],
-      ).map(symptom => symptom.key)
-      const preIllnesses = ILLNESSES.filter(
-        illness => this.selectedPreIllnesses[illness.key],
-      ).map(illness => illness.key)
-      const riskAreas = RISK_AREAS.filter(
-        riskArea => this.selectedRiskAreas[riskArea.key],
-      ).map(riskArea => riskArea.key)
-      const riskOccupation = this.selectedOccupation.key
-
-      const request = {
-        ...values,
-        dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD') + ' 00',
-        symptoms,
-        preIllnesses,
-        riskAreas,
-        riskOccupation,
-      }
-      this.registerPatient(request)
-    })
-  }
-}
+        const request = {
+          ...values,
+          dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD') + ' 00',
+          symptoms,
+          preIllnesses,
+          riskAreas,
+          riskOccupation,
+        }
+        this.registerPatient(request)
+      })
+    },
+  },
+})
 </script>
 
 <style scoped>

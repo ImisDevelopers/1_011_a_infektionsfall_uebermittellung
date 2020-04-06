@@ -1,6 +1,7 @@
 <template>
   <a-card class="table-container">
-    <div>Account {{ JSON.stringify(institution()) }}</div>
+<!--    <div>Account {{ JSON.stringify(institution()) }}</div>-->
+    <h3>Eingeloggt: {{ username }}</h3>
     <a-form
       :form="registerUserForm"
       :layout="'horizontal'"
@@ -47,11 +48,9 @@
 </template>
 
 <script lang="ts">
-import { RegisterUserRequest } from '@/api/SwaggerApi'
-import { UserRole } from '@/models'
 import Vue from 'vue'
+import { UserRole } from '@/models'
 import { authMapper } from '@/store/modules/auth.module'
-import Component from 'vue-class-component'
 
 const tableColumns = [
   // {
@@ -82,40 +81,40 @@ const roleMapping: { [key in UserRole]: string } = {
   USER_ROLE_REGULAR: 'Normal',
 }
 
-const Base = Vue.extend({
+export default Vue.extend({
   data() {
     return {
-      ...authMapper.mapState({
-        user: 'user',
-        institution: 'institution',
-      }),
       tableColumns,
       roleMapping,
       registerUserForm: this.$form.createForm(this),
     }
   },
   computed: {
+    ...authMapper.mapState({
+      user: 'user',
+      institution: 'institution',
+    }),
     ...authMapper.mapGetters({
       users: 'institutionUsers',
     }),
+    username() {
+      return this.user?.username
+    },
   },
   methods: {
     ...authMapper.mapActions({
       registerUser: 'registerUserForInstitution',
     }),
+    handleRegisterUser() {
+      this.registerUserForm.validateFields(async(err: Error, values: any) => {
+        if (err) {
+          return
+        }
+        this.registerUser(values, this)
+      })
+    },
   },
 })
-@Component
-export default class AccountView extends Base {
-  handleRegisterUser() {
-    this.registerUserForm.validateFields(async(err: Error, values: any) => {
-      if (err) {
-        return
-      }
-      this.registerUser(values)
-    })
-  }
-}
 </script>
 
 <style>

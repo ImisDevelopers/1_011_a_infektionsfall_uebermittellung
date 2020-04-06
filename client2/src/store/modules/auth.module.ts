@@ -115,12 +115,12 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
     this.commit('setUser', user)
   }
 
-  async registerUserForInstitution(user: RegisterUserRequest) {
+  async registerUserForInstitution(user: RegisterUserRequest, instance: Vue) {
     try {
       const res = await Api.auth.registerUserUsingPost(user)
       this.dispatch('getAuthenticatedInstitution')
     } catch (err) {
-      Notification.error({
+      instance.$notification.error({
         message: 'Error',
         description: 'Nutzer konnte nicht hinzugefügt werden',
       })

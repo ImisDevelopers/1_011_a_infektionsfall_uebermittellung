@@ -1,5 +1,7 @@
 package de.coronavirus.imis.services;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,6 +80,7 @@ public class LabTestService {
         var changeEvent = new PatientEvent()
                 .setIllness(Illness.CORONA)
                 .setEventType(eventType)
+                .setEventTimestamp(Timestamp.valueOf(LocalDateTime.now()))
                 .setLabTest(labTest)
                 .setPatient(patient)
                 .setComment(comment);

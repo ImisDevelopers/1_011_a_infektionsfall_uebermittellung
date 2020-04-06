@@ -8,7 +8,7 @@
       style="text-align: left;"
     > <!--TODO :defaultSelectedKeys="[asdf]"-->
       <a-menu-item
-        v-for="route in routes"
+        v-for="route in routes()"
         :key="route.path"
       >
 <!--        v-bind:class="{'ant-menu-item-selected': route.name === $route.name}" TODO this is to slow-->
@@ -33,17 +33,13 @@
 
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { navigationRoutes, AppRoute } from '../router'
-import { config } from '@/config'
-import { mapActions, mapGetters } from 'vuex'
 import { authMapper, authModule } from '@/store/modules/auth.module'
-import { InstitutionType } from '@/models'
-import store from '@/store'
 
 const Base = Vue.extend({
   computed: {
     ...authMapper.mapGetters({
       roles: 'roles',
+      routes: 'routes',
     }),
   },
   methods: {
@@ -54,17 +50,7 @@ const Base = Vue.extend({
 })
 @Component
 export default class Navigation extends Base {
-  routes!: AppRoute[] // TODO get from state
-
-  data () {
-    return {
-      routes: navigationRoutes
-        .filter(r => (config.showAllViews ||
-          this.roles().some(a => r.meta?.navigationInfo?.authorities.includes(a)))),
-    }
-  }
-
-  onLogout () {
+  onLogout() {
     this.logout()
   }
 }

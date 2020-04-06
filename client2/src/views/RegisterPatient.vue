@@ -368,7 +368,7 @@ const Base = Vue.extend({
 })
 @Component
 export default class RegisterPatient extends Base {
-  data () {
+  data() {
     const selectedSymptoms = {}
     SYMPTOMS.forEach(symptom => {
       selectedSymptoms[symptom.key] = false
@@ -402,12 +402,12 @@ export default class RegisterPatient extends Base {
     }
   }
 
-  onCheck (e) {
+  onCheck(e) {
     this.checked = e.target.checked
   }
 
-  handleSubmit (e) {
-    this.form.validateFields(async (err, values) => {
+  handleSubmit(e) {
+    this.form.validateFields(async(err, values) => {
       if (!this.checked) {
         this.dataProcessingClass = 'data-processing-not-selected'
         return

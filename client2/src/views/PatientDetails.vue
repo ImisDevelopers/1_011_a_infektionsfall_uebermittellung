@@ -114,7 +114,7 @@
 import { patientMapper } from '@/store/modules/patients.module'
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { Patient } from '../store/SwaggerApi'
+import { Patient } from '../api/SwaggerApi'
 
 const Base = Vue.extend({
   computed: {
@@ -125,7 +125,7 @@ const Base = Vue.extend({
 })
 @Component
 export default class PatientDetails extends Base {
-  get patient (): Patient | undefined {
+  get patient(): Patient | undefined {
     const patient = this.patients.find(p => p.id === this.$route.params.id)
     if (patient) {
       patient.events = patient.events?.reverse()
@@ -133,7 +133,7 @@ export default class PatientDetails extends Base {
     return patient
   }
 
-  requestTestAgain () {
+  requestTestAgain() {
     const notification = {
       message: 'Der Test wurde erneut angefordert.',
       description: '',
@@ -141,7 +141,7 @@ export default class PatientDetails extends Base {
     this.$notification.success(notification)
   }
 
-  timelineColor (eventType: any) {
+  timelineColor(eventType: any) {
     switch (eventType) {
       case 'TEST_FINISHED_POSITIVE': return 'red'
       case 'TEST_FINISHED_NEGATIVE': return 'green'

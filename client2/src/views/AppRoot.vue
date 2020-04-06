@@ -42,7 +42,7 @@ import { mapGetters } from 'vuex'
 })
 export default class AppRoot extends Vue {
   // TODO Connect to state and use http interceptor
-  data () {
+  data() {
     return {
       isLoading: false,
     }

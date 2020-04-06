@@ -28,7 +28,7 @@
 import { BrowserMultiFormatReader } from '@zxing/library'
 export default {
   name: 'BarcodeScanner',
-  data () {
+  data() {
     const codeReader = new BrowserMultiFormatReader()
     return {
       codeReader,
@@ -38,11 +38,11 @@ export default {
     }
   },
   methods: {
-    handleDeviceChange (device) {
+    handleDeviceChange(device) {
       this.device = device
       this.startScanning()
     },
-    startScanning () {
+    startScanning() {
       if (this.device) {
         try {
           this.codeReader.decodeOnceFromVideoDevice(this.device.key, 'video')
@@ -60,14 +60,14 @@ export default {
         }
       }
     },
-    useResult () {
+    useResult() {
       this.$emit('result', this.result)
     },
-    onCancel () {
+    onCancel() {
       this.$emit('result')
     },
   },
-  created: async function () {
+  created: async function() {
     try {
       if (!navigator.mediaDevices.enumerateDevices) {
         this.device = { key: undefined, label: 'Camera' }

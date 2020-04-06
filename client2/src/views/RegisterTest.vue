@@ -87,7 +87,7 @@
 <script>
 import Vue from 'vue'
 
-import Api from '../store/api'
+import Api from '@/api'
 import BarcodeInput from '../components/BarcodeInput'
 import Component from 'vue-class-component'
 @Component({
@@ -96,7 +96,7 @@ import Component from 'vue-class-component'
   },
 })
 export default class RegisterTest extends Vue {
-  data () {
+  data() {
     return {
       form: this.$form.createForm(this),
       createdLabTest: null,
@@ -105,7 +105,7 @@ export default class RegisterTest extends Vue {
     }
   }
 
-  handleSubmit (e) {
+  handleSubmit(e) {
     this.form.validateFields((err, values) => {
       if (err) {
         return
@@ -135,7 +135,7 @@ export default class RegisterTest extends Vue {
     })
   }
 
-  onSearch (str) {
+  onSearch(str) {
     if (!str) {
       this.laboratories = this.fetchedLaboratories
         .map(l => ({
@@ -152,7 +152,7 @@ export default class RegisterTest extends Vue {
     }
   }
 
-  async created () {
+  async created() {
     this.fetchedLaboratories = await Api.institutions.getAllLaboratoriesUsingGet()
   }
 }

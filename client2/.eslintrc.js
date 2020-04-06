@@ -24,6 +24,7 @@ module.exports = {
         functions: 'always-multiline',
       },
     ],
+    'space-before-function-paren': ['error', 'never'],
   },
   overrides: [
     {

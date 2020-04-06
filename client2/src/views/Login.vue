@@ -65,13 +65,13 @@ const Base = Vue.extend({
 })
 @Component
 export default class Login extends Base {
-  data () {
+  data() {
     return {
       form: this.$form.createForm(this),
     }
   }
 
-  handleLogin () {
+  handleLogin() {
     this.form.validateFields((err: any, values: any) => {
       if (err) {
         return

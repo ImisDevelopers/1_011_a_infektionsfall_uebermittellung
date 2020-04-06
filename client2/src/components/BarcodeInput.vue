@@ -22,13 +22,13 @@ export default {
   name: 'BarcodeInput',
   props: ['placeholder', 'validation', 'label', 'form'],
   // components: { BarcodeScanner },
-  data () {
+  data() {
     return {
       showScanner: false,
     }
   },
   methods: {
-    onResult (result) {
+    onResult(result) {
       if (result != null) {
         this.form.setFieldsValue({
           [this.validation[0]]: result,

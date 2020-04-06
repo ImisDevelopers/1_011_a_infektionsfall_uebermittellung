@@ -103,7 +103,7 @@
 <script>
 export default {
   name: 'LandingPage',
-  data () {
+  data() {
     return {
       paragraph1:
           'Das Sammeln und Verwalten der aktuellen Infektionszahlen erfordert extrem viel Zeit und Ressourcen. IMIS ist unsere Lösung für eine schnelle, sichere und einfache Infektionsfall-Erfassung für Ärzte, Gesundheitsämter und Labore. Damit ermöglichen wir, dass wichtige Ressourcen frei werden, die dann an anderer Stelle gewinnbringend eingesetzt werden können.',

@@ -107,7 +107,7 @@ export default {
   props: {
     msg: String,
   },
-  data () {
+  data() {
     return {
       entities: [],
       content: '',

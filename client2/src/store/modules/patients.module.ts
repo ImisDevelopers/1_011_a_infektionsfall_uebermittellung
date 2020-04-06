@@ -1,13 +1,8 @@
 import router from '@/router'
-import { Patient } from '@/store/SwaggerApi'
+import { Patient } from '@/api/SwaggerApi'
 import Notification from '@/util/notification'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
-import Api from '../api'
-
-// export interface PatientState {
-//   patients: Patient[];
-//   patient?: Patient;
-// }
+import Api from '@/api'
 
 class PatientState {
   patient: Patient | undefined;
@@ -18,21 +13,21 @@ class PatientGetters extends Getters<PatientState> {
 }
 
 class PatientMutations extends Mutations<PatientState> {
-  addPatients (patients: Patient[]) {
+  addPatients(patients: Patient[]) {
     this.state.patients.concat(patients)
   }
 
-  setPatients (patients: Patient[]) {
+  setPatients(patients: Patient[]) {
     this.state.patients = patients
   }
 
-  setPatient (patient: Patient) {
+  setPatient(patient: Patient) {
     this.state.patient = patient
   }
 }
 
 class PatientActions extends Actions<PatientState, PatientGetters, PatientMutations, PatientActions> {
-  async fetchPatients () {
+  async fetchPatients() {
     try {
       // this.commit('shared/startedLoading', 'fetchPatients', { root: true })
       const patients = await Api.patients.getAllPatientsUsingGet()
@@ -46,7 +41,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
     // commit('shared/finishedLoading', 'fetchPatients', { root: true })
   }
 
-  async registerPatient (patient: Patient) {
+  async registerPatient(patient: Patient) {
     // commit('shared/startedLoading', 'registerPatient', { root: true })
     try {
       const patientResponse = await Api.patients.addPatientUsingPost(patient)

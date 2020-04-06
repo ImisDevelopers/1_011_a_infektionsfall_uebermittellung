@@ -1,3 +1,4 @@
+import AccountView from '@/views/Account.vue'
 import Vue from 'vue'
 import VueRouter, { Route, RouteConfig } from 'vue-router'
 import Login from '../views/Login.vue'
@@ -20,7 +21,7 @@ Vue.use(VueRouter)
 //   isAuthenticated: 'isAuthenticated',
 // })
 
-function isAuthenticated () {
+function isAuthenticated() {
   // return authGetters.isAuthenticated()
   return window.localStorage.token
 }
@@ -60,18 +61,6 @@ const ALL_INSTITUTIONS: InstitutionType[] = [
 ]
 
 const appRoutes: AppRoute[] = [
-  {
-    name: 'register-patient',
-    path: 'register-patient',
-    component: RegisterPatient,
-    meta: {
-      navigationInfo: {
-        icon: 'user-add',
-        title: 'Patient Registrieren',
-        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
-      },
-    },
-  },
   // {
   //   name: 'register-institution',
   //   path: 'register-institution',
@@ -84,6 +73,30 @@ const appRoutes: AppRoute[] = [
   //     },
   //   },
   // },
+  {
+    name: 'account',
+    path: 'account',
+    component: AccountView,
+    meta: {
+      navigationInfo: {
+        icon: 'user',
+        title: 'Account',
+        authorities: ALL_INSTITUTIONS,
+      },
+    },
+  },
+  {
+    name: 'register-patient',
+    path: 'register-patient',
+    component: RegisterPatient,
+    meta: {
+      navigationInfo: {
+        icon: 'user-add',
+        title: 'Patient Registrieren',
+        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+      },
+    },
+  },
   {
     name: 'register-test',
     path: 'register-test',

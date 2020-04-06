@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import Api from '../store/api'
+import Api from '@/api'
 import BarcodeInput from '../components/BarcodeInput'
 
 export default {
@@ -106,7 +106,7 @@ export default {
   components: { BarcodeInput },
   props: {
   },
-  data () {
+  data() {
     return {
       form: this.$form.createForm(this),
       updatedLabTest: null,
@@ -116,19 +116,19 @@ export default {
     }
   },
   methods: {
-    uploadHint () {
+    uploadHint() {
       const notification = {
         message: 'Das Labor kann hier den Bericht mit hochladen. Aus Sicherheitsgründen ist diese Funktion im Prototyp deaktiviert.',
       }
       this.$notification.info(notification)
     },
-    beforeUpload (file) {
+    beforeUpload(file) {
       const setFileBytes = fileBytes => {
         this.fileBytes = fileBytes
       }
 
       const reader = new FileReader()
-      reader.onload = function (e) {
+      reader.onload = function(e) {
         const utf8 = unescape(encodeURIComponent(e.target.result))
         const array = []
         for (let i = 0; i < utf8.length; i++) {
@@ -140,7 +140,7 @@ export default {
 
       return false
     },
-    handleSubmit (e) {
+    handleSubmit(e) {
       e.preventDefault()
 
       this.form.validateFields((err, values) => {
@@ -178,7 +178,7 @@ export default {
           })
       })
     },
-    onSearch (str) {
+    onSearch(str) {
       if (!str) {
         this.laboratories = this.fetchedLaboratories
           .map(l => ({
@@ -195,7 +195,7 @@ export default {
       }
     },
   },
-  async created () {
+  async created() {
     this.fetchedLaboratories = await Api.institutions.getAllLaboratoriesUsingGet()
   },
 }

@@ -135,12 +135,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import { Patient } from '@/store/SwaggerApi'
+import { Patient } from '@/api/SwaggerApi'
 import { patientMapper, patientModule } from '@/store/modules/patients.module'
-import store from '@/store'
 import { eventTypes } from '@/util/event-types'
 import { downloadCsv } from '@/util/export-service'
-import Api from '@/store/api'
+import Api from '@/api'
 import moment from 'moment'
 
 type ColumnSchema = {
@@ -148,6 +147,7 @@ type ColumnSchema = {
   dataIndex: string;
   key: string;
   defaultSortOrder?: string;
+  scopedSlots?: any;
 }
 
 const columnsSchema: ColumnSchema[] = [
@@ -173,6 +173,7 @@ const columnsSchema: ColumnSchema[] = [
     // sorter: (a, b) => a.status.localeCompare(b.status),
     dataIndex: 'status',
     key: 'status',
+    scopedSlots: { customRender: 'patientStatus' },
   },
   {
     title: 'Stadt',
@@ -198,7 +199,7 @@ export default Vue.extend({
       patients: 'patients',
     }),
   },
-  data () {
+  data() {
     return {
       form: {
         firstName: '',
@@ -238,11 +239,11 @@ export default Vue.extend({
     }
   },
   watch: {
-    currentPage () {
+    currentPage() {
       this.loadPage()
     },
   },
-  created () {
+  created() {
     this.loadPage()
   },
   methods: {
@@ -252,16 +253,16 @@ export default Vue.extend({
     ...patientMapper.mapMutations({
       setPatiens: 'setPatients',
     }),
-    handleSearch () {
+    handleSearch() {
       this.currentPage = 1
       this.loadPage()
     },
-    onShowSizeChange (current: number, pageSize: number) {
+    onShowSizeChange(current: number, pageSize: number) {
       this.currentPage = current
       this.form.pageSize = pageSize
       this.loadPage()
     },
-    loadPage () {
+    loadPage() {
       this.form.offsetPage = this.currentPage - 1
       let formValues = { ...this.form }
       if (this.showAdvancedSearch) {
@@ -285,10 +286,10 @@ export default Vue.extend({
         this.$notification.error(notification)
       })
     },
-    toggleAdvancedSearch () {
+    toggleAdvancedSearch() {
       this.showAdvancedSearch = !this.showAdvancedSearch
     },
-    downloadPatients () {
+    downloadPatients() {
       let formValues = { ...this.form }
       if (this.showAdvancedSearch) {
         formValues = { ...formValues, ...this.advancedForm }
@@ -321,7 +322,7 @@ export default Vue.extend({
         })
       })
     },
-    handleTableChange (pagination, filters, sorter) {
+    handleTableChange(pagination, filters, sorter) {
       const sortKey = sorter.field ? sorter.field : 'lastName'
       let sortOrder = 'asc'
       if (sorter.order === 'descend') {
@@ -331,8 +332,10 @@ export default Vue.extend({
       this.form.orderBy = sortKey
       this.loadPage()
     },
-    handlePatientClick (patient: Patient) {
-      this.$router.push({ name: 'patient-detail', params: { id: patient.id } })
+    handlePatientClick(patient: Patient) {
+      if (patient.id) {
+        this.$router.push({ name: 'patient-detail', params: { id: patient.id } })
+      }
     },
   },
 })

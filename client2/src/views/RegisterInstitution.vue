@@ -138,12 +138,12 @@
 </template>
 
 <script lang="ts">
-import Api from '../store/api'
+import Api from '@/api'
 import { anonymizeProperties } from './RegisterPatient.vue'
 import { authModule } from '../store/modules/auth.module'
 import store from '@/store'
 
-function validatePasswordRepeat (password: string, passwordRepeat: string) {
+function validatePasswordRepeat(password: string, passwordRepeat: string) {
   if (password === passwordRepeat) {
     return {
       validateStatus: 'success',
@@ -158,7 +158,7 @@ function validatePasswordRepeat (password: string, passwordRepeat: string) {
 
 export default {
   name: 'RegisterInstitutionPage',
-  data () {
+  data() {
     return {
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdInstitution: null,
@@ -167,15 +167,15 @@ export default {
     }
   },
   methods: {
-    onCheck (e) {
+    onCheck(e) {
       this.checked = e.target.checked
     },
     // For Explanation of dynamic form validation
     // see https://www.antdv.com/components/form/#components-form-demo-handle-form-data-manually
-    handlePasswordRepeatChange (event) {
+    handlePasswordRepeatChange(event) {
       this.passwordRepeat = validatePasswordRepeat(this.form.getFieldValue('password'), event.target.value)
     },
-    handleSubmit (e) {
+    handleSubmit(e) {
       e.preventDefault()
 
       this.form.validateFields((err, values) => {

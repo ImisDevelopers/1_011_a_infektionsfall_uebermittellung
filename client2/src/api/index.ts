@@ -1,4 +1,4 @@
-import { Api, RequestParams } from '@/store/SwaggerApi'
+import { Api, RequestParams } from '@/api/SwaggerApi'
 
 let baseUrl: string
 if (
@@ -40,9 +40,9 @@ const apiWrapper = {
   }),
 }
 
-function createApiProxy (foo: Api): Api { // Proxy<Foo> is compatible with Foo
+function createApiProxy(foo: Api): Api { // Proxy<Foo> is compatible with Foo
   const handler = {
-    get: function (target: Api, prop: keyof Api, receiver: any) {
+    get: function(target: Api, prop: keyof Api, receiver: any) {
       if (Api.prototype[prop] !== null) {
         return apiWrapper.api[prop]
       }
@@ -53,7 +53,7 @@ function createApiProxy (foo: Api): Api { // Proxy<Foo> is compatible with Foo
   return new Proxy(foo, handler)
 }
 
-export function setBearerToken (token: string) {
+export function setBearerToken(token: string) {
   apiWrapper.api = new Api({
     baseUrl: baseUrl,
     baseApiParams: {
@@ -66,7 +66,7 @@ export function setBearerToken (token: string) {
   })
 }
 
-export function removeBearerToken () {
+export function removeBearerToken() {
   apiWrapper.api = new Api({
     baseUrl: baseUrl,
   })

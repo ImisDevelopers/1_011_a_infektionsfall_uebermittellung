@@ -44,8 +44,6 @@ management:
         include: health,info,prometheus
   server:
     port: 8081
-logging:
-  level:
 ---
 spring:
   profiles: test

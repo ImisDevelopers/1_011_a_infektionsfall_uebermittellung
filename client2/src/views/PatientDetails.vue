@@ -10,16 +10,20 @@
                 <a-card title="Allgemein" align="left" :extra="this.patient.id">
                   <table style="border-collapse: separate; border-spacing:15px">
                     <tr>
-                      <td>Vorname:</td><td>{{patient.firstName}}</td>
+                      <td>Vorname:</td>
+                      <td>{{patient.firstName}}</td>
                     </tr>
                     <tr>
-                      <td>Nachname:</td><td>{{patient.lastName}}</td>
+                      <td>Nachname:</td>
+                      <td>{{patient.lastName}}</td>
                     </tr>
                     <tr>
-                      <td>Geburtsdatum:</td><td>{{patient.dateOfBirth}}</td>
+                      <td>Geburtsdatum:</td>
+                      <td>{{patient.dateOfBirth}}</td>
                     </tr>
                     <tr>
-                      <td>Geschlecht:</td><td>{{patient.gender}}</td>
+                      <td>Geschlecht:</td>
+                      <td>{{patient.gender}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -28,16 +32,20 @@
                 <a-card title="Adresse" bordered="false" align="left">
                   <table style="border-collapse: separate; border-spacing:15px">
                     <tr>
-                      <td>Straße:</td><td>{{patient.street}}</td>
+                      <td>Straße:</td>
+                      <td>{{patient.street}}</td>
                     </tr>
                     <tr>
-                      <td>Hausnummer:</td><td>{{patient.houseNumber}}</td>
+                      <td>Hausnummer:</td>
+                      <td>{{patient.houseNumber}}</td>
                     </tr>
                     <tr>
-                      <td>PLZ:</td><td>{{patient.zip}}</td>
+                      <td>PLZ:</td>
+                      <td>{{patient.zip}}</td>
                     </tr>
                     <tr>
-                      <td>Ort:</td><td>{{patient.city}}</td>
+                      <td>Ort:</td>
+                      <td>{{patient.city}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -46,16 +54,20 @@
                 <a-card title="Kontakt & Versicherung" bordered="false" align="left">
                   <table style="border-collapse: separate; border-spacing:15px">
                     <tr>
-                      <td>Telefonnummer:</td><td>{{patient.phoneNumber}}</td>
+                      <td>Telefonnummer:</td>
+                      <td>{{patient.phoneNumber}}</td>
                     </tr>
                     <tr>
-                      <td>Email:</td><td><a href="">{{patient.email}}</a></td>
+                      <td>Email:</td>
+                      <td><a href="">{{patient.email}}</a></td>
                     </tr>
                     <tr>
-                      <td>Versicherung:</td><td>{{patient.insuranceCompany}}</td>
+                      <td>Versicherung:</td>
+                      <td>{{patient.insuranceCompany}}</td>
                     </tr>
                     <tr>
-                      <td>V-Nr:</td><td>{{patient.insuranceMembershipNumber}}</td>
+                      <td>V-Nr:</td>
+                      <td>{{patient.insuranceMembershipNumber}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -63,7 +75,7 @@
             </a-row>
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
-                <a-card :title="'Status: '+ this.patient.events[0].eventType" align="left">
+                <a-card :title="'Status: '+ patientStatus" align="left">
                   <a-row :gutter="8" style="margin-top: 8px;">
                     <a-col span="6">
                       Erstaufnahme:
@@ -81,7 +93,9 @@
                   <a-divider />
                   <a-row type="flex" justify="end" :gutter="8" style="margin-top: 8px;">
                     <a-col>
-                      <a-button type="primary" @click="requestTestAgain('success')">Test erneut anordnen</a-button>
+                      <a-button type="primary" @click="requestTestAgain('success')">
+                        Test erneut anordnen
+                      </a-button>
                     </a-col>
                   </a-row>
                 </a-card>
@@ -114,23 +128,31 @@
 import { patientMapper } from '@/store/modules/patients.module'
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import { mapState } from 'vuex'
 import { Patient } from '../api/SwaggerApi'
+import { eventTypes } from '@/util/event-types'
 
 const Base = Vue.extend({
   computed: {
     ...patientMapper.mapState({
       patients: 'patients',
     }),
+    ...patientMapper.mapGetters({
+      patientById: 'patientById',
+    }),
   },
 })
 @Component
 export default class PatientDetails extends Base {
-  get patient(): Patient | undefined {
-    const patient = this.patients.find(p => p.id === this.$route.params.id)
-    if (patient) {
-      patient.events = patient.events?.reverse()
+  data() {
+    return {
+      patientStatus: '',
+      eventTypes: eventTypes,
     }
-    return patient
+  }
+
+  get patient(): Patient | undefined {
+    return this.patientById(this.$route.params.id)
   }
 
   requestTestAgain() {

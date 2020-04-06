@@ -103,20 +103,20 @@ public class PatientService {
         final Pageable pageable = PageRequest.of(patientSearchParamsDTO.getOffsetPage().intValue(), patientSearchParamsDTO.getPageSize().intValue(), sortBy);
 
         final var patients = patientRepository.findAllByPatientSearchParams(
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getFirstName()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLastName()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getId()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getGender()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getEmail()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPhoneNumber()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getStreet()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getHouseNumber()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getZip()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getCity()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceCompany()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceMembershipNumber()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
-                likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getFirstName())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getLastName())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getId())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getGender())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getEmail())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getPhoneNumber())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getStreet())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getHouseNumber())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getZip())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getCity())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getInsuranceCompany())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getInsuranceMembershipNumber())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getDoctorId())),
+                likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getLaboratoryId())),
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()),
                 pageable);
         if (patientSearchParamsDTO.isIncludePatientEvents()) {
@@ -127,6 +127,10 @@ public class PatientService {
         } else {
             return patients;
         }
+    }
+
+    private String nvl(String text) {
+        return text == null ? "" : text;
     }
 
     public Long countQueryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {

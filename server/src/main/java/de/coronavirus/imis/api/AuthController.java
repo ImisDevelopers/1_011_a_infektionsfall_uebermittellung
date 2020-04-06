@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import de.coronavirus.imis.api.dto.AuthRequestDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
@@ -21,6 +22,7 @@ import de.coronavirus.imis.services.AuthService;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@Slf4j
 public class AuthController {
     private final AuthService authService;
     private final ResponseEntity<TokenDTO> notAllowed = ResponseEntity.status(HttpStatus.FORBIDDEN).build();
@@ -28,6 +30,7 @@ public class AuthController {
 
     @PostMapping
     public ResponseEntity<TokenDTO> signInUser(@RequestBody AuthRequestDTO authRequestDTO) {
+        log.info("received auth request");
         return authService.loginUserCreateToken(authRequestDTO)
                 .map(TokenDTO::new)
                 .map(ResponseEntity::ok)

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 import de.coronavirus.imis.api.dto.AuthRequestDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
@@ -24,6 +25,7 @@ import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthService {
     private final JwtTokenProvider jwtProvider;
     private final PasswordEncoder encoder;
@@ -37,6 +39,9 @@ public class AuthService {
                     .map(GrantedAuthority::getAuthority).collect(Collectors.toList());
             return Optional.of(jwtProvider.createToken(maybeUser.get().getUsername(), role));
         }
+        log.info("Did not find user for username {}", dto.getUsername());
+        maybeUser.ifPresent(user -> log.info("check password for username {} returned {}",
+                dto.getUsername(), checkPassword(dto.getPassword(), user.getPassword())));
         return Optional.empty();
     }
 

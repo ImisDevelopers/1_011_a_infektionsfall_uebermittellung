@@ -5,11 +5,14 @@ import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-mo
 import Api from '@/api'
 
 class PatientState {
-  patient: Patient | undefined;
+  patient: Patient | undefined
   patients: Patient[] = []
 }
 
 class PatientGetters extends Getters<PatientState> {
+  patientById(id: string): Patient | undefined {
+    return this.state.patients.find(patient => patient.id === id)
+  }
 }
 
 class PatientMutations extends Mutations<PatientState> {

@@ -10,9 +10,13 @@
       </div>
       <a-form-item label="Kennung">
         <a-input
-          v-decorator="['username', { rules: [{
-                            required: true, message: 'Bitte geben Sie Ihre Kennung ein.'
-                        }]}]"
+          v-decorator="['username', {
+                            rules: [{
+                                required: true,
+                                message: 'Bitte geben Sie Ihre Kennung ein.',
+                            }],
+                            initialValue: '',
+                        }]"
           placeholder="z.B 1337-4237-9438"
         >
           <a-icon slot="prefix" type="user"/>
@@ -21,8 +25,11 @@
       <a-form-item label="Passwort">
         <a-input
           v-decorator="['password', { rules: [{
-                            required: true, message: 'Bitte geben Sie Ihr Passwort ein.'
-                        }]}]"
+              required: true,
+              message: 'Bitte geben Sie Ihr Passwort ein.'
+            }],
+            initialValue: '',
+          }]"
           type="password"
           placeholder="**********"
         >

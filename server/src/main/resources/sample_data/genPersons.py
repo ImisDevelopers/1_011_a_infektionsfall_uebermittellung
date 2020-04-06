@@ -53,7 +53,7 @@ def rand_num_str(len=10):
 
 riscAreas = ['', 'GrandEst', 'Hubei', 'Tirol', 'Madrid', 'New York']
 
-preIllnesses = ['', 'cancer', 'circulatory disorder', 'diabetes']
+preIllnesses = ['', 'Krebserkrankung', 'Imunsystemschwäche', 'Herz-Kreislauf']
 
 
 def insurance_number():
@@ -65,14 +65,14 @@ def insurance_number():
 
 def gen_person():
     gender = choice(genders)
-    firstName = choice(male_first_names) if gender == 'männlich' else choice(female_fist_names)
+    first_name = choice(male_first_names) if gender == 'männlich' else choice(female_fist_names)
+    last_name = choice(last_names)
     return {
-        'lastName': choice(last_names),
-        'firstName': firstName,
+        'lastName': last_name,
+        'firstName': first_name,
         'gender': gender,
         'dateOfBirth': gen_date_of_birth(),
-        'email': f'{firstName[0]}@{choice(email_providers)}.de',
-
+        'email': f'{first_name[0]}.{last_name}@{choice(email_providers)}.de',
         'phoneNumber': rand_num_str(),
         'street': choice(streets),
         'houseNumber': randint(0, 100),
@@ -84,7 +84,6 @@ def gen_person():
         'speedOfSymptomsOutbreak': choice(['Langsam', 'Mittel', 'Schnell']),
         'symptoms': sample(symptoms, randint(0, len(symptoms))),
         'coronaContacts': bool(getrandbits(1)),
-
         'riskAreas': [choice(riscAreas)],
         'weakenedImmuneSystem': bool(getrandbits(1)),
         'preIllnesses': [choice(preIllnesses)]

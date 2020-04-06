@@ -71,7 +71,7 @@
         shape="round"
         icon="bulb"
         size="large"
-        href="https://drive.google.com/file/d/1sATb_ff2r79Ts9hdNiH9Slsexv47aR3x/view?usp=sharing"
+        href="https://drive.google.com/file/d/1hoQtGvO21p7_pQ63iDLoWzXB-FFfvKQJ/view?usp=sharing"
         block
       >
         <span class="hidden-mobile">Hier geht's zu unserer Prozessübersicht</span>

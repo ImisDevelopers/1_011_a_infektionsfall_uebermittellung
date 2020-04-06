@@ -28,38 +28,38 @@
           />
 <!--                  @select="onSelect"-->
         </a-form-item>
-        <a-form-item label="Patienten-ID">
-          <a-input
-            v-decorator="[
-              'patientId',
-              {
-                rules: [
-                  {
-                    required: true,
-                    message: 'Bitte geben Sie die Patienten-ID ein.'
-                  }
-                ]
-              }
-            ]"
-            placeholder="z.B 43A78F0B"
-          />
-        </a-form-item>
-        <a-form-item label="Test-ID">
-          <a-input
-            v-decorator="[
-              'testId',
-              {
-                rules: [
-                  {
-                    required: true,
-                    message: 'Bitte geben Sie die Test-ID ein.'
-                  }
-                ]
-              }
-            ]"
-            placeholder="z.B ae48-hr43-sk97"
-          />
-        </a-form-item>
+        <BarcodeInput
+          label="Patienten-ID"
+          placeholder="z.B 43A78F0B"
+          :form="form"
+          :validation="[
+            'patientId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie die Patienten-ID ein.'
+                }
+              ]
+            }
+          ]"
+        />
+        <BarcodeInput
+          placeholder="z.B ae48-hr43-sk97"
+          label="Test-ID"
+          :form="form"
+          :validation="[
+            'testId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie die Test-ID ein.'
+                }
+              ]
+            }
+          ]"
+        />
         <a-form-item label="Kommentar">
           <a-textarea
             v-decorator="['comment']"
@@ -86,9 +86,11 @@
 
 <script>
 import Api from "../../api/Api";
+import BarcodeInput from './../BarcodeInput'
 
 export default {
   name: "LinkTestAndPatient",
+  components: {BarcodeInput},
   props: {
   },
   data() {

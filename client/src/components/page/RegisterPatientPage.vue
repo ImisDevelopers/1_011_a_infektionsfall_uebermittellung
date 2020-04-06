@@ -9,8 +9,8 @@
       <a-form
         :form="form"
         :layout="'horizontal'"
-        :labelCol="{ span: 6 }"
-        :wrapperCol="{ span: 14}"
+        :labelCol="{ span: 8 }"
+        :wrapperCol="{ span: 16}"
         @submit="handleSubmit"
       >
         <a-collapse defaultActiveKey="1">
@@ -90,6 +90,26 @@
                   <a-input
                     v-decorator="['city', { rules: [{ required: true }] }]"
                   />
+                </a-form-item>
+              </a-col>
+              <a-col :span="24">
+                <a-form-item
+                  label="Üben sie einen systemrelevanten Beruf aus?"
+                  required
+                  :labelCol="{ lg: 12 }"
+                  :wrapperCol="{ lg: 12 }"
+                >
+                  <a-select
+                    labelInValue
+                    v-model="selectedOccupation"
+                  >
+                    <a-select-option
+                      v-for="riskOccupation in RISK_OCCUPATIONS" :key="riskOccupation.key"
+                    >
+                      {{ riskOccupation.label }}
+                    </a-select-option>
+                  </a-select>
+
                 </a-form-item>
               </a-col>
             </a-row>
@@ -215,7 +235,7 @@
             >
               <a-row>
                 <a-col
-                  v-for="(illness, idx) in SYMPTOMS" :key="idx"
+                  v-for="(illness, idx) in ILLNESSES" :key="idx"
                   :xs="24"
                   :sm="12"
                 >
@@ -318,6 +338,14 @@ const RISK_AREAS = [
   { key: "SPAIN", description: "Spanien" },
   { key: "USA", description: "USA: Kalofornien, Washington oder New York" }
 ];
+const RISK_OCCUPATIONS = [
+  { key: "NO_RISK_OCCUPATION", label: "Kein systemrelevanter Beruf" },
+  { key: "FIRE_FIGHTER", label: "Feuerwehrmann/frau" },
+  { key: "DOCTOR", label: "Ärzt/Ärztin" },
+  { key: "NURSE", label: "Pflegepersonal" },
+  { key: "CAREGIVER", label: "Altenpflege" },
+  { key: "POLICE", label: "Polizei" },
+ ];
 
 export default {
   name: "RegisterPatientPage",
@@ -336,6 +364,7 @@ export default {
     RISK_AREAS.forEach(riskArea => {
       selectedRiskAreas[riskArea.key] = false;
     });
+    const selectedOccupation = { key: "NO_RISK_OCCUPATION", label: "Kein Risiko Beruf" };
 
     return {
       dateFormat: "DD/MM/YYYY",
@@ -346,6 +375,8 @@ export default {
       selectedPreIllnesses,
       RISK_AREAS,
       selectedRiskAreas,
+      RISK_OCCUPATIONS,
+      selectedOccupation,
       createdPatient: null,
       dataProcessingClass: ""
     };
@@ -390,13 +421,15 @@ export default {
         const riskAreas = RISK_AREAS.filter(
           riskArea => this.selectedRiskAreas[riskArea.key]
         ).map(riskArea => riskArea.key);
-
+        const riskOccupation = this.selectedOccupation.key
+        console.error("hello")
         const request = {
           ...values,
           dateOfBirth: values["dateOfBirth"].format("YYYY-MM-DD") + " 00",
           symptoms,
           preIllnesses,
-          riskAreas
+          riskAreas,
+          riskOccupation
         };
 
         Api.postPatient(request)

@@ -29,6 +29,10 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     url: jdbc:postgresql:localhost:5432
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create
   cloud:
     gcp:
       credentials:
@@ -40,6 +44,8 @@ management:
         include: health,info,prometheus
   server:
     port: 8081
+logging:
+  level:
 ---
 spring:
   profiles: test

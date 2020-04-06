@@ -1,17 +1,24 @@
 module.exports = {
   root: true,
+  parser: 'vue-eslint-parser',
+  plugins: ['@typescript-eslint'],
   env: {
     node: true,
   },
   extends: [
+    'plugin:@typescript-eslint/recommended',
     'plugin:vue/essential',
     '@vue/standard',
     '@vue/typescript/recommended',
   ],
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
   },
   rules: {
+    // '@typescript-eslint/rule-name': 'error',
+    '@typescript-eslint/no-extra-semi': 'error',
+
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'comma-dangle': [
@@ -29,8 +36,9 @@ module.exports = {
   overrides: [
     {
       files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)',
+        'src/**/*.{js,ts,vue}',
+        '**/__tests__/*.{ts,js,vue}',
+        '**/tests/unit/**/*.spec.{ts,js,vue}',
       ],
       env: {
         mocha: true,

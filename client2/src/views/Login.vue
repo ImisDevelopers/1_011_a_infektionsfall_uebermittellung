@@ -19,7 +19,7 @@
                         }]"
           placeholder="z.B 1337-4237-9438"
         >
-          <a-icon slot="prefix" type="user"/>
+          <a-icon slot="prefix" type="user" />
         </a-input>
       </a-form-item>
       <a-form-item label="Passwort">
@@ -33,10 +33,10 @@
           type="password"
           placeholder="**********"
         >
-          <a-icon slot="prefix" type="lock"/>
+          <a-icon slot="prefix" type="lock" />
         </a-input>
       </a-form-item>
-      <a-divider/>
+      <a-divider />
       <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
         <a-button type="primary" html-type="submit" @click.prevent="handleLogin">
           Einloggen
@@ -71,6 +71,7 @@ const Base = Vue.extend({
     }),
   },
 })
+
 @Component
 export default class Login extends Base {
   data() {
@@ -87,6 +88,18 @@ export default class Login extends Base {
       this.login({
         username: values.username,
         password: values.password,
+      }).catch(error => {
+        if (error.status === 403) {
+          this.$notification.error({
+            message: 'Login fehlgeschlagen',
+            description: 'Logindaten fehlerhaft',
+          })
+        } else {
+          this.$notification.error({
+            message: 'Login fehlgeschlagen',
+            description: 'Service nicht erreichbar',
+          })
+        }
       })
     })
   }

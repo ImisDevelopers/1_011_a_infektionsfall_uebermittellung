@@ -457,9 +457,8 @@ class HttpClient<SecurityDataType> {
       method,
       body: body ? JSON.stringify(body) : null,
     }).then(async (response) => {
-      const data = await this.safeParseResponse<T, E>(response);
-      if (!response.ok) throw data;
-      return data;
+      if (!response.ok) throw response;
+      return await this.safeParseResponse<T, E>(response);
     });
 }
 

@@ -112,27 +112,13 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
   }
 
   async getAuthenticatedInstitution() {
-    try {
-      const institution = await Api.auth.getInstitutionUsingGet()
-      this.commit('setAuthenticatedInstitution', institution)
-    } catch (err) {
-      Notification.error({
-        message: '',
-        description: 'Institution konnte nicht geladen werden',
-      })
-    }
+    const institution = await Api.auth.getInstitutionUsingGet()
+    this.commit('setAuthenticatedInstitution', institution)
   }
 
   async getAuthenticatedUser() {
-    try {
-      const user = await Api.auth.currentUserUsingGet()
-      this.commit('setUser', user)
-    } catch (err) {
-      Notification.error({
-        message: '',
-        description: 'Nutzer konnte nicht geladen werden',
-      })
-    }
+    const user = await Api.auth.currentUserUsingGet()
+    this.commit('setUser', user)
   }
 }
 

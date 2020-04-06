@@ -42,7 +42,7 @@ const apiWrapper = {
 
 function createApiProxy(foo: Api): Api { // Proxy<Foo> is compatible with Foo
   const handler = {
-    get: function(target: Api, prop: keyof Api, receiver: any) {
+    get: (target: Api, prop: keyof Api, receiver: any) => {
       if (Api.prototype[prop] !== null) {
         return apiWrapper.api[prop]
       }

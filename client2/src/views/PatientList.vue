@@ -172,7 +172,9 @@ const columnsSchema: ColumnSchema[] = [
     title: 'Status',
     dataIndex: 'patientStatus',
     key: 'patientStatus',
-    scopedSlots: { customRender: 'patientStatus' },
+    scopedSlots: {
+      customRender: 'patientStatus',
+    },
     sorter: true,
   },
   {
@@ -312,7 +314,7 @@ export default Vue.extend({
           ).join('\n')
           const filename = moment().format('YYYY_MM_DD') + '_patienten_export.csv'
           downloadCsv(header + '\n' + patients, filename)
-        }).catch(error => {
+        }).catch((error: Error) => {
           console.error(error)
           const notification = {
             message: 'Fehler beim Laden der Patientendaten.',
@@ -322,7 +324,7 @@ export default Vue.extend({
         })
       })
     },
-    handleTableChange(pagination, filters, sorter) {
+    handleTableChange(pagination: any, filters: any, sorter: any) {
       const sortKey = sorter.field ? sorter.field : 'lastName'
       let sortOrder = 'asc'
       if (sorter.order === 'descend') {

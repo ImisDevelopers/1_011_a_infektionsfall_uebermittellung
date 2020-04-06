@@ -1,4 +1,4 @@
-import { Institution, User } from '@/api/SwaggerApi'
+import { Institution, RegisterUserRequest, User } from '@/api/SwaggerApi'
 import { config } from '@/config'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
@@ -131,6 +131,18 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
       Notification.error({
         message: '',
         description: 'Nutzer konnte nicht geladen werden',
+      })
+    }
+  }
+
+  async registerUserForInstitution(user: RegisterUserRequest) {
+    try {
+      const res = await Api.auth.registerUserUsingPost(user)
+      this.dispatch('getAuthenticatedInstitution')
+    } catch (err) {
+      Notification.error({
+        message: 'Error',
+        description: 'Nutzer konnte nicht hinzugefügt werden',
       })
     }
   }

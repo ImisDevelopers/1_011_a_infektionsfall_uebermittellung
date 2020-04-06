@@ -1,6 +1,37 @@
 <template>
   <a-card class="table-container">
     <div>Account {{ JSON.stringify(institution()) }}</div>
+    <a-form
+      :form="registerUserForm"
+      :layout="'horizontal'"
+      :labelCol="{ span: 8 }"
+      :wrapperCol="{ span: 16}"
+      @submit.prevent="handleRegisterUser"
+    >
+      <p>Füge einen Nutzer hinzu</p>
+      <a-form-item label="username">
+        <a-input
+          v-decorator="['username', { rules: [{ required: true }] }]"
+        />
+      </a-form-item>
+      <a-form-item label="password">
+        <a-input
+          type="password"
+          v-decorator="['password', { rules: [{ required: true }] }]"
+        />
+      </a-form-item>
+      <a-form-item label="Rolle">
+        <a-select
+          v-decorator="['userRole', { rules: [{ required: true }] }]"
+        >
+          <a-select-option value="USER_ROLE_ADMIN">Admin</a-select-option>
+          <a-select-option value="USER_ROLE_REGULAR">Regular</a-select-option>
+        </a-select>
+      </a-form-item>
+      <a-button type="primary" html-type="submit">
+        Nutzer hinzufügen
+      </a-button>
+    </a-form>
     <a-table
       :columns="tableColumns"
       :dataSource="users()"
@@ -16,6 +47,7 @@
 </template>
 
 <script lang="ts">
+import { RegisterUserRequest } from '@/api/SwaggerApi'
 import { UserRole } from '@/models'
 import Vue from 'vue'
 import { authMapper } from '@/store/modules/auth.module'
@@ -59,6 +91,7 @@ const Base = Vue.extend({
       }),
       tableColumns,
       roleMapping,
+      registerUserForm: this.$form.createForm(this),
     }
   },
   computed: {
@@ -66,9 +99,22 @@ const Base = Vue.extend({
       users: 'institutionUsers',
     }),
   },
+  methods: {
+    ...authMapper.mapActions({
+      registerUser: 'registerUserForInstitution',
+    }),
+  },
 })
 @Component
 export default class AccountView extends Base {
+  handleRegisterUser() {
+    this.registerUserForm.validateFields(async(err: Error, values: any) => {
+      if (err) {
+        return
+      }
+      this.registerUser(values)
+    })
+  }
 }
 </script>
 

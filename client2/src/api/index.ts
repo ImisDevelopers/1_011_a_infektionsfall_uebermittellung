@@ -7,7 +7,7 @@ if (
 ) {
   baseUrl = 'http://localhost:80'
   // Alternative config to run the app locally without root; see proxy conf
-  // this.BASE_URL = "http://localhost:8080/api";
+  // baseUrl = 'http://localhost:8080/api'
 } else if (location.host.startsWith('staging')) {
   baseUrl = 'https://api.staging.imis-prototyp.de'
 } else {
@@ -42,7 +42,7 @@ const apiWrapper = {
 
 function createApiProxy(foo: Api): Api { // Proxy<Foo> is compatible with Foo
   const handler = {
-    get: function(target: Api, prop: keyof Api, receiver: any) {
+    get: (target: Api, prop: keyof Api, receiver: any) => {
       if (Api.prototype[prop] !== null) {
         return apiWrapper.api[prop]
       }

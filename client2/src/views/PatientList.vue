@@ -5,30 +5,30 @@
       <a-form class="search-container" :model="form">
         <a-form-item label="Vorname">
           <a-input v-model="form.firstName" placeholder="Vorname">
-            <a-icon slot="prefix" type="user"/>
+            <a-icon slot="prefix" type="user" />
           </a-input>
         </a-form-item>
         <a-form-item label="Nachname">
           <a-input v-model="form.lastName" placeholder="Nachname">
-            <a-icon slot="prefix" type="user"/>
+            <a-icon slot="prefix" type="user" />
           </a-input>
         </a-form-item>
         <a-form-item label="Status">
           <a-select style="width: 250px" placeholder="Status" v-model="form.patientStatus">
             <a-select-option value="">Alle</a-select-option>
             <a-select-option v-for="eventType in eventTypes" :key="eventType.id">
-              <a-icon :type="eventType.icon" style="margin-right: 5px"/>
+              <a-icon :type="eventType.icon" style="margin-right: 5px" />
               {{eventType.label}}
             </a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item label="ID">
           <a-input v-model="form.id" placeholder="ID">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
         <a-button @click="toggleAdvancedSearch">
-          <a-icon :type="showAdvancedSearch ? 'down' : 'right'"/>
+          <a-icon :type="showAdvancedSearch ? 'down' : 'right'" />
           Erweiterte Suche
         </a-button>
         <a-button icon="search" type="primary" html-type="submit"
@@ -41,11 +41,11 @@
           <a-select v-model="form.gender" style="width: 120px" placeholder="Geschlecht">
             <a-select-option value="">Alle</a-select-option>
             <a-select-option value="weiblich">
-              <a-icon type="woman" style="margin-right: 5px"/>
+              <a-icon type="woman" style="margin-right: 5px" />
               Weiblich
             </a-select-option>
             <a-select-option value="männlich">
-              <a-icon type="man" style="margin-right: 5px"/>
+              <a-icon type="man" style="margin-right: 5px" />
               Männlich
             </a-select-option>
             <a-select-option value="sonstiges">Sonstiges</a-select-option>
@@ -53,52 +53,52 @@
         </a-form-item>
         <a-form-item label="Stadt">
           <a-input v-model="advancedForm.city" placeholder="Stadt">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="E-Mail">
           <a-input v-model="advancedForm.email" placeholder="E-Mail">
-            <a-icon slot="prefix" type="mail"/>
+            <a-icon slot="prefix" type="mail" />
           </a-input>
         </a-form-item>
         <a-form-item label="Telefonnummer">
           <a-input v-model="advancedForm.phoneNumber" placeholder="Telefonnummer">
-            <a-icon slot="prefix" type="phone"/>
+            <a-icon slot="prefix" type="phone" />
           </a-input>
         </a-form-item>
         <a-form-item label="Straße">
           <a-input v-model="advancedForm.street" placeholder="Straße">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Hausnummer" style="width: 100px">
           <a-input v-model="advancedForm.houseNumber" placeholder="Hausnr.">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Postleitzahl" style="width: 100px">
           <a-input v-model="advancedForm.zip" placeholder="PLZ">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Versicherung">
           <a-input v-model="advancedForm.insuranceCompany" placeholder="Versicherung">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
         <a-form-item label="Versicherungsnummer">
           <a-input v-model="advancedForm.insuranceMembershipNumber" placeholder="Versicherungsnummer">
-            <a-icon slot="prefix" type="idcard"/>
+            <a-icon slot="prefix" type="idcard" />
           </a-input>
         </a-form-item>
         <a-form-item label="Arzt-ID">
           <a-input v-model="advancedForm.doctorId" placeholder="Arzt-ID">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
         <a-form-item label="Labor-ID">
           <a-input v-model="advancedForm.laboratoryId" placeholder="Labor-ID">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
       </a-form>
@@ -111,7 +111,7 @@
         @change="handleTableChange"
       >
         <div slot="patientStatus" slot-scope="patientStatus">
-          <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px"/>
+          <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
           {{eventTypes.find(type => type.id === patientStatus).label}}
         </div>
       </a-table>
@@ -135,9 +135,8 @@
 <script lang="ts">
 import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
-import Component from 'vue-class-component'
 import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
-import { patientMapper, patientModule } from '@/store/modules/patients.module'
+import { patientMapper } from '@/store/modules/patients.module'
 import { eventTypes } from '@/util/event-types'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
@@ -191,6 +190,7 @@ const columnsSchema: Partial<Column>[] = [
 interface State {
   form: Partial<PatientSearchParamsDTO>;
   advancedForm: Partial<PatientSearchParamsDTO>;
+
   [key: string]: any;
 }
 

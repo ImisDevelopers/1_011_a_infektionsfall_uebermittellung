@@ -1,6 +1,6 @@
 import router from '@/router'
 import { Patient } from '@/api/SwaggerApi'
-import Notification from '@/util/notification'
+import { Vue } from 'vue/types/vue'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 import Api from '@/api'
 
@@ -30,13 +30,13 @@ class PatientMutations extends Mutations<PatientState> {
 }
 
 class PatientActions extends Actions<PatientState, PatientGetters, PatientMutations, PatientActions> {
-  async fetchPatients() {
+  async fetchPatients(instance: Vue) {
     try {
       // this.commit('shared/startedLoading', 'fetchPatients', { root: true })
       const patients = await Api.patients.getAllPatientsUsingGet()
       this.commit('setPatients', patients)
     } catch (err) {
-      Notification.error({
+      instance.$notification.error({
         message: 'Fehler',
         description: 'Patienten kontent nicht geladen werden',
       })
@@ -44,7 +44,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
     // commit('shared/finishedLoading', 'fetchPatients', { root: true })
   }
 
-  async registerPatient(patient: Patient) {
+  async registerPatient(patient: Patient, instance: Vue) {
     // commit('shared/startedLoading', 'registerPatient', { root: true })
     try {
       const patientResponse = await Api.patients.addPatientUsingPost(patient)
@@ -53,7 +53,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
         message: 'Patient registriert.',
         description: 'Der Patient wurde erfolgreich registriert.',
       }
-      Notification.success(notification)
+      instance.$notification.success(notification)
       if (patientResponse.id) {
         router.push({ name: 'patient-detail', params: { id: patientResponse.id } })
       }
@@ -63,7 +63,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
         message: 'Fehler beim Registrieren des Patienten.',
         description: err.message,
       }
-      Notification.error(notification)
+      instance.$notification.error(notification)
     }
     // commit('shared/finishedLoading', 'registerPatient', { root: true })
   }

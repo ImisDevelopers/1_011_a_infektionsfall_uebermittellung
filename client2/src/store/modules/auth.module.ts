@@ -3,7 +3,6 @@ import { config } from '@/config'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
 import Api, { removeBearerToken, setBearerToken } from '@/api'
-import Notification from '@/util/notification'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 import { InstitutionType } from '@/models'
 
@@ -101,38 +100,19 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
         this.dispatch('getAuthenticatedUser')
       } else {
         // this.commit('tokenExpired')
-        const notification = {
-          message: 'Session Expired',
-          description: 'Ihre Sitzung ist abgelaufen',
-        }
-        Notification.info(notification)
         window.localStorage.clear()
       }
     }
   }
 
   async getAuthenticatedInstitution() {
-    try {
-      const institution = await Api.auth.getInstitutionUsingGet()
-      this.commit('setAuthenticatedInstitution', institution)
-    } catch (err) {
-      Notification.error({
-        message: '',
-        description: 'Institution konnte nicht geladen werden',
-      })
-    }
+    const institution = await Api.auth.getInstitutionUsingGet()
+    this.commit('setAuthenticatedInstitution', institution)
   }
 
   async getAuthenticatedUser() {
-    try {
-      const user = await Api.auth.currentUserUsingGet()
-      this.commit('setUser', user)
-    } catch (err) {
-      Notification.error({
-        message: '',
-        description: 'Nutzer konnte nicht geladen werden',
-      })
-    }
+    const user = await Api.auth.currentUserUsingGet()
+    this.commit('setUser', user)
   }
 
   async registerUserForInstitution(user: RegisterUserRequest) {

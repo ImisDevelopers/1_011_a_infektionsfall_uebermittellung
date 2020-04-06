@@ -438,7 +438,7 @@ export default Vue.extend({
           riskAreas,
           riskOccupation,
         }
-        this.registerPatient(request)
+        this.registerPatient(request, this)
       })
     },
   },

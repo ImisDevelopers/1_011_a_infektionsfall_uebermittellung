@@ -19,7 +19,7 @@
                         }]"
           placeholder="z.B 1337-4237-9438"
         >
-          <a-icon slot="prefix" type="user"/>
+          <a-icon slot="prefix" type="user" />
         </a-input>
       </a-form-item>
       <a-form-item label="Passwort">
@@ -33,10 +33,10 @@
           type="password"
           placeholder="**********"
         >
-          <a-icon slot="prefix" type="lock"/>
+          <a-icon slot="prefix" type="lock" />
         </a-input>
       </a-form-item>
-      <a-divider/>
+      <a-divider />
       <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
         <a-button type="primary" html-type="submit" @click.prevent="handleLogin">
           Einloggen
@@ -44,14 +44,7 @@
       </a-form-item>
     </a-form>
     <div>
-      <!--            <p>Testzugänge:</p>-->
-      <!--            <ul style="text-align: left">-->
       <p>Demo-Zugang <strong>test_lab</strong> mit Passwort <strong>asdf</strong></p>
-      <!--                <li>Arzt-Zugang <strong>test_doctor</strong> mit Passwort <strong>asdf</strong></li>-->
-      <!--                <li>oder neuen Zugang-->
-      <!--                    <router-link to="/prototype/register-institution">auf der Registrierungsseite anlegen</router-link>-->
-      <!--                </li>-->
-      <!--            </ul>-->
       <router-link :to="{ name: 'register-institution', params: { id: 'demo' } }">Als Institution registrieren
       </router-link>
     </div>
@@ -61,12 +54,12 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import { authMapper } from '../store/modules/auth.module'
+import { authMapper } from '@/store/modules/auth.module'
 
 export default Vue.extend({
+  name: 'Login',
   data() {
     return {
-      x: '',
       form: this.$form.createForm(this),
     }
   },

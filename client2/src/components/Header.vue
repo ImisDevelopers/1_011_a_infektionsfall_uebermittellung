@@ -1,9 +1,8 @@
 <template>
-  <a-layout-header style="height: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0">
+  <a-layout-header
+    style="height: auto; display: flex; justify-content: space-between; align-items: baseline; padding: 0">
 
     <div>
-<!--        v-if="authenticationStore.user"-->
-<!--        @click="showNavbar = !showNavbar"-->
       <a-icon
         type="menu"
         style="color: white; padding: 1.5rem"
@@ -11,7 +10,6 @@
     </div>
     <span :style="{color: 'white', }">IMIS</span>
     <div>
-<!--        v-if="authenticationStore.user"-->
       <a-icon
         type="user"
         style="color: #aaa; padding: 1.5rem"

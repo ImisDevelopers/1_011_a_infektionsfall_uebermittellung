@@ -133,6 +133,7 @@
 <!--// TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu-->
 
 <script lang="ts">
+import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { Patient } from '@/api/SwaggerApi'
@@ -142,15 +143,7 @@ import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
 
-type ColumnSchema = {
-  title: string;
-  dataIndex: string;
-  key: string;
-  defaultSortOrder?: string;
-  scopedSlots?: any;
-}
-
-const columnsSchema: ColumnSchema[] = [
+const columnsSchema: Partial<Column>[] = [
   {
     title: 'Nachname',
     // sorter: (a, b) => a.lastName.localeCompare(b.lastName),
@@ -204,7 +197,7 @@ export default Vue.extend({
       form: {
         firstName: '',
         lastName: '',
-        patientStatus: '',
+        patientStatus: null || '',
         id: '',
         order: 'asc',
         orderBy: 'lastName',
@@ -231,11 +224,6 @@ export default Vue.extend({
       data: [], // data
       showAdvancedSearch: false,
       eventTypes: eventTypes,
-      customRow: (record: Patient) => ({
-        on: {
-          click: () => this.handlePatientClick(record),
-        },
-      }),
     }
   },
   watch: {
@@ -268,7 +256,7 @@ export default Vue.extend({
       if (this.showAdvancedSearch) {
         formValues = { ...formValues, ...this.advancedForm }
       }
-      if (!formValues.patientStatus) {
+      if (formValues.patientStatus === '') {
         // Backend fails on empty string
         formValues.patientStatus = null
       }
@@ -312,7 +300,7 @@ export default Vue.extend({
           ).join('\n')
           const filename = moment().format('YYYY_MM_DD') + '_patienten_export.csv'
           downloadCsv(header + '\n' + patients, filename)
-        }).catch(error => {
+        }).catch((error: any) => {
           console.error(error)
           const notification = {
             message: 'Fehler beim Laden der Patientendaten.',
@@ -322,7 +310,7 @@ export default Vue.extend({
         })
       })
     },
-    handleTableChange(pagination, filters, sorter) {
+    handleTableChange(pagination: number, filters: any, sorter: any) {
       const sortKey = sorter.field ? sorter.field : 'lastName'
       let sortOrder = 'asc'
       if (sorter.order === 'descend') {
@@ -335,6 +323,13 @@ export default Vue.extend({
     handlePatientClick(patient: Patient) {
       if (patient.id) {
         this.$router.push({ name: 'patient-detail', params: { id: patient.id } })
+      }
+    },
+    customRow(record: Patient) {
+      return {
+        on: {
+          click: () => this.handlePatientClick(record),
+        },
       }
     },
   },

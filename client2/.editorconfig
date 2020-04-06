@@ -12,7 +12,6 @@ ij_formatter_on_tag = @formatter:on
 ij_formatter_tags_enabled = false
 ij_smart_tabs = false
 ij_wrap_on_typing = false
-ij_html_do_not_indent_children_of_tags = script
 
 [*.css]
 indent_style = space
@@ -893,7 +892,7 @@ ij_html_attribute_wrap = normal
 ij_html_block_comment_at_first_column = true
 ij_html_do_not_align_children_of_min_lines = 0
 ij_html_do_not_break_if_inline_tags = title,h1,h2,h3,h4,h5,h6,p
-ij_html_do_not_indent_children_of_tags = html,body,thead,tbody,tfoot
+ij_html_do_not_indent_children_of_tags = html,body,thead,tbody,tfoot,script
 ij_html_enforce_quotes = false
 ij_html_inline_tags = a,abbr,acronym,b,basefont,bdo,big,br,cite,cite,code,dfn,em,font,i,img,input,kbd,label,q,s,samp,select,small,span,strike,strong,sub,sup,textarea,tt,u,var
 ij_html_keep_blank_lines = 2

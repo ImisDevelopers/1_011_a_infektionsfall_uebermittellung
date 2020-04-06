@@ -3,7 +3,6 @@ import { config } from '@/config'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
 import Api, { removeBearerToken, setBearerToken } from '@/api'
-import Notification from '@/util/notification'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 import { InstitutionType } from '@/models'
 
@@ -101,11 +100,6 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
         this.dispatch('getAuthenticatedUser')
       } else {
         // this.commit('tokenExpired')
-        const notification = {
-          message: 'Session Expired',
-          description: 'Ihre Sitzung ist abgelaufen',
-        }
-        Notification.info(notification)
         window.localStorage.clear()
       }
     }

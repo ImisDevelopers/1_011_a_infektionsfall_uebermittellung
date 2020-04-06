@@ -44,14 +44,7 @@
       </a-form-item>
     </a-form>
     <div>
-      <!--            <p>Testzugänge:</p>-->
-      <!--            <ul style="text-align: left">-->
       <p>Demo-Zugang <strong>test_lab</strong> mit Passwort <strong>asdf</strong></p>
-      <!--                <li>Arzt-Zugang <strong>test_doctor</strong> mit Passwort <strong>asdf</strong></li>-->
-      <!--                <li>oder neuen Zugang-->
-      <!--                    <router-link to="/prototype/register-institution">auf der Registrierungsseite anlegen</router-link>-->
-      <!--                </li>-->
-      <!--            </ul>-->
       <router-link :to="{ name: 'register-institution', params: { id: 'demo' } }">Als Institution registrieren
       </router-link>
     </div>
@@ -60,49 +53,38 @@
 
 <script lang="ts">
 
+import { authMapper } from '@/store/modules/auth.module'
 import Vue from 'vue'
-import Component from 'vue-class-component'
-import { authMapper } from '../store/modules/auth.module'
 
-const Base = Vue.extend({
-  methods: {
-    ...authMapper.mapActions({
-      login: 'login',
-    }),
-  },
-})
-
-@Component
-export default class Login extends Base {
+export default Vue.extend({
+  name: 'Login',
   data() {
     return {
       form: this.$form.createForm(this),
     }
-  }
-
-  handleLogin() {
-    this.form.validateFields((err: any, values: any) => {
-      if (err) {
-        return
-      }
-      this.login({
-        username: values.username,
-        password: values.password,
-      }).catch(error => {
-        if (error.status === 403) {
+  },
+  methods: {
+    ...authMapper.mapActions({
+      login: 'login',
+    }),
+    handleLogin() {
+      this.form.validateFields((err: any, values: any) => {
+        if (err) {
+          return
+        }
+        this.login({
+          username: values.username,
+          password: values.password,
+        }).catch(error => {
+          console.error(error)
           this.$notification.error({
             message: 'Login fehlgeschlagen',
             description: 'Logindaten fehlerhaft',
           })
-        } else {
-          this.$notification.error({
-            message: 'Login fehlgeschlagen',
-            description: 'Service nicht erreichbar',
-          })
-        }
+        })
       })
-    })
-  }
-}
+    },
+  },
+})
 
 </script>

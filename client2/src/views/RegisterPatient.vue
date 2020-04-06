@@ -440,7 +440,7 @@ export default class RegisterPatient extends Base {
         riskAreas,
         riskOccupation,
       }
-      this.registerPatient(request)
+      this.registerPatient(request, this)
     })
   }
 }

@@ -8,21 +8,30 @@
                 />
                 <p>Login</p>
             </div>
-            <a-form-item label="Kennung">
+            <a-form-item label="Kennung" >
                 <a-input
-                        v-decorator="['id', { rules: [{
-                            required: true, message: 'Bitte geben Sie Ihre Kennung ein.'
-                        }]}]"
+                        v-decorator="['id', {
+                            rules: [{
+                                required: true,
+                                message: 'Bitte geben Sie Ihre Kennung ein.',
+                            }],
+                            initialValue: 'test',
+                        }]"
                         placeholder="z.B 1337-4237-9438"
                 >
                     <a-icon slot="prefix" type="user"/>
                 </a-input>
             </a-form-item>
-            <a-form-item label="Passwort">
+            <a-form-item label="Passwort" >
                 <a-input
+                        default="asdf'"
+                        value="asdf"
                         v-decorator="['password', { rules: [{
-                            required: true, message: 'Bitte geben Sie Ihr Passwort ein.'
-                        }]}]"
+                                required: true,
+                                message: 'Bitte geben Sie Ihr Passwort ein.'
+                            }],
+                            initialValue: 'asdf',
+                        }]"
                         type="password"
                         placeholder="**********"
                 >
@@ -39,7 +48,7 @@
         <div>
 <!--            <p>Testzugänge:</p>-->
 <!--            <ul style="text-align: left">-->
-                <p>Demo-Zugang <strong>test_lab</strong> mit Passwort <strong>asdf</strong></p>
+                <p>Demo-Zugang <strong>test</strong> mit Passwort <strong>asdf</strong></p>
 <!--                <li>Arzt-Zugang <strong>test_doctor</strong> mit Passwort <strong>asdf</strong></li>-->
 <!--                <li>oder neuen Zugang-->
 <!--                    <router-link to="/prototype/register-institution">auf der Registrierungsseite anlegen</router-link>-->

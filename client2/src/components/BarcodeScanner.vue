@@ -26,6 +26,7 @@
 </template>
 <script>
 import { BrowserMultiFormatReader } from '@zxing/library'
+
 export default {
   name: 'BarcodeScanner',
   data() {
@@ -70,7 +71,10 @@ export default {
   created: async function() {
     try {
       if (!navigator.mediaDevices.enumerateDevices) {
-        this.device = { key: undefined, label: 'Camera' }
+        this.device = {
+          key: undefined,
+          label: 'Camera',
+        }
       } else {
         this.devices = await this.codeReader.listVideoInputDevices()
         this.device = {
@@ -100,12 +104,14 @@ export default {
     width: 100%;
     height: 100%;
   }
+
   .scanner-input {
     padding: 1em;
     position: absolute;
     bottom: 0;
     z-index: 22;
   }
+
   .result {
     display: flex;
     align-items: center;
@@ -121,12 +127,14 @@ export default {
     font-size: 30pt;
     margin: auto;
   }
+
   .buttons {
     display: flex;
     justify-content: space-around;
   }
+
   .buttons button {
-    width: auto  ;
+    width: auto;
     margin: 0 1em;
   }
 </style>

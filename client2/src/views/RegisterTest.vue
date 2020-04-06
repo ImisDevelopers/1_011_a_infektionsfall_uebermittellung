@@ -90,6 +90,7 @@ import Vue from 'vue'
 import Api from '@/api'
 import BarcodeInput from '../components/BarcodeInput'
 import Component from 'vue-class-component'
+
 @Component({
   components: {
     BarcodeInput,

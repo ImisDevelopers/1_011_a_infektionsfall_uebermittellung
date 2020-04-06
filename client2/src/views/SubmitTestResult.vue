@@ -72,12 +72,10 @@
           />
         </a-form-item>
         <a-form-item :wrapper-col="{ span: 24 }">
-          <!--<a-upload
-            :accept="'pdf'"
-            :beforeUpload="beforeUpload"
-            :multiple="false"
-          >-->
-            <a-button v-on:click="uploadHint()"><a-icon type="upload" />Test Report hochladen</a-button>
+          <a-button v-on:click="uploadHint()">
+            <a-icon type="upload" />
+            Test Report hochladen
+          </a-button>
           <!--</a-upload>-->
         </a-form-item>
         <a-divider />
@@ -104,8 +102,7 @@ import BarcodeInput from '../components/BarcodeInput'
 export default {
   name: 'LinkTestResultAndPatient',
   components: { BarcodeInput },
-  props: {
-  },
+  props: {},
   data() {
     return {
       form: this.$form.createForm(this),

@@ -337,7 +337,7 @@ export default Vue.extend({
     customRow(record: Patient) {
       return {
         on: {
-          click: () => this.handlePatientClick(record),
+          dblclick: () => this.handlePatientClick(record),
         },
       }
     },

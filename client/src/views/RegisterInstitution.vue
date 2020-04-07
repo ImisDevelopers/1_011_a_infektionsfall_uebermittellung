@@ -214,9 +214,6 @@ export default Vue.extend({
             userRole: 'USER_ROLE_ADMIN',
           },
         }
-
-        console.log('Data was anonymized')
-
         Api.auth.registerInstitutionUsingPost(values).then(() => {
           this.form.resetFields()
           const notification = {

@@ -19,7 +19,7 @@ module.exports = {
     // '@typescript-eslint/rule-name': 'error',
     '@typescript-eslint/no-extra-semi': 'error',
 
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': 'off', // process.env.NODE_ENV === 'production' ? 'error' :
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'comma-dangle': [
       'error',

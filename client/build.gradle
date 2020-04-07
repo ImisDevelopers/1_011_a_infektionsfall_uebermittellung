@@ -11,7 +11,14 @@ node {
 }
 
 task buildFrontend(type: YarnTask) {
-    args = ['run', 'build']
+  args = ['run', 'build']
+}
+
+task lint(type: YarnTask) {
+  args = ['run', 'lint']
+}
+task test(type: YarnTask) {
+  args = ['run', 'test:unit']
 }
 
 task serve(type: YarnTask) {

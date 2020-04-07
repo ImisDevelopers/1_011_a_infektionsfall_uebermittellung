@@ -2,28 +2,31 @@ version: '3.5'
 
 services:
   postgres:
-    container_name: postgres_container
     image: postgres
     environment:
       POSTGRES_USER: imis
       POSTGRES_PASSWORD: password
       POSTGRES_DB: imis
     ports:
-        - "5432:5432"
+    - "5432:5432"
     restart: unless-stopped
 
   client:
     build:
       context: client
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
     ports:
     - "8080:8080"
-    -
-  core:
+    depends_on:
+    - server # for generating models from swagger api
+
+  server:
     build:
-      context: .
-      dockerfile: Dockerfile.prod
+      context: server
+      dockerfile: Dockerfile
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+    - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
     ports:
-      - "80:80"
+    - "80:80"
+    depends_on:
+    - postgres

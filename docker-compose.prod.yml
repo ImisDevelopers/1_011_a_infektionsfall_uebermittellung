@@ -16,13 +16,17 @@ services:
       context: client
       dockerfile: Dockerfile.prod
     ports:
-    - "8081:8080"
+    - "8080:8080"
+    depends_on:
+    - server # for generating models from swagger api
 
   server:
     build:
-      context: .
+      context: server
       dockerfile: Dockerfile.prod
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
     ports:
-    - "8080:8080"
+    - "80:8080"
+    depends_on:
+    - postgres

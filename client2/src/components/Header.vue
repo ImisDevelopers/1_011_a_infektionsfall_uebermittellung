@@ -6,6 +6,7 @@
       <a-icon
         type="menu"
         style="color: white; padding: 1.5rem"
+        @click="$emit('menu-toggle')"
       />
     </div>
     <span :style="{color: 'white', }">IMIS</span>

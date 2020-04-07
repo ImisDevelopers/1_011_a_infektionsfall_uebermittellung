@@ -354,6 +354,7 @@ const RISK_AREAS: KeyDescription[] = [
 ]
 
 export default Vue.extend({
+  name: 'RegisterPatient',
   data() {
     const selectedSymptoms: any = {}
     SYMPTOMS.forEach(symptom => {

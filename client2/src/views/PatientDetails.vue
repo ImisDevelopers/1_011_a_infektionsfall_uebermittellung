@@ -187,6 +187,7 @@ interface State {
 }
 
 export default Vue.extend({
+  name: 'PatientDetails',
   computed: {
     ...patientMapper.mapState({
       patients: 'patients',

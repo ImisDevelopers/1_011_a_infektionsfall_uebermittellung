@@ -82,6 +82,7 @@ const roleMapping: { [key in UserRole]: string } = {
 }
 
 export default Vue.extend({
+  name: 'Account',
   data() {
     return {
       tableColumns,

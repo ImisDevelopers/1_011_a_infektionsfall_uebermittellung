@@ -2,9 +2,14 @@
   <div>
     <a-layout class="app-container">
       <a-layout>
-        <Header />
+        <Header
+          @menu-toggle="sideNavCollapsed = !sideNavCollapsed"
+        />
         <a-layout>
-          <Navigation />
+          <Navigation
+            :sideNavCollapsed="sideNavCollapsed"
+            @route-clicked="handleRouteClicked"
+          />
           <a-layout-content
             style="box-sizing: border-box; width: 100%; display: flex; justify-content: space-between; flex-direction: column;"
           >
@@ -12,7 +17,7 @@
               <router-view></router-view>
             </div>
             <a-layout-footer style="textAlign: center">
-              IMIS ©2020 with <a-icon type="heart" style="color:red;">❤</a-icon> by
+              IMIS ©2020 with <a-icon type="heart" style="color: red;">❤</a-icon> by
               <a-button type="link" href="https://wirvsvirushackathon.org" target="_blank" style="padding-left: 0">#WeVsVirus</a-button>
             </a-layout-footer>
           </a-layout-content>
@@ -29,26 +34,32 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import Component from 'vue-class-component'
 import Header from '@/components/Header.vue'
 import Navigation from '@/components/Navigation.vue'
-import { mapGetters } from 'vuex'
 
-@Component({
+// used for the navigation bar
+const mobileWidth = 700
+
+export default Vue.extend({
+  name: 'AppRoot',
   components: {
     Header,
     Navigation,
   },
-})
-export default class AppRoot extends Vue {
-  // TODO Connect to state and use http interceptor
   data() {
     return {
       isLoading: false,
+      sideNavCollapsed: window.innerWidth < mobileWidth,
     }
-  }
-}
-
+  },
+  methods: {
+    handleRouteClicked() {
+      if (window.innerWidth < mobileWidth) {
+        this.sideNavCollapsed = true
+      }
+    },
+  },
+})
 </script>
 
 <style>

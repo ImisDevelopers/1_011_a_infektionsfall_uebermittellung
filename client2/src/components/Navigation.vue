@@ -1,6 +1,9 @@
 <template>
   <a-layout-sider
     breakpoint="md"
+    :collapsed="sideNavCollapsed"
+    :collapsedWidth="0"
+    :trigger="null"
   >
     <a-menu
       theme="dark"
@@ -12,7 +15,10 @@
         :key="route.path"
       >
         <!--        v-bind:class="{'ant-menu-item-selected': route.name === $route.name}" TODO this is to slow-->
-        <router-link :to="{ name: route.name }">
+        <router-link
+          :to="{ name: route.name }"
+          @click.native="$emit('route-clicked')"
+        >
           <a-icon :type="route.meta.navigationInfo.icon" />
           <span class="nav-text">{{ route.meta.navigationInfo.title }}</span>
         </router-link>
@@ -32,10 +38,10 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import Component from 'vue-class-component'
 import { authMapper } from '@/store/modules/auth.module'
 
-const Base = Vue.extend({
+export default Vue.extend({
+  name: 'Navigation',
   computed: {
     ...authMapper.mapGetters({
       roles: 'roles',
@@ -46,14 +52,16 @@ const Base = Vue.extend({
     ...authMapper.mapActions({
       logout: 'logout',
     }),
+    onLogout() {
+      this.logout()
+    },
+  },
+  props: {
+    sideNavCollapsed: {
+      type: Boolean,
+    },
   },
 })
-@Component
-export default class Navigation extends Base {
-  onLogout() {
-    this.logout()
-  }
-}
 </script>
 
 <style>

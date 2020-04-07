@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +20,8 @@ public class Laboratory extends InstitutionImpl {
     private List<LabTest> assignedLabTest;
 
 
+    @Override
+    public InstitutionType getType() {
+        return InstitutionType.LABORATORY;
+    }
 }

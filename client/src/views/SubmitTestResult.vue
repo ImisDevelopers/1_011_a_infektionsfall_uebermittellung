@@ -1,0 +1,201 @@
+<template>
+  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px">
+    <div v-if="!updatedLabTest">
+      <a-form
+        :form="form"
+        :label-col="{ span: 6 }"
+        :wrapper-col="{ span: 18 }"
+        @submit="handleSubmit"
+      >
+        <a-form-item label="Labor">
+          <a-auto-complete
+            :dataSource="laboratories"
+            @search="onSearch"
+            @focus="onSearch"
+            placeholder="z.B. WirVsVirus Labor"
+            v-decorator="[
+              'laboratoryId',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte wählen Sie ein Labor aus.'
+                  }
+                ]
+              }
+            ]"
+          />
+        </a-form-item>
+        <BarcodeInput
+          label="Test-ID"
+          placeholder="z.B 1337-4237-9438"
+          :form="form"
+          :validation="[
+            'testId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie Ihre Test-ID ein.'
+                }
+              ]
+            }
+          ]"
+        />
+        <a-form-item label="Testresultat">
+          <a-radio-group
+            v-decorator="[
+              'testResult',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte geben Sie das Testresultat an.'
+                  }
+                ]
+              }
+            ]"
+          >
+            <a-radio value="positive">
+              Positiv
+            </a-radio>
+            <a-radio value="negative">
+              Negativ
+            </a-radio>
+          </a-radio-group>
+        </a-form-item>
+        <a-form-item label="Kommentar">
+          <a-textarea
+            placeholder="Kommentar hinzufügen"
+            :autoSize="{ minRows: 3, maxRows: 5 }"
+            v-decorator="['comment']"
+          />
+        </a-form-item>
+        <a-form-item :wrapper-col="{ span: 24 }">
+          <a-button v-on:click="uploadHint()">
+            <a-icon type="upload" />
+            Test Report hochladen
+          </a-button>
+          <!--</a-upload>-->
+        </a-form-item>
+        <a-divider />
+        <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+          <a-button type="primary" html-type="submit">
+            Speichern
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </div>
+    <div v-else>
+      <div>Der Test wurde erfolgreich aktualisiert.</div>
+      <br />
+      <div>Test ID: {{ updatedLabTest.id }}</div>
+      <div>Test Status: {{ updatedLabTest.testStatus }}</div>
+    </div>
+  </a-card>
+</template>
+
+<script>
+import Api from '@/api'
+import BarcodeInput from '../components/BarcodeInput'
+
+export default {
+  name: 'LinkTestResultAndPatient',
+  components: { BarcodeInput },
+  props: {},
+  data() {
+    return {
+      form: this.$form.createForm(this),
+      updatedLabTest: null,
+      fileBytes: null,
+      fetchedLaboratories: [],
+      laboratories: [],
+    }
+  },
+  methods: {
+    uploadHint() {
+      const notification = {
+        message: 'Das Labor kann hier den Bericht mit hochladen. Aus Sicherheitsgründen ist diese Funktion im Prototyp deaktiviert.',
+      }
+      this.$notification.info(notification)
+    },
+    beforeUpload(file) {
+      const setFileBytes = fileBytes => {
+        this.fileBytes = fileBytes
+      }
+
+      const reader = new FileReader()
+      reader.onload = function(e) {
+        const utf8 = unescape(encodeURIComponent(e.target.result))
+        const array = []
+        for (let i = 0; i < utf8.length; i++) {
+          array.push(utf8.charCodeAt(i))
+        }
+        setFileBytes(array)
+      }
+      reader.readAsDataURL(file)
+
+      return false
+    },
+    handleSubmit(e) {
+      e.preventDefault()
+
+      this.form.validateFields((err, values) => {
+        if (err) {
+          return
+        }
+
+        const { testId } = values
+        const request = {
+          testId,
+          status:
+            values.testResult === 'positive'
+              ? 'TEST_POSITIVE'
+              : 'TEST_NEGATIVE',
+          comment: values.comment,
+          file: this.fileBytes,
+        }
+        // TODO this was just for MVP
+        Api.labtests.updateTestStatusUsingPut(values.laboratoryId, request)
+          .then(labTest => {
+            this.updatedLabTest = labTest
+
+            const notification = {
+              message: 'Testergebnis hinzugefügt.',
+              description: 'Das Testergebnis wurde erfolgreich hinzugefügt.',
+            }
+            this.$notification.success(notification)
+          })
+          .catch(err => {
+            const notification = {
+              message: 'Fehler beim Hinzufügen des Testergebnisses.',
+              description: err.message,
+            }
+            this.$notification.error(notification)
+          })
+      })
+    },
+    onSearch(str) {
+      if (!str) {
+        this.laboratories = this.fetchedLaboratories
+          .map(l => ({
+            value: l.id,
+            text: l.name,
+          }))
+      } else {
+        this.laboratories = this.fetchedLaboratories
+          .filter(l => l.name.toLowerCase().startsWith(str.toLowerCase()))
+          .map(l => ({
+            value: l.id,
+            text: l.name,
+          }))
+      }
+    },
+  },
+  async created() {
+    this.fetchedLaboratories = await Api.institutions.getAllLaboratoriesUsingGet()
+  },
+}
+</script>
+
+<style></style>

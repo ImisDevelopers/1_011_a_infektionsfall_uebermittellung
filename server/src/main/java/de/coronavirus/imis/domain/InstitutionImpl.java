@@ -1,19 +1,25 @@
 package de.coronavirus.imis.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import de.coronavirus.imis.config.domain.User;
+import lombok.Getter;
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-abstract class InstitutionImpl implements Institution {
+@Entity(name = "institution")
+@Getter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+public abstract class InstitutionImpl implements Institution {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
@@ -27,5 +33,9 @@ abstract class InstitutionImpl implements Institution {
     private String email;
     private String phoneNumber;
     private String comment;
+
+    @OneToMany(mappedBy = "institution")
+    private List<User> users;
+
 
 }

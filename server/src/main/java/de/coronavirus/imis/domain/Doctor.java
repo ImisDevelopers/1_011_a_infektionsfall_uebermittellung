@@ -12,4 +12,9 @@ import lombok.experimental.Accessors;
 @Data
 public class Doctor extends InstitutionImpl {
 
+  @Override
+  public InstitutionType getType() {
+    return InstitutionType.DOCTORS_OFFICE;
+  }
+
 }

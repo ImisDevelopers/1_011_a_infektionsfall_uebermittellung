@@ -1,20 +1,35 @@
 package de.coronavirus.imis;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.services.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
+import lombok.RequiredArgsConstructor;
+
+import de.coronavirus.imis.config.domain.User;
+import de.coronavirus.imis.config.domain.UserRepository;
+import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.services.InstitutionService;
+import de.coronavirus.imis.services.LabTestService;
+import de.coronavirus.imis.services.PatientEventService;
+import de.coronavirus.imis.services.PatientService;
+import de.coronavirus.imis.services.StatsService;
 
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {
 
 
@@ -23,15 +38,9 @@ public class TestDataLoader implements ApplicationRunner {
     private final LabTestService labTestService;
     private final PatientEventService eventService;
     private final StatsService statsService;
+    private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
-    @Autowired
-    public TestDataLoader(PatientService patientService, InstitutionService institutionService, LabTestService labTestService, PatientEventService eventService, StatsService statsService) {
-        this.patientService = patientService;
-        this.institutionService = institutionService;
-        this.labTestService = labTestService;
-        this.eventService = eventService;
-        this.statsService = statsService;
-    }
 
     static <T> Object makeDTO(String testFileName, Class<T> clazz)
             throws IOException {
@@ -77,7 +86,7 @@ public class TestDataLoader implements ApplicationRunner {
             // SETUP OUR WORLD
             log.info("Inserting laboratory");
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
-            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO, createLaboratoryDTO.getId());
+            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO);
 
             log.info("Inserting doctor");
             var createDoctorsOfficeDTO = (CreateInstitutionDTO) makeDTO("createDoctorsOffice.json", CreateInstitutionDTO.class);
@@ -92,6 +101,28 @@ public class TestDataLoader implements ApplicationRunner {
             var clinic = institutionService.createClinicInstitution(createClinicDTO);
 
 
+            var user = User.builder()
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .username("test_lab")
+                    .institution(laboratory)
+                    .password(encoder.encode("asdf"))
+                    .build();
+            userRepository.saveAndFlush(user);
+
+            var testDoc = User.builder()
+                    .username("test_doctor")
+                    .institution(doctorsOffice)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
+            userRepository.saveAndFlush(testDoc);
+            var testTestingSiteUser = User.builder()
+                    .username("test_testing_site")
+                    .institution(testSite)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
+            userRepository.saveAndFlush(testTestingSiteUser);
             // PERSON GETS SICK AND GOES TO THE DOCTOR
             // PERSON GETS REGISTERED
             var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);

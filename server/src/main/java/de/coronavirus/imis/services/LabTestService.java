@@ -1,5 +1,7 @@
 package de.coronavirus.imis.services;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -8,19 +10,12 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.domain.*;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.LaboratoryNotFoundException;
-import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.domain.PatientEvent;
-import de.coronavirus.imis.domain.PatientNotFoundException;
-import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.repositories.LabTestRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
@@ -83,7 +78,9 @@ public class LabTestService {
                 .orElseThrow();
 
         var changeEvent = new PatientEvent()
+                .setIllness(Illness.CORONA)
                 .setEventType(eventType)
+                .setEventTimestamp(Timestamp.valueOf(LocalDateTime.now()))
                 .setLabTest(labTest)
                 .setPatient(patient)
                 .setComment(comment);

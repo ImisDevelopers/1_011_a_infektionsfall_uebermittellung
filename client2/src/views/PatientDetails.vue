@@ -173,12 +173,12 @@
 </template>
 
 <script lang="ts">
-import { patientMapper } from '@/store/modules/patients.module'
 import Vue from 'vue'
+import moment from 'moment'
 import Api from '@/api'
 import { Patient, Timestamp } from '../api/SwaggerApi'
+import { patientMapper } from '@/store/modules/patients.module'
 import { eventTypes } from '@/util/event-types'
-import moment from 'moment'
 
 interface State {
   patient: undefined | Patient;

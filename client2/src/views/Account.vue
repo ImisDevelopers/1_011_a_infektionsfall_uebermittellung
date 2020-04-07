@@ -98,8 +98,8 @@ export default Vue.extend({
     ...authMapper.mapGetters({
       users: 'institutionUsers',
     }),
-    username() {
-      return this.user?.username
+    username(): string {
+      return this.user?.username || ''
     },
   },
   methods: {
@@ -111,7 +111,7 @@ export default Vue.extend({
         if (err) {
           return
         }
-        this.registerUser(values, this)
+        this.registerUser({ user: values, instance: this })
       })
     },
   },

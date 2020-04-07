@@ -439,7 +439,7 @@ export default Vue.extend({
           riskAreas,
           riskOccupation,
         }
-        this.registerPatient(request, this)
+        this.registerPatient({ patient: request, instance: this })
       })
     },
   },

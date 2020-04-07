@@ -116,6 +116,13 @@ public class TestDataLoader implements ApplicationRunner {
                     .userRole(UserRole.USER_ROLE_ADMIN)
                     .build();
             userRepository.saveAndFlush(testDoc);
+            var testTestingSiteUser = User.builder()
+                    .username("test_testing_site")
+                    .institution(testSite)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
+            userRepository.saveAndFlush(testTestingSiteUser);
             // PERSON GETS SICK AND GOES TO THE DOCTOR
             // PERSON GETS REGISTERED
             var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);

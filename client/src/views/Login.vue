@@ -6,7 +6,7 @@
           src="../assets/logo.png"
           height="100"
         />
-        <p>Login</p>
+        <h3>Login</h3>
       </div>
       <a-form-item label="Kennung">
         <a-input
@@ -44,7 +44,10 @@
       </a-form-item>
     </a-form>
     <div>
-      <p>Demo-Zugang <strong>test_lab</strong> mit Passwort <strong>asdf</strong></p>
+      <p>Demo-Zugänge:</p>
+      <p><strong>test_lab</strong> mit Passwort <strong>asdf</strong></p>
+      <p><strong>test_doctor</strong> mit Passwort <strong>asdf</strong></p>
+      <p><strong>test_testing_site</strong> mit Passwort <strong>asdf</strong></p>
       <router-link :to="{ name: 'register-institution', params: { id: 'demo' } }">Als Institution registrieren
       </router-link>
     </div>

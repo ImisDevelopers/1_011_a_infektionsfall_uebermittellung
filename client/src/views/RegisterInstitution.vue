@@ -1,10 +1,17 @@
 <template>
   <div class="wrapper">
     <div v-if="!createdInstitution">
-      <h3>
-        Registrieren Sie hier eine neue Instutition in IMIS.
-      </h3>
-      <a-card>
+      <a-card style="margin: 3rem auto; max-width: 860px">
+        <div class="login-header">
+          <img
+            src="../assets/logo.png"
+            height="100"
+          />
+          <h3>
+            Registrieren Sie hier eine neue Instutition in IMIS.
+          </h3>
+        </div>
+
         <a-form
           :form="form"
           :layout="'horizontal'"
@@ -13,19 +20,21 @@
           @submit.prevent="handleSubmit"
         >
           <a-row>
-            <a-col :lg="12">
+            <a-col :span="24">
               <a-form-item label="Benutzername">
                 <a-input v-decorator="['username', { rules: [{ required: true }] }]">
                   <a-icon slot="prefix" type="user"/>
                 </a-input>
               </a-form-item>
             </a-col>
-            <a-col :lg="12">
+            <a-col :span="24">
               <a-form-item label="Passwort">
                 <a-input v-decorator="['password', { rules: [{ required: true }] }]" type="password">
                   <a-icon slot="prefix" type="lock"/>
                 </a-input>
               </a-form-item>
+            </a-col>
+            <a-col :span="24">
               <a-form-item label="Passwort wiederholen" has-feedback
                            :validate-status="passwordRepeat.validateStatus"
                            :help="passwordRepeat.errorMsg"
@@ -241,5 +250,10 @@ export default Vue.extend({
 
   .data-processing-not-selected {
     color: red;
+  }
+  .login-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>

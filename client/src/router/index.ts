@@ -42,22 +42,24 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
   }
 }
 
+type InstitutionRule = 'ROLE_TEST_SITE' | 'ROLE_LABORATORY' | 'ROLE_DOCTORS_OFFICE' | 'ROLE_CLINIC' | 'ROLE_GOVERNMENT_AGENCY'
+
 export interface AppRoute extends RouteConfig {
   meta?: {
     navigationInfo?: {
       icon: string;
       title: string;
-      authorities: InstitutionType[];
+      authorities: InstitutionRule[];
     };
   };
 }
 
-const ALL_INSTITUTIONS: InstitutionType[] = [
-  'TEST_SITE',
-  'LABORATORY',
-  'DOCTORS_OFFICE',
-  'CLINIC',
-  'GOVERNMENT_AGENCY',
+const ALL_INSTITUTIONS: InstitutionRule[] = [
+  'ROLE_TEST_SITE',
+  'ROLE_LABORATORY',
+  'ROLE_DOCTORS_OFFICE',
+  'ROLE_CLINIC',
+  'ROLE_GOVERNMENT_AGENCY',
 ]
 
 const appRoutes: AppRoute[] = [
@@ -93,7 +95,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'user-add',
         title: 'Patient Registrieren',
-        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+        authorities: ['ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -105,7 +107,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'deployment-unit',
         title: 'Probe Zuordnen',
-        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+        authorities: ['ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -117,7 +119,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'experiment',
         title: 'Testresultat Zuordnen',
-        authorities: ['LABORATORY', 'TEST_SITE'],
+        authorities: ['ROLE_LABORATORY', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -129,7 +131,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'unorderd-list',
         title: 'Alle Tests',
-        authorities: ['LABORATORY', 'TEST_SITE'],
+        authorities: ['ROLE_LABORATORY', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -141,7 +143,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'team',
         title: 'Alle Patienten',
-        authorities: ['CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE'],
+        authorities: ['ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
       },
     },
   },

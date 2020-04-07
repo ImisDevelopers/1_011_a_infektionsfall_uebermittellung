@@ -12,7 +12,7 @@ import PatientList from '@/views/PatientList.vue'
 import PatientDetails from '@/views/PatientDetails.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
-import { InstitutionType } from '@/models'
+import { InstitutionRule, InstitutionType } from '@/models'
 
 Vue.use(VueRouter)
 
@@ -41,8 +41,6 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
     next()
   }
 }
-
-type InstitutionRule = 'ROLE_TEST_SITE' | 'ROLE_LABORATORY' | 'ROLE_DOCTORS_OFFICE' | 'ROLE_CLINIC' | 'ROLE_GOVERNMENT_AGENCY'
 
 export interface AppRoute extends RouteConfig {
   meta?: {

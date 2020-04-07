@@ -25,12 +25,12 @@
   </div>
 </template>
 <script>
-import { BrowserMultiFormatReader } from '@zxing/library'
+// import { BrowserMultiFormatReader } from '@zxing/library'
 
 export default {
   name: 'BarcodeScanner',
   data() {
-    const codeReader = new BrowserMultiFormatReader()
+    // const codeReader = new BrowserMultiFormatReader()
     return {
       codeReader,
       devices: [],
@@ -46,11 +46,11 @@ export default {
     startScanning() {
       if (this.device) {
         try {
-          this.codeReader.decodeOnceFromVideoDevice(this.device.key, 'video')
-            .then(result => {
-              this.result = result.text
-              // this.startScanning()  # TODO should it stop after first detection?
-            })
+          // this.codeReader.decodeOnceFromVideoDevice(this.device.key, 'video')
+          //   .then(result => {
+          //     this.result = result.text
+          //     // this.startScanning()  # TODO should it stop after first detection?
+          //   })
         } catch (err) {
           console.log('notificaiton')
           console.log(err)
@@ -69,28 +69,28 @@ export default {
     },
   },
   created: async function() {
-    try {
-      if (!navigator.mediaDevices.enumerateDevices) {
-        this.device = {
-          key: undefined,
-          label: 'Camera',
-        }
-      } else {
-        this.devices = await this.codeReader.listVideoInputDevices()
-        this.device = {
-          key: this.devices[0].deviceId,
-          label: this.devices[0].label,
-        }
-      }
-      this.startScanning()
-    } catch (err) {
-      console.log('notificaiton')
-      console.log(err)
-      this.$notification.error({
-        title: 'No Camera',
-        description: 'No Camera or no Camera Permissions',
-      })
-    }
+    // try {
+    //   if (!navigator.mediaDevices.enumerateDevices) {
+    //     this.device = {
+    //       key: undefined,
+    //       label: 'Camera',
+    //     }
+    //   } else {
+    //     this.devices = await this.codeReader.listVideoInputDevices()
+    //     this.device = {
+    //       key: this.devices[0].deviceId,
+    //       label: this.devices[0].label,
+    //     }
+    //   }
+    //   this.startScanning()
+    // } catch (err) {
+    //   console.log('notificaiton')
+    //   console.log(err)
+    //   this.$notification.error({
+    //     title: 'No Camera',
+    //     description: 'No Camera or no Camera Permissions',
+    //   })
+    // }
   },
 }
 </script>

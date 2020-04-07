@@ -2,7 +2,6 @@ version: '3.5'
 
 services:
   postgres:
-    container_name: postgres_container
     image: postgres
     environment:
       POSTGRES_USER: imis
@@ -17,13 +16,13 @@ services:
       context: client
       dockerfile: Dockerfile.prod
     ports:
-    - "8080:8080"
-    -
-  core:
+    - "8081:8080"
+
+  server:
     build:
       context: .
       dockerfile: Dockerfile.prod
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
     ports:
-      - "80:80"
+    - "8080:8080"

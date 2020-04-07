@@ -46,7 +46,7 @@ Install Docker and run: `docker-compose up`
 1. Shell öffnen 
 1. Make sure your $JAVA_PATH is set correctly
 1. Start PostgreSQL in docker container (before starting application): 
-```docker-compose up -d ```
+```docker-compose up -d```
 1. Download Gradle wrapper
 ```gradle wrapper```
 1. Build application
@@ -57,8 +57,10 @@ Install Docker and run: `docker-compose up`
 ```./gradlew bootRun```
 1. Start local development server for vue.js development
 ```./gradlew serve```
-## Quickstart for Backendserver to enable Frontend Development
-```docker-compose -f docker-compose.yml -f docker-compose.frontend_dev.yml up ```
+## Quickstart for frontend development
+```docker-compose up -d postgres server```
+## Quickstart for server development
+```docker-compose up -d postgres client```
 
 ## API communication
 

@@ -9,18 +9,18 @@
       <h1 class="header-text" style="margin: 0 0 0 15px">Schnell. Einfach. Zuverlässig.</h1>
       <span style="flex: 1 1 auto"></span>
       <div class="header-buttons">
-        <a-button type="primary" block="true" href="mailto:imis-team@gmx.de" icon="mail" shape="round">
+        <a-button type="primary" :block="true" href="mailto:imis-team@gmx.de" icon="mail" shape="round">
           <span>Kontakt</span>
         </a-button>
-        <a-button type="primary" block="true"
+        <a-button type="primary" :block="true"
                   href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
                   icon="bulb" shape="round">
           <span>DevPost</span>
         </a-button>
-        <a-button type="primary" block="true" href="https://twitter.com/IMIS_team" icon="twitter" shape="round">
+        <a-button type="primary" :block="true" href="https://twitter.com/IMIS_team" icon="twitter" shape="round">
           <span>Twitter</span>
         </a-button>
-        <a-button type="primary" block="true"
+        <a-button type="primary" :block="true"
                   href="https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung"
                   icon="github" shape="round">
           <span>GitHub</span>

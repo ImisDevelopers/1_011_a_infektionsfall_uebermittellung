@@ -127,7 +127,7 @@ const appRoutes: AppRoute[] = [
     component: TestList,
     meta: {
       navigationInfo: {
-        icon: 'unorderd-list',
+        icon: 'unordered-list',
         title: 'Alle Tests',
         authorities: ['ROLE_LABORATORY', 'ROLE_TEST_SITE'],
       },

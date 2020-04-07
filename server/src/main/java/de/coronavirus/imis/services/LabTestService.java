@@ -1,5 +1,14 @@
 package de.coronavirus.imis.services;
 
+import de.coronavirus.imis.domain.*;
+import de.coronavirus.imis.repositories.LabTestRepository;
+import de.coronavirus.imis.repositories.LaboratoryRepository;
+import de.coronavirus.imis.repositories.PatientEventRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -7,18 +16,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
-
-import de.coronavirus.imis.domain.*;
-import org.springframework.stereotype.Component;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import de.coronavirus.imis.repositories.LabTestRepository;
-import de.coronavirus.imis.repositories.LaboratoryRepository;
-import de.coronavirus.imis.repositories.PatientEventRepository;
 
 @Component
 @RequiredArgsConstructor
@@ -56,6 +53,11 @@ public class LabTestService {
         final Patient patient = patientService.findPatientById(patiendId).orElseThrow(PatientNotFoundException::new);
         final var events = eventService.getAllForPatient(patient);
         return events.stream().map(PatientEvent::getLabTest).collect(Collectors.toSet());
+    }
+
+    @Transactional
+    public List<LabTest> queryLabTestsById(String labTestId) {
+        return this.labTestRepository.findByTestIdContaining(labTestId);
     }
 
     @Transactional

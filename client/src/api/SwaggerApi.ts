@@ -122,7 +122,7 @@ export interface LabTest {
   comment?: string;
   id?: string;
   report?: string;
-  testId?: string;
+  testId: string;
   testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
 }
 
@@ -388,7 +388,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8642/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -466,7 +466,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl //localhost:8642/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -701,6 +701,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getLabTestForPatientUsingGet: (id: string, params?: RequestParams) =>
       this.request<LabTest[], any>(`/labtests/patient/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags lab-test-controller
+     * @name queryLabTestsByIdUsingGET
+     * @summary queryLabTestsById
+     * @request GET:/labtests/query
+     * @secure
+     */
+    queryLabTestsByIdUsingGet: (query: { labTestIdQuery: string }, params?: RequestParams) =>
+      this.request<LabTest[], any>(`/labtests/query${this.addQueryParams(query)}`, "GET", params, null, true),
 
     /**
      * @tags lab-test-controller

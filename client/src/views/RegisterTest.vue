@@ -106,7 +106,7 @@ export default class RegisterTest extends Vue {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
     this.form.validateFields((err, values) => {
       if (err) {
         return

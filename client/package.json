@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "generate:api-client": "npx swagger-typescript-api -p http://localhost/v2/api-docs -o ./src/store -n SwaggerApi.ts"
+    "generate:api-client": "npx swagger-typescript-api -p http://localhost:8642/v2/api-docs -o ./src/api -n SwaggerApi.ts"
   },
   "dependencies": {
     "@sentry/browser": "^5.15.4",

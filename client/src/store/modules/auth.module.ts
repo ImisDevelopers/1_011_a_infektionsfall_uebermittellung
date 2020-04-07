@@ -1,13 +1,13 @@
 import { Institution, RegisterUserRequest, User } from '@/api/SwaggerApi'
 import { config } from '@/config'
+import { InstitutionRule } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
 import Api, { removeBearerToken, setBearerToken } from '@/api'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
-import { InstitutionType } from '@/models'
 
 interface JwtData {
-  roles: InstitutionType[];
+  roles: InstitutionRule[];
   exp: number;
   [key: string]: any;
 }

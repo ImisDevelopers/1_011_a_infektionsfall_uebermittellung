@@ -11,6 +11,9 @@ class PatientState {
 
 class PatientGetters extends Getters<PatientState> {
   patientById(id: string): Patient | undefined {
+    if (this.state.patient && this.state.patient.id === id) {
+      return this.state.patient
+    }
     return this.state.patients.find(patient => patient.id === id)
   }
 }

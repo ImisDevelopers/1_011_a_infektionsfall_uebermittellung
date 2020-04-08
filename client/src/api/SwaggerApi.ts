@@ -36,6 +36,7 @@ export interface CreateLabTestDTO {
   laboratoryId?: string;
   patientId?: string;
   testId?: string;
+  testType?: "PCR" | "ANTIBODY";
 }
 
 export interface CreatePatientDTO {
@@ -122,8 +123,9 @@ export interface LabTest {
   comment?: string;
   id?: string;
   report?: string;
-  testId?: string;
+  testId: string;
   testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
+  testType?: "PCR" | "ANTIBODY";
 }
 
 export interface Laboratory {
@@ -388,7 +390,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8642/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -466,7 +468,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl //localhost:8642/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -680,6 +682,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getAllLaboratoriesUsingGet: (params?: RequestParams) =>
       this.request<Laboratory[], any>(`/institutions/laboratories`, "GET", params, null, true),
+
+    /**
+     * @tags institution-controller
+     * @name queryAllLaboratoriesUsingGET
+     * @summary queryAllLaboratories
+     * @request GET:/institutions/laboratories/query
+     * @secure
+     */
+    queryAllLaboratoriesUsingGet: (query: { id: string }, params?: RequestParams) =>
+      this.request<Laboratory[], any>(
+        `/institutions/laboratories/query${this.addQueryParams(query)}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
   };
   labtests = {
     /**
@@ -701,6 +719,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getLabTestForPatientUsingGet: (id: string, params?: RequestParams) =>
       this.request<LabTest[], any>(`/labtests/patient/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags lab-test-controller
+     * @name queryLabTestsByIdUsingGET
+     * @summary queryLabTestsById
+     * @request GET:/labtests/query
+     * @secure
+     */
+    queryLabTestsByIdUsingGet: (query: { labTestIdQuery: string }, params?: RequestParams) =>
+      this.request<LabTest[], any>(`/labtests/query${this.addQueryParams(query)}`, "GET", params, null, true),
 
     /**
      * @tags lab-test-controller
@@ -742,6 +770,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     queryPatientsUsingPost: (patientSearchParamsDTO: PatientSearchParamsDTO, params?: RequestParams) =>
       this.request<Patient[], any>(`/patients/query`, "POST", params, patientSearchParamsDTO, true),
+
+    /**
+     * @tags patient-controller
+     * @name queryPatientsSimpleUsingGET
+     * @summary queryPatientsSimple
+     * @request GET:/patients/query-simple
+     * @secure
+     */
+    queryPatientsSimpleUsingGet: (query: { query: string }, params?: RequestParams) =>
+      this.request<Patient[], any>(`/patients/query-simple${this.addQueryParams(query)}`, "GET", params, null, true),
 
     /**
      * @tags patient-controller

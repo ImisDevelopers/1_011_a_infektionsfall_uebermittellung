@@ -4,12 +4,7 @@ import java.util.List;
 
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -48,6 +43,11 @@ public class PatientController {
     @PostMapping("/query")
     public List<Patient> queryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO){
         return patientService.queryPatients(patientSearchParamsDTO);
+    }
+
+    @GetMapping("/query-simple")
+    public List<Patient> queryPatientsSimple(@RequestParam String query) {
+        return patientService.queryPatientsSimple(query);
     }
 
     @PostMapping("/query/count")

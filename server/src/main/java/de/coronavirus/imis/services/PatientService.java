@@ -97,6 +97,11 @@ public class PatientService {
         return Integer.MIN_VALUE;
     }
 
+
+    public List<Patient> queryPatientsSimple(String query) {
+        return this.patientRepository.findAllByPatientQuery(query);
+    }
+
     public List<Patient> queryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
         final Sort sortBy = Sort.by(Sort.Direction.fromOptionalString(patientSearchParamsDTO.getOrder()).orElse(Sort.Direction.ASC), patientSearchParamsDTO.getOrderBy());
 

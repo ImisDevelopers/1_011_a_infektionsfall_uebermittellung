@@ -15,6 +15,14 @@ public interface PatientRepository extends JpaRepository<Patient, String> {
     @Query("select pat from Patient pat where pat.zip between ?1 and ?2 ")
     List<Patient> findAllByZipBetween(String lower, String upperBounds);
 
+    @Query("select pat from Patient pat where " +
+            "lower(pat.firstName) like lower(concat('%', :query, '%')) or " +
+            "lower(pat.lastName) like lower(concat('%', :query, '%')) or " +
+            "lower(pat.id) like lower(concat('%', :query, '%')) or " +
+            "lower(pat.email) like lower(concat('%', :query, '%')) or " +
+            "lower(pat.phoneNumber) like lower(concat('%', :query, '%'))")
+    List<Patient> findAllByPatientQuery(String query);
+
     @Query("select distinct pat from Patient pat " +
             "left join PatientEvent pe " +
             "on pe.patient = pat.id " +

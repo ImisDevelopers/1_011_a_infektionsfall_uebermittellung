@@ -1,4 +1,5 @@
 import AccountView from '@/views/Account.vue'
+import PublicRegister from '@/views/PublicRegister.vue'
 import Vue from 'vue'
 import VueRouter, { Route, RouteConfig } from 'vue-router'
 import Login from '@/views/Login.vue'
@@ -170,13 +171,18 @@ const appRoutes: AppRoute[] = [
 
 const routes = [
   {
-    path: '/',
     name: 'landing-page',
+    path: '/',
     component: LandingPage,
   },
   {
-    path: '/login',
+    name: 'public-register',
+    path: '/public-register',
+    component: PublicRegister,
+  },
+  {
     name: 'login',
+    path: '/login',
     component: Login,
     beforeEnter: checkNotAuthenticatedBeforeEnter,
     beforeRouteLeave: loginBeforeRouteLeave,
@@ -188,8 +194,8 @@ const routes = [
     beforeEnter: checkNotAuthenticatedBeforeEnter,
   },
   {
-    path: '/app',
     name: 'app',
+    path: '/app',
     component: AppRoot,
     children: appRoutes,
     redirect: { name: 'account' },

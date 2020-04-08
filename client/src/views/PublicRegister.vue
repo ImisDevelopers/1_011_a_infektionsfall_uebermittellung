@@ -112,6 +112,9 @@
                   <a-form-item label="Versichertenr. (optional)">
                     <a-input v-decorator="['insuranceMembershipNumber']"/>
                   </a-form-item>
+                  <a-form-item label="Arbeitgeber (optional)">
+                    <a-input v-decorator="['employer']"/>
+                  </a-form-item>
                 </a-col>
                 <a-col :lg="12" :sm="24">
                   <a-form-item label="E-mail">
@@ -163,6 +166,14 @@
                         required: true,
                         message: 'Bitte Ort eingeben',
                       }] }]"
+                    />
+                  </a-form-item>
+                  <a-form-item label="Beruf">
+                    <a-input
+                      v-decorator="['riskOccupation', { rules: [{
+                        required: true,
+                        message: 'Bitte Beruf eingeben',
+                      }]}]"
                     />
                   </a-form-item>
                 </a-col>

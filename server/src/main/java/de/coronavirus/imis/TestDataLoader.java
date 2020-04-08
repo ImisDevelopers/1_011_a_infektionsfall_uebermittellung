@@ -6,6 +6,7 @@ import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserRepository;
 import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.domain.TestType;
 import de.coronavirus.imis.services.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -125,7 +126,7 @@ public class TestDataLoader implements ApplicationRunner {
             // LAB RECEIVES SAMPLE AND PROCESSES IT
             final String testId = "42EF42";
             final String comment = "comment";
-            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment);
+            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment, TestType.PCR);
 
 
             // LAB HAS RESULT AND SOTRES IT

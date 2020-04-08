@@ -29,7 +29,7 @@ public class LabTestService {
     private final PatientEventRepository eventRepository;
 
     @Transactional
-    public LabTest createLabTest(String patientId, String laboratoryId, String testId, String comment) {
+    public LabTest createLabTest(String patientId, String laboratoryId, String testId, String comment, TestType testType) {
         final Patient patient = patientService
                 .findPatientById(patientId)
                 .orElseThrow(PatientNotFoundException::new);
@@ -40,6 +40,7 @@ public class LabTestService {
                 .laboratory(laboratory)
                 .testStatus(TestStatus.TEST_SUBMITTED)
                 .testId(testId)
+                .testType(testType)
                 .comment(comment)
                 .build();
 

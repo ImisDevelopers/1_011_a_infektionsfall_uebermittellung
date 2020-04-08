@@ -24,7 +24,8 @@ public class LabTestController {
                 createLabTestRequest.getPatientId(),
                 createLabTestRequest.getLaboratoryId(),
                 createLabTestRequest.getTestId(),
-                createLabTestRequest.getComment())
+                createLabTestRequest.getComment(),
+                createLabTestRequest.getTestType())
         );
     }
 

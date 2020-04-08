@@ -1,6 +1,6 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" :placeholder="placeholder" v-decorator="validation">
+    <a-auto-complete @search="handleSearch" placeholder="Suche über ID" v-decorator="validation">
       <template slot="dataSource">
         <a-select-option v-for="testId in result" :key="testId">{{testId}}</a-select-option>
       </template>
@@ -22,16 +22,14 @@ import Vue from 'vue'
 
 export interface State {
   result: string[];
-  showScanner: boolean;
 }
 
 export default Vue.extend({
-  name: 'BarcodeInput',
-  props: ['placeholder', 'validation', 'label', 'form'],
+  name: 'TestInput',
+  props: ['validation', 'label', 'form'],
   data(): State {
     return {
       result: [],
-      showScanner: false,
     }
   },
   methods: {
@@ -45,15 +43,6 @@ export default Vue.extend({
       }
       this.result = result
     },
-    // TODO: Do we need Barcode Scanner? Or will users always use the keyboard to type the test id?
-    // onResult(result) {
-    //   if (result != null) {
-    //     this.form.setFieldsValue({
-    //       [this.validation[0]]: result,
-    //     })
-    //   }
-    //   this.showScanner = false
-    // },
   },
 })
 </script>

@@ -1,22 +1,18 @@
 package de.coronavirus.imis.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.domain.*;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
-import de.coronavirus.imis.domain.Clinic;
-import de.coronavirus.imis.domain.Doctor;
-import de.coronavirus.imis.domain.Institution;
-import de.coronavirus.imis.domain.InstitutionType;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.TestSite;
 import de.coronavirus.imis.repositories.ClinicRepository;
 import de.coronavirus.imis.repositories.DoctorRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
@@ -141,5 +137,15 @@ public class InstitutionService {
                 break;
         }
         return result;
+    }
+
+    /**
+     * Query for institution by part of id
+     * @param id id or a part of an id
+     * @return List of matching institutions
+     */
+    @Transactional
+    public List<Laboratory> queryLaboratory(String id) {
+        return laboratoryRepository.queryLaboratory(id);
     }
 }

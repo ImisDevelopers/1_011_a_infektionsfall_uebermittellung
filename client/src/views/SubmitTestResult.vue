@@ -8,8 +8,19 @@
         @submit="handleSubmit"
       >
 
+        <!-- Labor -->
+        <LaboratoryInput
+          label="Labor"
+          :form="form"
+          :initial-labs="laboratories"
+          :validation="['laboratoryId', { rules: [{
+            required: true,
+            message: 'Bitte wählen Sie ein Labor aus.'
+          }]}]"
+        />
+
         <!-- TestId -->
-        <BarcodeInput
+        <TestInput
           label="Test-ID"
           placeholder="z.B 1337-4237-9438"
           :form="form"
@@ -22,7 +33,7 @@
         <!-- TestResult -->
         <a-form-item label="Testresultat">
           <a-radio-group
-            class="test-result-group"
+            class="imis-radio-group"
             v-decorator="['testResult', { rules: [{
               required: true,
               message: 'Bitte geben Sie das Testresultat an.'
@@ -60,12 +71,24 @@
         </a-form-item>
       </a-form>
     </div>
+
+    <!-- Confirmation after creation -->
+    <div v-if="updatedLabTest">
+      <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px"/>
+      <div>
+        <div>Der Test wurde erfolgreich aktualisiert.</div>
+        <br/>
+        <div>Test ID: {{ updatedLabTest.testId }}</div>
+        <div>Neuer Test Status: {{ updatedLabTestStatus }}</div>
+      </div>
+    </div>
   </a-card>
 </template>
 
 <script>
 import Api from '@/api'
-import BarcodeInput from '../components/BarcodeInput'
+import TestInput from '../components/TestInput'
+import LaboratoryInput from '../components/LaboratoryInput'
 import Vue from 'vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { testResults } from '@/util/event-types'
@@ -75,19 +98,34 @@ export default Vue.extend({
   computed: {
     ...authMapper.mapGetters({ institution: 'institution' }),
   },
-  components: { BarcodeInput },
+  components: { TestInput, LaboratoryInput },
   props: {},
   data() {
     return {
       form: this.$form.createForm(this),
       fileBytes: null,
       testResults: testResults,
+      laboratories: [],
+      updatedLabTest: null,
+      updatedLabTestStatus: '',
     }
   },
-  async created() {
+  async mounted() {
     if (!this.institution()) {
       console.log('Loading institution')
       await this.getAuthenticatedInstitution()
+    }
+    const lab = this.institution()
+    if (lab && lab.type === 'LABORATORY') {
+      console.log(lab)
+      this.laboratories = [lab]
+      this.form.setFieldsValue({
+        laboratoryId: lab.id,
+      })
+    } else {
+      this.form.setFieldsValue({
+        laboratoryId: '',
+      })
     }
   },
   methods: {
@@ -136,12 +174,20 @@ export default Vue.extend({
         }
 
         const testResult = this.testResults.find(testResult => values.testResult === testResult.id)
-        Api.labtests.updateTestStatusUsingPut(this.institution().id, request).then(labTest => {
+        Api.labtests.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {
           const notification = {
             message: 'Test ' + labTest.testId + ' aktualisiert.',
             description: 'Status geändert auf "' + testResult.label + '"',
           }
           this.$notification.success(notification)
+          this.form.resetFields([
+            'testId', 'testResult', 'comment',
+          ])
+          this.fileBytes = null
+          this.updatedLabTest = labTest
+          this.updatedLabTestStatus = testResults
+            .find(testResult => testResult.id === labTest.testStatus)
+            .label
         }).catch(err => {
           const notification = {
             message: 'Fehler beim Hinzufügen des Testergebnisses.',
@@ -156,28 +202,4 @@ export default Vue.extend({
 </script>
 
 <style>
-  .test-result-group {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding-left: 15px;
-  }
-
-  .test-result-group > label {
-    padding: 10px 0 10px 15px;
-    display: flex;
-    align-items: center;
-  }
-
-  .test-result-group > label:hover {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  .test-result-group .ant-radio {
-    margin-right: 10px;
-  }
-
-  .test-result-group i {
-    margin-right: 10px;
-  }
 </style>

@@ -41,7 +41,13 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        result = await Api.patients.queryPatientsSimpleUsingGet({ query: value })
+        result = await Api.patients.queryPatientsSimpleUsingPost({
+          query: value,
+          offsetPage: 0,
+          pageSize: 10,
+          order: 'asc',
+          orderBy: 'lastName',
+        })
       }
       this.result = result
     },

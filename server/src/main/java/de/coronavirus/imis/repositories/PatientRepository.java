@@ -1,27 +1,18 @@
 package de.coronavirus.imis.repositories;
 
-import java.util.List;
-
+import de.coronavirus.imis.domain.Patient;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import de.coronavirus.imis.domain.Patient;
+import java.util.List;
 
 @Repository
-public interface PatientRepository extends JpaRepository<Patient, String> {
+public interface PatientRepository extends JpaRepository<Patient, String>, JpaSpecificationExecutor<Patient> {
     @Query("select pat from Patient pat where pat.zip between ?1 and ?2 ")
     List<Patient> findAllByZipBetween(String lower, String upperBounds);
-
-    @Query("select pat from Patient pat where " +
-            "lower(pat.firstName) like lower(concat('%', :query, '%')) or " +
-            "lower(pat.lastName) like lower(concat('%', :query, '%')) or " +
-            "lower(pat.id) like lower(concat('%', :query, '%')) or " +
-            "lower(pat.email) like lower(concat('%', :query, '%')) or " +
-            "lower(pat.phoneNumber) like lower(concat('%', :query, '%'))")
-    List<Patient> findAllByPatientQuery(String query);
 
     @Query("select distinct pat from Patient pat " +
             "left join PatientEvent pe " +

@@ -323,6 +323,14 @@ export interface PatientSearchParamsDTO {
   zip?: string;
 }
 
+export interface PatientSimpleSearchParamsDTO {
+  offsetPage?: number;
+  order?: string;
+  orderBy?: string;
+  pageSize?: number;
+  query?: string;
+}
+
 export interface RegisterUserRequest {
   password?: string;
   userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
@@ -586,71 +594,73 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingGET
-     * @summary errorHtml
+     * @name errorUsingGET
+     * @summary error
      * @request GET:/error
      * @secure
      */
-    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
+    errorUsingGet: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingHEAD
-     * @summary errorHtml
+     * @name errorUsingHEAD
+     * @summary error
      * @request HEAD:/error
      * @secure
      */
-    errorHtmlUsingHead: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
+    errorUsingHead: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPOST
-     * @summary errorHtml
+     * @name errorUsingPOST
+     * @summary error
      * @request POST:/error
      * @secure
      */
-    errorHtmlUsingPost: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
+    errorUsingPost: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPUT
-     * @summary errorHtml
+     * @name errorUsingPUT
+     * @summary error
      * @request PUT:/error
      * @secure
      */
-    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
+    errorUsingPut: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingDELETE
-     * @summary errorHtml
+     * @name errorUsingDELETE
+     * @summary error
      * @request DELETE:/error
      * @secure
      */
-    errorHtmlUsingDelete: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
+    errorUsingDelete: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingOPTIONS
-     * @summary errorHtml
+     * @name errorUsingOPTIONS
+     * @summary error
      * @request OPTIONS:/error
      * @secure
      */
-    errorHtmlUsingOptions: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
+    errorUsingOptions: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPATCH
-     * @summary errorHtml
+     * @name errorUsingPATCH
+     * @summary error
      * @request PATCH:/error
      * @secure
      */
-    errorHtmlUsingPatch: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
+    errorUsingPatch: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
   };
   institutions = {
     /**
@@ -773,13 +783,23 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags patient-controller
-     * @name queryPatientsSimpleUsingGET
+     * @name queryPatientsSimpleUsingPOST
      * @summary queryPatientsSimple
-     * @request GET:/patients/query-simple
+     * @request POST:/patients/query-simple
      * @secure
      */
-    queryPatientsSimpleUsingGet: (query: { query: string }, params?: RequestParams) =>
-      this.request<Patient[], any>(`/patients/query-simple${this.addQueryParams(query)}`, "GET", params, null, true),
+    queryPatientsSimpleUsingPost: (query: PatientSimpleSearchParamsDTO, params?: RequestParams) =>
+      this.request<Patient[], any>(`/patients/query-simple`, "POST", params, query, true),
+
+    /**
+     * @tags patient-controller
+     * @name countQueryPatientsSimpleUsingGET
+     * @summary countQueryPatientsSimple
+     * @request GET:/patients/query-simple/count
+     * @secure
+     */
+    countQueryPatientsSimpleUsingGet: (query: { query: string }, params?: RequestParams) =>
+      this.request<number, any>(`/patients/query-simple/count${this.addQueryParams(query)}`, "GET", params, null, true),
 
     /**
      * @tags patient-controller

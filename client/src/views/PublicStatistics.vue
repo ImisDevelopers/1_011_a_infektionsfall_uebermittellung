@@ -130,7 +130,7 @@ export default {
   }
   .table-container {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     scroll-behavior: smooth;
   }
 </style>

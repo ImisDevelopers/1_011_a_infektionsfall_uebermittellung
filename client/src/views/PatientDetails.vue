@@ -73,9 +73,9 @@
               </a-col>
             </a-row>
 
-            <!-- Kontakt & Versicherung -->
+            <!-- Kontakt & Versicherung & Arbeitgeber -->
             <a-row :gutter="8" style="margin-top: 8px;">
-              <a-col :span="24" :md="12">
+              <a-col :span="24" :md="8">
                 <a-card
                   title="Kontakt"
                   align="left"
@@ -92,7 +92,7 @@
                   </table>
                 </a-card>
               </a-col>
-              <a-col :span="24" :md="12">
+              <a-col :span="24" :md="8">
                 <a-card
                   title="Versicherung"
                   align="left"
@@ -105,6 +105,23 @@
                     <tr>
                       <td>V-Nr:</td>
                       <td>{{patient.insuranceMembershipNumber}}</td>
+                    </tr>
+                  </table>
+                </a-card>
+              </a-col>
+              <a-col :span="24" :md="8">
+                <a-card
+                  title="Arbeit"
+                  align="left"
+                >
+                  <table>
+                    <tr>
+                      <td>Beruf:</td>
+                      <td>{{patient.occupation || 'Keine Angabe'}}</td>
+                    </tr>
+                    <tr>
+                      <td>Arbeitgeber:</td>
+                      <td>{{patient.employer || 'Keine Angabe'}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -161,22 +178,6 @@
                       {{testTypes.find(type => type.id === testType).label}}
                     </div>
                   </a-table>
-                  <a-divider />
-                  <a-row
-                    type="flex"
-                    justify="end"
-                    :gutter="8"
-                    style="margin-top: 8px;"
-                  >
-                    <a-col>
-                      <a-button
-                        type="primary"
-                        @click="requestTestAgain"
-                      >
-                        Neuen Test anfordern
-                      </a-button>
-                    </a-col>
-                  </a-row>
                 </a-card>
               </a-col>
             </a-row>
@@ -271,31 +272,7 @@ export default Vue.extend({
   },
 
   async created() {
-    // Load Patient
-    const patientId = this.$route.params.id
-    this.patient = this.patientById(this.$route.params.id)
-    if (!this.patient) {
-      const patient = await Api.patients.getPatientForIdUsingGet(patientId)
-      this.setPatient(patient)
-      this.patient = patient
-    }
-
-    // Map patient attributes to their display representation
-    this.patientStatus = eventTypes.find(type => type.id === this.patient?.patientStatus)
-    this.symptoms = this.patient.symptoms?.map(symptom => {
-      const patientSymptom = SYMPTOMS.find(symptomFind => symptomFind.value === symptom)
-      return patientSymptom ? patientSymptom.label : symptom
-    }) || []
-    this.preIllnesses = this.patient.preIllnesses?.map(preIllness => {
-      const patientIllness = PRE_ILLNESSES.find(illness => illness.value === preIllness)
-      return patientIllness ? patientIllness.label : preIllness
-    }) || []
-    this.dateOfBirth = moment(this.patient.dateOfBirth).format('DD.MM.YYYY')
-    const patientGender = this.patient.gender || ''
-    this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
-
-    // Tests
-    this.tests = await Api.labtests.getLabTestForPatientUsingGet(patientId)
+    this.loadData()
   },
 
   data(): State {
@@ -314,17 +291,42 @@ export default Vue.extend({
     }
   },
 
+  watch: {
+    '$route.params.id'() {
+      this.loadData()
+    },
+  },
+
   methods: {
     ...patientMapper.mapMutations({
       setPatient: 'setPatient',
     }),
-    requestTestAgain() {
-      // TODO: Test anfordern
-      const notification = {
-        message: 'Der Test wurde angefordert.',
-        description: '',
+    async loadData() {
+      // Load Patient
+      const patientId = this.$route.params.id
+      this.patient = this.patientById(this.$route.params.id)
+      if (!this.patient) {
+        const patient = await Api.patients.getPatientForIdUsingGet(patientId)
+        this.setPatient(patient)
+        this.patient = patient
       }
-      this.$notification.success(notification)
+
+      // Map patient attributes to their display representation
+      this.patientStatus = eventTypes.find(type => type.id === this.patient?.patientStatus)
+      this.symptoms = this.patient.symptoms?.map(symptom => {
+        const patientSymptom = SYMPTOMS.find(symptomFind => symptomFind.value === symptom)
+        return patientSymptom ? patientSymptom.label : symptom
+      }) || []
+      this.preIllnesses = this.patient.preIllnesses?.map(preIllness => {
+        const patientIllness = PRE_ILLNESSES.find(illness => illness.value === preIllness)
+        return patientIllness ? patientIllness.label : preIllness
+      }) || []
+      this.dateOfBirth = moment(this.patient.dateOfBirth).format('DD.MM.YYYY')
+      const patientGender = this.patient.gender || ''
+      this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
+
+      // Tests
+      this.tests = await Api.labtests.getLabTestForPatientUsingGet(patientId)
     },
     timelineColor(eventType: any) {
       switch (eventType) {

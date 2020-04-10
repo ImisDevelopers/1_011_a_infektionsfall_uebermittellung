@@ -11,7 +11,7 @@
       </div>
       <div style="margin-top: 35px">
         <a-steps :current="current" style="margin-bottom: 20px">
-          <a-step v-for="item in steps" :key="item.title" :title="item.title"/>
+          <a-step v-for="item in steps" :key="item.title" :title="item.title" />
         </a-steps>
 
         <a-form :form="form" :layout="'horizontal'"
@@ -22,30 +22,39 @@
           <div :style="{ display: current === 0 ? 'block' : 'none' }">
             <h2>Welche der folgenden Symptome hatten Sie in den letzten 24h?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto"/>
-              <a-form-item>
-                <a-checkbox-group v-decorator="['symptoms']" :options="symptoms" class="checkbox-group"/>
-              </a-form-item>
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
+              <div>
+                <a-form-item>
+                  <a-checkbox-group v-decorator="['symptoms']" :options="symptoms" class="checkbox-group" />
+                </a-form-item>
+                <div class="checkbox-group">
+                  <a-checkbox @change="symptomsChanged">Andere:</a-checkbox>
+                </div>
+                <a-form-item>
+                  <a-input v-decorator="['symptomsOther']" :disabled="!showOtherSymptoms" />
+                </a-form-item>
+              </div>
+              <span style="flex: 1 1 auto" />
             </div>
+
           </div>
 
           <!-- Exposition -->
           <div :style="{ display: current === 1 ? 'block' : 'none' }">
             <h2>Welche Formen der Exposition treffen auf Sie zu?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
               <div style="display: flex; flex-direction: column">
                 <a-form-item>
                   <a-checkbox-group v-decorator="['exposures']" :options="exposures" class="checkbox-group"
-                                    @change="exposuresChanged"/>
+                                    @change="exposuresChanged" />
                 </a-form-item>
                 <a-form-item style="padding-left: 35px">
                   <a-checkbox-group v-decorator="['exposureLocation']" :options="exposureLocation"
-                                    class="checkbox-group" :disabled="disableExposureLocation"/>
+                                    class="checkbox-group" :disabled="disableExposureLocation" />
                 </a-form-item>
               </div>
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
             </div>
           </div>
 
@@ -53,11 +62,11 @@
           <div :style="{ display: current === 2 ? 'block' : 'none' }">
             <h2>Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
               <a-form-item>
-                <a-checkbox-group v-decorator="['preIllnesses']" :options="preIllnesses" class="checkbox-group"/>
+                <a-checkbox-group v-decorator="['preIllnesses']" :options="preIllnesses" class="checkbox-group" />
               </a-form-item>
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
             </div>
           </div>
 
@@ -214,7 +223,7 @@
                 </a-col>
                 <a-col :lg="12" :sm="24">
                   <a-form-item label="Arbeitgeber (optional)">
-                    <a-input v-decorator="['employer']"/>
+                    <a-input v-decorator="['employer']" />
                   </a-form-item>
                 </a-col>
               </a-row>
@@ -223,12 +232,12 @@
               <a-row>
                 <a-col :lg="12" :sm="24">
                   <a-form-item label="Krankenkasse (optional)">
-                    <a-input v-decorator="['insuranceCompany']"/>
+                    <a-input v-decorator="['insuranceCompany']" />
                   </a-form-item>
                 </a-col>
                 <a-col :lg="12" :sm="24">
                   <a-form-item label="Versichertenr. (optional)">
-                    <a-input v-decorator="['insuranceMembershipNumber']"/>
+                    <a-input v-decorator="['insuranceMembershipNumber']" />
                   </a-form-item>
                 </a-col>
               </a-row>
@@ -254,7 +263,7 @@
                 block
                 @click="save"
               >
-                <a-icon type="save"/>
+                <a-icon type="save" />
                 Daten übermitteln
               </a-button>
             </div>
@@ -262,7 +271,7 @@
               <h2>Geschafft!</h2>
               <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center">
                 <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }"
-                        style="margin-right: 25px"/>
+                        style="margin-right: 25px" />
                 <span>Sie erhalten in Kürze eine Email zur Bestätigung.</span>
               </div>
             </div>
@@ -283,7 +292,7 @@
           :style="{ visibility: current === 0 || createdPatient ? 'hidden' : 'visible' }"
           @click="prev"
         >
-          <a-icon type="arrow-left"/>
+          <a-icon type="arrow-left" />
           Zurück
         </a-button>
         <a-button
@@ -297,7 +306,7 @@
           @click="next"
         >
           Weiter
-          <a-icon type="arrow-right"/>
+          <a-icon type="arrow-right" />
         </a-button>
       </div>
     </a-card>
@@ -328,6 +337,7 @@ interface State {
   checked: boolean;
   showCheckedError: boolean;
   disableExposureLocation: boolean;
+  showOtherSymptoms: boolean;
 }
 
 export default Vue.extend({
@@ -389,6 +399,7 @@ export default Vue.extend({
       checked: false,
       showCheckedError: false,
       disableExposureLocation: true,
+      showOtherSymptoms: false,
     }
   },
   methods: {
@@ -437,6 +448,9 @@ export default Vue.extend({
         if (values.exposures) {
           request.riskAreas = request.riskAreas.concat(values.exposures)
         }
+        if (this.showOtherSymptoms) {
+          request.symptoms.push(values.symptomsOther)
+        }
         if (values.exposureLocation) {
           request.riskAreas = request.riskAreas.concat(
             values.exposureLocation
@@ -458,6 +472,10 @@ export default Vue.extend({
       if (this.checked) {
         this.showCheckedError = false
       }
+    },
+    symptomsChanged(event: Event) {
+      const target = event.target as any
+      this.showOtherSymptoms = target.checked
     },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes(this.exposures[3].value)

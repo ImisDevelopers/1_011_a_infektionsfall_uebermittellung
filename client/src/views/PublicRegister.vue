@@ -75,14 +75,6 @@
                       }]}]"
                     />
                   </a-form-item>
-                  <a-form-item label="Nachname">
-                    <a-input
-                      v-decorator="['lastName', { rules: [{
-                        required: true,
-                        message: 'Bitte Nachnamen eingeben'
-                      }]}]"
-                    />
-                  </a-form-item>
                   <a-form-item label="Geschlecht">
                     <a-radio-group
                       v-decorator="['gender', { rules: [{
@@ -96,6 +88,55 @@
                       <a-radio value="divers">Div.</a-radio>
                     </a-radio-group>
                   </a-form-item>
+                  <a-form-item label="Straße">
+                    <a-input
+                      v-decorator="['street', { rules: [{
+                        required: true,
+                        message: 'Bitte Straße eingeben',
+                      }] }]"
+                    />
+                  </a-form-item>
+                  <a-form-item label="PLZ Auto">
+                    <a-auto-complete @search="handlePlzSearch" v-decorator="['zip', { rules: [{
+                        required: true,
+                        message: 'Bitte PLZ eingeben',
+                      }] }]" @select="handlePlzSelection">
+                      <template slot="dataSource">
+                        <a-select-option v-for="plz in plzs" :key="plz.fields.plz">
+                          {{plz.fields.plz}} {{plz.fields.note}}
+                        </a-select-option>
+                      </template>
+                    </a-auto-complete>
+                  </a-form-item>
+                  <a-form-item label="E-mail">
+                    <a-input
+                      v-decorator="['email', { rules: [{
+                        required: true,
+                        message: 'Bitte Email eingeben',
+                      }] }]"
+                    />
+                  </a-form-item>
+                  <a-form-item label="Beruf">
+                    <a-input
+                      v-decorator="['riskOccupation', { rules: [{
+                        required: true,
+                        message: 'Bitte Beruf eingeben',
+                      }]}]"
+                    />
+                  </a-form-item>
+                  <a-form-item label="Krankenkasse (optional)">
+                    <a-input v-decorator="['insuranceCompany']"/>
+                  </a-form-item>
+                </a-col>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="Nachname">
+                    <a-input
+                      v-decorator="['lastName', { rules: [{
+                        required: true,
+                        message: 'Bitte Nachnamen eingeben'
+                      }]}]"
+                    />
+                  </a-form-item>
                   <a-form-item label="Geburtsdatum">
                     <a-date-picker
                       :format="dateFormat"
@@ -106,22 +147,19 @@
                       placeholder="Datum wählen"
                     />
                   </a-form-item>
-                  <a-form-item label="Krankenkasse (optional)">
-                    <a-input v-decorator="['insuranceCompany']"/>
-                  </a-form-item>
-                  <a-form-item label="Versichertenr. (optional)">
-                    <a-input v-decorator="['insuranceMembershipNumber']"/>
-                  </a-form-item>
-                  <a-form-item label="Arbeitgeber (optional)">
-                    <a-input v-decorator="['employer']"/>
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="E-mail">
+                  <a-form-item label="Hausnummer">
                     <a-input
-                      v-decorator="['email', { rules: [{
+                      v-decorator="['houseNumber', { rules: [{
                         required: true,
-                        message: 'Bitte Email eingeben',
+                        message: 'Bitte Hausnummer eingeben',
+                      }]}]"
+                    />
+                  </a-form-item>
+                  <a-form-item label="Ort">
+                    <a-input
+                      v-decorator="['city', { rules: [{
+                        required: true,
+                        message: 'Bitte Ort eingeben',
                       }] }]"
                     />
                   </a-form-item>
@@ -136,45 +174,11 @@
                     ]"
                     />
                   </a-form-item>
-                  <a-form-item label="Straße">
-                    <a-input
-                      v-decorator="['street', { rules: [{
-                        required: true,
-                        message: 'Bitte Straße eingeben',
-                      }] }]"
-                    />
+                  <a-form-item label="Arbeitgeber (optional)">
+                    <a-input v-decorator="['employer']"/>
                   </a-form-item>
-                  <a-form-item label="Hausnr.">
-                    <a-input
-                      v-decorator="['houseNumber', { rules: [{
-                        required: true,
-                        message: 'Bitte Hausnummer eingeben',
-                      }]}]"
-                    />
-                  </a-form-item>
-                  <a-form-item label="PLZ">
-                    <a-input
-                      v-decorator="['zip', { rules: [{
-                        required: true,
-                        message: 'Bitte PLZ eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
-                  <a-form-item label="Ort">
-                    <a-input
-                      v-decorator="['city', { rules: [{
-                        required: true,
-                        message: 'Bitte Ort eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
-                  <a-form-item label="Beruf">
-                    <a-input
-                      v-decorator="['riskOccupation', { rules: [{
-                        required: true,
-                        message: 'Bitte Beruf eingeben',
-                      }]}]"
-                    />
+                  <a-form-item label="Versichertenr. (optional)">
+                    <a-input v-decorator="['insuranceMembershipNumber']"/>
                   </a-form-item>
                 </a-col>
               </a-row>
@@ -225,6 +229,7 @@
           shape="round"
           size="large"
           block
+          class="button-row-button"
           :style="{ visibility: current === 0 || createdPatient ? 'hidden' : 'visible' }"
           @click="prev"
         >
@@ -237,6 +242,7 @@
           shape="round"
           size="large"
           block
+          class="button-row-button"
           :style="{ visibility: current === 4 ? 'hidden' : 'visible' }"
           @click="next"
         >
@@ -253,9 +259,11 @@
 import Vue from 'vue'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
+import { getPlzs, Plz } from '@/util/plz-service'
 
 interface State {
   form: any;
+  plzs: Plz[];
   current: number;
   dateFormat: string;
   createdPatient: Patient | null;
@@ -274,21 +282,24 @@ export default Vue.extend({
   data(): State {
     return {
       form: this.$form.createForm(this),
+      plzs: [],
       current: 0,
       dateFormat: 'DD/MM/YYYY',
       createdPatient: null,
       symptoms: [
-        'Appetit- oder Gewichtsverlust',
-        'Verlust des Geruchs- oder Geschmackssinnes',
-        'Fieber',
-        'Schmerzen',
-        'Kopfschmerzen',
-        'Muskelschmerzen',
-        'Übelkeit',
-        'Husten',
+        'Appetitverlust',
         'Atembeschwerden',
         'Atemnot',
+        'Fieber',
+        'Gewichtsverlust',
+        'Husten',
+        'Kopfschmerzen',
+        'Muskelschmerzen',
+        'Rückenschmerzen',
         'Schnupfen',
+        'Übelkeit',
+        'Verlust des Geruchs- und/oder Geschmackssinnes',
+        'Andere',
       ],
       exposures: [
         'Medizinischer Heilberuf',
@@ -303,17 +314,16 @@ export default Vue.extend({
         'andere / sonstige',
       ],
       preIllnesses: [
-        'Herz-Kreislauf (incl. Bluthochdruck)',
-        'Diabetes',
-        'Lebererkrankung',
-        'neurologische / neuromuskuläre Erkrankung',
-        'Immundefizit inkl. HIV',
-        'Nierenerkrankung',
         'Chronische Lungenerkrankung (z.B. COPD)',
+        'Diabetes',
+        'Herz-Kreislauf (inkl. Bluthochdruck)',
+        'Immundefizit (inkl. HIV)',
         'Krebserkrankung',
-        'Schwangerschaft',
-        'Trimester',
+        'Lebererkrankung',
+        'Neurologische / neuromuskuläre Erkrankung',
+        'Nierenerkrankung',
         'Postpartum (weniger als 6 Wochen)',
+        'Schwangerschaft',
       ],
       steps: [
         {
@@ -397,7 +407,29 @@ export default Vue.extend({
     },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes(this.exposures[3])
-      console.log('Set to ' + this.disableExposureLocation)
+    },
+    async handlePlzSearch(value: string) {
+      let result: any[]
+      if (!value || value.length < 2) {
+        result = []
+      } else {
+        result = await getPlzs(value)
+      }
+      this.plzs = result
+    },
+    handlePlzSelection(value: string, e: any) {
+      const plz = this.plzs.find(plz => plz.fields.plz === value)
+      if (plz) {
+        this.form.setFieldsValue({
+          zip: value,
+          city: plz.fields.note,
+        })
+        plz.fields.note = '' // So city does not display in plz input
+        const nextInput = document.getElementById('email')
+        if (nextInput) {
+          nextInput.focus()
+        }
+      }
     },
   },
 })
@@ -419,6 +451,10 @@ export default Vue.extend({
     ), url("../assets/wave-bg.svg");
     background-size: cover;
     color: rgba(255, 255, 255, 0.87);
+
+    .button-row-button {
+      box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+    }
 
     .ant-form-item-control-wrapper {
       width: 100%;

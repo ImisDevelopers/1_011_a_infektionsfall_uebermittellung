@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
@@ -51,7 +52,7 @@ public class PatientService {
     public Patient addPatient(final CreatePatientDTO dto) {
         var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
         var id = Hashing.sha256()
-                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed, StandardCharsets.UTF_8)
+                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed + UUID.randomUUID().toString(), StandardCharsets.UTF_8)
                 .toString()
                 .substring(0, 8).toUpperCase();
         var occupation = determineRiskOcc(dto.getRiskOccupation());

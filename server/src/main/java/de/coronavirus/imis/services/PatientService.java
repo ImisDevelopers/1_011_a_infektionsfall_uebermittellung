@@ -143,7 +143,13 @@ public class PatientService {
     }
 
     public List<Patient> queryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
-        final Sort sortBy = Sort.by(Sort.Direction.fromOptionalString(patientSearchParamsDTO.getOrder()).orElse(Sort.Direction.ASC), patientSearchParamsDTO.getOrderBy());
+        final String orderBy;
+        if (patientSearchParamsDTO.getOrderBy() == null || patientSearchParamsDTO.getOrderBy().isEmpty()) {
+            orderBy = "id";
+        } else {
+            orderBy = patientSearchParamsDTO.getOrderBy();
+        }
+        final Sort sortBy = Sort.by(Sort.Direction.fromOptionalString(patientSearchParamsDTO.getOrder()).orElse(Sort.Direction.ASC), orderBy);
 
         final Pageable pageable = PageRequest.of(patientSearchParamsDTO.getOffsetPage().intValue(), patientSearchParamsDTO.getPageSize().intValue(), sortBy);
 

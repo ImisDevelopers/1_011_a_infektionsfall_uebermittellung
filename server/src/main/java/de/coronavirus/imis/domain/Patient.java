@@ -44,6 +44,8 @@ public class Patient {
     private String insuranceMembershipNumber;
     private boolean confirmed;
 
+    private String employer;
+
     @Enumerated(EnumType.STRING)
     @NotNull
     private EventType patientStatus;

@@ -72,6 +72,7 @@ public class PatientService {
                 .setHouseNumber(dto.getHouseNumber())
                 .setCity(dto.getCity())
                 .setHouseNumber(dto.getHouseNumber())
+                .setEmployer(dto.getEmployer())
                 .setStreet(dto.getStreet())
                 .setZip(dto.getZip())
                 .setPatientStatus(EventType.SUSPECTED)

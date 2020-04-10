@@ -9,18 +9,18 @@
       <h1 class="header-text" style="margin: 0 0 0 15px">Schnell. Einfach. Zuverlässig.</h1>
       <span style="flex: 1 1 auto"></span>
       <div class="header-buttons">
-        <a-button type="primary" block="true" href="mailto:imis-team@gmx.de" icon="mail" shape="round">
+        <a-button type="primary" :block="true" href="mailto:imis-team@gmx.de" icon="mail" shape="round">
           <span>Kontakt</span>
         </a-button>
-        <a-button type="primary" block="true"
+        <a-button type="primary" :block="true"
                   href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
                   icon="bulb" shape="round">
           <span>DevPost</span>
         </a-button>
-        <a-button type="primary" block="true" href="https://twitter.com/IMIS_team" icon="twitter" shape="round">
+        <a-button type="primary" :block="true" href="https://twitter.com/IMIS_team" icon="twitter" shape="round">
           <span>Twitter</span>
         </a-button>
-        <a-button type="primary" block="true"
+        <a-button type="primary" :block="true"
                   href="https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung"
                   icon="github" shape="round">
           <span>GitHub</span>
@@ -47,8 +47,8 @@
         </div>
       </div>
     </div>
-    <div style="display: flex; justify-content: center; padding: 40px 20px; background: #d3d3d3">
-      <router-link :to="{ name: 'app' }">
+    <div class="button-container">
+      <router-link :to="{ name: 'public-register' }" style="margin: 10px 20px 10px 0">
         <a-button
           style="flex:  0 1 300px; margin-left: 20px"
           type="primary"
@@ -56,7 +56,18 @@
           icon="arrow-right"
           size="large"
           block
-        >Hier geht's zur Live-Demo
+        >Zur Sebstregistrierung
+        </a-button>
+      </router-link>
+      <router-link :to="{ name: 'app' }" style="margin: 10px 0">
+        <a-button
+          style="flex:  0 1 300px; margin-left: 20px"
+          type="primary"
+          shape="round"
+          icon="arrow-right"
+          size="large"
+          block
+        >Zur Live-Demo
         </a-button>
       </router-link>
     </div>
@@ -64,7 +75,7 @@
       <h1 style="margin: 0">Der IMIS-Meldeprozess - Einfach, Schnell, Zentral</h1>
       <img src="../assets/imis-workflow.png"/>
     </div>
-      <div class="link-section">
+    <div class="link-section">
       <a-button
         style="flex:  0 1 400px; margin-left: 20px"
         type="primary"
@@ -106,9 +117,9 @@ export default {
   data() {
     return {
       paragraph1:
-          'Das Sammeln und Verwalten der aktuellen Infektionszahlen erfordert extrem viel Zeit und Ressourcen. IMIS ist unsere Lösung für eine schnelle, sichere und einfache Infektionsfall-Erfassung für Ärzte, Gesundheitsämter und Labore. Damit ermöglichen wir, dass wichtige Ressourcen frei werden, die dann an anderer Stelle gewinnbringend eingesetzt werden können.',
+        'Das Sammeln und Verwalten der aktuellen Infektionszahlen erfordert extrem viel Zeit und Ressourcen. IMIS ist unsere Lösung für eine schnelle, sichere und einfache Infektionsfall-Erfassung für Ärzte, Gesundheitsämter und Labore. Damit ermöglichen wir, dass wichtige Ressourcen frei werden, die dann an anderer Stelle gewinnbringend eingesetzt werden können.',
       paragraph2:
-          'Die COVID-19-Pandemie stellt für das bestehende Infektionsmeldewesen in Deutschland eine immense Herausforderung dar. Ärzte und über 400 Gesundheitsämter benutzen gegenwärtig einen uneinheitlichen Mix aus Telefon, Fax, E-Mails und Excel-Tabellen, um Fälle zusammenzutragen. Eine starke Auslastung der Gesundheitsämter und verspätete Meldungen sind die Folge. So erhalten Entscheider häufig nur lückenhafte Statistiken. Diese Lage sorgt für Unsicherheit und macht es schwer, angemessen auf die Krise zu reagieren. ',
+        'Die COVID-19-Pandemie stellt für das bestehende Infektionsmeldewesen in Deutschland eine immense Herausforderung dar. Ärzte und über 400 Gesundheitsämter benutzen gegenwärtig einen uneinheitlichen Mix aus Telefon, Fax, E-Mails und Excel-Tabellen, um Fälle zusammenzutragen. Eine starke Auslastung der Gesundheitsämter und verspätete Meldungen sind die Folge. So erhalten Entscheider häufig nur lückenhafte Statistiken. Diese Lage sorgt für Unsicherheit und macht es schwer, angemessen auf die Krise zu reagieren. ',
 
     }
   },
@@ -116,6 +127,14 @@ export default {
 </script>
 
 <style>
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+    background: #d3d3d3;
+    flex-wrap: wrap;
+  }
 
   .landing-header {
     background: white;
@@ -209,7 +228,7 @@ export default {
 
   @media (min-width: 1000px) {
     .hidden-desktop {
-      display: none!important;
+      display: none !important;
     }
   }
 

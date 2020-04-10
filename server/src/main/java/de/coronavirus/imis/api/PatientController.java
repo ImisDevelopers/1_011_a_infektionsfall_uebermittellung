@@ -1,21 +1,15 @@
 package de.coronavirus.imis.api;
 
-import java.util.List;
-
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import lombok.RequiredArgsConstructor;
-
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.services.PatientService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/patients")
@@ -40,18 +34,28 @@ public class PatientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Patient>> getAllPatients(){
+    public ResponseEntity<List<Patient>> getAllPatients() {
         return ResponseEntity.ok(patientService.getAllPatients());
     }
 
 
+    @PostMapping("/query-simple")
+    public List<Patient> queryPatientsSimple(@RequestBody PatientSimpleSearchParamsDTO query) {
+        return patientService.queryPatientsSimple(query);
+    }
+
+    @GetMapping("/query-simple/count")
+    public Long countQueryPatientsSimple(@RequestParam String query) {
+        return patientService.queryPatientsSimpleCount(query);
+    }
+
     @PostMapping("/query")
-    public List<Patient> queryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO){
+    public List<Patient> queryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO) {
         return patientService.queryPatients(patientSearchParamsDTO);
     }
 
     @PostMapping("/query/count")
-    public Long countQueryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO){
+    public Long countQueryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO) {
         return patientService.countQueryPatients(patientSearchParamsDTO);
     }
 }

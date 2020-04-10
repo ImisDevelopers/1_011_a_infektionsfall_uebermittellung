@@ -1,30 +1,21 @@
 package de.coronavirus.imis;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.config.domain.User;
+import de.coronavirus.imis.config.domain.UserRepository;
+import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.domain.TestType;
+import de.coronavirus.imis.services.*;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import lombok.RequiredArgsConstructor;
-
-import de.coronavirus.imis.config.domain.User;
-import de.coronavirus.imis.config.domain.UserRepository;
-import de.coronavirus.imis.config.domain.UserRole;
-import de.coronavirus.imis.services.InstitutionService;
-import de.coronavirus.imis.services.LabTestService;
-import de.coronavirus.imis.services.PatientEventService;
-import de.coronavirus.imis.services.PatientService;
-import de.coronavirus.imis.services.StatsService;
+import java.io.*;
 
 
 @Component
@@ -133,9 +124,9 @@ public class TestDataLoader implements ApplicationRunner {
             eventService.createScheduledEvent(person, laboratory.getId(), doctorsOffice.getId());
 
             // LAB RECEIVES SAMPLE AND PROCESSES IT
-            final String testId = "42";
+            final String testId = "42EF42";
             final String comment = "comment";
-            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment);
+            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment, TestType.PCR);
 
 
             // LAB HAS RESULT AND SOTRES IT

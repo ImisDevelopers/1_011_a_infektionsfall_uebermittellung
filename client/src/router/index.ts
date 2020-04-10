@@ -1,4 +1,5 @@
 import AccountView from '@/views/Account.vue'
+import PublicRegister from '@/views/PublicRegister.vue'
 import Vue from 'vue'
 import VueRouter, { Route, RouteConfig } from 'vue-router'
 import Login from '@/views/Login.vue'
@@ -61,18 +62,6 @@ const ALL_INSTITUTIONS: InstitutionRule[] = [
 ]
 
 const appRoutes: AppRoute[] = [
-  // {
-  //   name: 'register-institution',
-  //   path: 'register-institution',
-  //   component: RegisterInstitution,
-  //   meta: {
-  //     navigationInfo: {
-  //       icon: 'user-add',
-  //       title: 'Institution Registrieren',
-  //       authorities: ALL_INSTITUTIONS,
-  //     },
-  //   },
-  // },
   {
     name: 'account',
     path: 'account',
@@ -127,7 +116,7 @@ const appRoutes: AppRoute[] = [
     component: TestList,
     meta: {
       navigationInfo: {
-        icon: 'unorderd-list',
+        icon: 'unordered-list',
         title: 'Alle Tests',
         authorities: ['ROLE_LABORATORY', 'ROLE_TEST_SITE'],
       },
@@ -170,13 +159,18 @@ const appRoutes: AppRoute[] = [
 
 const routes = [
   {
-    path: '/',
     name: 'landing-page',
+    path: '/',
     component: LandingPage,
   },
   {
-    path: '/login',
+    name: 'public-register',
+    path: '/public-register',
+    component: PublicRegister,
+  },
+  {
     name: 'login',
+    path: '/login',
     component: Login,
     beforeEnter: checkNotAuthenticatedBeforeEnter,
     beforeRouteLeave: loginBeforeRouteLeave,
@@ -188,8 +182,8 @@ const routes = [
     beforeEnter: checkNotAuthenticatedBeforeEnter,
   },
   {
-    path: '/app',
     name: 'app',
+    path: '/app',
     component: AppRoot,
     children: appRoutes,
     redirect: { name: 'account' },

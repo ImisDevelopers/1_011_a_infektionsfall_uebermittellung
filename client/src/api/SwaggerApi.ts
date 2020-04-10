@@ -36,6 +36,7 @@ export interface CreateLabTestDTO {
   laboratoryId?: string;
   patientId?: string;
   testId?: string;
+  testType?: "PCR" | "ANTIBODY";
 }
 
 export interface CreatePatientDTO {
@@ -122,8 +123,9 @@ export interface LabTest {
   comment?: string;
   id?: string;
   report?: string;
-  testId?: string;
+  testId: string;
   testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
+  testType?: "PCR" | "ANTIBODY";
 }
 
 export interface Laboratory {
@@ -321,6 +323,14 @@ export interface PatientSearchParamsDTO {
   zip?: string;
 }
 
+export interface PatientSimpleSearchParamsDTO {
+  offsetPage?: number;
+  order?: string;
+  orderBy?: string;
+  pageSize?: number;
+  query?: string;
+}
+
 export interface RegisterUserRequest {
   password?: string;
   userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
@@ -388,7 +398,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8642/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -466,7 +476,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl //localhost:8642/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -584,71 +594,73 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingGET
-     * @summary errorHtml
+     * @name errorUsingGET
+     * @summary error
      * @request GET:/error
      * @secure
      */
-    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
+    errorUsingGet: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingHEAD
-     * @summary errorHtml
+     * @name errorUsingHEAD
+     * @summary error
      * @request HEAD:/error
      * @secure
      */
-    errorHtmlUsingHead: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
+    errorUsingHead: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPOST
-     * @summary errorHtml
+     * @name errorUsingPOST
+     * @summary error
      * @request POST:/error
      * @secure
      */
-    errorHtmlUsingPost: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
+    errorUsingPost: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPUT
-     * @summary errorHtml
+     * @name errorUsingPUT
+     * @summary error
      * @request PUT:/error
      * @secure
      */
-    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
+    errorUsingPut: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingDELETE
-     * @summary errorHtml
+     * @name errorUsingDELETE
+     * @summary error
      * @request DELETE:/error
      * @secure
      */
-    errorHtmlUsingDelete: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
+    errorUsingDelete: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingOPTIONS
-     * @summary errorHtml
+     * @name errorUsingOPTIONS
+     * @summary error
      * @request OPTIONS:/error
      * @secure
      */
-    errorHtmlUsingOptions: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
+    errorUsingOptions: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPATCH
-     * @summary errorHtml
+     * @name errorUsingPATCH
+     * @summary error
      * @request PATCH:/error
      * @secure
      */
-    errorHtmlUsingPatch: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
+    errorUsingPatch: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
   };
   institutions = {
     /**
@@ -680,6 +692,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getAllLaboratoriesUsingGet: (params?: RequestParams) =>
       this.request<Laboratory[], any>(`/institutions/laboratories`, "GET", params, null, true),
+
+    /**
+     * @tags institution-controller
+     * @name queryAllLaboratoriesUsingGET
+     * @summary queryAllLaboratories
+     * @request GET:/institutions/laboratories/query
+     * @secure
+     */
+    queryAllLaboratoriesUsingGet: (query: { id: string }, params?: RequestParams) =>
+      this.request<Laboratory[], any>(
+        `/institutions/laboratories/query${this.addQueryParams(query)}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
   };
   labtests = {
     /**
@@ -701,6 +729,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getLabTestForPatientUsingGet: (id: string, params?: RequestParams) =>
       this.request<LabTest[], any>(`/labtests/patient/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags lab-test-controller
+     * @name queryLabTestsByIdUsingGET
+     * @summary queryLabTestsById
+     * @request GET:/labtests/query
+     * @secure
+     */
+    queryLabTestsByIdUsingGet: (query: { labTestIdQuery: string }, params?: RequestParams) =>
+      this.request<LabTest[], any>(`/labtests/query${this.addQueryParams(query)}`, "GET", params, null, true),
 
     /**
      * @tags lab-test-controller
@@ -742,6 +780,26 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     queryPatientsUsingPost: (patientSearchParamsDTO: PatientSearchParamsDTO, params?: RequestParams) =>
       this.request<Patient[], any>(`/patients/query`, "POST", params, patientSearchParamsDTO, true),
+
+    /**
+     * @tags patient-controller
+     * @name queryPatientsSimpleUsingPOST
+     * @summary queryPatientsSimple
+     * @request POST:/patients/query-simple
+     * @secure
+     */
+    queryPatientsSimpleUsingPost: (query: PatientSimpleSearchParamsDTO, params?: RequestParams) =>
+      this.request<Patient[], any>(`/patients/query-simple`, "POST", params, query, true),
+
+    /**
+     * @tags patient-controller
+     * @name countQueryPatientsSimpleUsingGET
+     * @summary countQueryPatientsSimple
+     * @request GET:/patients/query-simple/count
+     * @secure
+     */
+    countQueryPatientsSimpleUsingGet: (query: { query: string }, params?: RequestParams) =>
+      this.request<number, any>(`/patients/query-simple/count${this.addQueryParams(query)}`, "GET", params, null, true),
 
     /**
      * @tags patient-controller

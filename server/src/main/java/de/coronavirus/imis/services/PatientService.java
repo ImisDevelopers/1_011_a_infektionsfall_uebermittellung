@@ -1,29 +1,33 @@
 package de.coronavirus.imis.services;
 
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import de.coronavirus.imis.services.util.LikeOperatorService;
-import lombok.AllArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-
 import com.google.common.base.Strings;
 import com.google.common.hash.Hashing;
-import lombok.extern.slf4j.Slf4j;
-
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.domain.RiskOccupation;
 import de.coronavirus.imis.repositories.PatientRepository;
+import de.coronavirus.imis.services.util.LikeOperatorService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -95,6 +99,47 @@ public class PatientService {
             log.error("error parsing integer");
         }
         return Integer.MIN_VALUE;
+    }
+
+    public Long queryPatientsSimpleCount(String query) {
+        return this.patientRepository.count(getSimpleQuerySpecification(query));
+    }
+
+    public List<Patient> queryPatientsSimple(PatientSimpleSearchParamsDTO query) {
+        final Sort sortBy = getSort(query.getOrder(), query.getOrderBy());
+        final Pageable pageable = getPageable(query.getOffsetPage(), query.getPageSize(), sortBy);
+        return this.patientRepository.findAll(getSimpleQuerySpecification(query.getQuery()), pageable).toList();
+    }
+
+    private Sort getSort(String order, String orderBy) {
+        return Sort.by(Sort.Direction.fromOptionalString(order).orElse(Sort.Direction.ASC), orderBy);
+    }
+
+    private Pageable getPageable(Long offsetPage, Long pageSize, Sort sortBy) {
+        return PageRequest.of(offsetPage.intValue(), pageSize.intValue(), sortBy);
+    }
+
+    private Specification<Patient> getSimpleQuerySpecification(String query) {
+        // each part of the query has to be in any of these attributes:
+        final List<String> attributes = Arrays.asList("firstName", "lastName", "id", "email", "phoneNumber", "city");
+        // "any" means we have to concatenate with "or"
+        final List<Specification<Patient>> specifications = Arrays.stream(query.split(" "))
+                .map(queryPart -> Specification.<Patient>where((root, q, criteriaBuilder) ->
+                        criteriaBuilder.or(
+                                attributes.stream()
+                                        .map(attribute -> like(root, criteriaBuilder, attribute, queryPart))
+                                        .toArray(Predicate[]::new)
+                        )
+                )).collect(Collectors.toList());
+
+        // Each Specification contains the filter for a single attribute
+        // These have to be joined together with "and"
+        return specifications.stream().skip(1)
+                .reduce(specifications.get(0), Specification::and);
+    }
+
+    private Predicate like(Root<Patient> root, CriteriaBuilder criteriaBuilder, String propertyName, String query) {
+        return criteriaBuilder.like(criteriaBuilder.lower(root.get(propertyName)), "%" + query.toLowerCase() + "%");
     }
 
     public List<Patient> queryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {

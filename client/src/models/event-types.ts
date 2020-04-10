@@ -45,3 +45,32 @@ export const eventTypes = [
     icon: 'reconciliation',
   },
 ]
+
+interface TestResultType {
+  id: 'TEST_SUBMITTED' | 'TEST_IN_PROGRESS' | 'TEST_POSITIVE' | 'TEST_NEGATIVE' | 'TEST_INVALID';
+  label: string;
+  icon: string;
+}
+export const testResults: TestResultType[] = [
+  {
+    id: 'TEST_SUBMITTED',
+    label: 'Test eingereicht',
+    icon: 'login',
+  }, {
+    id: 'TEST_IN_PROGRESS',
+    label: 'Test läuft',
+    icon: 'clock-circle',
+  }, {
+    id: 'TEST_POSITIVE',
+    label: 'Test positiv',
+    icon: 'check',
+  }, {
+    id: 'TEST_NEGATIVE',
+    label: 'Test negativ',
+    icon: 'stop',
+  }, {
+    id: 'TEST_INVALID',
+    label: 'Test invalide',
+    icon: 'warning',
+  },
+]

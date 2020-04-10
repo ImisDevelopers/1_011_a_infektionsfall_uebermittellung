@@ -3,12 +3,9 @@ package de.coronavirus.imis.api;
 import java.util.List;
 
 import de.coronavirus.imis.domain.Doctor;
+import de.coronavirus.imis.domain.InstitutionType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -101,6 +98,11 @@ public class InstitutionController {
     @GetMapping("/laboratories")
     public List<Laboratory> getAllLaboratories() {
         return institutionService.getAllLaboratories();
+    }
+
+    @GetMapping("/laboratories/query")
+    public List<Laboratory> queryAllLaboratories(@RequestParam String id) {
+        return institutionService.queryLaboratory(id);
     }
 
     @GetMapping("/doctors")

@@ -5,6 +5,7 @@ import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
 import Api, { removeBearerToken, setBearerToken } from '@/api'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
+import { Vue } from 'vue/types/vue'
 
 interface JwtData {
   roles: InstitutionRule[];
@@ -24,6 +25,10 @@ class AuthGetters extends Getters<AuthState> {
     return !!this.state.jwtToken // add is valid check expire date
   }
 
+  institution(): Institution | undefined {
+    return this.state.institution
+  }
+
   roles() {
     return this.state.jwtData?.roles || []
   }
@@ -31,7 +36,7 @@ class AuthGetters extends Getters<AuthState> {
   routes(): AppRoute[] {
     return navigationRoutes
       .filter(r => (config.showAllViews ||
-        this.roles().some(a => r.meta?.navigationInfo?.authorities.includes(a))))
+        this.getters.roles().some(a => r.meta?.navigationInfo?.authorities.includes(a))))
   }
 
   institutionUsers() {

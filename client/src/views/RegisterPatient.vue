@@ -4,10 +4,17 @@
       <a-card style="max-width: 600px; margin-bottom: 25px">
         <div style="display: flex; flex-direction: column">
           <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" />
-          <div>
-            <div>Der Patient wurde erfolgreich registriert.</div>
-            <div>Die Patienten ID lautet: {{ createdPatient.id }}</div>
-          </div>
+          <h3>
+            <span v-if="createdPatient.gender === 'female'">Patientin</span>
+            <span v-else>Patient</span>
+            wurde erfolgreich registriert.
+          </h3>
+          <table style="border-collapse: separate; border-spacing: 15px 5px;">
+            <tbody>
+              <tr><td>Name:</td><td>{{ createdPatient.lastName }}, {{ createdPatient.firstName }}</td></tr>
+              <tr><td>Patienten ID:</td><td>{{ createdPatient.id }}</td></tr>
+            </tbody>
+          </table>
           <div style="margin-top: 15px">
             <router-link :to="{ name: 'patient-detail', params: { id: createdPatient.id } }" style="margin-right: 15px">
               <a-button type="primary">
@@ -396,8 +403,7 @@ export default Vue.extend({
           riskOccupation,
         }
         Api.patients.addPatientUsingPost(request).then((patient: Patient) => {
-          this.createdPatient = patient as any
-          this.form.resetFields()
+          this.resetRegistrationForm()
           const notification = {
             message: 'Patient registriert.',
             description: 'Der Patient wurde erfolgreich registriert.',
@@ -413,6 +419,10 @@ export default Vue.extend({
           this.$notification.error(notification)
         })
       })
+    },
+    resetRegistrationForm() {
+      this.form.resetFields()
+      this.createdPatient = null
     },
   },
 })

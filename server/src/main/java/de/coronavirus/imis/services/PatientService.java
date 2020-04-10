@@ -37,6 +37,7 @@ public class PatientService {
     private final PatientRepository patientRepository;
     private final PatientEventService eventService;
     private final LikeOperatorService likeOperatorService;
+    private final RandomService randomService;
 
 
     public List<Patient> getAllPatients() {
@@ -55,7 +56,7 @@ public class PatientService {
     public Patient addPatient(final CreatePatientDTO dto) {
         var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
         var id = Hashing.sha256()
-                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed, StandardCharsets.UTF_8)
+                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed + randomService.getRandomString(12), StandardCharsets.UTF_8)
                 .toString()
                 .substring(0, 8).toUpperCase();
         var occupation = determineRiskOcc(dto.getRiskOccupation());

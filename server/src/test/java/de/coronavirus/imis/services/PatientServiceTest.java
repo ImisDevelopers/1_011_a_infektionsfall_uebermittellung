@@ -12,7 +12,8 @@ class PatientServiceTest {
     void queryPatientsNullInOrderAndOrderByProperty() {
         final PatientService patientService = new PatientService(Mockito.mock(PatientRepository.class),
                 Mockito.mock(PatientEventService.class),
-                new LikeOperatorService());
+                new LikeOperatorService(),
+                new RandomService());
         final PatientSearchParamsDTO patientSearchParamsDTO = new PatientSearchParamsDTO();
         patientSearchParamsDTO.setOrder(null);
         patientSearchParamsDTO.setOrderBy(null);

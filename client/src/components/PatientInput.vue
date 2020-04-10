@@ -1,6 +1,7 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Telefon, Mail" v-decorator="validation">
+    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Telefon, Mail" v-decorator="validation"
+                     @select="emitSelection" :defaultActiveFirstOption="false">
       <template slot="dataSource">
         <a-select-option v-for="patient in result" :key="patient.id">
           {{patient.firstName}} {{patient.lastName}} ({{patient.id}})
@@ -50,6 +51,9 @@ export default Vue.extend({
         })
       }
       this.result = result
+    },
+    emitSelection(value: string) {
+      this.$emit('select', value)
     },
   },
 })

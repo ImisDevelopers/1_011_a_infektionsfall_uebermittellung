@@ -53,7 +53,8 @@ public class LabTestService {
     public Set<LabTest> getAllLabsTestForPatient(String patiendId) {
         final Patient patient = patientService.findPatientById(patiendId).orElseThrow(PatientNotFoundException::new);
         final var events = eventService.getAllForPatient(patient);
-        return events.stream().map(PatientEvent::getLabTest).collect(Collectors.toSet());
+        return events.stream().map(PatientEvent::getLabTest)
+                .filter(Objects::nonNull).collect(Collectors.toSet());
     }
 
     @Transactional

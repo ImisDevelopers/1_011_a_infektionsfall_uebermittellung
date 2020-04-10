@@ -22,6 +22,7 @@ public class CreatePatientDTO {
     private String insuranceCompany;
     private String insuranceMembershipNumber;
     private EventType patientStatus;
+    private String employer;
 
     private Boolean fluImmunization;
     private String speedOfSymptomsOutbreak;

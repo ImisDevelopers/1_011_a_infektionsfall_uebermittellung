@@ -413,7 +413,8 @@ export default Vue.extend({
           riskOccupation,
         }
         Api.patients.addPatientUsingPost(request).then((patient: Patient) => {
-          this.resetRegistrationForm()
+          this.form.resetFields()
+          this.createdPatient = patient as any
           const notification = {
             message: 'Patient registriert.',
             description: 'Der Patient wurde erfolgreich registriert.',
@@ -429,10 +430,6 @@ export default Vue.extend({
           this.$notification.error(notification)
         })
       })
-    },
-    resetRegistrationForm() {
-      this.form.resetFields()
-      this.createdPatient = null
     },
   },
 })

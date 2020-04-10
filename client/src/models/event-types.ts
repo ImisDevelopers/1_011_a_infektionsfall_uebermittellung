@@ -1,4 +1,12 @@
-export const eventTypes = [
+import { PatientStatus } from '@/models/index'
+
+export interface EventTypeItem {
+  id: PatientStatus;
+  label: string;
+  icon: string;
+}
+
+export const eventTypes: EventTypeItem[] = [
   {
     id: 'REGISTERED',
     label: 'Registriert',
@@ -46,7 +54,7 @@ export const eventTypes = [
   },
 ]
 
-interface TestResultType {
+export interface TestResultType {
   id: 'TEST_SUBMITTED' | 'TEST_IN_PROGRESS' | 'TEST_POSITIVE' | 'TEST_NEGATIVE' | 'TEST_INVALID';
   label: string;
   icon: string;

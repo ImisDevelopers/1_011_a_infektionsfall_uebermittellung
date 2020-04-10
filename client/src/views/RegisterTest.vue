@@ -87,9 +87,9 @@ import Api from '@/api'
 import BarcodeInput from '../components/TestInput'
 import PatientInput from '../components/PatientInput'
 import LaboratoryInput from '../components/LaboratoryInput'
-import { testTypes } from '@/util/test-types'
+import { testTypes } from '@/models/test-types'
 import Component from 'vue-class-component'
-import { testResults } from '@/util/event-types'
+import { testResults } from '@/models/event-types'
 
 @Component({
   components: {

@@ -62,18 +62,6 @@ const ALL_INSTITUTIONS: InstitutionRule[] = [
 ]
 
 const appRoutes: AppRoute[] = [
-  // {
-  //   name: 'register-institution',
-  //   path: 'register-institution',
-  //   component: RegisterInstitution,
-  //   meta: {
-  //     navigationInfo: {
-  //       icon: 'user-add',
-  //       title: 'Institution Registrieren',
-  //       authorities: ALL_INSTITUTIONS,
-  //     },
-  //   },
-  // },
   {
     name: 'account',
     path: 'account',

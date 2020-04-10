@@ -53,9 +53,9 @@ jobs:
           --build-arg GITHUB_REF="${GITHUB_REF}" .)
     - name: Build server
       run: |
-        docker build -f Dockerfile.prod -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$SERVER_IMAGE":"$GITHUB_SHA" \
+        (cd server docker build -f Dockerfile.prod -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$SERVER_IMAGE":"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="${GITHUB_SHA}" \
-          --build-arg GITHUB_REF="${GITHUB_REF}" .
+          --build-arg GITHUB_REF="${GITHUB_REF}" .)
 
     # Push the Docker image to Google Container Registry
     - name: Publish

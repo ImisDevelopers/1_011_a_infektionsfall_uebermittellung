@@ -24,15 +24,17 @@
             <div style="display: flex">
               <span style="flex: 1 1 auto" />
               <div>
-                <a-form-item>
+                <a-form-item style="margin-bottom: 0">
                   <a-checkbox-group v-decorator="['symptoms']" :options="symptoms" class="checkbox-group" />
                 </a-form-item>
                 <div class="checkbox-group">
-                  <a-checkbox @change="symptomsChanged">Andere:</a-checkbox>
+                  <div style="display: flex; align-items: center; align-self: stretch">
+                    <a-checkbox @change="symptomsChanged">Andere:</a-checkbox>
+                    <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
+                      <a-input v-decorator="['symptomsOther']" :disabled="!showOtherSymptoms" />
+                    </a-form-item>
+                  </div>
                 </div>
-                <a-form-item>
-                  <a-input v-decorator="['symptomsOther']" :disabled="!showOtherSymptoms" />
-                </a-form-item>
               </div>
               <span style="flex: 1 1 auto" />
             </div>

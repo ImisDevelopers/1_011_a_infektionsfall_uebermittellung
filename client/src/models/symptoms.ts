@@ -49,8 +49,4 @@ export const SYMPTOMS: CheckboxOption[] = [
     label: 'Verlust des Geruchs- und/oder Geschmackssinnes',
     value: 'LOSS_OF_SENSE_OF_SMELL_TASTE',
   },
-  {
-    label: 'Andere',
-    value: 'OTHER',
-  },
 ]

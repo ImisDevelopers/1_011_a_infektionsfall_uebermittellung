@@ -271,11 +271,35 @@
         </a-form-item>
       </a-form>
     </div>
-    <div v-else>
-      <div>Der Patient wurde erfolgreich registriert.</div>
+    <a-card v-else class="table-container">
+      <h3>
+        <span v-if="createdPatient.gender == 'female'">Patientin</span>
+        <span v-else>Patient</span>
+        wurde erfolgreich registriert.
+      </h3>
+      <table style="border-collapse: separate; border-spacing: 15px 5px;">
+        <tbody>
+          <tr><td>Name:</td><td>{{ createdPatient.lastName }}, {{ createdPatient.firstName }}</td></tr>
+          <tr><td>Patienten ID:</td><td>{{ createdPatient.id }}</td></tr>
+        </tbody>
+      </table>
       <br />
-      <div>Die Patienten ID lautet: {{ createdPatient.id }}</div>
-    </div>
+      <a-row :gutter="16" type="flex">
+        <a-col>
+          <a-button type="secondary"
+            v-on:click="showDetails(createdPatient.id)">
+              Eintragsdetails anzeigen
+          </a-button>
+        </a-col>
+        <a-col>
+          <a-button type="primary"
+            id="register-next"
+            v-on:click="resetRegistrationForm()">
+              Weitere registrieren
+          </a-button>
+        </a-col>
+      </a-row>
+    </a-card>
   </div>
 </template>
 
@@ -284,6 +308,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
+import router from '@/router'
 import { patientMapper } from '../store/modules/patients.module'
 import { anonymizeProperties } from '@/util'
 
@@ -384,7 +409,7 @@ export default Vue.extend({
       selectedRiskAreas,
       RISK_OCCUPATIONS,
       selectedOccupation,
-      createdPatient: null,
+      createdPatient: null, // { id: 'YOLO', firstName: 'Max', lastName: 'Mustermann', gender: 'male' },
       dataProcessingClass: '',
       checked: false,
     }
@@ -439,8 +464,39 @@ export default Vue.extend({
           riskAreas,
           riskOccupation,
         }
-        this.registerPatient({ patient: request, instance: this })
+
+        const registrationTask = async function() {
+          try {
+            const patientRecord = await this.registerPatient({ patient: request })
+
+            const notification = {
+              message: 'Patient registriert.',
+              description: 'Der Patient wurde erfolgreich registriert.',
+            }
+            this.$notification.success(notification)
+            this.createdPatient = patientRecord
+
+            // set focus on button for registering next patient
+            this.$nextTick(() => {
+              document.getElementById('register-next').focus()
+            })
+          } catch (err) {
+            const notification = {
+              message: 'Fehler beim Registrieren des Patienten.',
+              description: err.message,
+            }
+            this.$notification.error(notification)
+          }
+        }
+        registrationTask.call(this)
       })
+    },
+    showDetails(patientId: string) {
+      router.push({ name: 'patient-detail', params: { id: patientId } })
+    },
+    resetRegistrationForm() {
+      this.form.resetFields()
+      this.createdPatient = null
     },
   },
 })

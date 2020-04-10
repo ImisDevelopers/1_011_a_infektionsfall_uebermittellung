@@ -47,7 +47,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
     // commit('shared/finishedLoading', 'fetchPatients', { root: true })
   }
 
-  async registerPatient(arg: { patient: Patient; instance?: Vue }): Patient {
+  async registerPatient(arg: { patient: Patient; instance?: Vue }): Promise<Patient> {
     // commit('shared/startedLoading', 'registerPatient', { root: true })
     try {
       const patientResponse = await Api.patients.addPatientUsingPost(arg.patient)

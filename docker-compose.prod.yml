@@ -8,13 +8,13 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: imis
     ports:
-    - "5432:5432"
+        - "5432:5432"
     restart: unless-stopped
 
   client:
     build:
       context: client
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     ports:
     - "8080:8080"
     depends_on:
@@ -23,10 +23,10 @@ services:
   server:
     build:
       context: server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     environment:
-    - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
     ports:
-    - "80:80"
+    - "80:8080"
     depends_on:
     - postgres

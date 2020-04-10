@@ -178,7 +178,7 @@ import moment from 'moment'
 import Api from '@/api'
 import { Patient, Timestamp } from '../api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
-import { eventTypes } from '@/util/event-types'
+import { eventTypes } from '@/models/event-types'
 
 interface State {
   patient: undefined | Patient;

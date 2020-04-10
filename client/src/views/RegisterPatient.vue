@@ -1,6 +1,46 @@
 <template>
   <div class="wrapper">
-    <div v-if="!createdPatient">
+    <div v-if="createdPatient" style="display: flex; justify-content: center; text-align: center">
+      <a-card style="max-width: 600px; margin-bottom: 25px">
+        <div style="display: flex; flex-direction: column; position: relative">
+          <a-icon type="close" style="top: 0; right: 0; position: absolute; cursor: pointer"
+                  @click="createdPatient = null" />
+          <div style="display: flex; align-items: center; margin: 10px">
+          <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" />
+          <h3 style="margin-bottom: 0">
+            <span v-if="createdPatient.gender === 'female'">Patientin</span>
+            <span v-else>Patient</span>
+            wurde erfolgreich registriert.
+          </h3>
+          </div>
+          <table style="border-collapse: separate; border-spacing: 15px 5px; text-align: left">
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td>{{ createdPatient.firstName }} {{ createdPatient.lastName }}</td>
+              </tr>
+              <tr>
+                <td>Patienten-ID:</td>
+                <td>{{ createdPatient.id }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top: 15px">
+            <router-link :to="{ name: 'patient-detail', params: { id: createdPatient.id } }" style="margin-right: 15px">
+              <a-button type="primary">
+                Patienten einsehen
+              </a-button>
+            </router-link>
+            <router-link :to="{ name: 'register-test' }">
+              <a-button type="primary">
+                Probe zuordnen
+              </a-button>
+            </router-link>
+          </div>
+        </div>
+      </a-card>
+    </div>
+    <div>
       <h3>
         Registrieren Sie hier neue Patienten in IMIS. Bitte füllen Sie den Bogen
         vollständig aus.
@@ -145,14 +185,10 @@
                   <a-checkbox
                     v-model="selectedRiskAreas[riskArea.key]">{{
                     riskArea.description
-                    }}</a-checkbox>
+                    }}
+                  </a-checkbox>
                 </a-col>
               </a-row>
-              <!--              <a-checkbox-group-->
-              <!--                name="Risk Areas"-->
-              <!--                :options="RISK_AREAS"-->
-              <!--                :v-model="selectedRiskAreas">-->
-              <!--              </a-checkbox-group>-->
             </a-form-item>
             <!-- ggf. Aufenthaltszeitraum ergänzen -->
           </a-collapse-panel>
@@ -168,9 +204,7 @@
                   v-for="(symptom, idx) in SYMPTOMS" :key="idx"
                   :xs="24"
                   :sm="12">
-                  <a-checkbox v-model="selectedSymptoms[symptom.key]">{{
-                    symptom.description
-                    }}</a-checkbox>
+                  <a-checkbox v-model="selectedSymptoms[symptom.value]">{{symptom.label}}</a-checkbox>
                 </a-col>
               </a-row>
             </a-form-item>
@@ -187,10 +221,12 @@
                 ]"
               >
                 <a-radio value="suddenly"
-                >Plötzlich, innerhalb von einem Tag</a-radio
+                >Plötzlich, innerhalb von einem Tag
+                </a-radio
                 >
                 <a-radio value="slow"
-                >Langsam, innerhalb von mehreren Tagen</a-radio
+                >Langsam, innerhalb von mehreren Tagen
+                </a-radio
                 >
               </a-radio-group>
             </a-form-item>
@@ -235,13 +271,11 @@
             >
               <a-row>
                 <a-col
-                  v-for="(illness, idx) in ILLNESSES" :key="idx"
+                  v-for="(illness, idx) in PRE_ILLNESSES" :key="idx"
                   :xs="24"
                   :sm="12"
                 >
-                  <a-checkbox v-model="selectedPreIllnesses[illness.key]">{{
-                    illness.description
-                    }}</a-checkbox>
+                  <a-checkbox v-model="selectedPreIllnesses[illness.value]">{{illness.label}}</a-checkbox>
                 </a-col>
               </a-row>
             </a-form-item>
@@ -271,11 +305,6 @@
         </a-form-item>
       </a-form>
     </div>
-    <div v-else>
-      <div>Der Patient wurde erfolgreich registriert.</div>
-      <br />
-      <div>Die Patienten ID lautet: {{ createdPatient.id }}</div>
-    </div>
   </div>
 </template>
 
@@ -283,9 +312,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Component from 'vue-class-component'
 import { patientMapper } from '../store/modules/patients.module'
-import { anonymizeProperties } from '@/util'
+import { SYMPTOMS } from '@/models/symptoms'
+import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import Api from '@/api'
+import { Patient } from '@/api/SwaggerApi'
 
 type KeyDescription = { key: string; description: string };
 type KeyLabel = { key: string; label: string };
@@ -297,49 +328,6 @@ const RISK_OCCUPATIONS: KeyLabel[] = [
   { key: 'NURSE', label: 'Pflegepersonal' },
   { key: 'CAREGIVER', label: 'Altenpflege' },
   { key: 'POLICE', label: 'Polizei' },
-]
-
-const SYMPTOMS: KeyDescription[] = [
-  { key: 'SORE_THROAT', description: 'Halsschmerzen' },
-  { key: 'HEADACHES', description: 'Kopfschmerzen' },
-  { key: 'FATIGUE', description: 'Abgeschlagenheit' },
-  { key: 'COUGHT', description: 'Husten' },
-  { key: 'COLD', description: 'Schnupfen' },
-  { key: 'LIMB_PAIN', description: 'Gliederschmerzen' },
-  { key: 'DIARRHEA', description: 'Durchfall' },
-  { key: 'SHORTNESS_OF_BREATH', description: 'Luftnot' },
-  { key: 'LESS_38_DEG', description: 'Fieber bis 38°C' },
-  { key: 'MORE_38_DEG', description: 'Fieber über 38°C' },
-]
-
-const ILLNESSES: KeyDescription[] = [
-  { key: 'HEART_DISEASE', description: 'Herzerkrankungen' },
-  { key: 'LUNG_DISEASE', description: 'Lungenerkrankungen' },
-  { key: 'CIRCULATORY_DISORDER', description: 'Kreislauf-/Gefäßerkrankungen' },
-  {
-    key: 'BLOOD_DISEASE',
-    description: 'Bluterkrankungen oder erhöhte Blutungsneigung',
-  },
-  { key: 'CANCER', description: 'Krebserkrankungen' },
-  {
-    key: 'BONE_DISEASE',
-    description: 'Erkrankungen der Knochen, Muskeln oder des Bindegewebes',
-  },
-  {
-    key: 'MENTAL_ILLNESS',
-    description: 'Psychische, neurologische Erkrankungen',
-  },
-  {
-    key: 'METABOLIC_DISEASE',
-    description: 'Stoffwechselerkrankungen (z.B. Diabetes)',
-  },
-  { key: 'ENTEROPATHY', description: 'Magen-/Darmerkrankungen' },
-  {
-    key: 'HEPATIC_DISEASE',
-    description: 'Erkrankungen der Leber oder Gallenwege',
-  },
-  { key: 'KIDNEY_DISEASE', description: 'Nieren-/Harnwegserkrankungen' },
-  { key: 'OTHER_DISEASE', description: 'Andere Vorerkrankungen' },
 ]
 
 const RISK_AREAS: KeyDescription[] = [
@@ -358,12 +346,12 @@ export default Vue.extend({
   data() {
     const selectedSymptoms: any = {}
     SYMPTOMS.forEach(symptom => {
-      selectedSymptoms[symptom.key] = false
+      selectedSymptoms[symptom.value] = false
     })
 
     const selectedPreIllnesses: any = {}
-    ILLNESSES.forEach(illness => {
-      selectedPreIllnesses[illness.key] = false
+    PRE_ILLNESSES.forEach(illness => {
+      selectedPreIllnesses[illness.value] = false
     })
 
     const selectedRiskAreas: any = {}
@@ -378,7 +366,7 @@ export default Vue.extend({
       form: this.$form.createForm(this, { name: 'coordinated' }),
       SYMPTOMS,
       selectedSymptoms,
-      ILLNESSES,
+      PRE_ILLNESSES,
       selectedPreIllnesses,
       RISK_AREAS,
       selectedRiskAreas,
@@ -404,28 +392,13 @@ export default Vue.extend({
         } else if (err) {
           return
         }
-        // TODO: Remove this when we go to production
-        anonymizeProperties(
-          [
-            'lastName',
-            'email',
-            'phoneNumber',
-            'street',
-            'houseNumber',
-            'city',
-            { key: 'zip', type: 'number' },
-            'insuranceCompany',
-            'insuranceMembershipNumber',
-          ],
-          values,
-        )
 
         const symptoms = SYMPTOMS.filter(
-          symptom => this.selectedSymptoms[symptom.key],
-        ).map(symptom => symptom.key)
-        const preIllnesses = ILLNESSES.filter(
-          illness => this.selectedPreIllnesses[illness.key],
-        ).map(illness => illness.key)
+          symptom => this.selectedSymptoms[symptom.value],
+        ).map(symptom => symptom.value)
+        const preIllnesses = PRE_ILLNESSES.filter(
+          illness => this.selectedPreIllnesses[illness.value],
+        ).map(illness => illness.value)
         const riskAreas = RISK_AREAS.filter(
           riskArea => this.selectedRiskAreas[riskArea.key],
         ).map(riskArea => riskArea.key)
@@ -439,8 +412,27 @@ export default Vue.extend({
           riskAreas,
           riskOccupation,
         }
-        this.registerPatient({ patient: request, instance: this })
+        Api.patients.addPatientUsingPost(request).then((patient: Patient) => {
+          this.resetRegistrationForm()
+          const notification = {
+            message: 'Patient registriert.',
+            description: 'Der Patient wurde erfolgreich registriert.',
+          }
+          this.$notification.success(notification)
+          window.scrollTo(0, 0)
+        }).catch((error: Error) => {
+          console.error(error)
+          const notification = {
+            message: 'Patient nicht registriert.',
+            description: 'Der Patient konnte nicht registriert werden.',
+          }
+          this.$notification.error(notification)
+        })
       })
+    },
+    resetRegistrationForm() {
+      this.form.resetFields()
+      this.createdPatient = null
     },
   },
 })

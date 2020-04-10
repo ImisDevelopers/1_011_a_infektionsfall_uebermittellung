@@ -23,6 +23,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
@@ -84,6 +85,7 @@ public class PatientService {
                 .setRiskAreas(dto.getRiskAreas())
                 .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
                 .setRiskOccupation(occupation)
+                .setCreationTimestamp(OffsetDateTime.now())
                 .setPreIllnesses(dto.getPreIllnesses());
         mappedPatient = patientRepository.save(mappedPatient);
         log.info("inserting patient with id {}", mappedPatient.getId());

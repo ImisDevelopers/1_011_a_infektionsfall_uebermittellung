@@ -2,6 +2,7 @@ package de.coronavirus.imis.domain;
 
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import javax.persistence.*;
@@ -65,6 +66,8 @@ public class Patient {
 
     private String comment;
     private String occupation;
+
+    private OffsetDateTime creationTimestamp;
 
     @OneToMany(mappedBy = "patient")
 //    @JsonManagedReference

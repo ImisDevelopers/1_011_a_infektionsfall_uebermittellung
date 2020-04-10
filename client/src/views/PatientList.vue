@@ -7,11 +7,11 @@
           <a-input v-model="form.query"
                    placeholder="Suche über ID, Name, Stadt, Email oder Telefon (z.B. 'Max Mustermann Berlin')"
                    :disabled="showAdvancedSearch">
-            <a-icon slot="prefix" type="search"/>
+            <a-icon slot="prefix" type="search" />
           </a-input>
         </a-form-item>
         <a-button @click="toggleAdvancedSearch">
-          <a-icon :type="showAdvancedSearch ? 'down' : 'right'"/>
+          <a-icon :type="showAdvancedSearch ? 'down' : 'right'" />
           Erweiterte Suche
         </a-button>
         <a-button icon="search" type="primary" html-type="submit"
@@ -22,37 +22,37 @@
       <a-form class="search-container" :model="advancedForm" v-if="showAdvancedSearch">
         <a-form-item label="Vorname">
           <a-input v-model="advancedForm.firstName" placeholder="Vorname">
-            <a-icon slot="prefix" type="user"/>
+            <a-icon slot="prefix" type="user" />
           </a-input>
         </a-form-item>
         <a-form-item label="Nachname">
           <a-input v-model="advancedForm.lastName" placeholder="Nachname">
-            <a-icon slot="prefix" type="user"/>
+            <a-icon slot="prefix" type="user" />
           </a-input>
         </a-form-item>
         <a-form-item label="Status">
           <a-select style="width: 250px" placeholder="Status" v-model="advancedForm.patientStatus">
             <a-select-option value="">Alle</a-select-option>
             <a-select-option v-for="eventType in eventTypes" :key="eventType.id">
-              <a-icon :type="eventType.icon" style="margin-right: 5px"/>
+              <a-icon :type="eventType.icon" style="margin-right: 5px" />
               {{eventType.label}}
             </a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item label="ID">
           <a-input v-model="advancedForm.id" placeholder="ID">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
         <a-form-item label="Geschlecht">
           <a-select v-model="advancedForm.gender" style="width: 120px" placeholder="Geschlecht">
             <a-select-option value="">Alle</a-select-option>
             <a-select-option value="weiblich">
-              <a-icon type="woman" style="margin-right: 5px"/>
+              <a-icon type="woman" style="margin-right: 5px" />
               Weiblich
             </a-select-option>
             <a-select-option value="männlich">
-              <a-icon type="man" style="margin-right: 5px"/>
+              <a-icon type="man" style="margin-right: 5px" />
               Männlich
             </a-select-option>
             <a-select-option value="sonstiges">Sonstiges</a-select-option>
@@ -60,57 +60,57 @@
         </a-form-item>
         <a-form-item label="Stadt">
           <a-input v-model="advancedForm.city" placeholder="Stadt">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="E-Mail">
           <a-input v-model="advancedForm.email" placeholder="E-Mail">
-            <a-icon slot="prefix" type="mail"/>
+            <a-icon slot="prefix" type="mail" />
           </a-input>
         </a-form-item>
         <a-form-item label="Telefonnummer">
           <a-input v-model="advancedForm.phoneNumber" placeholder="Telefonnummer">
-            <a-icon slot="prefix" type="phone"/>
+            <a-icon slot="prefix" type="phone" />
           </a-input>
         </a-form-item>
         <a-form-item label="Straße">
           <a-input v-model="advancedForm.street" placeholder="Straße">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Hausnummer" style="width: 100px">
           <a-input v-model="advancedForm.houseNumber" placeholder="Hausnr.">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Postleitzahl" style="width: 100px">
           <a-input v-model="advancedForm.zip" placeholder="PLZ">
-            <a-icon slot="prefix" type="home"/>
+            <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Versicherung">
           <a-input v-model="advancedForm.insuranceCompany" placeholder="Versicherung">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
         <a-form-item label="Versicherungsnummer">
           <a-input v-model="advancedForm.insuranceMembershipNumber" placeholder="Versicherungsnummer">
-            <a-icon slot="prefix" type="idcard"/>
+            <a-icon slot="prefix" type="idcard" />
           </a-input>
         </a-form-item>
         <a-form-item label="Arzt-ID">
           <a-input v-model="advancedForm.doctorId" placeholder="Arzt-ID">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
         <a-form-item label="Labor-ID">
           <a-input v-model="advancedForm.laboratoryId" placeholder="Labor-ID">
-            <a-icon slot="prefix" type="hdd"/>
+            <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
         <!-- Invisible Button so user can use enter to search -->
         <a-button style="visibility: hidden" html-type="submit"
-                  @click="handleSearch"/>
+                  @click="handleSearch" />
       </a-form>
       <a-table
         class="imis-table-no-pagination"
@@ -123,7 +123,7 @@
         @change="handleTableChange"
       >
         <div slot="patientStatus" slot-scope="patientStatus">
-          <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px"/>
+          <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
           {{eventTypes.find(type => type.id === patientStatus).label}}
         </div>
       </a-table>
@@ -256,11 +256,21 @@ export default Vue.extend({
     currentPage() {
       this.loadPage()
     },
+    '$route.query.query'() {
+      this.loadAfterUrlChange()
+    },
   },
   created() {
-    this.loadPage()
+    this.loadAfterUrlChange()
   },
   methods: {
+    loadAfterUrlChange() {
+      const query = this.$route.query.query
+      if (query) {
+        this.form.query = query.toString()
+      }
+      this.loadPage()
+    },
     handleSearch() {
       this.currentPage = 1
       this.loadPage()

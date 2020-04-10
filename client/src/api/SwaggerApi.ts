@@ -231,6 +231,7 @@ export interface Patient {
   comment?: string;
   confirmed?: boolean;
   coronaContacts?: boolean;
+  creationTimestamp?: string;
   dateOfBirth?: string;
   email?: string;
   events?: PatientEvent[];

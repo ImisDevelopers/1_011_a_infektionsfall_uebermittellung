@@ -36,7 +36,7 @@ Development happens in `dev` using feature branches and PR. `dev` branch is depl
     - Home: https://docs.docker.com/toolbox/toolbox_install_windows/
 2. JDK 11 (Java)
   - https://adoptopenjdk.net/ 
-3. NPM/YARN
+3. YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
 
 ## How to run this server?

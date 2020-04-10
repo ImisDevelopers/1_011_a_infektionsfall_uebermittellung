@@ -2,17 +2,27 @@
   <div class="wrapper">
     <div v-if="createdPatient" style="display: flex; justify-content: center; text-align: center">
       <a-card style="max-width: 600px; margin-bottom: 25px">
-        <div style="display: flex; flex-direction: column">
-          <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" />
-          <h3>
+        <div style="display: flex; flex-direction: column; position: relative">
+          <a-icon type="close" style="top: 0; right: 0; position: absolute; cursor: pointer"
+                  @click="createdPatient = null" />
+          <div style="display: flex; align-items: center; margin: 10px">
+          <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" />
+          <h3 style="margin-bottom: 0">
             <span v-if="createdPatient.gender === 'female'">Patientin</span>
             <span v-else>Patient</span>
             wurde erfolgreich registriert.
           </h3>
-          <table style="border-collapse: separate; border-spacing: 15px 5px;">
+          </div>
+          <table style="border-collapse: separate; border-spacing: 15px 5px; text-align: left">
             <tbody>
-              <tr><td>Name:</td><td>{{ createdPatient.lastName }}, {{ createdPatient.firstName }}</td></tr>
-              <tr><td>Patienten ID:</td><td>{{ createdPatient.id }}</td></tr>
+              <tr>
+                <td>Name:</td>
+                <td>{{ createdPatient.firstName }} {{ createdPatient.lastName }}</td>
+              </tr>
+              <tr>
+                <td>Patienten-ID:</td>
+                <td>{{ createdPatient.id }}</td>
+              </tr>
             </tbody>
           </table>
           <div style="margin-top: 15px">

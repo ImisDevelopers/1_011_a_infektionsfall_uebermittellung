@@ -1,30 +1,27 @@
 package de.coronavirus.imis.services;
 
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
+import com.google.common.base.Strings;
+import com.google.common.hash.Hashing;
+import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.domain.EventType;
+import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.domain.RiskOccupation;
+import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.google.common.base.Strings;
-import com.google.common.hash.Hashing;
-import lombok.extern.slf4j.Slf4j;
-
-import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.domain.RiskOccupation;
-import de.coronavirus.imis.repositories.PatientRepository;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j

@@ -1,5 +1,11 @@
 package de.coronavirus.imis.config;
 
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
+import static org.springframework.http.HttpMethod.OPTIONS;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.DELETE;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import lombok.RequiredArgsConstructor;
 
+import de.coronavirus.imis.config.domain.UserRole;
 import de.coronavirus.imis.domain.InstitutionType;
 
 @Configuration
@@ -36,6 +43,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // FIXME route permissions
         //@formatter:off
         http
                 .httpBasic().disable()
@@ -43,8 +51,24 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/patient").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(),
-                InstitutionType.TEST_SITE.name())
+                // OPTIONS matcher for CORS, do not delete
+                .antMatchers(OPTIONS, "/**").permitAll()
+                .antMatchers(POST, "/patients").permitAll()
+                .antMatchers("/patients").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.TEST_SITE.name())
+                .antMatchers("/doctor/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name())
+                .mvcMatchers(POST, "/labtest").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
+                .antMatchers("/labtest/patient/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
+                .mvcMatchers(PUT, "/labtest/*").hasRole(InstitutionType.LABORATORY.name())
+                .antMatchers("/stats").authenticated()
+                .antMatchers("/auth").permitAll()
+                .antMatchers("/auth/register").hasAuthority(UserRole.USER_ROLE_ADMIN.name())
+                .antMatchers("/institutions/*").hasAuthority(UserRole.USER_ROLE_ADMIN.name())
+                .antMatchers(
+                        "/v2/api-docs",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html",
+                        "/webjars/**" ,
+                        /*Probably not needed*/ "/swagger.json").permitAll()
                 .antMatchers("/**").permitAll();
         //@formatter:on
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);

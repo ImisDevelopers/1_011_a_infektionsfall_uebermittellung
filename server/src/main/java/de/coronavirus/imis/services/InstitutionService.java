@@ -1,30 +1,22 @@
 package de.coronavirus.imis.services;
 
-import static de.coronavirus.imis.api.dto.CreateInstitutionDTO.fromRegisterRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.domain.*;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
-import de.coronavirus.imis.domain.Clinic;
-import de.coronavirus.imis.domain.Doctor;
-import de.coronavirus.imis.domain.Institution;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.TestSite;
 import de.coronavirus.imis.repositories.ClinicRepository;
 import de.coronavirus.imis.repositories.DoctorRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.TestSiteRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.UUID;
 
 
 @Service
@@ -39,6 +31,9 @@ public class InstitutionService {
         return laboratoryRepository.findAll();
     }
 
+    public List<Doctor> getAllDoctors() {
+        return doctorRepository.findAll();
+    }
 
     @Transactional
     public Doctor createDoctorInstitution(CreateInstitutionDTO institutionDTO) {
@@ -51,7 +46,7 @@ public class InstitutionService {
         doctor.setEmail(institutionDTO.getEmail());
         doctor.setPhoneNumber(institutionDTO.getPhoneNumber());
         doctor.setComment(institutionDTO.getComment());
-       doctor.setId(UUID.randomUUID().toString());
+        doctor.setId(UUID.randomUUID().toString());
         return this.doctorRepository.saveAndFlush(doctor);
     }
 
@@ -67,24 +62,6 @@ public class InstitutionService {
         laboratory.setPhoneNumber(institutionDTO.getPhoneNumber());
         laboratory.setComment(institutionDTO.getComment());
         laboratory.setId(UUID.randomUUID().toString());
-        return this.laboratoryRepository.saveAndFlush(laboratory);
-    }
-
-    // TODO remove after MVP and set UUID as generator in Institution and remove generated UUID in this service
-    //      ask @jonathangpk
-    @Transactional
-    public Laboratory createLaboratoryInstitution(CreateInstitutionDTO institutionDTO, String id) {
-        var laboratory = new Laboratory();
-        laboratory.setName(institutionDTO.getName());
-        laboratory.setStreet(institutionDTO.getStreet());
-        laboratory.setHouseNumber(institutionDTO.getHouseNumber());
-        laboratory.setZip(institutionDTO.getZip());
-        laboratory.setCity(institutionDTO.getCity());
-        laboratory.setEmail(institutionDTO.getEmail());
-        laboratory.setPhoneNumber(institutionDTO.getPhoneNumber());
-        laboratory.setComment(institutionDTO.getComment());
-        laboratory.setId(id);
-
         return this.laboratoryRepository.saveAndFlush(laboratory);
     }
 
@@ -120,8 +97,7 @@ public class InstitutionService {
         return this.testSiteRepository.saveAndFlush(testSite);
     }
 
-    protected Institution createInstiution(RegisterUserRequest registerUserRequest) {
-        var dto = fromRegisterRequest(registerUserRequest);
+    protected Institution createInstitution(CreateInstitutionDTO dto) {
         Institution result = null;
         switch (dto.getInstitutionType()) {
             case CLINIC:
@@ -140,5 +116,36 @@ public class InstitutionService {
                 break;
         }
         return result;
+    }
+
+    protected Institution getInstitution(String id, InstitutionType type) {
+        Institution result = null;
+        switch (type) {
+            case CLINIC:
+                result = clinicRepository.getOne(id);
+                break;
+            case TEST_SITE:
+                result = testSiteRepository.getOne(id);
+                break;
+            case LABORATORY:
+                result = laboratoryRepository.getOne(id);
+                break;
+            case DOCTORS_OFFICE:
+                result = doctorRepository.getOne(id);
+                break;
+            case GOVERNMENT_AGENCY:
+                break;
+        }
+        return result;
+    }
+
+    /**
+     * Query for institution by part of id
+     * @param id id or a part of an id
+     * @return List of matching institutions
+     */
+    @Transactional
+    public List<Laboratory> queryLaboratory(String id) {
+        return laboratoryRepository.queryLaboratory(id);
     }
 }

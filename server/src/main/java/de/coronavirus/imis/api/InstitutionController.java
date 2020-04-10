@@ -1,14 +1,18 @@
 package de.coronavirus.imis.api;
 
+import java.util.List;
+
+import de.coronavirus.imis.domain.Doctor;
+import de.coronavirus.imis.domain.InstitutionType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import lombok.RequiredArgsConstructor;
+
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.InstitutionDTO;
 import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.services.InstitutionService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/institutions")
@@ -18,7 +22,8 @@ public class InstitutionController {
     final InstitutionService institutionService;
 
     @PostMapping
-    public ResponseEntity<InstitutionDTO> createInstitution(@RequestBody CreateInstitutionDTO createInstitutionDTO) {
+    public ResponseEntity<InstitutionDTO> createInstitution(@RequestBody CreateInstitutionDTO createInstitutionDTO
+            ) {
 
         var dto = new InstitutionDTO();
 
@@ -87,12 +92,21 @@ public class InstitutionController {
                 break;
         }
 
-
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping("/laboratories")
     public List<Laboratory> getAllLaboratories() {
         return institutionService.getAllLaboratories();
+    }
+
+    @GetMapping("/laboratories/query")
+    public List<Laboratory> queryAllLaboratories(@RequestParam String id) {
+        return institutionService.queryLaboratory(id);
+    }
+
+    @GetMapping("/doctors")
+    public List<Doctor> getAllDoctors() {
+        return institutionService.getAllDoctors();
     }
 }

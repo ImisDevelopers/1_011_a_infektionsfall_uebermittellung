@@ -44,6 +44,7 @@ export interface CreatePatientDTO {
   coronaContacts?: boolean;
   dateOfBirth?: string;
   email?: string;
+  employer?: string;
   firstName?: string;
   fluImmunization?: boolean;
   gender?: string;
@@ -234,6 +235,7 @@ export interface Patient {
   creationTimestamp?: string;
   dateOfBirth?: string;
   email?: string;
+  employer?: string;
   events?: PatientEvent[];
   firstName?: string;
   fluImmunization?: boolean;

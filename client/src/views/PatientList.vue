@@ -126,6 +126,9 @@
           <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
           {{eventTypes.find(type => type.id === patientStatus).label}}
         </div>
+        <div slot="operation" slot-scope="nothing, patient" style="cursor: pointer">
+          <a-icon type="search" style="margin-right: 5px; cursor: pointer" @click="() => handlePatientClick(patient)" />
+        </div>
       </a-table>
       <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end; align-items: center">
         <a-button type="primary" style="margin-right: 50px" @click="downloadPatients">CSV exportieren</a-button>
@@ -155,6 +158,13 @@ import Api from '@/api'
 import moment from 'moment'
 
 const columnsSchema: Partial<Column>[] = [
+  {
+    title: '',
+    dataIndex: 'operation',
+    scopedSlots: {
+      customRender: ['operation'],
+    },
+  },
   {
     title: 'Nachname',
     // sorter: (a, b) => a.lastName.localeCompare(b.lastName),

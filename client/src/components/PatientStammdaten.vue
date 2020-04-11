@@ -6,6 +6,13 @@
       <p style="text-align: center">Allgemeine Angaben:</p>
       <a-row>
         <a-col :lg="12" :sm="24">
+          <a-form-item label="Titel">
+            <a-input v-decorator="['title']" />
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row>
+        <a-col :lg="12" :sm="24">
           <a-form-item label="Vorname">
             <a-input
               v-decorator="['firstName', { rules: [{

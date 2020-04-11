@@ -1,18 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "imis.fullname" . }}
-  labels:
-  {{- include "imis.labels" . | nindent 4 }}
+  name: "{{- include "imis.fullname" . -}}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-  {{- include "imis.selectorLabels" . | nindent 6 }}
+      {{- include "imis.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-    {{- include "imis.selectorLabels" . | nindent 8 }}
+        {{- include "imis.selectorLabels" . | nindent 8 }}
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: /actuator/prometheus
@@ -37,7 +35,7 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ include "imis.fullname" }}-postgres
+              name: "{{- include "imis.fullname" . }}-postgres"
               key: password
         volumeMounts:
         - name: cloudstore-service-account
@@ -74,7 +72,7 @@ spec:
       volumes:
       - name: cloudsql-instance-credentials
         secret:
-          secretName: {{ include "imis.fullname" . }}-cloudsql
+          secretName: "{{ include "imis.fullname" . -}}-cloudsql"
       - name: cloudstore-service-account
         secret:
-          secretName: {{ include "imis.fullname" . }}-cloudstore
+          secretName: "{{ include "imis.fullname" . -}}-cloudstore"

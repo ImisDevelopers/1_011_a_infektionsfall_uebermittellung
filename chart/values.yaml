@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 gitSha: "SHA" ## will be replaced during deployment
-nameOverride: ""
+nameOverride: "imis"
 env: "production"
 
 image:

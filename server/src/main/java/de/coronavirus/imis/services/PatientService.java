@@ -60,7 +60,6 @@ public class PatientService {
                 .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed + randomService.getRandomString(12), StandardCharsets.UTF_8)
                 .toString()
                 .substring(0, 8).toUpperCase();
-        var occupation = determineRiskOcc(dto.getRiskOccupation());
         var mappedPatient = new Patient()
                 .setId(id)
                 .setFirstName(dto.getFirstName())
@@ -86,7 +85,8 @@ public class PatientService {
                 .setCoronaContacts(dto.getCoronaContacts())
                 .setRiskAreas(dto.getRiskAreas())
                 .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
-                .setRiskOccupation(occupation)
+                .setRiskOccupation(dto.getRiskOccupation())
+                .setOccupation(dto.getOccupation())
                 .setCreationTimestamp(OffsetDateTime.now())
                 .setPreIllnesses(dto.getPreIllnesses());
         mappedPatient = patientRepository.save(mappedPatient);

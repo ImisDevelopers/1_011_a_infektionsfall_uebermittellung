@@ -215,12 +215,23 @@
               <a-row>
                 <a-col :lg="12" :sm="24">
                   <a-form-item label="Beruf">
-                    <a-input
-                      v-decorator="['riskOccupation', { rules: [{
+                    <div>
+                      <a-select v-decorator="['riskOccupation', { rules: [{
+                        required: true,
+                        message: 'Bitte Beruf eingeben',
+                      }]}]" @select="riskOccupationSelected">
+                        <a-select-option v-for="riskOccupation in riskOccupations" :key="riskOccupation.value">
+                          {{riskOccupation.label}}
+                        </a-select-option>
+                      </a-select>
+                      <a-input
+                        :disabled="disableOccupation"
+                        v-decorator="['occupation', { rules: [{
                         required: true,
                         message: 'Bitte Beruf eingeben',
                       }]}]"
-                    />
+                      />
+                    </div>
                   </a-form-item>
                 </a-col>
                 <a-col :lg="12" :sm="24">
@@ -321,9 +332,10 @@ import Vue from 'vue'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
 import { getPlzs, Plz } from '@/util/plz-service'
-import { CheckboxOption } from '@/models'
+import { Option, RiskOccupation } from '@/models'
 import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
 
 interface State {
   form: any;
@@ -331,10 +343,12 @@ interface State {
   current: number;
   dateFormat: string;
   createdPatient: Patient | null;
-  symptoms: CheckboxOption[];
-  exposures: CheckboxOption[];
-  exposureLocation: CheckboxOption[];
-  preIllnesses: CheckboxOption[];
+  symptoms: Option[];
+  riskOccupations: RiskOccupationOption[];
+  disableOccupation: boolean;
+  exposures: Option[];
+  exposureLocation: Option[];
+  preIllnesses: Option[];
   steps: any[];
   checked: boolean;
   showCheckedError: boolean;
@@ -352,6 +366,9 @@ export default Vue.extend({
       dateFormat: 'DD/MM/YYYY',
       createdPatient: null,
       symptoms: SYMPTOMS,
+      riskOccupations: RISK_OCCUPATIONS,
+      disableOccupation: true,
+      preIllnesses: PRE_ILLNESSES,
       exposures: [
         {
           label: 'Medizinischer Heilberuf',
@@ -382,7 +399,6 @@ export default Vue.extend({
           value: 'OTHER',
         },
       ],
-      preIllnesses: PRE_ILLNESSES,
       steps: [
         {
           title: 'Symtpome',
@@ -434,12 +450,10 @@ export default Vue.extend({
           ...values,
           dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD') + ' 00',
           patientStatus: 'REGISTERED',
-          fluImmunization: false, // TODO: Do we need a field for this?
-          speedOfSymptomsOutbreak: '', // TODO: Do we need a field for this?
-          coronaContacts: false, // TODO: Do we need a field for this?
+          fluImmunization: false, // TODO: Do we need a form field for this?
+          speedOfSymptomsOutbreak: '', // TODO: Do we need a form field for this?
           // TODO: exposures is not listed here, so currently we "misuse" risk areas...
           riskAreas: [],
-          riskOccupation: '', // TODO: Do we need a field for this?
         }
         if (!request.symptoms) {
           request.symptoms = []
@@ -461,6 +475,8 @@ export default Vue.extend({
         }
         request.weakenedImmuneSystem = !!request.preIllnesses // TODO: Do we need this field?
           .find((illness: string) => illness === 'IMMUNODEFICIENCY')
+        request.coronaContacts = !!request.riskAreas // TODO: DO we need this field?
+          .find((riskArea: string) => riskArea.startsWith('CONTACT_WITH_CORONA'))
         Api.patients.addPatientUsingPost(request).then(patient => {
           this.createdPatient = patient
         })
@@ -510,6 +526,16 @@ export default Vue.extend({
       if (nextInput) {
         nextInput.focus()
       }
+    },
+    riskOccupationSelected(value: RiskOccupation) {
+      this.disableOccupation = value !== 'NO_RISK_OCCUPATION'
+      let occupation
+      if (this.disableOccupation) {
+        occupation = this.riskOccupations.find(riskOccupation => riskOccupation.value === value)?.label || ''
+      }
+      this.form.setFieldsValue({
+        occupation: occupation,
+      })
     },
   },
 })

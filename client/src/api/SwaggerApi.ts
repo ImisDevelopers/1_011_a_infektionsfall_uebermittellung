@@ -23,7 +23,13 @@ export interface CreateInstitutionDTO {
   email?: string;
   houseNumber?: string;
   id?: string;
-  institutionType?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY";
+  institutionType?:
+    | "LABORATORY"
+    | "TEST_SITE"
+    | "CLINIC"
+    | "DOCTORS_OFFICE"
+    | "GOVERNMENT_AGENCY"
+    | "DEPARTMENT_OF_HEALTH";
   name?: string;
   phoneNumber?: string;
   street?: string;
@@ -44,6 +50,9 @@ export interface CreatePatientDTO {
   coronaContacts?: boolean;
   dateOfBirth?: string;
   dateOfDeath?: string;
+  dateOfHospitalization?: string;
+  dateOfIllness?: string;
+  dateOfReporting?: string;
   email?: string;
   employer?: string;
   firstName?: string;
@@ -54,6 +63,7 @@ export interface CreatePatientDTO {
   insuranceMembershipNumber?: string;
   lastName?: string;
   occupation?: string;
+  onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
@@ -90,7 +100,7 @@ export interface Doctor {
   name?: string;
   phoneNumber?: string;
   street?: string;
-  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY";
+  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY" | "DEPARTMENT_OF_HEALTH";
   users?: User[];
   zip?: string;
 }
@@ -108,7 +118,7 @@ export interface Institution {
   name?: string;
   phoneNumber?: string;
   street?: string;
-  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY";
+  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY" | "DEPARTMENT_OF_HEALTH";
   users?: User[];
   zip?: string;
 }
@@ -119,7 +129,13 @@ export interface InstitutionDTO {
   email?: string;
   houseNumber?: string;
   id?: string;
-  institutionType?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY";
+  institutionType?:
+    | "LABORATORY"
+    | "TEST_SITE"
+    | "CLINIC"
+    | "DOCTORS_OFFICE"
+    | "GOVERNMENT_AGENCY"
+    | "DEPARTMENT_OF_HEALTH";
   name?: string;
   phoneNumber?: string;
   street?: string;
@@ -145,7 +161,7 @@ export interface Laboratory {
   name?: string;
   phoneNumber?: string;
   street?: string;
-  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY";
+  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY" | "DEPARTMENT_OF_HEALTH";
   users?: User[];
   zip?: string;
 }
@@ -241,6 +257,8 @@ export interface Patient {
   creationTimestamp?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
+  dateOfHospitalization?: string;
+  dateOfIllness?: string;
   email?: string;
   employer?: string;
   events?: PatientEvent[];
@@ -253,6 +271,7 @@ export interface Patient {
   insuranceMembershipNumber?: string;
   lastName?: string;
   occupation?: string;
+  onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
@@ -389,7 +408,13 @@ export interface User {
   enabled?: boolean;
   id?: number;
   institutionId?: string;
-  institutionType?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY";
+  institutionType?:
+    | "LABORATORY"
+    | "TEST_SITE"
+    | "CLINIC"
+    | "DOCTORS_OFFICE"
+    | "GOVERNMENT_AGENCY"
+    | "DEPARTMENT_OF_HEALTH";
   username?: string;
 }
 

@@ -1,6 +1,6 @@
 import { Institution, RegisterUserRequest, User } from '@/api/SwaggerApi'
 import { config } from '@/config'
-import { InstitutionRule } from '@/models'
+import { InstitutionRole } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
 import Api, { removeBearerToken, setBearerToken } from '@/api'
@@ -8,7 +8,7 @@ import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-mo
 import { Vue } from 'vue/types/vue'
 
 interface JwtData {
-  roles: InstitutionRule[];
+  roles: InstitutionRole[];
   exp: number;
   [key: string]: any;
 }

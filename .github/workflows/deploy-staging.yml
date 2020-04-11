@@ -33,9 +33,13 @@ jobs:
     # Setup gcloud CLI
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        version: '270.0.0'
+        version: '286.0.0'
         service_account_email: ${{ secrets.GKE_EMAIL }}
         service_account_key: ${{ secrets.GKE_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT_ID }}
+    - uses: actions/setup-java@v1.3.0
+      with:
+        java-version: 1.11
 
     # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |
@@ -43,25 +47,10 @@ jobs:
         # via gcloud command-line tool.
         gcloud auth configure-docker
 
-    # Build the Docker image
-    - name: Build client
-      run: |
-        (cd client && docker build -f Dockerfile.prod -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$CLIENT_IMAGE":"$GITHUB_SHA" \
-          --build-arg SENTRY_FRONTEND_DSN="${SENTRY_FRONTEND_DSN}" \
-          --build-arg DEPLOY_ENV=staging \
-          --build-arg GITHUB_SHA="${GITHUB_SHA}" \
-          --build-arg GITHUB_REF="${GITHUB_REF}" .)
-    - name: Build server
-      run: |
-        (cd server && docker build -f Dockerfile.prod -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$SERVER_IMAGE":"$GITHUB_SHA" \
-          --build-arg GITHUB_SHA="${GITHUB_SHA}" \
-          --build-arg GITHUB_REF="${GITHUB_REF}" .)
-
-    # Push the Docker image to Google Container Registry
-    - name: Publish
-      run: |
-        docker push "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$CLIENT_IMAGE:$GITHUB_SHA"
-        docker push "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVER_IMAGE:$GITHUB_SHA"
+    # Build and push image to Google Container Registry
+    - name: Build
+      run: |-
+        gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
 
     # Deploy the Docker image to the GKE cluster
     - name: Prepare Helm

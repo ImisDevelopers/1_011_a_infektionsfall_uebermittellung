@@ -32,7 +32,7 @@ export default {
   data() {
     // const codeReader = new BrowserMultiFormatReader()
     return {
-      codeReader,
+    //  codeReader,
       devices: [],
       device: '',
       result: '',

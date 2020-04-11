@@ -11,6 +11,8 @@
         >
           <!-- display user data here-->
           <div>
+
+            <!-- Allgemein & Adresse -->
             <a-row :gutter="8">
               <a-col
                 :span="24"
@@ -21,7 +23,7 @@
                   align="left"
                   :extra="this.patient.id"
                 >
-                  <table style="border-collapse: separate; border-spacing:15px">
+                  <table>
                     <tr>
                       <td>Vorname:</td>
                       <td>{{patient.firstName}}</td>
@@ -32,25 +34,24 @@
                     </tr>
                     <tr>
                       <td>Geburtsdatum:</td>
-                      <td>{{patient.dateOfBirth}}</td>
+                      <td>{{dateOfBirth}}</td>
                     </tr>
                     <tr>
                       <td>Geschlecht:</td>
-                      <td>{{patient.gender}}</td>
+                      <td>{{gender}}</td>
                     </tr>
                   </table>
                 </a-card>
               </a-col>
               <a-col
-                span="24"
+                :span="24"
                 :md="12"
               >
                 <a-card
                   title="Adresse"
-                  :bordered="false"
                   align="left"
                 >
-                  <table style="border-collapse: separate; border-spacing:15px">
+                  <table>
                     <tr>
                       <td>Straße:</td>
                       <td>{{patient.street}}</td>
@@ -70,13 +71,16 @@
                   </table>
                 </a-card>
               </a-col>
-              <a-col span="24">
+            </a-row>
+
+            <!-- Kontakt & Versicherung & Arbeitgeber -->
+            <a-row :gutter="8" style="margin-top: 8px;">
+              <a-col :span="24" :md="8">
                 <a-card
-                  title="Kontakt & Versicherung"
-                  :bordered="false"
+                  title="Kontakt"
                   align="left"
                 >
-                  <table style="border-collapse: separate; border-spacing:15px">
+                  <table>
                     <tr>
                       <td>Telefonnummer:</td>
                       <td>{{patient.phoneNumber}}</td>
@@ -85,6 +89,15 @@
                       <td>Email:</td>
                       <td><a href="">{{patient.email}}</a></td>
                     </tr>
+                  </table>
+                </a-card>
+              </a-col>
+              <a-col :span="24" :md="8">
+                <a-card
+                  title="Versicherung"
+                  align="left"
+                >
+                  <table>
                     <tr>
                       <td>Versicherung:</td>
                       <td>{{patient.insuranceCompany}}</td>
@@ -96,49 +109,75 @@
                   </table>
                 </a-card>
               </a-col>
-            </a-row>
-            <a-row
-              :gutter="8"
-              style="margin-top: 8px;"
-            >
-              <a-col span="24">
+              <a-col :span="24" :md="8">
                 <a-card
-                  :title="'Status: '+ patientStatus"
+                  title="Arbeit"
                   align="left"
                 >
-                  <a-row
-                    :gutter="8"
-                    style="margin-top: 8px;"
+                  <table>
+                    <tr>
+                      <td>Beruf:</td>
+                      <td>{{patient.occupation || 'Keine Angabe'}}</td>
+                    </tr>
+                    <tr>
+                      <td>Arbeitgeber:</td>
+                      <td>{{patient.employer || 'Keine Angabe'}}</td>
+                    </tr>
+                  </table>
+                </a-card>
+              </a-col>
+            </a-row>
+
+            <!-- Symptome und Risiken -->
+            <a-row :gutter="8" style="margin-top: 8px;">
+              <a-col
+                :span="24"
+                :md="12"
+              >
+                <a-card
+                  title="Vorerkrankungen und Risikofaktoren"
+                  align="left"
+                >
+                  <div v-for="illness in preIllnesses" v-bind:key="illness">{{illness}}</div>
+                </a-card>
+              </a-col>
+              <a-col
+                :span="24"
+                :md="12"
+              >
+                <a-card
+                  title="Symptome"
+                  align="left"
+                  :extra="'Stand: ' + formatTimestamp(patient.creationTimestamp)"
+                >
+                  <div v-for="symptom in symptoms" v-bind:key="symptom">{{symptom}}</div>
+                </a-card>
+              </a-col>
+            </a-row>
+
+            <!-- Tests -->
+            <a-row :gutter="8" style="margin-top: 8px;">
+              <a-col span="24">
+                <a-card
+                  :title="'Status: ' + (patientStatus ? patientStatus.label : 'Unbekannt')"
+                  align="left"
+                >
+                  <a-table
+                    class="imis-table-no-pagination"
+                    :columns="columnsTests"
+                    :dataSource="tests"
+                    :scroll="{x: 0, y: 0}"
+                    rowKey="id"
                   >
-                    <a-col span="6">
-                      Erstaufnahme:
-                    </a-col>
-                    <a-col span="6">
-                      10.3.2020
-                    </a-col>
-                    <a-col span="6">
-                      Testdatum:
-                    </a-col>
-                    <a-col span="6">
-                      22.3.2020
-                    </a-col>
-                  </a-row>
-                  <a-divider />
-                  <a-row
-                    type="flex"
-                    justify="end"
-                    :gutter="8"
-                    style="margin-top: 8px;"
-                  >
-                    <a-col>
-                      <a-button
-                        type="primary"
-                        @click="requestTestAgain('success')"
-                      >
-                        Test erneut anordnen
-                      </a-button>
-                    </a-col>
-                  </a-row>
+                    <div slot="testStatus" slot-scope="testStatus">
+                      <a-icon :type="testResults.find(type => type.id === testStatus).icon" style="margin-right: 5px" />
+                      {{testResults.find(type => type.id === testStatus).label}}
+                    </div>
+                    <div slot="testType" slot-scope="testType">
+                      <a-icon :type="testTypes.find(type => type.id === testType).icon" style="margin-right: 5px" />
+                      {{testTypes.find(type => type.id === testType).label}}
+                    </div>
+                  </a-table>
                 </a-card>
               </a-col>
             </a-row>
@@ -161,8 +200,8 @@
                 :key="event.id"
                 :color="timelineColor(event.eventType)"
               >
-                {{ formatTimestamp(event.eventTimestamp) }}, {{ eventTypes.find(type => type.id ===
-                event.eventType).label }}
+                {{ formatTimestamp(event.eventTimestamp) }},
+                {{ eventTypes.find(type => type.id === event.eventType).label }}
               </a-timeline-item>
             </a-timeline>
           </a-card>
@@ -176,56 +215,118 @@
 import Vue from 'vue'
 import moment from 'moment'
 import Api from '@/api'
-import { Patient, Timestamp } from '../api/SwaggerApi'
+import { LabTest, Patient, Timestamp } from '@/api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
-import { eventTypes } from '@/util/event-types'
+import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
+import { SYMPTOMS } from '@/models/symptoms'
+import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import { Column } from 'ant-design-vue/types/table/column'
+import { TestTypeItem, testTypes } from '@/models/test-types'
+
+const columnsTests: Partial<Column>[] = [
+  {
+    title: 'Test ID',
+    dataIndex: 'testId',
+    key: 'testId',
+  }, {
+    title: 'Test Typ',
+    dataIndex: 'testType',
+    key: 'testType',
+    scopedSlots: {
+      customRender: 'testType',
+    },
+  }, {
+    title: 'Test Status',
+    dataIndex: 'testStatus',
+    key: 'testStatus',
+    scopedSlots: {
+      customRender: 'testStatus',
+    },
+  }, {
+    title: 'Kommentar',
+    dataIndex: 'comment',
+    key: 'comment',
+  },
+]
 
 interface State {
   patient: undefined | Patient;
-  patientStatus: string;
+  patientStatus: EventTypeItem | undefined;
   eventTypes: any[];
+  symptoms: string[];
+  preIllnesses: string[];
+  dateOfBirth: string;
+  gender: string;
+  tests: LabTest[];
+  columnsTests: Partial<Column>[];
+  testResults: TestResultType[];
+  testTypes: TestTypeItem[];
 }
 
 export default Vue.extend({
   name: 'PatientDetails',
   computed: {
-    ...patientMapper.mapState({
-      patients: 'patients',
-    }),
     ...patientMapper.mapGetters({
       patientById: 'patientById',
     }),
   },
 
-  created() {
-    this.patient = this.patientById(this.$route.params.id)
-    if (!this.patient) {
-      Api.patients.getPatientForIdUsingGet(this.$route.params.id).then(fetchedPatient => {
-        console.log('setting patient')
-        this.setPatient(fetchedPatient)
-        this.patient = fetchedPatient
-      })
-    }
+  async created() {
+    this.loadData()
   },
 
   data(): State {
     return {
       patient: undefined,
-      patientStatus: '',
+      patientStatus: undefined,
       eventTypes: eventTypes,
+      testResults: testResults,
+      testTypes: testTypes,
+      symptoms: [],
+      preIllnesses: [],
+      dateOfBirth: '',
+      gender: '',
+      tests: [],
+      columnsTests,
     }
+  },
+
+  watch: {
+    '$route.params.id'() {
+      this.loadData()
+    },
   },
 
   methods: {
     ...patientMapper.mapMutations({
       setPatient: 'setPatient',
     }),
-    requestTestAgain() {
-      const notification = {
-        message: 'Der Test wurde erneut angefordert.',
-        description: '',
+    async loadData() {
+      // Load Patient
+      const patientId = this.$route.params.id
+      this.patient = this.patientById(this.$route.params.id)
+      if (!this.patient) {
+        const patient = await Api.patients.getPatientForIdUsingGet(patientId)
+        this.setPatient(patient)
+        this.patient = patient
       }
-      this.$notification.success(notification)
+
+      // Map patient attributes to their display representation
+      this.patientStatus = eventTypes.find(type => type.id === this.patient?.patientStatus)
+      this.symptoms = this.patient.symptoms?.map(symptom => {
+        const patientSymptom = SYMPTOMS.find(symptomFind => symptomFind.value === symptom)
+        return patientSymptom ? patientSymptom.label : symptom
+      }) || []
+      this.preIllnesses = this.patient.preIllnesses?.map(preIllness => {
+        const patientIllness = PRE_ILLNESSES.find(illness => illness.value === preIllness)
+        return patientIllness ? patientIllness.label : preIllness
+      }) || []
+      this.dateOfBirth = moment(this.patient.dateOfBirth).format('DD.MM.YYYY')
+      const patientGender = this.patient.gender || ''
+      this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
+
+      // Tests
+      this.tests = await Api.labtests.getLabTestForPatientUsingGet(patientId)
     },
     timelineColor(eventType: any) {
       switch (eventType) {
@@ -237,7 +338,6 @@ export default Vue.extend({
           return 'grey'
       }
     },
-
     formatTimestamp(timestamp: Timestamp): string {
       const momentTimestamp = moment(timestamp)
       if (momentTimestamp.isValid()) {
@@ -252,11 +352,8 @@ export default Vue.extend({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h3 {
-    margin: 20px 10px;
-  }
-
-  span {
-    margin: 10px;
+  table {
+    border-collapse: separate;
+    border-spacing: 15px
   }
 </style>

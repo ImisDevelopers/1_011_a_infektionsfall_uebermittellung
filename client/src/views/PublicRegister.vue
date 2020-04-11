@@ -11,7 +11,7 @@
       </div>
       <div style="margin-top: 35px">
         <a-steps :current="current" style="margin-bottom: 20px">
-          <a-step v-for="item in steps" :key="item.title" :title="item.title"/>
+          <a-step v-for="item in steps" :key="item.title" :title="item.title" />
         </a-steps>
 
         <a-form :form="form" :layout="'horizontal'"
@@ -22,30 +22,41 @@
           <div :style="{ display: current === 0 ? 'block' : 'none' }">
             <h2>Welche der folgenden Symptome hatten Sie in den letzten 24h?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto"/>
-              <a-form-item>
-                <a-checkbox-group v-decorator="['symptoms']" :options="symptoms" class="checkbox-group"/>
-              </a-form-item>
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
+              <div>
+                <a-form-item style="margin-bottom: 0">
+                  <a-checkbox-group v-decorator="['symptoms']" :options="symptoms" class="checkbox-group" />
+                </a-form-item>
+                <div class="checkbox-group">
+                  <div style="display: flex; align-items: center; align-self: stretch">
+                    <a-checkbox @change="symptomsChanged">Andere:</a-checkbox>
+                    <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
+                      <a-input v-decorator="['symptomsOther']" :disabled="!showOtherSymptoms" />
+                    </a-form-item>
+                  </div>
+                </div>
+              </div>
+              <span style="flex: 1 1 auto" />
             </div>
+
           </div>
 
           <!-- Exposition -->
           <div :style="{ display: current === 1 ? 'block' : 'none' }">
             <h2>Welche Formen der Exposition treffen auf Sie zu?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
               <div style="display: flex; flex-direction: column">
                 <a-form-item>
                   <a-checkbox-group v-decorator="['exposures']" :options="exposures" class="checkbox-group"
-                                    @change="exposuresChanged"/>
+                                    @change="exposuresChanged" />
                 </a-form-item>
                 <a-form-item style="padding-left: 35px">
                   <a-checkbox-group v-decorator="['exposureLocation']" :options="exposureLocation"
-                                    class="checkbox-group" :disabled="disableExposureLocation"/>
+                                    class="checkbox-group" :disabled="disableExposureLocation" />
                 </a-form-item>
               </div>
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
             </div>
           </div>
 
@@ -53,11 +64,11 @@
           <div :style="{ display: current === 2 ? 'block' : 'none' }">
             <h2>Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
               <a-form-item>
-                <a-checkbox-group v-decorator="['preIllnesses']" :options="preIllnesses" class="checkbox-group"/>
+                <a-checkbox-group v-decorator="['preIllnesses']" :options="preIllnesses" class="checkbox-group" />
               </a-form-item>
-              <span style="flex: 1 1 auto"/>
+              <span style="flex: 1 1 auto" />
             </div>
           </div>
 
@@ -65,6 +76,8 @@
           <div :style="{ display: current === 3 ? 'block' : 'none' }" class="data-form">
             <h2>Bitte erfassen Sie nun Ihre persönlichen Daten.</h2>
             <div>
+
+              <!-- Vorname / Nachname -->
               <a-row>
                 <a-col :lg="12" :sm="24">
                   <a-form-item label="Vorname">
@@ -75,6 +88,8 @@
                       }]}]"
                     />
                   </a-form-item>
+                </a-col>
+                <a-col :lg="12" :sm="24">
                   <a-form-item label="Nachname">
                     <a-input
                       v-decorator="['lastName', { rules: [{
@@ -83,6 +98,12 @@
                       }]}]"
                     />
                   </a-form-item>
+                </a-col>
+              </a-row>
+
+              <!-- Geschlecht / Geburtsdatum -->
+              <a-row>
+                <a-col :lg="12" :sm="24">
                   <a-form-item label="Geschlecht">
                     <a-radio-group
                       v-decorator="['gender', { rules: [{
@@ -96,6 +117,8 @@
                       <a-radio value="divers">Div.</a-radio>
                     </a-radio-group>
                   </a-form-item>
+                </a-col>
+                <a-col :lg="12" :sm="24">
                   <a-form-item label="Geburtsdatum">
                     <a-date-picker
                       :format="dateFormat"
@@ -106,16 +129,63 @@
                       placeholder="Datum wählen"
                     />
                   </a-form-item>
-                  <a-form-item label="Krankenkasse (optional)">
-                    <a-input v-decorator="['insuranceCompany']"/>
-                  </a-form-item>
-                  <a-form-item label="Versichertenr. (optional)">
-                    <a-input v-decorator="['insuranceMembershipNumber']"/>
-                  </a-form-item>
-                  <a-form-item label="Arbeitgeber (optional)">
-                    <a-input v-decorator="['employer']"/>
+                </a-col>
+              </a-row>
+
+              <!-- Straße / Hausnummer -->
+              <a-row>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="Straße">
+                    <a-input
+                      v-decorator="['street', { rules: [{
+                        required: true,
+                        message: 'Bitte Straße eingeben',
+                      }] }]"
+                    />
                   </a-form-item>
                 </a-col>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="Hausnummer">
+                    <a-input
+                      v-decorator="['houseNumber', { rules: [{
+                        required: true,
+                        message: 'Bitte Hausnummer eingeben',
+                      }]}]"
+                    />
+                  </a-form-item>
+                </a-col>
+              </a-row>
+
+              <!-- PLZ Ort -->
+              <a-row>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="PLZ">
+                    <a-auto-complete @search="handlePlzSearch" v-decorator="['zip', { rules: [{
+                        required: true,
+                        message: 'Bitte PLZ eingeben',
+                      }] }]" @select="handlePlzSelection">
+                      <template slot="dataSource">
+                        <a-select-option v-for="plz in plzs" :key="plz.fields.plz">
+                          {{plz.fields.plz}} {{plz.fields.note}}
+                        </a-select-option>
+                      </template>
+                    </a-auto-complete>
+                  </a-form-item>
+                </a-col>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="Ort">
+                    <a-input
+                      v-decorator="['city', { rules: [{
+                        required: true,
+                        message: 'Bitte Ort eingeben',
+                      }] }]"
+                    />
+                  </a-form-item>
+                </a-col>
+              </a-row>
+
+              <!-- Email / Telefon -->
+              <a-row>
                 <a-col :lg="12" :sm="24">
                   <a-form-item label="E-mail">
                     <a-input
@@ -125,6 +195,8 @@
                       }] }]"
                     />
                   </a-form-item>
+                </a-col>
+                <a-col :lg="12" :sm="24">
                   <a-form-item label="Telefon">
                     <a-input
                       v-decorator="[
@@ -136,38 +208,12 @@
                     ]"
                     />
                   </a-form-item>
-                  <a-form-item label="Straße">
-                    <a-input
-                      v-decorator="['street', { rules: [{
-                        required: true,
-                        message: 'Bitte Straße eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
-                  <a-form-item label="Hausnr.">
-                    <a-input
-                      v-decorator="['houseNumber', { rules: [{
-                        required: true,
-                        message: 'Bitte Hausnummer eingeben',
-                      }]}]"
-                    />
-                  </a-form-item>
-                  <a-form-item label="PLZ">
-                    <a-input
-                      v-decorator="['zip', { rules: [{
-                        required: true,
-                        message: 'Bitte PLZ eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
-                  <a-form-item label="Ort">
-                    <a-input
-                      v-decorator="['city', { rules: [{
-                        required: true,
-                        message: 'Bitte Ort eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
+                </a-col>
+              </a-row>
+
+              <!-- Beruf / Arbeitgeber -->
+              <a-row>
+                <a-col :lg="12" :sm="24">
                   <a-form-item label="Beruf">
                     <a-input
                       v-decorator="['riskOccupation', { rules: [{
@@ -175,6 +221,25 @@
                         message: 'Bitte Beruf eingeben',
                       }]}]"
                     />
+                  </a-form-item>
+                </a-col>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="Arbeitgeber (optional)">
+                    <a-input v-decorator="['employer']" />
+                  </a-form-item>
+                </a-col>
+              </a-row>
+
+              <!-- Krankenkasse / Versichertennr -->
+              <a-row>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="Krankenkasse (optional)">
+                    <a-input v-decorator="['insuranceCompany']" />
+                  </a-form-item>
+                </a-col>
+                <a-col :lg="12" :sm="24">
+                  <a-form-item label="Versichertenr. (optional)">
+                    <a-input v-decorator="['insuranceMembershipNumber']" />
                   </a-form-item>
                 </a-col>
               </a-row>
@@ -200,7 +265,7 @@
                 block
                 @click="save"
               >
-                <a-icon type="save"/>
+                <a-icon type="save" />
                 Daten übermitteln
               </a-button>
             </div>
@@ -208,7 +273,7 @@
               <h2>Geschafft!</h2>
               <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center">
                 <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }"
-                        style="margin-right: 25px"/>
+                        style="margin-right: 25px" />
                 <span>Sie erhalten in Kürze eine Email zur Bestätigung.</span>
               </div>
             </div>
@@ -225,10 +290,11 @@
           shape="round"
           size="large"
           block
+          class="button-row-button"
           :style="{ visibility: current === 0 || createdPatient ? 'hidden' : 'visible' }"
           @click="prev"
         >
-          <a-icon type="arrow-left"/>
+          <a-icon type="arrow-left" />
           Zurück
         </a-button>
         <a-button
@@ -237,11 +303,12 @@
           shape="round"
           size="large"
           block
+          class="button-row-button"
           :style="{ visibility: current === 4 ? 'hidden' : 'visible' }"
           @click="next"
         >
           Weiter
-          <a-icon type="arrow-right"/>
+          <a-icon type="arrow-right" />
         </a-button>
       </div>
     </a-card>
@@ -253,20 +320,26 @@
 import Vue from 'vue'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
+import { getPlzs, Plz } from '@/util/plz-service'
+import { CheckboxOption } from '@/models'
+import { SYMPTOMS } from '@/models/symptoms'
+import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 
 interface State {
   form: any;
+  plzs: Plz[];
   current: number;
   dateFormat: string;
   createdPatient: Patient | null;
-  symptoms: string[];
-  exposures: string[];
-  preIllnesses: string[];
+  symptoms: CheckboxOption[];
+  exposures: CheckboxOption[];
+  exposureLocation: CheckboxOption[];
+  preIllnesses: CheckboxOption[];
   steps: any[];
   checked: boolean;
   showCheckedError: boolean;
-  exposureLocation: string[];
   disableExposureLocation: boolean;
+  showOtherSymptoms: boolean;
 }
 
 export default Vue.extend({
@@ -274,47 +347,42 @@ export default Vue.extend({
   data(): State {
     return {
       form: this.$form.createForm(this),
+      plzs: [],
       current: 0,
       dateFormat: 'DD/MM/YYYY',
       createdPatient: null,
-      symptoms: [
-        'Appetit- oder Gewichtsverlust',
-        'Verlust des Geruchs- oder Geschmackssinnes',
-        'Fieber',
-        'Schmerzen',
-        'Kopfschmerzen',
-        'Muskelschmerzen',
-        'Übelkeit',
-        'Husten',
-        'Atembeschwerden',
-        'Atemnot',
-        'Schnupfen',
-      ],
+      symptoms: SYMPTOMS,
       exposures: [
-        'Medizinischer Heilberuf',
-        'Arbeit in medizinischem Labor',
-        'Aufenthalt in medizinischer Einrichtung in den letzten 14 Tagen vor der Erkrankung',
-        'Enger Kontakt mit wahrscheinlichem oder bestätigtem Fall in den letzten 14 Tagen vor der Erkrankung',
+        {
+          label: 'Medizinischer Heilberuf',
+          value: 'MEDICAL_HEALTH_PROFESSION',
+        }, {
+          label: 'Arbeit in medizinischem Labor',
+          value: 'MEDICAL_LABORATORY',
+        }, {
+          label: 'Aufenthalt in medizinischer Einrichtung in den letzten 14 Tagen vor der Erkrankung',
+          value: 'STAY_IN_MEDICAL_FACILITY',
+        }, {
+          label: 'Enger Kontakt mit wahrscheinlichem oder bestätigtem Fall in den letzten 14 Tagen vor der Erkrankung',
+          value: 'CONTACT_WITH_CORONA_CASE',
+        },
       ],
       exposureLocation: [
-        'in einer medizinischen Einrichtung',
-        'im privaten Haushalt',
-        'am Arbeitsplatz',
-        'andere / sonstige',
+        {
+          label: 'in einer medizinischen Einrichtung',
+          value: 'MEDICAL_FACILITY',
+        }, {
+          label: 'im privaten Haushalt',
+          value: 'PRIVATE',
+        }, {
+          label: 'am Arbeitsplatz',
+          value: 'WORK',
+        }, {
+          label: 'andere / sonstige',
+          value: 'OTHER',
+        },
       ],
-      preIllnesses: [
-        'Herz-Kreislauf (incl. Bluthochdruck)',
-        'Diabetes',
-        'Lebererkrankung',
-        'neurologische / neuromuskuläre Erkrankung',
-        'Immundefizit inkl. HIV',
-        'Nierenerkrankung',
-        'Chronische Lungenerkrankung (z.B. COPD)',
-        'Krebserkrankung',
-        'Schwangerschaft',
-        'Trimester',
-        'Postpartum (weniger als 6 Wochen)',
-      ],
+      preIllnesses: PRE_ILLNESSES,
       steps: [
         {
           title: 'Symtpome',
@@ -333,6 +401,7 @@ export default Vue.extend({
       checked: false,
       showCheckedError: false,
       disableExposureLocation: true,
+      showOtherSymptoms: false,
     }
   },
   methods: {
@@ -360,8 +429,6 @@ export default Vue.extend({
           console.error(err)
           return
         }
-        console.log('Sending data:')
-        console.log(values)
 
         const request = {
           ...values,
@@ -370,9 +437,8 @@ export default Vue.extend({
           fluImmunization: false, // TODO: Do we need a field for this?
           speedOfSymptomsOutbreak: '', // TODO: Do we need a field for this?
           coronaContacts: false, // TODO: Do we need a field for this?
-          // TODO: exposures is not listed here
-          riskAreas: [], // TODO: Do we need a field for this?
-          weakenedImmuneSystem: false, // TODO: Do we need a field for this?
+          // TODO: exposures is not listed here, so currently we "misuse" risk areas...
+          riskAreas: [],
           riskOccupation: '', // TODO: Do we need a field for this?
         }
         if (!request.symptoms) {
@@ -381,6 +447,20 @@ export default Vue.extend({
         if (!request.preIllnesses) {
           request.preIllnesses = []
         }
+        if (values.exposures) {
+          request.riskAreas = request.riskAreas.concat(values.exposures)
+        }
+        if (this.showOtherSymptoms) {
+          request.symptoms.push(values.symptomsOther)
+        }
+        if (values.exposureLocation) {
+          request.riskAreas = request.riskAreas.concat(
+            values.exposureLocation
+              .map((location: string) => 'CONTACT_WITH_CORONA_' + location),
+          )
+        }
+        request.weakenedImmuneSystem = !!request.preIllnesses // TODO: Do we need this field?
+          .find((illness: string) => illness === 'IMMUNODEFICIENCY')
         Api.patients.addPatientUsingPost(request).then(patient => {
           this.createdPatient = patient
         })
@@ -395,9 +475,41 @@ export default Vue.extend({
         this.showCheckedError = false
       }
     },
+    symptomsChanged(event: Event) {
+      const target = event.target as any
+      this.showOtherSymptoms = target.checked
+    },
     exposuresChanged(checkedValues: string[]) {
-      this.disableExposureLocation = !checkedValues.includes(this.exposures[3])
-      console.log('Set to ' + this.disableExposureLocation)
+      this.disableExposureLocation = !checkedValues.includes(this.exposures[3].value)
+    },
+    async handlePlzSearch(value: string) {
+      let result: Plz[]
+      if (!value || value.length < 2) {
+        result = []
+      } else {
+        result = await getPlzs(value)
+        if (result.length === 1) {
+          this.setPLZ(result[0])
+        }
+      }
+      this.plzs = result
+    },
+    handlePlzSelection(value: string) {
+      const plz = this.plzs.find(plz => plz.fields.plz === value)
+      if (plz) {
+        this.setPLZ(plz)
+      }
+    },
+    setPLZ(plz: Plz) {
+      this.form.setFieldsValue({
+        zip: plz.fields.plz,
+        city: plz.fields.note,
+      })
+      plz.fields.note = '' // So city does not display in plz input
+      const nextInput = document.getElementById('email')
+      if (nextInput) {
+        nextInput.focus()
+      }
     },
   },
 })
@@ -419,6 +531,10 @@ export default Vue.extend({
     ), url("../assets/wave-bg.svg");
     background-size: cover;
     color: rgba(255, 255, 255, 0.87);
+
+    .button-row-button {
+      box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+    }
 
     .ant-form-item-control-wrapper {
       width: 100%;

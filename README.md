@@ -36,13 +36,19 @@ Development happens in `dev` using feature branches and PR. `dev` branch is depl
     - Home: https://docs.docker.com/toolbox/toolbox_install_windows/
 2. JDK 11 (Java)
   - https://adoptopenjdk.net/ 
-3. NPM/YARN
+3. YARN
   - https://classic.yarnpkg.com/en/docs/install#mac-stable 
 
 ## How to run this server?
 Install Docker and run: `docker-compose up`
 
+## Quickstart for frontend development
+```docker-compose up -d postgres server```
+## Quickstart for server development
+```docker-compose up -d postgres client``` 
+
 ## Local development setup
+
 ### Run full application
 Run application (including frontend) 
 ```./gradlew bootRun```
@@ -51,8 +57,9 @@ Run application (including frontend)
 1. Make sure your $JAVA_PATH is set correctly (java11)
 #### Postgres
 - Start PostgreSQL in docker container (before starting application): 
-```docker-compose up -d ```
+```docker-compose up -d postgres```
 - When you are not using docker you have to setup postgres manually and add a user as specified in `server/src/main/resources/application.yml`
+
 #### Spring Boot Server
 - Using Gradle 
     - Download Gradle wrapper
@@ -60,18 +67,21 @@ Run application (including frontend)
     - Build application
 ```./gradlew clean build```
     - Test application
-```./gradlew test```
+```./gradlew test lint```
+    - Run server application
+```./gradlew bootRun```
+    - Start local development server for vue.js development
+```./gradlew serve```
 - Using Intellij: 
     - Import Project by opening the `build.gradle` file. Intellij resolves all dependencies and you can run the application by pressing the run button.
 
 But you have to run Postgres in docker or install it and run it locally manually
-#### Quickstart for Backendserver to enable Frontend Development
-```docker-compose -f docker-compose.yml -f docker-compose.frontend_dev.yml up ```
+
 ### Frontend ([more](client/README.md))
 - Start local development server for vue.js development
 ```./gradlew serve```
 - Alternatively you can also us `yarn serve` within the client folder, make sure you installed all dependencies using `yarn install`
-- Update TypeScript API client for frontend using `generate:api-client`, make sure the server is running on `localhost:80`. Do not manually change the `SwaggerApi.ts` file. 
+- Update TypeScript API client for frontend using `generate:api-client`, make sure the server is running on `localhost:80`. Do not manually change the `SwaggerApi.ts` file.
 
 ## API communication
 

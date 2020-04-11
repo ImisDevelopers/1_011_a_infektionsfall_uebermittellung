@@ -25,10 +25,9 @@ jobs:
 
     # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |
-        (cd server && gradle clean test)
-        (cd client && gradle build)
+        gradle build lint test
 
     # Build the Docker image
     - name: Build
       run: |
-        docker-compose build
+        docker-compose -f docker-compose.prod.yml build

@@ -3,28 +3,11 @@
     <a-card class="table-container">
       <!-- TODO refactor search in own component -->
       <a-form class="search-container" :model="form">
-        <a-form-item label="Vorname">
-          <a-input v-model="form.firstName" placeholder="Vorname">
-            <a-icon slot="prefix" type="user" />
-          </a-input>
-        </a-form-item>
-        <a-form-item label="Nachname">
-          <a-input v-model="form.lastName" placeholder="Nachname">
-            <a-icon slot="prefix" type="user" />
-          </a-input>
-        </a-form-item>
-        <a-form-item label="Status">
-          <a-select style="width: 250px" placeholder="Status" v-model="form.patientStatus">
-            <a-select-option value="">Alle</a-select-option>
-            <a-select-option v-for="eventType in eventTypes" :key="eventType.id">
-              <a-icon :type="eventType.icon" style="margin-right: 5px" />
-              {{eventType.label}}
-            </a-select-option>
-          </a-select>
-        </a-form-item>
-        <a-form-item label="ID">
-          <a-input v-model="form.id" placeholder="ID">
-            <a-icon slot="prefix" type="hdd" />
+        <a-form-item style="width: 600px; max-width: 100%">
+          <a-input v-model="form.query"
+                   placeholder="Suche über ID, Name, Stadt, Email oder Telefon (z.B. 'Max Mustermann Berlin')"
+                   :disabled="showAdvancedSearch">
+            <a-icon slot="prefix" type="search" />
           </a-input>
         </a-form-item>
         <a-button @click="toggleAdvancedSearch">
@@ -37,8 +20,32 @@
         </a-button>
       </a-form>
       <a-form class="search-container" :model="advancedForm" v-if="showAdvancedSearch">
+        <a-form-item label="Vorname">
+          <a-input v-model="advancedForm.firstName" placeholder="Vorname">
+            <a-icon slot="prefix" type="user" />
+          </a-input>
+        </a-form-item>
+        <a-form-item label="Nachname">
+          <a-input v-model="advancedForm.lastName" placeholder="Nachname">
+            <a-icon slot="prefix" type="user" />
+          </a-input>
+        </a-form-item>
+        <a-form-item label="Status">
+          <a-select style="width: 250px" placeholder="Status" v-model="advancedForm.patientStatus">
+            <a-select-option value="">Alle</a-select-option>
+            <a-select-option v-for="eventType in eventTypes" :key="eventType.id">
+              <a-icon :type="eventType.icon" style="margin-right: 5px" />
+              {{eventType.label}}
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+        <a-form-item label="ID">
+          <a-input v-model="advancedForm.id" placeholder="ID">
+            <a-icon slot="prefix" type="hdd" />
+          </a-input>
+        </a-form-item>
         <a-form-item label="Geschlecht">
-          <a-select v-model="form.gender" style="width: 120px" placeholder="Geschlecht">
+          <a-select v-model="advancedForm.gender" style="width: 120px" placeholder="Geschlecht">
             <a-select-option value="">Alle</a-select-option>
             <a-select-option value="weiblich">
               <a-icon type="woman" style="margin-right: 5px" />
@@ -101,11 +108,16 @@
             <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
+        <!-- Invisible Button so user can use enter to search -->
+        <a-button style="visibility: hidden" html-type="submit"
+                  @click="handleSearch" />
       </a-form>
       <a-table
+        class="imis-table-no-pagination"
         :columns="columnsSchema"
-        :dataSource="patients"
-        :scroll="{x: 1, y: 0}"
+        :dataSource="actualPatients"
+        :scroll="{x: 0, y: 0}"
+        :pagination="{ pageSize: 500 }"
         rowKey="id"
         :customRow="customRow"
         @change="handleTableChange"
@@ -113,6 +125,9 @@
         <div slot="patientStatus" slot-scope="patientStatus">
           <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
           {{eventTypes.find(type => type.id === patientStatus).label}}
+        </div>
+        <div slot="operation" slot-scope="nothing, patient" style="cursor: pointer">
+          <a-icon type="search" style="margin-right: 5px; cursor: pointer" @click="() => handlePatientClick(patient)" />
         </div>
       </a-table>
       <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end; align-items: center">
@@ -137,12 +152,19 @@ import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
 import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
-import { eventTypes } from '@/util/event-types'
+import { eventTypes } from '@/models/event-types'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
 
 const columnsSchema: Partial<Column>[] = [
+  {
+    title: '',
+    dataIndex: 'operation',
+    scopedSlots: {
+      customRender: ['operation'],
+    },
+  },
   {
     title: 'Nachname',
     // sorter: (a, b) => a.lastName.localeCompare(b.lastName),
@@ -187,8 +209,16 @@ const columnsSchema: Partial<Column>[] = [
   },
 ]
 
+interface SimpleForm {
+  query: string;
+  order: string;
+  orderBy: string;
+  offsetPage: number;
+  pageSize: number;
+}
+
 interface State {
-  form: Partial<PatientSearchParamsDTO>;
+  form: SimpleForm;
   advancedForm: Partial<PatientSearchParamsDTO>;
 
   [key: string]: any;
@@ -196,18 +226,10 @@ interface State {
 
 export default Vue.extend({
   name: 'PatientList',
-  computed: {
-    ...patientMapper.mapState({
-      patients: 'patients',
-    }),
-  },
   data(): State {
     return {
       form: {
-        firstName: '',
-        lastName: '',
-        patientStatus: undefined,
-        id: '',
+        query: '',
         order: 'asc',
         orderBy: 'lastName',
         offsetPage: 0,
@@ -225,6 +247,10 @@ export default Vue.extend({
         insuranceMembershipNumber: '',
         doctorId: '',
         laboratoryId: '',
+        firstName: '',
+        lastName: '',
+        patientStatus: undefined,
+        id: '',
       },
       content: '',
       count: 0,
@@ -233,47 +259,62 @@ export default Vue.extend({
       data: [], // data
       showAdvancedSearch: false,
       eventTypes: eventTypes,
+      actualPatients: [],
     }
   },
   watch: {
     currentPage() {
       this.loadPage()
     },
+    '$route.query.query'() {
+      this.loadAfterUrlChange()
+    },
   },
   created() {
-    this.loadPage()
+    this.loadAfterUrlChange()
   },
   methods: {
-    ...patientMapper.mapActions({
-      fetchPatients: 'fetchPatients',
-    }),
-    ...patientMapper.mapMutations({
-      setPatiens: 'setPatients',
-    }),
+    loadAfterUrlChange() {
+      const query = this.$route.query.query
+      if (query) {
+        this.form.query = query.toString()
+      }
+      this.loadPage()
+    },
     handleSearch() {
       this.currentPage = 1
       this.loadPage()
     },
     onShowSizeChange(current: number, pageSize: number) {
       this.currentPage = current
-      this.form.pageSize = pageSize
+      this.advancedForm.pageSize = pageSize
       this.loadPage()
     },
     loadPage() {
       this.form.offsetPage = this.currentPage - 1
-      let formValues = { ...this.form }
+      let countPromise
+      let queryPromise
       if (this.showAdvancedSearch) {
-        formValues = { ...formValues, ...this.advancedForm }
+        const formValues = { ...this.form, ...this.advancedForm }
+
+        if (formValues.patientStatus) {
+          // Backend fails on empty string
+          formValues.patientStatus = undefined
+        }
+
+        countPromise = Api.patients.countQueryPatientsUsingPost(formValues)
+        queryPromise = Api.patients.queryPatientsUsingPost(formValues)
+      } else {
+        const query = this.form.query
+        countPromise = Api.patients.countQueryPatientsSimpleUsingGet({ query })
+        queryPromise = Api.patients.queryPatientsSimpleUsingPost({ ...this.form })
       }
-      if (formValues.patientStatus) {
-        // Backend fails on empty string
-        formValues.patientStatus = undefined
-      }
-      Api.patients.countQueryPatientsUsingPost(formValues).then(count => {
+
+      countPromise.then(count => {
         this.count = count
       })
-      Api.patients.queryPatientsUsingPost(formValues).then((result: Patient[]) => {
-        this.setPatiens(result)
+      queryPromise.then((result: Patient[]) => {
+        this.actualPatients = result
       }).catch(error => {
         console.error(error)
         const notification = {
@@ -287,19 +328,35 @@ export default Vue.extend({
       this.showAdvancedSearch = !this.showAdvancedSearch
     },
     downloadPatients() {
-      let formValues = { ...this.form }
+      this.form.offsetPage = this.currentPage - 1
+      let countPromise
+      let formValues: any
       if (this.showAdvancedSearch) {
-        formValues = { ...formValues, ...this.advancedForm }
+        formValues = { ...this.form, ...this.advancedForm }
+        if (formValues.patientStatus) {
+          // Backend fails on empty string
+          formValues.patientStatus = undefined
+        }
+        countPromise = Api.patients.countQueryPatientsUsingPost(formValues)
+      } else {
+        formValues = { ...this.form }
+        const query = this.form.query
+        countPromise = Api.patients.countQueryPatientsSimpleUsingGet({ query })
       }
-      if (!formValues.patientStatus) {
-        // Backend fails on empty string
-        formValues.patientStatus = undefined
-      }
-      Api.patients.countQueryPatientsUsingPost(formValues).then(count => {
+
+      countPromise.then(count => {
         // Download all data that applies to the current filter
         formValues.offsetPage = 0
         formValues.pageSize = count
-        Api.patients.queryPatientsUsingPost(formValues).then(result => {
+
+        let queryPromise: Promise<Patient[]>
+        if (this.showAdvancedSearch) {
+          queryPromise = Api.patients.queryPatientsUsingPost(formValues)
+        } else {
+          queryPromise = Api.patients.queryPatientsSimpleUsingPost(formValues)
+        }
+
+        queryPromise.then(result => {
           const header = 'ID,Vorname,Nachname,Geschlecht,Status,Geburtsdatum,Stadt,E-Mail;Telefonnummer;' +
             'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer;'
           const patients = result.map((patient: Patient) =>
@@ -346,8 +403,17 @@ export default Vue.extend({
 
 </script>
 
+<style lang="scss">
+  .imis-table-no-pagination {
+    .ant-table-pagination {
+      display: none;
+    }
+  }
+</style>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
   h3 {
     margin: 20px 10px;
   }

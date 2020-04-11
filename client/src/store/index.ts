@@ -15,5 +15,4 @@ const root = new Module({
 })
 
 const store = createStore(root)
-console.log(store)
 export default store

@@ -91,7 +91,7 @@ import TestInput from '../components/TestInput'
 import LaboratoryInput from '../components/LaboratoryInput'
 import Vue from 'vue'
 import { authMapper } from '@/store/modules/auth.module'
-import { testResults } from '@/util/event-types'
+import { testResults } from '@/models/event-types'
 
 export default Vue.extend({
   name: 'LinkTestResultAndPatient',

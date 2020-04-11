@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{- include "imis.fullname" . }}
+  name: {{ include "imis.fullname" . }}
   labels:
   {{- include "imis.labels" . | nindent 4 }}
 spec:
@@ -37,7 +37,7 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{- include "imis.fullname" . }}-postgres
+              name: {{ include "imis.fullname" }}-postgres
               key: password
         volumeMounts:
         - name: cloudstore-service-account
@@ -74,7 +74,7 @@ spec:
       volumes:
       - name: cloudsql-instance-credentials
         secret:
-          secretName: {{- include "imis.fullname" . }}-cloudsql
+          secretName: {{ include "imis.fullname" . }}-cloudsql
       - name: cloudstore-service-account
         secret:
-          secretName: {{- include "imis.fullname" . }}-cloudstore
+          secretName: {{ include "imis.fullname" . }}-cloudstore

@@ -78,12 +78,11 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
-        env
         echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" > chart/cloudsql.base64.json
         echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" > chart/cloudstore.base64.json
         helm repo add stable "https://kubernetes-charts.storage.googleapis.com"
         helm upgrade --install traefik stable/traefik -f chart/traefik.values.yaml
-        if [[ "$GITHUB_REF" == "refs/heads/master" ]]; then
+        if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
           helm upgrade --install imis-production chart \
             --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
           kubectl rollout status deployment/imis-production

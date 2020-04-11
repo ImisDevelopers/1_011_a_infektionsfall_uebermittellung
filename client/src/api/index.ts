@@ -8,10 +8,8 @@ if (
   baseUrl = 'http://localhost:80'
   // Alternative config to run the app locally without root; see proxy conf
   // baseUrl = 'http://localhost:8080/api'
-} else if (location.host.startsWith('staging')) {
-  baseUrl = 'https://api.staging.imis-prototyp.de'
 } else {
-  baseUrl = 'https://api.imis-prototyp.de'
+  baseUrl = '/'
 }
 
 /**

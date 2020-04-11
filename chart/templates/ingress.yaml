@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ include "imis.fullname" }}-ingress
+  name: {{- include "imis.fullname" . }}-ingress
   labels:
   {{- include "imis.labels" . | nindent 4 }}
 spec:
@@ -11,5 +11,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: {{ include "imis.fullname" . }}
+          serviceName: {{- include "imis.fullname" . }}
           servicePort: 8080

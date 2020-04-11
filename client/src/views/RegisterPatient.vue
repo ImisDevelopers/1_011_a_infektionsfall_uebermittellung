@@ -6,12 +6,12 @@
           <a-icon type="close" style="top: 0; right: 0; position: absolute; cursor: pointer"
                   @click="createdPatient = null" />
           <div style="display: flex; align-items: center; margin: 10px">
-          <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" />
-          <h3 style="margin-bottom: 0">
-            <span v-if="createdPatient.gender === 'female'">Patientin</span>
-            <span v-else>Patient</span>
-            wurde erfolgreich registriert.
-          </h3>
+            <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" />
+            <h3 style="margin-bottom: 0">
+              <span v-if="createdPatient.gender === 'female'">Patientin</span>
+              <span v-else>Patient</span>
+              wurde erfolgreich registriert.
+            </h3>
           </div>
           <table style="border-collapse: separate; border-spacing: 15px 5px; text-align: left">
             <tbody>
@@ -59,17 +59,17 @@
               <a-col :lg="12">
                 <a-form-item label="Vorname">
                   <a-input
-                    v-decorator="['firstName', { rules: [{ required: true }] }]"
+                    v-decorator="['firstName', { rules: [{ required: true, message: 'Bitte Vornamen eingeben', }] }]"
                   />
                 </a-form-item>
                 <a-form-item label="Nachname">
                   <a-input
-                    v-decorator="['lastName', { rules: [{ required: true }] }]"
+                    v-decorator="['lastName', { rules: [{ required: true, message: 'Bitte Nachnamen eingeben', }] }]"
                   />
                 </a-form-item>
                 <a-form-item label="Geschlecht">
                   <a-radio-group
-                    v-decorator="['gender', { rules: [{ required: true }] }]"
+                    v-decorator="['gender', { rules: [{ required: true, message: 'Bitte Geschlecht eingeben', }] }]"
                     buttonStyle="solid"
                   >
                     <a-radio value="male">Männl.</a-radio>
@@ -82,7 +82,7 @@
                     :format="dateFormat"
                     v-decorator="[
                       'dateOfBirth',
-                      { rules: [{ required: true }] }
+                      { rules: [{ required: true, message: 'Bitte Geburtsdatum eingeben', }] }
                     ]"
                     placeholder="Datum wählen"
                   />
@@ -97,38 +97,38 @@
               <a-col :lg="12">
                 <a-form-item label="E-mail">
                   <a-input
-                    v-decorator="['email', { rules: [{ required: true }] }]"
+                    v-decorator="['email', { rules: [{ required: true, message: 'Bitte Email eingeben', }] }]"
                   />
                 </a-form-item>
                 <a-form-item label="Telefon">
                   <a-input
                     v-decorator="[
                       'phoneNumber',
-                      { rules: [{ required: true }] }
+                      { rules: [{ required: true, message: 'Bitte Telefonnummer eingeben', }] }
                     ]"
                   />
                 </a-form-item>
                 <a-form-item label="Straße">
                   <a-input
-                    v-decorator="['street', { rules: [{ required: true }] }]"
+                    v-decorator="['street', { rules: [{ required: true, message: 'Bitte Straße eingeben', }] }]"
                   />
                 </a-form-item>
                 <a-form-item label="Hausnr.">
                   <a-input
                     v-decorator="[
                       'houseNumber',
-                      { rules: [{ required: true }] }
+                      { rules: [{ required: true, message: 'Bitte Hausnummer eingeben', }] }
                     ]"
                   />
                 </a-form-item>
                 <a-form-item label="PLZ">
                   <a-input
-                    v-decorator="['zip', { rules: [{ required: true }] }]"
+                    v-decorator="['zip', { rules: [{ required: true, message: 'Bitte PLZ eingeben', }] }]"
                   />
                 </a-form-item>
                 <a-form-item label="Ort">
                   <a-input
-                    v-decorator="['city', { rules: [{ required: true }] }]"
+                    v-decorator="['city', { rules: [{ required: true, message: 'Bitte Stadt eingeben', }] }]"
                   />
                 </a-form-item>
               </a-col>
@@ -144,7 +144,7 @@
                     v-model="selectedOccupation"
                   >
                     <a-select-option
-                      v-for="riskOccupation in RISK_OCCUPATIONS" :key="riskOccupation.key"
+                      v-for="riskOccupation in RISK_OCCUPATIONS" :key="riskOccupation.value"
                     >
                       {{ riskOccupation.label }}
                     </a-select-option>
@@ -317,18 +317,9 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
+import { RISK_OCCUPATIONS } from '@/models/risk-occupation'
 
 type KeyDescription = { key: string; description: string };
-type KeyLabel = { key: string; label: string };
-
-const RISK_OCCUPATIONS: KeyLabel[] = [
-  { key: 'NO_RISK_OCCUPATION', label: 'Kein systemrelevanter Beruf' },
-  { key: 'FIRE_FIGHTER', label: 'Feuerwehrmann/frau' },
-  { key: 'DOCTOR', label: 'Ärzt/Ärztin' },
-  { key: 'NURSE', label: 'Pflegepersonal' },
-  { key: 'CAREGIVER', label: 'Altenpflege' },
-  { key: 'POLICE', label: 'Polizei' },
-]
 
 const RISK_AREAS: KeyDescription[] = [
   { key: 'IRAN', description: 'Iran' },
@@ -403,7 +394,8 @@ export default Vue.extend({
           riskArea => this.selectedRiskAreas[riskArea.key],
         ).map(riskArea => riskArea.key)
         const riskOccupation = this.selectedOccupation.key
-
+        console.log(riskOccupation)
+        console.log(this.selectedOccupation)
         const request = {
           ...values,
           dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD') + ' 00',
@@ -412,20 +404,23 @@ export default Vue.extend({
           riskAreas,
           riskOccupation,
         }
+
+        const patientString = request.gender === 'female' ? 'Patientin' : 'Patient'
+
         Api.patients.addPatientUsingPost(request).then((patient: Patient) => {
           this.form.resetFields()
           this.createdPatient = patient as any
           const notification = {
-            message: 'Patient registriert.',
-            description: 'Der Patient wurde erfolgreich registriert.',
+            message: patientString + ' registriert.',
+            description: 'Der ' + patientString + ' wurde erfolgreich registriert.',
           }
           this.$notification.success(notification)
           window.scrollTo(0, 0)
         }).catch((error: Error) => {
           console.error(error)
           const notification = {
-            message: 'Patient nicht registriert.',
-            description: 'Der Patient konnte nicht registriert werden.',
+            message: patientString + ' nicht registriert.',
+            description: 'Der ' + patientString + ' konnte nicht registriert werden.',
           }
           this.$notification.error(notification)
         })

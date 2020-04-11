@@ -1,7 +1,12 @@
 import { CreateInstitutionDTO, RegisterUserRequest } from '@/api/SwaggerApi'
 
 export type InstitutionType = CreateInstitutionDTO['institutionType'];
-export type InstitutionRule = 'ROLE_TEST_SITE' | 'ROLE_LABORATORY' | 'ROLE_DOCTORS_OFFICE' | 'ROLE_CLINIC' | 'ROLE_GOVERNMENT_AGENCY'
+export type InstitutionRule =
+  'ROLE_TEST_SITE'
+  | 'ROLE_LABORATORY'
+  | 'ROLE_DOCTORS_OFFICE'
+  | 'ROLE_CLINIC'
+  | 'ROLE_GOVERNMENT_AGENCY'
 export type UserRole = Exclude<RegisterUserRequest['userRole'], undefined>;
 export type PatientStatus = 'REGISTERED'
   | 'SUSPECTED'
@@ -14,8 +19,9 @@ export type PatientStatus = 'REGISTERED'
   | 'TEST_FINISHED_NOT_RECOVERED'
   | 'PATIENT_DEAD'
   | 'DOCTORS_VISIT';
+export type RiskOccupation = 'NO_RISK_OCCUPATION' | 'FIRE_FIGHTER' | 'DOCTOR' | 'CAREGIVER' | 'NURSE'
 
-export interface CheckboxOption {
+export interface Option {
   label: string;
   value: string;
 }

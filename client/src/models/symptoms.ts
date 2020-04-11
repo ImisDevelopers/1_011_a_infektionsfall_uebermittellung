@@ -1,6 +1,6 @@
-import { CheckboxOption } from '@/models/index'
+import { Option } from '@/models/index'
 
-export const SYMPTOMS: CheckboxOption[] = [
+export const SYMPTOMS: Option[] = [
   {
     label: 'Appetitverlust',
     value: 'LOSS_OF_APPETITE',

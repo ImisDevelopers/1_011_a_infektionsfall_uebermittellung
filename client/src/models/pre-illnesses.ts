@@ -1,6 +1,6 @@
-import { CheckboxOption } from '@/models/index'
+import { Option } from '@/models/index'
 
-export const PRE_ILLNESSES: CheckboxOption[] = [
+export const PRE_ILLNESSES: Option[] = [
   {
     label: 'Chronische Lungenerkrankung (z.B. COPD)',
     value: 'CHRONIC_LUNG_DISEASE',

@@ -52,6 +52,7 @@ export interface CreatePatientDTO {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  occupation?: string;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
@@ -67,7 +68,7 @@ export interface CreatePatientDTO {
   phoneNumber?: string;
   preIllnesses?: string[];
   riskAreas?: string[];
-  riskOccupation?: string;
+  riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
   street?: string;
   symptoms?: string[];

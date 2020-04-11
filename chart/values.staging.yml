@@ -1,5 +1,5 @@
 env: staging
-deploymentname: imis-server-staging
+deploymentname: imis-staging
 ingress:
   client:
     domain: staging.imis-prototyp.de

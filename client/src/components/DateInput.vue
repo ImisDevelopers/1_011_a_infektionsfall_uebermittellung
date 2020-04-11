@@ -6,6 +6,7 @@
       style="width: 100%"
       :open="dateOfBirthPickerOpen"
       :format="dateFormat"
+      :disabled="disabled"
       v-decorator="decorator"
       placeholder="TT.MM.JJJJ (z.B. 28.02.1986)"
     />
@@ -31,7 +32,7 @@ export interface State {
 
 export default Vue.extend({
   name: 'LaboratoryInput',
-  props: ['decorator', 'label'],
+  props: ['decorator', 'label', 'disabled'],
   data(): State {
     return {
       dateOfBirthPickerOpen: false,

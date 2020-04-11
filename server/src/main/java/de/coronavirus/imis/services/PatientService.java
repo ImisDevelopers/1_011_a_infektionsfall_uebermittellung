@@ -22,6 +22,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
@@ -55,28 +56,38 @@ public class PatientService {
     }
 
     public Patient addPatient(final CreatePatientDTO dto) {
-        var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
+        var dateOfBirthParsed = LocalDate.parse(dto.getDateOfBirth(), DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate dateOfDeathParsed = null;
+        if (dto.getDateOfDeath() != null && !dto.getDateOfDeath().isBlank()) {
+            dateOfDeathParsed = LocalDate.parse(dto.getDateOfDeath(), DateTimeFormatter.ISO_LOCAL_DATE);
+        }
         var id = Hashing.sha256()
-                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed + randomService.getRandomString(12), StandardCharsets.UTF_8)
+                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateOfBirthParsed + randomService.getRandomString(12), StandardCharsets.UTF_8)
                 .toString()
                 .substring(0, 8).toUpperCase();
         var mappedPatient = new Patient()
+                // Basics
                 .setId(id)
                 .setFirstName(dto.getFirstName())
                 .setLastName(dto.getLastName())
                 .setGender(dto.getGender())
-                .setDateOfBirth(dateParsed)
+                .setDateOfBirth(dateOfBirthParsed)
+                .setDateOfDeath(dateOfDeathParsed)
                 .setEmail(dto.getEmail())
                 .setPhoneNumber(dto.getPhoneNumber())
+                // Address
                 .setStreet(dto.getStreet())
                 .setHouseNumber(dto.getHouseNumber())
                 .setCity(dto.getCity())
-                .setHouseNumber(dto.getHouseNumber())
-                .setEmployer(dto.getEmployer())
-                .setStreet(dto.getStreet())
                 .setZip(dto.getZip())
+                // Stay
+                .setStayStreet(dto.getStayStreet())
+                .setStayHouseNumber(dto.getStayHouseNumber())
+                .setStayCity(dto.getStayCity())
+                .setStayZip(dto.getStayZip())
+                // Other
+                .setEmployer(dto.getEmployer())
                 .setPatientStatus(EventType.SUSPECTED)
-                .setCity(dto.getCity())
                 .setInsuranceCompany(dto.getInsuranceCompany())
                 .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())
                 .setFluImmunization(dto.getFluImmunization())
@@ -207,15 +218,4 @@ public class PatientService {
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
     }
 
-    private RiskOccupation determineRiskOcc(String occ) {
-        if (Strings.isNullOrEmpty(occ)) {
-            return RiskOccupation.NO_RISK_OCCUPATION;
-        }
-        try {
-            return RiskOccupation.valueOf(occ);
-        } catch (Exception e) {
-            log.error("error determining risk occupation for {}", occ);
-        }
-        return RiskOccupation.NO_RISK_OCCUPATION;
-    }
 }

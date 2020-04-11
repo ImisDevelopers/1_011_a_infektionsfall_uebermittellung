@@ -3,6 +3,7 @@
     <div>
 
       <!-- Vorname / Nachname -->
+      <p style="text-align: center">Allgemeine Angaben:</p>
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Vorname">
@@ -35,6 +36,7 @@
                         required: true,
                         message: 'Bitte Geschlecht eingeben',
                       }]}]"
+              @change="genderSelected"
               buttonStyle="solid"
             >
               <a-radio value="male">Männl.</a-radio>
@@ -51,6 +53,22 @@
         </a-col>
       </a-row>
 
+      <a-row v-if="showDeath">
+        <a-col :lg="12" :sm="24">
+          <a-form-item label="Verstorben">
+            <a-radio-group v-model="showDateOfDeath">
+              <a-radio :value="true">Ja</a-radio>
+              <a-radio :value="false">Nein</a-radio>
+            </a-radio-group>
+          </a-form-item>
+        </a-col>
+        <a-col :lg="12" :sm="24">
+          <DateInput label="Todesdatum" :decorator="['dateOfDeath']" :disabled="!showDateOfDeath" />
+        </a-col>
+      </a-row>
+
+      <a-divider />
+      <p style="text-align: center">Adresse:</p>
       <!-- Straße / Hausnummer -->
       <a-row>
         <a-col :lg="12" :sm="24">
@@ -75,35 +93,64 @@
         </a-col>
       </a-row>
 
-      <!-- PLZ Ort -->
+      <!-- PLZ / Ort -->
       <a-row>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="PLZ">
-            <a-auto-complete @search="handlePlzSearch" v-decorator="['zip', { rules: [{
-                        required: true,
-                        message: 'Bitte PLZ eingeben',
-                      }] }]" @select="handlePlzSelection">
-              <template slot="dataSource">
-                <a-select-option v-for="plz in plzs" :key="plz.fields.plz">
-                  {{plz.fields.plz}} {{plz.fields.note}}
-                </a-select-option>
-              </template>
-            </a-auto-complete>
-          </a-form-item>
+          <PlzInput :decorator="['zip', { rules: [{
+              required: true,
+              message: 'Bitte PLZ eingeben',
+            }]}]" @plzChanged="setPLZ" />
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Ort">
-            <a-input
-              v-decorator="['city', { rules: [{
-                        required: true,
-                        message: 'Bitte Ort eingeben',
-                      }] }]"
-            />
+            <a-input v-decorator="['city', { rules: [{
+              required: true,
+              message: 'Bitte Ort eingeben',
+            }] }]" />
           </a-form-item>
         </a-col>
       </a-row>
 
+      <!-- Aufenthaltsort -->
+      <div v-if="showStay">
+        <a-divider />
+        <p style="text-align: center">Aufenthaltsort, falls von Adresse abweichend:</p>
+        <!-- Straße / Hausnummer -->
+        <a-row>
+          <a-col :lg="12" :sm="24">
+            <a-form-item label="Straße">
+              <a-input
+                v-decorator="['stayStreet']"
+              />
+            </a-form-item>
+          </a-col>
+          <a-col :lg="12" :sm="24">
+            <a-form-item label="Hausnummer">
+              <a-input
+                v-decorator="['stayHouseNumber']"
+              />
+            </a-form-item>
+          </a-col>
+        </a-row>
+
+        <!-- PLZ / Ort -->
+        <a-row>
+          <a-col :lg="12" :sm="24">
+            <PlzInput :decorator="['stayZip']" @plzChanged="setStayPLZ" />
+          </a-col>
+          <a-col :lg="12" :sm="24">
+            <a-form-item label="Ort">
+              <a-input
+                v-decorator="['stayCity']"
+              />
+            </a-form-item>
+          </a-col>
+        </a-row>
+      </div>
+
       <!-- Email / Telefon -->
+      <a-divider />
+      <p style="text-align: center">Kontakt und Sonstiges:</p>
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="E-mail">
@@ -168,7 +215,7 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Versichertenr. (optional)">
+          <a-form-item label="Versichertennr. (optional)">
             <a-input v-decorator="['insuranceMembershipNumber']" />
           </a-form-item>
         </a-col>
@@ -180,10 +227,11 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import { getPlzs, Plz } from '@/util/plz-service'
+import { Plz } from '@/util/plz-service'
 import { RiskOccupation } from '@/models'
 import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
 import DateInput from '@/components/DateInput.vue'
+import PlzInput from '@/components/PlzInput.vue'
 
 /**
  * Autocomplete for Patients
@@ -196,38 +244,36 @@ export interface State {
   plzs: Plz[];
   disableOccupation: boolean;
   riskOccupations: RiskOccupationOption[];
+  showDateOfDeath: boolean;
 }
 
 export default Vue.extend({
   name: 'PatientStammdaten',
-  props: ['form'],
+  props: ['form', 'showStay', 'showDeath'],
   data(): State {
     return {
       plzs: [],
       disableOccupation: true,
       riskOccupations: RISK_OCCUPATIONS,
+      showDateOfDeath: false,
     }
   },
   components: {
     DateInput,
+    PlzInput,
   },
   methods: {
-    async handlePlzSearch(value: string) {
-      let result: Plz[]
-      if (!value || value.length < 2) {
-        result = []
-      } else {
-        result = await getPlzs(value)
-        if (result.length === 1) {
-          this.setPLZ(result[0])
-        }
+    setStayPLZ(plz: Plz) {
+      this.form.setFieldsValue({
+        stayZip: plz.fields.plz,
+        stayCity: plz.fields.note,
+      })
+      let nextInput = document.getElementById('coordinated_email')
+      if (!nextInput) {
+        nextInput = document.getElementById('email')
       }
-      this.plzs = result
-    },
-    handlePlzSelection(value: string) {
-      const plz = this.plzs.find(plz => plz.fields.plz === value)
-      if (plz) {
-        this.setPLZ(plz)
+      if (nextInput) {
+        nextInput.focus()
       }
     },
     setPLZ(plz: Plz) {
@@ -235,7 +281,6 @@ export default Vue.extend({
         zip: plz.fields.plz,
         city: plz.fields.note,
       })
-      plz.fields.note = '' // So city does not display in plz input
       let nextInput = document.getElementById('coordinated_email')
       if (!nextInput) {
         nextInput = document.getElementById('email')
@@ -254,10 +299,13 @@ export default Vue.extend({
         occupation: occupation,
       })
     },
+    genderSelected(event: Event) {
+      const gender = (event.target as any).value
+      this.$emit('gender', gender)
+    },
   },
 })
 </script>
 
-<style>
-
+<style scoped>
 </style>

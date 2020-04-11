@@ -1,5 +1,15 @@
 import { Option } from '@/models/index'
 
+export const ADDITIONAL_SYMPTOMS: Option[] = [
+  {
+    label: 'Akutes schweres Atemsyndrom (ARDS)',
+    value: 'ARDS',
+  }, {
+    label: 'Beatmungspflichtige Atemwegserkrankung',
+    value: 'RESPIRATORY_DISEASE',
+  },
+]
+
 export const SYMPTOMS: Option[] = [
   {
     label: 'Appetitverlust',

@@ -32,13 +32,22 @@ public class Patient {
     private String firstName;
     private String gender;
     private LocalDate dateOfBirth;
+    private LocalDate dateOfDeath;
 
     private String email;
     private String phoneNumber;
+
+    // Address
     private String street;
     private String houseNumber;
     private String zip;
     private String city;
+
+    // Current Stay (If different from address)
+    private String stayStreet;
+    private String stayHouseNumber;
+    private String stayZip;
+    private String stayCity;
 
     private String insuranceCompany;
     private String insuranceMembershipNumber;

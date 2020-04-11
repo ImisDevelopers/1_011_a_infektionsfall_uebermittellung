@@ -38,7 +38,6 @@
               </div>
               <span style="flex: 1 1 auto" />
             </div>
-
           </div>
 
           <!-- Exposition -->
@@ -156,6 +155,7 @@ import { Option } from '@/models'
 import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import PatientStammdaten from '@/components/PatientStammdaten.vue'
+import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
 
 interface State {
   form: any;
@@ -184,36 +184,8 @@ export default Vue.extend({
       createdPatient: null,
       symptoms: SYMPTOMS,
       preIllnesses: PRE_ILLNESSES,
-      exposures: [
-        {
-          label: 'Medizinischer Heilberuf',
-          value: 'MEDICAL_HEALTH_PROFESSION',
-        }, {
-          label: 'Arbeit in medizinischem Labor',
-          value: 'MEDICAL_LABORATORY',
-        }, {
-          label: 'Aufenthalt in medizinischer Einrichtung in den letzten 14 Tagen vor der Erkrankung',
-          value: 'STAY_IN_MEDICAL_FACILITY',
-        }, {
-          label: 'Enger Kontakt mit wahrscheinlichem oder bestätigtem Fall in den letzten 14 Tagen vor der Erkrankung',
-          value: 'CONTACT_WITH_CORONA_CASE',
-        },
-      ],
-      exposureLocation: [
-        {
-          label: 'in einer medizinischen Einrichtung',
-          value: 'MEDICAL_FACILITY',
-        }, {
-          label: 'im privaten Haushalt',
-          value: 'PRIVATE',
-        }, {
-          label: 'am Arbeitsplatz',
-          value: 'WORK',
-        }, {
-          label: 'andere / sonstige',
-          value: 'OTHER',
-        },
-      ],
+      exposures: EXPOSURES_PUBLIC,
+      exposureLocation: EXPOSURE_LOCATIONS,
       steps: [
         {
           title: 'Symtpome',
@@ -311,7 +283,7 @@ export default Vue.extend({
       this.showOtherSymptoms = target.checked
     },
     exposuresChanged(checkedValues: string[]) {
-      this.disableExposureLocation = !checkedValues.includes(this.exposures[3].value)
+      this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')
     },
   },
 })

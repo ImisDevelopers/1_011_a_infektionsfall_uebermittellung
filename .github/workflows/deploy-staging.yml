@@ -81,7 +81,7 @@ jobs:
         echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" > chart/cloudstore.base64.json
         helm repo add stable https://kubernetes-charts.storage.googleapis.com
         helm dependency build chart
-        helm upgrade --install imis chart -f chart/values.staging.yml \
+        helm upgrade --install imis-staging chart -f chart/values.staging.yml \
           --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
         kubectl rollout status deployment/imis-staging
         kubectl get services -o wide

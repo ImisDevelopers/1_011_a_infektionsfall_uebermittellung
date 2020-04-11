@@ -7,16 +7,14 @@ import java.util.UUID;
 import javax.transaction.Transactional;
 
 import de.coronavirus.imis.domain.*;
+import de.coronavirus.imis.repositories.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
-import de.coronavirus.imis.repositories.ClinicRepository;
-import de.coronavirus.imis.repositories.DoctorRepository;
-import de.coronavirus.imis.repositories.LaboratoryRepository;
-import de.coronavirus.imis.repositories.TestSiteRepository;
 
 
 @Service
@@ -26,6 +24,7 @@ public class InstitutionService {
     private final DoctorRepository doctorRepository;
     private final ClinicRepository clinicRepository;
     private final TestSiteRepository testSiteRepository;
+    private final DepartmentOfHealthRepository departmentOfHealthRepository;
 
     public List<Laboratory> getAllLaboratories() {
         return laboratoryRepository.findAll();
@@ -63,6 +62,22 @@ public class InstitutionService {
         laboratory.setComment(institutionDTO.getComment());
         laboratory.setId(UUID.randomUUID().toString());
         return this.laboratoryRepository.saveAndFlush(laboratory);
+    }
+
+    @Transactional
+    public DepartmentOfHealth createDepartmentOfHealthInstitution(CreateInstitutionDTO institutionDTO) {
+        var departmentOfHealth = new DepartmentOfHealth();
+        departmentOfHealth.setName(institutionDTO.getName());
+        departmentOfHealth.setStreet(institutionDTO.getStreet());
+        departmentOfHealth.setHouseNumber(institutionDTO.getHouseNumber());
+        departmentOfHealth.setZip(institutionDTO.getZip());
+        departmentOfHealth.setCity(institutionDTO.getCity());
+        departmentOfHealth.setEmail(institutionDTO.getEmail());
+        departmentOfHealth.setPhoneNumber(institutionDTO.getPhoneNumber());
+        departmentOfHealth.setComment(institutionDTO.getComment());
+        departmentOfHealth.setId(UUID.randomUUID().toString());
+
+        return this.departmentOfHealthRepository.saveAndFlush(departmentOfHealth);
     }
 
     @Transactional

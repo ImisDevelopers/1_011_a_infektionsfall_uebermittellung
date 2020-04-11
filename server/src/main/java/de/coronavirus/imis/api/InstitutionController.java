@@ -26,14 +26,28 @@ public class InstitutionController {
     final InstitutionService institutionService;
 
     @PostMapping
-    public ResponseEntity<InstitutionDTO> createInstitution(@RequestBody CreateInstitutionDTO createInstitutionDTO
-            ) {
+    public ResponseEntity<InstitutionDTO> createInstitution(@RequestBody CreateInstitutionDTO createInstitutionDTO) {
 
         var dto = new InstitutionDTO();
 
         var type = createInstitutionDTO.getInstitutionType();
 
         switch (type) {
+            case DEPARTMENT_OF_HEALTH:
+                var departmentOfHealth = this.institutionService.createDepartmentOfHealthInstitution(createInstitutionDTO);
+                dto = InstitutionDTO.builder()
+                        .id(departmentOfHealth.getId())
+                        .institutionType(type)
+                        .name(departmentOfHealth.getName())
+                        .street(departmentOfHealth.getStreet())
+                        .houseNumber(departmentOfHealth.getHouseNumber())
+                        .zip(departmentOfHealth.getZip())
+                        .city(departmentOfHealth.getCity())
+                        .email(departmentOfHealth.getEmail())
+                        .phoneNumber(departmentOfHealth.getPhoneNumber())
+                        .comment(departmentOfHealth.getComment())
+                        .build();
+                break;
             case LABORATORY:
                 var laboratory = this.institutionService.createLaboratoryInstitution(createInstitutionDTO);
                 dto = InstitutionDTO.builder()

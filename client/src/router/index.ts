@@ -13,7 +13,7 @@ import PatientList from '@/views/PatientList.vue'
 import PatientDetails from '@/views/PatientDetails.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
-import { InstitutionRule, InstitutionType } from '@/models'
+import { InstitutionRole } from '@/models'
 
 Vue.use(VueRouter)
 
@@ -48,17 +48,18 @@ export interface AppRoute extends RouteConfig {
     navigationInfo?: {
       icon: string;
       title: string;
-      authorities: InstitutionRule[];
+      authorities: InstitutionRole[];
     };
   };
 }
 
-const ALL_INSTITUTIONS: InstitutionRule[] = [
+const ALL_INSTITUTIONS: InstitutionRole[] = [
   'ROLE_TEST_SITE',
   'ROLE_LABORATORY',
   'ROLE_DOCTORS_OFFICE',
   'ROLE_CLINIC',
   'ROLE_GOVERNMENT_AGENCY',
+  'ROLE_DEPARTMENT_OF_HEALTH',
 ]
 
 const appRoutes: AppRoute[] = [
@@ -82,7 +83,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'user-add',
         title: 'Patient Registrieren',
-        authorities: ['ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -94,7 +95,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'deployment-unit',
         title: 'Probe Zuordnen',
-        authorities: ['ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -106,7 +107,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'experiment',
         title: 'Testresultat Zuordnen',
-        authorities: ['ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -118,7 +119,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'unordered-list',
         title: 'Alle Tests',
-        authorities: ['ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
       },
     },
   },
@@ -130,7 +131,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'team',
         title: 'Alle Patienten',
-        authorities: ['ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
       },
     },
   },

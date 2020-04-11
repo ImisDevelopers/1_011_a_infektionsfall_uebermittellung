@@ -215,7 +215,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { patientMapper } from '../store/modules/patients.module'
+import { patientMapper } from '@/store/modules/patients.module'
 import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import Api from '@/api'

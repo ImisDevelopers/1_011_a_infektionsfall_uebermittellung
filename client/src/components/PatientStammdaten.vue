@@ -44,16 +44,10 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Geburtsdatum">
-            <a-date-picker
-              :format="dateFormat"
-              v-decorator="['dateOfBirth', { rules: [{
+          <DateInput label="Geburtsdatum" :decorator="['dateOfBirth', { rules: [{
                         required: true,
                         message: 'Bitte Geburtsdatum eingeben',
-                      }]}]"
-              placeholder="Datum wählen"
-            />
-          </a-form-item>
+                      }]}]" />
         </a-col>
       </a-row>
 
@@ -189,6 +183,7 @@ import Vue from 'vue'
 import { getPlzs, Plz } from '@/util/plz-service'
 import { RiskOccupation } from '@/models'
 import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
+import DateInput from '@/components/DateInput.vue'
 
 /**
  * Autocomplete for Patients
@@ -199,7 +194,6 @@ import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation
 
 export interface State {
   plzs: Plz[];
-  dateFormat: string;
   disableOccupation: boolean;
   riskOccupations: RiskOccupationOption[];
 }
@@ -210,10 +204,12 @@ export default Vue.extend({
   data(): State {
     return {
       plzs: [],
-      dateFormat: 'DD/MM/YYYY',
       disableOccupation: true,
       riskOccupations: RISK_OCCUPATIONS,
     }
+  },
+  components: {
+    DateInput,
   },
   methods: {
     async handlePlzSearch(value: string) {

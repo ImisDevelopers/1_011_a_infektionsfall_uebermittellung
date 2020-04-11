@@ -3,7 +3,8 @@ name: Production
 on:
   release:
     types: [published]
-  branches:
+  push:
+    branches:
     - dev
     - jib-integration
 

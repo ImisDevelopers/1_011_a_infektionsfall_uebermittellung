@@ -15,7 +15,7 @@
 
 import Api from '@/api'
 import Vue from 'vue'
-import { Patient } from '@/api/SwaggerApi'
+import {Patient} from '@/api/SwaggerApi'
 
 /**
  * Autocomplete for Patients
@@ -42,7 +42,7 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        result = await Api.patients.queryPatientsSimpleUsingPost({
+        result = await Api.api.queryPatientsSimpleUsingPost({
           query: value,
           offsetPage: 0,
           pageSize: 10,

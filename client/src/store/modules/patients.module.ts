@@ -1,8 +1,7 @@
-import router from '@/router'
+import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
 import { Vue } from 'vue/types/vue'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
-import Api from '@/api'
 
 class PatientState {
   patient: Patient | undefined
@@ -36,7 +35,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
   async fetchPatients(instance: Vue) {
     try {
       // this.commit('shared/startedLoading', 'fetchPatients', { root: true })
-      const patients = await Api.patients.getAllPatientsUsingGet()
+      const patients = await Api.api.getAllPatientsUsingGet()
       this.commit('setPatients', patients)
     } catch (err) {
       instance.$notification.error({
@@ -50,7 +49,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
   async registerPatient(arg: { patient: Patient; instance?: Vue }): Promise<Patient> {
     // commit('shared/startedLoading', 'registerPatient', { root: true })
     try {
-      const patientResponse = await Api.patients.addPatientUsingPost(arg.patient)
+      const patientResponse = await Api.api.addPatientUsingPost(arg.patient)
       this.commit('setPatient', patientResponse)
       return patientResponse
     } catch (err) {

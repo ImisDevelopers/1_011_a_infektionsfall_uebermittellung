@@ -264,7 +264,7 @@ export default Vue.extend({
           .find((illness: string) => illness === 'IMMUNODEFICIENCY')
         request.coronaContacts = !!request.riskAreas // TODO: DO we need this field?
           .find((riskArea: string) => riskArea.startsWith('CONTACT_WITH_CORONA'))
-        Api.patients.addPatientUsingPost(request).then(patient => {
+        Api.api.addPatientUsingPost(request).then(patient => {
           this.createdPatient = patient
         })
       })

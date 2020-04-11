@@ -6,12 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "echo // Test gibts aktuell nicht - bitte fixen und dann wieder setzen:  \"test:unit\": \"vue-cli-service test:unit\",",
-    "lint": "vue-cli-service lint",
-    "generate:api-client": "npx swagger-typescript-api -p http://localhost:8642/v2/api-docs -o ./src/api -n SwaggerApi.ts"
+    "lint": "vue-cli-service lint --fix",
+    "generate:api-client": "npx swagger-typescript-api -p http://localhost:80/v2/api-docs -o ./src/api -n SwaggerApi.ts"
   },
   "dependencies": {
-    "@sentry/browser": "^5.15.4",
-    "@sentry/integrations": "^5.15.4",
     "@zxing/library": "^0.16.0",
     "ant-design-vue": "^1.5.0",
     "core-js": "^3.6.4",

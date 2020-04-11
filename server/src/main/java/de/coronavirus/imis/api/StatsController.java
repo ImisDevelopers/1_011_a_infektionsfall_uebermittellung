@@ -13,7 +13,7 @@ import de.coronavirus.imis.api.dto.AggregationResultZip;
 import de.coronavirus.imis.services.StatsService;
 
 @RestController
-@RequestMapping("/stats")
+@RequestMapping("/api/stats")
 @RequiredArgsConstructor
 public class StatsController {
     private final StatsService statsService;

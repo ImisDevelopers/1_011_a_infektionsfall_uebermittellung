@@ -1,26 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "imis.server.fullname" . }}
-  labels:
-  {{- include "imis.server.labels" . | nindent 4 }}
+  name: "{{- include "imis.fullname" . -}}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-  {{- include "imis.server.selectorLabels" . | nindent 6 }}
+      {{- include "imis.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-    {{- include "imis.server.selectorLabels" . | nindent 8 }}
+        {{- include "imis.selectorLabels" . | nindent 8 }}
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: /actuator/prometheus
         prometheus.io/port: "8081"
     spec:
       containers:
-      - name: imis-server
-        image: "{{- .Values.image.repository }}/imis-server:{{- .Values.gitSha }}"
+      - name: imis
+        image: "{{- .Values.image.repository }}/imis:{{- .Values.gitSha }}"
         ports:
         - containerPort: 8080
         env:
@@ -37,13 +35,8 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: postgres
+              name: "{{- include "imis.fullname" . }}-postgres"
               key: password
-        - name: SENTRY_DSN
-          valueFrom:
-            secretKeyRef:
-              name: imis-sentry
-              key: backend_dsn
         volumeMounts:
         - name: cloudstore-service-account
           mountPath: /usr/local/cloud-store
@@ -79,7 +72,7 @@ spec:
       volumes:
       - name: cloudsql-instance-credentials
         secret:
-          secretName: cloudsql
+          secretName: "{{ include "imis.fullname" . -}}-cloudsql"
       - name: cloudstore-service-account
         secret:
-          secretName: cloudstore
+          secretName: "{{ include "imis.fullname" . -}}-cloudstore"

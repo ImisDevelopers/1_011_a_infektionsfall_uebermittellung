@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
+    id 'com.google.cloud.tools.jib' version '2.1.0'
 }
 
 group = 'de.coronavirus'
@@ -30,7 +31,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'io.sentry:sentry-spring:1.7.30'
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
@@ -65,16 +65,23 @@ dependencyManagement {
     }
 }
 
+jib {
+    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
+}
+
+processResources {
+    from('../client/dist') {
+        into 'static'
+    }
+}
+
 bootJar {
     archiveFileName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
-
-    //from('../client/build') {
-    //    into 'static'
-    //}
 }
-
-// bootJar.dependsOn(':client:assemble')
+tasks.processResources.dependsOn(':client:assemble')
+tasks.jib.dependsOn('processResources')
+bootJar.dependsOn('processResources')
 
 test {
     useJUnitPlatform()

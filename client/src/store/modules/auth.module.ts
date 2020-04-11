@@ -1,15 +1,16 @@
+import Api, { removeBearerToken, setBearerToken } from '@/api'
 import { Institution, RegisterUserRequest, User } from '@/api/SwaggerApi'
 import { config } from '@/config'
 import { InstitutionRole } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
-import Api, { removeBearerToken, setBearerToken } from '@/api'
-import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 import { Vue } from 'vue/types/vue'
+import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 
 interface JwtData {
   roles: InstitutionRole[];
   exp: number;
+
   [key: string]: any;
 }
 
@@ -72,7 +73,7 @@ class AuthMutations extends Mutations<AuthState> {
 class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthActions> {
   async login(payload: { username: string; password: string }) {
     // # TODO loading animation, encrypt jwt
-    const token: string | undefined = (await Api.auth.signInUserUsingPost({
+    const token: string | undefined = (await Api.api.signInUserUsingPost({
       username: payload.username,
       password: payload.password,
     })).jwtToken
@@ -111,18 +112,18 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
   }
 
   async getAuthenticatedInstitution() {
-    const institution = await Api.auth.getInstitutionUsingGet()
+    const institution = await Api.api.getInstitutionUsingGet()
     this.commit('setAuthenticatedInstitution', institution)
   }
 
   async getAuthenticatedUser() {
-    const user = await Api.auth.currentUserUsingGet()
+    const user = await Api.api.currentUserUsingGet()
     this.commit('setUser', user)
   }
 
   async registerUserForInstitution(payload: { user: RegisterUserRequest; instance: Vue }) {
     try {
-      const res = await Api.auth.registerUserUsingPost(payload.user)
+      const res = await Api.api.registerUserUsingPost(payload.user)
       this.dispatch('getAuthenticatedInstitution')
     } catch (err) {
       payload.instance.$notification.error({

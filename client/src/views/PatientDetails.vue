@@ -215,13 +215,13 @@
 import Vue from 'vue'
 import moment from 'moment'
 import Api from '@/api'
-import { LabTest, Patient, Timestamp } from '@/api/SwaggerApi'
-import { patientMapper } from '@/store/modules/patients.module'
-import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
-import { SYMPTOMS } from '@/models/symptoms'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
-import { Column } from 'ant-design-vue/types/table/column'
-import { TestTypeItem, testTypes } from '@/models/test-types'
+import {LabTest, Patient, Timestamp} from '@/api/SwaggerApi'
+import {patientMapper} from '@/store/modules/patients.module'
+import {EventTypeItem, eventTypes, testResults, TestResultType} from '@/models/event-types'
+import {SYMPTOMS} from '@/models/symptoms'
+import {PRE_ILLNESSES} from '@/models/pre-illnesses'
+import {Column} from 'ant-design-vue/types/table/column'
+import {TestTypeItem, testTypes} from '@/models/test-types'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -306,7 +306,7 @@ export default Vue.extend({
       const patientId = this.$route.params.id
       this.patient = this.patientById(this.$route.params.id)
       if (!this.patient) {
-        const patient = await Api.patients.getPatientForIdUsingGet(patientId)
+        const patient = await Api.api.getPatientForIdUsingGet(patientId)
         this.setPatient(patient)
         this.patient = patient
       }
@@ -326,7 +326,7 @@ export default Vue.extend({
       this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
 
       // Tests
-      this.tests = await Api.labtests.getLabTestForPatientUsingGet(patientId)
+      this.tests = await Api.api.getLabTestForPatientUsingGet(patientId)
     },
     timelineColor(eventType: any) {
       switch (eventType) {

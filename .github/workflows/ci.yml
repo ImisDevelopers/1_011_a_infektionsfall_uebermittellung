@@ -7,7 +7,9 @@ on:
     - master
     - dev
   pull_request:
-    branches: [ master ]
+    branches:
+    - master
+    - dev
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -26,8 +28,3 @@ jobs:
     # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |
         gradle build lint test
-
-    # Build the Docker image
-    - name: Build
-      run: |
-        docker-compose -f docker-compose.prod.yml build

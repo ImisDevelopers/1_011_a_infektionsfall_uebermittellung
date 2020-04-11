@@ -1,19 +1,27 @@
 package de.coronavirus.imis.api;
 
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.services.PatientService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
-@RequestMapping("/patients")
+@RequestMapping("/api/patients")
 @RequiredArgsConstructor
 public class PatientController {
 

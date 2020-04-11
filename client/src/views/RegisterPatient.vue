@@ -400,7 +400,7 @@ export default Vue.extend({
 
         const patientString = request.gender === 'female' ? 'Patientin' : 'Patient'
 
-        Api.patients.addPatientUsingPost(request).then((patient: Patient) => {
+        Api.api.addPatientUsingPost(request).then((patient: Patient) => {
           this.form.resetFields()
           this.createdPatient = patient as any
           this.disableExposureLocation = true

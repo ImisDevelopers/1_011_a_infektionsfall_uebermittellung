@@ -16,7 +16,6 @@
 import Api from '@/api'
 import Vue from 'vue'
 import { Laboratory } from '@/api/SwaggerApi'
-import { updateLocale } from 'moment'
 
 /**
  * Input that supports 1d and 2d Barcodes
@@ -50,7 +49,7 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        result = await Api.institutions.queryAllLaboratoriesUsingGet({ id: value })
+        result = await Api.api.queryAllLaboratoriesUsingGet({ id: value })
       }
       this.result = result
     },

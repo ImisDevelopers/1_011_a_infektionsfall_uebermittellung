@@ -151,7 +151,6 @@
 import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
 import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
-import { patientMapper } from '@/store/modules/patients.module'
 import { eventTypes } from '@/models/event-types'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
@@ -302,12 +301,12 @@ export default Vue.extend({
           formValues.patientStatus = undefined
         }
 
-        countPromise = Api.patients.countQueryPatientsUsingPost(formValues)
-        queryPromise = Api.patients.queryPatientsUsingPost(formValues)
+        countPromise = Api.api.countQueryPatientsUsingPost(formValues)
+        queryPromise = Api.api.queryPatientsUsingPost(formValues)
       } else {
         const query = this.form.query
-        countPromise = Api.patients.countQueryPatientsSimpleUsingGet({ query })
-        queryPromise = Api.patients.queryPatientsSimpleUsingPost({ ...this.form })
+        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
+        queryPromise = Api.api.queryPatientsSimpleUsingPost({ ...this.form })
       }
 
       countPromise.then(count => {
@@ -337,11 +336,11 @@ export default Vue.extend({
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
-        countPromise = Api.patients.countQueryPatientsUsingPost(formValues)
+        countPromise = Api.api.countQueryPatientsUsingPost(formValues)
       } else {
         formValues = { ...this.form }
         const query = this.form.query
-        countPromise = Api.patients.countQueryPatientsSimpleUsingGet({ query })
+        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
       }
 
       countPromise.then(count => {
@@ -351,9 +350,9 @@ export default Vue.extend({
 
         let queryPromise: Promise<Patient[]>
         if (this.showAdvancedSearch) {
-          queryPromise = Api.patients.queryPatientsUsingPost(formValues)
+          queryPromise = Api.api.queryPatientsUsingPost(formValues)
         } else {
-          queryPromise = Api.patients.queryPatientsSimpleUsingPost(formValues)
+          queryPromise = Api.api.queryPatientsSimpleUsingPost(formValues)
         }
 
         queryPromise.then(result => {

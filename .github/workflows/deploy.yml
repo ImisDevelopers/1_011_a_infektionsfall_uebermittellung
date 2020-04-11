@@ -82,14 +82,14 @@ jobs:
         echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" > chart/cloudstore.base64.json
         helm repo add stable "https://kubernetes-charts.storage.googleapis.com"
         helm dependency build chart
-        if [ "$GITHUB_REF" == "refs/heads/master" ]; then
-          helm upgrade --install imis-production chart \
+        if [[ "$GITHUB_REF" == "refs/heads/master" ]]; then
+          echo helm upgrade --install imis-production chart \
             --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
-          kubectl rollout status deployment/imis-production
-        elseif [ "$GITHUB_REF" == "refs/heads/def" ]; then
-          helm upgrade --install imis-staging chart -f chart/values.staging.yml \
+          echo kubectl rollout status deployment/imis-production
+        elif [[ "$GITHUB_REF" == "refs/heads/dev" ]]; then
+          echo helm upgrade --install imis-staging chart -f chart/values.staging.yml \
                     --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
-          kubectl rollout status deployment/imis-staging
+          echo kubectl rollout status deployment/imis-staging
         else
           echo "Unkown branch ${GITHUB_REF}"
           exit 3

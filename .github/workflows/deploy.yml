@@ -45,10 +45,15 @@ jobs:
         # via gcloud command-line tool.
         gcloud auth configure-docker
 
-    - name: Build server
-      run: |
-        (./gradlew clean jib)
+    - name: Build
+      run: |-
+        gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
 
+      # Deploy image to Cloud Run
     - name: Deploy
-      run: |
-        gcloud deploy imis-fullstack --image gcr.io/$GKE_PROJECT_ID/imis-fullstack
+      run: |-
+        gcloud run deploy "$SERVICE_NAME" \
+          --region "$RUN_REGION" \
+          --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA" \
+          --platform "managed" \
+          --allow-unauthenticated

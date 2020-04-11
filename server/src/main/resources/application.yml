@@ -45,7 +45,7 @@ management:
       exposure:
         include: health,info,prometheus
   server:
-    port: 8081
+    port: 80
 ---
 spring:
   profiles: test

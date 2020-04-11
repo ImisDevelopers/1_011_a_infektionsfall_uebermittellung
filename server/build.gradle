@@ -61,6 +61,11 @@ dependencyManagement {
     }
 }
 
+
+jib {
+    jib.to.image = "gcr.io/onyx-yeti-271818/imis-fullstack"
+}
+
 bootJar {
     archiveName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
@@ -71,6 +76,7 @@ bootJar {
 }
 
 bootJar.dependsOn(':client:assemble')
+tasks.jib.dependsOn("bootJar")
 
 test {
     useJUnitPlatform()

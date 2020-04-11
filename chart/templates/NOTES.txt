@@ -3,6 +3,5 @@
 
 Git commit SHA: '{{ .Values.gitSha }}' deployed to '{{ .Values.env }}' environment
 
-Client:  https://{{ $.Values.ingress.client.domain }}
-Server:  https://{{ $.Values.ingress.server.domain }}
+Check it out:  https://{{ $.Values.ingress.domain }}
 

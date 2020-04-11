@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deploymentname }}
+  name: {{ .Values.deplyomentname }}
   labels:
-  {{- include "imis.server.labels" . | nindent 4 }}
+  {{- include "imis.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-  {{- include "imis.server.selectorLabels" . | nindent 6 }}
+  {{- include "imis.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-    {{- include "imis.server.selectorLabels" . | nindent 8 }}
+    {{- include "imis.selectorLabels" . | nindent 8 }}
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: /actuator/prometheus
         prometheus.io/port: "8081"
     spec:
       containers:
-      - name: imis-server
-        image: "{{- .Values.image.repository }}/imis-server:{{- .Values.gitSha }}"
+      - name: imis
+        image: "{{- .Values.image.repository }}/imis:{{- .Values.gitSha }}"
         ports:
         - containerPort: 8080
         env:

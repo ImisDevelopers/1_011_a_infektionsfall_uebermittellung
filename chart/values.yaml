@@ -12,10 +12,7 @@ image:
 deplyomentname: imis-production
 
 ingress:
-  client:
-    domain: imis-prototyp.de
-  server:
-    domain: api.imis-prototyp.de
+  domain: imis-prototyp.de
 
 secrets:
   cloudStore: "cloudstore.base64.json"

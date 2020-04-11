@@ -1,6 +1,5 @@
 <template>
   <a-card class="table-container">
-<!--    <div>Account {{ JSON.stringify(institution()) }}</div>-->
     <h3>Eingeloggt: {{ username }}</h3>
     <a-form
       :form="registerUserForm"

@@ -6,6 +6,7 @@ import static org.springframework.http.HttpMethod.OPTIONS;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.DELETE;
 
+import de.coronavirus.imis.domain.Institution;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +30,14 @@ import de.coronavirus.imis.domain.InstitutionType;
 @RequiredArgsConstructor
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenFilter filter;
+
+    private final String CLINIC = InstitutionType.CLINIC.name();
+    private final String DEPARTMENT_OF_HEALTH = InstitutionType.DEPARTMENT_OF_HEALTH.name();
+    private final String DOCTORS_OFFICE = InstitutionType.DOCTORS_OFFICE.name();
+    private final String GOVERNMENT_AGENCY = InstitutionType.GOVERNMENT_AGENCY.name();
+    private final String LABORATORY = InstitutionType.LABORATORY.name();
+    private final String TEST_SITE = InstitutionType.TEST_SITE.name();
+
 
     @Bean
     @Override
@@ -54,11 +63,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // OPTIONS matcher for CORS, do not delete
                 .antMatchers(OPTIONS, "/**").permitAll()
                 .antMatchers(POST, "/patients").permitAll()
-                .antMatchers("/patients").hasAnyRole(InstitutionType.CLINIC.name(), InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.TEST_SITE.name())
-                .antMatchers("/doctor/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name())
-                .mvcMatchers(POST, "/labtest").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
-                .antMatchers("/labtest/patient/*").hasAnyRole(InstitutionType.DOCTORS_OFFICE.name(), InstitutionType.CLINIC.name(), InstitutionType.TEST_SITE.name())
-                .mvcMatchers(PUT, "/labtest/*").hasRole(InstitutionType.LABORATORY.name())
+                .antMatchers("/patients").hasAnyRole(DEPARTMENT_OF_HEALTH, CLINIC, DOCTORS_OFFICE, TEST_SITE)
+                .antMatchers("/doctor/*").hasAnyRole(DEPARTMENT_OF_HEALTH, DOCTORS_OFFICE, CLINIC)
+                .mvcMatchers(POST, "/labtest").hasAnyRole(DEPARTMENT_OF_HEALTH, DOCTORS_OFFICE, CLINIC, TEST_SITE)
+                .antMatchers("/labtest/patient/*").hasAnyRole(DEPARTMENT_OF_HEALTH, DOCTORS_OFFICE, CLINIC, TEST_SITE)
+                .mvcMatchers(PUT, "/labtest/*").hasAnyRole(DEPARTMENT_OF_HEALTH, LABORATORY)
                 .antMatchers("/stats").authenticated()
                 .antMatchers("/auth").permitAll()
                 .antMatchers("/auth/register").hasAuthority(UserRole.USER_ROLE_ADMIN.name())

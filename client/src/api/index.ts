@@ -2,6 +2,12 @@ import { Api, RequestParams } from '@/api/SwaggerApi'
 
 let baseUrl: string = window.location.origin
 
+if (
+  location.host.includes('localhost') ||
+  location.host.includes('127.0.0.1')
+) {
+  baseUrl = 'http://localhost:80'
+}
 /**
  * The npm package that creates the swagger client does not have a option
  * to change headers, but after sign in we have to set the jwt token

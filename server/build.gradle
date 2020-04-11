@@ -66,27 +66,23 @@ dependencyManagement {
     }
 }
 
-
 jib {
     jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
 }
 
-/*processResources {
+processResources {
     from('../client/dist') {
         into 'static'
     }
-}*/
+}
 
 bootJar {
     archiveFileName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
-
-    //from('../client/build') {
-    //    into 'static'
-    //}
 }
-
-// bootJar.dependsOn(':client:assemble')
+tasks.processResources.dependsOn(':client:assemble')
+tasks.jib.dependsOn('processResources')
+bootJar.dependsOn('processResources')
 
 test {
     useJUnitPlatform()

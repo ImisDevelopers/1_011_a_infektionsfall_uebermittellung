@@ -7,6 +7,9 @@
 # CMake
 cmake-build-*/
 
+# TODO
+#client/src/store/SwaggerApi.ts
+
 # File-based project format
 *.iws
 
@@ -40,6 +43,7 @@ fabric.properties
 
 # Package Files #
 *.jar
+!gradle/wrapper/gradle-wrapper.jar
 *.war
 *.nar
 *.ear
@@ -47,8 +51,24 @@ fabric.properties
 *.tar.gz
 *.rar
 
+# local env files
+.env.local
+.env.*.local
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /.project
+server/build
+server/.classpath
 
+### Node
 node_modules
+client/dist
+# we use client/yarn.lock instead!
+client/package-lock.json
+
+# Log files
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+/build/

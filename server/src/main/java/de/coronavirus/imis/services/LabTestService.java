@@ -1,29 +1,21 @@
 package de.coronavirus.imis.services;
 
+import de.coronavirus.imis.domain.*;
+import de.coronavirus.imis.repositories.LabTestRepository;
+import de.coronavirus.imis.repositories.LaboratoryRepository;
+import de.coronavirus.imis.repositories.PatientEventRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+import javax.transaction.Transactional;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
-
-import org.springframework.stereotype.Component;
-
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.LaboratoryNotFoundException;
-import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.domain.PatientEvent;
-import de.coronavirus.imis.domain.PatientNotFoundException;
-import de.coronavirus.imis.domain.TestStatus;
-import de.coronavirus.imis.repositories.LabTestRepository;
-import de.coronavirus.imis.repositories.LaboratoryRepository;
-import de.coronavirus.imis.repositories.PatientEventRepository;
 
 @Component
 @RequiredArgsConstructor
@@ -37,7 +29,7 @@ public class LabTestService {
     private final PatientEventRepository eventRepository;
 
     @Transactional
-    public LabTest createLabTest(String patientId, String laboratoryId, String testId, String comment) {
+    public LabTest createLabTest(String patientId, String laboratoryId, String testId, String comment, TestType testType) {
         final Patient patient = patientService
                 .findPatientById(patientId)
                 .orElseThrow(PatientNotFoundException::new);
@@ -48,6 +40,7 @@ public class LabTestService {
                 .laboratory(laboratory)
                 .testStatus(TestStatus.TEST_SUBMITTED)
                 .testId(testId)
+                .testType(testType)
                 .comment(comment)
                 .build();
 
@@ -60,7 +53,13 @@ public class LabTestService {
     public Set<LabTest> getAllLabsTestForPatient(String patiendId) {
         final Patient patient = patientService.findPatientById(patiendId).orElseThrow(PatientNotFoundException::new);
         final var events = eventService.getAllForPatient(patient);
-        return events.stream().map(PatientEvent::getLabTest).collect(Collectors.toSet());
+        return events.stream().map(PatientEvent::getLabTest)
+                .filter(Objects::nonNull).collect(Collectors.toSet());
+    }
+
+    @Transactional
+    public List<LabTest> queryLabTestsById(String labTestId) {
+        return this.labTestRepository.findByTestIdContaining(labTestId);
     }
 
     @Transactional
@@ -83,7 +82,9 @@ public class LabTestService {
                 .orElseThrow();
 
         var changeEvent = new PatientEvent()
+                .setIllness(Illness.CORONA)
                 .setEventType(eventType)
+                .setEventTimestamp(Timestamp.valueOf(LocalDateTime.now()))
                 .setLabTest(labTest)
                 .setPatient(patient)
                 .setComment(comment);

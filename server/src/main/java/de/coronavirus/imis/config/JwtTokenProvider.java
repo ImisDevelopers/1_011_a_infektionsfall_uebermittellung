@@ -31,7 +31,7 @@ public class JwtTokenProvider {
     private static final String ROLES = "roles";
     @Value("${security.jwt.token.secret-key:secret}")
     private String secretKey;
-    @Value("${security.jwt.token.expire-length:3600000}")
+    @Value("${security.jwt.token.expire-length:86400000}")
     private long validityInMilliseconds;
     private final UserDetailsService userDetailsService;
 
@@ -40,9 +40,9 @@ public class JwtTokenProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String username, List<String> roles) {
+    public String createToken(String username, List<String> role) {
         Claims claims = Jwts.claims().setSubject(username);
-        claims.put(ROLES, roles);
+        claims.put(ROLES, role);
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
         return Jwts.builder()
@@ -52,6 +52,7 @@ public class JwtTokenProvider {
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
+
     // TODO: MAYBE do not load from the db -> store roles in token since tokens are
     public Authentication getAuthentication(String token) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(getUsername(token));

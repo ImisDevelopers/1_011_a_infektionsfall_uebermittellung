@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
+    id 'com.google.cloud.tools.jib' version '2.1.0'
 }
 
 group = 'de.coronavirus'
@@ -30,16 +31,22 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'io.sentry:sentry-spring:1.7.30'
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
     implementation 'org.postgresql:postgresql:42.2.11'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     implementation 'io.springfox:springfox-swagger2:2.9.2'
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
     implementation 'com.googlecode.perfect-hashes:perfect-hashes:1.0'
+    implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
+
+    implementation("io.springfox:springfox-swagger2:2.9.2") {
+        exclude module: 'mapstruct' // necessary in my case to not end up with multiple mapstruct versions
+    }
+    implementation "io.springfox:springfox-bean-validators:2.9.2"
+    implementation "io.springfox:springfox-swagger-ui:2.9.2"
 
     compileOnly 'org.projectlombok:lombok'
 
@@ -49,6 +56,7 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    testImplementation 'com.h2database:h2'
 }
 
 dependencyManagement {
@@ -57,17 +65,24 @@ dependencyManagement {
     }
 }
 
-bootJar {
-    archiveName = "imis.jar"
-    mainClassName = 'de.coronavirus.imis.App'
+jib {
+    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
+}
 
-    from('../client/build') {
+processResources {
+    from('../client/dist') {
         into 'static'
     }
 }
 
-bootJar.dependsOn(':client:assemble')
+bootJar {
+    archiveFileName = "imis.jar"
+    mainClassName = 'de.coronavirus.imis.App'
+}
+tasks.processResources.dependsOn(':client:assemble')
+tasks.jib.dependsOn('processResources')
+bootJar.dependsOn('processResources')
 
-/*test {
+test {
     useJUnitPlatform()
-}*/
+}

@@ -14,7 +14,7 @@ import de.coronavirus.imis.services.PatientEventService;
 import de.coronavirus.imis.services.PatientService;
 
 @RestController
-@RequestMapping("/doctor")
+@RequestMapping("/api/doctor")
 @Slf4j
 @RequiredArgsConstructor
 public class DoctorController {

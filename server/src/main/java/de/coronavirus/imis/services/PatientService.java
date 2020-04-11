@@ -1,29 +1,32 @@
 package de.coronavirus.imis.services;
 
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
+import com.google.common.hash.Hashing;
+import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
+import de.coronavirus.imis.domain.EventType;
+import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.google.common.base.Strings;
-import com.google.common.hash.Hashing;
-import lombok.extern.slf4j.Slf4j;
-
-import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.domain.RiskOccupation;
-import de.coronavirus.imis.repositories.PatientRepository;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -33,6 +36,7 @@ public class PatientService {
     private final PatientRepository patientRepository;
     private final PatientEventService eventService;
     private final LikeOperatorService likeOperatorService;
+    private final RandomService randomService;
 
 
     public List<Patient> getAllPatients() {
@@ -49,28 +53,41 @@ public class PatientService {
     }
 
     public Patient addPatient(final CreatePatientDTO dto) {
-        var dateParsed = LocalDateTime.parse(dto.getDateOfBirth(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH")).toLocalDate();
+        // Parsing / Defaults
+        var dateOfBirthParsed = LocalDate.parse(dto.getDateOfBirth(), DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate dateOfDeathParsed = parseDate(dto.getDateOfDeath());
+        LocalDate dateOfHospitalization = parseDate(dto.getDateOfHospitalization());
+        LocalDate dateOfIllness = parseDate(dto.getDateOfIllness());
+        LocalDate dateOfReporting = parseDate(dto.getDateOfReporting());
+        final EventType eventType = dto.getPatientStatus() != null ? dto.getPatientStatus() : EventType.SUSPECTED;
+        // Entity Creation
         var id = Hashing.sha256()
-                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateParsed, StandardCharsets.UTF_8)
+                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateOfBirthParsed + randomService.getRandomString(12), StandardCharsets.UTF_8)
                 .toString()
                 .substring(0, 8).toUpperCase();
-        var occupation = determineRiskOcc(dto.getRiskOccupation());
         var mappedPatient = new Patient()
+                // Basics
                 .setId(id)
                 .setFirstName(dto.getFirstName())
                 .setLastName(dto.getLastName())
                 .setGender(dto.getGender())
-                .setDateOfBirth(dateParsed)
+                .setDateOfBirth(dateOfBirthParsed)
+                .setDateOfDeath(dateOfDeathParsed)
                 .setEmail(dto.getEmail())
                 .setPhoneNumber(dto.getPhoneNumber())
+                // Address
                 .setStreet(dto.getStreet())
                 .setHouseNumber(dto.getHouseNumber())
                 .setCity(dto.getCity())
-                .setHouseNumber(dto.getHouseNumber())
-                .setStreet(dto.getStreet())
                 .setZip(dto.getZip())
-                .setPatientStatus(EventType.SUSPECTED)
-                .setCity(dto.getCity())
+                // Stay
+                .setStayStreet(dto.getStayStreet())
+                .setStayHouseNumber(dto.getStayHouseNumber())
+                .setStayCity(dto.getStayCity())
+                .setStayZip(dto.getStayZip())
+                // Other
+                .setEmployer(dto.getEmployer())
+                .setPatientStatus(eventType)
                 .setInsuranceCompany(dto.getInsuranceCompany())
                 .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())
                 .setFluImmunization(dto.getFluImmunization())
@@ -79,13 +96,27 @@ public class PatientService {
                 .setCoronaContacts(dto.getCoronaContacts())
                 .setRiskAreas(dto.getRiskAreas())
                 .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
-                .setRiskOccupation(occupation)
-                .setPreIllnesses(dto.getPreIllnesses());
+                .setRiskOccupation(dto.getRiskOccupation())
+                .setOccupation(dto.getOccupation())
+                .setCreationTimestamp(OffsetDateTime.now())
+                .setPreIllnesses(dto.getPreIllnesses())
+                // Illness
+                .setDateOfHospitalization(dateOfHospitalization)
+                .setDateOfIllness(dateOfIllness)
+                .setOnIntensiveCareUnit(dto.getOnIntensiveCareUnit());
         mappedPatient = patientRepository.save(mappedPatient);
         log.info("inserting patient with id {}", mappedPatient.getId());
-        eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), EventType.SUSPECTED);
+        eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), eventType, dateOfReporting);
         log.info("inserted event for patient {}", mappedPatient);
         return mappedPatient;
+    }
+
+    private LocalDate parseDate(String localDateString) {
+        LocalDate localDate = null;
+        if (localDateString != null && !localDateString.isBlank()) {
+            localDate = LocalDate.parse(localDateString, DateTimeFormatter.ISO_LOCAL_DATE);
+        }
+        return localDate;
     }
 
     private Integer parseIntegerSafe(String toParse) {
@@ -95,6 +126,47 @@ public class PatientService {
             log.error("error parsing integer");
         }
         return Integer.MIN_VALUE;
+    }
+
+    public Long queryPatientsSimpleCount(String query) {
+        return this.patientRepository.count(getSimpleQuerySpecification(query));
+    }
+
+    public List<Patient> queryPatientsSimple(PatientSimpleSearchParamsDTO query) {
+        final Sort sortBy = getSort(query.getOrder(), query.getOrderBy());
+        final Pageable pageable = getPageable(query.getOffsetPage(), query.getPageSize(), sortBy);
+        return this.patientRepository.findAll(getSimpleQuerySpecification(query.getQuery()), pageable).toList();
+    }
+
+    private Sort getSort(String order, String orderBy) {
+        return Sort.by(Sort.Direction.fromOptionalString(order).orElse(Sort.Direction.ASC), orderBy);
+    }
+
+    private Pageable getPageable(Long offsetPage, Long pageSize, Sort sortBy) {
+        return PageRequest.of(offsetPage.intValue(), pageSize.intValue(), sortBy);
+    }
+
+    private Specification<Patient> getSimpleQuerySpecification(String query) {
+        // each part of the query has to be in any of these attributes:
+        final List<String> attributes = Arrays.asList("firstName", "lastName", "id", "email", "phoneNumber", "city");
+        // "any" means we have to concatenate with "or"
+        final List<Specification<Patient>> specifications = Arrays.stream(query.split(" "))
+                .map(queryPart -> Specification.<Patient>where((root, q, criteriaBuilder) ->
+                        criteriaBuilder.or(
+                                attributes.stream()
+                                        .map(attribute -> like(root, criteriaBuilder, attribute, queryPart))
+                                        .toArray(Predicate[]::new)
+                        )
+                )).collect(Collectors.toList());
+
+        // Each Specification contains the filter for a single attribute
+        // These have to be joined together with "and"
+        return specifications.stream().skip(1)
+                .reduce(specifications.get(0), Specification::and);
+    }
+
+    private Predicate like(Root<Patient> root, CriteriaBuilder criteriaBuilder, String propertyName, String query) {
+        return criteriaBuilder.like(criteriaBuilder.lower(root.get(propertyName)), "%" + query.toLowerCase() + "%");
     }
 
     public List<Patient> queryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
@@ -158,15 +230,4 @@ public class PatientService {
                 likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
     }
 
-    private RiskOccupation determineRiskOcc(String occ) {
-        if (Strings.isNullOrEmpty(occ)) {
-            return RiskOccupation.NO_RISK_OCCUPATION;
-        }
-        try {
-            return RiskOccupation.valueOf(occ);
-        } catch (Exception e) {
-            log.error("error determining risk occupation for {}", occ);
-        }
-        return RiskOccupation.NO_RISK_OCCUPATION;
-    }
 }

@@ -3,11 +3,16 @@ package de.coronavirus.imis;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.config.domain.User;
+import de.coronavirus.imis.config.domain.UserRepository;
+import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.domain.TestType;
 import de.coronavirus.imis.services.*;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -15,6 +20,7 @@ import java.io.*;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {
 
 
@@ -23,15 +29,9 @@ public class TestDataLoader implements ApplicationRunner {
     private final LabTestService labTestService;
     private final PatientEventService eventService;
     private final StatsService statsService;
+    private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
-    @Autowired
-    public TestDataLoader(PatientService patientService, InstitutionService institutionService, LabTestService labTestService, PatientEventService eventService, StatsService statsService) {
-        this.patientService = patientService;
-        this.institutionService = institutionService;
-        this.labTestService = labTestService;
-        this.eventService = eventService;
-        this.statsService = statsService;
-    }
 
     static <T> Object makeDTO(String testFileName, Class<T> clazz)
             throws IOException {
@@ -69,7 +69,7 @@ public class TestDataLoader implements ApplicationRunner {
         try {
 
             log.info("Inserting patients");
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 20; i++) {
                 var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
                 patientService.addPatient(createPersonDTO);
             }
@@ -77,7 +77,7 @@ public class TestDataLoader implements ApplicationRunner {
             // SETUP OUR WORLD
             log.info("Inserting laboratory");
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
-            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO, createLaboratoryDTO.getId());
+            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO);
 
             log.info("Inserting doctor");
             var createDoctorsOfficeDTO = (CreateInstitutionDTO) makeDTO("createDoctorsOffice.json", CreateInstitutionDTO.class);
@@ -91,7 +91,40 @@ public class TestDataLoader implements ApplicationRunner {
             var createClinicDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
             var clinic = institutionService.createClinicInstitution(createClinicDTO);
 
+            log.info("Inserting department of health");
+            var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
+            var departmentOfHealth = institutionService.createDepartmentOfHealthInstitution(createDepartmentOfHealthDTO);
 
+
+            var user = User.builder()
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .username("test_lab")
+                    .institution(laboratory)
+                    .password(encoder.encode("asdf"))
+                    .build();
+            userRepository.saveAndFlush(user);
+
+            var testDoc = User.builder()
+                    .username("test_doctor")
+                    .institution(doctorsOffice)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
+            userRepository.saveAndFlush(testDoc);
+            var testTestingSiteUser = User.builder()
+                    .username("test_testing_site")
+                    .institution(testSite)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
+            userRepository.saveAndFlush(testTestingSiteUser);
+            var departmentOfHealthUser = User.builder()
+                    .username("test_department_of_health")
+                    .institution(testSite)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
+            userRepository.saveAndFlush(departmentOfHealthUser);
             // PERSON GETS SICK AND GOES TO THE DOCTOR
             // PERSON GETS REGISTERED
             var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);
@@ -102,9 +135,9 @@ public class TestDataLoader implements ApplicationRunner {
             eventService.createScheduledEvent(person, laboratory.getId(), doctorsOffice.getId());
 
             // LAB RECEIVES SAMPLE AND PROCESSES IT
-            final String testId = "42";
+            final String testId = "42EF42";
             final String comment = "comment";
-            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment);
+            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment, TestType.PCR);
 
 
             // LAB HAS RESULT AND SOTRES IT

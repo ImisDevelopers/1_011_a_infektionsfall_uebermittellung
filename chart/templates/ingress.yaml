@@ -1,22 +1,15 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ include  "imis.name" . }}-ingress
+  name: "{{- include "imis.fullname" . }}-ingress"
   labels:
   {{- include "imis.labels" . | nindent 4 }}
 spec:
   rules:
-  - host: "{{- .Values.ingress.server.domain }}"
+  - host: "{{- .Values.ingress.domain }}"
     http:
       paths:
       - path: /
         backend:
-          serviceName: {{ include "imis.server.fullname" . }}
-          servicePort: 8080
-  - host: "{{- .Values.ingress.client.domain }}"
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: {{ include "imis.client.fullname" . }}
+          serviceName: "{{- include "imis.fullname" . }}"
           servicePort: 8080

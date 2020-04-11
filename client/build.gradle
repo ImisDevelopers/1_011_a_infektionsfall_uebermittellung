@@ -1,22 +1,30 @@
 plugins {
-    id "com.github.node-gradle.node" version "1.5.3"
+  id "com.github.node-gradle.node" version "1.5.3"
 }
 
 apply plugin: 'base'
 version '0.0.1'
 
 node {
-    version = '13.7.0'
-    download = true
+  version = '13.7.0'
+  download = true
 }
 
 task buildFrontend(type: YarnTask) {
-    args = ['run', 'build']
+  args = ['build']
+}
+
+task lint(type: YarnTask) {
+  args = ['run', 'lint']
+}
+task test(type: YarnTask) {
+  args = ['run', 'test:unit']
 }
 
 task serve(type: YarnTask) {
-    args = ['serve']
+  args = ['serve']
 }
-
+lint.dependsOn(yarn_install)
+buildFrontend.dependsOn(lint)
 buildFrontend.dependsOn(yarn_install)
 assemble.dependsOn(buildFrontend)

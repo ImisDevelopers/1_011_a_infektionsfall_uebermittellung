@@ -3,50 +3,16 @@
 # Declare variables to be passed into your templates.
 
 gitSha: "SHA" ## will be replaced during deployment
-nameOverride: ""
+nameOverride: "imis"
 env: "production"
 
 image:
   repository: "eu.gcr.io/onyx-yeti-271818"
 
 ingress:
-  client:
-    domain: imis-prototyp.de
-  server:
-    domain: api.imis-prototyp.de
+  domain: imis-prototyp.de
 
 secrets:
   cloudStore: "cloudstore.base64.json"
   cloudSql: "cloudsql.base64.json"
   postgres: ""
-  sentry:
-    frontend: ""
-    backend: ""
-
-traefik:
-  loadBalancerIP: 35.198.153.128
-  replicas: 1
-  service:
-    annotations:
-      kubernetes.io/ingress.global-static-ip-name: "production-ingress"
-  logLevel: info # debug
-  ssl:
-    enabled: true
-    enforced: true
-  acme:
-    enabled: true
-    challengeType: http-01 # tls-alpn-01
-    email: Michael@Sprauer.net
-    logging: true
-    staging: false
-    persistence:
-      enabled: true
-  rbac:
-    enabled: true
-  deployment:
-    podAnnotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: "9100"
-  metrics:
-    prometheus:
-      enabled: true

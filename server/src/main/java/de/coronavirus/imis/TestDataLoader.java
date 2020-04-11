@@ -91,6 +91,10 @@ public class TestDataLoader implements ApplicationRunner {
             var createClinicDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
             var clinic = institutionService.createClinicInstitution(createClinicDTO);
 
+            log.info("Inserting department of health");
+            var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
+            var departmentOfHealth = institutionService.createDepartmentOfHealthInstitution(createDepartmentOfHealthDTO);
+
 
             var user = User.builder()
                     .userRole(UserRole.USER_ROLE_ADMIN)
@@ -114,6 +118,13 @@ public class TestDataLoader implements ApplicationRunner {
                     .userRole(UserRole.USER_ROLE_ADMIN)
                     .build();
             userRepository.saveAndFlush(testTestingSiteUser);
+            var departmentOfHealthUser = User.builder()
+                    .username("test_department_of_health")
+                    .institution(testSite)
+                    .password(encoder.encode("asdf"))
+                    .userRole(UserRole.USER_ROLE_ADMIN)
+                    .build();
+            userRepository.saveAndFlush(departmentOfHealthUser);
             // PERSON GETS SICK AND GOES TO THE DOCTOR
             // PERSON GETS REGISTERED
             var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);

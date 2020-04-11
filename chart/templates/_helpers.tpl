@@ -32,6 +32,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "imis.labels" -}}
+{{ include "imis.selectorLabels" . }}
 helm.sh/chart: {{ include "imis.chart" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
@@ -39,14 +40,6 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/git-sha: {{ .Values.gitSha }}
 app.kubernetes.io/environment: {{ .Values.env }}
-{{- end -}}
-
-{{/*
-Common labels
-*/}}
-{{- define "imis.labels" -}}
-{{ include "imis.labels" . }}
-{{ include "imis.selectorLabels" . }}
 {{- end -}}
 
 {{/*

@@ -11,7 +11,7 @@ node {
 }
 
 task buildFrontend(type: YarnTask) {
-  args = ['run', 'build','--fix']
+  args = ['run', 'build']
 }
 
 task lint(type: YarnTask) {

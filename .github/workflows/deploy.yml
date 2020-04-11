@@ -83,11 +83,11 @@ jobs:
         helm repo add stable "https://kubernetes-charts.storage.googleapis.com"
         helm dependency build chart
         if [[ "$GITHUB_REF" == "refs/heads/master" ]]; then
-          echo helm upgrade --install imis-production chart \
+          helm upgrade --install imis-production chart \
             --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
-          echo kubectl rollout status deployment/imis-production
+          kubectl rollout status deployment/imis-production
         else
-          echo helm upgrade --install imis-staging chart -f chart/values.staging.yml \
+          helm upgrade --install imis-staging chart -f chart/values.staging.yml \
                     --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
-          echo kubectl rollout status deployment/imis-staging
+          kubectl rollout status deployment/imis-staging
         fi

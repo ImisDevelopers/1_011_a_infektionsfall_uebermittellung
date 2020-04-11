@@ -2,6 +2,7 @@ package de.coronavirus.imis.services;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,13 +33,20 @@ public class PatientEventService {
     private final PatientRepository patientRepository;
 
     public void createInitialPatientEvent(Patient patient,
-            Optional<Illness> illness,
-            EventType eventType) {
+                                          Optional<Illness> illness,
+                                          EventType eventType,
+                                          LocalDate dateOfReporting) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         patient.setPatientStatus(eventType);
         patientRepository.save(patient);
+        final Timestamp eventTimestamp;
+        if (dateOfReporting != null) {
+           eventTimestamp = Timestamp.valueOf(dateOfReporting.atTime(12, 0));
+        } else {
+            eventTimestamp = Timestamp.from(Instant.now());
+        }
         PatientEvent event = new PatientEvent()
-                .setEventTimestamp(Timestamp.from(Instant.now()))
+                .setEventTimestamp(eventTimestamp)
                 .setEventType(eventType)
                 .setIllness(concreteIllness)
                 .setPatient(patient);
@@ -46,7 +54,7 @@ public class PatientEventService {
     }
 
     public void createLabTestEvent(Patient patient, LabTest labTest,
-            Optional<Illness> illness) {
+                                   Optional<Illness> illness) {
         var concreteIllness = illness.orElse(Illness.CORONA);
         patient.setPatientStatus(EventType.TEST_SUBMITTED_IN_PROGRESS);
         patientRepository.save(patient);

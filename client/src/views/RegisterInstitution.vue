@@ -149,7 +149,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import { anonymizeProperties } from '@/util'
 
 function validatePasswordRepeat(password: string, passwordRepeat: string) {
   if (password === passwordRepeat) {
@@ -194,18 +193,6 @@ export default Vue.extend({
           return
         }
 
-        // TODO: Remove this when we go to production
-        anonymizeProperties(
-          [
-            'email',
-            'phoneNumber',
-            'street',
-            'houseNumber',
-            { key: 'zip', type: 'number' },
-            'city',
-          ],
-          values,
-        )
         values = {
           ...values,
           user: {

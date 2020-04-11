@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - dev
+    - jib-integration
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -12,13 +13,9 @@ env:
   CLOUD_SQL_SERVICE_ACCOUNT: ${{ secrets.CLOUD_SQL_SERVICE_ACCOUNT }}
   CLOUD_STORE_SERVICE_ACCOUNT: ${{ secrets.CLOUD_STORE_SERVICE_ACCOUNT }}
   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-  SENTRY_BACKEND_DSN: ${{ secrets.SENTRY_BACKEND_DSN }}
-  SENTRY_FRONTEND_DSN: ${{ secrets.SENTRY_FRONTEND_DSN }}
   GITHUB_SHA: ${{ github.sha }}
-  GKE_ZONE: europe-west1
-  GKE_CLUSTER: cluster-staging
-  CLIENT_IMAGE: imis-client
-  SERVER_IMAGE: imis-server
+  GKE_ZONE: europe-west3-b
+  GKE_CLUSTER: cluster-1
   REGISTRY_HOSTNAME: eu.gcr.io
 
 jobs:
@@ -50,7 +47,7 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+        gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
     # Deploy the Docker image to the GKE cluster
     - name: Prepare Helm
@@ -66,8 +63,6 @@ jobs:
         helm repo add stable https://kubernetes-charts.storage.googleapis.com
         helm dependency build chart
         helm upgrade --install imis chart -f chart/values.staging.yml \
-          --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)" \
-          --set "secrets.sentry.backend=${SENTRY_BACKEND_DSN}" \
-          --set "secrets.sentry.frontend=${SENTRY_FRONTEND_DSN}"
-        kubectl rollout status deployment/imis-server
+          --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
+        kubectl rollout status deployment/imis-staging
         kubectl get services -o wide

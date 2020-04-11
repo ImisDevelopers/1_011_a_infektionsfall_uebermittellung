@@ -45,16 +45,6 @@ jobs:
         # via gcloud command-line tool.
         gcloud auth configure-docker
 
-    # Build the Docker image
-    - name: Build client
-      run: |
-        (cd client && docker build -f Dockerfile.prod -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT_ID"/"$CLIENT_IMAGE":"$GITHUB_SHA" \
-          --build-arg SENTRY_FRONTEND_DSN="${SENTRY_FRONTEND_DSN}" \
-          --build-arg DEPLOY_ENV=production \
-          --build-arg GITHUB_SHA="${GITHUB_SHA}" \
-          --build-arg GITHUB_REF="${GITHUB_REF}" .)
-    - name: Build server
-      run: |
     - name: Build
       run: |-
         gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
@@ -76,6 +66,5 @@ jobs:
           --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)" \
           --set "secrets.sentry.backend=${SENTRY_BACKEND_DSN}" \
           --set "secrets.sentry.frontend=${SENTRY_FRONTEND_DSN}"
-        kubectl rollout status deployment/imis-client
         kubectl rollout status deployment/imis-server
         kubectl get services -o wide

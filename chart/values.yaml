@@ -9,7 +9,7 @@ env: "production"
 image:
   repository: "eu.gcr.io/onyx-yeti-271818"
 
-deplyomentname: imis-production
+deploymentname: imis-production
 
 ingress:
   domain: imis-prototyp.de

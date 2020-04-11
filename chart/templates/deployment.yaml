@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.deplyomentname }}
+  name: {{ .Values.deploymentname }}
   labels:
   {{- include "imis.labels" . | nindent 4 }}
 spec:

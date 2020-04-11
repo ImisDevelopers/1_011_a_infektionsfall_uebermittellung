@@ -38,7 +38,6 @@
               </div>
               <span style="flex: 1 1 auto" />
             </div>
-
           </div>
 
           <!-- Exposition -->
@@ -75,186 +74,7 @@
           <!-- Persönliche Daten -->
           <div :style="{ display: current === 3 ? 'block' : 'none' }" class="data-form">
             <h2>Bitte erfassen Sie nun Ihre persönlichen Daten.</h2>
-            <div>
-
-              <!-- Vorname / Nachname -->
-              <a-row>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Vorname">
-                    <a-input
-                      v-decorator="['firstName', { rules: [{
-                        required: true,
-                        message: 'Bitte Vornamen eingeben',
-                      }]}]"
-                    />
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Nachname">
-                    <a-input
-                      v-decorator="['lastName', { rules: [{
-                        required: true,
-                        message: 'Bitte Nachnamen eingeben'
-                      }]}]"
-                    />
-                  </a-form-item>
-                </a-col>
-              </a-row>
-
-              <!-- Geschlecht / Geburtsdatum -->
-              <a-row>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Geschlecht">
-                    <a-radio-group
-                      v-decorator="['gender', { rules: [{
-                        required: true,
-                        message: 'Bitte Geschlecht eingeben',
-                      }]}]"
-                      buttonStyle="solid"
-                    >
-                      <a-radio value="male">Männl.</a-radio>
-                      <a-radio value="female">Weibl.</a-radio>
-                      <a-radio value="divers">Div.</a-radio>
-                    </a-radio-group>
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Geburtsdatum">
-                    <a-date-picker
-                      :format="dateFormat"
-                      v-decorator="['dateOfBirth', { rules: [{
-                        required: true,
-                        message: 'Bitte Geburtsdatum eingeben',
-                      }]}]"
-                      placeholder="Datum wählen"
-                    />
-                  </a-form-item>
-                </a-col>
-              </a-row>
-
-              <!-- Straße / Hausnummer -->
-              <a-row>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Straße">
-                    <a-input
-                      v-decorator="['street', { rules: [{
-                        required: true,
-                        message: 'Bitte Straße eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Hausnummer">
-                    <a-input
-                      v-decorator="['houseNumber', { rules: [{
-                        required: true,
-                        message: 'Bitte Hausnummer eingeben',
-                      }]}]"
-                    />
-                  </a-form-item>
-                </a-col>
-              </a-row>
-
-              <!-- PLZ Ort -->
-              <a-row>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="PLZ">
-                    <a-auto-complete @search="handlePlzSearch" v-decorator="['zip', { rules: [{
-                        required: true,
-                        message: 'Bitte PLZ eingeben',
-                      }] }]" @select="handlePlzSelection">
-                      <template slot="dataSource">
-                        <a-select-option v-for="plz in plzs" :key="plz.fields.plz">
-                          {{plz.fields.plz}} {{plz.fields.note}}
-                        </a-select-option>
-                      </template>
-                    </a-auto-complete>
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Ort">
-                    <a-input
-                      v-decorator="['city', { rules: [{
-                        required: true,
-                        message: 'Bitte Ort eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
-                </a-col>
-              </a-row>
-
-              <!-- Email / Telefon -->
-              <a-row>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="E-mail">
-                    <a-input
-                      v-decorator="['email', { rules: [{
-                        required: true,
-                        message: 'Bitte Email eingeben',
-                      }] }]"
-                    />
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Telefon">
-                    <a-input
-                      v-decorator="[
-                      'phoneNumber',
-                      { rules: [{
-                        required: true,
-                        message: 'Bitte Telefonnummer eingeben',
-                      }]}
-                    ]"
-                    />
-                  </a-form-item>
-                </a-col>
-              </a-row>
-
-              <!-- Beruf / Arbeitgeber -->
-              <a-row>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Beruf">
-                    <div>
-                      <a-select v-decorator="['riskOccupation', { rules: [{
-                        required: true,
-                        message: 'Bitte Beruf eingeben',
-                      }]}]" @select="riskOccupationSelected">
-                        <a-select-option v-for="riskOccupation in riskOccupations" :key="riskOccupation.value">
-                          {{riskOccupation.label}}
-                        </a-select-option>
-                      </a-select>
-                      <a-input
-                        :disabled="disableOccupation"
-                        v-decorator="['occupation', { rules: [{
-                        required: true,
-                        message: 'Bitte Beruf eingeben',
-                      }]}]"
-                      />
-                    </div>
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Arbeitgeber (optional)">
-                    <a-input v-decorator="['employer']" />
-                  </a-form-item>
-                </a-col>
-              </a-row>
-
-              <!-- Krankenkasse / Versichertennr -->
-              <a-row>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Krankenkasse (optional)">
-                    <a-input v-decorator="['insuranceCompany']" />
-                  </a-form-item>
-                </a-col>
-                <a-col :lg="12" :sm="24">
-                  <a-form-item label="Versichertenr. (optional)">
-                    <a-input v-decorator="['insuranceMembershipNumber']" />
-                  </a-form-item>
-                </a-col>
-              </a-row>
-            </div>
+            <PatientStammdaten :form="form" />
           </div>
 
           <!-- Finish -->
@@ -330,22 +150,18 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import {Patient} from '@/api/SwaggerApi'
-import {getPlzs, Plz} from '@/util/plz-service'
-import {Option, RiskOccupation} from '@/models'
-import {SYMPTOMS} from '@/models/symptoms'
-import {PRE_ILLNESSES} from '@/models/pre-illnesses'
-import {RISK_OCCUPATIONS, RiskOccupationOption} from '@/models/risk-occupation'
+import { Patient } from '@/api/SwaggerApi'
+import { Option } from '@/models'
+import { SYMPTOMS } from '@/models/symptoms'
+import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import PatientStammdaten from '@/components/PatientStammdaten.vue'
+import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
 
 interface State {
   form: any;
-  plzs: Plz[];
   current: number;
-  dateFormat: string;
   createdPatient: Patient | null;
   symptoms: Option[];
-  riskOccupations: RiskOccupationOption[];
-  disableOccupation: boolean;
   exposures: Option[];
   exposureLocation: Option[];
   preIllnesses: Option[];
@@ -358,47 +174,18 @@ interface State {
 
 export default Vue.extend({
   name: 'PublicRegisterComponent',
+  components: {
+    PatientStammdaten,
+  },
   data(): State {
     return {
       form: this.$form.createForm(this),
-      plzs: [],
       current: 0,
-      dateFormat: 'DD/MM/YYYY',
       createdPatient: null,
       symptoms: SYMPTOMS,
-      riskOccupations: RISK_OCCUPATIONS,
-      disableOccupation: true,
       preIllnesses: PRE_ILLNESSES,
-      exposures: [
-        {
-          label: 'Medizinischer Heilberuf',
-          value: 'MEDICAL_HEALTH_PROFESSION',
-        }, {
-          label: 'Arbeit in medizinischem Labor',
-          value: 'MEDICAL_LABORATORY',
-        }, {
-          label: 'Aufenthalt in medizinischer Einrichtung in den letzten 14 Tagen vor der Erkrankung',
-          value: 'STAY_IN_MEDICAL_FACILITY',
-        }, {
-          label: 'Enger Kontakt mit wahrscheinlichem oder bestätigtem Fall in den letzten 14 Tagen vor der Erkrankung',
-          value: 'CONTACT_WITH_CORONA_CASE',
-        },
-      ],
-      exposureLocation: [
-        {
-          label: 'in einer medizinischen Einrichtung',
-          value: 'MEDICAL_FACILITY',
-        }, {
-          label: 'im privaten Haushalt',
-          value: 'PRIVATE',
-        }, {
-          label: 'am Arbeitsplatz',
-          value: 'WORK',
-        }, {
-          label: 'andere / sonstige',
-          value: 'OTHER',
-        },
-      ],
+      exposures: EXPOSURES_PUBLIC,
+      exposureLocation: EXPOSURE_LOCATIONS,
       steps: [
         {
           title: 'Symtpome',
@@ -448,7 +235,7 @@ export default Vue.extend({
 
         const request = {
           ...values,
-          dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD') + ' 00',
+          dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD'),
           patientStatus: 'REGISTERED',
           fluImmunization: false, // TODO: Do we need a form field for this?
           speedOfSymptomsOutbreak: '', // TODO: Do we need a form field for this?
@@ -496,46 +283,7 @@ export default Vue.extend({
       this.showOtherSymptoms = target.checked
     },
     exposuresChanged(checkedValues: string[]) {
-      this.disableExposureLocation = !checkedValues.includes(this.exposures[3].value)
-    },
-    async handlePlzSearch(value: string) {
-      let result: Plz[]
-      if (!value || value.length < 2) {
-        result = []
-      } else {
-        result = await getPlzs(value)
-        if (result.length === 1) {
-          this.setPLZ(result[0])
-        }
-      }
-      this.plzs = result
-    },
-    handlePlzSelection(value: string) {
-      const plz = this.plzs.find(plz => plz.fields.plz === value)
-      if (plz) {
-        this.setPLZ(plz)
-      }
-    },
-    setPLZ(plz: Plz) {
-      this.form.setFieldsValue({
-        zip: plz.fields.plz,
-        city: plz.fields.note,
-      })
-      plz.fields.note = '' // So city does not display in plz input
-      const nextInput = document.getElementById('email')
-      if (nextInput) {
-        nextInput.focus()
-      }
-    },
-    riskOccupationSelected(value: RiskOccupation) {
-      this.disableOccupation = value !== 'NO_RISK_OCCUPATION'
-      let occupation
-      if (this.disableOccupation) {
-        occupation = this.riskOccupations.find(riskOccupation => riskOccupation.value === value)?.label || ''
-      }
-      this.form.setFieldsValue({
-        occupation: occupation,
-      })
+      this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')
     },
   },
 })

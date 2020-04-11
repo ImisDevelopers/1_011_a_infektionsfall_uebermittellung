@@ -1,6 +1,7 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Stadt" v-decorator="validation">
+    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Stadt" v-decorator="validation"
+                     :disabled="disabled">
       <template slot="dataSource">
         <a-select-option v-for="laboratory in result" :key="laboratory.id">
           {{laboratory.name}} ({{laboratory.city}})
@@ -29,7 +30,7 @@ export interface State {
 
 export default Vue.extend({
   name: 'LaboratoryInput',
-  props: ['initialLabs', 'validation', 'label', 'form'],
+  props: ['initialLabs', 'validation', 'label', 'form', 'disabled'],
   data(): State {
     return {
       result: [],

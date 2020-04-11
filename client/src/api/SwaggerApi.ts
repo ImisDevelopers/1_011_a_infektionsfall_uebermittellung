@@ -43,6 +43,7 @@ export interface CreatePatientDTO {
   city?: string;
   coronaContacts?: boolean;
   dateOfBirth?: string;
+  dateOfDeath?: string;
   email?: string;
   employer?: string;
   firstName?: string;
@@ -70,6 +71,10 @@ export interface CreatePatientDTO {
   riskAreas?: string[];
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
+  stayCity?: string;
+  stayHouseNumber?: string;
+  stayStreet?: string;
+  stayZip?: string;
   street?: string;
   symptoms?: string[];
   weakenedImmuneSystem?: boolean;
@@ -235,6 +240,7 @@ export interface Patient {
   coronaContacts?: boolean;
   creationTimestamp?: string;
   dateOfBirth?: string;
+  dateOfDeath?: string;
   email?: string;
   employer?: string;
   events?: PatientEvent[];
@@ -264,6 +270,10 @@ export interface Patient {
   riskAreas?: string[];
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
+  stayCity?: string;
+  stayHouseNumber?: string;
+  stayStreet?: string;
+  stayZip?: string;
   street?: string;
   symptoms?: string[];
   weakenedImmuneSystem?: boolean;

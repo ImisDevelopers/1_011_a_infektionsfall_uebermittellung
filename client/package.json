@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --fix",
     "test:unit": "echo // Test gibts aktuell nicht - bitte fixen und dann wieder setzen:  \"test:unit\": \"vue-cli-service test:unit\",",
     "lint": "vue-cli-service lint",
     "generate:api-client": "npx swagger-typescript-api -p http://localhost:80/v2/api-docs -o ./src/api -n SwaggerApi.ts"

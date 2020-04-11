@@ -1,16 +1,6 @@
 import { Api, RequestParams } from '@/api/SwaggerApi'
 
-let baseUrl: string
-if (
-  location.host.includes('localhost') ||
-  location.host.includes('127.0.0.1')
-) {
-  baseUrl = 'http://localhost:80'
-  // Alternative config to run the app locally without root; see proxy conf
-  // baseUrl = 'http://localhost:8080/api'
-} else {
-  baseUrl = '/'
-}
+let baseUrl: string = window.location.origin
 
 /**
  * The npm package that creates the swagger client does not have a option

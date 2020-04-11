@@ -86,11 +86,8 @@ jobs:
           echo helm upgrade --install imis-production chart \
             --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
           echo kubectl rollout status deployment/imis-production
-        elif [[ "$GITHUB_REF" == "refs/heads/dev" ]]; then
+        else
           echo helm upgrade --install imis-staging chart -f chart/values.staging.yml \
                     --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
           echo kubectl rollout status deployment/imis-staging
-        else
-          echo "Unkown branch ${GITHUB_REF}"
-          exit 3
         fi

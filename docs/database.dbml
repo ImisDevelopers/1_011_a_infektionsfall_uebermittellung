@@ -1,0 +1,113 @@
+// Database Markup Language,
+// see https://www.dbml.org/docs/
+
+// Stem-Data, unversioned
+Table patient {
+  id varchar [pk]
+  first_name varchar [not null]
+  last_name varchar [not null]
+  gender varchar [not null]
+  date_of_birth date [not null]
+  insurance_company varchar
+  insurance_membership_number varchar
+  email varchar
+  phone_number varchar
+  street varchar
+  house_number varchar
+  city varchar
+  zip int
+  occupation varchar
+  comment varchar
+}
+
+// Pre-illnesses, symptoms and risk areas via list
+// tables, linked to the specific case via id attribute
+Table pre_illness {
+  id varchar [ref: > case.id]
+  name varchar
+
+  indexes {
+    (id, name) [pk]
+  }
+}
+
+Table symptom {
+  id varchar [ref: > case.id]
+  name varchar
+
+  indexes {
+    (id, name) [pk]
+  }
+}
+
+Table risk_area {
+  id varchar [ref: > case.id]
+  name varchar
+
+  indexes {
+    (id, name) [pk]
+  }
+}
+
+// General case of illness, may be expanded
+// by linked entries in specialized case tables
+Table case {
+  id varchar [pk]
+  patient_id varchar [ref: < patient.id]
+  weakened_immune_system boolean
+  patient_status varchar [not null]
+  confirmed boolean
+  comment varchar
+}
+
+// COVID-19 specific data
+Table case_covid19 {
+  id varchar [pk, ref: < case.id]
+  speed_of_symptoms_outbreak varchar
+  risk_occupation varchar
+  contacts boolean
+}
+
+
+Table patient_event {
+  id varchar [pk]
+  event_type varchar [not null]
+  event_timestamp timestamp [not null]
+
+  patient_id varchar [ref: > patient.id]
+  responsible_doctor_id varchar [ref: - institution.id]
+  lab_test_id varchar [ref: - lab_test.id]
+
+  illness varchar
+  accomodation varchar
+  comment varchar
+}
+
+Table lab_test {
+  id varchar [pk]
+  laboratory_id varchar [ref: > institution.id]
+  test_id varchar
+  test_status int
+  report varbinary
+  comment varchar
+}
+
+Table institution {
+  id varchar [pk]
+  dtype varchar [not null]
+  name varchar [not null]
+  email varchar
+  phone_number varchar
+  street varchar [not null]
+  house_number varchar [not null]
+  city varchar [not null]
+  zip varchar [not null]
+}
+
+Table users {
+  id varchar [pk]
+  username varchar [not null]
+  password varchar [not null]
+  user_role varchar [not null]
+  institution_id varchar [not null, ref: > institution.id]
+}

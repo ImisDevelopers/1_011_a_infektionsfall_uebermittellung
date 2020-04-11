@@ -23,14 +23,14 @@
             <a-col :span="24">
               <a-form-item label="Benutzername">
                 <a-input v-decorator="['username', { rules: [{ required: true }] }]">
-                  <a-icon slot="prefix" type="user"/>
+                  <a-icon slot="prefix" type="user" />
                 </a-input>
               </a-form-item>
             </a-col>
             <a-col :span="24">
               <a-form-item label="Passwort">
                 <a-input v-decorator="['password', { rules: [{ required: true }] }]" type="password">
-                  <a-icon slot="prefix" type="lock"/>
+                  <a-icon slot="prefix" type="lock" />
                 </a-input>
               </a-form-item>
             </a-col>
@@ -41,7 +41,7 @@
               >
                 <a-input v-decorator="['password-repeat', { rules: [{ required: true }] }]"
                          @change="handlePasswordRepeatChange" type="password">
-                  <a-icon slot="prefix" type="lock"/>
+                  <a-icon slot="prefix" type="lock" />
                 </a-input>
               </a-form-item>
             </a-col>
@@ -107,13 +107,13 @@
                 :labelCol="{ span: 24}"
                 :wrapperCol="{ span: 24}"
               >
-                <a-input v-decorator="['comment']"/>
+                <a-input v-decorator="['comment']" />
               </a-form-item>
             </a-col>
             <a-col :xs="6" :md="3"></a-col>
             <a-col>
               <!-- Datenschutzerklärung Bestätigung-->
-              <a-form-item >
+              <a-form-item>
                 <a-checkbox @change="onCheck">
                                   <span :class="dataProcessingClass">
                                     Ich erkläre mich mit der Übermittlung dieser Daten zur weiteren
@@ -140,7 +140,7 @@
     </div>
     <div v-else>
       <div>Die Institution wurde erfolgreich registriert.</div>
-      <br/>
+      <br />
       <div>Die Instituions ID lautet: {{ createdInstitution.id }}</div>
     </div>
   </div>
@@ -235,6 +235,7 @@ export default Vue.extend({
   .data-processing-not-selected {
     color: red;
   }
+
   .login-header {
     display: flex;
     flex-direction: column;

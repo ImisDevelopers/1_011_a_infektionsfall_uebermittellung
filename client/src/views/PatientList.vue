@@ -148,11 +148,11 @@
 <!--// TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu-->
 
 <script lang="ts">
-import {Column} from 'ant-design-vue/types/table/column'
+import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
-import {Patient, PatientSearchParamsDTO} from '@/api/SwaggerApi'
-import {eventTypes} from '@/models/event-types'
-import {downloadCsv} from '@/util/export-service'
+import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
+import { eventTypes } from '@/models/event-types'
+import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
 

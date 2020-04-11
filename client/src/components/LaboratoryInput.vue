@@ -15,7 +15,7 @@
 
 import Api from '@/api'
 import Vue from 'vue'
-import {Laboratory} from '@/api/SwaggerApi'
+import { Laboratory } from '@/api/SwaggerApi'
 
 /**
  * Input that supports 1d and 2d Barcodes

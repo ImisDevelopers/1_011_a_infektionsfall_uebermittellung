@@ -10,6 +10,7 @@ import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-mo
 interface JwtData {
   roles: InstitutionRule[];
   exp: number;
+
   [key: string]: any;
 }
 

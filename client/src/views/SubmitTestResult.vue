@@ -39,7 +39,7 @@
               message: 'Bitte geben Sie das Testresultat an.'
             }]}]">
             <a-radio v-for="testResult in testResults" :value="testResult.id" :key="testResult.id">
-              <a-icon :type="testResult.icon"/>
+              <a-icon :type="testResult.icon" />
               {{testResult.label}}
             </a-radio>
           </a-radio-group>
@@ -57,11 +57,11 @@
         <!-- Hochladen -->
         <a-form-item :wrapper-col="{ span: 24 }">
           <a-button v-on:click="uploadHint()">
-            <a-icon type="upload"/>
+            <a-icon type="upload" />
             Test Report hochladen
           </a-button>
         </a-form-item>
-        <a-divider/>
+        <a-divider />
 
         <!-- Speichern -->
         <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
@@ -74,10 +74,10 @@
 
     <!-- Confirmation after creation -->
     <div v-if="updatedLabTest">
-      <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px"/>
+      <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" />
       <div>
         <div>Der Test wurde erfolgreich aktualisiert.</div>
-        <br/>
+        <br />
         <div>Test ID: {{ updatedLabTest.testId }}</div>
         <div>Neuer Test Status: {{ updatedLabTestStatus }}</div>
       </div>
@@ -90,15 +90,18 @@ import Api from '@/api'
 import TestInput from '../components/TestInput'
 import LaboratoryInput from '../components/LaboratoryInput'
 import Vue from 'vue'
-import {authMapper} from '@/store/modules/auth.module'
-import {testResults} from '@/models/event-types'
+import { authMapper } from '@/store/modules/auth.module'
+import { testResults } from '@/models/event-types'
 
 export default Vue.extend({
   name: 'LinkTestResultAndPatient',
   computed: {
     ...authMapper.mapGetters({ institution: 'institution' }),
   },
-  components: { TestInput, LaboratoryInput },
+  components: {
+    TestInput,
+    LaboratoryInput
+  },
   props: {},
   data() {
     return {
@@ -117,7 +120,6 @@ export default Vue.extend({
     }
     const lab = this.institution()
     if (lab && lab.type === 'LABORATORY') {
-      console.log(lab)
       this.laboratories = [lab]
       this.form.setFieldsValue({
         laboratoryId: lab.id,

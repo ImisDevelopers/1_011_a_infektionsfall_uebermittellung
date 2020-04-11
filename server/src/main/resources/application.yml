@@ -8,6 +8,8 @@ spring:
     gcp:
       storage:
         enabled: false
+      sql:
+        enabled: false
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/imis
@@ -30,15 +32,15 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
-    url: jdbc:postgresql:localhost:5432
     initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: create
   cloud:
     gcp:
-      credentials:
-        location: file:/usr/local/cloud-store/credentials.json
+      sql:
+        database-name: staging
+        instance-connection-name: onyx-yeti-271818:europe-west3:challenge-11
 management:
   endpoints:
     web:

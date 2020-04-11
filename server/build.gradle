@@ -44,7 +44,7 @@ dependencies {
     }
     implementation "io.springfox:springfox-bean-validators:2.9.2"
     implementation "io.springfox:springfox-swagger-ui:2.9.2"
-
+    compile 'com.google.cloud.sql:postgres-socket-factory:1.0.15'
     compileOnly 'org.projectlombok:lombok'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -66,17 +66,21 @@ jib {
     jib.to.image = "gcr.io/onyx-yeti-271818/imis-fullstack"
 }
 
-bootJar {
-    archiveName = "imis.jar"
-    mainClassName = 'de.coronavirus.imis.App'
-
+processResources {
     from('../client/dist') {
         into 'static'
     }
 }
 
+bootJar {
+    archiveName = "imis.jar"
+    mainClassName = 'de.coronavirus.imis.App'
+}
+
 bootJar.dependsOn(':client:assemble')
-tasks.jib.dependsOn("bootJar")
+tasks.processResources.dependsOn(':client:assemble')
+tasks.jib.dependsOn("processResources")
+tasks.jibDockerBuild.dependsOn("processResources")
 
 test {
     useJUnitPlatform()

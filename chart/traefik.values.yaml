@@ -1,8 +1,9 @@
-loadBalancerIP: 35.198.153.128
+# setting LoadBalancerIP or using k8s.ingress annotation doesn't work reliably
+loadBalancerIP: 34.89.244.246
 replicas: 1
 service:
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: "production-ingress"
+    kubernetes.io/ingress.global-static-ip-name: "traefik-service"
 logLevel: info # debug
 ssl:
   enabled: true

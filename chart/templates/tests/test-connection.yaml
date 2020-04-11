@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{-include "imis.fullname" . }}-test-connection"
+  name: "{{- include "imis.fullname" . }}-test-connection"
   labels:
     {{- include "imis.labels" . | nindent 4 }}
   annotations:

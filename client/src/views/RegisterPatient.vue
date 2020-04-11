@@ -55,104 +55,7 @@
       >
         <a-collapse defaultActiveKey="1">
           <a-collapse-panel header="Allgemeines" key="1">
-            <a-row>
-              <a-col :lg="12">
-                <a-form-item label="Vorname">
-                  <a-input
-                    v-decorator="['firstName', { rules: [{ required: true, message: 'Bitte Vornamen eingeben', }] }]"
-                  />
-                </a-form-item>
-                <a-form-item label="Nachname">
-                  <a-input
-                    v-decorator="['lastName', { rules: [{ required: true, message: 'Bitte Nachnamen eingeben', }] }]"
-                  />
-                </a-form-item>
-                <a-form-item label="Geschlecht">
-                  <a-radio-group
-                    v-decorator="['gender', { rules: [{ required: true, message: 'Bitte Geschlecht eingeben', }] }]"
-                    buttonStyle="solid"
-                  >
-                    <a-radio value="male">Männl.</a-radio>
-                    <a-radio value="female">Weibl.</a-radio>
-                    <a-radio value="divers">Div.</a-radio>
-                  </a-radio-group>
-                </a-form-item>
-                <a-form-item label="Geburtsdatum">
-                  <a-date-picker
-                    :format="dateFormat"
-                    v-decorator="[
-                      'dateOfBirth',
-                      { rules: [{ required: true, message: 'Bitte Geburtsdatum eingeben', }] }
-                    ]"
-                    placeholder="Datum wählen"
-                  />
-                </a-form-item>
-                <a-form-item label="Krankenkasse">
-                  <a-input v-decorator="['insuranceCompany']" />
-                </a-form-item>
-                <a-form-item label="Versichertenr.">
-                  <a-input v-decorator="['insuranceMembershipNumber']" />
-                </a-form-item>
-              </a-col>
-              <a-col :lg="12">
-                <a-form-item label="E-mail">
-                  <a-input
-                    v-decorator="['email', { rules: [{ required: true, message: 'Bitte Email eingeben', }] }]"
-                  />
-                </a-form-item>
-                <a-form-item label="Telefon">
-                  <a-input
-                    v-decorator="[
-                      'phoneNumber',
-                      { rules: [{ required: true, message: 'Bitte Telefonnummer eingeben', }] }
-                    ]"
-                  />
-                </a-form-item>
-                <a-form-item label="Straße">
-                  <a-input
-                    v-decorator="['street', { rules: [{ required: true, message: 'Bitte Straße eingeben', }] }]"
-                  />
-                </a-form-item>
-                <a-form-item label="Hausnr.">
-                  <a-input
-                    v-decorator="[
-                      'houseNumber',
-                      { rules: [{ required: true, message: 'Bitte Hausnummer eingeben', }] }
-                    ]"
-                  />
-                </a-form-item>
-                <a-form-item label="PLZ">
-                  <a-input
-                    v-decorator="['zip', { rules: [{ required: true, message: 'Bitte PLZ eingeben', }] }]"
-                  />
-                </a-form-item>
-                <a-form-item label="Ort">
-                  <a-input
-                    v-decorator="['city', { rules: [{ required: true, message: 'Bitte Stadt eingeben', }] }]"
-                  />
-                </a-form-item>
-              </a-col>
-              <a-col :span="24">
-                <a-form-item
-                  label="Üben sie einen systemrelevanten Beruf aus?"
-                  required
-                  :labelCol="{ lg: 12 }"
-                  :wrapperCol="{ lg: 12 }"
-                >
-                  <a-select
-                    labelInValue
-                    v-model="selectedOccupation"
-                  >
-                    <a-select-option
-                      v-for="riskOccupation in RISK_OCCUPATIONS" :key="riskOccupation.value"
-                    >
-                      {{ riskOccupation.label }}
-                    </a-select-option>
-                  </a-select>
-
-                </a-form-item>
-              </a-col>
-            </a-row>
+            <PatientStammdaten :form="form" />
           </a-collapse-panel>
           <a-collapse-panel header="Infektionskette" key="2">
             <a-form-item
@@ -318,6 +221,7 @@ import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
 import { RISK_OCCUPATIONS } from '@/models/risk-occupation'
+import PatientStammdaten from '@/components/PatientStammdaten.vue'
 
 type KeyDescription = { key: string; description: string };
 
@@ -333,6 +237,9 @@ const RISK_AREAS: KeyDescription[] = [
 ]
 
 export default Vue.extend({
+  components: {
+    PatientStammdaten,
+  },
   name: 'RegisterPatient',
   data() {
     const selectedSymptoms: any = {}
@@ -394,8 +301,6 @@ export default Vue.extend({
           riskArea => this.selectedRiskAreas[riskArea.key],
         ).map(riskArea => riskArea.key)
         const riskOccupation = this.selectedOccupation.key
-        console.log(riskOccupation)
-        console.log(this.selectedOccupation)
         const request = {
           ...values,
           dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD') + ' 00',

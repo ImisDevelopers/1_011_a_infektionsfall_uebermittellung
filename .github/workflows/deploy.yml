@@ -78,6 +78,7 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "$GKE_PROJECT_ID"
+        env
         echo -n "${CLOUD_SQL_SERVICE_ACCOUNT}" > chart/cloudsql.base64.json
         echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" > chart/cloudstore.base64.json
         helm repo add stable "https://kubernetes-charts.storage.googleapis.com"

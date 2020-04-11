@@ -18,9 +18,6 @@ secrets:
   cloudStore: "cloudstore.base64.json"
   cloudSql: "cloudsql.base64.json"
   postgres: ""
-  sentry:
-    frontend: ""
-    backend: ""
 
 traefik:
   loadBalancerIP: 35.198.153.128

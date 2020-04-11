@@ -39,11 +39,6 @@ spec:
             secretKeyRef:
               name: postgres
               key: password
-        - name: SENTRY_DSN
-          valueFrom:
-            secretKeyRef:
-              name: imis-sentry
-              key: backend_dsn
         volumeMounts:
         - name: cloudstore-service-account
           mountPath: /usr/local/cloud-store

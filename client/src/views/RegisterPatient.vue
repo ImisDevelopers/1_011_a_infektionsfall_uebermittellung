@@ -72,7 +72,7 @@
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
-              <a-checkbox-group v-decorator="['exposures']">
+              <a-checkbox-group v-decorator="['exposures']" @change="exposuresChanged">
                 <a-row>
                   <a-col :span="24" v-for="exposure in EXPOSURES_INTERNAL" :key="exposure.value">
                     <a-checkbox :value="exposure.value">
@@ -82,7 +82,7 @@
                 </a-row>
               </a-checkbox-group>
               <a-checkbox-group v-decorator="['exposureLocation']" :disabled="disableExposureLocation"
-                                @change="exposuresChanged" style="padding-left: 30px">
+                                style="padding-left: 30px">
                 <a-row>
                   <a-col :span="24" v-for="exposure in EXPOSURE_LOCATIONS" :key="exposure.value">
                     <a-checkbox :value="exposure.value">
@@ -117,7 +117,9 @@
                 </a-row>
               </a-checkbox-group>
               <div style="display: flex; align-items: center; align-self: stretch">
-                <a-checkbox @change="symptomsChanged" style="flex: 0 0 auto">Andere:</a-checkbox>
+                <a-checkbox :checked="showOtherSymptoms" @change="symptomsChanged" style="flex: 0 0 auto">
+                  Andere:
+                </a-checkbox>
                 <a-form-item style="flex: 1 1 100%; margin-bottom: 0; max-width: 600px">
                   <a-input v-decorator="['symptomsOther']" :disabled="!showOtherSymptoms" />
                 </a-form-item>
@@ -171,36 +173,94 @@
               </a-checkbox-group>
             </a-form-item>
           </a-collapse-panel>
-        </a-collapse>
 
-        <!-- Krankheitsdetails -->
-        <a-collapse-panel header="Krankheit" key="5">
-          <a-form-item
-            :label="'Bitte zutreffendes ankreuzen:'"
-            :labelCol="{ div: 24 }"
-            :wrapperCol="{ div: 24 }"
-          >
-            <a-checkbox-group v-decorator="['exposures']">
-              <a-row>
-                <a-col :span="24" v-for="exposure in EXPOSURES_INTERNAL" :key="exposure.value">
-                  <a-checkbox :value="exposure.value">
-                    {{exposure.label}}
-                  </a-checkbox>
-                </a-col>
-              </a-row>
-            </a-checkbox-group>
-            <a-checkbox-group v-decorator="['exposureLocation']" :disabled="disableExposureLocation"
-                              @change="exposuresChanged" style="padding-left: 30px">
-              <a-row>
-                <a-col :span="24" v-for="exposure in EXPOSURE_LOCATIONS" :key="exposure.value">
-                  <a-checkbox :value="exposure.value">
-                    {{exposure.label}}
-                  </a-checkbox>
-                </a-col>
-              </a-row>
-            </a-checkbox-group>
-          </a-form-item>
-        </a-collapse-panel>
+          <!-- Krankheitsdetails -->
+          <a-collapse-panel header="Krankheit" key="5">
+            <a-row>
+              <a-col :span="4" />
+              <a-col :span="20">
+                <div style="display: flex; align-items: center;">
+                  <a-form-item :wrapperCol="{span: 24}">
+                    <a-checkbox :checked="!disableHospitalization" @change="hospitalizationChanged">
+                      {{patientString}} ist hospitalisiert
+                    </a-checkbox>
+                  </a-form-item>
+                  <DateInput style="flex: 0 1 400px" label="Seit" :decorator="['dateOfHospitalization']"
+                             :disabled="disableHospitalization" />
+                  <a-form-item style="padding-left: 15px;" :wrapperCol="{span: 24}">
+                    <a-checkbox :disabled="disableHospitalization" :decorator="['onIntensiveCareUnit']">
+                      Auf der Intensivstation
+                    </a-checkbox>
+                  </a-form-item>
+                </div>
+              </a-col>
+            </a-row>
+            <a-row>
+              <a-col :span="12">
+                <a-form-item label="Art der Erkrankung">
+                  <a-select
+                    v-decorator="['illnessType', { rules: [{
+                      required: true,
+                      message: 'Bitte Erkrankung wählen',
+                    }], initialValue: 'CORONA'}]"
+                    placeholder="Bitte wählen..."
+                  >
+                    <a-select-option value="CORONA">SARS-nCoV-2</a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-col>
+              <a-col :span="12">
+                <DateInput label="Erkrankungsdatum" :decorator="['dateOfIllness', { rules: [{
+                      required: true,
+                      message: 'Bitte Erkrankungsdatum wählen',
+                    }], initialValue: today}]" />
+              </a-col>
+            </a-row>
+            <a-row>
+              <a-col :span="12">
+                <a-form-item label="Fallstatus">
+                  <a-select style="width: 250px" placeholder="Status" v-decorator="['patientStatus', { rules: [{
+                      required: true,
+                      message: 'Bitte Status wählen',
+                    }], initialValue: 'SUSPECTED' }]">
+                    <a-select-option v-for="eventType in EVENT_TYPES" :key="eventType.id">
+                      <a-icon :type="eventType.icon" style="margin-right: 5px" />
+                      {{eventType.label}}
+                    </a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-col>
+              <a-col :span="12">
+                <DateInput label="Meldedatum" :decorator="['dateOfReporting', { rules: [{
+                      required: true,
+                      message: 'Bitte Meldedatum wählen'
+                    }], initialValue: today}]" />
+              </a-col>
+            </a-row>
+            <a-row>
+              <a-col :span="4" />
+              <a-col :span="20">
+                <a-checkbox @change="testOrderedChanged" style="margin-bottom: 15px"
+                            :checked="!disableTestOrder">
+                  Wurde eine Erregerdiagnostik beauftragt?
+                </a-checkbox>
+              </a-col>
+            </a-row>
+            <a-row>
+              <a-col :span="12">
+                <LaboratoryInput
+                  label="Labor"
+                  :form="form"
+                  :validation="['laboratoryId']"
+                  :disabled="disableTestOrder"
+                />
+              </a-col>
+              <a-col :span="12">
+                <DateInput label="Datum der Probenentnahme" :decorator="['dateOfTest']" :disabled="disableTestOrder" />
+              </a-col>
+            </a-row>
+          </a-collapse-panel>
+        </a-collapse>
 
         <!-- Submit Button -->
         <a-form-item :wrapperCol="{ span: 24, offset: 0 }" style="margin-top: 15px">
@@ -227,6 +287,10 @@ import { ADDITIONAL_SYMPTOMS, SYMPTOMS } from '@/models/symptoms'
 import { Option } from '@/models'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
+import DateInput from '@/components/DateInput.vue'
+import { EventTypeItem, eventTypes } from '@/models/event-types'
+import moment, { Moment } from 'moment'
+import LaboratoryInput from '@/components/LaboratoryInput.vue'
 
 interface State {
   form: any;
@@ -236,14 +300,20 @@ interface State {
   ADDITIONAL_SYMPTOMS: Option[];
   EXPOSURES_INTERNAL: Option[];
   EXPOSURE_LOCATIONS: Option[];
+  EVENT_TYPES: EventTypeItem[];
   showOtherSymptoms: boolean;
   patientString: string;
   disableExposureLocation: boolean;
+  disableHospitalization: boolean;
+  disableTestOrder: boolean;
+  today: Moment;
 }
 
 export default Vue.extend({
   components: {
     PatientStammdaten,
+    DateInput,
+    LaboratoryInput,
   },
   name: 'RegisterPatient',
   data(): State {
@@ -255,9 +325,13 @@ export default Vue.extend({
       PRE_ILLNESSES,
       EXPOSURES_INTERNAL,
       EXPOSURE_LOCATIONS,
+      EVENT_TYPES: eventTypes,
       disableExposureLocation: true,
       showOtherSymptoms: false,
       patientString: 'der Patient',
+      disableHospitalization: true,
+      disableTestOrder: true,
+      today: moment(),
     }
   },
   methods: {
@@ -269,6 +343,19 @@ export default Vue.extend({
         const request = {
           ...values,
           dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD'),
+          riskAreas: [],
+        }
+
+        if (values.dateofIllness) {
+          request.dateOfIllness = values.dateOfIllness.format('YYYY-MM-DD')
+        } else {
+          request.dateOfIllness = moment().format('YYYY-MM-DD')
+        }
+
+        if (values.dateOfReporting) {
+          request.dateOfReporting = values.dateOfReporting.format('YYYY-MM-DD')
+        } else {
+          request.dateOfReporting = moment().format('YYYY-MM-DD')
         }
 
         if (!request.symptoms) {
@@ -278,11 +365,52 @@ export default Vue.extend({
           request.preIllnesses = []
         }
 
+        if (request.dateOfDeath) {
+          request.dateOfDeath = request.dateOfDeath.format('YYYY-MM-DD')
+        }
+
+        if (!this.disableHospitalization) {
+          request.dateOfHospitalization = values.dateOfHospitalization.format('YYYY-MM-DD')
+          request.onIntensiveCareUnit = values.onIntensiveCareUnit
+        } else {
+          request.dateOfHospitalization = null
+          request.onIntensiveCareUnit = null
+        }
+
+        if (!this.disableTestOrder) {
+          request.laboratoryId = values.laboratoryId
+          request.dateOfTest = values.dateOfTest.format('YYYY-MM-DD')
+        } else {
+          request.laboratoryId = null
+          request.dateOfTest = null
+        }
+
+        if (values.exposures) {
+          request.riskAreas = request.riskAreas.concat(values.exposures)
+        }
+        if (this.showOtherSymptoms) {
+          request.symptoms.push(values.symptomsOther)
+        }
+        if (values.exposureLocation) {
+          request.riskAreas = request.riskAreas.concat(
+            values.exposureLocation
+              .map((location: string) => 'CONTACT_WITH_CORONA_' + location),
+          )
+        }
+
         const patientString = request.gender === 'female' ? 'Patientin' : 'Patient'
 
         Api.patients.addPatientUsingPost(request).then((patient: Patient) => {
           this.form.resetFields()
           this.createdPatient = patient as any
+          this.disableExposureLocation = true
+          this.disableTestOrder = true
+          this.disableHospitalization = true
+          this.showOtherSymptoms = false
+          this.form.setFieldsValue({
+            symptomsOther: undefined,
+            symptomsOtherActivated: undefined,
+          })
           const notification = {
             message: patientString + ' registriert.',
             description: 'Der ' + patientString + ' wurde erfolgreich registriert.',
@@ -309,6 +437,14 @@ export default Vue.extend({
     },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')
+    },
+    hospitalizationChanged(event: Event) {
+      const target = event.target as any
+      this.disableHospitalization = !target.checked
+    },
+    testOrderedChanged(event: Event) {
+      const target = event.target as any
+      this.disableTestOrder = !target.checked
     },
   },
 })

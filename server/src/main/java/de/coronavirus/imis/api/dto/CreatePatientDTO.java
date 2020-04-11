@@ -1,10 +1,10 @@
 package de.coronavirus.imis.api.dto;
 
-import java.util.List;
-
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.RiskOccupation;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class CreatePatientDTO {
@@ -42,4 +42,12 @@ public class CreatePatientDTO {
     private List<String> preIllnesses;
     private RiskOccupation riskOccupation;
     private String occupation;
+
+    // Hospitalization
+    private String dateOfHospitalization;
+    private String dateOfIllness;
+    private Boolean onIntensiveCareUnit;
+
+    // Meldedatum
+    private String dateOfReporting;
 }

@@ -56,7 +56,10 @@
       <a-row v-if="showDeath">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Verstorben">
-            <a-radio-group v-model="showDateOfDeath">
+            <a-radio-group v-decorator="['died', { rules: [{
+                        required: true,
+                        message: 'Bitte Status angeben',
+                      }], initialValue: false }]" @change="diedChanged">
               <a-radio :value="true">Ja</a-radio>
               <a-radio :value="false">Nein</a-radio>
             </a-radio-group>
@@ -302,6 +305,9 @@ export default Vue.extend({
     genderSelected(event: Event) {
       const gender = (event.target as any).value
       this.$emit('gender', gender)
+    },
+    diedChanged(event: Event) {
+      this.showDateOfDeath = (event.target as any).value
     },
   },
 })

@@ -235,7 +235,7 @@ export default Vue.extend({
 
         const request = {
           ...values,
-          dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD') + ' 00',
+          dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD'),
           patientStatus: 'REGISTERED',
           fluImmunization: false, // TODO: Do we need a form field for this?
           speedOfSymptomsOutbreak: '', // TODO: Do we need a form field for this?

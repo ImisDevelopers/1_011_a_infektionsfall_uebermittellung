@@ -81,6 +81,10 @@ public class Patient {
     private OffsetDateTime creationTimestamp;
 
     @OneToMany(mappedBy = "patient")
-//    @JsonManagedReference
     List<PatientEvent> events;
+
+    // Hospitalization TODO: Put into seperate entity?
+    private LocalDate dateOfHospitalization;
+    private LocalDate dateOfIllness;
+    private Boolean onIntensiveCareUnit;
 }

@@ -1,13 +1,11 @@
 package de.coronavirus.imis.services;
 
-import com.google.common.base.Strings;
 import com.google.common.hash.Hashing;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.domain.RiskOccupation;
 import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
@@ -23,7 +21,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -56,11 +53,14 @@ public class PatientService {
     }
 
     public Patient addPatient(final CreatePatientDTO dto) {
+        // Parsing / Defaults
         var dateOfBirthParsed = LocalDate.parse(dto.getDateOfBirth(), DateTimeFormatter.ISO_LOCAL_DATE);
-        LocalDate dateOfDeathParsed = null;
-        if (dto.getDateOfDeath() != null && !dto.getDateOfDeath().isBlank()) {
-            dateOfDeathParsed = LocalDate.parse(dto.getDateOfDeath(), DateTimeFormatter.ISO_LOCAL_DATE);
-        }
+        LocalDate dateOfDeathParsed = parseDate(dto.getDateOfDeath());
+        LocalDate dateOfHospitalization = parseDate(dto.getDateOfHospitalization());
+        LocalDate dateOfIllness = parseDate(dto.getDateOfIllness());
+        LocalDate dateOfReporting = parseDate(dto.getDateOfReporting());
+        final EventType eventType = dto.getPatientStatus() != null ? dto.getPatientStatus() : EventType.SUSPECTED;
+        // Entity Creation
         var id = Hashing.sha256()
                 .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateOfBirthParsed + randomService.getRandomString(12), StandardCharsets.UTF_8)
                 .toString()
@@ -87,7 +87,7 @@ public class PatientService {
                 .setStayZip(dto.getStayZip())
                 // Other
                 .setEmployer(dto.getEmployer())
-                .setPatientStatus(EventType.SUSPECTED)
+                .setPatientStatus(eventType)
                 .setInsuranceCompany(dto.getInsuranceCompany())
                 .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())
                 .setFluImmunization(dto.getFluImmunization())
@@ -99,12 +99,24 @@ public class PatientService {
                 .setRiskOccupation(dto.getRiskOccupation())
                 .setOccupation(dto.getOccupation())
                 .setCreationTimestamp(OffsetDateTime.now())
-                .setPreIllnesses(dto.getPreIllnesses());
+                .setPreIllnesses(dto.getPreIllnesses())
+                // Illness
+                .setDateOfHospitalization(dateOfHospitalization)
+                .setDateOfIllness(dateOfIllness)
+                .setOnIntensiveCareUnit(dto.getOnIntensiveCareUnit());
         mappedPatient = patientRepository.save(mappedPatient);
         log.info("inserting patient with id {}", mappedPatient.getId());
-        eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), EventType.SUSPECTED);
+        eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), eventType, dateOfReporting);
         log.info("inserted event for patient {}", mappedPatient);
         return mappedPatient;
+    }
+
+    private LocalDate parseDate(String localDateString) {
+        LocalDate localDate = null;
+        if (localDateString != null && !localDateString.isBlank()) {
+            localDate = LocalDate.parse(localDateString, DateTimeFormatter.ISO_LOCAL_DATE);
+        }
+        return localDate;
     }
 
     private Integer parseIntegerSafe(String toParse) {

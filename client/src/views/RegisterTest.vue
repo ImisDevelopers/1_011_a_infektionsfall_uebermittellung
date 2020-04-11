@@ -87,9 +87,9 @@ import Api from '@/api'
 import BarcodeInput from '../components/TestInput'
 import PatientInput from '../components/PatientInput'
 import LaboratoryInput from '../components/LaboratoryInput'
-import { testTypes } from '@/models/test-types'
+import {testTypes} from '@/models/test-types'
 import Component from 'vue-class-component'
-import { testResults } from '@/models/event-types'
+import {testResults} from '@/models/event-types'
 
 @Component({
   components: {
@@ -117,7 +117,7 @@ export default class RegisterTest extends Vue {
         ...values,
       }
 
-      Api.labtests.createTestForPatientUsingPost(request).then(labTest => {
+      Api.api.createTestForPatientUsingPost(request).then(labTest => {
         this.createdLabTest = labTest
         this.createdLabTestStatus = testResults
           .find(testResult => testResult.id === labTest.testStatus)

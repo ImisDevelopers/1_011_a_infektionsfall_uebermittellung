@@ -330,12 +330,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
-import { getPlzs, Plz } from '@/util/plz-service'
-import { Option, RiskOccupation } from '@/models'
-import { SYMPTOMS } from '@/models/symptoms'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
-import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
+import {Patient} from '@/api/SwaggerApi'
+import {getPlzs, Plz} from '@/util/plz-service'
+import {Option, RiskOccupation} from '@/models'
+import {SYMPTOMS} from '@/models/symptoms'
+import {PRE_ILLNESSES} from '@/models/pre-illnesses'
+import {RISK_OCCUPATIONS, RiskOccupationOption} from '@/models/risk-occupation'
 
 interface State {
   form: any;
@@ -477,7 +477,7 @@ export default Vue.extend({
           .find((illness: string) => illness === 'IMMUNODEFICIENCY')
         request.coronaContacts = !!request.riskAreas // TODO: DO we need this field?
           .find((riskArea: string) => riskArea.startsWith('CONTACT_WITH_CORONA'))
-        Api.patients.addPatientUsingPost(request).then(patient => {
+        Api.api.addPatientUsingPost(request).then(patient => {
           this.createdPatient = patient
         })
       })

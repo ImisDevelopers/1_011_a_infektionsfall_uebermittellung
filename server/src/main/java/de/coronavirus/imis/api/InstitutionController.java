@@ -2,20 +2,24 @@ package de.coronavirus.imis.api;
 
 import java.util.List;
 
-import de.coronavirus.imis.domain.Doctor;
-import de.coronavirus.imis.domain.InstitutionType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.InstitutionDTO;
+import de.coronavirus.imis.domain.Doctor;
 import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.services.InstitutionService;
 
 @RestController
-@RequestMapping("/institutions")
+@RequestMapping("/api/institutions")
 @RequiredArgsConstructor
 public class InstitutionController {
 

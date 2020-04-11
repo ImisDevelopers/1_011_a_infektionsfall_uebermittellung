@@ -312,12 +312,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { patientMapper } from '../store/modules/patients.module'
-import { SYMPTOMS } from '@/models/symptoms'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import {patientMapper} from '../store/modules/patients.module'
+import {SYMPTOMS} from '@/models/symptoms'
+import {PRE_ILLNESSES} from '@/models/pre-illnesses'
 import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
-import { RISK_OCCUPATIONS } from '@/models/risk-occupation'
+import {Patient} from '@/api/SwaggerApi'
+import {RISK_OCCUPATIONS} from '@/models/risk-occupation'
 
 type KeyDescription = { key: string; description: string };
 
@@ -407,7 +407,7 @@ export default Vue.extend({
 
         const patientString = request.gender === 'female' ? 'Patientin' : 'Patient'
 
-        Api.patients.addPatientUsingPost(request).then((patient: Patient) => {
+        Api.api.addPatientUsingPost(request).then((patient: Patient) => {
           this.form.resetFields()
           this.createdPatient = patient as any
           const notification = {

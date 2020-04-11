@@ -90,8 +90,8 @@ import Api from '@/api'
 import TestInput from '../components/TestInput'
 import LaboratoryInput from '../components/LaboratoryInput'
 import Vue from 'vue'
-import { authMapper } from '@/store/modules/auth.module'
-import { testResults } from '@/models/event-types'
+import {authMapper} from '@/store/modules/auth.module'
+import {testResults} from '@/models/event-types'
 
 export default Vue.extend({
   name: 'LinkTestResultAndPatient',
@@ -174,7 +174,7 @@ export default Vue.extend({
         }
 
         const testResult = this.testResults.find(testResult => values.testResult === testResult.id)
-        Api.labtests.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {
+        Api.api.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {
           const notification = {
             message: 'Test ' + labTest.testId + ' aktualisiert.',
             description: 'Status geändert auf "' + testResult.label + '"',

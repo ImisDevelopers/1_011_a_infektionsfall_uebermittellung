@@ -11,22 +11,22 @@ services:
     - "5432:5432"
     restart: unless-stopped
 
-  client:
-    build:
-      context: client
-      dockerfile: Dockerfile
-    ports:
-    - "8080:8080"
-    depends_on:
-    - server # for generating models from swagger api
-
-  server:
-    build:
-      context: server
-      dockerfile: Dockerfile
-    environment:
-    - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
-    ports:
-    - "80:80"
-    depends_on:
-    - postgres
+#  client:
+#    build:
+#      context: client
+#      dockerfile: Dockerfile
+#    ports:
+#    - "8080:8080"
+#    depends_on:
+#    - server # for generating models from swagger api
+#
+#  server:
+#    build:
+#      context: server
+#      dockerfile: Dockerfile
+#    environment:
+#    - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+#    ports:
+#    - "80:80"
+#    depends_on:
+#    - postgres

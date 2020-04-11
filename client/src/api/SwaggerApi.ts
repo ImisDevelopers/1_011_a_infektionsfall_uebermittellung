@@ -402,7 +402,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8642/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -480,19 +480,10 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8642/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
-  /**
-   * @tags redirect-controller
-   * @name methodUsingGET
-   * @summary method
-   * @request GET:/
-   * @secure
-   */
-  methodUsingGet = (params?: RequestParams) => this.request<any, any>(`/`, "GET", params, null, true);
-
   actuator = {
     /**
      * @tags web-mvc-links-handler
@@ -534,306 +525,306 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
     handleUsingGet2: (body: Record<string, string>, params?: RequestParams) =>
       this.request<AggregationResultZip, any>(`/actuator/info`, "GET", params, body, true),
   };
-  auth = {
+  api = {
     /**
      * @tags auth-controller
      * @name signInUserUsingPOST
      * @summary signInUser
-     * @request POST:/auth
+     * @request POST:/api/auth
      * @secure
      */
     signInUserUsingPost: (authRequestDTO: AuthRequestDTO, params?: RequestParams) =>
-      this.request<TokenDTO, any>(`/auth`, "POST", params, authRequestDTO, true),
+      this.request<TokenDTO, any>(`/api/auth`, "POST", params, authRequestDTO, true),
 
     /**
      * @tags auth-controller
      * @name getInstitutionUsingGET
      * @summary getInstitution
-     * @request GET:/auth/institution
+     * @request GET:/api/auth/institution
      * @secure
      */
     getInstitutionUsingGet: (params?: RequestParams) =>
-      this.request<Institution, any>(`/auth/institution`, "GET", params, null, true),
+      this.request<Institution, any>(`/api/auth/institution`, "GET", params, null, true),
 
     /**
      * @tags auth-controller
      * @name registerInstitutionUsingPOST
      * @summary registerInstitution
-     * @request POST:/auth/register/institution
+     * @request POST:/api/auth/register/institution
      * @secure
      */
     registerInstitutionUsingPost: (institutionDTO: CreateInstitutionDTO, params?: RequestParams) =>
-      this.request<Institution, any>(`/auth/register/institution`, "POST", params, institutionDTO, true),
+      this.request<Institution, any>(`/api/auth/register/institution`, "POST", params, institutionDTO, true),
 
     /**
      * @tags auth-controller
      * @name registerUserUsingPOST
      * @summary registerUser
-     * @request POST:/auth/register/user
+     * @request POST:/api/auth/register/user
      * @secure
      */
     registerUserUsingPost: (registerUserRequest: RegisterUserRequest, params?: RequestParams) =>
-      this.request<User, any>(`/auth/register/user`, "POST", params, registerUserRequest, true),
+      this.request<User, any>(`/api/auth/register/user`, "POST", params, registerUserRequest, true),
 
     /**
      * @tags auth-controller
      * @name currentUserUsingGET
      * @summary currentUser
-     * @request GET:/auth/user
+     * @request GET:/api/auth/user
      * @secure
      */
-    currentUserUsingGet: (params?: RequestParams) => this.request<User, any>(`/auth/user`, "GET", params, null, true),
-  };
-  doctor = {
+    currentUserUsingGet: (params?: RequestParams) =>
+      this.request<User, any>(`/api/auth/user`, "GET", params, null, true),
+
     /**
      * @tags doctor-controller
      * @name addScheduledEventUsingPOST
      * @summary addScheduledEvent
-     * @request POST:/doctor/create_appointment
+     * @request POST:/api/doctor/create_appointment
      * @secure
      */
     addScheduledEventUsingPost: (dto: RequestLabTestDTO, params?: RequestParams) =>
-      this.request<PatientEvent, any>(`/doctor/create_appointment`, "POST", params, dto, true),
-  };
-  error = {
-    /**
-     * @tags basic-error-controller
-     * @name errorUsingGET
-     * @summary error
-     * @request GET:/error
-     * @secure
-     */
-    errorUsingGet: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
+      this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, true),
 
-    /**
-     * @tags basic-error-controller
-     * @name errorUsingHEAD
-     * @summary error
-     * @request HEAD:/error
-     * @secure
-     */
-    errorUsingHead: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
-
-    /**
-     * @tags basic-error-controller
-     * @name errorUsingPOST
-     * @summary error
-     * @request POST:/error
-     * @secure
-     */
-    errorUsingPost: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
-
-    /**
-     * @tags basic-error-controller
-     * @name errorUsingPUT
-     * @summary error
-     * @request PUT:/error
-     * @secure
-     */
-    errorUsingPut: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
-
-    /**
-     * @tags basic-error-controller
-     * @name errorUsingDELETE
-     * @summary error
-     * @request DELETE:/error
-     * @secure
-     */
-    errorUsingDelete: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
-
-    /**
-     * @tags basic-error-controller
-     * @name errorUsingOPTIONS
-     * @summary error
-     * @request OPTIONS:/error
-     * @secure
-     */
-    errorUsingOptions: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
-
-    /**
-     * @tags basic-error-controller
-     * @name errorUsingPATCH
-     * @summary error
-     * @request PATCH:/error
-     * @secure
-     */
-    errorUsingPatch: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
-  };
-  institutions = {
     /**
      * @tags institution-controller
      * @name createInstitutionUsingPOST
      * @summary createInstitution
-     * @request POST:/institutions
+     * @request POST:/api/institutions
      * @secure
      */
     createInstitutionUsingPost: (createInstitutionDTO: CreateInstitutionDTO, params?: RequestParams) =>
-      this.request<InstitutionDTO, any>(`/institutions`, "POST", params, createInstitutionDTO, true),
+      this.request<InstitutionDTO, any>(`/api/institutions`, "POST", params, createInstitutionDTO, true),
 
     /**
      * @tags institution-controller
      * @name getAllDoctorsUsingGET
      * @summary getAllDoctors
-     * @request GET:/institutions/doctors
+     * @request GET:/api/institutions/doctors
      * @secure
      */
     getAllDoctorsUsingGet: (params?: RequestParams) =>
-      this.request<Doctor[], any>(`/institutions/doctors`, "GET", params, null, true),
+      this.request<Doctor[], any>(`/api/institutions/doctors`, "GET", params, null, true),
 
     /**
      * @tags institution-controller
      * @name getAllLaboratoriesUsingGET
      * @summary getAllLaboratories
-     * @request GET:/institutions/laboratories
+     * @request GET:/api/institutions/laboratories
      * @secure
      */
     getAllLaboratoriesUsingGet: (params?: RequestParams) =>
-      this.request<Laboratory[], any>(`/institutions/laboratories`, "GET", params, null, true),
+      this.request<Laboratory[], any>(`/api/institutions/laboratories`, "GET", params, null, true),
 
     /**
      * @tags institution-controller
      * @name queryAllLaboratoriesUsingGET
      * @summary queryAllLaboratories
-     * @request GET:/institutions/laboratories/query
+     * @request GET:/api/institutions/laboratories/query
      * @secure
      */
     queryAllLaboratoriesUsingGet: (query: { id: string }, params?: RequestParams) =>
       this.request<Laboratory[], any>(
-        `/institutions/laboratories/query${this.addQueryParams(query)}`,
+        `/api/institutions/laboratories/query${this.addQueryParams(query)}`,
         "GET",
         params,
         null,
         true,
       ),
-  };
-  labtests = {
+
     /**
      * @tags lab-test-controller
      * @name createTestForPatientUsingPOST
      * @summary createTestForPatient
-     * @request POST:/labtests
+     * @request POST:/api/labtests
      * @secure
      */
     createTestForPatientUsingPost: (createLabTestRequest: CreateLabTestDTO, params?: RequestParams) =>
-      this.request<LabTest, any>(`/labtests`, "POST", params, createLabTestRequest, true),
+      this.request<LabTest, any>(`/api/labtests`, "POST", params, createLabTestRequest, true),
 
     /**
      * @tags lab-test-controller
      * @name getLabTestForPatientUsingGET
      * @summary getLabTestForPatient
-     * @request GET:/labtests/patient/{id}
+     * @request GET:/api/labtests/patient/{id}
      * @secure
      */
     getLabTestForPatientUsingGet: (id: string, params?: RequestParams) =>
-      this.request<LabTest[], any>(`/labtests/patient/${id}`, "GET", params, null, true),
+      this.request<LabTest[], any>(`/api/labtests/patient/${id}`, "GET", params, null, true),
 
     /**
      * @tags lab-test-controller
      * @name queryLabTestsByIdUsingGET
      * @summary queryLabTestsById
-     * @request GET:/labtests/query
+     * @request GET:/api/labtests/query
      * @secure
      */
     queryLabTestsByIdUsingGet: (query: { labTestIdQuery: string }, params?: RequestParams) =>
-      this.request<LabTest[], any>(`/labtests/query${this.addQueryParams(query)}`, "GET", params, null, true),
+      this.request<LabTest[], any>(`/api/labtests/query${this.addQueryParams(query)}`, "GET", params, null, true),
 
     /**
      * @tags lab-test-controller
      * @name updateTestStatusUsingPUT
      * @summary updateTestStatus
-     * @request PUT:/labtests/{laboratoryId}
+     * @request PUT:/api/labtests/{laboratoryId}
      * @secure
      */
     updateTestStatusUsingPut: (laboratoryId: string, statusDTO: UpdateTestStatusDTO, params?: RequestParams) =>
-      this.request<LabTest, any>(`/labtests/${laboratoryId}`, "PUT", params, statusDTO, true),
-  };
-  patients = {
+      this.request<LabTest, any>(`/api/labtests/${laboratoryId}`, "PUT", params, statusDTO, true),
+
     /**
      * @tags patient-controller
      * @name getAllPatientsUsingGET
      * @summary getAllPatients
-     * @request GET:/patients
+     * @request GET:/api/patients
      * @secure
      */
     getAllPatientsUsingGet: (params?: RequestParams) =>
-      this.request<Patient[], any>(`/patients`, "GET", params, null, true),
+      this.request<Patient[], any>(`/api/patients`, "GET", params, null, true),
 
     /**
      * @tags patient-controller
      * @name addPatientUsingPOST
      * @summary addPatient
-     * @request POST:/patients
+     * @request POST:/api/patients
      * @secure
      */
     addPatientUsingPost: (dto: CreatePatientDTO, params?: RequestParams) =>
-      this.request<Patient, any>(`/patients`, "POST", params, dto, true),
+      this.request<Patient, any>(`/api/patients`, "POST", params, dto, true),
 
     /**
      * @tags patient-controller
      * @name queryPatientsUsingPOST
      * @summary queryPatients
-     * @request POST:/patients/query
+     * @request POST:/api/patients/query
      * @secure
      */
     queryPatientsUsingPost: (patientSearchParamsDTO: PatientSearchParamsDTO, params?: RequestParams) =>
-      this.request<Patient[], any>(`/patients/query`, "POST", params, patientSearchParamsDTO, true),
+      this.request<Patient[], any>(`/api/patients/query`, "POST", params, patientSearchParamsDTO, true),
 
     /**
      * @tags patient-controller
      * @name queryPatientsSimpleUsingPOST
      * @summary queryPatientsSimple
-     * @request POST:/patients/query-simple
+     * @request POST:/api/patients/query-simple
      * @secure
      */
     queryPatientsSimpleUsingPost: (query: PatientSimpleSearchParamsDTO, params?: RequestParams) =>
-      this.request<Patient[], any>(`/patients/query-simple`, "POST", params, query, true),
+      this.request<Patient[], any>(`/api/patients/query-simple`, "POST", params, query, true),
 
     /**
      * @tags patient-controller
      * @name countQueryPatientsSimpleUsingGET
      * @summary countQueryPatientsSimple
-     * @request GET:/patients/query-simple/count
+     * @request GET:/api/patients/query-simple/count
      * @secure
      */
     countQueryPatientsSimpleUsingGet: (query: { query: string }, params?: RequestParams) =>
-      this.request<number, any>(`/patients/query-simple/count${this.addQueryParams(query)}`, "GET", params, null, true),
+      this.request<number, any>(
+        `/api/patients/query-simple/count${this.addQueryParams(query)}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
 
     /**
      * @tags patient-controller
      * @name countQueryPatientsUsingPOST
      * @summary countQueryPatients
-     * @request POST:/patients/query/count
+     * @request POST:/api/patients/query/count
      * @secure
      */
     countQueryPatientsUsingPost: (patientSearchParamsDTO: PatientSearchParamsDTO, params?: RequestParams) =>
-      this.request<number, any>(`/patients/query/count`, "POST", params, patientSearchParamsDTO, true),
+      this.request<number, any>(`/api/patients/query/count`, "POST", params, patientSearchParamsDTO, true),
 
     /**
      * @tags patient-controller
      * @name getPatientForIdUsingGET
      * @summary getPatientForId
-     * @request GET:/patients/{id}
+     * @request GET:/api/patients/{id}
      * @secure
      */
     getPatientForIdUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Patient, any>(`/patients/${id}`, "GET", params, null, true),
-  };
-  stats = {
+      this.request<Patient, any>(`/api/patients/${id}`, "GET", params, null, true),
+
     /**
      * @tags stats-controller
      * @name getForZipUsingGET
      * @summary getForZip
-     * @request GET:/stats
+     * @request GET:/api/stats
      * @secure
      */
     getForZipUsingGet: (query: { lowerBoundsZip: string; upperBoundsZips: string }, params?: RequestParams) =>
-      this.request<AggregationResultZip[], any>(`/stats${this.addQueryParams(query)}`, "GET", params, null, true),
+      this.request<AggregationResultZip[], any>(`/api/stats${this.addQueryParams(query)}`, "GET", params, null, true),
+  };
+  error = {
+    /**
+     * @tags basic-error-controller
+     * @name errorHtmlUsingGET
+     * @summary errorHtml
+     * @request GET:/error
+     * @secure
+     */
+    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
+
+    /**
+     * @tags basic-error-controller
+     * @name errorHtmlUsingHEAD
+     * @summary errorHtml
+     * @request HEAD:/error
+     * @secure
+     */
+    errorHtmlUsingHead: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
+
+    /**
+     * @tags basic-error-controller
+     * @name errorHtmlUsingPOST
+     * @summary errorHtml
+     * @request POST:/error
+     * @secure
+     */
+    errorHtmlUsingPost: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
+
+    /**
+     * @tags basic-error-controller
+     * @name errorHtmlUsingPUT
+     * @summary errorHtml
+     * @request PUT:/error
+     * @secure
+     */
+    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
+
+    /**
+     * @tags basic-error-controller
+     * @name errorHtmlUsingDELETE
+     * @summary errorHtml
+     * @request DELETE:/error
+     * @secure
+     */
+    errorHtmlUsingDelete: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
+
+    /**
+     * @tags basic-error-controller
+     * @name errorHtmlUsingOPTIONS
+     * @summary errorHtml
+     * @request OPTIONS:/error
+     * @secure
+     */
+    errorHtmlUsingOptions: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
+
+    /**
+     * @tags basic-error-controller
+     * @name errorHtmlUsingPATCH
+     * @summary errorHtml
+     * @request PATCH:/error
+     * @secure
+     */
+    errorHtmlUsingPatch: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
   };
 }

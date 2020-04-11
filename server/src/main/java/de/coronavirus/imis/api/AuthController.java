@@ -1,26 +1,30 @@
 package de.coronavirus.imis.api;
 
 
-import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
-import de.coronavirus.imis.config.domain.UserRole;
-import de.coronavirus.imis.domain.Institution;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import de.coronavirus.imis.api.dto.AuthRequestDTO;
+import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.RegisterUserRequest;
 import de.coronavirus.imis.api.dto.TokenDTO;
 import de.coronavirus.imis.config.domain.User;
+import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.domain.Institution;
 import de.coronavirus.imis.services.AuthService;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 @Slf4j
 public class AuthController {

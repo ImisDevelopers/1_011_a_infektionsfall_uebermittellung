@@ -149,7 +149,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import { anonymizeProperties } from '@/util'
+import {anonymizeProperties} from '@/util'
 
 function validatePasswordRepeat(password: string, passwordRepeat: string) {
   if (password === passwordRepeat) {
@@ -214,7 +214,7 @@ export default Vue.extend({
             userRole: 'USER_ROLE_ADMIN',
           },
         }
-        Api.auth.registerInstitutionUsingPost(values).then(() => {
+        Api.api.registerInstitutionUsingPost(values).then(() => {
           this.form.resetFields()
           const notification = {
             message: 'Institution registriert.',

@@ -72,7 +72,7 @@ def gen_person():
         'firstName': first_name,
         'gender': gender,
         'dateOfBirth': gen_date_of_birth(),
-        'email': f'{first_name[0]}.{last_name}@{choice(email_providers)}.de',
+        'email': f'{first_name[0].lower()}.{last_name.lower()}@{choice(email_providers)}.de',
         'phoneNumber': rand_num_str(),
         'street': choice(streets),
         'houseNumber': randint(0, 100),

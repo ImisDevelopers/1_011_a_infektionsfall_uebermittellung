@@ -77,16 +77,32 @@ def insurance_number():
     return f'{random_letter}{number}'
 
 
+def replace_umlauts(inp):
+    umlauts = {
+        'ö': 'oe',
+        'ä': 'ae',
+        'ü': 'ue'
+    }
+
+    for k, v in umlauts.items():
+        inp.replace(k,v)
+    return inp
+
 def gen_person():
     gender = choice(genders)
     first_name = choice(male_first_names) if gender == 'männlich' else choice(female_fist_names)
     last_name = choice(last_names)
+
+    _email = f'{first_name[0].lower()}.{last_name.lower()}@{choice(email_providers)}.de'
+    email = replace_umlauts(_email)
+
+
     return {
         'lastName': last_name,
         'firstName': first_name,
         'gender': gender,
         'dateOfBirth': gen_date_of_birth(),
-        'email': f'{first_name[0].lower()}.{last_name.lower()}@{choice(email_providers)}.de',
+        'email': email,
         'phoneNumber': rand_num_str(),
         'street': choice(streets),
         'houseNumber': randint(0, 100),

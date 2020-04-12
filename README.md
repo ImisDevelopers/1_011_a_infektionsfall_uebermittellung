@@ -1,7 +1,7 @@
 [![IMIS Cover](client/public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
 
   * [Demo](http://imis-prototyp.de)
-  * [Swagger API](http://api.imis-prototyp.de/)
+  * [Swagger API](http://imis-prototyp.de/swagger-ui.html)
   * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)
  
 Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.org/)-Hackathon. 
@@ -19,7 +19,7 @@ _DO NOT COMMIT TO MASTER_
 Development happens in `dev` using feature branches and PR. `dev` branch is deployed at:
 
    * [Staging Deployment](https://staging.imis-prototyp.de)
-   * [Staging API](https://api.staging.imis-prototyp.de)
+   * [Staging API](https://staging.imis-prototyp.de/swagger-ui.html)
 
 ## Tech Stack
  - Backend: Spring Boot
@@ -86,7 +86,7 @@ But you have to run Postgres in docker or install it and run it locally manually
 ## API communication
 
 An API developed by the backend is served via swagger on the server: http://localhost/swagger-ui.html
-We are using the swagger docs to autogenerate the typescript api client.
+We are using the swagger docs to auto-generate the typescript api client.
 ```yarn generate:api-client```
 Make sure the server is running locally, the command updates the ts api client
 
@@ -95,6 +95,8 @@ When you make changes to the backend, make sure to generate a new client.
 ## CI system
 All commits to `dev`, `master`, `feature/*` and all PRs will be CI checked.
 
-New commit to `dev` will result in new release to `staging.imis-prototyp.de`.
+New commit to `dev` will result in new release to:
+    * [staging.imis-prototyp.de](https://staging.imis-prototyp.de)
+    * [Swagger API](https://staging.imis-prototyp.de/swagger-ui.html)
 
-A new release to `imis-prototyp.de` is not triggerd by commit on `master` but by a new release tag. 
+A new release to `imis-prototyp.de` is not triggered by commit on `master` but by a [new release tag](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/releases/new). 

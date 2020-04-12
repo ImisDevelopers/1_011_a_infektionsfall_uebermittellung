@@ -78,15 +78,7 @@ def insurance_number():
 
 
 def replace_umlauts(inp):
-    umlauts = {
-        'ö': 'oe',
-        'ä': 'ae',
-        'ü': 'ue'
-    }
-
-    for k, v in umlauts.items():
-        inp.replace(k,v)
-    return inp
+    return inp.replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue')
 
 def gen_person():
     gender = choice(genders)

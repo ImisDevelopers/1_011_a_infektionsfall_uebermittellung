@@ -1,0 +1,241 @@
+// IMIS database
+
+// ENUMS
+Enum gender {
+  male
+  female
+  diverse
+}
+
+// MASTER DATA
+Table person {
+  id INT [pk]
+  first_name VARCHAR(255)
+  birth_name VARCHAR(255)
+  surname VARCHAR(255)
+  title VARCHAR(255)
+  birthday VARCHAR(255)
+  gender gender
+  nationality VARCHAR(255)
+}
+
+Table patient {
+  id INT [pk]
+  person INT [ref: > person.id]
+  street VARCHAR(255)
+  zipcode VARCHAR(255)
+  city VARCHAR(255)
+  country VARCHAR(255)
+  deceased BOOL
+  death_date TIMESTAMP
+  phone VARCHAR(255)
+  fax VARCHAR(255)
+  email VARCHAR(255)
+}
+
+Table staff {
+  id INT [pk]
+  person INT [ref: > person.id]
+  institution INT [ref: > institution.id]
+  is_contact_person BOOL
+  comment TEXT
+  is_doctor BOOL
+  street VARCHAR(255)
+  zipcode VARCHAR(255)
+  city VARCHAR(255)
+  country VARCHAR(255)
+  phone VARCHAR(255)
+  fax VARCHAR(255)
+  email VARCHAR(255)
+}
+
+Table institution {
+  id INT [pk]
+  type VARCHAR(255) // multiple types possible, store as an array
+  name VARCHAR(255)
+  address_label VARCHAR(255)
+  street VARCHAR(255)
+  zipcode VARCHAR(255)
+  city VARCHAR(255)
+  country VARCHAR(255)
+  phone VARCHAR(255) // multiple possible
+  fax VARCHAR(255) // multiple possible
+  email VARCHAR(255) // multiple possible
+  comment TEXT
+}
+
+Table note {
+  id INT [pk]
+  staff INT [ref: > staff.id]
+  institution INT [ref: > institution.id]
+  health_office INT [ref: > staff.id]
+  timestamp DATETIME
+  type VARCHAR(255)
+  type_of_reporter VARCHAR(255)
+  phone VARCHAR(255)
+  time_of_diagnostics TIMESTAMP
+  email VARCHAR(255)
+  details TEXT
+  case INT [ref: > case.id]
+}
+
+Table case {
+  id INT [pk]
+  patient INT [ref: > patient.id]
+  staff INT [ref: > staff.id] // agent
+  disease VARCHAR(255) // enum?
+  reference VARCHAR(255)
+  disease_start TIMESTAMP
+}
+
+Table quarantine {
+  id INT [pk]
+  case INT [ref: > case.id]
+  start TIMESTAMP
+  end TIMESTAMP
+  comment TEXT
+}
+
+Table test {
+  id INT [pk]
+  event_order_test INT [ref: > event_order_test.id]
+  event_sample INT [ref: > event_sample.id]
+  event_laboratory INT [ref: > event_laboratory.id]
+}
+
+// ENUM LIKE DATA
+Table symptoms {
+  id INT [pk]
+  name VARCHAR(255)
+  description TEXT
+  is_custom BOOL
+}
+
+Table risk_factors {
+  id INT [pk]
+  name VARCHAR(255)
+  description TEXT
+  is_custom BOOL
+}
+
+// MANY TO MANY CONNECTIONS
+Table patients_doctors {
+  id INT [pk]
+  patient INT [ref: > patient.id]
+  staff INT [ref: > staff.id]
+}
+
+Table contact_persons {
+  id INT [pk]
+  patient_1 INT [ref: > patient.id]
+  patient_2 INT [ref: > patient.id]
+  note INT [ref: > note.id]
+  type_of_contact VARCHAR(255)
+  details TEXT
+}
+
+Table patient_has_risk_factors {
+  id INT [pk]
+  patient INT [ref: > patient.id]
+  risk_factor INT [ref: > risk_factors.id]
+  timestamp DATETIME
+}
+
+Table patient_has_institution {
+  id INT [pk]
+  patient INT [ref: > patient.id]
+  institution INT [ref: > institution.id]
+  type VARCHAR(255)
+  update TIMESTAMP
+  comment TEXT
+}
+
+Table quarantine_has_note {
+  quarantine INT [ref: > quarantine.id]
+  note INT [ref: > note.id]
+}
+
+// EVENTS
+Table event_personal_data {
+  patient INT [ref: > patient.id]
+  note INT [ref: > note.id]
+  changes TEXT
+}
+
+Table event_symptoms {
+  note INT [ref: > note.id]
+  symptom INT [ref: > symptoms.id]
+  positive BOOL
+  comment TEXT
+}
+
+Table event_risk_factors {
+  note INT [ref: > note.id]
+  patient_has_risk_factors INT [ref: > patient_has_risk_factors.id]
+  changes TEXT
+}
+
+Table event_institution {
+  note INT [ref: > note.id]
+  patient_has_institution INT [ref: > patient_has_institution.id]
+  changes TEXT
+}
+
+Table event_hospitalization {
+  id INT [pk]
+  note INT [ref: > note.id]
+  institution INT [ref: > institution.id]
+  type VARCHAR(255) // begin / end; normal / intensive
+}
+
+Table event_exposition {
+  id INT [pk]
+  note INT [ref: > note.id]
+  place VARCHAR(255) // enum?
+  comment TEXT
+}
+
+Table event_doctor {
+  note INT [ref: > note.id]
+  patients_doctors INT [ref: > patients_doctors.id]
+  changes TEXT
+}
+
+Table event_order_test {
+  id INT [pk]
+  note INT [ref: > note.id]
+  institution INT [ref: > institution.id]
+  material VARCHAR(255)
+  method VARCHAR(255)
+  pathogen VARCHAR(255)
+  changes TEXT
+}
+
+Table event_sample {
+  id INT [pk]
+  note INT [ref: > note.id]
+  institution INT [ref: > institution.id]
+  material VARCHAR(255)
+  method VARCHAR(255)
+  pathogen VARCHAR(255)
+  changes TEXT
+}
+
+Table event_laboratory {
+  id INT [pk]
+  note INT [ref: > note.id]
+  sample_taken TIMESTAMP // only of sample has no own event
+  material VARCHAR(255)
+  method VARCHAR(255)
+  resistance VARCHAR(255)
+  pathogen VARCHAR(255)
+  changes TEXT
+}
+
+Table event_special {
+  id INT [pk]
+  note INT [ref: > note.id]
+  type VARCHAR(255)
+  subtype VARCHAR(255)
+  comment TEXT
+}

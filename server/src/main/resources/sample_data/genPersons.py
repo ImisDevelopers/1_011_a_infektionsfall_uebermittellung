@@ -41,10 +41,10 @@ def gen_date_of_birth():
     year = 2020 - randint(15, 95)
     month = randrange(12) + 1
     day = randrange(28) + 1 if month == 2 else randrange(31) + 1
-    a = "{:02}".format(day)
-    b = "{:02}".format(month)
-    c = "{:02}".format(randint(1, 23))
-    return f'{year}-{b}-{a} {c}'
+    d = "{:02}".format(day)
+    m = "{:02}".format(month)
+
+    return f'{year}-{m}-{d}'
 
 
 def rand_num_str(len=10):

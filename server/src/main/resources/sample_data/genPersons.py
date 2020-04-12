@@ -1,7 +1,10 @@
 import json
 import pathlib
 import string
-from random import randint, randrange, choice, sample, getrandbits
+from random import randint, randrange, choice, sample, getrandbits,seed
+
+# introduce determinism
+seed(42)
 
 last_names = ['Peters', 'Müller', 'Schulz', 'Schulze', 'Weber', 'Wagner', 'Richter', 'Klein', 'Bauer', 'Schröder',
               'Lange', 'Winkler', 'Winter']

@@ -1,0 +1,22 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: "{{- include "imis.fullname" . -}}"
+  labels:
+    {{- include "imis.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: "{{- include "imis.fullname" . -}}"
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80

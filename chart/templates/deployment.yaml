@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{- include "imis.fullname" . -}}"
+  labels:
+    {{- include "imis.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
@@ -57,6 +59,13 @@ spec:
           timeoutSeconds: 2
           periodSeconds: 8
           failureThreshold: 1
+        resources:
+          requests:
+            cpu: 10m
+            memory: 350Mi
+          limits: # exactly 1 * g1-small
+            cpu: 940m
+            memory: 1.2G
       - name: cloudsql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.14
         command: ["/cloud_sql_proxy",

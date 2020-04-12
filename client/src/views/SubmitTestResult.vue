@@ -100,7 +100,7 @@ export default Vue.extend({
   },
   components: {
     TestInput,
-    LaboratoryInput
+    LaboratoryInput,
   },
   props: {},
   data() {

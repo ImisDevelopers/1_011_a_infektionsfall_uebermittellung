@@ -41,7 +41,7 @@
         <div style="text-align: left; font-size: 16px">
           {{ paragraph1 }}
         </div>
-        <br/>
+        <br />
         <div style="text-align: left">
           {{ paragraph2 }}
         </div>
@@ -73,7 +73,7 @@
     </div>
     <div class="second-section">
       <h1 style="margin: 0">Der IMIS-Meldeprozess - Einfach, Schnell, Zentral</h1>
-      <img src="../assets/imis-workflow.png"/>
+      <img src="../assets/imis-workflow.png" />
     </div>
     <div class="link-section">
       <a-button
@@ -88,6 +88,32 @@
         <span class="hidden-mobile">Hier geht's zu unserer Prozessübersicht</span>
         <span class="hidden-desktop">Zur Prozessübersicht</span>
       </a-button>
+    </div>
+    <div class="solution-enabler-section">
+      <h1>Gemeinsam gegen COVID-19</h1>
+      <h2 style="max-width: 800px; text-align: center;">IMIS ist aus dem <a href="https://wirvsvirushackathon.org/">#WirVsVirus</a>-Hackathon
+        hervorgegangen und
+        wird nun von einem Team aus über 30 Leuten aktiv weiterentwickelt.</h2>
+      <!--      <a-divider style="max-width: 1000px; min-width: 0"></a-divider>-->
+      <div class="solution-enabler-program">
+        <img src="../assets/Solution-Enabler.png" />
+        <div>
+          <h2>Als eines von 130 aus über 1500 Projekten ist IMIS in den
+            <a href="https://wirvsvirushackathon.org/weiterfuehrung-2/">Solution Enabler</a>
+            aufgenommen worden.</h2>
+          <h3>Dadurch erhalten wir Zugriff auf Coaching- und Unterstützungsangebote sowie Ressourcen und
+            Expertise.</h3>
+        </div>
+      </div>
+      <!--      <a-divider style="max-width: 1000px; min-width: 0"></a-divider>-->
+      <div class="solution-enabler-our-team">
+        <div>
+          <h2>Eine anspruchsvolle Aufgabe.</h2>
+          <h3>Und deshalb sind wir ein vielfältiges Team aus Organisatoren und Projektkoordinatoren, Frontend- und
+            Backend-Entwicklern, UI-Designern, Datenbankspezialisten und vielen mehr.</h3>
+        </div>
+        <a-icon type="team" :style="{ fontSize: '128px', color: '#2c3e50' }" style="margin-bottom: 25px" />
+      </div>
     </div>
     <div class="third-section">
       <div>
@@ -126,7 +152,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
   .button-container {
     display: flex;
@@ -148,22 +174,22 @@ export default {
     padding: 0 25px;
     height: 100px;
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-  }
 
-  .landing-header > img {
-    height: 80%;
+    > img {
+      height: 80%;
+    }
   }
 
   .header-buttons {
     display: flex;
     flex-wrap: wrap;
-  }
 
-  .header-buttons > .ant-btn {
-    margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    flex: 0;
+    > .ant-btn {
+      margin-left: 10px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      flex: 0;
+    }
   }
 
   .first-section {
@@ -174,45 +200,107 @@ export default {
     align-items: center;
     /*background: #2c3e50;*/
     background: linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
     ), url("../assets/wave-bg.svg");
     background-size: cover;
     color: rgba(255, 255, 255, 0.87);
-  }
 
-  .first-section-text {
-    flex: 1 1 auto;
-    max-width: 600px;
-    padding-left: 50px;
+    .first-section-text {
+      flex: 1 1 auto;
+      max-width: 600px;
+      padding-left: 50px;
+    }
   }
 
   .second-section {
     padding: 60px 50px 100px 50px;
     text-align: center;
     background: white;
+
+    > img {
+      max-width: 1200px;
+      width: 80%;
+      margin-top: 50px;
+    }
   }
 
-  .second-section > img {
-    max-width: 1200px;
-    width: 80%;
-    margin-top: 50px;
+  .solution-enabler-section {
+    padding: 60px 50px 100px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > h2 {
+      margin-bottom: 30px;
+    }
+
+    .solution-enabler-program {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      align-items: center;
+      box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+      border-radius: 25px;
+      margin: 30px 0;
+
+      img {
+        width: 100%;
+        max-width: 500px;
+        margin-bottom: 25px;
+        margin-top: 25px;
+      }
+
+      div {
+        flex: 1 0 300px;
+        text-align: left;
+        margin: 25px;
+      }
+    }
+
+    .solution-enabler-our-team {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 800px;
+      align-items: center;
+      padding-top: 50px;
+
+      img {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 800px;
+        align-items: center;
+        padding-top: 75px;
+      }
+
+      div {
+        flex: 1 0 300px;
+        text-align: left;
+        margin-right: 25px;
+      }
+    }
+
   }
 
   .third-section {
-    padding: 60px 50px;
-    background: #2c3e50;
+    padding: 100px 50px;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+    ), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3CradialGradient id='a' gradientUnits='objectBoundingBox'%3E%3Cstop offset='0' stop-color='%23122b7d'/%3E%3Cstop offset='1' stop-color='%23195eff'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='750' x2='1550' y2='750'%3E%3Cstop offset='0' stop-color='%231645be'/%3E%3Cstop offset='1' stop-color='%23195eff'/%3E%3C/linearGradient%3E%3Cpath id='s' fill='url(%23b)' d='M1549.2 51.6c-5.4 99.1-20.2 197.6-44.2 293.6c-24.1 96-57.4 189.4-99.3 278.6c-41.9 89.2-92.4 174.1-150.3 253.3c-58 79.2-123.4 152.6-195.1 219c-71.7 66.4-149.6 125.8-232.2 177.2c-82.7 51.4-170.1 94.7-260.7 129.1c-90.6 34.4-184.4 60-279.5 76.3C192.6 1495 96.1 1502 0 1500c96.1-2.1 191.8-13.3 285.4-33.6c93.6-20.2 185-49.5 272.5-87.2c87.6-37.7 171.3-83.8 249.6-137.3c78.4-53.5 151.5-114.5 217.9-181.7c66.5-67.2 126.4-140.7 178.6-218.9c52.3-78.3 96.9-161.4 133-247.9c36.1-86.5 63.8-176.2 82.6-267.6c18.8-91.4 28.6-184.4 29.6-277.4c0.3-27.6 23.2-48.7 50.8-48.4s49.5 21.8 49.2 49.5c0 0.7 0 1.3-0.1 2L1549.2 51.6z'/%3E%3Cg id='g'%3E%3Cuse href='%23s' transform='scale(0.12) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.2) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.25) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(0.3) rotate(-20)'/%3E%3Cuse href='%23s' transform='scale(0.4) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(0.5) rotate(20)'/%3E%3Cuse href='%23s' transform='scale(0.6) rotate(60)'/%3E%3Cuse href='%23s' transform='scale(0.7) rotate(10)'/%3E%3Cuse href='%23s' transform='scale(0.835) rotate(-40)'/%3E%3Cuse href='%23s' transform='scale(0.9) rotate(40)'/%3E%3Cuse href='%23s' transform='scale(1.05) rotate(25)'/%3E%3Cuse href='%23s' transform='scale(1.2) rotate(8)'/%3E%3Cuse href='%23s' transform='scale(1.333) rotate(-60)'/%3E%3Cuse href='%23s' transform='scale(1.45) rotate(-30)'/%3E%3Cuse href='%23s' transform='scale(1.6) rotate(10)'/%3E%3C/g%3E%3C/defs%3E%3Cg %3E%3Cg transform=''%3E%3Ccircle fill='url(%23a)' r='3000'/%3E%3Cg opacity='0.5'%3E%3Ccircle fill='url(%23a)' r='2000'/%3E%3Ccircle fill='url(%23a)' r='1800'/%3E%3Ccircle fill='url(%23a)' r='1700'/%3E%3Ccircle fill='url(%23a)' r='1651'/%3E%3Ccircle fill='url(%23a)' r='1450'/%3E%3Ccircle fill='url(%23a)' r='1250'/%3E%3Ccircle fill='url(%23a)' r='1175'/%3E%3Ccircle fill='url(%23a)' r='900'/%3E%3Ccircle fill='url(%23a)' r='750'/%3E%3Ccircle fill='url(%23a)' r='500'/%3E%3Ccircle fill='url(%23a)' r='380'/%3E%3Ccircle fill='url(%23a)' r='250'/%3E%3C/g%3E%3Cg transform=''%3E%3Cuse href='%23g' transform='rotate(10)'/%3E%3Cuse href='%23g' transform='rotate(120)'/%3E%3Cuse href='%23g' transform='rotate(240)'/%3E%3C/g%3E%3Ccircle fill-opacity='0.13' fill='url(%23a)' r='3000'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-size: cover;
+    /*background: #2c3e50;*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-  }
 
-  .third-section > div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: white;
-    margin: 10px 25px;
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: white;
+      margin: 10px 25px;
+    }
   }
 
   .link-section {
@@ -220,15 +308,36 @@ export default {
     justify-content: center;
     padding: 40px 20px;
     background: #d3d3d3;
-  }
 
-  .link-section span {
-    margin-left: 5px;
+    span {
+      margin-left: 5px;
+    }
   }
 
   @media (min-width: 1000px) {
     .hidden-desktop {
       display: none !important;
+    }
+  }
+
+  @media (max-width: 550px) {
+
+    .first-section {
+      .first-section-text {
+        padding-left: 0;
+      }
+    }
+
+    .solution-enabler-section {
+      .solution-enabler-our-team {
+        flex-direction: column-reverse;
+      }
+
+      .solution-enabler-program {
+        div {
+          margin: 15px;
+        }
+      }
     }
   }
 

@@ -40,12 +40,23 @@ symptoms = ['Husten', 'Fieber', 'Schnupfen', 'Erkältung', 'Atemschwierigkeiten'
             'Gelenkschmerzen']
 
 
+days_in_month = {
+    "01": 31, "02": 28,
+    "03": 31, "04": 30,
+    "05": 31, "06": 30,
+    "07": 31, "08": 31,
+    "09": 30, "10": 31,
+    "11": 30, "12": 31
+}
+
+
 def gen_date_of_birth():
     year = 2020 - randint(15, 95)
-    month = randrange(12) + 1
-    day = randrange(28) + 1 if month == 2 else randrange(31) + 1
+    m = "{:02}".format(randrange(12) + 1)
+
+    day = randrange(days_in_month[m]) + 1
     d = "{:02}".format(day)
-    m = "{:02}".format(month)
+
 
     return f'{year}-{m}-{d}'
 

@@ -18,14 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.coronavirus.imis.domain.InstitutionType;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import de.coronavirus.imis.domain.InstitutionImpl;
@@ -47,6 +44,9 @@ public class User implements UserDetails {
 
     @NotEmpty
     private String username;
+
+    private String firstName;
+    private String lastName;
 
     @JsonIgnore
     @NotEmpty

@@ -99,6 +99,8 @@ public class TestDataLoader implements ApplicationRunner {
             var user = User.builder()
                     .userRole(UserRole.USER_ROLE_ADMIN)
                     .username("test_lab")
+                    .firstName("Max")
+                    .lastName("Mustermann")
                     .institution(laboratory)
                     .password(encoder.encode("asdf"))
                     .build();
@@ -106,6 +108,8 @@ public class TestDataLoader implements ApplicationRunner {
 
             var testDoc = User.builder()
                     .username("test_doctor")
+                    .firstName("Sabine")
+                    .lastName("Musterfrau")
                     .institution(doctorsOffice)
                     .password(encoder.encode("asdf"))
                     .userRole(UserRole.USER_ROLE_ADMIN)
@@ -114,13 +118,17 @@ public class TestDataLoader implements ApplicationRunner {
             var testTestingSiteUser = User.builder()
                     .username("test_testing_site")
                     .institution(testSite)
+                    .firstName("Norbert")
+                    .lastName("Mustermann")
                     .password(encoder.encode("asdf"))
                     .userRole(UserRole.USER_ROLE_ADMIN)
                     .build();
             userRepository.saveAndFlush(testTestingSiteUser);
             var departmentOfHealthUser = User.builder()
                     .username("test_department_of_health")
-                    .institution(testSite)
+                    .institution(departmentOfHealth)
+                    .firstName("Hildegard")
+                    .lastName("Musterfrau")
                     .password(encoder.encode("asdf"))
                     .userRole(UserRole.USER_ROLE_ADMIN)
                     .build();

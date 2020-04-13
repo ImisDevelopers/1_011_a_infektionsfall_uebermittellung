@@ -1,6 +1,6 @@
 import { CreateInstitutionDTO, RegisterUserRequest } from '@/api/SwaggerApi'
 
-export type InstitutionType = CreateInstitutionDTO['institutionType'];
+export type InstitutionType = Exclude<CreateInstitutionDTO['institutionType'], undefined>;
 export type InstitutionRole =
   'ROLE_TEST_SITE'
   | 'ROLE_LABORATORY'

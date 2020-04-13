@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.api.dto.InstitutionDTO;
+import de.coronavirus.imis.api.exception.InstitutionNotFoundException;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.repositories.*;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,6 +34,41 @@ public class InstitutionService {
 
     public List<Doctor> getAllDoctors() {
         return doctorRepository.findAll();
+    }
+
+    @Transactional
+    public Institution updateInstitution(InstitutionDTO institutionDTO) {
+
+        final var institution = getInstitution(institutionDTO.getId(), institutionDTO.getInstitutionType());
+        institution.setCity(institutionDTO.getCity());
+        institution.setComment(institutionDTO.getComment());
+        institution.setEmail(institutionDTO.getEmail());
+        institution.setHouseNumber(institutionDTO.getHouseNumber());
+        institution.setName(institutionDTO.getName());
+        institution.setPhoneNumber(institutionDTO.getPhoneNumber());
+        institution.setStreet(institutionDTO.getStreet());
+        institution.setZip(institutionDTO.getZip());
+        switch (institution.getType()) {
+            case DEPARTMENT_OF_HEALTH:
+                departmentOfHealthRepository.save((DepartmentOfHealth) institution);
+                break;
+            case GOVERNMENT_AGENCY:
+                // TODO: Government Agency?
+                break;
+            case DOCTORS_OFFICE:
+                doctorRepository.save((Doctor) institution);
+                break;
+            case LABORATORY:
+                laboratoryRepository.save((Laboratory) institution);
+                break;
+            case TEST_SITE:
+                testSiteRepository.save((TestSite) institution);
+                break;
+            case CLINIC:
+                clinicRepository.save((Clinic) institution);
+                break;
+        }
+        return institution;
     }
 
     @Transactional
@@ -112,6 +149,83 @@ public class InstitutionService {
         return this.testSiteRepository.saveAndFlush(testSite);
     }
 
+    public InstitutionDTO mapInstitution(Institution institution) {
+        final InstitutionType type = institution.getType();
+        switch (type) {
+            case DEPARTMENT_OF_HEALTH:
+                final DepartmentOfHealth departmentOfHealth = (DepartmentOfHealth) institution;
+                return InstitutionDTO.builder()
+                        .id(departmentOfHealth.getId())
+                        .institutionType(type)
+                        .name(departmentOfHealth.getName())
+                        .street(departmentOfHealth.getStreet())
+                        .houseNumber(departmentOfHealth.getHouseNumber())
+                        .zip(departmentOfHealth.getZip())
+                        .city(departmentOfHealth.getCity())
+                        .email(departmentOfHealth.getEmail())
+                        .phoneNumber(departmentOfHealth.getPhoneNumber())
+                        .comment(departmentOfHealth.getComment())
+                        .build();
+            case LABORATORY:
+                final Laboratory laboratory = (Laboratory) institution;
+                return InstitutionDTO.builder()
+                        .id(laboratory.getId())
+                        .institutionType(type)
+                        .name(laboratory.getName())
+                        .street(laboratory.getStreet())
+                        .houseNumber(laboratory.getHouseNumber())
+                        .zip(laboratory.getZip())
+                        .city(laboratory.getCity())
+                        .email(laboratory.getEmail())
+                        .phoneNumber(laboratory.getPhoneNumber())
+                        .comment(laboratory.getComment())
+                        .build();
+            case TEST_SITE:
+                final TestSite testSite = (TestSite) institution;
+                return InstitutionDTO.builder()
+                        .id(testSite.getId())
+                        .institutionType(type)
+                        .name(testSite.getName())
+                        .street(testSite.getStreet())
+                        .houseNumber(testSite.getHouseNumber())
+                        .zip(testSite.getZip())
+                        .city(testSite.getCity())
+                        .email(testSite.getEmail())
+                        .phoneNumber(testSite.getPhoneNumber())
+                        .comment(testSite.getComment())
+                        .build();
+            case CLINIC:
+                final Clinic clinic = (Clinic) institution;
+                return InstitutionDTO.builder()
+                        .id(clinic.getId())
+                        .institutionType(type)
+                        .name(clinic.getName())
+                        .street(clinic.getStreet())
+                        .houseNumber(clinic.getHouseNumber())
+                        .zip(clinic.getZip())
+                        .city(clinic.getCity())
+                        .email(clinic.getEmail())
+                        .phoneNumber(clinic.getPhoneNumber())
+                        .comment(clinic.getComment())
+                        .build();
+            case DOCTORS_OFFICE:
+                final Doctor doctor = (Doctor) institution;
+                return InstitutionDTO.builder()
+                        .id(doctor.getId())
+                        .institutionType(type)
+                        .name(doctor.getName())
+                        .street(doctor.getStreet())
+                        .houseNumber(doctor.getHouseNumber())
+                        .zip(doctor.getZip())
+                        .city(doctor.getCity())
+                        .email(doctor.getEmail())
+                        .phoneNumber(doctor.getPhoneNumber())
+                        .comment(doctor.getComment())
+                        .build();
+        }
+        throw new IllegalArgumentException("Unknown type " + type);
+    }
+
     protected Institution createInstitution(CreateInstitutionDTO dto) {
         Institution result = null;
         switch (dto.getInstitutionType()) {
@@ -148,6 +262,8 @@ public class InstitutionService {
             case DOCTORS_OFFICE:
                 result = doctorRepository.getOne(id);
                 break;
+            case DEPARTMENT_OF_HEALTH:
+                result = departmentOfHealthRepository.getOne(id);
             case GOVERNMENT_AGENCY:
                 break;
         }
@@ -156,6 +272,7 @@ public class InstitutionService {
 
     /**
      * Query for institution by part of id
+     *
      * @param id id or a part of an id
      * @return List of matching institutions
      */

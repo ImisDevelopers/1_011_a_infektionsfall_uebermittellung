@@ -17,6 +17,11 @@ export interface AuthRequestDTO {
   username?: string;
 }
 
+export interface ChangePasswordDTO {
+  newPassword?: string;
+  oldPassword?: string;
+}
+
 export interface CreateInstitutionDTO {
   city?: string;
   comment?: string;
@@ -418,6 +423,15 @@ export interface User {
   username?: string;
 }
 
+export interface UserDTO {
+  authorities?: GrantedAuthority[];
+  firstName?: string;
+  id?: number;
+  lastName?: string;
+  userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
+  username?: string;
+}
+
 export interface View {
   contentType?: string;
 }
@@ -437,7 +451,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8642/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -515,7 +529,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl //localhost:8642/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -579,7 +593,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     getInstitutionUsingGet: (params?: RequestParams) =>
-      this.request<Institution, any>(`/api/auth/institution`, "GET", params, null, true),
+      this.request<InstitutionDTO, any>(`/api/auth/institution`, "GET", params, null, true),
 
     /**
      * @tags auth-controller
@@ -612,6 +626,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<User, any>(`/api/auth/user`, "GET", params, null, true),
 
     /**
+     * @tags auth-controller
+     * @name changePasswordUsingPOST
+     * @summary changePassword
+     * @request POST:/api/auth/user/change-password
+     * @secure
+     */
+    changePasswordUsingPost: (changePasswordDTO: ChangePasswordDTO, params?: RequestParams) =>
+      this.request<any, any>(`/api/auth/user/change-password`, "POST", params, changePasswordDTO, true),
+
+    /**
      * @tags doctor-controller
      * @name addScheduledEventUsingPOST
      * @summary addScheduledEvent
@@ -630,6 +654,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     createInstitutionUsingPost: (createInstitutionDTO: CreateInstitutionDTO, params?: RequestParams) =>
       this.request<InstitutionDTO, any>(`/api/institutions`, "POST", params, createInstitutionDTO, true),
+
+    /**
+     * @tags institution-controller
+     * @name updateInstitutionUsingPUT
+     * @summary updateInstitution
+     * @request PUT:/api/institutions
+     * @secure
+     */
+    updateInstitutionUsingPut: (institutionDTO: InstitutionDTO, params?: RequestParams) =>
+      this.request<InstitutionDTO, any>(`/api/institutions`, "PUT", params, institutionDTO, true),
 
     /**
      * @tags institution-controller
@@ -792,74 +826,86 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getForZipUsingGet: (query: { lowerBoundsZip: string; upperBoundsZips: string }, params?: RequestParams) =>
       this.request<AggregationResultZip[], any>(`/api/stats${this.addQueryParams(query)}`, "GET", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name getInstitutionUsersUsingGET
+     * @summary getInstitutionUsers
+     * @request GET:/api/users
+     * @secure
+     */
+    getInstitutionUsersUsingGet: (params?: RequestParams) =>
+      this.request<UserDTO[], any>(`/api/users`, "GET", params, null, true),
   };
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingGET
-     * @summary errorHtml
+     * @name errorUsingGET
+     * @summary error
      * @request GET:/error
      * @secure
      */
-    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
+    errorUsingGet: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingHEAD
-     * @summary errorHtml
+     * @name errorUsingHEAD
+     * @summary error
      * @request HEAD:/error
      * @secure
      */
-    errorHtmlUsingHead: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
+    errorUsingHead: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPOST
-     * @summary errorHtml
+     * @name errorUsingPOST
+     * @summary error
      * @request POST:/error
      * @secure
      */
-    errorHtmlUsingPost: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
+    errorUsingPost: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPUT
-     * @summary errorHtml
+     * @name errorUsingPUT
+     * @summary error
      * @request PUT:/error
      * @secure
      */
-    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
+    errorUsingPut: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingDELETE
-     * @summary errorHtml
+     * @name errorUsingDELETE
+     * @summary error
      * @request DELETE:/error
      * @secure
      */
-    errorHtmlUsingDelete: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
+    errorUsingDelete: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingOPTIONS
-     * @summary errorHtml
+     * @name errorUsingOPTIONS
+     * @summary error
      * @request OPTIONS:/error
      * @secure
      */
-    errorHtmlUsingOptions: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
+    errorUsingOptions: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPATCH
-     * @summary errorHtml
+     * @name errorUsingPATCH
+     * @summary error
      * @request PATCH:/error
      * @secure
      */
-    errorHtmlUsingPatch: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
+    errorUsingPatch: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
   };
 }

@@ -76,7 +76,7 @@ public class AuthService {
     }
 
     public Institution createInstitution(CreateInstitutionDTO createInstitutionDTO) {
-        var institution = institutionService.createInstitution(createInstitutionDTO);
+        var institution = institutionService.addInstitution(createInstitutionDTO);
         var user = createUser(createInstitutionDTO.getUser(), institution);
         institution = institutionService.getInstitution(user.getInstitutionId(), user.getInstitutionType());
         return institution;

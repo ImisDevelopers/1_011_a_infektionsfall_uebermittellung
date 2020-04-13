@@ -37,5 +37,5 @@ public abstract class InstitutionImpl implements Institution {
     @OneToMany(mappedBy = "institution")
     private List<User> users;
 
-
+    public abstract InstitutionType getType();
 }

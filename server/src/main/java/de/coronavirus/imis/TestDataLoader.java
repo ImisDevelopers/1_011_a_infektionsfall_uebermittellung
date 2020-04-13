@@ -76,23 +76,23 @@ public class TestDataLoader implements ApplicationRunner {
             // SETUP OUR WORLD
             log.info("Inserting laboratory");
             var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
-            var laboratory = institutionService.createLaboratoryInstitution(createLaboratoryDTO);
+            var laboratory = institutionService.addInstitution(createLaboratoryDTO);
 
             log.info("Inserting doctor");
             var createDoctorsOfficeDTO = (CreateInstitutionDTO) makeDTO("createDoctorsOffice.json", CreateInstitutionDTO.class);
-            var doctorsOffice = institutionService.createDoctorInstitution(createDoctorsOfficeDTO);
+            var doctorsOffice = institutionService.addInstitution(createDoctorsOfficeDTO);
 
             log.info("Inserting test site");
             var createTestSiteDTO = (CreateInstitutionDTO) makeDTO("createTestSite.json", CreateInstitutionDTO.class);
-            var testSite = institutionService.createTestSiteInstitution(createTestSiteDTO);
+            var testSite = institutionService.addInstitution(createTestSiteDTO);
 
             log.info("Inserting clinic");
             var createClinicDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
-            var clinic = institutionService.createClinicInstitution(createClinicDTO);
+            var clinic = institutionService.addInstitution(createClinicDTO);
 
             log.info("Inserting department of health");
-            var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createClinic.json", CreateInstitutionDTO.class);
-            var departmentOfHealth = institutionService.createDepartmentOfHealthInstitution(createDepartmentOfHealthDTO);
+            var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createDepartmentOfHealth.json", CreateInstitutionDTO.class);
+            var departmentOfHealth = institutionService.addInstitution(createDepartmentOfHealthDTO);
 
 
             var user = User.builder()

@@ -29,6 +29,6 @@ jobs:
         repo-token: "${{secrets.GITHUB_TOKEN}}"
         source-root: "client"
 
-    # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |
+        git fetch --unshallow
         gradle build lint test

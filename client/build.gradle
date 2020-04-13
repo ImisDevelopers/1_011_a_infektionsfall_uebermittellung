@@ -24,6 +24,11 @@ task test(type: YarnTask) {
 task serve(type: YarnTask) {
   args = ['serve']
 }
+
+task generateClient(type: YarnTask){
+  args=['run','generate:api-client']
+}
+
 lint.dependsOn(yarn_install)
 buildFrontend.dependsOn(lint)
 buildFrontend.dependsOn(yarn_install)

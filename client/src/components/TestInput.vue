@@ -2,7 +2,7 @@
   <a-form-item :label="label">
     <a-auto-complete @search="handleSearch" placeholder="Suche über ID" v-decorator="validation">
       <template slot="dataSource">
-        <a-select-option v-for="testId in result" :key="testId">{{testId}}</a-select-option>
+        <a-select-option :key="testId" v-for="testId in result">{{testId}}</a-select-option>
       </template>
     </a-auto-complete>
   </a-form-item>
@@ -38,7 +38,7 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        const labTests = await Api.api.queryLabTestsByIdUsingGet({ labTestIdQuery: value })
+        const labTests = await Api.api.queryLabTestsByIdUsingGet({labTestIdQuery: value})
         result = labTests.map(labTest => labTest.testId)
       }
       this.result = result

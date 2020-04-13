@@ -1,1 +1,28 @@
-{"lastName": "Wagner", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1971-03-01", "email": "p.wagner@gmx.de", "phoneNumber": "5930407859", "street": "Schernerweg", "houseNumber": 20, "zip": "13103480", "city": "K\u00f6ln", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "Z517065508", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Erk\u00e4ltung", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1971-03-01",
+  "email": "p.wagner@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 20,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Z517065508",
+  "lastName": "Wagner",
+  "phoneNumber": "5930407859",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "13103480"
+}

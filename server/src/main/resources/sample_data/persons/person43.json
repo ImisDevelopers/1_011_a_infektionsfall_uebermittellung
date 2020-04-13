@@ -1,1 +1,34 @@
-{"lastName": "M\u00fcller", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1956-05-09", "email": "t.mueller@web.de", "phoneNumber": "109251910254", "street": "Nordtstra\u00dfe", "houseNumber": 89, "zip": "10629148", "city": "Freiburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "Z452699013", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Fieber", "Kopfschmerzen", "Halschmerzen", "Erk\u00e4ltung", "Schnupfen", "Husten", "Gelenkschmerzen", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1956-05-09",
+  "email": "t.mueller@web.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 89,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Z452699013",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "109251910254",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Fieber",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "10629148"
+}

@@ -1,1 +1,34 @@
-{"lastName": "Peters", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1981-02-08", "email": "p.peters@web.de", "phoneNumber": "67837107701", "street": "Aastwiete", "houseNumber": 28, "zip": "63410957", "city": "Frankfurt", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "L556881239", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Kopfschmerzen", "Schnupfen", "Gelenkschmerzen", "Erk\u00e4ltung", "Halschmerzen", "Fieber", "Atemschwierigkeiten", "Husten"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1981-02-08",
+  "email": "p.peters@web.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 28,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L556881239",
+  "lastName": "Peters",
+  "phoneNumber": "67837107701",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "63410957"
+}

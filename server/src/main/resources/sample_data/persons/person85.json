@@ -1,1 +1,29 @@
-{"lastName": "Wagner", "firstName": "Lisa", "gender": "weiblich", "dateOfBirth": "1999-07-21", "email": "l.wagner@posteo.de", "phoneNumber": "43610110371", "street": "Haidth\u00f6heAarweg", "houseNumber": 75, "zip": "38107005", "city": "M\u00fcnchen", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "W241921987", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Halschmerzen", "Husten", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1999-07-21",
+  "email": "l.wagner@posteo.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 75,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "W241921987",
+  "lastName": "Wagner",
+  "phoneNumber": "43610110371",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Halschmerzen",
+    "Husten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "38107005"
+}

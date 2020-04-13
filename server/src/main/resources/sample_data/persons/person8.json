@@ -1,1 +1,28 @@
-{"lastName": "Schr\u00f6der", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1952-11-19", "email": "p.schroeder@t-online.de", "phoneNumber": "98543105346", "street": "Haidth\u00f6heAarweg", "houseNumber": 85, "zip": "10475107", "city": "M\u00fcnchen", "insuranceCompany": "AOK", "insuranceMembershipNumber": "R328872698", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Kopfschmerzen", "Husten"], "coronaContacts": true, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1952-11-19",
+  "email": "p.schroeder@t-online.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 85,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "R328872698",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "98543105346",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "10475107"
+}

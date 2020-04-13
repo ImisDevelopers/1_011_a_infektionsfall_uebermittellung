@@ -1,1 +1,25 @@
-{"lastName": "Schr\u00f6der", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1987-10-31", "email": "t.schroeder@web.de", "phoneNumber": "3784270103", "street": "Nordstra\u00dfe", "houseNumber": 28, "zip": "0870593", "city": "Hamburg", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "W290546084", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": [], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1987-10-31",
+  "email": "t.schroeder@web.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 28,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "W290546084",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "3784270103",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "0870593"
+}

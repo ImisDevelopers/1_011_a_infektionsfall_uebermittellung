@@ -1,1 +1,25 @@
-{"lastName": "Lange", "firstName": "Susanne", "gender": "weiblich", "dateOfBirth": "1963-11-28", "email": "s.lange@t-online.de", "phoneNumber": "86510780913", "street": "Nordtstra\u00dfe", "houseNumber": 87, "zip": "43161101", "city": "Bochum", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "W421549249", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": [], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Bochum",
+  "coronaContacts": false,
+  "dateOfBirth": "1963-11-28",
+  "email": "s.lange@t-online.de",
+  "firstName": "Susanne",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 87,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "W421549249",
+  "lastName": "Lange",
+  "phoneNumber": "86510780913",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "43161101"
+}

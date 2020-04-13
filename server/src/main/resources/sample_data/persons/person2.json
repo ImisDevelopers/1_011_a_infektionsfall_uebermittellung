@@ -1,1 +1,29 @@
-{"lastName": "Winkler", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1985-08-13", "email": "k.winkler@posteo.de", "phoneNumber": "410831050305", "street": "Niekampsweg", "houseNumber": 34, "zip": "13953107", "city": "Freiburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "O253407200", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Atemschwierigkeiten", "Kopfschmerzen", "Gelenkschmerzen"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1985-08-13",
+  "email": "k.winkler@posteo.de",
+  "firstName": "Kai",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 34,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "O253407200",
+  "lastName": "Winkler",
+  "phoneNumber": "410831050305",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "13953107"
+}

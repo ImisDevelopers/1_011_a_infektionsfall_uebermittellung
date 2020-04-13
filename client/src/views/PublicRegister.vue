@@ -3,40 +3,40 @@
     <a-card class="card">
       <div style="display: flex; align-items: center; justify-content: center">
         <img
-          src="../assets/logo.png"
           aspect-ratio="1.7"
+          src="../assets/logo.png"
           style="vertical-align: middle; height: 100px; margin-right: 25px"
         />
         <h1 style="margin: 0">Selbstregistrierung</h1>
       </div>
       <div style="margin-top: 35px">
         <a-steps :current="current" style="margin-bottom: 20px">
-          <a-step v-for="item in steps" :key="item.title" :title="item.title" />
+          <a-step :key="item.title" :title="item.title" v-for="item in steps"/>
         </a-steps>
 
-        <a-form :form="form" :layout="'horizontal'"
-                :labelCol="{ sm: { span: 8 },  xs: { span: 24 }  }"
+        <a-form :form="form" :labelCol="{ sm: { span: 8 },  xs: { span: 24 }  }"
+                :layout="'horizontal'"
                 :wrapperCol="{xs: { span: 24 }, sm: { span: 16 }}">
 
           <!-- Symptome -->
           <div :style="{ display: current === 0 ? 'block' : 'none' }">
             <h2>Welche der folgenden Symptome hatten Sie in den letzten 24h?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto"/>
               <div>
                 <a-form-item style="margin-bottom: 0">
-                  <a-checkbox-group v-decorator="['symptoms']" :options="symptoms" class="checkbox-group" />
+                  <a-checkbox-group :options="symptoms" class="checkbox-group" v-decorator="['symptoms']"/>
                 </a-form-item>
                 <div class="checkbox-group">
                   <div style="display: flex; align-items: center; align-self: stretch">
                     <a-checkbox @change="symptomsChanged">Andere:</a-checkbox>
                     <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
-                      <a-input v-decorator="['symptomsOther']" :disabled="!showOtherSymptoms" />
+                      <a-input :disabled="!showOtherSymptoms" v-decorator="['symptomsOther']"/>
                     </a-form-item>
                   </div>
                 </div>
               </div>
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto"/>
             </div>
           </div>
 
@@ -44,18 +44,18 @@
           <div :style="{ display: current === 1 ? 'block' : 'none' }">
             <h2>Welche Formen der Exposition treffen auf Sie zu?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto"/>
               <div style="display: flex; flex-direction: column">
                 <a-form-item>
-                  <a-checkbox-group v-decorator="['exposures']" :options="exposures" class="checkbox-group"
-                                    @change="exposuresChanged" />
+                  <a-checkbox-group :options="exposures" @change="exposuresChanged" class="checkbox-group"
+                                    v-decorator="['exposures']"/>
                 </a-form-item>
                 <a-form-item style="padding-left: 35px">
-                  <a-checkbox-group v-decorator="['exposureLocation']" :options="exposureLocation"
-                                    class="checkbox-group" :disabled="disableExposureLocation" />
+                  <a-checkbox-group :disabled="disableExposureLocation" :options="exposureLocation"
+                                    class="checkbox-group" v-decorator="['exposureLocation']"/>
                 </a-form-item>
               </div>
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto"/>
             </div>
           </div>
 
@@ -63,18 +63,18 @@
           <div :style="{ display: current === 2 ? 'block' : 'none' }">
             <h2>Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?</h2>
             <div style="display: flex">
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto"/>
               <a-form-item>
-                <a-checkbox-group v-decorator="['preIllnesses']" :options="preIllnesses" class="checkbox-group" />
+                <a-checkbox-group :options="preIllnesses" class="checkbox-group" v-decorator="['preIllnesses']"/>
               </a-form-item>
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto"/>
             </div>
           </div>
 
           <!-- Persönliche Daten -->
           <div :style="{ display: current === 3 ? 'block' : 'none' }" class="data-form">
             <h2>Bitte erfassen Sie nun Ihre persönlichen Daten.</h2>
-            <PatientStammdaten :form="form" />
+            <PatientStammdaten :form="form"/>
           </div>
 
           <!-- Finish -->
@@ -86,25 +86,25 @@
                   Ich erkläre mich mit der Übermittlung meiner Daten zur weiteren
                   Verarbeitung einverstanden.
                 </a-checkbox>
-                <span v-if="showCheckedError" style="color: red">Bitte bestätigen</span>
+                <span style="color: red" v-if="showCheckedError">Bitte bestätigen</span>
               </a-form-item>
               <a-button
-                style="width: 200px; margin-bottom: 25px;"
-                type="primary"
+                @click="save"
+                block
                 shape="round"
                 size="large"
-                block
-                @click="save"
+                style="width: 200px; margin-bottom: 25px;"
+                type="primary"
               >
-                <a-icon type="save" />
+                <a-icon type="save"/>
                 Daten übermitteln
               </a-button>
             </div>
             <div v-if="createdPatient">
               <h2>Geschafft!</h2>
               <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center">
-                <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }"
-                        style="margin-right: 25px" />
+                <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-right: 25px"
+                        type="check-circle"/>
                 <span>Sie erhalten in Kürze eine Email zur Bestätigung.</span>
               </div>
             </div>
@@ -116,30 +116,30 @@
 
       <div class="button-row">
         <a-button
-          style="flex: 0 1 150px;"
-          type="primary"
-          shape="round"
-          size="large"
-          block
-          class="button-row-button"
           :style="{ visibility: current === 0 || createdPatient ? 'hidden' : 'visible' }"
           @click="prev"
+          block
+          class="button-row-button"
+          shape="round"
+          size="large"
+          style="flex: 0 1 150px;"
+          type="primary"
         >
-          <a-icon type="arrow-left" />
+          <a-icon type="arrow-left"/>
           Zurück
         </a-button>
         <a-button
-          style="flex: 0 1 150px;"
-          type="primary"
-          shape="round"
-          size="large"
-          block
-          class="button-row-button"
           :style="{ visibility: current === 4 ? 'hidden' : 'visible' }"
           @click="next"
+          block
+          class="button-row-button"
+          shape="round"
+          size="large"
+          style="flex: 0 1 150px;"
+          type="primary"
         >
           Weiter
-          <a-icon type="arrow-right" />
+          <a-icon type="arrow-right"/>
         </a-button>
       </div>
     </a-card>
@@ -150,12 +150,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
-import { Option } from '@/models'
-import { SYMPTOMS } from '@/models/symptoms'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import {Patient} from '@/api/SwaggerApi'
+import {Option} from '@/models'
+import {SYMPTOMS} from '@/models/symptoms'
+import {PRE_ILLNESSES} from '@/models/pre-illnesses'
 import PatientStammdaten from '@/components/PatientStammdaten.vue'
-import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
+import {EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC} from '@/models/exposures'
 
 interface State {
   form: any;

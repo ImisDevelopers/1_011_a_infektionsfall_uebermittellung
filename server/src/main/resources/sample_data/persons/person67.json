@@ -1,1 +1,31 @@
-{"lastName": "Wagner", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1953-03-10", "email": "p.wagner@gmx.de", "phoneNumber": "6287334270", "street": "B\u00fcckerheide", "houseNumber": 52, "zip": "6882634", "city": "K\u00f6ln", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "U184901228", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Fieber", "Atemschwierigkeiten", "Kopfschmerzen", "Gelenkschmerzen", "Husten"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1953-03-10",
+  "email": "p.wagner@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 52,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "U184901228",
+  "lastName": "Wagner",
+  "phoneNumber": "6287334270",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide",
+  "symptoms": [
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "6882634"
+}

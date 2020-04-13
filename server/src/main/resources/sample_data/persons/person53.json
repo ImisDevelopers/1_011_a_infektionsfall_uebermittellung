@@ -1,1 +1,30 @@
-{"lastName": "Weber", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1973-04-21", "email": "p.weber@t-online.de", "phoneNumber": "842104981810", "street": "Haidth\u00f6heAarweg", "houseNumber": 75, "zip": "92210995", "city": "Berlin", "insuranceCompany": "AOK", "insuranceMembershipNumber": "C148814238", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Erk\u00e4ltung", "Halschmerzen", "Atemschwierigkeiten", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1973-04-21",
+  "email": "p.weber@t-online.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 75,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "C148814238",
+  "lastName": "Weber",
+  "phoneNumber": "842104981810",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "92210995"
+}

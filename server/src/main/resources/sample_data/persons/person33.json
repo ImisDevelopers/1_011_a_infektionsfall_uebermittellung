@@ -1,1 +1,29 @@
-{"lastName": "Schulze", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1949-04-28", "email": "t.schulze@gmx.de", "phoneNumber": "511058105064", "street": "Schernerweg", "houseNumber": 15, "zip": "7110310109", "city": "Berlin", "insuranceCompany": "AOK", "insuranceMembershipNumber": "Z458102728", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Fieber", "Halschmerzen", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1949-04-28",
+  "email": "t.schulze@gmx.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 15,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Z458102728",
+  "lastName": "Schulze",
+  "phoneNumber": "511058105064",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Fieber",
+    "Halschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "7110310109"
+}

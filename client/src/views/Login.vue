@@ -1,15 +1,16 @@
 <template>
   <a-card style="width: 500px; margin: 4rem auto; min-height: 300px;">
-    <a-form :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }" :form="form">
+    <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
       <div class="login-header">
         <img
-          src="../assets/logo.png"
           height="100"
+          src="../assets/logo.png"
         />
         <h3>Login</h3>
       </div>
       <a-form-item label="Kennung">
         <a-input
+          placeholder="z.B 1337-4237-9438"
           v-decorator="['username', {
                             rules: [{
                                 required: true,
@@ -17,28 +18,27 @@
                             }],
                             initialValue: '',
                         }]"
-          placeholder="z.B 1337-4237-9438"
         >
-          <a-icon slot="prefix" type="user" />
+          <a-icon slot="prefix" type="user"/>
         </a-input>
       </a-form-item>
       <a-form-item label="Passwort">
         <a-input
+          placeholder="**********"
+          type="password"
           v-decorator="['password', { rules: [{
               required: true,
               message: 'Bitte geben Sie Ihr Passwort ein.'
             }],
             initialValue: '',
           }]"
-          type="password"
-          placeholder="**********"
         >
-          <a-icon slot="prefix" type="lock" />
+          <a-icon slot="prefix" type="lock"/>
         </a-input>
       </a-form-item>
-      <a-divider />
+      <a-divider/>
       <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-        <a-button type="primary" html-type="submit" @click.prevent="handleLogin">
+        <a-button @click.prevent="handleLogin" html-type="submit" type="primary">
           Einloggen
         </a-button>
       </a-form-item>
@@ -58,7 +58,7 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import { authMapper } from '@/store/modules/auth.module'
+import {authMapper} from '@/store/modules/auth.module'
 
 export default Vue.extend({
   name: 'Login',

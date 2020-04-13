@@ -1,1 +1,30 @@
-{"lastName": "Schulze", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1925-03-06", "email": "d.schulze@gmx.de", "phoneNumber": "101066093796", "street": "Niekampsweg", "houseNumber": 0, "zip": "3341918", "city": "Hamburg", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "K311606895", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Gelenkschmerzen", "Atemschwierigkeiten", "Kopfschmerzen", "Schnupfen"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1925-03-06",
+  "email": "d.schulze@gmx.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 0,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "K311606895",
+  "lastName": "Schulze",
+  "phoneNumber": "101066093796",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "3341918"
+}

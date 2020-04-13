@@ -1,1 +1,33 @@
-{"lastName": "Klein", "firstName": "Jan", "gender": "m\u00e4nnlich", "dateOfBirth": "1978-07-29", "email": "j.klein@gmx.de", "phoneNumber": "0260647468", "street": "Nordtstra\u00dfe", "houseNumber": 91, "zip": "7234309", "city": "Frankfurt", "insuranceCompany": "AOK", "insuranceMembershipNumber": "X436730606", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Schnupfen", "Husten", "Atemschwierigkeiten", "Halschmerzen", "Fieber", "Kopfschmerzen", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1978-07-29",
+  "email": "j.klein@gmx.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 91,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "X436730606",
+  "lastName": "Klein",
+  "phoneNumber": "0260647468",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Schnupfen",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Halschmerzen",
+    "Fieber",
+    "Kopfschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "7234309"
+}

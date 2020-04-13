@@ -1,1 +1,27 @@
-{"lastName": "Schulz", "firstName": "Lisa", "gender": "weiblich", "dateOfBirth": "1955-09-05", "email": "l.schulz@web.de", "phoneNumber": "30047108686", "street": "Schernerweg", "houseNumber": 31, "zip": "7524310", "city": "Freiburg", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "Y116799547", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Fieber"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1955-09-05",
+  "email": "l.schulz@web.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 31,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Y116799547",
+  "lastName": "Schulz",
+  "phoneNumber": "30047108686",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "7524310"
+}

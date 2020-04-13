@@ -1,1 +1,28 @@
-{"lastName": "Richter", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1976-09-07", "email": "p.richter@gmx.de", "phoneNumber": "02843959910", "street": "Abbachstra\u00dfe", "houseNumber": 30, "zip": "42108364", "city": "D\u00fcsseldorf", "insuranceCompany": "AOK", "insuranceMembershipNumber": "R735297732", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Halschmerzen", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1976-09-07",
+  "email": "p.richter@gmx.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 30,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "R735297732",
+  "lastName": "Richter",
+  "phoneNumber": "02843959910",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Halschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "42108364"
+}

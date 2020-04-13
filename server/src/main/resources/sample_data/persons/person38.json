@@ -1,1 +1,32 @@
-{"lastName": "Schr\u00f6der", "firstName": "Hans", "gender": "m\u00e4nnlich", "dateOfBirth": "1997-03-24", "email": "h.schroeder@gmx.de", "phoneNumber": "10018366752", "street": "Abbachstra\u00dfe", "houseNumber": 39, "zip": "5991022", "city": "Berlin", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "C392168202", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Gelenkschmerzen", "Atemschwierigkeiten", "Erk\u00e4ltung", "Kopfschmerzen", "Schnupfen", "Husten"], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1997-03-24",
+  "email": "h.schroeder@gmx.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 39,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C392168202",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "10018366752",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "5991022"
+}

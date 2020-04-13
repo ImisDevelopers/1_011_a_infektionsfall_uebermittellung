@@ -1,1 +1,30 @@
-{"lastName": "Schulz", "firstName": "Marie", "gender": "weiblich", "dateOfBirth": "1973-08-04", "email": "m.schulz@t-online.de", "phoneNumber": "167191010022", "street": "Nordstra\u00dfe", "houseNumber": 38, "zip": "1318699", "city": "K\u00f6ln", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "M583736219", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Halschmerzen", "Schnupfen", "Atemschwierigkeiten", "Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1973-08-04",
+  "email": "m.schulz@t-online.de",
+  "firstName": "Marie",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 38,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M583736219",
+  "lastName": "Schulz",
+  "phoneNumber": "167191010022",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Halschmerzen",
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "1318699"
+}

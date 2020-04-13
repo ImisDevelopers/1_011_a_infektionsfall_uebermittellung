@@ -1,9 +1,9 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Telefon, Mail" v-decorator="validation"
-                     @select="emitSelection" :defaultActiveFirstOption="false">
+    <a-auto-complete :defaultActiveFirstOption="false" @search="handleSearch" @select="emitSelection"
+                     placeholder="Suche über ID, Name, Telefon, Mail" v-decorator="validation">
       <template slot="dataSource">
-        <a-select-option v-for="patient in result" :key="patient.id">
+        <a-select-option :key="patient.id" v-for="patient in result">
           {{patient.firstName}} {{patient.lastName}} ({{patient.id}})
         </a-select-option>
       </template>
@@ -15,7 +15,7 @@
 
 import Api from '@/api'
 import Vue from 'vue'
-import { Patient } from '@/api/SwaggerApi'
+import {Patient} from '@/api/SwaggerApi'
 
 /**
  * Autocomplete for Patients

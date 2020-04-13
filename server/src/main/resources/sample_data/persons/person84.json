@@ -1,1 +1,29 @@
-{"lastName": "Richter", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1951-04-16", "email": "k.richter@posteo.de", "phoneNumber": "4545892975", "street": "Nordtstra\u00dfe", "houseNumber": 97, "zip": "00110701", "city": "Hamburg", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "O100725768", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Schnupfen", "Kopfschmerzen", "Gelenkschmerzen"], "coronaContacts": false, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1951-04-16",
+  "email": "k.richter@posteo.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 97,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "O100725768",
+  "lastName": "Richter",
+  "phoneNumber": "4545892975",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "00110701"
+}

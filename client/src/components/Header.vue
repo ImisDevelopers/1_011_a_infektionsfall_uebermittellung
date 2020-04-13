@@ -4,15 +4,15 @@
 
     <div style="flex: 0 0 auto">
       <a-icon
-        type="menu"
-        style="color: white; padding: 1.5rem"
         @click="$emit('menu-toggle')"
+        style="color: white; padding: 1.5rem"
+        type="menu"
       />
       <span class="imis-title" style="color: white">IMIS</span>
     </div>
     <a-form :form="form" style="flex: 0 1 700px; display: flex; align-items: center">
-      <a-button class="search-link" type="link" html-type="submit" @click="searchPatient">
-        <a-icon type="search" />
+      <a-button @click="searchPatient" class="search-link" html-type="submit" type="link">
+        <a-icon type="search"/>
       </a-button>
       <PatientInput
         :form="form"
@@ -23,8 +23,8 @@
     </a-form>
     <div style="flex: 0 0 auto">
       <a-icon
-        type="user"
         style="color: #aaa; padding: 1.5rem"
+        type="user"
       />
       <span class="username" style="margin-right: 15px; color: rgba(255, 255, 255, 0.87)">{{username}}</span>
     </div>
@@ -33,7 +33,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import PatientInput from '@/components/PatientInput.vue'
-import { authMapper } from '@/store/modules/auth.module'
+import {authMapper} from '@/store/modules/auth.module'
 
 export default Vue.extend({
   name: 'Header',
@@ -55,12 +55,12 @@ export default Vue.extend({
   },
   methods: {
     searchPatient() {
-      this.$router.push({ name: 'patient-list', query: { query: this.form.getFieldValue('patientQuery') } }).catch(err => {
+      this.$router.push({name: 'patient-list', query: {query: this.form.getFieldValue('patientQuery')}}).catch(err => {
         console.warn('Received ' + err.name + ' while navigating to patient list')
       })
     },
     selectPatient(patientId: string) {
-      this.$router.push({ name: 'patient-detail', params: { id: patientId } })
+      this.$router.push({name: 'patient-detail', params: {id: patientId}})
     },
   },
 })

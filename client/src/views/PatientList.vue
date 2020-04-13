@@ -2,142 +2,142 @@
   <div>
     <a-card class="table-container">
       <!-- TODO refactor search in own component -->
-      <a-form class="search-container" :model="form">
+      <a-form :model="form" class="search-container">
         <a-form-item style="width: 600px; max-width: 100%">
-          <a-input v-model="form.query"
+          <a-input :disabled="showAdvancedSearch"
                    placeholder="Suche über ID, Name, Stadt, Email oder Telefon (z.B. 'Max Mustermann Berlin')"
-                   :disabled="showAdvancedSearch">
-            <a-icon slot="prefix" type="search" />
+                   v-model="form.query">
+            <a-icon slot="prefix" type="search"/>
           </a-input>
         </a-form-item>
         <a-button @click="toggleAdvancedSearch">
-          <a-icon :type="showAdvancedSearch ? 'down' : 'right'" />
+          <a-icon :type="showAdvancedSearch ? 'down' : 'right'"/>
           Erweiterte Suche
         </a-button>
-        <a-button icon="search" type="primary" html-type="submit"
-                  @click="handleSearch">
+        <a-button @click="handleSearch" html-type="submit" icon="search"
+                  type="primary">
           Suche
         </a-button>
       </a-form>
-      <a-form class="search-container" :model="advancedForm" v-if="showAdvancedSearch">
+      <a-form :model="advancedForm" class="search-container" v-if="showAdvancedSearch">
         <a-form-item label="Vorname">
-          <a-input v-model="advancedForm.firstName" placeholder="Vorname">
-            <a-icon slot="prefix" type="user" />
+          <a-input placeholder="Vorname" v-model="advancedForm.firstName">
+            <a-icon slot="prefix" type="user"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Nachname">
-          <a-input v-model="advancedForm.lastName" placeholder="Nachname">
-            <a-icon slot="prefix" type="user" />
+          <a-input placeholder="Nachname" v-model="advancedForm.lastName">
+            <a-icon slot="prefix" type="user"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Status">
-          <a-select style="width: 250px" placeholder="Status" v-model="advancedForm.patientStatus">
+          <a-select placeholder="Status" style="width: 250px" v-model="advancedForm.patientStatus">
             <a-select-option value="">Alle</a-select-option>
-            <a-select-option v-for="eventType in eventTypes" :key="eventType.id">
-              <a-icon :type="eventType.icon" style="margin-right: 5px" />
+            <a-select-option :key="eventType.id" v-for="eventType in eventTypes">
+              <a-icon :type="eventType.icon" style="margin-right: 5px"/>
               {{eventType.label}}
             </a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item label="ID">
-          <a-input v-model="advancedForm.id" placeholder="ID">
-            <a-icon slot="prefix" type="hdd" />
+          <a-input placeholder="ID" v-model="advancedForm.id">
+            <a-icon slot="prefix" type="hdd"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Geschlecht">
-          <a-select v-model="advancedForm.gender" style="width: 120px" placeholder="Geschlecht">
+          <a-select placeholder="Geschlecht" style="width: 120px" v-model="advancedForm.gender">
             <a-select-option value="">Alle</a-select-option>
             <a-select-option value="weiblich">
-              <a-icon type="woman" style="margin-right: 5px" />
+              <a-icon style="margin-right: 5px" type="woman"/>
               Weiblich
             </a-select-option>
             <a-select-option value="männlich">
-              <a-icon type="man" style="margin-right: 5px" />
+              <a-icon style="margin-right: 5px" type="man"/>
               Männlich
             </a-select-option>
             <a-select-option value="sonstiges">Sonstiges</a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item label="Stadt">
-          <a-input v-model="advancedForm.city" placeholder="Stadt">
-            <a-icon slot="prefix" type="home" />
+          <a-input placeholder="Stadt" v-model="advancedForm.city">
+            <a-icon slot="prefix" type="home"/>
           </a-input>
         </a-form-item>
         <a-form-item label="E-Mail">
-          <a-input v-model="advancedForm.email" placeholder="E-Mail">
-            <a-icon slot="prefix" type="mail" />
+          <a-input placeholder="E-Mail" v-model="advancedForm.email">
+            <a-icon slot="prefix" type="mail"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Telefonnummer">
-          <a-input v-model="advancedForm.phoneNumber" placeholder="Telefonnummer">
-            <a-icon slot="prefix" type="phone" />
+          <a-input placeholder="Telefonnummer" v-model="advancedForm.phoneNumber">
+            <a-icon slot="prefix" type="phone"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Straße">
-          <a-input v-model="advancedForm.street" placeholder="Straße">
-            <a-icon slot="prefix" type="home" />
+          <a-input placeholder="Straße" v-model="advancedForm.street">
+            <a-icon slot="prefix" type="home"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Hausnummer" style="width: 100px">
-          <a-input v-model="advancedForm.houseNumber" placeholder="Hausnr.">
-            <a-icon slot="prefix" type="home" />
+          <a-input placeholder="Hausnr." v-model="advancedForm.houseNumber">
+            <a-icon slot="prefix" type="home"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Postleitzahl" style="width: 100px">
-          <a-input v-model="advancedForm.zip" placeholder="PLZ">
-            <a-icon slot="prefix" type="home" />
+          <a-input placeholder="PLZ" v-model="advancedForm.zip">
+            <a-icon slot="prefix" type="home"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Versicherung">
-          <a-input v-model="advancedForm.insuranceCompany" placeholder="Versicherung">
-            <a-icon slot="prefix" type="hdd" />
+          <a-input placeholder="Versicherung" v-model="advancedForm.insuranceCompany">
+            <a-icon slot="prefix" type="hdd"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Versicherungsnummer">
-          <a-input v-model="advancedForm.insuranceMembershipNumber" placeholder="Versicherungsnummer">
-            <a-icon slot="prefix" type="idcard" />
+          <a-input placeholder="Versicherungsnummer" v-model="advancedForm.insuranceMembershipNumber">
+            <a-icon slot="prefix" type="idcard"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Arzt-ID">
-          <a-input v-model="advancedForm.doctorId" placeholder="Arzt-ID">
-            <a-icon slot="prefix" type="hdd" />
+          <a-input placeholder="Arzt-ID" v-model="advancedForm.doctorId">
+            <a-icon slot="prefix" type="hdd"/>
           </a-input>
         </a-form-item>
         <a-form-item label="Labor-ID">
-          <a-input v-model="advancedForm.laboratoryId" placeholder="Labor-ID">
-            <a-icon slot="prefix" type="hdd" />
+          <a-input placeholder="Labor-ID" v-model="advancedForm.laboratoryId">
+            <a-icon slot="prefix" type="hdd"/>
           </a-input>
         </a-form-item>
         <!-- Invisible Button so user can use enter to search -->
-        <a-button style="visibility: hidden" html-type="submit"
-                  @click="handleSearch" />
+        <a-button @click="handleSearch" html-type="submit"
+                  style="visibility: hidden"/>
       </a-form>
       <a-table
-        class="imis-table-no-pagination"
         :columns="columnsSchema"
-        :dataSource="actualPatients"
-        :scroll="{x: 0, y: 0}"
-        :pagination="{ pageSize: 500 }"
-        rowKey="id"
         :customRow="customRow"
+        :dataSource="actualPatients"
+        :pagination="{ pageSize: 500 }"
+        :scroll="{x: 0, y: 0}"
         @change="handleTableChange"
+        class="imis-table-no-pagination"
+        rowKey="id"
       >
         <div slot="patientStatus" slot-scope="patientStatus">
-          <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
+          <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px"/>
           {{eventTypes.find(type => type.id === patientStatus).label}}
         </div>
         <div slot="operation" slot-scope="nothing, patient" style="cursor: pointer">
-          <a-icon type="search" style="margin-right: 5px; cursor: pointer" @click="() => handlePatientClick(patient)" />
+          <a-icon @click="() => handlePatientClick(patient)" style="margin-right: 5px; cursor: pointer" type="search"/>
         </div>
       </a-table>
       <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end; align-items: center">
-        <a-button type="primary" style="margin-right: 50px" @click="downloadPatients">CSV exportieren</a-button>
+        <a-button @click="downloadPatients" style="margin-right: 50px" type="primary">CSV exportieren</a-button>
         <span style="margin-right: 10px">{{count}} Patienten</span>
         <a-pagination
-          showSizeChanger
           :pageSize.sync="form.pageSize"
-          @showSizeChange="onShowSizeChange"
           :total="count"
+          @showSizeChange="onShowSizeChange"
+          showSizeChanger
           v-model="currentPage"
         />
       </div>
@@ -148,11 +148,11 @@
 <!--// TestStationen Ordnen ProbeIds und durchzuführrende Tests den Patienten zu-->
 
 <script lang="ts">
-import { Column } from 'ant-design-vue/types/table/column'
+import {Column} from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
-import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
-import { eventTypes } from '@/models/event-types'
-import { downloadCsv } from '@/util/export-service'
+import {Patient, PatientSearchParamsDTO} from '@/api/SwaggerApi'
+import {eventTypes} from '@/models/event-types'
+import {downloadCsv} from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
 
@@ -294,7 +294,7 @@ export default Vue.extend({
       let countPromise
       let queryPromise
       if (this.showAdvancedSearch) {
-        const formValues = { ...this.form, ...this.advancedForm }
+        const formValues = {...this.form, ...this.advancedForm}
 
         if (formValues.patientStatus) {
           // Backend fails on empty string
@@ -305,8 +305,8 @@ export default Vue.extend({
         queryPromise = Api.api.queryPatientsUsingPost(formValues)
       } else {
         const query = this.form.query
-        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
-        queryPromise = Api.api.queryPatientsSimpleUsingPost({ ...this.form })
+        countPromise = Api.api.countQueryPatientsSimpleUsingGet({query})
+        queryPromise = Api.api.queryPatientsSimpleUsingPost({...this.form})
       }
 
       countPromise.then(count => {
@@ -331,16 +331,16 @@ export default Vue.extend({
       let countPromise
       let formValues: any
       if (this.showAdvancedSearch) {
-        formValues = { ...this.form, ...this.advancedForm }
+        formValues = {...this.form, ...this.advancedForm}
         if (formValues.patientStatus) {
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
         countPromise = Api.api.countQueryPatientsUsingPost(formValues)
       } else {
-        formValues = { ...this.form }
+        formValues = {...this.form}
         const query = this.form.query
-        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
+        countPromise = Api.api.countQueryPatientsSimpleUsingGet({query})
       }
 
       countPromise.then(count => {
@@ -387,7 +387,7 @@ export default Vue.extend({
     },
     handlePatientClick(patient: Patient) {
       if (patient.id) {
-        this.$router.push({ name: 'patient-detail', params: { id: patient.id } })
+        this.$router.push({name: 'patient-detail', params: {id: patient.id}})
       }
     },
     customRow(record: Patient) {

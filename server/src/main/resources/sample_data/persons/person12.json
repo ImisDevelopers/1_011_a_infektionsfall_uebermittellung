@@ -1,1 +1,34 @@
-{"lastName": "Winkler", "firstName": "Marie", "gender": "weiblich", "dateOfBirth": "1950-10-17", "email": "m.winkler@gmail.de", "phoneNumber": "1693406088", "street": "Nordtstra\u00dfe", "houseNumber": 92, "zip": "103561105", "city": "Kiel", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "D872830248", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Atemschwierigkeiten", "Kopfschmerzen", "Erk\u00e4ltung", "Schnupfen", "Halschmerzen", "Gelenkschmerzen", "Fieber", "Husten"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1950-10-17",
+  "email": "m.winkler@gmail.de",
+  "firstName": "Marie",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 92,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "D872830248",
+  "lastName": "Winkler",
+  "phoneNumber": "1693406088",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "103561105"
+}

@@ -1,9 +1,9 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Stadt" v-decorator="validation"
-                     :disabled="disabled">
+    <a-auto-complete :disabled="disabled" @search="handleSearch" placeholder="Suche über ID, Name, Stadt"
+                     v-decorator="validation">
       <template slot="dataSource">
-        <a-select-option v-for="laboratory in result" :key="laboratory.id">
+        <a-select-option :key="laboratory.id" v-for="laboratory in result">
           {{laboratory.name}} ({{laboratory.city}})
         </a-select-option>
       </template>
@@ -15,7 +15,7 @@
 
 import Api from '@/api'
 import Vue from 'vue'
-import { Laboratory } from '@/api/SwaggerApi'
+import {Laboratory} from '@/api/SwaggerApi'
 
 /**
  * Input that supports 1d and 2d Barcodes
@@ -37,7 +37,7 @@ export default Vue.extend({
     }
   },
   watch: {
-    initialLabs: function(labs) {
+    initialLabs: function (labs) {
       if (labs && labs.length > 0) {
         this.result = labs
       }
@@ -49,7 +49,7 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        result = await Api.api.queryAllLaboratoriesUsingGet({ id: value })
+        result = await Api.api.queryAllLaboratoriesUsingGet({id: value})
       }
       this.result = result
     },

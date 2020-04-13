@@ -1,1 +1,33 @@
-{"lastName": "Klein", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1954-05-15", "email": "p.klein@posteo.de", "phoneNumber": "1027677359", "street": "Haidth\u00f6heAarweg", "houseNumber": 40, "zip": "5562588", "city": "M\u00fcnchen", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "H600871106", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung", "Fieber", "Husten", "Kopfschmerzen", "Schnupfen", "Halschmerzen", "Gelenkschmerzen"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1954-05-15",
+  "email": "p.klein@posteo.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 40,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "H600871106",
+  "lastName": "Klein",
+  "phoneNumber": "1027677359",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Husten",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Halschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "5562588"
+}

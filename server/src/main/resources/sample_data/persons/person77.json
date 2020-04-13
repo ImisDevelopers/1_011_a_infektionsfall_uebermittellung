@@ -1,1 +1,29 @@
-{"lastName": "Bauer", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1936-01-26", "email": "p.bauer@gmx.de", "phoneNumber": "5891011310105", "street": "Haidth\u00f6heAarweg", "houseNumber": 82, "zip": "9091010106", "city": "Kiel", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "D111325589", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung", "Gelenkschmerzen", "Schnupfen"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1936-01-26",
+  "email": "p.bauer@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 82,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "D111325589",
+  "lastName": "Bauer",
+  "phoneNumber": "5891011310105",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "9091010106"
+}

@@ -10,24 +10,24 @@
 
         <!-- Labor -->
         <LaboratoryInput
-          label="Labor"
           :form="form"
           :initial-labs="laboratories"
           :validation="['laboratoryId', { rules: [{
             required: true,
             message: 'Bitte wählen Sie ein Labor aus.'
           }]}]"
+          label="Labor"
         />
 
         <!-- TestId -->
         <TestInput
-          label="Test-ID"
-          placeholder="z.B 1337-4237-9438"
           :form="form"
           :validation="['testId', { rules: [{
             required: true,
             message: 'Bitte geben Sie Ihre Test-ID ein.'
           }]}]"
+          label="Test-ID"
+          placeholder="z.B 1337-4237-9438"
         />
 
         <!-- TestResult -->
@@ -38,8 +38,8 @@
               required: true,
               message: 'Bitte geben Sie das Testresultat an.'
             }]}]">
-            <a-radio v-for="testResult in testResults" :value="testResult.id" :key="testResult.id">
-              <a-icon :type="testResult.icon" />
+            <a-radio :key="testResult.id" :value="testResult.id" v-for="testResult in testResults">
+              <a-icon :type="testResult.icon"/>
               {{testResult.label}}
             </a-radio>
           </a-radio-group>
@@ -48,8 +48,8 @@
         <!-- Kommentar -->
         <a-form-item label="Kommentar">
           <a-textarea
-            placeholder="Kommentar hinzufügen"
             :autoSize="{ minRows: 3, maxRows: 5 }"
+            placeholder="Kommentar hinzufügen"
             v-decorator="['comment']"
           />
         </a-form-item>
@@ -57,15 +57,15 @@
         <!-- Hochladen -->
         <a-form-item :wrapper-col="{ span: 24 }">
           <a-button v-on:click="uploadHint()">
-            <a-icon type="upload" />
+            <a-icon type="upload"/>
             Test Report hochladen
           </a-button>
         </a-form-item>
-        <a-divider />
+        <a-divider/>
 
         <!-- Speichern -->
         <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-          <a-button type="primary" html-type="submit">
+          <a-button html-type="submit" type="primary">
             Speichern
           </a-button>
         </a-form-item>
@@ -74,10 +74,10 @@
 
     <!-- Confirmation after creation -->
     <div v-if="updatedLabTest">
-      <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" />
+      <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" type="check-circle"/>
       <div>
         <div>Der Test wurde erfolgreich aktualisiert.</div>
-        <br />
+        <br/>
         <div>Test ID: {{ updatedLabTest.testId }}</div>
         <div>Neuer Test Status: {{ updatedLabTestStatus }}</div>
       </div>
@@ -90,13 +90,13 @@ import Api from '@/api'
 import TestInput from '../components/TestInput'
 import LaboratoryInput from '../components/LaboratoryInput'
 import Vue from 'vue'
-import { authMapper } from '@/store/modules/auth.module'
-import { testResults } from '@/models/event-types'
+import {authMapper} from '@/store/modules/auth.module'
+import {testResults} from '@/models/event-types'
 
 export default Vue.extend({
   name: 'LinkTestResultAndPatient',
   computed: {
-    ...authMapper.mapGetters({ institution: 'institution' }),
+    ...authMapper.mapGetters({institution: 'institution'}),
   },
   components: {
     TestInput,
@@ -167,7 +167,7 @@ export default Vue.extend({
           return
         }
 
-        const { testId } = values
+        const {testId} = values
         const request = {
           testId,
           status: values.testResult,

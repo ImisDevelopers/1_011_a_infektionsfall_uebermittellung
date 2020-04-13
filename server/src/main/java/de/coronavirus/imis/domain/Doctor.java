@@ -1,10 +1,9 @@
 package de.coronavirus.imis.domain;
 
-import javax.persistence.Entity;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import javax.persistence.Entity;
 
 @EqualsAndHashCode(callSuper = true)
 @Accessors(fluent = true)
@@ -12,9 +11,9 @@ import lombok.experimental.Accessors;
 @Data
 public class Doctor extends InstitutionImpl {
 
-  @Override
-  public InstitutionType getType() {
-    return InstitutionType.DOCTORS_OFFICE;
-  }
+	@Override
+	public InstitutionType getType() {
+		return InstitutionType.DOCTORS_OFFICE;
+	}
 
 }

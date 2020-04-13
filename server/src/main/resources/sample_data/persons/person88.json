@@ -1,1 +1,27 @@
-{"lastName": "Peters", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1941-05-21", "email": "p.peters@gmx.de", "phoneNumber": "86661108892", "street": "Aastwiete", "houseNumber": 10, "zip": "4183285", "city": "Freiburg", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "U919505668", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Atemschwierigkeiten"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-05-21",
+  "email": "p.peters@gmx.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 10,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "U919505668",
+  "lastName": "Peters",
+  "phoneNumber": "86661108892",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete",
+  "symptoms": [
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "4183285"
+}

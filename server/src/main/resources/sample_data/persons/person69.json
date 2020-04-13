@@ -1,1 +1,34 @@
-{"lastName": "Weber", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1931-10-24", "email": "p.weber@web.de", "phoneNumber": "6423536937", "street": "B\u00fcckerheide", "houseNumber": 83, "zip": "105471077", "city": "Hamburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "Z478146284", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Gelenkschmerzen", "Fieber", "Atemschwierigkeiten", "Husten", "Kopfschmerzen", "Erk\u00e4ltung", "Schnupfen", "Halschmerzen"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1931-10-24",
+  "email": "p.weber@web.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 83,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Z478146284",
+  "lastName": "Weber",
+  "phoneNumber": "6423536937",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "105471077"
+}

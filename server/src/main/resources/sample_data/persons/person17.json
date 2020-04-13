@@ -1,1 +1,29 @@
-{"lastName": "Peters", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "1957-06-07", "email": "a.peters@gmail.de", "phoneNumber": "7556464170", "street": "Nordufer", "houseNumber": 69, "zip": "053101100", "city": "Berlin", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "G121882877", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Schnupfen", "Erk\u00e4ltung", "Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1957-06-07",
+  "email": "a.peters@gmail.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 69,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "G121882877",
+  "lastName": "Peters",
+  "phoneNumber": "7556464170",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer",
+  "symptoms": [
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "053101100"
+}

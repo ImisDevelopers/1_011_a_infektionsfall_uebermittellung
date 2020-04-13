@@ -1,1 +1,25 @@
-{"lastName": "Weber", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1970-09-16", "email": "d.weber@posteo.de", "phoneNumber": "10347143455", "street": "B\u00fcckerheide", "houseNumber": 10, "zip": "2236231", "city": "Freiburg", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "K682624278", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": [], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1970-09-16",
+  "email": "d.weber@posteo.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 10,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "K682624278",
+  "lastName": "Weber",
+  "phoneNumber": "10347143455",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "2236231"
+}

@@ -6,5 +6,5 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class TokenDTO {
-    private final String jwtToken;
+	private final String jwtToken;
 }

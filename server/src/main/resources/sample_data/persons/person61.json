@@ -1,1 +1,30 @@
-{"lastName": "Winkler", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "2001-01-10", "email": "a.winkler@gmail.de", "phoneNumber": "99154710887", "street": "Haidth\u00f6heAarweg", "houseNumber": 64, "zip": "7431527", "city": "D\u00fcsseldorf", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "F115122787", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung", "Fieber", "Atemschwierigkeiten", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "2001-01-10",
+  "email": "a.winkler@gmail.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 64,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "F115122787",
+  "lastName": "Winkler",
+  "phoneNumber": "99154710887",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "7431527"
+}

@@ -460,18 +460,36 @@ class HttpClient<SecurityDataType> {
     this.securityData = data;
   };
 
+  public request = <T = any, E = any>(
+    path: string,
+    method: string,
+    { secure, ...params }: RequestParams = {},
+    body?: any,
+    secureByDefault?: boolean,
+  ): Promise<T> =>
+    fetch(`${this.baseUrl}${path}`, {
+      // @ts-ignore
+      ...this.mergeRequestOptions(params, (secureByDefault || secure) && this.securityWorker(this.securityData)),
+      method,
+      body: body ? JSON.stringify(body) : null,
+    }).then(async (response) => {
+      const data = await this.safeParseResponse<T, E>(response);
+      if (!response.ok) throw data;
+      return data;
+    });
+
+  protected addQueryParams(query?: RequestQueryParamsType): string {
+    const fixedQuery = query || {};
+    const keys = Object.keys(fixedQuery).filter((key) => "undefined" !== typeof fixedQuery[key]);
+    return keys.length === 0 ? "" : `?${keys.map((key) => this.addQueryParam(fixedQuery, key)).join("&")}`;
+  }
+
   private addQueryParam(query: RequestQueryParamsType, key: string) {
     return (
       encodeURIComponent(key) +
       "=" +
       encodeURIComponent(Array.isArray(query[key]) ? (query[key] as any).join(",") : query[key])
     );
-  }
-
-  protected addQueryParams(query?: RequestQueryParamsType): string {
-    const fixedQuery = query || {};
-    const keys = Object.keys(fixedQuery).filter((key) => "undefined" !== typeof fixedQuery[key]);
-    return keys.length === 0 ? "" : `?${keys.map((key) => this.addQueryParam(fixedQuery, key)).join("&")}`;
   }
 
   private mergeRequestOptions(params: RequestParams, securityParams?: RequestParams): RequestParams {
@@ -492,24 +510,6 @@ class HttpClient<SecurityDataType> {
       .json()
       .then((data) => data)
       .catch((e) => response.text);
-
-  public request = <T = any, E = any>(
-    path: string,
-    method: string,
-    { secure, ...params }: RequestParams = {},
-    body?: any,
-    secureByDefault?: boolean,
-  ): Promise<T> =>
-    fetch(`${this.baseUrl}${path}`, {
-      // @ts-ignore
-      ...this.mergeRequestOptions(params, (secureByDefault || secure) && this.securityWorker(this.securityData)),
-      method,
-      body: body ? JSON.stringify(body) : null,
-    }).then(async (response) => {
-      const data = await this.safeParseResponse<T, E>(response);
-      if (!response.ok) throw data;
-      return data;
-    });
 }
 
 /**

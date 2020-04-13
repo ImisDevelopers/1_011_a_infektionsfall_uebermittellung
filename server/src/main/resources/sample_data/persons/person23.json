@@ -1,1 +1,28 @@
-{"lastName": "Weber", "firstName": "Franz", "gender": "m\u00e4nnlich", "dateOfBirth": "1985-04-06", "email": "f.weber@t-online.de", "phoneNumber": "8120679740", "street": "Schernerweg", "houseNumber": 36, "zip": "471103410", "city": "K\u00f6ln", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "D684719405", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Atemschwierigkeiten", "Halschmerzen"], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1985-04-06",
+  "email": "f.weber@t-online.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 36,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "D684719405",
+  "lastName": "Weber",
+  "phoneNumber": "8120679740",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "471103410"
+}

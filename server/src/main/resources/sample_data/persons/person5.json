@@ -1,1 +1,27 @@
-{"lastName": "Winter", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1966-07-22", "email": "k.winter@posteo.de", "phoneNumber": "10578713315", "street": "Aarhusweg", "houseNumber": 75, "zip": "83930110", "city": "Berlin", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "C133729406", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1966-07-22",
+  "email": "k.winter@posteo.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 75,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "C133729406",
+  "lastName": "Winter",
+  "phoneNumber": "10578713315",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "83930110"
+}

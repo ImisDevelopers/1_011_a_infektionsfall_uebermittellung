@@ -1,1 +1,31 @@
-{"lastName": "Lange", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1996-11-21", "email": "p.lange@t-online.de", "phoneNumber": "658102029107", "street": "Aarhusweg", "houseNumber": 16, "zip": "13105569", "city": "Berlin", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "E829137330", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Gelenkschmerzen", "Halschmerzen", "Husten", "Atemschwierigkeiten", "Fieber"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1996-11-21",
+  "email": "p.lange@t-online.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 16,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "E829137330",
+  "lastName": "Lange",
+  "phoneNumber": "658102029107",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "13105569"
+}

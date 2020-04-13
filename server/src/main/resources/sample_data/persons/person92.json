@@ -1,1 +1,30 @@
-{"lastName": "Schulze", "firstName": "Lisa", "gender": "weiblich", "dateOfBirth": "1975-07-16", "email": "l.schulze@web.de", "phoneNumber": "0241038657", "street": "Nordufer", "houseNumber": 10, "zip": "91821061", "city": "Berlin", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "V240346956", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Kopfschmerzen", "Halschmerzen", "Erk\u00e4ltung", "Schnupfen"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1975-07-16",
+  "email": "l.schulze@web.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 10,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "V240346956",
+  "lastName": "Schulze",
+  "phoneNumber": "0241038657",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordufer",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "91821061"
+}

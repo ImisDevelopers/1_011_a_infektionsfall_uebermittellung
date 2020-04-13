@@ -1,1 +1,27 @@
-{"lastName": "Wagner", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1970-05-04", "email": "d.wagner@web.de", "phoneNumber": "91086652404", "street": "Nordufer", "houseNumber": 10, "zip": "57104733", "city": "Frankfurt", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "R847508242", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Erk\u00e4ltung"], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1970-05-04",
+  "email": "d.wagner@web.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 10,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "R847508242",
+  "lastName": "Wagner",
+  "phoneNumber": "91086652404",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer",
+  "symptoms": [
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "57104733"
+}

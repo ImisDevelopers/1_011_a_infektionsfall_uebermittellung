@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class UpdateLabTestDTO {
-    private String id;
-    private String laboratoryId;
-    private String labInternalId;
-    private TestStatus testStatus;
+	private String id;
+	private String laboratoryId;
+	private String labInternalId;
+	private TestStatus testStatus;
 }

@@ -1,1 +1,34 @@
-{"lastName": "Winter", "firstName": "Franz", "gender": "m\u00e4nnlich", "dateOfBirth": "1934-04-16", "email": "f.winter@web.de", "phoneNumber": "3540331739", "street": "Nordufer", "houseNumber": 26, "zip": "6385467", "city": "Frankfurt", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "L431165907", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Gelenkschmerzen", "Erk\u00e4ltung", "Husten", "Halschmerzen", "Schnupfen", "Kopfschmerzen", "Fieber", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1934-04-16",
+  "email": "f.winter@web.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 26,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "L431165907",
+  "lastName": "Winter",
+  "phoneNumber": "3540331739",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordufer",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Halschmerzen",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "6385467"
+}

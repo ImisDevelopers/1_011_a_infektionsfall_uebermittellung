@@ -1,1 +1,33 @@
-{"lastName": "Richter", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1934-12-18", "email": "p.richter@gmx.de", "phoneNumber": "3171210032", "street": "Schernerweg", "houseNumber": 51, "zip": "5101010199", "city": "D\u00fcsseldorf", "insuranceCompany": "AOK", "insuranceMembershipNumber": "A169226321", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Schnupfen", "Husten", "Gelenkschmerzen", "Halschmerzen", "Atemschwierigkeiten", "Fieber", "Erk\u00e4ltung"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1934-12-18",
+  "email": "p.richter@gmx.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 51,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "A169226321",
+  "lastName": "Richter",
+  "phoneNumber": "3171210032",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "5101010199"
+}

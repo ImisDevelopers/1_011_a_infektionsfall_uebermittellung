@@ -1,1 +1,25 @@
-{"lastName": "Peters", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1967-07-28", "email": "d.peters@gmail.de", "phoneNumber": "6889373467", "street": "Aarhusweg", "houseNumber": 49, "zip": "510106272", "city": "Frankfurt", "insuranceCompany": "AOK", "insuranceMembershipNumber": "M735540030", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": [], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1967-07-28",
+  "email": "d.peters@gmail.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 49,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "M735540030",
+  "lastName": "Peters",
+  "phoneNumber": "6889373467",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "510106272"
+}

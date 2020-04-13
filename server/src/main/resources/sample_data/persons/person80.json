@@ -1,1 +1,34 @@
-{"lastName": "Wagner", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1926-03-27", "email": "t.wagner@gmx.de", "phoneNumber": "104991102513", "street": "Aastwiete", "houseNumber": 14, "zip": "2528669", "city": "Hamburg", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "M554234434", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Schnupfen", "Atemschwierigkeiten", "Fieber", "Erk\u00e4ltung", "Gelenkschmerzen", "Husten", "Halschmerzen", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Hamburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1926-03-27",
+  "email": "t.wagner@gmx.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 14,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M554234434",
+  "lastName": "Wagner",
+  "phoneNumber": "104991102513",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete",
+  "symptoms": [
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Husten",
+    "Halschmerzen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "2528669"
+}

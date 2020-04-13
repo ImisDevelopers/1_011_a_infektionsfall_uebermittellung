@@ -1,1 +1,30 @@
-{"lastName": "Winkler", "firstName": "Jan", "gender": "m\u00e4nnlich", "dateOfBirth": "1953-09-25", "email": "j.winkler@posteo.de", "phoneNumber": "97028385107", "street": "B\u00fcckerheide", "houseNumber": 48, "zip": "5278585", "city": "D\u00fcsseldorf", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "P306442077", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Atemschwierigkeiten", "Fieber", "Schnupfen", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1953-09-25",
+  "email": "j.winkler@posteo.de",
+  "firstName": "Jan",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 48,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P306442077",
+  "lastName": "Winkler",
+  "phoneNumber": "97028385107",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Schnupfen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "5278585"
+}

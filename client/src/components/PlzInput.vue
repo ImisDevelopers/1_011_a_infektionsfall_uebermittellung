@@ -1,8 +1,8 @@
 <template>
   <a-form-item label="PLZ">
-    <a-auto-complete @search="handlePlzSearch" v-decorator="decorator" @select="handlePlzSelection">
+    <a-auto-complete @search="handlePlzSearch" @select="handlePlzSelection" v-decorator="decorator">
       <template slot="dataSource">
-        <a-select-option v-for="plz in plzs" :key="plz.fields.plz">
+        <a-select-option :key="plz.fields.plz" v-for="plz in plzs">
           {{plz.fields.plz}} {{plz.fields.note}}
         </a-select-option>
       </template>
@@ -13,7 +13,7 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import { getPlzs, Plz } from '@/util/plz-service'
+import {getPlzs, Plz} from '@/util/plz-service'
 
 export interface State {
   plzs: Plz[];

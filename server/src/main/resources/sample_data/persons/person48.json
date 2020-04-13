@@ -1,1 +1,29 @@
-{"lastName": "Schulz", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1960-09-11", "email": "t.schulz@t-online.de", "phoneNumber": "1021077102217", "street": "Aarhusweg", "houseNumber": 37, "zip": "3030548", "city": "Freiburg", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "P371993587", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Atemschwierigkeiten", "Schnupfen", "Husten"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1960-09-11",
+  "email": "t.schulz@t-online.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 37,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P371993587",
+  "lastName": "Schulz",
+  "phoneNumber": "1021077102217",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "3030548"
+}

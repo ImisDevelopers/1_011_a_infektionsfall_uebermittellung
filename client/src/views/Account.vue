@@ -3,8 +3,8 @@
     <h3>Eingeloggt: {{ username }}</h3>
     <a-form
       :form="registerUserForm"
-      :layout="'horizontal'"
       :labelCol="{ span: 8 }"
+      :layout="'horizontal'"
       :wrapperCol="{ span: 16}"
       @submit.prevent="handleRegisterUser"
     >
@@ -28,7 +28,7 @@
           <a-select-option value="USER_ROLE_REGULAR">Regular</a-select-option>
         </a-select>
       </a-form-item>
-      <a-button type="primary" html-type="submit">
+      <a-button html-type="submit" type="primary">
         Nutzer hinzufügen
       </a-button>
     </a-form>
@@ -48,8 +48,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { UserRole } from '@/models'
-import { authMapper } from '@/store/modules/auth.module'
+import {UserRole} from '@/models'
+import {authMapper} from '@/store/modules/auth.module'
 
 const tableColumns = [
   // {
@@ -71,7 +71,7 @@ const tableColumns = [
     title: 'Role',
     key: 'userrole',
     dataIndex: 'role',
-    scopedSlots: { customRender: 'role' },
+    scopedSlots: {customRender: 'role'},
   },
 ]
 
@@ -106,11 +106,11 @@ export default Vue.extend({
       registerUser: 'registerUserForInstitution',
     }),
     handleRegisterUser() {
-      this.registerUserForm.validateFields(async(err: Error, values: any) => {
+      this.registerUserForm.validateFields(async (err: Error, values: any) => {
         if (err) {
           return
         }
-        this.registerUser({ user: values, instance: this })
+        this.registerUser({user: values, instance: this})
       })
     },
   },

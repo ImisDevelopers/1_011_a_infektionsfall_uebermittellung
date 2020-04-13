@@ -1,1 +1,32 @@
-{"lastName": "Schulz", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1988-11-22", "email": "p.schulz@gmx.de", "phoneNumber": "21890910275", "street": "Nordufer", "houseNumber": 27, "zip": "102691073", "city": "M\u00fcnchen", "insuranceCompany": "AOK", "insuranceMembershipNumber": "E907932366", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Kopfschmerzen", "Erk\u00e4ltung", "Schnupfen", "Fieber", "Atemschwierigkeiten", "Halschmerzen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1988-11-22",
+  "email": "p.schulz@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 27,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "E907932366",
+  "lastName": "Schulz",
+  "phoneNumber": "21890910275",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "102691073"
+}

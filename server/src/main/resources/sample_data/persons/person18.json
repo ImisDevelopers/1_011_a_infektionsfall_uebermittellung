@@ -1,1 +1,32 @@
-{"lastName": "Winter", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1984-10-20", "email": "p.winter@gmail.de", "phoneNumber": "12419049106", "street": "Niekampsweg", "houseNumber": 91, "zip": "31910314", "city": "M\u00fcnchen", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "Z144097647", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Kopfschmerzen", "Husten", "Atemschwierigkeiten", "Schnupfen", "Halschmerzen", "Fieber"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1984-10-20",
+  "email": "p.winter@gmail.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 91,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Z144097647",
+  "lastName": "Winter",
+  "phoneNumber": "12419049106",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Halschmerzen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "31910314"
+}

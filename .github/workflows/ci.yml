@@ -24,7 +24,6 @@ jobs:
       with:
         java-version: 1.11
     - uses: actions/checkout@v2
-
     # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |
         gradle build lint test

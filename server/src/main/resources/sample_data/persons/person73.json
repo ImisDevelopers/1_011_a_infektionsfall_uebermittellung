@@ -1,1 +1,27 @@
-{"lastName": "Lange", "firstName": "Jana", "gender": "weiblich", "dateOfBirth": "1948-08-08", "email": "j.lange@gmail.de", "phoneNumber": "586621091061", "street": "Nordstra\u00dfe", "houseNumber": 37, "zip": "31142610", "city": "Hamburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "M440030663", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Husten"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1948-08-08",
+  "email": "j.lange@gmail.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 37,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "M440030663",
+  "lastName": "Lange",
+  "phoneNumber": "586621091061",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "31142610"
+}

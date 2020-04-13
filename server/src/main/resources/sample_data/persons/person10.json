@@ -1,1 +1,31 @@
-{"lastName": "Lange", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "1985-12-15", "email": "a.lange@gmail.de", "phoneNumber": "8680112805", "street": "Nordstra\u00dfe", "houseNumber": 70, "zip": "2620450", "city": "Kiel", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "V367930513", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Halschmerzen", "Atemschwierigkeiten", "Kopfschmerzen", "Fieber", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1985-12-15",
+  "email": "a.lange@gmail.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 70,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "V367930513",
+  "lastName": "Lange",
+  "phoneNumber": "8680112805",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Fieber",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "2620450"
+}

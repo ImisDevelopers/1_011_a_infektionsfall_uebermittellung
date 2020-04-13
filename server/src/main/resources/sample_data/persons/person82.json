@@ -1,1 +1,31 @@
-{"lastName": "Winkler", "firstName": "Lisa", "gender": "weiblich", "dateOfBirth": "1967-01-15", "email": "l.winkler@posteo.de", "phoneNumber": "4517133959", "street": "Nordtstra\u00dfe", "houseNumber": 54, "zip": "2923309", "city": "Kiel", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "I740871060", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Atemschwierigkeiten", "Schnupfen", "Gelenkschmerzen", "Halschmerzen", "Husten"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1967-01-15",
+  "email": "l.winkler@posteo.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 54,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "I740871060",
+  "lastName": "Winkler",
+  "phoneNumber": "4517133959",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "2923309"
+}

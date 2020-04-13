@@ -1,1 +1,28 @@
-{"lastName": "Winkler", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1974-04-05", "email": "p.winkler@gmail.de", "phoneNumber": "11081960013", "street": "Schernerweg", "houseNumber": 64, "zip": "90831086", "city": "K\u00f6ln", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "S398704996", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Halschmerzen", "Schnupfen"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1974-04-05",
+  "email": "p.winkler@gmail.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 64,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S398704996",
+  "lastName": "Winkler",
+  "phoneNumber": "11081960013",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Halschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "90831086"
+}

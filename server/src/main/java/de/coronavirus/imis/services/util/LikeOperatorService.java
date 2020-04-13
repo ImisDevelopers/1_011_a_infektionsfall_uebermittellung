@@ -7,17 +7,18 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class LikeOperatorService {
 
-    /**
-     * Checks null and returns the searchParam as a like parameter
-     * @param searchParam Search Param
-     * @return like operator
-     */
-    public String likeOperatorOrEmptyString(final String searchParam) {
-        if (searchParam == null) {
-            return "%%";
-        } else {
-            return "%" + searchParam + "%";
-        }
-    }
+	/**
+	 * Checks null and returns the searchParam as a like parameter
+	 *
+	 * @param searchParam Search Param
+	 * @return like operator
+	 */
+	public String likeOperatorOrEmptyString(final String searchParam) {
+		if (searchParam == null) {
+			return "%%";
+		} else {
+			return "%" + searchParam + "%";
+		}
+	}
 
 }

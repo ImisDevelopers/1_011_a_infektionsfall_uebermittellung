@@ -1,1 +1,29 @@
-{"lastName": "Schulz", "firstName": "Franz", "gender": "m\u00e4nnlich", "dateOfBirth": "1992-03-04", "email": "f.schulz@web.de", "phoneNumber": "2775618537", "street": "Aastwiete", "houseNumber": 59, "zip": "41121049", "city": "Berlin", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "K259261469", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Kopfschmerzen", "Erk\u00e4ltung", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1992-03-04",
+  "email": "f.schulz@web.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 59,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "K259261469",
+  "lastName": "Schulz",
+  "phoneNumber": "2775618537",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "41121049"
+}

@@ -32,7 +32,6 @@ public class TestDataLoader implements ApplicationRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder encoder;
 
-
     static <T> Object makeDTO(String testFileName, Class<T> clazz)
             throws IOException {
 

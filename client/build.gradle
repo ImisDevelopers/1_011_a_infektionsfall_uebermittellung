@@ -1,5 +1,5 @@
 plugins {
-  id "com.github.node-gradle.node" version "1.5.3"
+  id "com.github.node-gradle.node" version "2.2.2"
 }
 
 apply plugin: 'base'
@@ -24,6 +24,12 @@ task test(type: YarnTask) {
 task serve(type: YarnTask) {
   args = ['serve']
 }
+
+task generateClient(type: NpxTask) {
+  command = 'swagger-typescript-api'
+  args = ['-p', '../server/build/resources/swagger.json', "-o", "./src/api", "-n", "SwaggerApi.ts"]
+}
+
 lint.dependsOn(yarn_install)
 buildFrontend.dependsOn(lint)
 buildFrontend.dependsOn(yarn_install)

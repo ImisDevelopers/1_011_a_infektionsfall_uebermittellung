@@ -20,6 +20,7 @@ import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserAlreadyExistsException;
 import de.coronavirus.imis.config.domain.UserRepository;
 import de.coronavirus.imis.domain.InstitutionImpl;
+import de.coronavirus.imis.mapper.UserMapper;
 
 import javax.transaction.Transactional;
 
@@ -31,6 +32,8 @@ public class AuthService {
     private final PasswordEncoder encoder;
     private final UserRepository userRepository;
     private final InstitutionService institutionService;
+
+    private final UserMapper userMapper;
 
     public Optional<String> loginUserCreateToken(AuthRequestDTO dto) {
         var maybeUser = userRepository.findByUsername(dto.getUsername());
@@ -65,12 +68,8 @@ public class AuthService {
     }
 
     private User createUser(RegisterUserRequest userDTO, Institution institution) {
-        var encodedPw = encoder.encode(userDTO.getPassword());
-        var user = new User()
-                .username(userDTO.getUsername())
-                .password(encodedPw)
-                .institution((InstitutionImpl) institution)
-                .userRole(userDTO.getUserRole());
+        var user = userMapper.toUser(userDTO)
+                .institution((InstitutionImpl) institution);
         user = userRepository.save(user);
         return user;
     }

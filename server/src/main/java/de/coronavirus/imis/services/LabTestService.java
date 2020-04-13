@@ -1,6 +1,9 @@
 package de.coronavirus.imis.services;
 
+import de.coronavirus.imis.api.dto.CreateLabTestDTO;
+import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
+import de.coronavirus.imis.mapper.LabTestMapper;
 import de.coronavirus.imis.repositories.LabTestRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
@@ -28,25 +31,24 @@ public class LabTestService {
     private final LabTestRepository labTestRepository;
     private final PatientEventRepository eventRepository;
 
-    @Transactional
-    public LabTest createLabTest(String patientId, String laboratoryId, String testId, String comment, TestType testType) {
-        final Patient patient = patientService
-                .findPatientById(patientId)
-                .orElseThrow(PatientNotFoundException::new);
-        final Laboratory laboratory = laboratoryRepository
-                .findById(laboratoryId)
-                .orElseThrow(LaboratoryNotFoundException::new);
-        final LabTest labTest = LabTest.builder()
-                .laboratory(laboratory)
-                .testStatus(TestStatus.TEST_SUBMITTED)
-                .testId(testId)
-                .testType(testType)
-                .comment(comment)
-                .build();
+    private final LabTestMapper labTestMapper;
 
+    @Transactional
+    public LabTest createLabTest(Patient patient, LabTest labTest) {
         labTestRepository.save(labTest);
         eventService.createLabTestEvent(patient, labTest, Optional.empty());
         return labTest;
+    }
+
+    @Transactional
+    public LabTest createLabTest(CreateLabTestDTO dto) {
+        final Patient patient = patientService
+                .findPatientById(dto.getPatientId())
+                .orElseThrow(PatientNotFoundException::new);
+
+        var labTest = labTestMapper.toLabTest(dto);
+
+        return createLabTest(patient, labTest);
     }
 
     @Transactional
@@ -63,18 +65,16 @@ public class LabTestService {
     }
 
     @Transactional
-    public LabTest updateTestStatus(final String testId, final String laboratoryId
-            , final String statusString, final String comment, final byte[] file) {
-        TestStatus statusToSet = TestStatus.valueOf(statusString.toUpperCase());
+    public LabTest updateTestStatus(final String laboratoryId, final UpdateTestStatusDTO dto) {
+        var labTest = labTestRepository
+            .findFirstByTestIdAndLaboratoryId(dto.getTestId(), laboratoryId)
+            .orElseThrow();
 
-        var labTest = labTestRepository.findFirstByTestIdAndLaboratoryId(testId,
-                laboratoryId).orElseThrow();
-
-        labTest.setTestStatus(statusToSet);
-        labTest.setReport(file);
+        labTest.setTestStatus(dto.getStatus());
+        labTest.setReport(dto.getFile());
 
         final List<PatientEvent> event = eventService.getForLabTest(labTest);
-        var eventType = testStatusToEvent(statusToSet);
+        var eventType = testStatusToEvent(dto.getStatus());
 
         var patient = event.stream()
                 .map(PatientEvent::getPatient)
@@ -87,7 +87,7 @@ public class LabTestService {
                 .setEventTimestamp(Timestamp.valueOf(LocalDateTime.now()))
                 .setLabTest(labTest)
                 .setPatient(patient)
-                .setComment(comment);
+                .setComment(dto.getComment());
 
         event.stream()
                 .map(PatientEvent::getResponsibleDoctor)

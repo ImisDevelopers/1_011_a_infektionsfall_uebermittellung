@@ -3,9 +3,13 @@ package de.coronavirus.imis;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserRepository;
 import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.domain.Laboratory;
+import de.coronavirus.imis.domain.LabTest;
+import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.domain.TestType;
 import de.coronavirus.imis.services.*;
 import lombok.RequiredArgsConstructor;
@@ -136,12 +140,23 @@ public class TestDataLoader implements ApplicationRunner {
             // LAB RECEIVES SAMPLE AND PROCESSES IT
             final String testId = "42EF42";
             final String comment = "comment";
-            var labTest = labTestService.createLabTest(person.getId(), laboratory.getId(), testId, comment, TestType.PCR);
+            var labTest = LabTest.builder()
+                .laboratory((Laboratory) laboratory)
+                .testId(testId)
+                .comment(comment)
+                .testType(TestType.PCR)
+                .build();
+            labTest = labTestService.createLabTest(person, labTest);
 
 
             // LAB HAS RESULT AND SOTRES IT
             // FIXME: 22.03.20 report cannot be attached
-            labTestService.updateTestStatus(testId, laboratory.getId(), "TEST_POSITIVE", comment, null);
+            var updateTestStatus = UpdateTestStatusDTO.builder()
+                .status(TestStatus.TEST_POSITIVE)
+                .comment(comment)
+                .testId(testId)
+                .build();
+            labTestService.updateTestStatus(laboratory.getId(), updateTestStatus);
 
             // HEALTH OFFICE WANTS TO SEE ALL DATA
             var allPatients = patientService.getAllPatients();

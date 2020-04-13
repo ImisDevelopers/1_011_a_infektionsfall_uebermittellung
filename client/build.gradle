@@ -34,3 +34,12 @@ lint.dependsOn(yarn_install)
 buildFrontend.dependsOn(lint)
 buildFrontend.dependsOn(yarn_install)
 assemble.dependsOn(buildFrontend)
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "ImisDevelopers_1_011_a_infektionsfall_uebermittellung"
+    property "sonar.organization", "imisdevelopers"
+    property "sonar.host.url", "https://sonarcloud.io"
+    property "sonar.login", "b948ffce4e0be0221db6a31ddeca3777c5c4d001"
+  }
+}

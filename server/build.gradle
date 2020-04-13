@@ -1,7 +1,7 @@
 plugins {
+    id 'java'
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'java'
     id 'com.google.cloud.tools.jib' version '2.1.0'
 }
 
@@ -85,4 +85,13 @@ bootJar.dependsOn('processResources')
 
 test {
     useJUnitPlatform()
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "ImisDevelopers_1_011_a_infektionsfall_uebermittellung"
+        property "sonar.organization", "imisdevelopers"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login", "b948ffce4e0be0221db6a31ddeca3777c5c4d001"
+    }
 }

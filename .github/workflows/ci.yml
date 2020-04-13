@@ -27,4 +27,4 @@ jobs:
 
     # Configure docker to use the gcloud command-line tool as a credential helper
     - run: |
-        gradle build lint test
+        gradle build lint test sonarqube

@@ -12,6 +12,7 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+    id "org.sonarqube" version "2.8"
 }
 
 repositories {
@@ -31,4 +32,13 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClassName = 'imis.App'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "ImisDevelopers_1_011_a_infektionsfall_uebermittellung"
+        property "sonar.organization", "imisdevelopers"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.login", "b948ffce4e0be0221db6a31ddeca3777c5c4d001"
+    }
 }

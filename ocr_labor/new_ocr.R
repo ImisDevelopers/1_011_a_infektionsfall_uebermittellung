@@ -7,6 +7,8 @@
 ## Author Marius Sältzer
 
 
+# Definitions and packages
+
 positions<-function(td){
   return(data.frame(
     x1=as.numeric(sapply(strsplit(td$bbox,","),"[[",1)),
@@ -53,6 +55,7 @@ library(jsonlite)
 if(is.na(match("deu", tesseract_info()$available)))
   tesseract_download("deu")
 
+# Import
 
 ##!! muss an code angepasst werden
 setwd("./ocr_labor/input")
@@ -62,6 +65,8 @@ testfile=list.files()[grepl("pdf",list.files())]
 
 png<-pdftools::pdf_convert(testfile,dpi=500,format="tiff")
 input <- image_read(png[1])
+
+# Preprocessing 
 
 text <- input %>%
   image_resize("2000x") %>%
@@ -80,20 +85,20 @@ position<-positions(td)
 position$word<-iconv(td$word,"UTF-8","latin1")
 
 
-## Main document is splitted in boxes based on x and y variables
+
+
+
 ### Empirical positions of main document:
 
+# Main document is splitted in boxes based on x and y variables
 
-# center
+## center
 mpos<-1/2*max(position$x2)
 
-# splits on y
+## splits on y
 boxsplits<-c(561,1646,2222,3023,4908,5636)
 
-## Define function to span boxes
-
-
-# create list of data frames: words in each box
+## create list of data frames: words in each box
 
 split<-list(
   private=span_box(0,boxsplits[1],mpos,boxsplits[2],position),
@@ -106,14 +111,35 @@ split<-list(
   interp=span_box(mpos,boxsplits[5],2*mpos,boxsplits[6],position)
 )
 
+
+## create a copy
 parsed<-split
+
+## Define each element in the list with either check dot for a term or get_entry (see above)
 
 parsed$direkt<-list()
   parsed$direkt$antigen<-check_dot(split$direkt,"Antigennachweis")
   parsed$direkt$erreger<-check_dot(split$direkt,"Erregerisolierung")
-  parsed$direkt$mikro<-check_dot(x,"Mikroskopischer")
-  parsed$direkt$elektronen<-check_dot(x,"Elektronenmikroskopie")
+  parsed$direkt$mikro<-check_dot(split$direkt,"Mikroskopischer")
+  parsed$direkt$elektronen<-check_dot(split$direkt,"Elektronenmikroskopie")
 
+  
+split$sereol  
+  
+parsed$sereol<-list()
+  parsed$sereol$antigen<-check_dot(split$sereol,"Antigennachweis")
+  
+  
+  parsed$sereol$erreger<-check_dot(split$sereol,"Erregerisolierung")
+  
+  
+  parsed$sereol$mikro<-check_dot(split$sereol,"Mikroskopischer")
+  
+  
+  parsed$sereol$elektronen<-check_dot(split$sereol,"Elektronenmikroskopie")
+  
+  
+  
 parsed$private<-list()
   parsed$private$Amt<-get_entry(split$private,"Gesundheitsamt")
   parsed$private$PLZ<-get_entry(split$private,"PLZ")
@@ -125,6 +151,7 @@ parsed$private<-list()
 parsed$amt<-list()
   parsed$private$amt<-get_entry(split$amt,"Untersuchungsstelle")
   parsed$private$amt<-get_entry(split$amt,"Email")
+  
   # ...
   
 parsed$patient<-list()
@@ -133,6 +160,16 @@ parsed$patient<-list()
   parsed$patient$male<-check_dot(split$patient,"Männlich")
   parsed$patient$date<-get_entry(split$patient,"Geburtsdatum")
   # ...  
+
+parsed$sender<-list()  
+  parsed$sender$sender_name<-get_entry(split$sender,"Person")
+  parsed$sender$number<-get_entry(split$sender,"Telefon")
+  parsed$sender$hospital<-get_entry(split$sender,"Krankenhaus")
+  
+# paste interpretation
+parsed$interp<-paste(split$word[grep("Informationen",split$interp$word):nrow(split$interp),],collapse=" ")  
+
+# Parse Output  
 
 output<-toJSON(parsed)
 write_json(output,"result.json")  

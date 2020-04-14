@@ -23,7 +23,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
 server:
-  port: 12345
+  port: 80
 ---
 spring:
   profiles: production
@@ -52,3 +52,7 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
+  cloud:
+    gcp:
+      storage:
+        enabled: false

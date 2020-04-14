@@ -101,6 +101,8 @@
                 />
               </a-form-item>
             </a-col>
+          </a-row>
+          <a-row>
             <a-col>
               <a-form-item
                 label="Anmerkungen"
@@ -110,7 +112,8 @@
                 <a-input v-decorator="['comment']" />
               </a-form-item>
             </a-col>
-            <a-col :xs="6" :md="3"></a-col>
+          </a-row>
+          <a-row>
             <a-col>
               <!-- Datenschutzerklärung Bestätigung-->
               <a-form-item>

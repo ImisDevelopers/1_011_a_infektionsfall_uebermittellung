@@ -17,6 +17,11 @@ export interface AuthRequestDTO {
   username?: string;
 }
 
+export interface ChangePasswordDTO {
+  newPassword?: string;
+  oldPassword?: string;
+}
+
 export interface CreateInstitutionDTO {
   city?: string;
   comment?: string;
@@ -139,6 +144,20 @@ export interface InstitutionDTO {
   name?: string;
   phoneNumber?: string;
   street?: string;
+  zip?: string;
+}
+
+export interface InstitutionImpl {
+  city?: string;
+  comment?: string;
+  email?: string;
+  houseNumber?: string;
+  id?: string;
+  name?: string;
+  phoneNumber?: string;
+  street?: string;
+  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY" | "DEPARTMENT_OF_HEALTH";
+  users?: User[];
   zip?: string;
 }
 
@@ -365,6 +384,8 @@ export interface PatientSimpleSearchParamsDTO {
 }
 
 export interface RegisterUserRequest {
+  firstName?: string;
+  lastName?: string;
   password?: string;
   userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
   username?: string;
@@ -396,7 +417,7 @@ export interface TokenDTO {
 export interface UpdateTestStatusDTO {
   comment?: string;
   file?: string;
-  status?: string;
+  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
   testId?: string;
 }
 
@@ -406,7 +427,9 @@ export interface User {
   authorities?: GrantedAuthority[];
   credentialsNonExpired?: boolean;
   enabled?: boolean;
+  firstName?: string;
   id?: number;
+  institution?: InstitutionImpl;
   institutionId?: string;
   institutionType?:
     | "LABORATORY"
@@ -415,6 +438,17 @@ export interface User {
     | "DOCTORS_OFFICE"
     | "GOVERNMENT_AGENCY"
     | "DEPARTMENT_OF_HEALTH";
+  lastName?: string;
+  userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
+  username?: string;
+}
+
+export interface UserDTO {
+  authorities?: GrantedAuthority[];
+  firstName?: string;
+  id?: number;
+  lastName?: string;
+  userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
   username?: string;
 }
 
@@ -437,7 +471,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8642/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -515,7 +549,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl //localhost:8642/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -579,7 +613,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     getInstitutionUsingGet: (params?: RequestParams) =>
-      this.request<Institution, any>(`/api/auth/institution`, "GET", params, null, true),
+      this.request<InstitutionDTO, any>(`/api/auth/institution`, "GET", params, null, true),
 
     /**
      * @tags auth-controller
@@ -612,6 +646,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<User, any>(`/api/auth/user`, "GET", params, null, true),
 
     /**
+     * @tags auth-controller
+     * @name changePasswordUsingPOST
+     * @summary changePassword
+     * @request POST:/api/auth/user/change-password
+     * @secure
+     */
+    changePasswordUsingPost: (changePasswordDTO: ChangePasswordDTO, params?: RequestParams) =>
+      this.request<any, any>(`/api/auth/user/change-password`, "POST", params, changePasswordDTO, true),
+
+    /**
      * @tags doctor-controller
      * @name addScheduledEventUsingPOST
      * @summary addScheduledEvent
@@ -630,6 +674,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     createInstitutionUsingPost: (createInstitutionDTO: CreateInstitutionDTO, params?: RequestParams) =>
       this.request<InstitutionDTO, any>(`/api/institutions`, "POST", params, createInstitutionDTO, true),
+
+    /**
+     * @tags institution-controller
+     * @name updateInstitutionUsingPUT
+     * @summary updateInstitution
+     * @request PUT:/api/institutions
+     * @secure
+     */
+    updateInstitutionUsingPut: (institutionDTO: InstitutionDTO, params?: RequestParams) =>
+      this.request<InstitutionDTO, any>(`/api/institutions`, "PUT", params, institutionDTO, true),
 
     /**
      * @tags institution-controller
@@ -792,6 +846,45 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getForZipUsingGet: (query: { lowerBoundsZip: string; upperBoundsZips: string }, params?: RequestParams) =>
       this.request<AggregationResultZip[], any>(`/api/stats${this.addQueryParams(query)}`, "GET", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name getInstitutionUsersUsingGET
+     * @summary getInstitutionUsers
+     * @request GET:/api/users
+     * @secure
+     */
+    getInstitutionUsersUsingGet: (params?: RequestParams) =>
+      this.request<UserDTO[], any>(`/api/users`, "GET", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name updateInstitutionUserUsingPUT
+     * @summary updateInstitutionUser
+     * @request PUT:/api/users
+     * @secure
+     */
+    updateInstitutionUserUsingPut: (
+      query?: {
+        "authorities[0].authority"?: string;
+        firstName?: string;
+        id?: number;
+        lastName?: string;
+        userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
+        username?: string;
+      },
+      params?: RequestParams,
+    ) => this.request<UserDTO, any>(`/api/users${this.addQueryParams(query)}`, "PUT", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name deleteInstitutionUserUsingDELETE
+     * @summary deleteInstitutionUser
+     * @request DELETE:/api/users/{id}
+     * @secure
+     */
+    deleteInstitutionUserUsingDelete: (id: number, params?: RequestParams) =>
+      this.request<any, any>(`/api/users/${id}`, "DELETE", params, null, true),
   };
   error = {
     /**

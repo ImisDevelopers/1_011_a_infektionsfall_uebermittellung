@@ -18,14 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.coronavirus.imis.domain.InstitutionType;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import de.coronavirus.imis.domain.InstitutionImpl;
@@ -47,6 +44,9 @@ public class User implements UserDetails {
 
     @NotEmpty
     private String username;
+
+    private String firstName;
+    private String lastName;
 
     @JsonIgnore
     @NotEmpty
@@ -104,5 +104,52 @@ public class User implements UserDetails {
 
     public InstitutionType getInstitutionType() {
         return institution.getType();
+    }
+
+    // TODO: MapStruct kommt nicht mit der fluent-accessor-Variante klar
+    //       Entweder MapStruct die Accessors beibringen oder das Fluent aus der Annotation entfernen
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public InstitutionImpl getInstitution() {
+        return institution;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public void setInstitution(InstitutionImpl institution) {
+        this.institution = institution;
     }
 }

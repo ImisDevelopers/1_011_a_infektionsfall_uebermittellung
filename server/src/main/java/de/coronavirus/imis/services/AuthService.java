@@ -3,9 +3,13 @@ package de.coronavirus.imis.services;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import de.coronavirus.imis.api.dto.ChangePasswordDTO;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
+import de.coronavirus.imis.api.exception.ForbiddenException;
 import de.coronavirus.imis.domain.Institution;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -81,14 +85,28 @@ public class AuthService {
         return institution;
     }
 
+    public void changePassword(ChangePasswordDTO changePasswordDTO) {
+        final User user = getCurrentUser();
+        if (!this.checkPassword(changePasswordDTO.getOldPassword(), user.getPassword())) {
+            throw new ForbiddenException("Passwort inkorrekt");
+        }
+        var encodedPw = encoder.encode(changePasswordDTO.getNewPassword());
+        final var updatedUser = user.toBuilder().password(encodedPw).build();
+        userRepository.save(updatedUser);
+    }
+
+    public User getCurrentUser() {
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (User) authentication.getPrincipal();
+    }
+
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username).get();
     }
 
-    public Institution getInstitutionFromUser(String username) {
+    public InstitutionImpl getInstitutionFromUser(String username) {
         var user = getUserByUsername(username);
-        var institution = institutionService.getInstitution(user.getInstitutionId(), user.getInstitutionType());
-        return institution;
+        return institutionService.getInstitution(user.getInstitutionId(), user.getInstitutionType());
     }
 
 

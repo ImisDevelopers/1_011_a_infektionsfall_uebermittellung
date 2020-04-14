@@ -1,6 +1,9 @@
 package de.coronavirus.imis.api;
 
 
+import de.coronavirus.imis.api.dto.*;
+import de.coronavirus.imis.mapper.InstitutionMapper;
+import de.coronavirus.imis.services.InstitutionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -14,10 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import de.coronavirus.imis.api.dto.AuthRequestDTO;
-import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
-import de.coronavirus.imis.api.dto.RegisterUserRequest;
-import de.coronavirus.imis.api.dto.TokenDTO;
 import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserRole;
 import de.coronavirus.imis.domain.Institution;
@@ -30,6 +29,8 @@ import de.coronavirus.imis.services.AuthService;
 public class AuthController {
     private final AuthService authService;
     private final ResponseEntity<TokenDTO> notAllowed = ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    private final InstitutionMapper institutionMapper;
+
 
 
     @PostMapping
@@ -51,6 +52,11 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
+    @PostMapping("/user/change-password")
+    public void changePassword(@RequestBody ChangePasswordDTO changePasswordDTO) {
+        authService.changePassword(changePasswordDTO);
+    }
+
     @PostMapping("/register/institution")
     public ResponseEntity<Institution> registerInstitution(@RequestBody CreateInstitutionDTO institutionDTO) {
         // TODO add handling for right, has to be decided on
@@ -67,10 +73,10 @@ public class AuthController {
     }
 
     @GetMapping("/institution")
-    public ResponseEntity<Institution> getInstitution(@AuthenticationPrincipal Authentication auth) {
+    public ResponseEntity<InstitutionDTO> getInstitution(@AuthenticationPrincipal Authentication auth) {
         if (auth != null && isAdmin(auth)) {
             var institution = authService.getInstitutionFromUser(auth.getName());
-            return ResponseEntity.ok(institution);
+            return ResponseEntity.ok(institutionMapper.toInstitutionDTO(institution));
         }
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }

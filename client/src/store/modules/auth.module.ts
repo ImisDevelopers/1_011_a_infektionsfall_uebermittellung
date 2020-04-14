@@ -1,5 +1,5 @@
 import Api, { removeBearerToken, setBearerToken } from '@/api'
-import { Institution, RegisterUserRequest, User } from '@/api/SwaggerApi'
+import { ChangePasswordDTO, Institution, InstitutionDTO, RegisterUserRequest, User, UserDTO } from '@/api/SwaggerApi'
 import { config } from '@/config'
 import { InstitutionRole } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'
@@ -19,6 +19,7 @@ class AuthState {
   jwtData: JwtData | undefined = undefined
   user: User | undefined = undefined
   institution: Institution | undefined = undefined
+  institutionUsers: UserDTO[] | undefined = undefined
 }
 
 class AuthGetters extends Getters<AuthState> {
@@ -41,10 +42,7 @@ class AuthGetters extends Getters<AuthState> {
   }
 
   institutionUsers() {
-    return this.state.institution?.users?.map(user => ({
-      ...user,
-      role: user.authorities?.length === 2 ? user.authorities[1].authority : '',
-    }))
+    return this.state.institutionUsers || []
   }
 }
 
@@ -63,6 +61,10 @@ class AuthMutations extends Mutations<AuthState> {
 
   setAuthenticatedInstitution(institution: Institution) {
     this.state.institution = institution
+  }
+
+  setInstitutionUsers(users: UserDTO[]) {
+    this.state.institutionUsers = users
   }
 
   setUser(user: User) {
@@ -116,21 +118,38 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
     this.commit('setAuthenticatedInstitution', institution)
   }
 
+  async getInstitutionUsers() {
+    const users = await Api.api.getInstitutionUsersUsingGet()
+    this.commit('setInstitutionUsers', users)
+  }
+
   async getAuthenticatedUser() {
     const user = await Api.api.currentUserUsingGet()
     this.commit('setUser', user)
   }
 
-  async registerUserForInstitution(payload: { user: RegisterUserRequest; instance: Vue }) {
-    try {
-      const res = await Api.api.registerUserUsingPost(payload.user)
-      this.dispatch('getAuthenticatedInstitution')
-    } catch (err) {
-      payload.instance.$notification.error({
-        message: 'Error',
-        description: 'Nutzer konnte nicht hinzugefügt werden',
-      })
-    }
+  async updateInstitution(institution: InstitutionDTO) {
+    const updatedInstitution = await Api.api.updateInstitutionUsingPut(institution)
+    this.commit('setAuthenticatedInstitution', updatedInstitution)
+  }
+
+  async registerUserForInstitution(user: RegisterUserRequest) {
+    const res = await Api.api.registerUserUsingPost(user)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  async deleteUserForInstitution(userId: number) {
+    const res = await Api.api.deleteInstitutionUserUsingDelete(userId)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  async updateUserForInstitution(user: UserDTO) {
+    await Api.api.updateInstitutionUserUsingPut(user)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  changePassword(changePassword: ChangePasswordDTO): Promise<void> {
+    return Api.api.changePasswordUsingPost(changePassword)
   }
 }
 

@@ -1,21 +1,15 @@
 package de.coronavirus.imis.services;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import javax.transaction.Transactional;
-
+import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
+import de.coronavirus.imis.api.dto.InstitutionDTO;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.InstitutionMapper;
 import de.coronavirus.imis.repositories.*;
-import org.springframework.data.jpa.repository.JpaRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import lombok.RequiredArgsConstructor;
-
-import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
-import de.coronavirus.imis.api.dto.RegisterUserRequest;
+import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
@@ -39,9 +33,25 @@ public class InstitutionService {
     }
 
     @Transactional
+    public InstitutionImpl updateInstitution(InstitutionDTO institutionDTO) {
+
+        final var institution = getInstitution(institutionDTO.getId(), institutionDTO.getInstitutionType());
+        institution.setCity(institutionDTO.getCity());
+        institution.setComment(institutionDTO.getComment());
+        institution.setEmail(institutionDTO.getEmail());
+        institution.setHouseNumber(institutionDTO.getHouseNumber());
+        institution.setName(institutionDTO.getName());
+        institution.setPhoneNumber(institutionDTO.getPhoneNumber());
+        institution.setStreet(institutionDTO.getStreet());
+        institution.setZip(institutionDTO.getZip());
+        return this.institutionRepository.saveAndFlush(institution);
+    }
+
+    @Transactional
     public <T extends InstitutionImpl> T addInstitution(T institution) {
         return (T) this.institutionRepository.saveAndFlush((InstitutionImpl) institution);
     }
+
     public InstitutionImpl addInstitution(CreateInstitutionDTO dto) {
         return this.addInstitution((InstitutionImpl) this.institutionMapper.toInstitution(dto));
     }
@@ -52,6 +62,7 @@ public class InstitutionService {
 
     /**
      * Query for institution by part of id
+     *
      * @param id id or a part of an id
      * @return List of matching institutions
      */

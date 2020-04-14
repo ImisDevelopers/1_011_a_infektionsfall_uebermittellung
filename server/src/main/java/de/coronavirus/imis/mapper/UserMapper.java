@@ -1,5 +1,6 @@
 package de.coronavirus.imis.mapper;
 
+import de.coronavirus.imis.api.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -18,4 +19,6 @@ public abstract class UserMapper {
 
     @Mapping(target = "password", expression = "java( pwEncoder.encode(dto.getPassword()) )")
     public abstract User toUser(RegisterUserRequest dto);
+
+    public abstract UserDTO toUserDTO(User user);
 }

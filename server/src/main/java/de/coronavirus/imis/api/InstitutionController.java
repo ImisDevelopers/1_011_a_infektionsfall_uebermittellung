@@ -23,7 +23,7 @@ public class InstitutionController {
 
     @PutMapping
     public InstitutionDTO updateInstitution(@RequestBody InstitutionDTO institutionDTO) {
-        return institutionService.mapInstitution(institutionService.updateInstitution(institutionDTO));
+        return institutionMapper.toInstitutionDTO(institutionService.updateInstitution(institutionDTO));
     }
 
     @PostMapping

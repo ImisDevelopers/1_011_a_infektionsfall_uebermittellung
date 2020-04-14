@@ -147,6 +147,20 @@ export interface InstitutionDTO {
   zip?: string;
 }
 
+export interface InstitutionImpl {
+  city?: string;
+  comment?: string;
+  email?: string;
+  houseNumber?: string;
+  id?: string;
+  name?: string;
+  phoneNumber?: string;
+  street?: string;
+  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY" | "DEPARTMENT_OF_HEALTH";
+  users?: User[];
+  zip?: string;
+}
+
 export interface LabTest {
   comment?: string;
   id?: string;
@@ -370,6 +384,8 @@ export interface PatientSimpleSearchParamsDTO {
 }
 
 export interface RegisterUserRequest {
+  firstName?: string;
+  lastName?: string;
   password?: string;
   userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
   username?: string;
@@ -401,7 +417,7 @@ export interface TokenDTO {
 export interface UpdateTestStatusDTO {
   comment?: string;
   file?: string;
-  status?: string;
+  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
   testId?: string;
 }
 
@@ -411,7 +427,9 @@ export interface User {
   authorities?: GrantedAuthority[];
   credentialsNonExpired?: boolean;
   enabled?: boolean;
+  firstName?: string;
   id?: number;
+  institution?: InstitutionImpl;
   institutionId?: string;
   institutionType?:
     | "LABORATORY"
@@ -420,6 +438,8 @@ export interface User {
     | "DOCTORS_OFFICE"
     | "GOVERNMENT_AGENCY"
     | "DEPARTMENT_OF_HEALTH";
+  lastName?: string;
+  userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
   username?: string;
 }
 
@@ -836,76 +856,103 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getInstitutionUsersUsingGet: (params?: RequestParams) =>
       this.request<UserDTO[], any>(`/api/users`, "GET", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name updateInstitutionUserUsingPUT
+     * @summary updateInstitutionUser
+     * @request PUT:/api/users
+     * @secure
+     */
+    updateInstitutionUserUsingPut: (
+      query?: {
+        "authorities[0].authority"?: string;
+        firstName?: string;
+        id?: number;
+        lastName?: string;
+        userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
+        username?: string;
+      },
+      params?: RequestParams,
+    ) => this.request<UserDTO, any>(`/api/users${this.addQueryParams(query)}`, "PUT", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name deleteInstitutionUserUsingDELETE
+     * @summary deleteInstitutionUser
+     * @request DELETE:/api/users/{id}
+     * @secure
+     */
+    deleteInstitutionUserUsingDelete: (id: number, params?: RequestParams) =>
+      this.request<any, any>(`/api/users/${id}`, "DELETE", params, null, true),
   };
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorUsingGET
-     * @summary error
+     * @name errorHtmlUsingGET
+     * @summary errorHtml
      * @request GET:/error
      * @secure
      */
-    errorUsingGet: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
+    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingHEAD
-     * @summary error
+     * @name errorHtmlUsingHEAD
+     * @summary errorHtml
      * @request HEAD:/error
      * @secure
      */
-    errorUsingHead: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
+    errorHtmlUsingHead: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPOST
-     * @summary error
+     * @name errorHtmlUsingPOST
+     * @summary errorHtml
      * @request POST:/error
      * @secure
      */
-    errorUsingPost: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
+    errorHtmlUsingPost: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPUT
-     * @summary error
+     * @name errorHtmlUsingPUT
+     * @summary errorHtml
      * @request PUT:/error
      * @secure
      */
-    errorUsingPut: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
+    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingDELETE
-     * @summary error
+     * @name errorHtmlUsingDELETE
+     * @summary errorHtml
      * @request DELETE:/error
      * @secure
      */
-    errorUsingDelete: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
+    errorHtmlUsingDelete: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingOPTIONS
-     * @summary error
+     * @name errorHtmlUsingOPTIONS
+     * @summary errorHtml
      * @request OPTIONS:/error
      * @secure
      */
-    errorUsingOptions: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
+    errorHtmlUsingOptions: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPATCH
-     * @summary error
+     * @name errorHtmlUsingPATCH
+     * @summary errorHtml
      * @request PATCH:/error
      * @secure
      */
-    errorUsingPatch: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
+    errorHtmlUsingPatch: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
   };
 }

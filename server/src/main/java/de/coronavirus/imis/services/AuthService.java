@@ -104,10 +104,9 @@ public class AuthService {
         return userRepository.findByUsername(username).get();
     }
 
-    public Institution getInstitutionFromUser(String username) {
+    public InstitutionImpl getInstitutionFromUser(String username) {
         var user = getUserByUsername(username);
-        var institution = institutionService.getInstitution(user.getInstitutionId(), user.getInstitutionType());
-        return institution;
+        return institutionService.getInstitution(user.getInstitutionId(), user.getInstitutionType());
     }
 
 

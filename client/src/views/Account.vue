@@ -5,6 +5,13 @@
       @create="() => { showChangePasswordForm = false }"
       :visible="showChangePasswordForm"
     />
+    <AddOrChangeUserForm
+      v-if="institution"
+      @cancel="() => { showAddOrChangeUserForm = false }"
+      @create="() => { showAddOrChangeUserForm = false }"
+      :visible="showAddOrChangeUserForm"
+      :user="addOrChangeUser"
+    />
     <ChangeInstitutionForm
       v-if="institution"
       @cancel="() => { showChangeInstitutionForm = false }"
@@ -22,8 +29,12 @@
           <div>
             <table>
               <tr>
-                <td>Name:</td>
+                <td>Benutzername:</td>
                 <td>{{user.username}}</td>
+              </tr>
+              <tr>
+                <td>Name:</td>
+                <td>{{user.firstName}} {{user.lastName}}</td>
               </tr>
               <tr>
                 <td>Rollen:</td>
@@ -66,13 +77,19 @@
               <td>{{institution.comment}}</td>
             </tr>
           </table>
-          <a-button v-if="isAdmin" type="primary" @click="showChangeInstitutionForm=true" icon="edit">Bearbeiten
+          <a-button v-if="isAdmin" type="primary" @click="showChangeInstitutionForm=true" icon="edit">
+            Bearbeiten
           </a-button>
         </a-card>
       </a-col>
     </a-row>
 
     <a-card title="Benutzer der Institution" align="left" style="margin-top: 8px">
+      <div style="display: flex; justify-content: flex-end; padding-bottom: 5px">
+        <a-button v-if="isAdmin" type="primary" @click="addUser()" icon="user-add">
+          Hinzufügen
+        </a-button>
+      </div>
       <a-table
         :columns="tableColumns"
         :dataSource="institutionUsers"
@@ -81,42 +98,19 @@
         <div slot="authorities" slot-scope="authorities">
           {{ roleMapping[authorities[1].authority]}}
         </div>
+        <div slot="operation" slot-scope="nothing, user">
+          <a-button v-if="isAdmin" type="primary" @click="() => changeUser(user)" icon="edit"
+                    style="margin-right: 10px"></a-button>
+          <a-popconfirm
+            title="Soll der Benutzer wirklich gelöscht werden?"
+            @confirm="() => deleteUser(user)"
+          >
+            <a-button v-if="isAdmin" type="primary" icon="delete"></a-button>
+          </a-popconfirm>
+        </div>
       </a-table>
     </a-card>
 
-    <a-card>
-      <a-form
-        :form="registerUserForm"
-        :layout="'horizontal'"
-        :labelCol="{ span: 8 }"
-        :wrapperCol="{ span: 16}"
-        @submit.prevent="handleRegisterUser"
-      >
-        <p>Füge einen Nutzer hinzu</p>
-        <a-form-item label="username">
-          <a-input
-            v-decorator="['username', { rules: [{ required: true }] }]"
-          />
-        </a-form-item>
-        <a-form-item label="password">
-          <a-input
-            type="password"
-            v-decorator="['password', { rules: [{ required: true }] }]"
-          />
-        </a-form-item>
-        <a-form-item label="Rolle">
-          <a-select
-            v-decorator="['userRole', { rules: [{ required: true }] }]"
-          >
-            <a-select-option value="USER_ROLE_ADMIN">Admin</a-select-option>
-            <a-select-option value="USER_ROLE_REGULAR">Regular</a-select-option>
-          </a-select>
-        </a-form-item>
-        <a-button type="primary" html-type="submit">
-          Nutzer hinzufügen
-        </a-button>
-      </a-form>
-    </a-card>
   </div>
 </template>
 
@@ -126,6 +120,8 @@ import { InstitutionType, UserRole } from '@/models'
 import { authMapper } from '@/store/modules/auth.module'
 import ChangePasswordForm from '@/components/ChangePasswordForm.vue'
 import ChangeInstitutionForm from '@/components/ChangeInstitutionForm.vue'
+import AddOrChangeUserForm from '@/components/AddOrChangeUserForm.vue'
+import { UserDTO } from '@/api/SwaggerApi'
 
 const tableColumns = [
   {
@@ -148,6 +144,12 @@ const tableColumns = [
     key: 'authorities',
     dataIndex: 'authorities',
     scopedSlots: { customRender: 'authorities' },
+  },
+  {
+    title: 'Aktionen',
+    key: 'id',
+    dataIndex: 'id',
+    scopedSlots: { customRender: 'operation' },
   },
 ]
 
@@ -185,12 +187,15 @@ export default Vue.extend({
       registerUserForm: this.$form.createForm(this),
       showChangePasswordForm: false,
       showChangeInstitutionForm: false,
+      showAddOrChangeUserForm: false,
+      addOrChangeUser: {},
       isAdmin: false,
     }
   },
   components: {
     ChangePasswordForm,
     ChangeInstitutionForm,
+    AddOrChangeUserForm,
   },
   computed: {
     ...authMapper.mapState({
@@ -211,19 +216,35 @@ export default Vue.extend({
     ...authMapper.mapActions({
       registerUser: 'registerUserForInstitution',
       getInstitutionUsers: 'getInstitutionUsers',
+      deleteUserForInstitution: 'deleteUserForInstitution',
     }),
     setIsAdmin() {
       if (this.user && this.user.authorities) {
         this.isAdmin = this.user.authorities.some(authority => authority.authority === 'USER_ROLE_ADMIN')
       }
     },
-    handleRegisterUser() {
-      this.registerUserForm.validateFields(async(err: Error, values: any) => {
-        if (err) {
-          return
-        }
-        this.registerUser({ user: values, instance: this })
-      })
+    changeUser(user: UserDTO) {
+      this.addOrChangeUser = user
+      this.showAddOrChangeUserForm = true
+    },
+    deleteUser(user: UserDTO) {
+      if (user.id) {
+        this.deleteUserForInstitution(user.id).then(() => {
+          this.$notification.success({
+            message: 'Benutzer erfolgreich gelöscht',
+            description: '',
+          })
+        }).catch((error: Error) => {
+          this.$notification.error({
+            message: 'Benutzer konnte nicht gelöscht werden',
+            description: error.message,
+          })
+        })
+      }
+    },
+    addUser() {
+      this.addOrChangeUser = {}
+      this.showAddOrChangeUserForm = true
     },
   },
 })

@@ -133,16 +133,19 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
     this.commit('setAuthenticatedInstitution', updatedInstitution)
   }
 
-  async registerUserForInstitution(payload: { user: RegisterUserRequest; instance: Vue }) {
-    try {
-      const res = await Api.api.registerUserUsingPost(payload.user)
-      this.dispatch('getAuthenticatedInstitution')
-    } catch (err) {
-      payload.instance.$notification.error({
-        message: 'Error',
-        description: 'Nutzer konnte nicht hinzugefügt werden',
-      })
-    }
+  async registerUserForInstitution(user: RegisterUserRequest) {
+    const res = await Api.api.registerUserUsingPost(user)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  async deleteUserForInstitution(userId: number) {
+    const res = await Api.api.deleteInstitutionUserUsingDelete(userId)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  async updateUserForInstitution(user: UserDTO) {
+    await Api.api.updateInstitutionUserUsingPut(user)
+    this.dispatch('getInstitutionUsers')
   }
 
   changePassword(changePassword: ChangePasswordDTO): Promise<void> {

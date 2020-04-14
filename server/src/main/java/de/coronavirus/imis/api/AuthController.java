@@ -2,6 +2,7 @@ package de.coronavirus.imis.api;
 
 
 import de.coronavirus.imis.api.dto.*;
+import de.coronavirus.imis.mapper.InstitutionMapper;
 import de.coronavirus.imis.services.InstitutionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,8 @@ import de.coronavirus.imis.services.AuthService;
 public class AuthController {
     private final AuthService authService;
     private final ResponseEntity<TokenDTO> notAllowed = ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-    private final InstitutionService institutionService;
+    private final InstitutionMapper institutionMapper;
+
 
 
     @PostMapping
@@ -74,7 +76,7 @@ public class AuthController {
     public ResponseEntity<InstitutionDTO> getInstitution(@AuthenticationPrincipal Authentication auth) {
         if (auth != null && isAdmin(auth)) {
             var institution = authService.getInstitutionFromUser(auth.getName());
-            return ResponseEntity.ok(institutionService.mapInstitution(institution));
+            return ResponseEntity.ok(institutionMapper.toInstitutionDTO(institution));
         }
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }

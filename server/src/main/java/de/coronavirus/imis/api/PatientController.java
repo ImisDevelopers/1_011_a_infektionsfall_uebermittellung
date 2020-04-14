@@ -30,6 +30,7 @@ public class PatientController {
     @PostMapping
     public ResponseEntity<Patient> addPatient(@RequestBody CreatePatientDTO dto) {
         var patient = patientService.addPatient(dto);
+
         if (patient == null) {
             return ResponseEntity.status(500).build();
         }

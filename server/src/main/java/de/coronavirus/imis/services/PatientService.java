@@ -6,6 +6,7 @@ import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.mapper.PatientMapper;
 import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
@@ -38,6 +39,8 @@ public class PatientService {
     private final LikeOperatorService likeOperatorService;
     private final RandomService randomService;
 
+    private final PatientMapper patientMapper;
+
 
     public List<Patient> getAllPatients() {
         var patients = patientRepository.findAll();
@@ -52,63 +55,33 @@ public class PatientService {
         return patientRepository.findById(id);
     }
 
-    public Patient addPatient(final CreatePatientDTO dto) {
-        // Parsing / Defaults
-        var dateOfBirthParsed = LocalDate.parse(dto.getDateOfBirth(), DateTimeFormatter.ISO_LOCAL_DATE);
-        LocalDate dateOfDeathParsed = parseDate(dto.getDateOfDeath());
-        LocalDate dateOfHospitalization = parseDate(dto.getDateOfHospitalization());
-        LocalDate dateOfIllness = parseDate(dto.getDateOfIllness());
-        LocalDate dateOfReporting = parseDate(dto.getDateOfReporting());
-        final EventType eventType = dto.getPatientStatus() != null ? dto.getPatientStatus() : EventType.SUSPECTED;
-        // Entity Creation
-        var id = Hashing.sha256()
-                .hashString(dto.getFirstName() + dto.getLastName() + dto.getZip() + dateOfBirthParsed + randomService.getRandomString(12), StandardCharsets.UTF_8)
-                .toString()
-                .substring(0, 8).toUpperCase();
-        var mappedPatient = new Patient()
-                // Basics
-                .setId(id)
-                .setFirstName(dto.getFirstName())
-                .setLastName(dto.getLastName())
-                .setGender(dto.getGender())
-                .setDateOfBirth(dateOfBirthParsed)
-                .setDateOfDeath(dateOfDeathParsed)
-                .setEmail(dto.getEmail())
-                .setPhoneNumber(dto.getPhoneNumber())
-                // Address
-                .setStreet(dto.getStreet())
-                .setHouseNumber(dto.getHouseNumber())
-                .setCity(dto.getCity())
-                .setZip(dto.getZip())
-                // Stay
-                .setStayStreet(dto.getStayStreet())
-                .setStayHouseNumber(dto.getStayHouseNumber())
-                .setStayCity(dto.getStayCity())
-                .setStayZip(dto.getStayZip())
-                // Other
-                .setEmployer(dto.getEmployer())
-                .setPatientStatus(eventType)
-                .setInsuranceCompany(dto.getInsuranceCompany())
-                .setInsuranceMembershipNumber(dto.getInsuranceMembershipNumber())
-                .setFluImmunization(dto.getFluImmunization())
-                .setSpeedOfSymptomsOutbreak(dto.getSpeedOfSymptomsOutbreak())
-                .setSymptoms(dto.getSymptoms())
-                .setCoronaContacts(dto.getCoronaContacts())
-                .setRiskAreas(dto.getRiskAreas())
-                .setWeakenedImmuneSystem(dto.getWeakenedImmuneSystem())
-                .setRiskOccupation(dto.getRiskOccupation())
-                .setOccupation(dto.getOccupation())
-                .setCreationTimestamp(OffsetDateTime.now())
-                .setPreIllnesses(dto.getPreIllnesses())
-                // Illness
-                .setDateOfHospitalization(dateOfHospitalization)
-                .setDateOfIllness(dateOfIllness)
-                .setOnIntensiveCareUnit(dto.getOnIntensiveCareUnit());
-        mappedPatient = patientRepository.save(mappedPatient);
-        log.info("inserting patient with id {}", mappedPatient.getId());
-        eventService.createInitialPatientEvent(mappedPatient, Optional.empty(), eventType, dateOfReporting);
-        log.info("inserted event for patient {}", mappedPatient);
-        return mappedPatient;
+    public Patient addPatient(CreatePatientDTO dto) {
+        return this.addPatient(
+            patientMapper.toPatient(dto),
+            patientMapper.parseDate(dto.getDateOfReporting()));
+    }
+
+    public Patient addPatient(Patient patient, final LocalDate dateOfReporting) {
+        if (patient.getId() == null) {
+            var id = Hashing.sha256()
+                    .hashString(patient.getFirstName() + patient.getLastName()
+                        + patient.getZip()
+                        + patient.getDateOfBirth()
+                        + randomService.getRandomString(12), StandardCharsets.UTF_8)
+                    .toString()
+                    .substring(0, 8).toUpperCase();
+
+            patient.setId(id);
+        }
+
+        patient = patientRepository.save(patient);
+        log.info("inserting patient with id {}", patient.getId());
+        eventService.createInitialPatientEvent(
+            patient, Optional.empty(),
+            patient.getPatientStatus(),
+            dateOfReporting);
+        log.info("inserted event for patient {}", patient);
+        return patient;
     }
 
     private LocalDate parseDate(String localDateString) {

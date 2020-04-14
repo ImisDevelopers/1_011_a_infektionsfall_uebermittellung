@@ -29,12 +29,8 @@ public class LabTestController {
 
     @PostMapping
     public ResponseEntity<LabTest> createTestForPatient(@RequestBody CreateLabTestDTO createLabTestRequest) {
-        return ResponseEntity.ok(service.createLabTest(
-                createLabTestRequest.getPatientId(),
-                createLabTestRequest.getLaboratoryId(),
-                createLabTestRequest.getTestId(),
-                createLabTestRequest.getComment(),
-                createLabTestRequest.getTestType())
+        return ResponseEntity.ok(
+            service.createLabTest(createLabTestRequest)
         );
     }
 
@@ -51,11 +47,7 @@ public class LabTestController {
     @PutMapping("/{laboratoryId}")
     public ResponseEntity<LabTest> updateTestStatus(@PathVariable("laboratoryId") String laboratoryId, @RequestBody UpdateTestStatusDTO statusDTO) {
         return ResponseEntity.ok(service.updateTestStatus(
-                statusDTO.getTestId(),
-                laboratoryId,
-                statusDTO.getStatus(),
-                statusDTO.getComment(),
-                statusDTO.getFile())
-        );
+                laboratoryId, statusDTO
+        ));
     }
 }

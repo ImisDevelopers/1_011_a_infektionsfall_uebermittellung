@@ -2,7 +2,9 @@ package de.coronavirus.imis.api;
 
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.InstitutionDTO;
-import de.coronavirus.imis.domain.*;
+import de.coronavirus.imis.domain.Doctor;
+import de.coronavirus.imis.domain.Laboratory;
+import de.coronavirus.imis.mapper.InstitutionMapper;
 import de.coronavirus.imis.services.InstitutionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import java.util.List;
 public class InstitutionController {
 
     final InstitutionService institutionService;
+    final InstitutionMapper institutionMapper;
 
     @PutMapping
     public InstitutionDTO updateInstitution(@RequestBody InstitutionDTO institutionDTO) {
@@ -26,33 +29,11 @@ public class InstitutionController {
     @PostMapping
     public ResponseEntity<InstitutionDTO> createInstitution(@RequestBody CreateInstitutionDTO createInstitutionDTO) {
 
-        Institution institution;
+        var institution = institutionService.addInstitution(
+            institutionMapper.toInstitution(createInstitutionDTO));
+        var responseDto = institutionMapper.toInstitutionDTO(institution);
 
-        var type = createInstitutionDTO.getInstitutionType();
-
-        switch (type) {
-            case DEPARTMENT_OF_HEALTH:
-                institution = this.institutionService.createDepartmentOfHealthInstitution(createInstitutionDTO);
-                break;
-            case LABORATORY:
-                institution = this.institutionService.createLaboratoryInstitution(createInstitutionDTO);
-                break;
-            case TEST_SITE:
-                institution = this.institutionService.createTestSiteInstitution(createInstitutionDTO);
-                break;
-            case CLINIC:
-                institution = this.institutionService.createClinicInstitution(createInstitutionDTO);
-                break;
-            case DOCTORS_OFFICE:
-                institution = this.institutionService.createDoctorInstitution(createInstitutionDTO);
-                break;
-            default:
-            case GOVERNMENT_AGENCY:
-                // TODO: Government agency
-                throw new RuntimeException(type + " not implemented yet");
-        }
-
-        return ResponseEntity.ok(institutionService.mapInstitution(institution));
+        return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping("/laboratories")

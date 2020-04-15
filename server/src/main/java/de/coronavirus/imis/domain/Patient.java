@@ -25,6 +25,7 @@ import java.util.List;
 		property = "id")
 public class Patient {
 	@OneToMany(mappedBy = "patient")
+	@OrderBy("eventTimestamp asc")
 	List<PatientEvent> events;
 	@Id
 	private String id;

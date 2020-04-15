@@ -81,6 +81,9 @@ public class LabTestService {
 				.findFirst()
 				.orElseThrow();
 
+		patient.setPatientStatus(eventType);
+		patientService.updatePatient(patient);
+
 		var changeEvent = new PatientEvent()
 				.setIllness(Illness.CORONA)
 				.setEventType(eventType)

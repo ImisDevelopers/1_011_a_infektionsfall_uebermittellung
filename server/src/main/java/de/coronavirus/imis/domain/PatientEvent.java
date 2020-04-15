@@ -40,7 +40,7 @@ public class PatientEvent {
 	private Timestamp eventTimestamp;
 
 	@Enumerated(EnumType.STRING)
-	private EventType eventType;
+	private PatientEventType patientEventType;
 
 	private String comment;
 	private String accomodation;

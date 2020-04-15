@@ -223,9 +223,9 @@
                       required: true,
                       message: 'Bitte Status wählen',
                     }], initialValue: 'SUSPECTED' }]">
-                    <a-select-option :key="eventType.id" v-for="eventType in EVENT_TYPES">
-                      <a-icon :type="eventType.icon" style="margin-right: 5px" />
-                      {{eventType.label}}
+                    <a-select-option :key="patientEventType.id" v-for="patientEventType in EVENT_TYPES">
+                      <a-icon :type="patientEventType.icon" style="margin-right: 5px" />
+                      {{patientEventType.label}}
                     </a-select-option>
                   </a-select>
                 </a-form-item>

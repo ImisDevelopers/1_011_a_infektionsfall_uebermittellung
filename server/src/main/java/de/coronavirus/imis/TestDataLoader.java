@@ -8,8 +8,8 @@ import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserRepository;
 import de.coronavirus.imis.config.domain.UserRole;
 import de.coronavirus.imis.domain.LabTest;
+import de.coronavirus.imis.domain.LabTestEventType;
 import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.TestStatus;
 import de.coronavirus.imis.domain.TestType;
 import de.coronavirus.imis.services.*;
 import lombok.RequiredArgsConstructor;
@@ -160,7 +160,7 @@ public class TestDataLoader implements ApplicationRunner {
 			// LAB HAS RESULT AND SOTRES IT
 			// FIXME: 22.03.20 report cannot be attached
 			var updateTestStatus = UpdateTestStatusDTO.builder()
-					.status(TestStatus.TEST_POSITIVE)
+					.status(LabTestEventType.TEST_FINISHED_POSITIVE)
 					.comment(comment)
 					.testId(testId)
 					.build();

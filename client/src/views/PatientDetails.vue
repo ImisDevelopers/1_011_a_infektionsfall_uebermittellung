@@ -196,12 +196,12 @@
             >
               <!-- List all the events recorded corresponding to the patient over time -->
               <a-timeline-item
-                :color="timelineColor(event.eventType)"
+                :color="timelineColor(event.patientEventType)"
                 :key="event.id"
                 v-for="event in this.patient.events"
               >
                 {{ formatTimestamp(event.eventTimestamp) }},
-                {{ eventTypes.find(type => type.id === event.eventType).label }}
+                {{ eventTypes.find(type => type.id === event.patientEventType).label }}
               </a-timeline-item>
             </a-timeline>
           </a-card>
@@ -328,8 +328,8 @@ export default Vue.extend({
       // Tests
       this.tests = await Api.api.getLabTestForPatientUsingGet(patientId)
     },
-    timelineColor(eventType: any) {
-      switch (eventType) {
+    timelineColor(patientEventType: any) {
+      switch (patientEventType) {
         case 'TEST_FINISHED_POSITIVE':
           return 'red'
         case 'TEST_FINISHED_NEGATIVE':

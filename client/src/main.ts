@@ -1,4 +1,3 @@
-import { authModule } from '@/store/modules/auth.module'
 import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import Vue from 'vue'
@@ -6,6 +5,7 @@ import Root from './Root.vue'
 // important to import router before the store and authModule!! otherwise it breaks
 import router from './router'
 import store from './store'
+import { authModule } from '@/store/modules/auth.module'
 // import './registerServiceWorker' remove for now
 
 Vue.config.productionTip = false

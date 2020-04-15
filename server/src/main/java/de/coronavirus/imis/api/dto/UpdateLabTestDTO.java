@@ -1,6 +1,5 @@
 package de.coronavirus.imis.api.dto;
 
-import de.coronavirus.imis.domain.TestStatus;
 import lombok.Data;
 
 @Data

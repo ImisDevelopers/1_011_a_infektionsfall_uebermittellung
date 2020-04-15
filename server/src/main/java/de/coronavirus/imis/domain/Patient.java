@@ -51,11 +51,10 @@ public class Patient {
 	private String employer;
 	@Enumerated(EnumType.STRING)
 	@NotNull
-	private EventType patientStatus;
+	private PatientEventType patientStatus;
 	private Boolean fluImmunization;
 	private String speedOfSymptomsOutbreak;
-	@Convert(converter = StringListConverter.class)
-	private List<String> symptoms;
+
 	private Boolean coronaContacts;
 	@Convert(converter = StringListConverter.class)
 	private List<String> riskAreas;

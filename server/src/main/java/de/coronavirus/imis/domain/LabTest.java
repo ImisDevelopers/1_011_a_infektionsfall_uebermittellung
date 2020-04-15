@@ -33,7 +33,11 @@ public class LabTest {
 	@JsonIgnore
 	private Laboratory laboratory;
 
-	private TestStatus testStatus;
+	@ManyToOne
+	@JsonIgnore
+	private PatientCase patientCase;
+
+	private LabTestEventType testStatus;
 
 	private TestType testType;
 

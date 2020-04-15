@@ -33,9 +33,9 @@
         <a-form-item label="Status">
           <a-select placeholder="Status" style="width: 250px" v-model="advancedForm.patientStatus">
             <a-select-option value="">Alle</a-select-option>
-            <a-select-option :key="eventType.id" v-for="eventType in eventTypes">
-              <a-icon :type="eventType.icon" style="margin-right: 5px" />
-              {{eventType.label}}
+            <a-select-option :key="patientEventType.id" v-for="patientEventType in eventTypes">
+              <a-icon :type="patientEventType.icon" style="margin-right: 5px" />
+              {{patientEventType.label}}
             </a-select-option>
           </a-select>
         </a-form-item>

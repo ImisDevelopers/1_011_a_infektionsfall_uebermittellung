@@ -1,6 +1,6 @@
 package de.coronavirus.imis.api.dto;
 
-import de.coronavirus.imis.domain.EventType;
+import de.coronavirus.imis.domain.PatientEventType;
 import de.coronavirus.imis.domain.RiskOccupation;
 import lombok.Data;
 
@@ -28,7 +28,7 @@ public class CreatePatientDTO {
 
 	private String insuranceCompany;
 	private String insuranceMembershipNumber;
-	private EventType patientStatus;
+	private PatientEventType patientStatus;
 	private String employer;
 
 	private Boolean fluImmunization;

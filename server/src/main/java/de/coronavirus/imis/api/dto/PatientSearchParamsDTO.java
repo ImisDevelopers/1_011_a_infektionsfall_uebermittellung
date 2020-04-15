@@ -1,6 +1,6 @@
 package de.coronavirus.imis.api.dto;
 
-import de.coronavirus.imis.domain.EventType;
+import de.coronavirus.imis.domain.PatientEventType;
 import lombok.Data;
 
 @Data
@@ -31,7 +31,7 @@ public class PatientSearchParamsDTO {
 	private String laboratoryId;
 	private boolean includePatientEvents;
 
-	private EventType patientStatus;
+	private PatientEventType patientStatus;
 
 	public Long getPageSize() {
 		if (pageSize != null && pageSize > 0) {

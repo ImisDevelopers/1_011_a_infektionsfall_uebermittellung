@@ -29,7 +29,7 @@ public class StatsService {
 
 		final Map<AggregationResultZip, Long> aggregated = events.stream().collect(
 				Collectors.groupingBy(el ->
-								new AggregationResultZip().Zip(el.getLeft()).eventType(el.right.getEventType().name()),
+								new AggregationResultZip().Zip(el.getLeft()).eventType(el.right.getPatientEventType().name()),
 						Collectors.counting()));
 		return aggregated.entrySet().stream().map(el -> el.getKey()
 				.patientCount(el.getValue())).collect(Collectors.toList());

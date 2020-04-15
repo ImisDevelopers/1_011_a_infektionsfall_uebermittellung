@@ -26,10 +26,10 @@ public class PatientEventService {
 
 	public void createInitialPatientEvent(Patient patient,
 										  Optional<Illness> illness,
-										  EventType eventType,
+										  PatientEventType patientEventType,
 										  LocalDate dateOfReporting) {
 		var concreteIllness = illness.orElse(Illness.CORONA);
-		patient.setPatientStatus(eventType);
+		patient.setPatientStatus(patientEventType);
 		patientRepository.save(patient);
 		final Timestamp eventTimestamp;
 		if (dateOfReporting != null) {
@@ -39,7 +39,7 @@ public class PatientEventService {
 		}
 		PatientEvent event = new PatientEvent()
 				.setEventTimestamp(eventTimestamp)
-				.setEventType(eventType)
+				.setPatientEventType(patientEventType)
 				.setIllness(concreteIllness)
 				.setPatient(patient);
 		patientEventRepository.save(event);
@@ -47,12 +47,13 @@ public class PatientEventService {
 
 	public void createLabTestEvent(Patient patient, LabTest labTest,
 								   Optional<Illness> illness) {
+
 		var concreteIllness = illness.orElse(Illness.CORONA);
-		patient.setPatientStatus(EventType.TEST_SUBMITTED_IN_PROGRESS);
+		patient.setPatientStatus(PatientEventType.TEST_SUBMITTED_IN_PROGRESS);
 		patientRepository.save(patient);
 		PatientEvent event = new PatientEvent()
 				.setEventTimestamp(Timestamp.from(Instant.now()))
-				.setEventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
+				.setPatientEventType(PatientEventType.TEST_SUBMITTED_IN_PROGRESS)
 				.setLabTest(labTest)
 				.setIllness(concreteIllness)
 				.setPatient(patient);
@@ -73,14 +74,16 @@ public class PatientEventService {
 					return doctorRepository.save(newDoctor);
 				}
 		);
-		patient.setPatientStatus(EventType.SCHEDULED_FOR_TESTING);
+
+		patient.setPatientStatus(PatientEventType.DOCTORS_VISIT);
 		patientRepository.save(patient);
 		var event = new PatientEvent()
 				.setEventTimestamp(Timestamp.from(Instant.now()))
-				.setEventType(EventType.SCHEDULED_FOR_TESTING)
+				.setPatientEventType(PatientEventType.DOCTORS_VISIT)
 				.setIllness(Illness.CORONA)
 				.setResponsibleDoctor(doctor)
 				.setPatient(patient);
+
 		return patientEventRepository.save(event);
 	}
 

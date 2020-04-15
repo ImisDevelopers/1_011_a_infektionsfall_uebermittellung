@@ -4,7 +4,6 @@ import { config } from '@/config'
 import { InstitutionRole } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
-import { Vue } from 'vue/types/vue'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 
 interface JwtData {

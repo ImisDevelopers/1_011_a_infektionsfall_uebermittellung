@@ -20,36 +20,36 @@ import java.util.List;
 @EnableSwagger2
 public class SawggerConfig {
 
-  @Bean
-  public Docket api() {
-    return new Docket(DocumentationType.SWAGGER_2)
-            .ignoredParameterTypes(AuthenticationPrincipal.class)
-            .securityContexts(Lists.newArrayList(securityContext()))
-            .securitySchemes(Lists.newArrayList(apiKey()))
-            .select()
-            .apis(RequestHandlerSelectors.any())
-            .paths(PathSelectors.any())
-            .build();
-  }
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.ignoredParameterTypes(AuthenticationPrincipal.class)
+				.securityContexts(Lists.newArrayList(securityContext()))
+				.securitySchemes(Lists.newArrayList(apiKey()))
+				.select()
+				.apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.any())
+				.build();
+	}
 
-  private ApiKey apiKey() {
-    return new ApiKey("JWT", "Authorization", "header");
-  }
+	private SecurityContext securityContext() {
+		return SecurityContext.builder()
+				.securityReferences(defaultAuth())
+				.forPaths(PathSelectors.regex("/.*"))
+				.build();
+	}
 
-  private SecurityContext securityContext() {
-    return SecurityContext.builder()
-            .securityReferences(defaultAuth())
-            .forPaths(PathSelectors.regex("/.*"))
-            .build();
-  }
+	private ApiKey apiKey() {
+		return new ApiKey("JWT", "Authorization", "header");
+	}
 
-  List<SecurityReference> defaultAuth() {
-    AuthorizationScope authorizationScope
-            = new AuthorizationScope("global", "accessEverything");
-    AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-    authorizationScopes[0] = authorizationScope;
-    return Lists.newArrayList(
-            new SecurityReference("JWT", authorizationScopes));
-  }
+	List<SecurityReference> defaultAuth() {
+		AuthorizationScope authorizationScope
+				= new AuthorizationScope("global", "accessEverything");
+		AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+		authorizationScopes[0] = authorizationScope;
+		return Lists.newArrayList(
+				new SecurityReference("JWT", authorizationScopes));
+	}
 
 }

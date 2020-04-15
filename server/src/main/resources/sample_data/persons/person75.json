@@ -1,1 +1,29 @@
-{"lastName": "Weber", "firstName": "Susanne", "gender": "weiblich", "dateOfBirth": "1996-06-09", "email": "s.weber@gmx.de", "phoneNumber": "31079937124", "street": "Aarhusweg", "houseNumber": 50, "zip": "5965756", "city": "Hamburg", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "K747693166", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Gelenkschmerzen", "Schnupfen", "Fieber"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1996-06-09",
+  "email": "s.weber@gmx.de",
+  "firstName": "Susanne",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 50,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "K747693166",
+  "lastName": "Weber",
+  "phoneNumber": "31079937124",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "5965756"
+}

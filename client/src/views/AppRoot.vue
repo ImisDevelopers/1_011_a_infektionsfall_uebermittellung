@@ -17,17 +17,21 @@
               <router-view></router-view>
             </div>
             <a-layout-footer style="textAlign: center">
-              IMIS ©2020 with <a-icon type="heart" style="color: red;">❤</a-icon> by
-              <a-button type="link" href="https://wirvsvirushackathon.org" target="_blank" style="padding-left: 0">#WeVsVirus</a-button>
+              IMIS ©2020 with
+              <a-icon style="color: red;" type="heart">❤</a-icon>
+              by
+              <a-button href="https://wirvsvirushackathon.org" style="padding-left: 0" target="_blank" type="link">
+                #WeVsVirus
+              </a-button>
             </a-layout-footer>
           </a-layout-content>
         </a-layout>
       </a-layout>
     </a-layout>
     <a-spin
-      v-if="isLoading"
       size="large"
       style="position: fixed; bottom: 3rem; margin: 0 auto;"
+      v-if="isLoading"
     />
   </div>
 </template>

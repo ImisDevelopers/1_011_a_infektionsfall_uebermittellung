@@ -1,1 +1,30 @@
-{"lastName": "Schr\u00f6der", "firstName": "Karl", "gender": "m\u00e4nnlich", "dateOfBirth": "1960-02-19", "email": "k.schroeder@gmail.de", "phoneNumber": "83210731585", "street": "Im KramersfeldAar\u00f6stra\u00dfe", "houseNumber": 97, "zip": "4936899", "city": "Frankfurt", "insuranceCompany": "AOK", "insuranceMembershipNumber": "T806340901", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Husten", "Fieber", "Schnupfen", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1960-02-19",
+  "email": "k.schroeder@gmail.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 97,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "T806340901",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "83210731585",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "symptoms": [
+    "Husten",
+    "Fieber",
+    "Schnupfen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "4936899"
+}

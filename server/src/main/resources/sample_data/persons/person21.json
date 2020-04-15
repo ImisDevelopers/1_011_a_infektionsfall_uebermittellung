@@ -1,1 +1,27 @@
-{"lastName": "Winter", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1981-04-24", "email": "k.winter@posteo.de", "phoneNumber": "7498941343", "street": "Abbachstra\u00dfe", "houseNumber": 22, "zip": "4082400", "city": "Frankfurt", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "W235591568", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Husten"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1981-04-24",
+  "email": "k.winter@posteo.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 22,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "W235591568",
+  "lastName": "Winter",
+  "phoneNumber": "7498941343",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "4082400"
+}

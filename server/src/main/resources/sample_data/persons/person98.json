@@ -1,1 +1,28 @@
-{"lastName": "Wagner", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1958-12-31", "email": "k.wagner@t-online.de", "phoneNumber": "10691545226", "street": "Nordtstra\u00dfe", "houseNumber": 62, "zip": "10528953", "city": "Hamburg", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "J888121101", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Schnupfen", "Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1958-12-31",
+  "email": "k.wagner@t-online.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 62,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "J888121101",
+  "lastName": "Wagner",
+  "phoneNumber": "10691545226",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Schnupfen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "10528953"
+}

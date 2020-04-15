@@ -1,1 +1,27 @@
-{"lastName": "Peters", "firstName": "Hans", "gender": "m\u00e4nnlich", "dateOfBirth": "1941-08-12", "email": "h.peters@posteo.de", "phoneNumber": "0910109710700", "street": "B\u00fcckerheide", "houseNumber": 70, "zip": "6008484", "city": "Berlin", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "W823737375", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Fieber"], "coronaContacts": true, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-08-12",
+  "email": "h.peters@posteo.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 70,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "W823737375",
+  "lastName": "Peters",
+  "phoneNumber": "0910109710700",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide",
+  "symptoms": [
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "6008484"
+}

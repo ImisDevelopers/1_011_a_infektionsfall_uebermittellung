@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ClinicRepository extends JpaRepository<Clinic, String> {
 
-    List<Laboratory> findByIdContaining(String id);
+	List<Laboratory> findByIdContaining(String id);
 }

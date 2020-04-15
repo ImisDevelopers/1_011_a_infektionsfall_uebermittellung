@@ -1,1 +1,31 @@
-{"lastName": "M\u00fcller", "firstName": "Franz", "gender": "m\u00e4nnlich", "dateOfBirth": "1991-08-20", "email": "f.mueller@gmx.de", "phoneNumber": "904101021020", "street": "Haidth\u00f6heAarweg", "houseNumber": 63, "zip": "5884252", "city": "D\u00fcsseldorf", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "D928316966", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Halschmerzen", "Schnupfen", "Atemschwierigkeiten", "Husten", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1991-08-20",
+  "email": "f.mueller@gmx.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 63,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "D928316966",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "904101021020",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Halschmerzen",
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "5884252"
+}

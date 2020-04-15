@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(fluent = true)
 public class AggregationResultZip {
-    private String Zip;
-    private Long patientCount;
-    private String eventType;
+	private String Zip;
+	private Long patientCount;
+	private String eventType;
 }

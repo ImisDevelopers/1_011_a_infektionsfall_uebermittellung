@@ -1,1 +1,27 @@
-{"lastName": "Weber", "firstName": "Marie", "gender": "weiblich", "dateOfBirth": "1995-06-13", "email": "m.weber@gmx.de", "phoneNumber": "7933410110100", "street": "Im KramersfeldAar\u00f6stra\u00dfe", "houseNumber": 51, "zip": "66870100", "city": "Hamburg", "insuranceCompany": "AOK", "insuranceMembershipNumber": "P565906941", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Husten"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1995-06-13",
+  "email": "m.weber@gmx.de",
+  "firstName": "Marie",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 51,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "P565906941",
+  "lastName": "Weber",
+  "phoneNumber": "7933410110100",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66870100"
+}

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.NOT_FOUND)
 public class InstitutionNotFoundException extends RuntimeException {
-    public InstitutionNotFoundException(final String message) {
-        super(message);
-    }
+	public InstitutionNotFoundException(final String message) {
+		super(message);
+	}
 }

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { authModule } from './modules/auth.module'
-import { patientModule } from './modules/patients.module'
 
 import { createStore, Module } from 'vuex-smart-module'
+import { authModule } from './modules/auth.module'
+import { patientModule } from './modules/patients.module'
 
 Vue.use(Vuex)
 

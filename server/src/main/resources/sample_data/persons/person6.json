@@ -1,1 +1,33 @@
-{"lastName": "Schulze", "firstName": "Jens", "gender": "m\u00e4nnlich", "dateOfBirth": "1953-04-04", "email": "j.schulze@gmx.de", "phoneNumber": "1106566701010", "street": "Nordtstra\u00dfe", "houseNumber": 12, "zip": "0651333", "city": "Frankfurt", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "E552991960", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung", "Halschmerzen", "Husten", "Gelenkschmerzen", "Kopfschmerzen", "Atemschwierigkeiten", "Schnupfen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1953-04-04",
+  "email": "j.schulze@gmx.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 12,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "E552991960",
+  "lastName": "Schulze",
+  "phoneNumber": "1106566701010",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "0651333"
+}

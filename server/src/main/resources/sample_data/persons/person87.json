@@ -1,1 +1,27 @@
-{"lastName": "Schulze", "firstName": "Karl", "gender": "m\u00e4nnlich", "dateOfBirth": "1928-09-07", "email": "k.schulze@web.de", "phoneNumber": "64100376137", "street": "Nordtstra\u00dfe", "houseNumber": 76, "zip": "1805526", "city": "Freiburg", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "R833303441", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Husten"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1928-09-07",
+  "email": "k.schulze@web.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 76,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "R833303441",
+  "lastName": "Schulze",
+  "phoneNumber": "64100376137",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "1805526"
+}

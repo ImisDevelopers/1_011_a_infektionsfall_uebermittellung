@@ -1,1 +1,30 @@
-{"lastName": "Bauer", "firstName": "Hans", "gender": "m\u00e4nnlich", "dateOfBirth": "1994-01-28", "email": "h.bauer@gmx.de", "phoneNumber": "121021069166", "street": "Nordstra\u00dfe", "houseNumber": 59, "zip": "848010110", "city": "Frankfurt", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "Y788227492", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Halschmerzen", "Fieber", "Erk\u00e4ltung", "Husten"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1994-01-28",
+  "email": "h.bauer@gmx.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 59,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y788227492",
+  "lastName": "Bauer",
+  "phoneNumber": "121021069166",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Halschmerzen",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "848010110"
+}

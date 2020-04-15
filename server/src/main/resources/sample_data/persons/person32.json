@@ -1,1 +1,34 @@
-{"lastName": "M\u00fcller", "firstName": "Marie", "gender": "weiblich", "dateOfBirth": "1945-01-20", "email": "m.mueller@posteo.de", "phoneNumber": "8593101107410", "street": "Niekampsweg", "houseNumber": 14, "zip": "2004711", "city": "K\u00f6ln", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "E517305280", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Halschmerzen", "Atemschwierigkeiten", "Kopfschmerzen", "Fieber", "Erk\u00e4ltung", "Schnupfen", "Husten", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1945-01-20",
+  "email": "m.mueller@posteo.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 14,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "E517305280",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "8593101107410",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "2004711"
+}

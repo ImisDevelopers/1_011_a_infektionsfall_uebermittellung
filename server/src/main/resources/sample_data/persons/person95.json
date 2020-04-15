@@ -1,1 +1,29 @@
-{"lastName": "Richter", "firstName": "Jana", "gender": "weiblich", "dateOfBirth": "1983-06-07", "email": "j.richter@gmx.de", "phoneNumber": "2447209993", "street": "Nordtstra\u00dfe", "houseNumber": 37, "zip": "7687014", "city": "Freiburg", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "N314166184", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Husten", "Erk\u00e4ltung", "Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1983-06-07",
+  "email": "j.richter@gmx.de",
+  "firstName": "Jana",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 37,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "N314166184",
+  "lastName": "Richter",
+  "phoneNumber": "2447209993",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Husten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "7687014"
+}

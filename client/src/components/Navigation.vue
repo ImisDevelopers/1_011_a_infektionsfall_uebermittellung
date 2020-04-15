@@ -1,18 +1,18 @@
 <template>
   <a-layout-sider
-    breakpoint="md"
     :collapsed="sideNavCollapsed"
     :collapsedWidth="0"
     :trigger="null"
+    breakpoint="md"
   >
     <a-menu
-      theme="dark"
       mode="inline"
       style="text-align: left;"
+      theme="dark"
     > <!--TODO :defaultSelectedKeys="[asdf]"-->
       <a-menu-item
-        v-for="route in routes()"
         :key="route.path"
+        v-for="route in routes()"
       >
         <!--        v-bind:class="{'ant-menu-item-selected': route.name === $route.name}" TODO this is to slow-->
         <router-link

@@ -1,1 +1,27 @@
-{"lastName": "Bauer", "firstName": "Jens", "gender": "m\u00e4nnlich", "dateOfBirth": "1927-11-17", "email": "j.bauer@gmail.de", "phoneNumber": "010841012411", "street": "Nordufer", "houseNumber": 70, "zip": "2449353", "city": "D\u00fcsseldorf", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "P369639388", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Halschmerzen"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1927-11-17",
+  "email": "j.bauer@gmail.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 70,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P369639388",
+  "lastName": "Bauer",
+  "phoneNumber": "010841012411",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer",
+  "symptoms": [
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "2449353"
+}

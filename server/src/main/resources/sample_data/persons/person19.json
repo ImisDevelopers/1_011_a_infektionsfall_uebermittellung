@@ -1,1 +1,28 @@
-{"lastName": "Winkler", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1950-03-24", "email": "d.winkler@posteo.de", "phoneNumber": "81049877694", "street": "Abbachstra\u00dfe", "houseNumber": 31, "zip": "1473799", "city": "Freiburg", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "A630757561", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Gelenkschmerzen", "Fieber"], "coronaContacts": false, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1950-03-24",
+  "email": "d.winkler@posteo.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 31,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "A630757561",
+  "lastName": "Winkler",
+  "phoneNumber": "81049877694",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "1473799"
+}

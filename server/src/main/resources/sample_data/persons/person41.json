@@ -1,1 +1,33 @@
-{"lastName": "Winter", "firstName": "Hans", "gender": "m\u00e4nnlich", "dateOfBirth": "1946-10-25", "email": "h.winter@gmx.de", "phoneNumber": "97109101095105", "street": "Haidth\u00f6heAarweg", "houseNumber": 56, "zip": "17710449", "city": "Berlin", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "Q179661615", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Husten", "Gelenkschmerzen", "Schnupfen", "Kopfschmerzen", "Halschmerzen", "Atemschwierigkeiten", "Erk\u00e4ltung"], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1946-10-25",
+  "email": "h.winter@gmx.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 56,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Q179661615",
+  "lastName": "Winter",
+  "phoneNumber": "97109101095105",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Husten",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "17710449"
+}

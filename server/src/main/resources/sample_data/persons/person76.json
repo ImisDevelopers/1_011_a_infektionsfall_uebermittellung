@@ -1,1 +1,28 @@
-{"lastName": "Schr\u00f6der", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1964-07-09", "email": "d.schroeder@posteo.de", "phoneNumber": "65193982108", "street": "Aarhusweg", "houseNumber": 93, "zip": "73741610", "city": "Bochum", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "U425164079", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Halschmerzen", "Gelenkschmerzen"], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Bochum",
+  "coronaContacts": false,
+  "dateOfBirth": "1964-07-09",
+  "email": "d.schroeder@posteo.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 93,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "U425164079",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "65193982108",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Halschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "73741610"
+}

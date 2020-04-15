@@ -1,1 +1,31 @@
-{"lastName": "Richter", "firstName": "Daniel", "gender": "m\u00e4nnlich", "dateOfBirth": "1960-06-20", "email": "d.richter@t-online.de", "phoneNumber": "40781618410", "street": "Nordstra\u00dfe", "houseNumber": 46, "zip": "93101034", "city": "M\u00fcnchen", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "D508157429", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Schnupfen", "Gelenkschmerzen", "Halschmerzen", "Fieber", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1960-06-20",
+  "email": "d.richter@t-online.de",
+  "firstName": "Daniel",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 46,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "D508157429",
+  "lastName": "Richter",
+  "phoneNumber": "40781618410",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Fieber",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "93101034"
+}

@@ -1,1 +1,25 @@
-{"lastName": "Schr\u00f6der", "firstName": "Hans", "gender": "m\u00e4nnlich", "dateOfBirth": "1927-04-21", "email": "h.schroeder@gmail.de", "phoneNumber": "9172513552", "street": "Nordtstra\u00dfe", "houseNumber": 11, "zip": "101057043", "city": "K\u00f6ln", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "C476326283", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": [], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1927-04-21",
+  "email": "h.schroeder@gmail.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 11,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C476326283",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "9172513552",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "101057043"
+}

@@ -2,27 +2,27 @@
   <div>
     <div class="landing-header">
       <img
-        src="../assets/logo.png"
         aspect-ratio="1.7"
+        src="../assets/logo.png"
         style="vertical-align: middle"
       />
       <h1 class="header-text" style="margin: 0 0 0 15px">Schnell. Einfach. Zuverlässig.</h1>
       <span style="flex: 1 1 auto"></span>
       <div class="header-buttons">
-        <a-button type="primary" :block="true" href="mailto:imis-team@gmx.de" icon="mail" shape="round">
+        <a-button :block="true" href="mailto:imis-team@gmx.de" icon="mail" shape="round" type="primary">
           <span>Kontakt</span>
         </a-button>
-        <a-button type="primary" :block="true"
-                  href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
-                  icon="bulb" shape="round">
+        <a-button :block="true" href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
+                  icon="bulb"
+                  shape="round" type="primary">
           <span>DevPost</span>
         </a-button>
-        <a-button type="primary" :block="true" href="https://twitter.com/IMIS_team" icon="twitter" shape="round">
+        <a-button :block="true" href="https://twitter.com/IMIS_team" icon="twitter" shape="round" type="primary">
           <span>Twitter</span>
         </a-button>
-        <a-button type="primary" :block="true"
-                  href="https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung"
-                  icon="github" shape="round">
+        <a-button :block="true" href="https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung"
+                  icon="github"
+                  shape="round" type="primary">
           <span>GitHub</span>
         </a-button>
       </div>
@@ -30,10 +30,11 @@
     <!-- Header is fixed, so it is not included in layout -->
     <div style="height: 100px"></div>
     <div class="first-section" style="position: relative">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/XIIlMh3Lbsc" frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+              frameborder="0" height="315"
+              src="https://www.youtube.com/embed/XIIlMh3Lbsc"
               style="max-width: 100%"
-              allowfullscreen></iframe>
+              width="560"></iframe>
       <div class="first-section-text">
         <div style="display: flex;">
           <h2 style="color: white;">Das Infektionsmelde- und Informationssystem</h2>
@@ -50,23 +51,23 @@
     <div class="button-container">
       <router-link :to="{ name: 'public-register' }" style="margin: 10px 20px 10px 0">
         <a-button
+          block
+          icon="arrow-right"
+          shape="round"
+          size="large"
           style="flex:  0 1 300px; margin-left: 20px"
           type="primary"
-          shape="round"
-          icon="arrow-right"
-          size="large"
-          block
         >Zur Sebstregistrierung
         </a-button>
       </router-link>
       <router-link :to="{ name: 'app' }" style="margin: 10px 0">
         <a-button
+          block
+          icon="arrow-right"
+          shape="round"
+          size="large"
           style="flex:  0 1 300px; margin-left: 20px"
           type="primary"
-          shape="round"
-          icon="arrow-right"
-          size="large"
-          block
         >Zur Live-Demo
         </a-button>
       </router-link>
@@ -77,13 +78,13 @@
     </div>
     <div class="link-section">
       <a-button
+        block
+        href="https://drive.google.com/file/d/1hoQtGvO21p7_pQ63iDLoWzXB-FFfvKQJ/view?usp=sharing"
+        icon="bulb"
+        shape="round"
+        size="large"
         style="flex:  0 1 400px; margin-left: 20px"
         type="primary"
-        shape="round"
-        icon="bulb"
-        size="large"
-        href="https://drive.google.com/file/d/1hoQtGvO21p7_pQ63iDLoWzXB-FFfvKQJ/view?usp=sharing"
-        block
       >
         <span class="hidden-mobile">Hier geht's zu unserer Prozessübersicht</span>
         <span class="hidden-desktop">Zur Prozessübersicht</span>
@@ -112,14 +113,14 @@
           <h3>Und deshalb sind wir ein vielfältiges Team aus Organisatoren und Projektkoordinatoren, Frontend- und
             Backend-Entwicklern, UI-Designern, Datenbankspezialisten und vielen mehr.</h3>
         </div>
-        <a-icon type="team" :style="{ fontSize: '128px', color: '#2c3e50' }" style="margin-bottom: 25px" />
+        <a-icon :style="{ fontSize: '128px', color: '#2c3e50' }" style="margin-bottom: 25px" type="team" />
       </div>
     </div>
     <div class="third-section">
       <div>
         <img
-          src="../assets/logo.png"
           aspect-ratio="1.7"
+          src="../assets/logo.png"
           style="vertical-align: middle; height: 100px"
         />
       </div>

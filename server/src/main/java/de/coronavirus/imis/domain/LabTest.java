@@ -21,29 +21,29 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class LabTest {
 
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private String id;
+	@Id
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	private String id;
 
-    @ApiModelProperty(required = true)
-    private String testId;
+	@ApiModelProperty(required = true)
+	private String testId;
 
-    @ManyToOne
-    @JsonIgnore
-    private Laboratory laboratory;
+	@ManyToOne
+	@JsonIgnore
+	private Laboratory laboratory;
 
-    private TestStatus testStatus;
+	private TestStatus testStatus;
 
-    private TestType testType;
+	private TestType testType;
 
-    private String comment;
+	private String comment;
 
-    private byte[] report;
+	private byte[] report;
 
-    @JsonPOJOBuilder(withPrefix = "")
-    public static final class LabTestBuilder {
+	@JsonPOJOBuilder(withPrefix = "")
+	public static final class LabTestBuilder {
 
-    }
+	}
 
 }

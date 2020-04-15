@@ -1,1 +1,28 @@
-{"lastName": "Klein", "firstName": "Jana", "gender": "weiblich", "dateOfBirth": "1968-07-30", "email": "j.klein@t-online.de", "phoneNumber": "1125457387", "street": "Abbachstra\u00dfe", "houseNumber": 60, "zip": "1775140", "city": "M\u00fcnchen", "insuranceCompany": "AOK", "insuranceMembershipNumber": "K795752405", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Erk\u00e4ltung", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1968-07-30",
+  "email": "j.klein@t-online.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 60,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K795752405",
+  "lastName": "Klein",
+  "phoneNumber": "1125457387",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "1775140"
+}

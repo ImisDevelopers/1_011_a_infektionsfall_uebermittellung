@@ -12,8 +12,8 @@ import javax.persistence.Entity;
 @Setter
 public class DepartmentOfHealth extends InstitutionImpl {
 
-    @Override
-    public InstitutionType getType() {
-        return InstitutionType.DEPARTMENT_OF_HEALTH;
-    }
+	@Override
+	public InstitutionType getType() {
+		return InstitutionType.DEPARTMENT_OF_HEALTH;
+	}
 }

@@ -1,9 +1,9 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Stadt" v-decorator="validation"
-                     :disabled="disabled">
+    <a-auto-complete :disabled="disabled" @search="handleSearch" placeholder="Suche über ID, Name, Stadt"
+                     v-decorator="validation">
       <template slot="dataSource">
-        <a-select-option v-for="laboratory in result" :key="laboratory.id">
+        <a-select-option :key="laboratory.id" v-for="laboratory in result">
           {{laboratory.name}} ({{laboratory.city}})
         </a-select-option>
       </template>

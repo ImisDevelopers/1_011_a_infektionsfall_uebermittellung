@@ -1,1 +1,30 @@
-{"lastName": "Schulz", "firstName": "Franz", "gender": "m\u00e4nnlich", "dateOfBirth": "1996-05-28", "email": "f.schulz@posteo.de", "phoneNumber": "18880105929", "street": "Niekampsweg", "houseNumber": 19, "zip": "2292706", "city": "Kiel", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "X355046107", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Gelenkschmerzen", "Fieber", "Atemschwierigkeiten", "Halschmerzen"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1996-05-28",
+  "email": "f.schulz@posteo.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 19,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "X355046107",
+  "lastName": "Schulz",
+  "phoneNumber": "18880105929",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "2292706"
+}

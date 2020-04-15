@@ -1,1 +1,34 @@
-{"lastName": "M\u00fcller", "firstName": "Annika", "gender": "weiblich", "dateOfBirth": "1982-08-17", "email": "a.mueller@t-online.de", "phoneNumber": "6814473947", "street": "Schernerweg", "houseNumber": 15, "zip": "21727110", "city": "Kiel", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "L861863296", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Atemschwierigkeiten", "Schnupfen", "Fieber", "Kopfschmerzen", "Halschmerzen", "Erk\u00e4ltung", "Husten", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1982-08-17",
+  "email": "a.mueller@t-online.de",
+  "firstName": "Annika",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 15,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "L861863296",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "6814473947",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Fieber",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "21727110"
+}

@@ -1,14 +1,14 @@
 <template>
   <a-form-item :label="label">
     <a-date-picker
+      :disabled="disabled"
+      :format="dateFormat"
+      :open="dateOfBirthPickerOpen"
       @focus="datePickerFocused"
       @openChange="openChanged"
-      style="width: 100%"
-      :open="dateOfBirthPickerOpen"
-      :format="dateFormat"
-      :disabled="disabled"
-      v-decorator="decorator"
       placeholder="TT.MM.JJJJ (z.B. 28.02.1986)"
+      style="width: 100%"
+      v-decorator="decorator"
     />
   </a-form-item>
 </template>

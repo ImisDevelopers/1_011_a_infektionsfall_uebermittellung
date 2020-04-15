@@ -1,12 +1,8 @@
 package de.coronavirus.imis.config;
 
-import static org.springframework.http.HttpMethod.POST;
-import static org.springframework.http.HttpMethod.PUT;
-import static org.springframework.http.HttpMethod.OPTIONS;
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.DELETE;
-
-import de.coronavirus.imis.domain.Institution;
+import de.coronavirus.imis.config.domain.UserRole;
+import de.coronavirus.imis.domain.InstitutionType;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,41 +15,38 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import lombok.RequiredArgsConstructor;
-
-import de.coronavirus.imis.config.domain.UserRole;
-import de.coronavirus.imis.domain.InstitutionType;
+import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final JwtTokenFilter filter;
+	private final JwtTokenFilter filter;
 
-    private final String CLINIC = InstitutionType.CLINIC.name();
-    private final String DEPARTMENT_OF_HEALTH = InstitutionType.DEPARTMENT_OF_HEALTH.name();
-    private final String DOCTORS_OFFICE = InstitutionType.DOCTORS_OFFICE.name();
-    private final String GOVERNMENT_AGENCY = InstitutionType.GOVERNMENT_AGENCY.name();
-    private final String LABORATORY = InstitutionType.LABORATORY.name();
-    private final String TEST_SITE = InstitutionType.TEST_SITE.name();
+	private final String CLINIC = InstitutionType.CLINIC.name();
+	private final String DEPARTMENT_OF_HEALTH = InstitutionType.DEPARTMENT_OF_HEALTH.name();
+	private final String DOCTORS_OFFICE = InstitutionType.DOCTORS_OFFICE.name();
+	private final String GOVERNMENT_AGENCY = InstitutionType.GOVERNMENT_AGENCY.name();
+	private final String LABORATORY = InstitutionType.LABORATORY.name();
+	private final String TEST_SITE = InstitutionType.TEST_SITE.name();
 
 
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
 
-    @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public PasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // FIXME route permissions
-        //@formatter:off
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		// FIXME route permissions
+		//@formatter:off
         http
                 .httpBasic().disable()
                 .csrf().disable()
@@ -80,8 +73,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         /*Probably not needed*/ "/swagger.json").permitAll()
                 .antMatchers("/**").permitAll();
         //@formatter:on
-        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
-    }
+		http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+	}
 
 
 }

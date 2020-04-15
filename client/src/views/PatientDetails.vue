@@ -6,8 +6,8 @@
         v-if="patient"
       >
         <a-tab-pane
-          tab="Stammdaten"
           key="1"
+          tab="Stammdaten"
         >
           <!-- display user data here-->
           <div>
@@ -15,13 +15,13 @@
             <!-- Allgemein & Adresse -->
             <a-row :gutter="8">
               <a-col
-                :span="24"
                 :md="12"
+                :span="24"
               >
                 <a-card
-                  title="Allgemein"
-                  align="left"
                   :extra="this.patient.id"
+                  align="left"
+                  title="Allgemein"
                 >
                   <table>
                     <tr>
@@ -44,12 +44,12 @@
                 </a-card>
               </a-col>
               <a-col
-                :span="24"
                 :md="12"
+                :span="24"
               >
                 <a-card
-                  title="Adresse"
                   align="left"
+                  title="Adresse"
                 >
                   <table>
                     <tr>
@@ -75,10 +75,10 @@
 
             <!-- Kontakt & Versicherung & Arbeitgeber -->
             <a-row :gutter="8" style="margin-top: 8px;">
-              <a-col :span="24" :md="8">
+              <a-col :md="8" :span="24">
                 <a-card
-                  title="Kontakt"
                   align="left"
+                  title="Kontakt"
                 >
                   <table>
                     <tr>
@@ -92,10 +92,10 @@
                   </table>
                 </a-card>
               </a-col>
-              <a-col :span="24" :md="8">
+              <a-col :md="8" :span="24">
                 <a-card
-                  title="Versicherung"
                   align="left"
+                  title="Versicherung"
                 >
                   <table>
                     <tr>
@@ -109,10 +109,10 @@
                   </table>
                 </a-card>
               </a-col>
-              <a-col :span="24" :md="8">
+              <a-col :md="8" :span="24">
                 <a-card
-                  title="Arbeit"
                   align="left"
+                  title="Arbeit"
                 >
                   <table>
                     <tr>
@@ -131,26 +131,26 @@
             <!-- Symptome und Risiken -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col
-                :span="24"
                 :md="12"
+                :span="24"
               >
                 <a-card
-                  title="Vorerkrankungen und Risikofaktoren"
                   align="left"
+                  title="Vorerkrankungen und Risikofaktoren"
                 >
-                  <div v-for="illness in preIllnesses" v-bind:key="illness">{{illness}}</div>
+                  <div v-bind:key="illness" v-for="illness in preIllnesses">{{illness}}</div>
                 </a-card>
               </a-col>
               <a-col
-                :span="24"
                 :md="12"
+                :span="24"
               >
                 <a-card
-                  title="Symptome"
-                  align="left"
                   :extra="'Stand: ' + formatTimestamp(patient.creationTimestamp)"
+                  align="left"
+                  title="Symptome"
                 >
-                  <div v-for="symptom in symptoms" v-bind:key="symptom">{{symptom}}</div>
+                  <div v-bind:key="symptom" v-for="symptom in symptoms">{{symptom}}</div>
                 </a-card>
               </a-col>
             </a-row>
@@ -163,10 +163,10 @@
                   align="left"
                 >
                   <a-table
-                    class="imis-table-no-pagination"
                     :columns="columnsTests"
                     :dataSource="tests"
                     :scroll="{x: 0, y: 0}"
+                    class="imis-table-no-pagination"
                     rowKey="id"
                   >
                     <div slot="testStatus" slot-scope="testStatus">
@@ -185,9 +185,9 @@
           <br>
         </a-tab-pane>
         <a-tab-pane
-          tab="Verlauf"
-          key="2"
           forceRender
+          key="2"
+          tab="Verlauf"
         >
           <a-card>
             <a-timeline
@@ -196,9 +196,9 @@
             >
               <!-- List all the events recorded corresponding to the patient over time -->
               <a-timeline-item
-                v-for="event in this.patient.events"
-                :key="event.id"
                 :color="timelineColor(event.eventType)"
+                :key="event.id"
+                v-for="event in this.patient.events"
               >
                 {{ formatTimestamp(event.eventTimestamp) }},
                 {{ eventTypes.find(type => type.id === event.eventType).label }}

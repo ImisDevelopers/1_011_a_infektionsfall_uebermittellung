@@ -65,7 +65,7 @@ spec:
             memory: 350Mi
           limits: # exactly 1 * g1-small
             cpu: 940m
-            memory: 1.2G
+            memory: 1.2Gi
       - name: cloudsql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.14
         command: ["/cloud_sql_proxy",

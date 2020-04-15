@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface TestSiteRepository extends JpaRepository<TestSite, String> {
 
-    List<Laboratory> findByIdContaining(String id);
+	List<Laboratory> findByIdContaining(String id);
 
 }

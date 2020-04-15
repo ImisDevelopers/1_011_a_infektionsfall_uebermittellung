@@ -2,13 +2,13 @@
   <div class="wrapper">
 
     <!-- Patient successfully created info -->
-    <div v-if="createdPatient" style="display: flex; justify-content: center; text-align: center">
+    <div style="display: flex; justify-content: center; text-align: center" v-if="createdPatient">
       <a-card style="max-width: 600px; margin-bottom: 25px">
         <div style="display: flex; flex-direction: column; position: relative">
-          <a-icon type="close" style="top: 0; right: 0; position: absolute; cursor: pointer"
-                  @click="createdPatient = null" />
+          <a-icon @click="createdPatient = null" style="top: 0; right: 0; position: absolute; cursor: pointer"
+                  type="close" />
           <div style="display: flex; align-items: center; margin: 10px">
-            <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" />
+            <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" type="check-circle" />
             <h3 style="margin-bottom: 0">
               <span v-if="createdPatient.gender === 'female'">Patientin</span>
               <span v-else>Patient</span>
@@ -52,8 +52,8 @@
 
       <a-form
         :form="form"
-        :layout="'horizontal'"
         :labelCol="{ span: 8 }"
+        :layout="'horizontal'"
         :wrapperCol="{ span: 16 }"
         @submit.prevent="handleSubmit"
       >
@@ -62,7 +62,7 @@
 
           <!-- Stammdaten -->
           <a-collapse-panel header="Allgemeines" key="1">
-            <PatientStammdaten :form="form" @gender="genderSelected" :show-stay="true" :show-death="true" />
+            <PatientStammdaten :form="form" :show-death="true" :show-stay="true" @gender="genderSelected" />
           </a-collapse-panel>
 
           <!-- Infektionskette / Exposure -->
@@ -72,19 +72,19 @@
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
-              <a-checkbox-group v-decorator="['exposures']" @change="exposuresChanged">
+              <a-checkbox-group @change="exposuresChanged" v-decorator="['exposures']">
                 <a-row>
-                  <a-col :span="24" v-for="exposure in EXPOSURES_INTERNAL" :key="exposure.value">
+                  <a-col :key="exposure.value" :span="24" v-for="exposure in EXPOSURES_INTERNAL">
                     <a-checkbox :value="exposure.value">
                       {{exposure.label}}
                     </a-checkbox>
                   </a-col>
                 </a-row>
               </a-checkbox-group>
-              <a-checkbox-group v-decorator="['exposureLocation']" :disabled="disableExposureLocation"
-                                style="padding-left: 30px">
+              <a-checkbox-group :disabled="disableExposureLocation" style="padding-left: 30px"
+                                v-decorator="['exposureLocation']">
                 <a-row>
-                  <a-col :span="24" v-for="exposure in EXPOSURE_LOCATIONS" :key="exposure.value">
+                  <a-col :key="exposure.value" :span="24" v-for="exposure in EXPOSURE_LOCATIONS">
                     <a-checkbox :value="exposure.value">
                       {{exposure.label}}
                     </a-checkbox>
@@ -103,13 +103,13 @@
             >
               <a-checkbox-group v-decorator="['symptoms']">
                 <a-row>
-                  <a-col :span="symptom.value === 'LOSS_OF_SENSE_OF_SMELL_TASTE' ? 12 : 6" v-for="symptom in SYMPTOMS"
-                         :key="symptom.value">
+                  <a-col :key="symptom.value" :span="symptom.value === 'LOSS_OF_SENSE_OF_SMELL_TASTE' ? 12 : 6"
+                         v-for="symptom in SYMPTOMS">
                     <a-checkbox :value="symptom.value">
                       {{symptom.label}}
                     </a-checkbox>
                   </a-col>
-                  <a-col :span="12" v-for="symptom in ADDITIONAL_SYMPTOMS" :key="symptom.value">
+                  <a-col :key="symptom.value" :span="12" v-for="symptom in ADDITIONAL_SYMPTOMS">
                     <a-checkbox :value="symptom.value">
                       {{symptom.label}}
                     </a-checkbox>
@@ -121,15 +121,15 @@
                   Andere:
                 </a-checkbox>
                 <a-form-item style="flex: 1 1 100%; margin-bottom: 0; max-width: 600px">
-                  <a-input v-decorator="['symptomsOther']" :disabled="!showOtherSymptoms" />
+                  <a-input :disabled="!showOtherSymptoms" v-decorator="['symptomsOther']" />
                 </a-form-item>
               </div>
             </a-form-item>
 
             <a-form-item
-              label="Wie schnell sind die Beschwerden aufgetreten?"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
+              label="Wie schnell sind die Beschwerden aufgetreten?"
             >
               <a-radio-group
                 v-decorator="['speedOfSymptomsOutbreak']"
@@ -164,7 +164,7 @@
             >
               <a-checkbox-group v-decorator="['preIllnesses']">
                 <a-row>
-                  <a-col :span="8" v-for="preIllness in PRE_ILLNESSES" :key="preIllness.value">
+                  <a-col :key="preIllness.value" :span="8" v-for="preIllness in PRE_ILLNESSES">
                     <a-checkbox :value="preIllness.value">
                       {{preIllness.label}}
                     </a-checkbox>
@@ -185,10 +185,10 @@
                       {{patientString}} ist hospitalisiert
                     </a-checkbox>
                   </a-form-item>
-                  <DateInput style="flex: 0 1 400px" label="Seit" :decorator="['dateOfHospitalization']"
-                             :disabled="disableHospitalization" />
-                  <a-form-item style="padding-left: 15px;" :wrapperCol="{span: 24}">
-                    <a-checkbox :disabled="disableHospitalization" :decorator="['onIntensiveCareUnit']">
+                  <DateInput :decorator="['dateOfHospitalization']" :disabled="disableHospitalization" label="Seit"
+                             style="flex: 0 1 400px" />
+                  <a-form-item :wrapperCol="{span: 24}" style="padding-left: 15px;">
+                    <a-checkbox :decorator="['onIntensiveCareUnit']" :disabled="disableHospitalization">
                       Auf der Intensivstation
                     </a-checkbox>
                   </a-form-item>
@@ -199,31 +199,31 @@
               <a-col :span="12">
                 <a-form-item label="Art der Erkrankung">
                   <a-select
+                    placeholder="Bitte wählen..."
                     v-decorator="['illnessType', { rules: [{
                       required: true,
                       message: 'Bitte Erkrankung wählen',
                     }], initialValue: 'CORONA'}]"
-                    placeholder="Bitte wählen..."
                   >
                     <a-select-option value="CORONA">SARS-nCoV-2</a-select-option>
                   </a-select>
                 </a-form-item>
               </a-col>
               <a-col :span="12">
-                <DateInput label="Erkrankungsdatum" :decorator="['dateOfIllness', { rules: [{
+                <DateInput :decorator="['dateOfIllness', { rules: [{
                       required: true,
                       message: 'Bitte Erkrankungsdatum wählen',
-                    }], initialValue: today}]" />
+                    }], initialValue: today}]" label="Erkrankungsdatum" />
               </a-col>
             </a-row>
             <a-row>
               <a-col :span="12">
                 <a-form-item label="Fallstatus">
-                  <a-select style="width: 250px" placeholder="Status" v-decorator="['patientStatus', { rules: [{
+                  <a-select placeholder="Status" style="width: 250px" v-decorator="['patientStatus', { rules: [{
                       required: true,
                       message: 'Bitte Status wählen',
                     }], initialValue: 'SUSPECTED' }]">
-                    <a-select-option v-for="eventType in EVENT_TYPES" :key="eventType.id">
+                    <a-select-option :key="eventType.id" v-for="eventType in EVENT_TYPES">
                       <a-icon :type="eventType.icon" style="margin-right: 5px" />
                       {{eventType.label}}
                     </a-select-option>
@@ -231,17 +231,17 @@
                 </a-form-item>
               </a-col>
               <a-col :span="12">
-                <DateInput label="Meldedatum" :decorator="['dateOfReporting', { rules: [{
+                <DateInput :decorator="['dateOfReporting', { rules: [{
                       required: true,
                       message: 'Bitte Meldedatum wählen'
-                    }], initialValue: today}]" />
+                    }], initialValue: today}]" label="Meldedatum" />
               </a-col>
             </a-row>
             <a-row>
               <a-col :span="4" />
               <a-col :span="20">
-                <a-checkbox @change="testOrderedChanged" style="margin-bottom: 15px"
-                            :checked="!disableTestOrder">
+                <a-checkbox :checked="!disableTestOrder" @change="testOrderedChanged"
+                            style="margin-bottom: 15px">
                   Wurde eine Erregerdiagnostik beauftragt?
                 </a-checkbox>
               </a-col>
@@ -249,14 +249,14 @@
             <a-row>
               <a-col :span="12">
                 <LaboratoryInput
-                  label="Labor"
+                  :disabled="disableTestOrder"
                   :form="form"
                   :validation="['laboratoryId']"
-                  :disabled="disableTestOrder"
+                  label="Labor"
                 />
               </a-col>
               <a-col :span="12">
-                <DateInput label="Datum der Probenentnahme" :decorator="['dateOfTest']" :disabled="disableTestOrder" />
+                <DateInput :decorator="['dateOfTest']" :disabled="disableTestOrder" label="Datum der Probenentnahme" />
               </a-col>
             </a-row>
           </a-collapse-panel>
@@ -264,9 +264,9 @@
 
         <!-- Submit Button -->
         <a-form-item :wrapperCol="{ span: 24, offset: 0 }" style="margin-top: 15px">
-          <a-row :gutter="16" type="flex" justify="end">
+          <a-row :gutter="16" justify="end" type="flex">
             <a-col>
-              <a-button type="primary" html-type="submit" size="large">
+              <a-button html-type="submit" size="large" type="primary">
                 <a-icon type="save" />
                 Patient registrieren
               </a-button>

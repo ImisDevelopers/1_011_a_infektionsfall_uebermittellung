@@ -1,1 +1,30 @@
-{"lastName": "Winter", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1948-10-21", "email": "p.winter@t-online.de", "phoneNumber": "3597820715", "street": "Nordufer", "houseNumber": 10, "zip": "81020377", "city": "Frankfurt", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "T270452446", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Halschmerzen", "Erk\u00e4ltung", "Schnupfen", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1948-10-21",
+  "email": "p.winter@t-online.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 10,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "T270452446",
+  "lastName": "Winter",
+  "phoneNumber": "3597820715",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordufer",
+  "symptoms": [
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "81020377"
+}

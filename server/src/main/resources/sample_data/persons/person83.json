@@ -1,1 +1,27 @@
-{"lastName": "Winkler", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "1974-03-23", "email": "a.winkler@posteo.de", "phoneNumber": "5310672910410", "street": "Niekampsweg", "houseNumber": 48, "zip": "71101684", "city": "Kiel", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "P451424185", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1974-03-23",
+  "email": "a.winkler@posteo.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 48,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "P451424185",
+  "lastName": "Winkler",
+  "phoneNumber": "5310672910410",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "71101684"
+}

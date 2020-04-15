@@ -10,24 +10,24 @@
 
         <!-- Labor -->
         <LaboratoryInput
-          label="Labor"
           :form="form"
           :initial-labs="laboratories"
           :validation="['laboratoryId', { rules: [{
             required: true,
             message: 'Bitte wählen Sie ein Labor aus.'
           }]}]"
+          label="Labor"
         />
 
         <!-- TestId -->
         <TestInput
-          label="Test-ID"
-          placeholder="z.B 1337-4237-9438"
           :form="form"
           :validation="['testId', { rules: [{
             required: true,
             message: 'Bitte geben Sie Ihre Test-ID ein.'
           }]}]"
+          label="Test-ID"
+          placeholder="z.B 1337-4237-9438"
         />
 
         <!-- TestResult -->
@@ -38,7 +38,7 @@
               required: true,
               message: 'Bitte geben Sie das Testresultat an.'
             }]}]">
-            <a-radio v-for="testResult in testResults" :value="testResult.id" :key="testResult.id">
+            <a-radio :key="testResult.id" :value="testResult.id" v-for="testResult in testResults">
               <a-icon :type="testResult.icon" />
               {{testResult.label}}
             </a-radio>
@@ -48,8 +48,8 @@
         <!-- Kommentar -->
         <a-form-item label="Kommentar">
           <a-textarea
-            placeholder="Kommentar hinzufügen"
             :autoSize="{ minRows: 3, maxRows: 5 }"
+            placeholder="Kommentar hinzufügen"
             v-decorator="['comment']"
           />
         </a-form-item>
@@ -65,7 +65,7 @@
 
         <!-- Speichern -->
         <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-          <a-button type="primary" html-type="submit">
+          <a-button html-type="submit" type="primary">
             Speichern
           </a-button>
         </a-form-item>
@@ -74,7 +74,7 @@
 
     <!-- Confirmation after creation -->
     <div v-if="updatedLabTest">
-      <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" />
+      <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" type="check-circle" />
       <div>
         <div>Der Test wurde erfolgreich aktualisiert.</div>
         <br />

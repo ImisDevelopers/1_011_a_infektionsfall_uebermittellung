@@ -1,1 +1,27 @@
-{"lastName": "Schulze", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1962-08-13", "email": "d.schulze@gmx.de", "phoneNumber": "615651045210", "street": "Abbendiekshof", "houseNumber": 8, "zip": "1116152", "city": "Frankfurt", "insuranceCompany": "AOK", "insuranceMembershipNumber": "S702998820", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Halschmerzen"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1962-08-13",
+  "email": "d.schulze@gmx.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 8,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "S702998820",
+  "lastName": "Schulze",
+  "phoneNumber": "615651045210",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbendiekshof",
+  "symptoms": [
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "1116152"
+}

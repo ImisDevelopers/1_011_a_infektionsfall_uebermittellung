@@ -39,12 +39,12 @@
         <a-col :lg="12" :sm="24">
           <a-form-item label="Geschlecht">
             <a-radio-group
+              @change="genderSelected"
+              buttonStyle="solid"
               v-decorator="['gender', { rules: [{
                         required: true,
                         message: 'Bitte Geschlecht eingeben',
                       }]}]"
-              @change="genderSelected"
-              buttonStyle="solid"
             >
               <a-radio value="male">Männl.</a-radio>
               <a-radio value="female">Weibl.</a-radio>
@@ -53,27 +53,27 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <DateInput label="Geburtsdatum" :decorator="['dateOfBirth', { rules: [{
+          <DateInput :decorator="['dateOfBirth', { rules: [{
                         required: true,
                         message: 'Bitte Geburtsdatum eingeben',
-                      }]}]" />
+                      }]}]" label="Geburtsdatum" />
         </a-col>
       </a-row>
 
       <a-row v-if="showDeath">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Verstorben">
-            <a-radio-group v-decorator="['died', { rules: [{
+            <a-radio-group @change="diedChanged" v-decorator="['died', { rules: [{
                         required: true,
                         message: 'Bitte Status angeben',
-                      }], initialValue: false }]" @change="diedChanged">
+                      }], initialValue: false }]">
               <a-radio :value="true">Ja</a-radio>
               <a-radio :value="false">Nein</a-radio>
             </a-radio-group>
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <DateInput label="Todesdatum" :decorator="['dateOfDeath']" :disabled="!showDateOfDeath" />
+          <DateInput :decorator="['dateOfDeath']" :disabled="!showDateOfDeath" label="Todesdatum" />
         </a-col>
       </a-row>
 
@@ -192,11 +192,11 @@
         <a-col :lg="12" :sm="24">
           <a-form-item label="Beruf">
             <div>
-              <a-select v-decorator="['riskOccupation', { rules: [{
+              <a-select @select="riskOccupationSelected" v-decorator="['riskOccupation', { rules: [{
                         required: true,
                         message: 'Bitte Beruf eingeben',
-                      }]}]" @select="riskOccupationSelected">
-                <a-select-option v-for="riskOccupation in riskOccupations" :key="riskOccupation.value">
+                      }]}]">
+                <a-select-option :key="riskOccupation.value" v-for="riskOccupation in riskOccupations">
                   {{riskOccupation.label}}
                 </a-select-option>
               </a-select>

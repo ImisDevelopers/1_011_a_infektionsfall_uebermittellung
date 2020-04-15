@@ -1,1 +1,34 @@
-{"lastName": "Schulze", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "2000-12-26", "email": "p.schulze@web.de", "phoneNumber": "108471000766", "street": "Nordtstra\u00dfe", "houseNumber": 13, "zip": "7711592", "city": "M\u00fcnchen", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "I770355806", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Kopfschmerzen", "Erk\u00e4ltung", "Atemschwierigkeiten", "Gelenkschmerzen", "Schnupfen", "Fieber", "Halschmerzen", "Husten"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "2000-12-26",
+  "email": "p.schulze@web.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 13,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "I770355806",
+  "lastName": "Schulze",
+  "phoneNumber": "108471000766",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Fieber",
+    "Halschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "7711592"
+}

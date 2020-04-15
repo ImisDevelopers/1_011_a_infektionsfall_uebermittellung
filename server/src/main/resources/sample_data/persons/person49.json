@@ -1,1 +1,28 @@
-{"lastName": "Richter", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1949-07-11", "email": "t.richter@gmx.de", "phoneNumber": "2775841616", "street": "Nordstra\u00dfe", "houseNumber": 23, "zip": "84511510", "city": "D\u00fcsseldorf", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "O747060047", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Gelenkschmerzen", "Schnupfen"], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1949-07-11",
+  "email": "t.richter@gmx.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 23,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "O747060047",
+  "lastName": "Richter",
+  "phoneNumber": "2775841616",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "84511510"
+}

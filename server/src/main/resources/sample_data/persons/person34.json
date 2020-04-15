@@ -1,1 +1,27 @@
-{"lastName": "Winter", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "2005-05-28", "email": "a.winter@web.de", "phoneNumber": "22842110020", "street": "Abbachstra\u00dfe", "houseNumber": 100, "zip": "3950240", "city": "Hamburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "N664880035", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Gelenkschmerzen"], "coronaContacts": false, "riskAreas": ["Hubei"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "2005-05-28",
+  "email": "a.winter@web.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 100,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "N664880035",
+  "lastName": "Winter",
+  "phoneNumber": "22842110020",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "3950240"
+}

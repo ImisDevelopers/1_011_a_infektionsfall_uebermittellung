@@ -1,10 +1,10 @@
 <template>
   <div class="scanner-wrapper">
     <video
-      id="video"
-      width="100%"
       height="100%"
+      id="video"
       style="border: 1px solid gray"
+      width="100%"
     ></video>
     <div class="result" v-if="result.length > 0">
       <p>{{result}}</p>
@@ -14,8 +14,8 @@
       </div>
     </div>
     <div class="scanner-input">
-      <a-select @change="handleDeviceChange" labelInValue :value="device" v-if="devices.length > 0">
-        <a-select-option v-for="d in devices" :key="d.deviceId">{{d.label}}</a-select-option>
+      <a-select :value="device" @change="handleDeviceChange" labelInValue v-if="devices.length > 0">
+        <a-select-option :key="d.deviceId" v-for="d in devices">{{d.label}}</a-select-option>
       </a-select>
       <div class="cancel-button" v-if="result.length === 0">
         <a-button type="secondary" v-on:click="onCancel">Cancel</a-button>
@@ -32,7 +32,7 @@ export default {
   data() {
     // const codeReader = new BrowserMultiFormatReader()
     return {
-    //  codeReader,
+      //  codeReader,
       devices: [],
       device: '',
       result: '',

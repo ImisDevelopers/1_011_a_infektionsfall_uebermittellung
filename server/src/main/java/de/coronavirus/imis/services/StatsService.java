@@ -4,13 +4,14 @@ import de.coronavirus.imis.api.dto.AggregationResultZip;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.repositories.PatientEventRepository;
 import de.coronavirus.imis.repositories.PatientRepository;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

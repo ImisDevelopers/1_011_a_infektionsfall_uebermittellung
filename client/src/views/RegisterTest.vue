@@ -31,7 +31,7 @@
         <a-input placeholder="Neue Test ID" v-decorator="['testId', { rules: [{
           required: true,
           message: 'Bitte geben Sie die Test-ID ein.'
-        }]}]"/>
+        }]}]" />
       </a-form-item>
 
       <!-- TestType -->
@@ -43,7 +43,7 @@
               message: 'Bitte geben Sie den Typen des Tests an.'
             }]}]">
           <a-radio :key="testTypeItem.id" :value="testTypeItem.id" v-for="testTypeItem in testTypes">
-            <a-icon :type="testTypeItem.icon"/>
+            <a-icon :type="testTypeItem.icon" />
             {{testTypeItem.label}}
           </a-radio>
         </a-radio-group>
@@ -59,7 +59,7 @@
       </a-form-item>
 
       <!-- Submit -->
-      <a-divider/>
+      <a-divider />
       <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
         <a-button html-type="submit" type="primary">
           Speichern
@@ -69,10 +69,10 @@
 
     <!-- Confirmation after creation -->
     <div v-if="createdLabTest">
-      <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" type="check-circle"/>
+      <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" type="check-circle" />
       <div>
         <div>Der Test wurde erfolgreich angelegt.</div>
-        <br/>
+        <br />
         <div>Test ID: {{ createdLabTest.testId }}</div>
         <div>Test Status: {{ createdLabTestStatus }}</div>
       </div>
@@ -87,9 +87,9 @@ import Api from '@/api'
 import BarcodeInput from '../components/TestInput'
 import PatientInput from '../components/PatientInput'
 import LaboratoryInput from '../components/LaboratoryInput'
-import {testTypes} from '@/models/test-types'
+import { testTypes } from '@/models/test-types'
 import Component from 'vue-class-component'
-import {testResults} from '@/models/event-types'
+import { testResults } from '@/models/event-types'
 
 @Component({
   components: {

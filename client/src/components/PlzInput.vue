@@ -13,7 +13,7 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import {getPlzs, Plz} from '@/util/plz-service'
+import { getPlzs, Plz } from '@/util/plz-service'
 
 export interface State {
   plzs: Plz[];

@@ -15,7 +15,7 @@
 
 import Api from '@/api'
 import Vue from 'vue'
-import {Patient} from '@/api/SwaggerApi'
+import { Patient } from '@/api/SwaggerApi'
 
 /**
  * Autocomplete for Patients

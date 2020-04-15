@@ -19,7 +19,7 @@
                             initialValue: '',
                         }]"
         >
-          <a-icon slot="prefix" type="user"/>
+          <a-icon slot="prefix" type="user" />
         </a-input>
       </a-form-item>
       <a-form-item label="Passwort">
@@ -33,10 +33,10 @@
             initialValue: '',
           }]"
         >
-          <a-icon slot="prefix" type="lock"/>
+          <a-icon slot="prefix" type="lock" />
         </a-input>
       </a-form-item>
-      <a-divider/>
+      <a-divider />
       <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
         <a-button @click.prevent="handleLogin" html-type="submit" type="primary">
           Einloggen
@@ -58,7 +58,7 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import {authMapper} from '@/store/modules/auth.module'
+import { authMapper } from '@/store/modules/auth.module'
 
 export default Vue.extend({
   name: 'Login',

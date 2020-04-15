@@ -12,7 +12,7 @@
     </div>
     <a-form :form="form" style="flex: 0 1 700px; display: flex; align-items: center">
       <a-button @click="searchPatient" class="search-link" html-type="submit" type="link">
-        <a-icon type="search"/>
+        <a-icon type="search" />
       </a-button>
       <PatientInput
         :form="form"
@@ -33,7 +33,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import PatientInput from '@/components/PatientInput.vue'
-import {authMapper} from '@/store/modules/auth.module'
+import { authMapper } from '@/store/modules/auth.module'
 
 export default Vue.extend({
   name: 'Header',
@@ -55,12 +55,12 @@ export default Vue.extend({
   },
   methods: {
     searchPatient() {
-      this.$router.push({name: 'patient-list', query: {query: this.form.getFieldValue('patientQuery')}}).catch(err => {
+      this.$router.push({ name: 'patient-list', query: { query: this.form.getFieldValue('patientQuery') } }).catch(err => {
         console.warn('Received ' + err.name + ' while navigating to patient list')
       })
     },
     selectPatient(patientId: string) {
-      this.$router.push({name: 'patient-detail', params: {id: patientId}})
+      this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
   },
 })

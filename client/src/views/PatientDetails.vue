@@ -170,11 +170,11 @@
                     rowKey="id"
                   >
                     <div slot="testStatus" slot-scope="testStatus">
-                      <a-icon :type="testResults.find(type => type.id === testStatus).icon" style="margin-right: 5px"/>
+                      <a-icon :type="testResults.find(type => type.id === testStatus).icon" style="margin-right: 5px" />
                       {{testResults.find(type => type.id === testStatus).label}}
                     </div>
                     <div slot="testType" slot-scope="testType">
-                      <a-icon :type="testTypes.find(type => type.id === testType).icon" style="margin-right: 5px"/>
+                      <a-icon :type="testTypes.find(type => type.id === testType).icon" style="margin-right: 5px" />
                       {{testTypes.find(type => type.id === testType).label}}
                     </div>
                   </a-table>
@@ -215,13 +215,13 @@
 import Vue from 'vue'
 import moment from 'moment'
 import Api from '@/api'
-import {LabTest, Patient, Timestamp} from '@/api/SwaggerApi'
-import {patientMapper} from '@/store/modules/patients.module'
-import {EventTypeItem, eventTypes, testResults, TestResultType} from '@/models/event-types'
-import {SYMPTOMS} from '@/models/symptoms'
-import {PRE_ILLNESSES} from '@/models/pre-illnesses'
-import {Column} from 'ant-design-vue/types/table/column'
-import {TestTypeItem, testTypes} from '@/models/test-types'
+import { LabTest, Patient, Timestamp } from '@/api/SwaggerApi'
+import { patientMapper } from '@/store/modules/patients.module'
+import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
+import { SYMPTOMS } from '@/models/symptoms'
+import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import { Column } from 'ant-design-vue/types/table/column'
+import { TestTypeItem, testTypes } from '@/models/test-types'
 
 const columnsTests: Partial<Column>[] = [
   {

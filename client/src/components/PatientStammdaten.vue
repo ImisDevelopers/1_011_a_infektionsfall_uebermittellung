@@ -7,7 +7,7 @@
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Titel">
-            <a-input v-decorator="['title']"/>
+            <a-input v-decorator="['title']" />
           </a-form-item>
         </a-col>
       </a-row>
@@ -56,7 +56,7 @@
           <DateInput :decorator="['dateOfBirth', { rules: [{
                         required: true,
                         message: 'Bitte Geburtsdatum eingeben',
-                      }]}]" label="Geburtsdatum"/>
+                      }]}]" label="Geburtsdatum" />
         </a-col>
       </a-row>
 
@@ -73,11 +73,11 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <DateInput :decorator="['dateOfDeath']" :disabled="!showDateOfDeath" label="Todesdatum"/>
+          <DateInput :decorator="['dateOfDeath']" :disabled="!showDateOfDeath" label="Todesdatum" />
         </a-col>
       </a-row>
 
-      <a-divider/>
+      <a-divider />
       <p style="text-align: center">Adresse:</p>
       <!-- Straße / Hausnummer -->
       <a-row>
@@ -109,21 +109,21 @@
           <PlzInput :decorator="['zip', { rules: [{
               required: true,
               message: 'Bitte PLZ eingeben',
-            }]}]" @plzChanged="setPLZ"/>
+            }]}]" @plzChanged="setPLZ" />
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Ort">
             <a-input v-decorator="['city', { rules: [{
               required: true,
               message: 'Bitte Ort eingeben',
-            }] }]"/>
+            }] }]" />
           </a-form-item>
         </a-col>
       </a-row>
 
       <!-- Aufenthaltsort -->
       <div v-if="showStay">
-        <a-divider/>
+        <a-divider />
         <p style="text-align: center">Aufenthaltsort, falls von Adresse abweichend:</p>
         <!-- Straße / Hausnummer -->
         <a-row>
@@ -146,7 +146,7 @@
         <!-- PLZ / Ort -->
         <a-row>
           <a-col :lg="12" :sm="24">
-            <PlzInput :decorator="['stayZip']" @plzChanged="setStayPLZ"/>
+            <PlzInput :decorator="['stayZip']" @plzChanged="setStayPLZ" />
           </a-col>
           <a-col :lg="12" :sm="24">
             <a-form-item label="Ort">
@@ -159,7 +159,7 @@
       </div>
 
       <!-- Email / Telefon -->
-      <a-divider/>
+      <a-divider />
       <p style="text-align: center">Kontakt und Sonstiges:</p>
       <a-row>
         <a-col :lg="12" :sm="24">
@@ -212,7 +212,7 @@
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Arbeitgeber (optional)">
-            <a-input v-decorator="['employer']"/>
+            <a-input v-decorator="['employer']" />
           </a-form-item>
         </a-col>
       </a-row>
@@ -221,12 +221,12 @@
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Krankenkasse (optional)">
-            <a-input v-decorator="['insuranceCompany']"/>
+            <a-input v-decorator="['insuranceCompany']" />
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Versichertennr. (optional)">
-            <a-input v-decorator="['insuranceMembershipNumber']"/>
+            <a-input v-decorator="['insuranceMembershipNumber']" />
           </a-form-item>
         </a-col>
       </a-row>
@@ -237,9 +237,9 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import {Plz} from '@/util/plz-service'
-import {RiskOccupation} from '@/models'
-import {RISK_OCCUPATIONS, RiskOccupationOption} from '@/models/risk-occupation'
+import { Plz } from '@/util/plz-service'
+import { RiskOccupation } from '@/models'
+import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
 import DateInput from '@/components/DateInput.vue'
 import PlzInput from '@/components/PlzInput.vue'
 

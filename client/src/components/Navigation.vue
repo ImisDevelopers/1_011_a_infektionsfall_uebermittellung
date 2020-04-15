@@ -19,14 +19,14 @@
           :to="{ name: route.name }"
           @click.native="$emit('route-clicked')"
         >
-          <a-icon :type="route.meta.navigationInfo.icon"/>
+          <a-icon :type="route.meta.navigationInfo.icon" />
           <span class="nav-text">{{ route.meta.navigationInfo.title }}</span>
         </router-link>
       </a-menu-item>
       <a-menu-item
         @click="onLogout"
       >
-        <a-icon type="logout"/>
+        <a-icon type="logout" />
         <span class="nav-text">
           Logout
         </span>
@@ -38,7 +38,7 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import {authMapper} from '@/store/modules/auth.module'
+import { authMapper } from '@/store/modules/auth.module'
 
 export default Vue.extend({
   name: 'Navigation',

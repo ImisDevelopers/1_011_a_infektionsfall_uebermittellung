@@ -6,9 +6,9 @@
       <a-card style="max-width: 600px; margin-bottom: 25px">
         <div style="display: flex; flex-direction: column; position: relative">
           <a-icon @click="createdPatient = null" style="top: 0; right: 0; position: absolute; cursor: pointer"
-                  type="close"/>
+                  type="close" />
           <div style="display: flex; align-items: center; margin: 10px">
-            <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" type="check-circle"/>
+            <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" type="check-circle" />
             <h3 style="margin-bottom: 0">
               <span v-if="createdPatient.gender === 'female'">Patientin</span>
               <span v-else>Patient</span>
@@ -62,7 +62,7 @@
 
           <!-- Stammdaten -->
           <a-collapse-panel header="Allgemeines" key="1">
-            <PatientStammdaten :form="form" :show-death="true" :show-stay="true" @gender="genderSelected"/>
+            <PatientStammdaten :form="form" :show-death="true" :show-stay="true" @gender="genderSelected" />
           </a-collapse-panel>
 
           <!-- Infektionskette / Exposure -->
@@ -121,7 +121,7 @@
                   Andere:
                 </a-checkbox>
                 <a-form-item style="flex: 1 1 100%; margin-bottom: 0; max-width: 600px">
-                  <a-input :disabled="!showOtherSymptoms" v-decorator="['symptomsOther']"/>
+                  <a-input :disabled="!showOtherSymptoms" v-decorator="['symptomsOther']" />
                 </a-form-item>
               </div>
             </a-form-item>
@@ -177,7 +177,7 @@
           <!-- Krankheitsdetails -->
           <a-collapse-panel header="Krankheit" key="5">
             <a-row>
-              <a-col :span="4"/>
+              <a-col :span="4" />
               <a-col :span="20">
                 <div style="display: flex; align-items: center;">
                   <a-form-item :wrapperCol="{span: 24}">
@@ -186,7 +186,7 @@
                     </a-checkbox>
                   </a-form-item>
                   <DateInput :decorator="['dateOfHospitalization']" :disabled="disableHospitalization" label="Seit"
-                             style="flex: 0 1 400px"/>
+                             style="flex: 0 1 400px" />
                   <a-form-item :wrapperCol="{span: 24}" style="padding-left: 15px;">
                     <a-checkbox :decorator="['onIntensiveCareUnit']" :disabled="disableHospitalization">
                       Auf der Intensivstation
@@ -213,7 +213,7 @@
                 <DateInput :decorator="['dateOfIllness', { rules: [{
                       required: true,
                       message: 'Bitte Erkrankungsdatum wählen',
-                    }], initialValue: today}]" label="Erkrankungsdatum"/>
+                    }], initialValue: today}]" label="Erkrankungsdatum" />
               </a-col>
             </a-row>
             <a-row>
@@ -224,7 +224,7 @@
                       message: 'Bitte Status wählen',
                     }], initialValue: 'SUSPECTED' }]">
                     <a-select-option :key="eventType.id" v-for="eventType in EVENT_TYPES">
-                      <a-icon :type="eventType.icon" style="margin-right: 5px"/>
+                      <a-icon :type="eventType.icon" style="margin-right: 5px" />
                       {{eventType.label}}
                     </a-select-option>
                   </a-select>
@@ -234,11 +234,11 @@
                 <DateInput :decorator="['dateOfReporting', { rules: [{
                       required: true,
                       message: 'Bitte Meldedatum wählen'
-                    }], initialValue: today}]" label="Meldedatum"/>
+                    }], initialValue: today}]" label="Meldedatum" />
               </a-col>
             </a-row>
             <a-row>
-              <a-col :span="4"/>
+              <a-col :span="4" />
               <a-col :span="20">
                 <a-checkbox :checked="!disableTestOrder" @change="testOrderedChanged"
                             style="margin-bottom: 15px">
@@ -256,7 +256,7 @@
                 />
               </a-col>
               <a-col :span="12">
-                <DateInput :decorator="['dateOfTest']" :disabled="disableTestOrder" label="Datum der Probenentnahme"/>
+                <DateInput :decorator="['dateOfTest']" :disabled="disableTestOrder" label="Datum der Probenentnahme" />
               </a-col>
             </a-row>
           </a-collapse-panel>
@@ -267,7 +267,7 @@
           <a-row :gutter="16" justify="end" type="flex">
             <a-col>
               <a-button html-type="submit" size="large" type="primary">
-                <a-icon type="save"/>
+                <a-icon type="save" />
                 Patient registrieren
               </a-button>
             </a-col>
@@ -281,15 +281,15 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import {Patient} from '@/api/SwaggerApi'
+import { Patient } from '@/api/SwaggerApi'
 import PatientStammdaten from '@/components/PatientStammdaten.vue'
-import {ADDITIONAL_SYMPTOMS, SYMPTOMS} from '@/models/symptoms'
-import {Option} from '@/models'
-import {PRE_ILLNESSES} from '@/models/pre-illnesses'
-import {EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL} from '@/models/exposures'
+import { ADDITIONAL_SYMPTOMS, SYMPTOMS } from '@/models/symptoms'
+import { Option } from '@/models'
+import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 import DateInput from '@/components/DateInput.vue'
-import {EventTypeItem, eventTypes} from '@/models/event-types'
-import moment, {Moment} from 'moment'
+import { EventTypeItem, eventTypes } from '@/models/event-types'
+import moment, { Moment } from 'moment'
 import LaboratoryInput from '@/components/LaboratoryInput.vue'
 
 interface State {
@@ -318,7 +318,7 @@ export default Vue.extend({
   name: 'RegisterPatient',
   data(): State {
     return {
-      form: this.$form.createForm(this, {name: 'coordinated'}),
+      form: this.$form.createForm(this, { name: 'coordinated' }),
       createdPatient: null,
       SYMPTOMS,
       ADDITIONAL_SYMPTOMS,
@@ -336,7 +336,7 @@ export default Vue.extend({
   },
   methods: {
     handleSubmit() {
-      this.form.validateFields(async (err: Error, values: any) => {
+      this.form.validateFields(async(err: Error, values: any) => {
         if (err) {
           return
         }

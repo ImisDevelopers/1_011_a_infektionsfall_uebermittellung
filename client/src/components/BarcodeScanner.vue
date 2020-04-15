@@ -68,7 +68,7 @@ export default {
       this.$emit('result')
     },
   },
-  created: async function () {
+  created: async function() {
     // try {
     //   if (!navigator.mediaDevices.enumerateDevices) {
     //     this.device = {

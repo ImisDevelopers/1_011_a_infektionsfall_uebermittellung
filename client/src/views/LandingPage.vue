@@ -30,7 +30,8 @@
     <!-- Header is fixed, so it is not included in layout -->
     <div style="height: 100px"></div>
     <div class="first-section" style="position: relative">
-      <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" height="315"
+      <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+              frameborder="0" height="315"
               src="https://www.youtube.com/embed/XIIlMh3Lbsc"
               style="max-width: 100%"
               width="560"></iframe>
@@ -41,7 +42,7 @@
         <div style="text-align: left; font-size: 16px">
           {{ paragraph1 }}
         </div>
-        <br/>
+        <br />
         <div style="text-align: left">
           {{ paragraph2 }}
         </div>
@@ -73,7 +74,7 @@
     </div>
     <div class="second-section">
       <h1 style="margin: 0">Der IMIS-Meldeprozess - Einfach, Schnell, Zentral</h1>
-      <img src="../assets/imis-workflow.png"/>
+      <img src="../assets/imis-workflow.png" />
     </div>
     <div class="link-section">
       <a-button
@@ -96,7 +97,7 @@
         wird nun von einem Team aus über 30 Leuten aktiv weiterentwickelt.</h2>
       <!--      <a-divider style="max-width: 1000px; min-width: 0"></a-divider>-->
       <div class="solution-enabler-program">
-        <img src="../assets/Solution-Enabler.png"/>
+        <img src="../assets/Solution-Enabler.png" />
         <div>
           <h2>Als eines von 130 aus über 1500 Projekten ist IMIS in den
             <a href="https://wirvsvirushackathon.org/weiterfuehrung-2/">Solution Enabler</a>
@@ -112,7 +113,7 @@
           <h3>Und deshalb sind wir ein vielfältiges Team aus Organisatoren und Projektkoordinatoren, Frontend- und
             Backend-Entwicklern, UI-Designern, Datenbankspezialisten und vielen mehr.</h3>
         </div>
-        <a-icon :style="{ fontSize: '128px', color: '#2c3e50' }" style="margin-bottom: 25px" type="team"/>
+        <a-icon :style="{ fontSize: '128px', color: '#2c3e50' }" style="margin-bottom: 25px" type="team" />
       </div>
     </div>
     <div class="third-section">

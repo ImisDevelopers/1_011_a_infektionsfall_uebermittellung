@@ -3,16 +3,12 @@ package de.coronavirus.imis.domain;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.coronavirus.imis.config.domain.User;
-import java.util.List;
 import lombok.Data;
 import lombok.Getter;
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity(name = "institution")
@@ -39,5 +35,5 @@ public abstract class InstitutionImpl implements Institution {
 	@OneToMany(mappedBy = "institution")
 	private List<User> users;
 
-    public abstract InstitutionType getType();
+	public abstract InstitutionType getType();
 }

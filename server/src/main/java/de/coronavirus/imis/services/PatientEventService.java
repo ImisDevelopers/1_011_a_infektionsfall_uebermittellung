@@ -1,24 +1,19 @@
 package de.coronavirus.imis.services;
 
-import de.coronavirus.imis.domain.Doctor;
-import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.Illness;
-import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.domain.PatientEvent;
+import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.repositories.DoctorRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
 import de.coronavirus.imis.repositories.PatientRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
 
 @Service
 @AllArgsConstructor

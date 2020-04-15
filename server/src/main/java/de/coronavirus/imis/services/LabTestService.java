@@ -47,7 +47,6 @@ public class LabTestService {
 				.orElseThrow(PatientNotFoundException::new);
 
 		var labTest = labTestMapper.toLabTest(dto);
-
 		return createLabTest(patient, labTest);
 	}
 

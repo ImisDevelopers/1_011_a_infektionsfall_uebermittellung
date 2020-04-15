@@ -28,10 +28,8 @@ spec:
           value: {{ .Values.env }}
         - name: SPRING_PROFILES_ACTIVE
           value: production
-        - name: SPRING_DATASOURCE_URL{{ if eq .Values.env "production" }}
-          value: jdbc:postgresql://localhost:5432/postgres
-          {{ else }}
-          value: jdbc:postgresql://localhost:5432/staging{{ end }}
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://localhost:5432/{{- .Values.database }}
         - name: SPRING_DATASOURCE_USERNAME
           value: postgres
         - name: SPRING_DATASOURCE_PASSWORD

@@ -1,0 +1,5 @@
+env: pilot
+database: pilot
+
+ingress:
+  domain: pilot.imis-prototyp.de

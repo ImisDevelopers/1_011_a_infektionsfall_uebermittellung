@@ -4,8 +4,8 @@
       <a-card style="margin: 3rem auto; max-width: 860px">
         <div class="login-header">
           <img
-            height="100"
             src="../assets/logo.png"
+            height="100"
           />
           <h3>
             Registrieren Sie hier eine neue Instutition in IMIS.
@@ -14,8 +14,8 @@
 
         <a-form
           :form="form"
-          :labelCol="{ span: 6 }"
           :layout="'horizontal'"
+          :labelCol="{ span: 6 }"
           :wrapperCol="{ span: 18}"
           @submit.prevent="handleSubmit"
         >
@@ -23,25 +23,25 @@
             <a-col :span="24">
               <a-form-item label="Benutzername">
                 <a-input v-decorator="['username', { rules: [{ required: true }] }]">
-                  <a-icon slot="prefix" type="user"/>
+                  <a-icon slot="prefix" type="user" />
                 </a-input>
               </a-form-item>
             </a-col>
             <a-col :span="24">
               <a-form-item label="Passwort">
-                <a-input type="password" v-decorator="['password', { rules: [{ required: true }] }]">
-                  <a-icon slot="prefix" type="lock"/>
+                <a-input v-decorator="['password', { rules: [{ required: true }] }]" type="password">
+                  <a-icon slot="prefix" type="lock" />
                 </a-input>
               </a-form-item>
             </a-col>
             <a-col :span="24">
-              <a-form-item :help="passwordRepeat.errorMsg" :validate-status="passwordRepeat.validateStatus"
-                           has-feedback
-                           label="Passwort wiederholen"
+              <a-form-item label="Passwort wiederholen" has-feedback
+                           :validate-status="passwordRepeat.validateStatus"
+                           :help="passwordRepeat.errorMsg"
               >
-                <a-input @change="handlePasswordRepeatChange"
-                         type="password" v-decorator="['password-repeat', { rules: [{ required: true }] }]">
-                  <a-icon slot="prefix" type="lock"/>
+                <a-input v-decorator="['password-repeat', { rules: [{ required: true }] }]"
+                         @change="handlePasswordRepeatChange" type="password">
+                  <a-icon slot="prefix" type="lock" />
                 </a-input>
               </a-form-item>
             </a-col>
@@ -51,11 +51,11 @@
             <a-col :md="12">
               <a-form-item label="Typ">
                 <a-select
-                  placeholder="Bitte wählen..."
                   v-decorator="['institutionType', { rules: [{
                                           required: true,
                                           message: 'Please select your institution type!'
                                         }]}]"
+                  placeholder="Bitte wählen..."
                 >
                   <a-select-option value="LABORATORY">Labor</a-select-option>
                   <a-select-option value="DOCTORS_OFFICE">Arztpraxis</a-select-option>
@@ -101,16 +101,19 @@
                 />
               </a-form-item>
             </a-col>
+          </a-row>
+          <a-row>
             <a-col>
               <a-form-item
+                label="Anmerkungen"
                 :labelCol="{ span: 24}"
                 :wrapperCol="{ span: 24}"
-                label="Anmerkungen"
               >
-                <a-input v-decorator="['comment']"/>
+                <a-input v-decorator="['comment']" />
               </a-form-item>
             </a-col>
-            <a-col :md="3" :xs="6"></a-col>
+          </a-row>
+          <a-row>
             <a-col>
               <!-- Datenschutzerklärung Bestätigung-->
               <a-form-item>
@@ -125,9 +128,9 @@
             <a-col>
               <!-- Submit Button -->
               <a-form-item :wrapperCol="{ span: 24, offset: 0 }">
-                <a-row :gutter="16" justify="end" type="flex">
+                <a-row :gutter="16" type="flex" justify="end">
                   <a-col>
-                    <a-button html-type="submit" type="primary">
+                    <a-button type="primary" html-type="submit">
                       Registrieren
                     </a-button>
                   </a-col>
@@ -140,7 +143,7 @@
     </div>
     <div v-else>
       <div>Die Institution wurde erfolgreich registriert.</div>
-      <br/>
+      <br />
       <div>Die Instituions ID lautet: {{ createdInstitution.id }}</div>
     </div>
   </div>
@@ -167,7 +170,7 @@ export default Vue.extend({
   name: 'RegisterInstitutionPage',
   data() {
     return {
-      form: this.$form.createForm(this, {name: 'coordinated'}),
+      form: this.$form.createForm(this, { name: 'coordinated' }),
       createdInstitution: null,
       dataProcessingClass: '',
       checked: false,

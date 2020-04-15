@@ -17,6 +17,7 @@ import {getPlzs, Plz} from '@/util/plz-service'
 
 export interface State {
   plzs: Plz[];
+  currentSearch: string;
 }
 
 export default Vue.extend({
@@ -25,20 +26,27 @@ export default Vue.extend({
   data(): State {
     return {
       plzs: [],
+      currentSearch: '',
     }
   },
   methods: {
     async handlePlzSearch(value: string) {
-      let result: Plz[]
+      this.currentSearch = value
       if (!value || value.length < 2) {
-        result = []
+        this.plzs = []
       } else {
-        result = await getPlzs(value)
+        const result = await getPlzs(value)
+        if (this.currentSearch !== value) {
+          // If a request takes longer, this request might be outdated since the user already changed the input
+          return
+        }
         if (result.length === 1) {
           this.setPLZ(result[0])
+          this.plzs = []
+        } else {
+          this.plzs = result
         }
       }
-      this.plzs = result
     },
     handlePlzSelection(value: string) {
       const plz = this.plzs.find(plz => plz.fields.plz === value)

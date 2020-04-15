@@ -1,28 +1,37 @@
 package de.coronavirus.imis.domain;
 
 import de.coronavirus.imis.config.domain.User;
+
 import java.util.List;
 
 public interface Institution {
-	String getId();
+    String getId();
 
-	String getName();
+    String getName();
+    void setName(String name);
 
-	String getHouseNumber();
+    String getHouseNumber();
+    void setHouseNumber(String houseNumber);
 
-	String getStreet();
+    String getStreet();
+    void setStreet(String street);
 
-	String getCity();
+    String getCity();
+    void setCity(String city);
 
-	String getZip();
+    String getZip();
+    void setZip(String zip);
 
-	String getEmail();
+    String getEmail();
+    void setEmail(String email);
 
-	String getPhoneNumber();
+    String getPhoneNumber();
+    void setPhoneNumber(String phoneNumber);
 
-	String getComment();
+    String getComment();
+    void setComment(String comment);
 
-	InstitutionType getType();
+    InstitutionType getType();
 
-	List<User> getUsers();
+    List<User> getUsers();
 }

@@ -59,6 +59,10 @@ public class PatientService {
 				patientMapper.parseDate(dto.getDateOfReporting()));
 	}
 
+	public Patient updatePatient(Patient patient) {
+		return this.patientRepository.saveAndFlush(patient);
+	}
+
 	public Patient addPatient(Patient patient, final LocalDate dateOfReporting) {
 		if (patient.getId() == null) {
 			var id = Hashing.sha256()

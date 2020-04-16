@@ -16,8 +16,8 @@ env:
   CLOUD_STORE_SERVICE_ACCOUNT: ${{ secrets.CLOUD_STORE_SERVICE_ACCOUNT }}
   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
   GITHUB_SHA: ${{ github.sha }}
-  GKE_ZONE: europe-west3-b
-  GKE_CLUSTER: cluster-1
+  GKE_ZONE: europe-west4-b
+  GKE_CLUSTER: prod
   REGISTRY_HOSTNAME: eu.gcr.io
 
 jobs:

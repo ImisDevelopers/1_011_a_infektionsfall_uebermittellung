@@ -1,7 +1,7 @@
 [![IMIS Cover](client/public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
 
-  * [Demo](http://imis-prototyp.de)
-  * [Swagger API](http://api.imis-prototyp.de/)
+  * [Demo](https://imis-prototyp.de)
+  * [Swagger API](https://imis-prototyp.de/swagger-ui.html)
   * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)
  
 Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.org/)-Hackathon. 
@@ -11,7 +11,9 @@ Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.
   * Mit freundlicher Unterstützung von [https://covidmeldeprozess.de/](https://covidmeldeprozess.de/)
   
 # Development
-![Build](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=dev) and ![Deployment](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Deploy%20to%20GKE/badge.svg?branch=dev)
+### [Prod](https://imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=master&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/imisDevelopers/1_011_a_infektionsfall_uebermittellung?color=green)
+### [Dev](https://staing.imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=dev&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg?branch=dev&event=push)
+### [Pilot](https://pilot.imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=pilot&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg?branch=pilot&event=push)
 
 ## General Guidelines
 _DO NOT COMMIT TO MASTER_ 
@@ -19,7 +21,7 @@ _DO NOT COMMIT TO MASTER_
 Development happens in `dev` using feature branches and PR. `dev` branch is deployed at:
 
    * [Staging Deployment](https://staging.imis-prototyp.de)
-   * [Staging API](https://api.staging.imis-prototyp.de)
+   * [Staging API](https://staging.imis-prototyp.de/swagger-ui.html)
 
 ## Tech Stack
  - Backend: Spring Boot

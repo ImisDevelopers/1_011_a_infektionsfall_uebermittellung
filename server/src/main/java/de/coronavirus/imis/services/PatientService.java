@@ -1,11 +1,10 @@
 package de.coronavirus.imis.services;
 
 import com.google.common.hash.Hashing;
-import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
-import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.api.dto.*;
+import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;
+import de.coronavirus.imis.repositories.PatientEventRepository;
 import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
@@ -19,11 +18,15 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -36,7 +39,6 @@ public class PatientService {
 	private final PatientEventService eventService;
 	private final LikeOperatorService likeOperatorService;
 	private final RandomService randomService;
-
 	private final PatientMapper patientMapper;
 
 
@@ -205,4 +207,17 @@ public class PatientService {
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
 	}
 
+	@Transactional
+	public Patient sendToQuaratine(final String patientID, final SendToQuarantineDTO dto) {
+
+		var patient = findPatientById(patientID).orElseThrow();
+
+		patient.setQuarantineUntil(patientMapper.parseDate(dto.getDateUntil()));
+
+		updatePatient(patient);
+
+		eventService.createQuarantineEvent(patient, dto.getDateUntil());
+
+		return patient;
+	}
 }

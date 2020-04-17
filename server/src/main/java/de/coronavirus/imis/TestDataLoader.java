@@ -2,6 +2,7 @@ package de.coronavirus.imis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
+import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.config.domain.User;
@@ -142,8 +143,8 @@ public class TestDataLoader implements ApplicationRunner {
 			var person = patientService.addPatient(createPersonDTO);
 
 			// THE DOCTOR CREATES AND SEND SAMPLE TO LAB
-			// FIXME: 22.03.20 the naming of the API endpoint is off...
-			eventService.createScheduledEvent(person, laboratory.getId(), doctorsOffice.getId());
+			// FIXME: What should be done here?
+			// eventService.createScheduledEvent(person, laboratory.getId(), doctorsOffice.getId());
 
 			// LAB RECEIVES SAMPLE AND PROCESSES IT
 			final String testId = "42EF42";
@@ -154,7 +155,12 @@ public class TestDataLoader implements ApplicationRunner {
 					.comment(comment)
 					.testType(TestType.PCR)
 					.build();
-			labTest = labTestService.createLabTest(person, labTest);
+			final CreateLabTestDTO createLabTestDTO = new CreateLabTestDTO();
+			createLabTestDTO.setLaboratoryId(laboratory.getId());
+			createLabTestDTO.setPatientCaseId(); // TODO: Create Case first
+			createLabTestDTO.setTestId(testId);
+			createLabTestDTO.setTestType(TestType.PCR);
+			labTest = labTestService.createLabTest(createLabTestDTO);
 
 
 			// LAB HAS RESULT AND SOTRES IT

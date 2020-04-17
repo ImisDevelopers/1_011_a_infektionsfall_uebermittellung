@@ -30,12 +30,8 @@ public class LabTestService {
 
 	@Transactional
 	public LabTest createLabTest(CreateLabTestDTO dto) {
-		final PatientCase patientCase = patientCaseRepository
-				.findById(dto.getPatientCaseId())
-				.orElseThrow(PatientNotFoundException::new);
 
 		var labTest = labTestMapper.toLabTest(dto);
-		labTest.setPatientCase(patientCase);
 		final LabTest createdLabTest = labTestRepository.save(labTest);
 
 		this.labTestEventService.createLabTestEvent(

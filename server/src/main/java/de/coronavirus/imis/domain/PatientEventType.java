@@ -10,6 +10,7 @@ public enum PatientEventType {
 	PATIENT_RECOVERED,
 	PATIENT_DEAD,
 	DOCTORS_VISIT,
+	// DOCTORS_VISIT, // TODO: Do we need Doctors Visit?
 	HOSPITALIZED,
 	INTENSIVE_CARE,
 	QUARANTINED

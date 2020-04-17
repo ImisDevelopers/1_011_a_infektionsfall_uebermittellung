@@ -17,7 +17,7 @@ public abstract class LabTestMapper {
 	protected LaboratoryRepository laboratoryRepository;
 
 	@Mapping(target = "laboratory", expression = "java( labById(dto.getLaboratoryId()) )")
-	@Mapping(target = "testStatus", constant = "TEST_SUBMITTED")
+	@Mapping(target = "testStatus", constant = "TEST_SUBMITTED_IN_PROGRESS")
 	@Mapping(target = "id", ignore = true)
 	public abstract LabTest toLabTest(CreateLabTestDTO dto);
 

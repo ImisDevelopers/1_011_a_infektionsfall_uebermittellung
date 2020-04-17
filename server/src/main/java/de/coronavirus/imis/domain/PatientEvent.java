@@ -3,13 +3,14 @@ package de.coronavirus.imis.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import de.coronavirus.imis.config.domain.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.OffsetDateTime;
 
 @Entity
 @Getter
@@ -28,22 +29,16 @@ public class PatientEvent {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Patient patient;
 
-	@ManyToOne
-	private Doctor responsibleDoctor;
+	@ManyToOne()
+	private User user;
 
-	@Enumerated(EnumType.STRING)
-	private Illness illness;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	private LabTest labTest;
-
-	private Timestamp eventTimestamp;
+	private OffsetDateTime eventTimestamp;
+	private OffsetDateTime creationTimestamp;
 
 	@Enumerated(EnumType.STRING)
 	private PatientEventType patientEventType;
 
 	private String comment;
-	private String accomodation;
 }
 
 

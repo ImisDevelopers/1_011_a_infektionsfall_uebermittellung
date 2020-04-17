@@ -4,6 +4,7 @@ import de.coronavirus.imis.domain.PatientEventType;
 import de.coronavirus.imis.domain.RiskOccupation;
 import lombok.Data;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
@@ -49,5 +50,5 @@ public class CreatePatientDTO {
 	private Boolean onIntensiveCareUnit;
 
 	// Meldedatum
-	private String dateOfReporting;
+	private OffsetDateTime eventTimestamp;
 }

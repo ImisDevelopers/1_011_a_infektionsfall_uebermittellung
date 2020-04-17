@@ -4,8 +4,9 @@ import com.google.common.hash.Hashing;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
+import de.coronavirus.imis.domain.InstitutionType;
 import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.mapper.PatientMapper;
+import de.coronavirus.imis.mapper.PatientInformationMapper;
 import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
@@ -20,9 +21,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,16 +36,17 @@ public class PatientService {
 	private final PatientEventService eventService;
 	private final LikeOperatorService likeOperatorService;
 	private final RandomService randomService;
+	private final AuthService authService;
 
-	private final PatientMapper patientMapper;
+	private final PatientInformationMapper patientInformationMapper;
 
 
 	public List<Patient> getAllPatients() {
+		// TODO: Will crash if we have too many patients - move filter to query
 		var patients = patientRepository.findAll();
-		return patients.stream().map(patient -> {
+		return filterPatients(patients).stream().peek(patient -> {
 			var lastEvent = eventService.findFirstByPatientOrderByEventTimestampDesc(patient);
 			patient.setEvents(List.of(lastEvent));
-			return patient;
 		}).collect(Collectors.toList());
 	}
 
@@ -54,67 +55,42 @@ public class PatientService {
 	}
 
 	public Patient addPatient(CreatePatientDTO dto) {
-		return this.addPatient(
-				patientMapper.toPatient(dto),
-				patientMapper.parseDate(dto.getDateOfReporting()));
-	}
 
-	public Patient addPatient(Patient patient, final LocalDate dateOfReporting) {
-		if (patient.getId() == null) {
-			var id = Hashing.sha256()
-					.hashString(patient.getFirstName() + patient.getLastName()
-							+ patient.getZip()
-							+ patient.getDateOfBirth()
-							+ randomService.getRandomString(12), StandardCharsets.UTF_8)
-					.toString()
-					.substring(0, 8).toUpperCase();
-
-			patient.setId(id);
-		}
-
+		var patientInformation = patientInformationMapper.toPatient(dto);
+		var patient = new Patient();
+		patient.setPatientStatus(dto.getPatientStatus());
+		patient.setInformation(Collections.singletonList(patientInformation));
+		var id = Hashing.sha256()
+				.hashString(patientInformation.getFirstName() + patientInformation.getLastName()
+						+ patientInformation.getZip()
+						+ patientInformation.getDateOfBirth()
+						+ randomService.getRandomString(12), StandardCharsets.UTF_8)
+				.toString()
+				.substring(0, 8).toUpperCase();
+		patient.setId(id);
 		patient = patientRepository.save(patient);
+
+
 		log.info("inserting patient with id {}", patient.getId());
-		eventService.createInitialPatientEvent(
-				patient, Optional.empty(),
+		eventService.createPatientEvent(
+				patient,
 				patient.getPatientStatus(),
-				dateOfReporting);
+				dto.getEventTimestamp(),
+				null
+		);
 		log.info("inserted event for patient {}", patient);
 		return patient;
 	}
 
-	private LocalDate parseDate(String localDateString) {
-		LocalDate localDate = null;
-		if (localDateString != null && !localDateString.isBlank()) {
-			localDate = LocalDate.parse(localDateString, DateTimeFormatter.ISO_LOCAL_DATE);
-		}
-		return localDate;
-	}
-
-	private Integer parseIntegerSafe(String toParse) {
-		try {
-			return Integer.parseInt(toParse);
-		} catch (Exception e) {
-			log.error("error parsing integer");
-		}
-		return Integer.MIN_VALUE;
-	}
-
 	public Long queryPatientsSimpleCount(String query) {
+		// TODO: Move auth filter logic to query to fix count
 		return this.patientRepository.count(getSimpleQuerySpecification(query));
 	}
 
 	public List<Patient> queryPatientsSimple(PatientSimpleSearchParamsDTO query) {
 		final Sort sortBy = getSort(query.getOrder(), query.getOrderBy());
 		final Pageable pageable = getPageable(query.getOffsetPage(), query.getPageSize(), sortBy);
-		return this.patientRepository.findAll(getSimpleQuerySpecification(query.getQuery()), pageable).toList();
-	}
-
-	private Sort getSort(String order, String orderBy) {
-		return Sort.by(Sort.Direction.fromOptionalString(order).orElse(Sort.Direction.ASC), orderBy);
-	}
-
-	private Pageable getPageable(Long offsetPage, Long pageSize, Sort sortBy) {
-		return PageRequest.of(offsetPage.intValue(), pageSize.intValue(), sortBy);
+		return filterPatients(this.patientRepository.findAll(getSimpleQuerySpecification(query.getQuery()), pageable).toList());
 	}
 
 	private Specification<Patient> getSimpleQuerySpecification(String query) {
@@ -134,10 +110,6 @@ public class PatientService {
 		// These have to be joined together with "and"
 		return specifications.stream().skip(1)
 				.reduce(specifications.get(0), Specification::and);
-	}
-
-	private Predicate like(Root<Patient> root, CriteriaBuilder criteriaBuilder, String propertyName, String query) {
-		return criteriaBuilder.like(criteriaBuilder.lower(root.get(propertyName)), "%" + query.toLowerCase() + "%");
 	}
 
 	public List<Patient> queryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
@@ -168,21 +140,22 @@ public class PatientService {
 				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getLaboratoryId())),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()),
 				pageable);
+
+		final List<Patient> patientsReturn;
+
 		if (patientSearchParamsDTO.isIncludePatientEvents()) {
-			return patients.stream().peek(patient -> {
+			patientsReturn = patients.stream().peek(patient -> {
 				var lastEvent = eventService.findFirstByPatientOrderByEventTimestampDesc(patient);
 				patient.setEvents(List.of(lastEvent));
 			}).collect(Collectors.toList());
 		} else {
-			return patients;
+			patientsReturn = patients;
 		}
-	}
-
-	private String nvl(String text) {
-		return text == null ? "" : text;
+		return filterPatients(patientsReturn);
 	}
 
 	public Long countQueryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
+		// TODO: Move auth filter logic to query to fix count
 		return patientRepository.countPatientSearchParams(
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getFirstName()),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLastName()),
@@ -199,6 +172,37 @@ public class PatientService {
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
+	}
+
+	private Sort getSort(String order, String orderBy) {
+		return Sort.by(Sort.Direction.fromOptionalString(order).orElse(Sort.Direction.ASC), orderBy);
+	}
+
+	private Pageable getPageable(Long offsetPage, Long pageSize, Sort sortBy) {
+		return PageRequest.of(offsetPage.intValue(), pageSize.intValue(), sortBy);
+	}
+
+	private Predicate like(Root<Patient> root, CriteriaBuilder criteriaBuilder, String propertyName, String query) {
+		return criteriaBuilder.like(criteriaBuilder.lower(root.get(propertyName)), "%" + query.toLowerCase() + "%");
+	}
+
+	private String nvl(String text) {
+		return text == null ? "" : text;
+	}
+
+	private List<Patient> filterPatients(List<Patient> patients) {
+		var currentInstitution = authService.getCurrentUser().institution();
+		if (currentInstitution.getType() == InstitutionType.DEPARTMENT_OF_HEALTH) {
+			return patients;
+		}
+		// For all except the department of health, we only want to show them the data they entered themselves:
+		return patients.stream().peek(patient -> {
+			patient.setInformation(
+					patient.getInformation().stream()
+							.filter(info -> info.getUser().getInstitutionId().equals(currentInstitution.getId()))
+							.collect(Collectors.toList())
+			);
+		}).filter(patient -> patient.getInformation().size() == 0).collect(Collectors.toList());
 	}
 
 }

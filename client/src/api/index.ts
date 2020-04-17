@@ -6,9 +6,9 @@ if (
   location.host.includes('localhost') ||
   location.host.includes('127.0.0.1')
 ) {
-  baseUrl = 'http://localhost:80'
+  // baseUrl = 'http://localhost:80'
   // Alternative config to run the app locally without root; see proxy conf
-  // baseUrl = 'http://localhost:8080/api'
+  baseUrl = 'http://localhost:8080/api'
 }
 /**
  * The npm package that creates the swagger client does not have a option

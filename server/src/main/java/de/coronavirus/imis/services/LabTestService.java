@@ -4,10 +4,8 @@ import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.LabTestMapper;
-import de.coronavirus.imis.repositories.LabTestEventRepository;
 import de.coronavirus.imis.repositories.LabTestRepository;
-import de.coronavirus.imis.repositories.LaboratoryRepository;
-import de.coronavirus.imis.repositories.PatientEventRepository;
+import de.coronavirus.imis.repositories.PatientCaseRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -15,9 +13,6 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -27,37 +22,38 @@ public class LabTestService {
 
 	private final PatientService patientService;
 	private final PatientEventService eventService;
-	private final LaboratoryRepository laboratoryRepository;
 	private final LabTestRepository labTestRepository;
-	private final PatientEventRepository patientEventRepository;
-	private final LabTestEventRepository labTestEventRepository;
+	private final LabTestEventService labTestEventService;
+	private final PatientCaseRepository patientCaseRepository;
 
 	private final LabTestMapper labTestMapper;
 
 	@Transactional
-	public LabTest createLabTest(Patient patient, LabTest labTest) {
-		labTestRepository.save(labTest);
-		eventService.createLabTestEvent(patient, labTest, Optional.empty());
-		return labTest;
-	}
-
-	@Transactional
 	public LabTest createLabTest(CreateLabTestDTO dto) {
-		final Patient patient = patientService
-				.findPatientById(dto.getPatientId())
+		final PatientCase patientCase = patientCaseRepository
+				.findById(dto.getPatientCaseId())
 				.orElseThrow(PatientNotFoundException::new);
 
 		var labTest = labTestMapper.toLabTest(dto);
+		labTest.setPatientCase(patientCase);
+		final LabTest createdLabTest = labTestRepository.save(labTest);
 
-		return createLabTest(patient, labTest);
+		this.labTestEventService.createLabTestEvent(
+				labTest,
+				LabTestEventType.TEST_SUBMITTED_IN_PROGRESS,
+				dto.getEventTimestamp() != null ? dto.getEventTimestamp() : OffsetDateTime.now(),
+				dto.getComment()
+		);
+
+		return createdLabTest;
 	}
 
 	@Transactional
-	public Set<LabTest> getAllLabsTestForPatient(String patiendId) {
-		final Patient patient = patientService.findPatientById(patiendId).orElseThrow(PatientNotFoundException::new);
-		final var events = eventService.getAllForPatient(patient);
-		return events.stream().map(PatientEvent::getLabTest)
-				.filter(Objects::nonNull).collect(Collectors.toSet());
+	public List<LabTest> getAllLabsTestForPatient(String patientId) {
+		final Patient patient = patientService.findPatientById(patientId).orElseThrow(PatientNotFoundException::new);
+		return patient.getCases().stream()
+				.flatMap(patientCase -> patientCase.getLabTests().stream())
+				.collect(Collectors.toList());
 	}
 
 	@Transactional
@@ -75,13 +71,7 @@ public class LabTestService {
 		labTest.setReport(dto.getFile());
 
 		labTestRepository.save(labTest);
-
-		var labTestEvent = new LabTestEvent();
-		labTestEvent.setEventTimestamp(OffsetDateTime.now());
-		labTestEvent.setLabTest(labTest);
-		labTestEvent.setLabTestEventType(dto.getStatus());
-		labTestEvent.setComment(dto.getComment());
-		labTestEventRepository.save(labTestEvent);
+		labTestEventService.createLabTestEvent(labTest, dto.getStatus(), OffsetDateTime.now(), dto.getComment());
 
 		return labTest;
 	}

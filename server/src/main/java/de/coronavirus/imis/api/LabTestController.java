@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/labtests")
@@ -31,7 +30,7 @@ public class LabTestController {
 	}
 
 	@GetMapping("/patient/{id}")
-	public Set<LabTest> getLabTestForPatient(@PathVariable("id") String patientId) {
+	public List<LabTest> getLabTestForPatient(@PathVariable("id") String patientId) {
 		return service.getAllLabsTestForPatient(patientId);
 	}
 

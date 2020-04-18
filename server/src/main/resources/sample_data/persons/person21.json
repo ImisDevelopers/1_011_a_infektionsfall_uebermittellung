@@ -1,27 +1,23 @@
 {
-  "city": "Frankfurt",
+  "city": "Hamburg",
   "coronaContacts": true,
-  "dateOfBirth": "1981-04-24",
-  "email": "k.winter@posteo.de",
-  "firstName": "Kai",
-  "fluImmunization": true,
+  "dateOfBirth": "2000-01-31",
+  "email": "t.schulze@t-online.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 22,
+  "houseNumber": 27,
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "W235591568",
-  "lastName": "Winter",
-  "phoneNumber": "7498941343",
+  "insuranceMembershipNumber": "D721358005",
+  "lastName": "Schulze",
+  "phoneNumber": "33092327101",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbachstra\u00dfe",
-  "symptoms": [
-    "Husten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "4082400"
+  "street": "Nordstra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "7452991"
 }

@@ -1,31 +1,23 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1960-06-20",
-  "email": "d.richter@t-online.de",
-  "firstName": "Daniel",
-  "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 46,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "D508157429",
-  "lastName": "Richter",
-  "phoneNumber": "40781618410",
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1978-06-04",
+  "email": "m.weber@posteo.de",
+  "firstName": "Marie",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 48,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C149203558",
+  "lastName": "Weber",
+  "phoneNumber": "1615594078",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Fieber",
-    "Kopfschmerzen"
-  ],
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
   "weakenedImmuneSystem": true,
-  "zip": "93101034"
+  "zip": "18410959"
 }

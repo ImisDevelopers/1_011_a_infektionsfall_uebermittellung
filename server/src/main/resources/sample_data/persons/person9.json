@@ -1,27 +1,23 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "M\u00fcnchen",
   "coronaContacts": true,
-  "dateOfBirth": "1927-11-17",
-  "email": "j.bauer@gmail.de",
-  "firstName": "Jens",
-  "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 70,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "P369639388",
-  "lastName": "Bauer",
-  "phoneNumber": "010841012411",
+  "dateOfBirth": "1943-03-07",
+  "email": "s.winkler@web.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 64,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "H533550699",
+  "lastName": "Winkler",
+  "phoneNumber": "4309805009",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "Hubei"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
-  "symptoms": [
-    "Halschmerzen"
-  ],
+  "street": "Abbendiekshof",
   "weakenedImmuneSystem": false,
-  "zip": "2449353"
+  "zip": "8208121"
 }

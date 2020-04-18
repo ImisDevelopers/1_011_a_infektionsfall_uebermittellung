@@ -1,29 +1,23 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1951-04-16",
-  "email": "k.richter@posteo.de",
-  "firstName": "Kai",
-  "fluImmunization": true,
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "2000-10-28",
+  "email": "t.wagner@gmx.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 97,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "O100725768",
-  "lastName": "Richter",
-  "phoneNumber": "4545892975",
+  "houseNumber": 42,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y982177625",
+  "lastName": "Wagner",
+  "phoneNumber": "3204899642",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "00110701"
+  "street": "Schernerweg",
+  "weakenedImmuneSystem": true,
+  "zip": "36937810"
 }

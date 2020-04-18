@@ -6,6 +6,7 @@ import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/patients")
 @RequiredArgsConstructor
 public class PatientController {
@@ -21,6 +23,7 @@ public class PatientController {
 
 	@PostMapping
 	public ResponseEntity<Patient> addPatient(@RequestBody CreatePatientDTO dto) {
+		log.info("Creating patient " + dto);
 		var patient = patientService.addPatient(dto);
 
 		if (patient == null) {

@@ -1,27 +1,23 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": false,
-  "dateOfBirth": "1962-08-13",
-  "email": "d.schulze@gmx.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1985-02-15",
+  "email": "p.lange@web.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 8,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "S702998820",
-  "lastName": "Schulze",
-  "phoneNumber": "615651045210",
+  "houseNumber": 13,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "M394721069",
+  "lastName": "Lange",
+  "phoneNumber": "59410647436",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
   "street": "Abbendiekshof",
-  "symptoms": [
-    "Halschmerzen"
-  ],
   "weakenedImmuneSystem": true,
-  "zip": "1116152"
+  "zip": "3695944"
 }

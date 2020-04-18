@@ -1,32 +1,23 @@
 {
   "city": "Frankfurt",
-  "coronaContacts": false,
-  "dateOfBirth": "1982-07-15",
-  "email": "l.schulz@t-online.de",
-  "firstName": "Lisa",
-  "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 76,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "S659531734",
-  "lastName": "Schulz",
-  "phoneNumber": "8886101581",
+  "coronaContacts": true,
+  "dateOfBirth": "1976-09-24",
+  "email": "d.lange@web.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 38,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P244096091",
+  "lastName": "Lange",
+  "phoneNumber": "0262067240",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Schnupfen",
-    "Fieber",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Halschmerzen"
-  ],
+  "street": "Aarhusweg",
   "weakenedImmuneSystem": false,
-  "zip": "5604661"
+  "zip": "99154710"
 }

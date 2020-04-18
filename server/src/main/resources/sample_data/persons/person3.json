@@ -1,30 +1,23 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1994-01-28",
-  "email": "h.bauer@gmx.de",
-  "firstName": "Hans",
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1978-10-29",
+  "email": "s.weber@t-online.de",
+  "firstName": "Susanne",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 59,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "Y788227492",
-  "lastName": "Bauer",
-  "phoneNumber": "121021069166",
+  "gender": "weiblich",
+  "houseNumber": 95,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "E647099690",
+  "lastName": "Weber",
+  "phoneNumber": "531076107242",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Halschmerzen",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Husten"
-  ],
+  "street": "Schernerweg",
   "weakenedImmuneSystem": true,
-  "zip": "848010110"
+  "zip": "8849696"
 }

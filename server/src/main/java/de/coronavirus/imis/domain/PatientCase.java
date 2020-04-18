@@ -1,6 +1,7 @@
 package de.coronavirus.imis.domain;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Accessors(chain = true)
 public class PatientCase {
 	@Id
 	@GeneratedValue(generator = "uuid2")
@@ -22,4 +24,7 @@ public class PatientCase {
 
 	@OneToMany()
 	private List<LabTest> labTests;
+
+	private String speedOfSymptomsOutbreak;
+	private Illness illness;
 }

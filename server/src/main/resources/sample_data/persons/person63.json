@@ -1,29 +1,23 @@
 {
-  "city": "Hamburg",
+  "city": "Freiburg",
   "coronaContacts": false,
-  "dateOfBirth": "1945-09-26",
-  "email": "m.richter@web.de",
-  "firstName": "Marie",
-  "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 72,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "K658712474",
-  "lastName": "Richter",
-  "phoneNumber": "103310918785",
+  "dateOfBirth": "1990-04-26",
+  "email": "t.bauer@posteo.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 78,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C234568604",
+  "lastName": "Bauer",
+  "phoneNumber": "2370589578",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Husten",
-    "Atemschwierigkeiten"
-  ],
+  "street": "Haidth\u00f6heAarweg",
   "weakenedImmuneSystem": false,
-  "zip": "1088398"
+  "zip": "1146786"
 }

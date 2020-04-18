@@ -1,33 +1,23 @@
 {
-  "city": "Frankfurt",
+  "city": "M\u00fcnchen",
   "coronaContacts": true,
-  "dateOfBirth": "1978-07-29",
-  "email": "j.klein@gmx.de",
-  "firstName": "Jan",
+  "dateOfBirth": "1970-11-16",
+  "email": "l.bauer@posteo.de",
+  "firstName": "Lisa",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 91,
+  "gender": "weiblich",
+  "houseNumber": 12,
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "X436730606",
-  "lastName": "Klein",
-  "phoneNumber": "0260647468",
+  "insuranceMembershipNumber": "M881913386",
+  "lastName": "Bauer",
+  "phoneNumber": "3829973763",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Schnupfen",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Fieber",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
-  ],
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
   "weakenedImmuneSystem": false,
-  "zip": "7234309"
+  "zip": "10656670"
 }

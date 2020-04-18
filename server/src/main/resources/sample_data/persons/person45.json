@@ -1,33 +1,23 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": false,
-  "dateOfBirth": "1957-09-17",
-  "email": "d.klein@gmail.de",
-  "firstName": "Daniela",
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-04-05",
+  "email": "m.mueller@web.de",
+  "firstName": "Marie",
   "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 13,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "N198476695",
-  "lastName": "Klein",
-  "phoneNumber": "62392401075",
+  "houseNumber": 54,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "F393421844",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "10731585149",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "B\u00fcckerheide",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Fieber"
-  ],
+  "street": "Schernerweg",
   "weakenedImmuneSystem": true,
-  "zip": "8141247"
+  "zip": "899101080"
 }

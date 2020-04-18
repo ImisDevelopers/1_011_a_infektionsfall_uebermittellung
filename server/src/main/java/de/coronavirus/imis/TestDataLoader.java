@@ -1,26 +1,25 @@
 package de.coronavirus.imis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
-import de.coronavirus.imis.api.dto.CreateLabTestDTO;
-import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
+import de.coronavirus.imis.api.dto.*;
 import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserRepository;
 import de.coronavirus.imis.config.domain.UserRole;
-import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.domain.LabTestEventType;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.TestType;
+import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.services.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.util.Collections;
 
 
 @Component
@@ -30,12 +29,13 @@ public class TestDataLoader implements ApplicationRunner {
 
 
 	private final PatientService patientService;
+	private final PatientCaseService patientCaseService;
 	private final InstitutionService institutionService;
 	private final LabTestService labTestService;
-	private final PatientEventService eventService;
 	private final StatsService statsService;
 	private final UserRepository userRepository;
 	private final PasswordEncoder encoder;
+	private final UserDetailsService userDetailsService;
 
 	static <T> Object makeDTO(String testFileName, Class<T> clazz)
 			throws IOException {
@@ -72,12 +72,6 @@ public class TestDataLoader implements ApplicationRunner {
 		log.info("Creating test data");
 		try {
 
-			log.info("Inserting patients");
-			for (int i = 0; i < 100; i++) {
-				var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
-				patientService.addPatient(createPersonDTO);
-			}
-
 			// SETUP OUR WORLD
 			log.info("Inserting laboratory");
 			var createLaboratoryDTO = (CreateInstitutionDTO) makeDTO("createLaboratory.json", CreateInstitutionDTO.class);
@@ -98,7 +92,6 @@ public class TestDataLoader implements ApplicationRunner {
 			log.info("Inserting department of health");
 			var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createDepartmentOfHealth.json", CreateInstitutionDTO.class);
 			var departmentOfHealth = institutionService.addInstitution(createDepartmentOfHealthDTO);
-
 
 			var user = User.builder()
 					.userRole(UserRole.USER_ROLE_ADMIN)
@@ -137,14 +130,40 @@ public class TestDataLoader implements ApplicationRunner {
 					.userRole(UserRole.USER_ROLE_ADMIN)
 					.build();
 			userRepository.saveAndFlush(departmentOfHealthUser);
+
+
+			// Need user to create domain objects
+			UserDetails userDetails = userDetailsService.loadUserByUsername(departmentOfHealthUser.username());
+			SecurityContextHolder.getContext().setAuthentication(
+					new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities())
+			);
+
+
+			log.info("Inserting patients");
+			for (int i = 0; i < 100; i++) {
+				var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
+				patientService.addPatient(createPersonDTO);
+			}
+
+
 			// PERSON GETS SICK AND GOES TO THE DOCTOR
 			// PERSON GETS REGISTERED
 			var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);
 			var person = patientService.addPatient(createPersonDTO);
 
+			// Register case for patient:
+			final var patientCaseDto = new CreatePatientCaseDTO()
+					.setIllness(Illness.CORONA)
+					.setSymptoms(Collections.emptyList())
+					.setSpeedOfSymptomsOutbreak("fast")
+					.setPatientId(person.getId());
+			final var patientCase = patientCaseService.createPatientCase(patientCaseDto);
+
+
 			// THE DOCTOR CREATES AND SEND SAMPLE TO LAB
 			// FIXME: What should be done here?
 			// eventService.createScheduledEvent(person, laboratory.getId(), doctorsOffice.getId());
+
 
 			// LAB RECEIVES SAMPLE AND PROCESSES IT
 			final String testId = "42EF42";
@@ -157,7 +176,7 @@ public class TestDataLoader implements ApplicationRunner {
 					.build();
 			final CreateLabTestDTO createLabTestDTO = new CreateLabTestDTO();
 			createLabTestDTO.setLaboratoryId(laboratory.getId());
-			createLabTestDTO.setPatientCaseId(); // TODO: Create Case first
+			createLabTestDTO.setPatientCaseId(patientCase.getId());
 			createLabTestDTO.setTestId(testId);
 			createLabTestDTO.setTestType(TestType.PCR);
 			labTest = labTestService.createLabTest(createLabTestDTO);

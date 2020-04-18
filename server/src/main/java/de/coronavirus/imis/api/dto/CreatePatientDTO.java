@@ -33,8 +33,6 @@ public class CreatePatientDTO {
 	private String employer;
 
 	private Boolean fluImmunization;
-	private String speedOfSymptomsOutbreak;
-	private List<String> symptoms;
 
 	private Boolean coronaContacts;
 	private List<String> riskAreas;

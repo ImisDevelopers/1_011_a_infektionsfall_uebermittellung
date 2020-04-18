@@ -6,7 +6,9 @@ import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.domain.InstitutionType;
 import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.domain.PatientEventType;
 import de.coronavirus.imis.mapper.PatientInformationMapper;
+import de.coronavirus.imis.repositories.PatientInformationRepository;
 import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
@@ -37,6 +39,7 @@ public class PatientService {
 	private final LikeOperatorService likeOperatorService;
 	private final RandomService randomService;
 	private final AuthService authService;
+	private final PatientInformationRepository patientInformationRepository;
 
 	private final PatientInformationMapper patientInformationMapper;
 
@@ -58,7 +61,7 @@ public class PatientService {
 
 		var patientInformation = patientInformationMapper.toPatient(dto);
 		var patient = new Patient();
-		patient.setPatientStatus(dto.getPatientStatus());
+		patient.setPatientStatus(dto.getPatientStatus() == null ? PatientEventType.REGISTERED : dto.getPatientStatus());
 		patient.setInformation(Collections.singletonList(patientInformation));
 		var id = Hashing.sha256()
 				.hashString(patientInformation.getFirstName() + patientInformation.getLastName()
@@ -69,6 +72,11 @@ public class PatientService {
 				.substring(0, 8).toUpperCase();
 		patient.setId(id);
 		patient = patientRepository.save(patient);
+
+		patientInformation.setPatient(patient);
+		patientInformation.setUser(authService.getCurrentUser());
+		patientInformationRepository.save(patientInformation);
+
 
 
 		log.info("inserting patient with id {}", patient.getId());
@@ -136,8 +144,8 @@ public class PatientService {
 				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getCity())),
 				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getInsuranceCompany())),
 				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getInsuranceMembershipNumber())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getDoctorId())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getLaboratoryId())),
+//				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getDoctorId())),
+//				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getLaboratoryId())),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()),
 				pageable);
 
@@ -169,8 +177,8 @@ public class PatientService {
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getCity()),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceCompany()),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceMembershipNumber()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
+//				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
+//				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
 				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
 	}
 

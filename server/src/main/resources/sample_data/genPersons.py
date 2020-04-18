@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json
 import pathlib
 import string
@@ -101,8 +103,6 @@ def gen_person():
 		'insuranceCompany': choice(insurance_companies),
 		'insuranceMembershipNumber': insurance_number(),
 		'fluImmunization': bool(getrandbits(1)),
-		'speedOfSymptomsOutbreak': choice(['Langsam', 'Mittel', 'Schnell']),
-		'symptoms': sample(symptoms, randint(0, len(symptoms))),
 		'coronaContacts': bool(getrandbits(1)),
 		'riskAreas': [choice(riscAreas)],
 		'weakenedImmuneSystem': bool(getrandbits(1)),

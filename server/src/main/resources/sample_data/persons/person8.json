@@ -1,28 +1,23 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1952-11-19",
-  "email": "p.schroeder@t-online.de",
-  "firstName": "Peter",
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1951-03-09",
+  "email": "k.klein@posteo.de",
+  "firstName": "Kai",
   "fluImmunization": true,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 85,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "R328872698",
-  "lastName": "Schr\u00f6der",
-  "phoneNumber": "98543105346",
+  "houseNumber": 96,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "M102314313",
+  "lastName": "Klein",
+  "phoneNumber": "73178101080",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Husten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "10475107"
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "3267736"
 }

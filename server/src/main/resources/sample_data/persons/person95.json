@@ -1,29 +1,23 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1983-06-07",
-  "email": "j.richter@gmx.de",
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1968-07-30",
+  "email": "j.klein@t-online.de",
   "firstName": "Jana",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 37,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "N314166184",
-  "lastName": "Richter",
-  "phoneNumber": "2447209993",
+  "houseNumber": 60,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K795752405",
+  "lastName": "Klein",
+  "phoneNumber": "1125457387",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Husten",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen"
-  ],
+  "street": "Abbachstra\u00dfe",
   "weakenedImmuneSystem": true,
-  "zip": "7687014"
+  "zip": "1775140"
 }

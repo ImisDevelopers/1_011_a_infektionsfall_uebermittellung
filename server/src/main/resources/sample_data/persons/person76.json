@@ -1,28 +1,23 @@
 {
-  "city": "Bochum",
-  "coronaContacts": false,
-  "dateOfBirth": "1964-07-09",
-  "email": "d.schroeder@posteo.de",
-  "firstName": "Daniela",
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "2004-05-21",
+  "email": "p.schroeder@web.de",
+  "firstName": "Petra",
   "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 93,
+  "houseNumber": 90,
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "U425164079",
+  "insuranceMembershipNumber": "P264481748",
   "lastName": "Schr\u00f6der",
-  "phoneNumber": "65193982108",
+  "phoneNumber": "530101742610",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
-  "symptoms": [
-    "Halschmerzen",
-    "Gelenkschmerzen"
-  ],
+  "street": "B\u00fcckerheide",
   "weakenedImmuneSystem": false,
-  "zip": "73741610"
+  "zip": "41104593"
 }

@@ -1,27 +1,23 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1993-12-21",
-  "email": "a.peters@gmail.de",
-  "firstName": "Annika",
+  "city": "Hamburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1933-11-13",
+  "email": "j.schulz@posteo.de",
+  "firstName": "Jana",
   "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 10,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y409346714",
-  "lastName": "Peters",
-  "phoneNumber": "5220472779",
+  "houseNumber": 20,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Y763398699",
+  "lastName": "Schulz",
+  "phoneNumber": "12100183667",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
-  "symptoms": [
-    "Husten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "0432898"
+  "street": "Abbachstra\u00dfe",
+  "weakenedImmuneSystem": false,
+  "zip": "5459910"
 }

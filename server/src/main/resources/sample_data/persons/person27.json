@@ -1,33 +1,23 @@
 {
-  "city": "Berlin",
+  "city": "Bochum",
   "coronaContacts": false,
-  "dateOfBirth": "1961-06-18",
-  "email": "j.bauer@gmx.de",
-  "firstName": "Jens",
+  "dateOfBirth": "1930-07-10",
+  "email": "d.klein@gmail.de",
+  "firstName": "Daniela",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 40,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "Q733701411",
-  "lastName": "Bauer",
-  "phoneNumber": "8675339636",
+  "gender": "weiblich",
+  "houseNumber": 20,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "T604564682",
+  "lastName": "Klein",
+  "phoneNumber": "990913103410",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aarhusweg",
-  "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Halschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "766101027"
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "weakenedImmuneSystem": false,
+  "zip": "3281206"
 }

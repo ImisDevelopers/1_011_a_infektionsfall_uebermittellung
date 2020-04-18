@@ -1,27 +1,23 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1938-07-19",
-  "email": "s.schulz@posteo.de",
-  "firstName": "Susanne",
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1950-12-11",
+  "email": "l.schroeder@t-online.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 74,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "J827579147",
-  "lastName": "Schulz",
-  "phoneNumber": "102221969103",
+  "houseNumber": 73,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "N781594897",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "940131099010",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof",
-  "symptoms": [
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "23710474"
+  "street": "Aastwiete",
+  "weakenedImmuneSystem": false,
+  "zip": "02781074"
 }

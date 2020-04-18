@@ -1,33 +1,23 @@
 {
-  "city": "Berlin",
+  "city": "Freiburg",
   "coronaContacts": false,
-  "dateOfBirth": "1956-09-15",
-  "email": "p.weber@t-online.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "dateOfBirth": "1993-12-21",
+  "email": "a.peters@gmail.de",
+  "firstName": "Annika",
+  "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 71,
+  "houseNumber": 10,
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "B247141682",
-  "lastName": "Weber",
-  "phoneNumber": "84910912165",
+  "insuranceMembershipNumber": "Y409346714",
+  "lastName": "Peters",
+  "phoneNumber": "5220472779",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbachstra\u00dfe",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "5239868"
+  "street": "Aarhusweg",
+  "weakenedImmuneSystem": false,
+  "zip": "0432898"
 }

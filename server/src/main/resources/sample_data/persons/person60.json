@@ -1,28 +1,23 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1963-12-16",
-  "email": "p.mueller@gmx.de",
-  "firstName": "Peter",
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1951-02-14",
+  "email": "p.weber@t-online.de",
+  "firstName": "Petra",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 25,
+  "gender": "weiblich",
+  "houseNumber": 57,
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "X876441691",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "110208261077",
+  "insuranceMembershipNumber": "N394801573",
+  "lastName": "Weber",
+  "phoneNumber": "92845115104",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Halschmerzen",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "454100110"
+  "street": "Aastwiete",
+  "weakenedImmuneSystem": false,
+  "zip": "9627570"
 }

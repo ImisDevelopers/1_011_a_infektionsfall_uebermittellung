@@ -1,30 +1,23 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1960-02-19",
-  "email": "k.schroeder@gmail.de",
-  "firstName": "Karl",
-  "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 97,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "T806340901",
-  "lastName": "Schr\u00f6der",
-  "phoneNumber": "83210731585",
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1928-06-08",
+  "email": "p.winter@posteo.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 82,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "K902601465",
+  "lastName": "Winter",
+  "phoneNumber": "103941010102101",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
-  "symptoms": [
-    "Husten",
-    "Fieber",
-    "Schnupfen",
-    "Kopfschmerzen"
-  ],
+  "street": "Nordtstra\u00dfe",
   "weakenedImmuneSystem": false,
-  "zip": "4936899"
+  "zip": "0470952"
 }

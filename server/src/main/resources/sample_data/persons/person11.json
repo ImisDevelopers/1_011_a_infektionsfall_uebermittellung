@@ -1,34 +1,23 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "K\u00f6ln",
   "coronaContacts": true,
-  "dateOfBirth": "1953-11-28",
-  "email": "j.schulz@gmail.de",
-  "firstName": "Jana",
-  "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 39,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y399708182",
-  "lastName": "Schulz",
-  "phoneNumber": "3421607337",
+  "dateOfBirth": "1949-09-23",
+  "email": "t.weber@posteo.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 33,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "K318610946",
+  "lastName": "Weber",
+  "phoneNumber": "4910801084101",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe",
-  "symptoms": [
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "33010365"
+  "street": "Haidth\u00f6heAarweg",
+  "weakenedImmuneSystem": true,
+  "zip": "1182449"
 }

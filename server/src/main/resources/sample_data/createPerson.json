@@ -12,11 +12,6 @@
   "insuranceCompany": "insurance",
   "insuranceMembershipNumber": "insuranceMembershipNr",
   "fluImmunization": "true",
-  "speedOfSymptomsOutbreak": "slow",
-  "symptoms": [
-    "cold",
-    "cough"
-  ],
   "coronaContacts": "false",
   "riskAreas": [
     "Southcorea",

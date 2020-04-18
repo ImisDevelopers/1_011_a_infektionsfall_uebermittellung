@@ -1,28 +1,23 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1968-07-30",
-  "email": "j.klein@t-online.de",
-  "firstName": "Jana",
+  "city": "Bochum",
+  "coronaContacts": true,
+  "dateOfBirth": "1952-08-19",
+  "email": "j.schulz@web.de",
+  "firstName": "Jens",
   "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 60,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 9,
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "K795752405",
-  "lastName": "Klein",
-  "phoneNumber": "1125457387",
+  "insuranceMembershipNumber": "J539017530",
+  "lastName": "Schulz",
+  "phoneNumber": "08710406403",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "1775140"
+  "street": "Nordstra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "0651801"
 }

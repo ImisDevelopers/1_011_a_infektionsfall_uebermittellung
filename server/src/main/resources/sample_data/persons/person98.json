@@ -1,28 +1,23 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1958-12-31",
-  "email": "k.wagner@t-online.de",
-  "firstName": "Kai",
-  "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1952-10-05",
+  "email": "a.bauer@gmx.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "weiblich",
   "houseNumber": 62,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "J888121101",
-  "lastName": "Wagner",
-  "phoneNumber": "10691545226",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "P246603034",
+  "lastName": "Bauer",
+  "phoneNumber": "966271081028",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Schnupfen",
-    "Kopfschmerzen"
-  ],
+  "street": "Haidth\u00f6heAarweg",
   "weakenedImmuneSystem": true,
-  "zip": "10528953"
+  "zip": "4225790"
 }

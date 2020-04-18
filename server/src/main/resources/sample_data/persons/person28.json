@@ -1,25 +1,23 @@
 {
   "city": "Bochum",
-  "coronaContacts": false,
-  "dateOfBirth": "1963-11-28",
-  "email": "s.lange@t-online.de",
-  "firstName": "Susanne",
-  "fluImmunization": true,
+  "coronaContacts": true,
+  "dateOfBirth": "1972-11-19",
+  "email": "l.lange@posteo.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 87,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "W421549249",
+  "houseNumber": 7,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "J851333320",
   "lastName": "Lange",
-  "phoneNumber": "86510780913",
+  "phoneNumber": "103618310242",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "43161101"
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "2499471"
 }

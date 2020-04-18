@@ -24,8 +24,6 @@ import java.util.List;
 		property = "id")
 public class Patient {
 	@Id
-	@GeneratedValue(generator = "uuid2")
-	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String id;
 
 	@OneToMany(mappedBy = "patient")

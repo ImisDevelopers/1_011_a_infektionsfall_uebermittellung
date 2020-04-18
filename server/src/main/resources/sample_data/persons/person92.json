@@ -1,30 +1,23 @@
 {
-  "city": "Berlin",
+  "city": "Frankfurt",
   "coronaContacts": false,
-  "dateOfBirth": "1975-07-16",
-  "email": "l.schulze@web.de",
-  "firstName": "Lisa",
-  "fluImmunization": false,
+  "dateOfBirth": "1928-12-07",
+  "email": "a.weber@gmail.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 10,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V240346956",
-  "lastName": "Schulze",
-  "phoneNumber": "0241038657",
+  "houseNumber": 48,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "V924223452",
+  "lastName": "Weber",
+  "phoneNumber": "75265410793",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordufer",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen"
-  ],
+  "street": "Abbachstra\u00dfe",
   "weakenedImmuneSystem": false,
-  "zip": "91821061"
+  "zip": "4651939"
 }

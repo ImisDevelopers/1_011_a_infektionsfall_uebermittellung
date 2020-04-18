@@ -1,31 +1,23 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": true,
-  "dateOfBirth": "1991-08-20",
-  "email": "f.mueller@gmx.de",
-  "firstName": "Franz",
-  "fluImmunization": true,
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1943-04-12",
+  "email": "k.winter@gmx.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 63,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "D928316966",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "904101021020",
+  "houseNumber": 31,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "L214408183",
+  "lastName": "Winter",
+  "phoneNumber": "866210910619",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Madrid"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Halschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "5884252"
+  "street": "Aastwiete",
+  "weakenedImmuneSystem": false,
+  "zip": "11426102"
 }

@@ -1,34 +1,23 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1926-03-27",
-  "email": "t.wagner@gmx.de",
-  "firstName": "Tim",
-  "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 14,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M554234434",
-  "lastName": "Wagner",
-  "phoneNumber": "104991102513",
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "2001-11-14",
+  "email": "a.winkler@t-online.de",
+  "firstName": "Annika",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 90,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "E641054044",
+  "lastName": "Winkler",
+  "phoneNumber": "9033119079",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete",
-  "symptoms": [
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Husten",
-    "Halschmerzen",
-    "Kopfschmerzen"
-  ],
+  "street": "Nordtstra\u00dfe",
   "weakenedImmuneSystem": true,
-  "zip": "2528669"
+  "zip": "0306738"
 }

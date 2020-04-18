@@ -1,31 +1,23 @@
 {
   "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1996-11-21",
-  "email": "p.lange@t-online.de",
-  "firstName": "Petra",
+  "coronaContacts": false,
+  "dateOfBirth": "1946-10-25",
+  "email": "h.winter@gmx.de",
+  "firstName": "Hans",
   "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 16,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "E829137330",
-  "lastName": "Lange",
-  "phoneNumber": "658102029107",
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 56,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Q179661615",
+  "lastName": "Winter",
+  "phoneNumber": "97109101095105",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Hubei"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Fieber"
-  ],
+  "street": "Haidth\u00f6heAarweg",
   "weakenedImmuneSystem": false,
-  "zip": "13105569"
+  "zip": "17710449"
 }

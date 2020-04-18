@@ -1,29 +1,23 @@
 {
-  "city": "Berlin",
-  "coronaContacts": false,
-  "dateOfBirth": "1949-04-28",
-  "email": "t.schulze@gmx.de",
-  "firstName": "Tim",
+  "city": "Bochum",
+  "coronaContacts": true,
+  "dateOfBirth": "1932-07-08",
+  "email": "a.winkler@posteo.de",
+  "firstName": "Annika",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 15,
+  "gender": "weiblich",
+  "houseNumber": 16,
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Z458102728",
-  "lastName": "Schulze",
-  "phoneNumber": "511058105064",
+  "insuranceMembershipNumber": "X254785699",
+  "lastName": "Winkler",
+  "phoneNumber": "605766101027",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
-  "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "7110310109"
+  "street": "Aarhusweg",
+  "weakenedImmuneSystem": true,
+  "zip": "8951718"
 }

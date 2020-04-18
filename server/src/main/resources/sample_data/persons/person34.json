@@ -1,27 +1,23 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": false,
-  "dateOfBirth": "2005-05-28",
-  "email": "a.winter@web.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 100,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "N664880035",
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1962-10-23",
+  "email": "j.winter@gmail.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 4,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "D916440738",
   "lastName": "Winter",
-  "phoneNumber": "22842110020",
+  "phoneNumber": "6101510865107",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe",
-  "symptoms": [
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "3950240"
+  "street": "B\u00fcckerheide",
+  "weakenedImmuneSystem": false,
+  "zip": "913101043"
 }

@@ -1,29 +1,23 @@
 {
-  "city": "Kiel",
-  "coronaContacts": false,
-  "dateOfBirth": "2005-05-10",
-  "email": "k.richter@web.de",
-  "firstName": "Karl",
-  "fluImmunization": true,
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1960-09-29",
+  "email": "f.lange@t-online.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 65,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y352188235",
-  "lastName": "Richter",
-  "phoneNumber": "369910577710",
+  "houseNumber": 85,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "O475442872",
+  "lastName": "Lange",
+  "phoneNumber": "6923226025",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
     "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Schernerweg",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Husten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "721014810"
+  "street": "Niekampsweg",
+  "weakenedImmuneSystem": false,
+  "zip": "3421607"
 }

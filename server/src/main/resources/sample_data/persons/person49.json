@@ -1,28 +1,23 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "Hamburg",
   "coronaContacts": false,
-  "dateOfBirth": "1949-07-11",
-  "email": "t.richter@gmx.de",
-  "firstName": "Tim",
-  "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 23,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "O747060047",
+  "dateOfBirth": "1974-07-19",
+  "email": "l.richter@t-online.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 81,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "D257243284",
   "lastName": "Richter",
-  "phoneNumber": "2775841616",
+  "phoneNumber": "6816453521",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Schnupfen"
-  ],
+  "street": "B\u00fcckerheide",
   "weakenedImmuneSystem": true,
-  "zip": "84511510"
+  "zip": "18835510"
 }

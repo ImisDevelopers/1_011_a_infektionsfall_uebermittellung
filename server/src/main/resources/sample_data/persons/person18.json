@@ -1,32 +1,23 @@
 {
-  "city": "M\u00fcnchen",
+  "city": "Hamburg",
   "coronaContacts": true,
-  "dateOfBirth": "1984-10-20",
-  "email": "p.winter@gmail.de",
+  "dateOfBirth": "1945-08-09",
+  "email": "p.klein@posteo.de",
   "firstName": "Petra",
   "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 91,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Z144097647",
-  "lastName": "Winter",
-  "phoneNumber": "12419049106",
+  "houseNumber": 36,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "M845122940",
+  "lastName": "Klein",
+  "phoneNumber": "310487103471",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Niekampsweg",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Halschmerzen",
-    "Fieber"
-  ],
+  "street": "Nordufer",
   "weakenedImmuneSystem": false,
-  "zip": "31910314"
+  "zip": "3455812"
 }

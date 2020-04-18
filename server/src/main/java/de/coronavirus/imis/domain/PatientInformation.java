@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.coronavirus.imis.config.domain.User;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,6 +19,8 @@ import java.util.List;
 public class PatientInformation {
 
 	@Id
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	private String id;
 
 	@OneToOne
@@ -48,7 +51,6 @@ public class PatientInformation {
 	private boolean confirmed;
 	private String employer;
 	private Boolean fluImmunization;
-	private String speedOfSymptomsOutbreak;
 
 	private Boolean coronaContacts;
 	@Convert(converter = StringListConverter.class)

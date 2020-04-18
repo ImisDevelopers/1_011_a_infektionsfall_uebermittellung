@@ -1,34 +1,23 @@
 {
-  "city": "Bochum",
+  "city": "Freiburg",
   "coronaContacts": true,
-  "dateOfBirth": "1983-04-26",
-  "email": "k.lange@t-online.de",
-  "firstName": "Kai",
+  "dateOfBirth": "1987-02-06",
+  "email": "p.weber@gmx.de",
+  "firstName": "Petra",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 1,
+  "gender": "weiblich",
+  "houseNumber": 76,
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "S629741991",
-  "lastName": "Lange",
-  "phoneNumber": "8061744518",
+  "insuranceMembershipNumber": "T507903732",
+  "lastName": "Weber",
+  "phoneNumber": "64647154310",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
   "street": "Abbendiekshof",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Husten",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Schnupfen"
-  ],
   "weakenedImmuneSystem": false,
-  "zip": "5349493"
+  "zip": "9371240"
 }

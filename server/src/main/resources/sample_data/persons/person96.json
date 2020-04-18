@@ -1,28 +1,23 @@
 {
   "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1971-03-01",
-  "email": "p.wagner@gmx.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 20,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Z517065508",
-  "lastName": "Wagner",
-  "phoneNumber": "5930407859",
+  "coronaContacts": true,
+  "dateOfBirth": "1934-07-31",
+  "email": "k.schulz@gmail.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 94,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "I907803348",
+  "lastName": "Schulz",
+  "phoneNumber": "7361022101066",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten"
-  ],
+  "street": "Aarhusweg",
   "weakenedImmuneSystem": true,
-  "zip": "13103480"
+  "zip": "9379660"
 }

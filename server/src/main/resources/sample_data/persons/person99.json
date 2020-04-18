@@ -1,25 +1,23 @@
 {
-  "city": "K\u00f6ln",
+  "city": "Frankfurt",
   "coronaContacts": false,
-  "dateOfBirth": "1927-04-21",
-  "email": "h.schroeder@gmail.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 11,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "C476326283",
-  "lastName": "Schr\u00f6der",
-  "phoneNumber": "9172513552",
+  "dateOfBirth": "1943-03-03",
+  "email": "d.richter@gmx.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 72,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "R983271755",
+  "lastName": "Richter",
+  "phoneNumber": "9034043842",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [],
+  "street": "Abbendiekshof",
   "weakenedImmuneSystem": false,
-  "zip": "101057043"
+  "zip": "7881914"
 }

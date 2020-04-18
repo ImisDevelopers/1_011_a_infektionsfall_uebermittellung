@@ -1,27 +1,23 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": false,
-  "dateOfBirth": "1970-05-04",
-  "email": "d.wagner@web.de",
-  "firstName": "Daniela",
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1980-01-11",
+  "email": "k.schulze@t-online.de",
+  "firstName": "Karl",
   "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 10,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "R847508242",
-  "lastName": "Wagner",
-  "phoneNumber": "91086652404",
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 99,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "O515156661",
+  "lastName": "Schulze",
+  "phoneNumber": "48687401034",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
-  "symptoms": [
-    "Erk\u00e4ltung"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "57104733"
+  "street": "Abbachstra\u00dfe",
+  "weakenedImmuneSystem": false,
+  "zip": "01054156"
 }

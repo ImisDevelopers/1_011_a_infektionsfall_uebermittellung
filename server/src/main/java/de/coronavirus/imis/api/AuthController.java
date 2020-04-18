@@ -37,6 +37,7 @@ public class AuthController {
 	@PostMapping("/register/user")
 	public ResponseEntity<User> registerUser(@RequestBody RegisterUserRequest registerUserRequest,
 											 @AuthenticationPrincipal Authentication auth) {
+		log.info("Registering user " + registerUserRequest);
 		if (auth != null && isAdmin(auth)) {
 			var user = authService.registerUser(registerUserRequest, auth.getName());
 			return ResponseEntity.ok(user);
@@ -51,6 +52,7 @@ public class AuthController {
 
 	@PostMapping("/register/institution")
 	public ResponseEntity<Institution> registerInstitution(@RequestBody CreateInstitutionDTO institutionDTO) {
+		log.info("Registering institution " + institutionDTO);
 		// TODO add handling for right, has to be decided on
 		return ResponseEntity.ok(authService.createInstitution(institutionDTO));
 	}

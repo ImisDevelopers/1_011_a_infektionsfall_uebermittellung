@@ -1,27 +1,23 @@
 {
-  "city": "Hamburg",
+  "city": "D\u00fcsseldorf",
   "coronaContacts": false,
-  "dateOfBirth": "1995-06-13",
-  "email": "m.weber@gmx.de",
-  "firstName": "Marie",
+  "dateOfBirth": "1953-09-25",
+  "email": "a.richter@posteo.de",
+  "firstName": "Anna",
   "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 51,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "P565906941",
-  "lastName": "Weber",
-  "phoneNumber": "7933410110100",
+  "houseNumber": 48,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P306442077",
+  "lastName": "Richter",
+  "phoneNumber": "97028385107",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
-  "symptoms": [
-    "Husten"
-  ],
+  "street": "B\u00fcckerheide",
   "weakenedImmuneSystem": true,
-  "zip": "66870100"
+  "zip": "5278585"
 }

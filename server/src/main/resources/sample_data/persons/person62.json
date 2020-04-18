@@ -1,34 +1,23 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1982-03-16",
-  "email": "j.lange@t-online.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1942-09-13",
+  "email": "d.peters@posteo.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 92,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "J271494637",
-  "lastName": "Lange",
-  "phoneNumber": "5304637454",
+  "houseNumber": 17,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C690554938",
+  "lastName": "Peters",
+  "phoneNumber": "8144739473",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Husten",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Fieber"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "90410530"
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "17271105"
 }

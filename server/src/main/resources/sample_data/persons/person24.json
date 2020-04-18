@@ -1,33 +1,23 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1946-12-10",
-  "email": "p.klein@t-online.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 41,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "I718740490",
-  "lastName": "Klein",
-  "phoneNumber": "6488771906",
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1975-12-14",
+  "email": "k.schulze@t-online.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 51,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N900942073",
+  "lastName": "Schulze",
+  "phoneNumber": "78371077014",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Kopfschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "94013109"
+  "street": "Schernerweg",
+  "weakenedImmuneSystem": true,
+  "zip": "34109578"
 }

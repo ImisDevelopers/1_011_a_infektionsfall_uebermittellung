@@ -1,29 +1,23 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "Berlin",
   "coronaContacts": true,
-  "dateOfBirth": "1980-07-28",
-  "email": "p.klein@gmail.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
+  "dateOfBirth": "1985-06-14",
+  "email": "m.wagner@t-online.de",
+  "firstName": "Marie",
+  "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 50,
+  "houseNumber": 14,
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "T961067882",
-  "lastName": "Klein",
-  "phoneNumber": "7136959440",
+  "insuranceMembershipNumber": "Q488457631",
+  "lastName": "Wagner",
+  "phoneNumber": "74106807154",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Halschmerzen"
-  ],
+  "street": "Abbachstra\u00dfe",
   "weakenedImmuneSystem": true,
-  "zip": "40910097"
+  "zip": "68010876"
 }

@@ -1,27 +1,23 @@
 {
-  "city": "Freiburg",
+  "city": "Bochum",
   "coronaContacts": true,
-  "dateOfBirth": "1928-09-07",
-  "email": "k.schulze@web.de",
+  "dateOfBirth": "2001-02-13",
+  "email": "k.lange@t-online.de",
   "firstName": "Karl",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 76,
+  "houseNumber": 82,
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "R833303441",
-  "lastName": "Schulze",
-  "phoneNumber": "64100376137",
+  "insuranceMembershipNumber": "B179830621",
+  "lastName": "Lange",
+  "phoneNumber": "66870100217",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Husten"
+  "riskAreas": [
+    "Hubei"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "1805526"
+  "street": "Niekampsweg",
+  "weakenedImmuneSystem": true,
+  "zip": "5918033"
 }

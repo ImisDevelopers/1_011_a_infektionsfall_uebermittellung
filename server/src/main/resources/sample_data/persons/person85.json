@@ -1,29 +1,23 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1999-07-21",
-  "email": "l.wagner@posteo.de",
-  "firstName": "Lisa",
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1984-03-24",
+  "email": "a.winkler@gmail.de",
+  "firstName": "Anna",
   "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 75,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "W241921987",
-  "lastName": "Wagner",
-  "phoneNumber": "43610110371",
+  "houseNumber": 97,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Q589636644",
+  "lastName": "Winkler",
+  "phoneNumber": "872810080110",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Halschmerzen",
-    "Husten",
-    "Kopfschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "38107005"
+  "street": "Aarhusweg",
+  "weakenedImmuneSystem": true,
+  "zip": "06210312"
 }

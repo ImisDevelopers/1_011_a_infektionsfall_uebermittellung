@@ -1,34 +1,23 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": false,
-  "dateOfBirth": "1937-01-21",
-  "email": "d.klein@web.de",
-  "firstName": "Daniel",
-  "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 53,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Q944403809",
-  "lastName": "Klein",
-  "phoneNumber": "8932460953",
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1952-05-07",
+  "email": "d.schroeder@gmx.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "weiblich",
+  "houseNumber": 85,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "G923935280",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "815614101097",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Husten",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Fieber",
-    "Schnupfen",
-    "Atemschwierigkeiten"
-  ],
+  "street": "B\u00fcckerheide",
   "weakenedImmuneSystem": false,
-  "zip": "210101851"
+  "zip": "4036900"
 }

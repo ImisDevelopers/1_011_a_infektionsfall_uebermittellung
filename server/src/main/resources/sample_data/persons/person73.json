@@ -1,27 +1,23 @@
 {
-  "city": "Hamburg",
+  "city": "Bochum",
   "coronaContacts": true,
-  "dateOfBirth": "1948-08-08",
-  "email": "j.lange@gmail.de",
-  "firstName": "Jana",
-  "fluImmunization": false,
+  "dateOfBirth": "1930-04-08",
+  "email": "a.mueller@web.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 37,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "M440030663",
-  "lastName": "Lange",
-  "phoneNumber": "586621091061",
+  "houseNumber": 60,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "U314164216",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "010831030165",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Husten"
-  ],
+  "street": "Nordufer",
   "weakenedImmuneSystem": false,
-  "zip": "31142610"
+  "zip": "11020826"
 }

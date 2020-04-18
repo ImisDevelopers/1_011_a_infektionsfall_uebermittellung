@@ -1,30 +1,23 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1973-08-04",
-  "email": "m.schulz@t-online.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1925-04-04",
+  "email": "a.mueller@web.de",
+  "firstName": "Annika",
+  "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 38,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M583736219",
-  "lastName": "Schulz",
-  "phoneNumber": "167191010022",
+  "houseNumber": 8,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "U989817696",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "410919058610",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Halschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "1318699"
+  "street": "Abbachstra\u00dfe",
+  "weakenedImmuneSystem": false,
+  "zip": "81050671"
 }

@@ -1,25 +1,23 @@
 {
-  "city": "Frankfurt",
+  "city": "D\u00fcsseldorf",
   "coronaContacts": false,
-  "dateOfBirth": "1967-07-28",
-  "email": "d.peters@gmail.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
+  "dateOfBirth": "1931-10-21",
+  "email": "p.schulze@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 49,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "M735540030",
-  "lastName": "Peters",
-  "phoneNumber": "6889373467",
+  "houseNumber": 36,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Z313814138",
+  "lastName": "Schulze",
+  "phoneNumber": "577710387210",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aarhusweg",
-  "symptoms": [],
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
   "weakenedImmuneSystem": false,
-  "zip": "510106272"
+  "zip": "810109513"
 }

@@ -1,29 +1,23 @@
 {
-  "city": "Kiel",
-  "coronaContacts": false,
-  "dateOfBirth": "1936-01-26",
-  "email": "p.bauer@gmx.de",
+  "city": "Bochum",
+  "coronaContacts": true,
+  "dateOfBirth": "1974-11-25",
+  "email": "p.winter@posteo.de",
   "firstName": "Petra",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 82,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "D111325589",
-  "lastName": "Bauer",
-  "phoneNumber": "5891011310105",
+  "houseNumber": 64,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "V320548167",
+  "lastName": "Winter",
+  "phoneNumber": "9187851910",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Schnupfen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "9091010106"
+  "street": "B\u00fcckerheide",
+  "weakenedImmuneSystem": false,
+  "zip": "3982258"
 }

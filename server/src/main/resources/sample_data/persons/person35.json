@@ -1,34 +1,23 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "2000-12-26",
-  "email": "p.schulze@web.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1998-05-12",
+  "email": "j.peters@gmail.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 13,
+  "houseNumber": 10,
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "I770355806",
-  "lastName": "Schulze",
-  "phoneNumber": "108471000766",
+  "insuranceMembershipNumber": "O784944881",
+  "lastName": "Peters",
+  "phoneNumber": "56238691022",
   "preIllnesses": [
-    "Krebserkrankung"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Fieber",
-    "Halschmerzen",
-    "Husten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "7711592"
+  "street": "Haidth\u00f6heAarweg",
+  "weakenedImmuneSystem": true,
+  "zip": "96910379"
 }

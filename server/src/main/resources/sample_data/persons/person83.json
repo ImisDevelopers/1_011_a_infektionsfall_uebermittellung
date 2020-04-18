@@ -1,27 +1,23 @@
 {
-  "city": "Kiel",
+  "city": "Frankfurt",
   "coronaContacts": true,
-  "dateOfBirth": "1974-03-23",
-  "email": "a.winkler@posteo.de",
-  "firstName": "Anna",
+  "dateOfBirth": "2004-04-30",
+  "email": "a.wagner@gmail.de",
+  "firstName": "Annika",
   "fluImmunization": true,
   "gender": "weiblich",
   "houseNumber": 48,
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "P451424185",
-  "lastName": "Winkler",
-  "phoneNumber": "5310672910410",
+  "insuranceMembershipNumber": "O205879779",
+  "lastName": "Wagner",
+  "phoneNumber": "3173936385",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
-  "symptoms": [
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "71101684"
+  "street": "Aastwiete",
+  "weakenedImmuneSystem": false,
+  "zip": "78105445"
 }

@@ -1,30 +1,23 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1925-03-06",
-  "email": "d.schulze@gmx.de",
-  "firstName": "Daniela",
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1957-02-22",
+  "email": "s.klein@gmx.de",
+  "firstName": "Susanne",
   "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 0,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "K311606895",
-  "lastName": "Schulze",
-  "phoneNumber": "101066093796",
+  "houseNumber": 93,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M984076542",
+  "lastName": "Klein",
+  "phoneNumber": "108210512868",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
     "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Schnupfen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "3341918"
+  "street": "Haidth\u00f6heAarweg",
+  "weakenedImmuneSystem": false,
+  "zip": "30047108"
 }

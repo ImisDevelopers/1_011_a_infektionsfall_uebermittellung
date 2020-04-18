@@ -1,34 +1,23 @@
 {
-  "city": "K\u00f6ln",
+  "city": "Frankfurt",
   "coronaContacts": true,
-  "dateOfBirth": "1945-01-20",
-  "email": "m.mueller@posteo.de",
-  "firstName": "Marie",
-  "fluImmunization": false,
+  "dateOfBirth": "1987-07-07",
+  "email": "a.klein@web.de",
+  "firstName": "Annika",
+  "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 14,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "E517305280",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "8593101107410",
+  "houseNumber": 92,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "L456954682",
+  "lastName": "Klein",
+  "phoneNumber": "9821465840",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Niekampsweg",
-  "symptoms": [
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Husten",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "2004711"
+  "street": "Aastwiete",
+  "weakenedImmuneSystem": false,
+  "zip": "49910727"
 }

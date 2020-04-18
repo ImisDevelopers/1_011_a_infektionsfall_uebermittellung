@@ -1,6 +1,6 @@
 {
   "city": "K\u00f6ln",
-  "coronaContacts": false,
+  "coronaContacts": true,
   "dateOfBirth": "1974-04-05",
   "email": "p.winkler@gmail.de",
   "firstName": "Peter",
@@ -12,17 +12,12 @@
   "lastName": "Winkler",
   "phoneNumber": "11081960013",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
   "street": "Schernerweg",
-  "symptoms": [
-    "Halschmerzen",
-    "Schnupfen"
-  ],
-  "weakenedImmuneSystem": false,
+  "weakenedImmuneSystem": true,
   "zip": "90831086"
 }

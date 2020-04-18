@@ -1,31 +1,23 @@
 {
-  "city": "K\u00f6ln",
+  "city": "Bochum",
   "coronaContacts": false,
-  "dateOfBirth": "1953-03-10",
-  "email": "p.wagner@gmx.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
-  "gender": "weiblich",
-  "houseNumber": 52,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "U184901228",
+  "dateOfBirth": "1965-04-25",
+  "email": "h.wagner@web.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 58,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "U822113500",
   "lastName": "Wagner",
-  "phoneNumber": "6287334270",
+  "phoneNumber": "2787747016",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
   "street": "B\u00fcckerheide",
-  "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
-    "Husten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "6882634"
+  "weakenedImmuneSystem": false,
+  "zip": "3395004"
 }

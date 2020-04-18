@@ -1,28 +1,23 @@
 {
   "city": "Bochum",
-  "coronaContacts": false,
-  "dateOfBirth": "1941-10-07",
-  "email": "k.mueller@gmail.de",
-  "firstName": "Kai",
-  "fluImmunization": true,
+  "coronaContacts": true,
+  "dateOfBirth": "1929-02-13",
+  "email": "h.winter@gmx.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 46,
+  "houseNumber": 96,
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y671988889",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "2528809570",
+  "insuranceMembershipNumber": "X872751234",
+  "lastName": "Winter",
+  "phoneNumber": "697848010110",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten"
-  ],
+  "street": "B\u00fcckerheide",
   "weakenedImmuneSystem": true,
-  "zip": "4303911"
+  "zip": "41051462"
 }

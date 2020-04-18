@@ -1,27 +1,23 @@
 {
-  "city": "Freiburg",
+  "city": "K\u00f6ln",
   "coronaContacts": true,
-  "dateOfBirth": "1941-05-21",
-  "email": "p.peters@gmx.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1930-03-25",
+  "email": "t.peters@posteo.de",
+  "firstName": "Tim",
   "fluImmunization": true,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 10,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "U919505668",
+  "houseNumber": 49,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K749794986",
   "lastName": "Peters",
-  "phoneNumber": "86661108892",
+  "phoneNumber": "61429396108",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete",
-  "symptoms": [
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "4183285"
+  "street": "Abbachstra\u00dfe",
+  "weakenedImmuneSystem": false,
+  "zip": "2185016"
 }

@@ -1,29 +1,23 @@
 {
   "city": "Freiburg",
   "coronaContacts": true,
-  "dateOfBirth": "1960-09-11",
-  "email": "t.schulz@t-online.de",
-  "firstName": "Tim",
+  "dateOfBirth": "1983-03-13",
+  "email": "p.klein@gmx.de",
+  "firstName": "Peter",
   "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 37,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "P371993587",
-  "lastName": "Schulz",
-  "phoneNumber": "1021077102217",
+  "houseNumber": 58,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D534900128",
+  "lastName": "Klein",
+  "phoneNumber": "83881051606",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
   "street": "Aarhusweg",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Husten"
-  ],
   "weakenedImmuneSystem": false,
-  "zip": "3030548"
+  "zip": "15969610"
 }

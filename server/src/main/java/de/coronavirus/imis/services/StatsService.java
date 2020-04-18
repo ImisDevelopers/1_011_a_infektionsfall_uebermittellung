@@ -28,7 +28,7 @@ public class StatsService {
 	@Transactional(readOnly = true)
 	public List<AggregationResultZip> resultZipList(String lowerBounds, String upperBounds) {
 		final List<Patient> patients = patientRepository.
-				findAllByZipBetween(lowerBounds, upperBounds);
+				findAllByInformation_ZipBetween(lowerBounds, upperBounds);
 
 		// TODO: Update: I do not think that Patient Event is what we want here
 		// if we want to count active/resolved corona cases,

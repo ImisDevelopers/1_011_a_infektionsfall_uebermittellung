@@ -1,34 +1,23 @@
 {
-  "city": "Frankfurt",
+  "city": "Freiburg",
   "coronaContacts": false,
-  "dateOfBirth": "1981-02-08",
-  "email": "p.peters@web.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
-  "gender": "weiblich",
-  "houseNumber": 28,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "L556881239",
-  "lastName": "Peters",
-  "phoneNumber": "67837107701",
+  "dateOfBirth": "1937-01-30",
+  "email": "j.schulz@web.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 6,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y993271900",
+  "lastName": "Schulz",
+  "phoneNumber": "699100110627",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Husten"
-  ],
+  "street": "Haidth\u00f6heAarweg",
   "weakenedImmuneSystem": false,
-  "zip": "63410957"
+  "zip": "4653755"
 }

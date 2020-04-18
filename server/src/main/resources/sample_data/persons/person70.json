@@ -1,27 +1,23 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1941-08-12",
-  "email": "h.peters@posteo.de",
-  "firstName": "Hans",
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1952-10-10",
+  "email": "t.wagner@t-online.de",
+  "firstName": "Tim",
   "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 70,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "W823737375",
-  "lastName": "Peters",
-  "phoneNumber": "0910109710700",
+  "houseNumber": 61,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "S852178601",
+  "lastName": "Wagner",
+  "phoneNumber": "100974109930",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "GrandEst"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "B\u00fcckerheide",
-  "symptoms": [
-    "Fieber"
-  ],
+  "street": "Nordstra\u00dfe",
   "weakenedImmuneSystem": false,
-  "zip": "6008484"
+  "zip": "281096210"
 }

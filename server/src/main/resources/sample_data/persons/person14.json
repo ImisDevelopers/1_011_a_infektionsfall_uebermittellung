@@ -1,31 +1,23 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1981-12-23",
-  "email": "j.richter@web.de",
-  "firstName": "Jens",
-  "fluImmunization": true,
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1997-05-12",
+  "email": "j.wagner@gmail.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 89,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V670298515",
-  "lastName": "Richter",
-  "phoneNumber": "67632100163",
+  "houseNumber": 33,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "M719106699",
+  "lastName": "Wagner",
+  "phoneNumber": "108610850142",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "8708317"
+  "street": "Nordstra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "0196556"
 }

@@ -1,29 +1,23 @@
 {
   "city": "Berlin",
-  "coronaContacts": false,
-  "dateOfBirth": "1992-03-04",
-  "email": "f.schulz@web.de",
-  "firstName": "Franz",
-  "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 59,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "K259261469",
-  "lastName": "Schulz",
-  "phoneNumber": "2775618537",
+  "coronaContacts": true,
+  "dateOfBirth": "1953-11-16",
+  "email": "p.winkler@t-online.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 76,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "W972197233",
+  "lastName": "Winkler",
+  "phoneNumber": "210434102661",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "41121049"
+  "street": "Abbendiekshof",
+  "weakenedImmuneSystem": true,
+  "zip": "7968868"
 }

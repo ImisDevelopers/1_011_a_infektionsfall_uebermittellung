@@ -1,34 +1,23 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1943-12-19",
-  "email": "p.bauer@web.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1942-10-18",
+  "email": "d.mueller@t-online.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 88,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "B726553348",
-  "lastName": "Bauer",
-  "phoneNumber": "47055101694",
+  "houseNumber": 30,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Q684203557",
+  "lastName": "M\u00fcller",
+  "phoneNumber": "01089324609",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
-  "symptoms": [
-    "Halschmerzen",
-    "Fieber",
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
-    "Husten",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "100974109"
+  "street": "Abbachstra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "962101018"
 }

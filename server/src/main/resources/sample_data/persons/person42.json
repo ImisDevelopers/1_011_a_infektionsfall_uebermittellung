@@ -1,30 +1,23 @@
 {
-  "city": "Frankfurt",
+  "city": "Bochum",
   "coronaContacts": false,
-  "dateOfBirth": "1948-10-21",
-  "email": "p.winter@t-online.de",
-  "firstName": "Petra",
+  "dateOfBirth": "1938-02-24",
+  "email": "j.schulz@gmx.de",
+  "firstName": "Jana",
   "fluImmunization": false,
   "gender": "weiblich",
-  "houseNumber": 10,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "T270452446",
-  "lastName": "Winter",
-  "phoneNumber": "3597820715",
+  "houseNumber": 5,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "N836691577",
+  "lastName": "Schulz",
+  "phoneNumber": "1775891783",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordufer",
-  "symptoms": [
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Atemschwierigkeiten"
-  ],
+  "street": "Nordstra\u00dfe",
   "weakenedImmuneSystem": true,
-  "zip": "81020377"
+  "zip": "108471000"
 }

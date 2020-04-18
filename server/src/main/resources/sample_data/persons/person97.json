@@ -1,25 +1,23 @@
 {
-  "city": "Hamburg",
+  "city": "M\u00fcnchen",
   "coronaContacts": false,
-  "dateOfBirth": "1987-10-31",
-  "email": "t.schroeder@web.de",
+  "dateOfBirth": "1947-02-09",
+  "email": "t.wagner@posteo.de",
   "firstName": "Tim",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 28,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "W290546084",
-  "lastName": "Schr\u00f6der",
-  "phoneNumber": "3784270103",
+  "houseNumber": 44,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "E436280635",
+  "lastName": "Wagner",
+  "phoneNumber": "107810596969",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "0870593"
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "weakenedImmuneSystem": false,
+  "zip": "57921049"
 }

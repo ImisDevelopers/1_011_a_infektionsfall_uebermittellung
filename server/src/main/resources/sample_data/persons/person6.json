@@ -1,33 +1,23 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1953-04-04",
-  "email": "j.schulze@gmx.de",
-  "firstName": "Jens",
-  "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
-  "houseNumber": 12,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "E552991960",
-  "lastName": "Schulze",
-  "phoneNumber": "1106566701010",
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1978-09-25",
+  "email": "p.schroeder@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "weiblich",
+  "houseNumber": 28,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "C860038427",
+  "lastName": "Schr\u00f6der",
+  "phoneNumber": "346101057871",
   "preIllnesses": [
-    "Krebserkrankung"
-  ],
-  "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Husten",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen"
+  "riskAreas": [
+    "GrandEst"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "0651333"
+  "street": "Schernerweg",
+  "weakenedImmuneSystem": false,
+  "zip": "1509839"
 }

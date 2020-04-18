@@ -7,12 +7,14 @@ import de.coronavirus.imis.domain.Laboratory;
 import de.coronavirus.imis.mapper.InstitutionMapper;
 import de.coronavirus.imis.services.InstitutionService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/institutions")
 @RequiredArgsConstructor
 public class InstitutionController {
@@ -22,12 +24,13 @@ public class InstitutionController {
 
 	@PutMapping
 	public InstitutionDTO updateInstitution(@RequestBody InstitutionDTO institutionDTO) {
+		log.info("Updating institution " + institutionDTO);
 		return institutionMapper.toInstitutionDTO(institutionService.updateInstitution(institutionDTO));
 	}
 
 	@PostMapping
 	public ResponseEntity<InstitutionDTO> createInstitution(@RequestBody CreateInstitutionDTO createInstitutionDTO) {
-
+		log.info("Creating institution " + createInstitutionDTO);
 		var institution = institutionService.addInstitution(
 				institutionMapper.toInstitution(createInstitutionDTO));
 		var responseDto = institutionMapper.toInstitutionDTO(institution);

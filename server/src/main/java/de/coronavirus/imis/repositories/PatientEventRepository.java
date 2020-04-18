@@ -1,6 +1,5 @@
 package de.coronavirus.imis.repositories;
 
-import de.coronavirus.imis.domain.LabTest;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.domain.PatientEvent;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +12,6 @@ public interface PatientEventRepository extends JpaRepository<PatientEvent, Stri
 
 	List<PatientEvent> findAllByPatient(Patient patient);
 
-	List<PatientEvent> findPatientEventByLabTest(LabTest labTest);
 
 	PatientEvent findFirstByPatientOrderByEventTimestampDesc(Patient patient);
 

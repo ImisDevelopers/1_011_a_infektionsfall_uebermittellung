@@ -1,27 +1,23 @@
 {
-  "city": "Freiburg",
+  "city": "D\u00fcsseldorf",
   "coronaContacts": true,
-  "dateOfBirth": "1955-09-05",
-  "email": "l.schulz@web.de",
-  "firstName": "Lisa",
-  "fluImmunization": false,
-  "gender": "weiblich",
-  "houseNumber": 31,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Y116799547",
-  "lastName": "Schulz",
-  "phoneNumber": "30047108686",
+  "dateOfBirth": "1928-06-27",
+  "email": "h.lange@web.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 53,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "H964027324",
+  "lastName": "Lange",
+  "phoneNumber": "900101094103",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
-  "symptoms": [
-    "Fieber"
-  ],
+  "street": "Nordstra\u00dfe",
   "weakenedImmuneSystem": false,
-  "zip": "7524310"
+  "zip": "910071084"
 }

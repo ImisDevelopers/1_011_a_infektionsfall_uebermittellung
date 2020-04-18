@@ -1,34 +1,23 @@
 {
-  "city": "Hamburg",
+  "city": "K\u00f6ln",
   "coronaContacts": false,
-  "dateOfBirth": "1954-01-31",
-  "email": "s.weber@t-online.de",
-  "firstName": "Susanne",
-  "fluImmunization": false,
+  "dateOfBirth": "1953-05-02",
+  "email": "l.klein@web.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
   "gender": "weiblich",
-  "houseNumber": 51,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Q779919809",
-  "lastName": "Weber",
-  "phoneNumber": "5297516136",
+  "houseNumber": 45,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U741180590",
+  "lastName": "Klein",
+  "phoneNumber": "53773511058",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "GrandEst"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Fieber",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "8164535"
+  "street": "Nordtstra\u00dfe",
+  "weakenedImmuneSystem": true,
+  "zip": "0643171"
 }

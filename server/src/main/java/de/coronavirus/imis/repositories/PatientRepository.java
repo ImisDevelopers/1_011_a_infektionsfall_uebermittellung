@@ -11,27 +11,31 @@ import java.util.List;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, String>, JpaSpecificationExecutor<Patient> {
-	@Query("select pat from Patient pat where pat.zip between ?1 and ?2 ")
-	List<Patient> findAllByZipBetween(String lower, String upperBounds);
 
+	// TODO: Fix me
+//	@Query("select pat from Patient pat where (select info from PatientInformation info where pat = info.patient limit 1)pat.information(0).zip between ?1 and ?2 ")
+	List<Patient> findAllByInformation_ZipBetween(String lower, String upperBounds);
+
+
+	// TODO: Fix me
 	@Query("select distinct pat from Patient pat " +
 			"left join PatientEvent pe " +
 			"on pe.patient = pat.id " +
-			"where lower(pat.firstName) like lower(?1) " +
-			"AND lower(pat.lastName) like lower(?2) " +
-			"AND lower(pat.id) like lower(?3) " +
-			"AND lower(pat.gender) like lower(?4) " +
-			"AND lower(pat.email) like lower(?5) " +
-			"AND lower(pat.phoneNumber) like lower(?6) " +
-			"AND lower(pat.street) like lower(?7) " +
-			"AND lower(pat.houseNumber) like lower(?8) " +
-			"AND lower(pat.zip) like lower(?9) " +
-			"AND lower(pat.city) like lower(?10) " +
-			"AND lower(pat.insuranceCompany) like lower(?11) " +
-			"AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
-			"AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
-			"AND lower(coalesce(pe.labTest, '0')) like lower(?14) " +
-			"AND lower(pat.patientStatus) like lower(?15) ")
+			"where 1 > (select count(info) from PatientInformation info where lower(info.firstName) like lower(?1) " +
+			"AND lower(info.lastName) like lower(?2) " +
+			"AND lower(info.id) like lower(?3) " +
+			"AND lower(info.gender) like lower(?4) " +
+			"AND lower(info.email) like lower(?5) " +
+			"AND lower(info.phoneNumber) like lower(?6) " +
+			"AND lower(info.street) like lower(?7) " +
+			"AND lower(info.houseNumber) like lower(?8) " +
+			"AND lower(info.zip) like lower(?9) " +
+			"AND lower(info.city) like lower(?10) " +
+			"AND lower(info.insuranceCompany) like lower(?11) " +
+			"AND lower(info.insuranceMembershipNumber) like lower(?12)) " +
+//			"AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
+//			"AND lower(coalesce(pe.labTest, '0')) like lower(?14)) > 1 " +
+			"AND lower(pat.patientStatus) like lower(?13) ")
 	List<Patient> findAllByPatientSearchParams(String firstName,
 											   String lastName,
 											   String id,
@@ -44,29 +48,30 @@ public interface PatientRepository extends JpaRepository<Patient, String>, JpaSp
 											   String city,
 											   String insuranceCompany,
 											   String insuranceMembershipNumber,
-											   String doctorId,
-											   String laboratoryId,
+//											   String doctorId,
+//											   String laboratoryId,
 											   String patientStatus,
 											   Pageable pageable);
 
+	// TODO: Fix me
 	@Query("select count(distinct pat) from Patient pat " +
 			"left join PatientEvent pe " +
 			"on pe.patient = pat.id " +
-			"where lower(pat.firstName) like lower(?1) " +
-			"AND lower(pat.lastName) like lower(?2) " +
-			"AND lower(pat.id) like lower(?3) " +
-			"AND lower(pat.gender) like lower(?4) " +
-			"AND lower(pat.email) like lower(?5) " +
-			"AND lower(pat.phoneNumber) like lower(?6) " +
-			"AND lower(pat.street) like lower(?7) " +
-			"AND lower(pat.houseNumber) like lower(?8) " +
-			"AND lower(pat.zip) like lower(?9) " +
-			"AND lower(pat.city) like lower(?10) " +
-			"AND lower(pat.insuranceCompany) like lower(?11) " +
-			"AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
-			"AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
-			"AND lower(coalesce(pe.labTest, '0')) like lower(?14) " +
-			"AND lower(pat.patientStatus) like lower(?15) ")
+			"where 1 > (select count(info) from PatientInformation info where lower(info.firstName) like lower(?1) " +
+			"AND lower(info.lastName) like lower(?2) " +
+			"AND lower(info.id) like lower(?3) " +
+			"AND lower(info.gender) like lower(?4) " +
+			"AND lower(info.email) like lower(?5) " +
+			"AND lower(info.phoneNumber) like lower(?6) " +
+			"AND lower(info.street) like lower(?7) " +
+			"AND lower(info.houseNumber) like lower(?8) " +
+			"AND lower(info.zip) like lower(?9) " +
+			"AND lower(info.city) like lower(?10) " +
+			"AND lower(info.insuranceCompany) like lower(?11) " +
+			"AND lower(info.insuranceMembershipNumber) like lower(?12)) " +
+//			"AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
+//			"AND lower(coalesce(pe.labTest, '0')) like lower(?14) " +
+			"AND lower(pat.patientStatus) like lower(?13) ")
 	Long countPatientSearchParams(String firstName,
 								  String lastName,
 								  String id,
@@ -79,8 +84,8 @@ public interface PatientRepository extends JpaRepository<Patient, String>, JpaSp
 								  String city,
 								  String insuranceCompany,
 								  String insuranceMembershipNumber,
-								  String doctorId,
-								  String laboratoryId,
+//								  String doctorId,
+//								  String laboratoryId,
 								  String patientStatus);
 
 

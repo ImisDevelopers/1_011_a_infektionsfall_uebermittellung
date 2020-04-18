@@ -1,34 +1,23 @@
 {
-  "city": "Freiburg",
+  "city": "K\u00f6ln",
   "coronaContacts": false,
-  "dateOfBirth": "1956-05-09",
-  "email": "t.mueller@web.de",
-  "firstName": "Tim",
-  "fluImmunization": true,
+  "dateOfBirth": "1987-02-05",
+  "email": "d.wagner@web.de",
+  "firstName": "Daniel",
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 89,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Z452699013",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "109251910254",
+  "houseNumber": 64,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "O345343109",
+  "lastName": "Wagner",
+  "phoneNumber": "49109856984",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Fieber",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Husten",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten"
-  ],
+  "street": "Abbendiekshof",
   "weakenedImmuneSystem": false,
-  "zip": "10629148"
+  "zip": "961110108"
 }

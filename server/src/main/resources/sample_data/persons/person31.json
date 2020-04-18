@@ -1,32 +1,23 @@
 {
   "city": "Bochum",
   "coronaContacts": false,
-  "dateOfBirth": "2001-10-12",
-  "email": "p.weber@gmx.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1989-05-15",
+  "email": "f.weber@web.de",
+  "firstName": "Franz",
   "fluImmunization": true,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 64,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "E909763993",
+  "houseNumber": 52,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "J646397165",
   "lastName": "Weber",
-  "phoneNumber": "2145623285",
+  "phoneNumber": "71010932480",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
   "street": "B\u00fcckerheide",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Schnupfen",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "4247451"
+  "weakenedImmuneSystem": true,
+  "zip": "13171102"
 }

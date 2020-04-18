@@ -1,34 +1,23 @@
 {
-  "city": "Bochum",
+  "city": "M\u00fcnchen",
   "coronaContacts": false,
-  "dateOfBirth": "1935-10-12",
-  "email": "j.peters@gmail.de",
-  "firstName": "Jens",
-  "fluImmunization": false,
+  "dateOfBirth": "1956-07-25",
+  "email": "t.wagner@gmail.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 98,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V655511084",
-  "lastName": "Peters",
-  "phoneNumber": "7829114678",
+  "houseNumber": 86,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "V251857566",
+  "lastName": "Wagner",
+  "phoneNumber": "5109010105151",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
-  "symptoms": [
-    "Schnupfen",
-    "Halschmerzen",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Kopfschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "69125101"
+  "street": "B\u00fcckerheide",
+  "weakenedImmuneSystem": true,
+  "zip": "64410925"
 }

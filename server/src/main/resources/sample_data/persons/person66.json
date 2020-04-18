@@ -1,28 +1,23 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": false,
-  "dateOfBirth": "1976-09-07",
-  "email": "p.richter@gmx.de",
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1952-08-15",
+  "email": "p.schulz@gmx.de",
   "firstName": "Peter",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "m\u00e4nnlich",
-  "houseNumber": 30,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "R735297732",
-  "lastName": "Richter",
-  "phoneNumber": "02843959910",
+  "houseNumber": 71,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "D154337019",
+  "lastName": "Schulz",
+  "phoneNumber": "3592555625",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe",
-  "symptoms": [
-    "Halschmerzen",
-    "Atemschwierigkeiten"
-  ],
+  "street": "B\u00fcckerheide",
   "weakenedImmuneSystem": true,
-  "zip": "42108364"
+  "zip": "1537147"
 }

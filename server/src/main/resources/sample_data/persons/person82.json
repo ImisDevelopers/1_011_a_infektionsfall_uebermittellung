@@ -1,31 +1,23 @@
 {
-  "city": "Kiel",
-  "coronaContacts": false,
-  "dateOfBirth": "1967-01-15",
-  "email": "l.winkler@posteo.de",
-  "firstName": "Lisa",
-  "fluImmunization": true,
-  "gender": "weiblich",
-  "houseNumber": 54,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "I740871060",
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1946-01-18",
+  "email": "k.winkler@posteo.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "m\u00e4nnlich",
+  "houseNumber": 10,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "T747382621",
   "lastName": "Winkler",
-  "phoneNumber": "4517133959",
+  "phoneNumber": "6688263435",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
   "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Husten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "2923309"
+  "weakenedImmuneSystem": false,
+  "zip": "7518304"
 }

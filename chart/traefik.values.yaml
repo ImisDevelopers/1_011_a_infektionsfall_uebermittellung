@@ -1,5 +1,5 @@
 # setting LoadBalancerIP or using k8s.ingress annotation doesn't work reliably
-loadBalancerIP: 34.89.244.246
+loadBalancerIP: 34.91.170.168
 replicas: 1
 service:
   annotations:

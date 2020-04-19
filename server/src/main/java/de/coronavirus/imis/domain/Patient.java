@@ -27,6 +27,7 @@ public class Patient {
 	private String id;
 
 	@OneToMany(mappedBy = "patient")
+	@OrderBy("eventTimestamp asc")
 	List<PatientEvent> events;
 
 	@OneToMany(mappedBy = "patient")

@@ -57,6 +57,10 @@ public class PatientService {
 		return patientRepository.findById(id);
 	}
 
+	public Patient updatePatient(Patient patient) {
+		return this.patientRepository.saveAndFlush(patient);
+	}
+
 	public Patient addPatient(CreatePatientDTO dto) {
 
 		var patientInformation = patientInformationMapper.toPatient(dto);

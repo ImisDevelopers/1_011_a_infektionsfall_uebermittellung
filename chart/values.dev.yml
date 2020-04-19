@@ -1,3 +1,5 @@
 env: staging
+database: staging
+
 ingress:
   domain: staging.imis-prototyp.de

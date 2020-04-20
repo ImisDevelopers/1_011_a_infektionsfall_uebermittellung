@@ -12,6 +12,7 @@ import RegisterPatient from '@/views/RegisterPatient.vue'
 import RegisterTest from '@/views/RegisterTest.vue'
 import SubmitTestResult from '@/views/SubmitTestResult.vue'
 import TestList from '@/views/TestList.vue'
+import SendToQuarantine from '@/views/SendToQuarantine.vue'
 import Vue from 'vue'
 import VueRouter, { Route, RouteConfig } from 'vue-router'
 
@@ -132,6 +133,18 @@ const appRoutes: AppRoute[] = [
         icon: 'team',
         title: 'Alle Patienten',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+      },
+    },
+  },
+  {
+    name: 'send-to-quarantine',
+    path: 'send-to-quarantine',
+    component: SendToQuarantine,
+    meta: {
+      navigationInfo: {
+        icon: 'safety',
+        title: 'In Quarantäne senden',
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'],
       },
     },
   },

@@ -296,7 +296,7 @@ export default Vue.extend({
       if (this.showAdvancedSearch) {
         const formValues = { ...this.form, ...this.advancedForm }
 
-        if (formValues.patientStatus) {
+        if (!formValues.patientStatus) {
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
@@ -332,9 +332,9 @@ export default Vue.extend({
       let formValues: any
       if (this.showAdvancedSearch) {
         formValues = { ...this.form, ...this.advancedForm }
-        if (formValues.patientStatus) {
+        if (!formValues.patientStatus) {
           // Backend fails on empty string
-          formValues.patientStatus = undefined
+          delete formValues.patientStatus
         }
         countPromise = Api.countQueryPatientsUsingPost(formValues)
       } else {

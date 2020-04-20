@@ -44,10 +44,18 @@ export interface CreateInstitutionDTO {
 
 export interface CreateLabTestDTO {
   comment?: string;
+  eventTimestamp?: string;
   laboratoryId?: string;
-  patientId?: string;
+  patientCaseId?: string;
   testId?: string;
   testType?: "PCR" | "ANTIBODY";
+}
+
+export interface CreatePatientCaseDTO {
+  illness?: "CORONA";
+  patientId?: string;
+  speedOfSymptomsOutbreak?: string;
+  symptoms?: string[];
 }
 
 export interface CreatePatientDTO {
@@ -57,9 +65,9 @@ export interface CreatePatientDTO {
   dateOfDeath?: string;
   dateOfHospitalization?: string;
   dateOfIllness?: string;
-  dateOfReporting?: string;
   email?: string;
   employer?: string;
+  eventTimestamp?: string;
   firstName?: string;
   fluImmunization?: boolean;
   gender?: string;
@@ -72,26 +80,22 @@ export interface CreatePatientDTO {
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
+    | "CONFIRMED"
+    | "PATIENT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "HOSPITALIZED"
+    | "INTENSIVE_CARE"
+    | "QUARANTINED";
   phoneNumber?: string;
   preIllnesses?: string[];
   riskAreas?: string[];
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
-  speedOfSymptomsOutbreak?: string;
   stayCity?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
   street?: string;
-  symptoms?: string[];
   weakenedImmuneSystem?: boolean;
   zip?: string;
 }
@@ -166,7 +170,12 @@ export interface LabTest {
   id?: string;
   report?: string;
   testId: string;
-  testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
+  testStatus?:
+    | "TEST_SCHEDULED"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID";
   testType?: "PCR" | "ANTIBODY";
 }
 
@@ -269,6 +278,51 @@ export interface ModelAndView {
 }
 
 export interface Patient {
+  cases?: PatientCase[];
+  events?: PatientEvent[];
+  id: string;
+  information?: PatientInformation[];
+  patientStatus?:
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "CONFIRMED"
+    | "PATIENT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "HOSPITALIZED"
+    | "INTENSIVE_CARE"
+    | "QUARANTINED";
+}
+
+export interface PatientCase {
+  id: string;
+  illness?: "CORONA";
+  labTests?: LabTest[];
+  patient?: Patient;
+  speedOfSymptomsOutbreak?: string;
+  symptoms?: string[];
+}
+
+export interface PatientEvent {
+  comment?: string;
+  creationTimestamp?: string;
+  eventTimestamp?: string;
+  id?: string;
+  patient?: Patient;
+  patientEventType?:
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "CONFIRMED"
+    | "PATIENT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "HOSPITALIZED"
+    | "INTENSIVE_CARE"
+    | "QUARANTINED";
+  user?: User;
+}
+
+export interface PatientInformation {
   city?: string;
   comment?: string;
   confirmed?: boolean;
@@ -280,7 +334,6 @@ export interface Patient {
   dateOfIllness?: string;
   email?: string;
   employer?: string;
-  events?: PatientEvent[];
   firstName?: string;
   fluImmunization?: boolean;
   gender?: string;
@@ -291,54 +344,19 @@ export interface Patient {
   lastName?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
-  patientStatus?:
-    | "REGISTERED"
-    | "SUSPECTED"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
-    | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+  patient?: Patient;
   phoneNumber?: string;
   preIllnesses?: string[];
   riskAreas?: string[];
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
-  speedOfSymptomsOutbreak?: string;
   stayCity?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
   street?: string;
-  symptoms?: string[];
+  user?: User;
   weakenedImmuneSystem?: boolean;
   zip?: string;
-}
-
-export interface PatientEvent {
-  accomodation?: string;
-  comment?: string;
-  eventTimestamp?: Timestamp;
-  eventType?:
-    | "REGISTERED"
-    | "SUSPECTED"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
-    | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
-  id?: string;
-  illness?: "CORONA";
-  labTest?: LabTest;
-  patient?: Patient;
-  responsibleDoctor?: Doctor;
 }
 
 export interface PatientSearchParamsDTO {
@@ -361,15 +379,13 @@ export interface PatientSearchParamsDTO {
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
+    | "CONFIRMED"
+    | "PATIENT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "HOSPITALIZED"
+    | "INTENSIVE_CARE"
+    | "QUARANTINED";
   phoneNumber?: string;
   street?: string;
   zip?: string;
@@ -391,25 +407,6 @@ export interface RegisterUserRequest {
   username?: string;
 }
 
-export interface RequestLabTestDTO {
-  doctorId?: string;
-  laboratoryId?: string;
-  patientId?: string;
-}
-
-export interface Timestamp {
-  date?: number;
-  day?: number;
-  hours?: number;
-  minutes?: number;
-  month?: number;
-  nanos?: number;
-  seconds?: number;
-  time?: number;
-  timezoneOffset?: number;
-  year?: number;
-}
-
 export interface TokenDTO {
   jwtToken?: string;
 }
@@ -417,7 +414,12 @@ export interface TokenDTO {
 export interface UpdateTestStatusDTO {
   comment?: string;
   file?: string;
-  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
+  status?:
+    | "TEST_SCHEDULED"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID";
   testId?: string;
 }
 
@@ -494,36 +496,18 @@ class HttpClient<SecurityDataType> {
     this.securityData = data;
   };
 
-  public request = <T = any, E = any>(
-    path: string,
-    method: string,
-    { secure, ...params }: RequestParams = {},
-    body?: any,
-    secureByDefault?: boolean,
-  ): Promise<T> =>
-    fetch(`${this.baseUrl}${path}`, {
-      // @ts-ignore
-      ...this.mergeRequestOptions(params, (secureByDefault || secure) && this.securityWorker(this.securityData)),
-      method,
-      body: body ? JSON.stringify(body) : null,
-    }).then(async (response) => {
-      const data = await this.safeParseResponse<T, E>(response);
-      if (!response.ok) throw data;
-      return data;
-    });
-
-  protected addQueryParams(query?: RequestQueryParamsType): string {
-    const fixedQuery = query || {};
-    const keys = Object.keys(fixedQuery).filter((key) => "undefined" !== typeof fixedQuery[key]);
-    return keys.length === 0 ? "" : `?${keys.map((key) => this.addQueryParam(fixedQuery, key)).join("&")}`;
-  }
-
   private addQueryParam(query: RequestQueryParamsType, key: string) {
     return (
       encodeURIComponent(key) +
       "=" +
       encodeURIComponent(Array.isArray(query[key]) ? (query[key] as any).join(",") : query[key])
     );
+  }
+
+  protected addQueryParams(query?: RequestQueryParamsType): string {
+    const fixedQuery = query || {};
+    const keys = Object.keys(fixedQuery).filter((key) => "undefined" !== typeof fixedQuery[key]);
+    return keys.length === 0 ? "" : `?${keys.map((key) => this.addQueryParam(fixedQuery, key)).join("&")}`;
   }
 
   private mergeRequestOptions(params: RequestParams, securityParams?: RequestParams): RequestParams {
@@ -544,6 +528,24 @@ class HttpClient<SecurityDataType> {
       .json()
       .then((data) => data)
       .catch((e) => response.text);
+
+  public request = <T = any, E = any>(
+    path: string,
+    method: string,
+    { secure, ...params }: RequestParams = {},
+    body?: any,
+    secureByDefault?: boolean,
+  ): Promise<T> =>
+    fetch(`${this.baseUrl}${path}`, {
+      // @ts-ignore
+      ...this.mergeRequestOptions(params, (secureByDefault || secure) && this.securityWorker(this.securityData)),
+      method,
+      body: body ? JSON.stringify(body) : null,
+    }).then(async (response) => {
+      const data = await this.safeParseResponse<T, E>(response);
+      if (!response.ok) throw data;
+      return data;
+    });
 }
 
 /**
@@ -656,16 +658,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<any, any>(`/api/auth/user/change-password`, "POST", params, changePasswordDTO, true),
 
     /**
-     * @tags doctor-controller
-     * @name addScheduledEventUsingPOST
-     * @summary addScheduledEvent
-     * @request POST:/api/doctor/create_appointment
-     * @secure
-     */
-    addScheduledEventUsingPost: (dto: RequestLabTestDTO, params?: RequestParams) =>
-      this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, true),
-
-    /**
      * @tags institution-controller
      * @name createInstitutionUsingPOST
      * @summary createInstitution
@@ -760,6 +752,26 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     updateTestStatusUsingPut: (laboratoryId: string, statusDTO: UpdateTestStatusDTO, params?: RequestParams) =>
       this.request<LabTest, any>(`/api/labtests/${laboratoryId}`, "PUT", params, statusDTO, true),
+
+    /**
+     * @tags patient-case-controller
+     * @name createPatientCaseUsingPOST
+     * @summary createPatientCase
+     * @request POST:/api/patient-cases
+     * @secure
+     */
+    createPatientCaseUsingPost: (createPatientCaseDTO: CreatePatientCaseDTO, params?: RequestParams) =>
+      this.request<PatientCase, any>(`/api/patient-cases`, "POST", params, createPatientCaseDTO, true),
+
+    /**
+     * @tags patient-case-controller
+     * @name getPatientCasesUsingGET
+     * @summary getPatientCases
+     * @request GET:/api/patient-cases/patient/{patientId}
+     * @secure
+     */
+    getPatientCasesUsingGet: (patientId: string, params?: RequestParams) =>
+      this.request<PatientCase[], any>(`/api/patient-cases/patient/${patientId}`, "GET", params, null, true),
 
     /**
      * @tags patient-controller

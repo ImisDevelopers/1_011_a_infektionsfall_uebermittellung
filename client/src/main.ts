@@ -6,7 +6,7 @@ import Root from './Root.vue'
 import router from './router'
 import { authModule } from '@/store/modules/auth.module'
 import store from './store'
-import { authModule } from '@/store/modules/auth.module'
+
 // import './registerServiceWorker' remove for now
 
 Vue.config.productionTip = false

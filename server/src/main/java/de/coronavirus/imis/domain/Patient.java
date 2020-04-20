@@ -3,6 +3,7 @@ package de.coronavirus.imis.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,7 @@ import java.util.List;
 		property = "id")
 public class Patient {
 	@Id
+	@ApiModelProperty(required = true)
 	private String id;
 
 	@OneToMany(mappedBy = "patient")

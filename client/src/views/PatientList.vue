@@ -358,11 +358,16 @@ export default Vue.extend({
         queryPromise.then(result => {
           const header = 'ID,Vorname,Nachname,Geschlecht,Status,Geburtsdatum,Stadt,E-Mail;Telefonnummer;' +
             'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer;'
-          const patients = result.map((patient: Patient) =>
-            `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};${patient.patientStatus};` +
-            `${patient.dateOfBirth};${patient.city};${patient.email};${patient.phoneNumber};${patient.street};` +
-            `${patient.houseNumber};${patient.city};${patient.insuranceCompany};${patient.insuranceMembershipNumber}`,
-          ).join('\n')
+          const patients = result.map((patient: Patient) => {
+            if (patient.information && patient.information.length > 0) {
+              const patientInformation = patient.information[patient.information.length - 1]
+              return `${patient.id};${patientInformation.firstName};${patientInformation.lastName};${patientInformation.gender};${patient.patientStatus};` +
+                `${patientInformation.dateOfBirth};${patientInformation.city};${patientInformation.email};${patientInformation.phoneNumber};${patientInformation.street};` +
+                `${patientInformation.houseNumber};${patientInformation.city};${patientInformation.insuranceCompany};${patientInformation.insuranceMembershipNumber}`
+            } else {
+              return `${patient.id};`
+            }
+          }).join('\n')
           const filename = moment().format('YYYY_MM_DD') + '_patienten_export.csv'
           downloadCsv(header + '\n' + patients, filename)
         }).catch((error: Error) => {

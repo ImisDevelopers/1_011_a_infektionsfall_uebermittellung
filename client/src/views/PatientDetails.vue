@@ -26,11 +26,11 @@
                   <table>
                     <tr>
                       <td>Vorname:</td>
-                      <td>{{patient.firstName}}</td>
+                      <td>{{patientInformation.firstName}}</td>
                     </tr>
                     <tr>
                       <td>Nachname:</td>
-                      <td>{{patient.lastName}}</td>
+                      <td>{{patientInformation.lastName}}</td>
                     </tr>
                     <tr>
                       <td>Geburtsdatum:</td>
@@ -54,19 +54,19 @@
                   <table>
                     <tr>
                       <td>Straße:</td>
-                      <td>{{patient.street}}</td>
+                      <td>{{patientInformation.street}}</td>
                     </tr>
                     <tr>
                       <td>Hausnummer:</td>
-                      <td>{{patient.houseNumber}}</td>
+                      <td>{{patientInformation.houseNumber}}</td>
                     </tr>
                     <tr>
                       <td>PLZ:</td>
-                      <td>{{patient.zip}}</td>
+                      <td>{{patientInformation.zip}}</td>
                     </tr>
                     <tr>
                       <td>Ort:</td>
-                      <td>{{patient.city}}</td>
+                      <td>{{patientInformation.city}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -75,7 +75,7 @@
 
             <!-- Kontakt & Versicherung & Arbeitgeber -->
             <a-row :gutter="8" style="margin-top: 8px;">
-              <a-col :md="8" :span="24">
+              <a-col :md="12" :span="24">
                 <a-card
                   align="left"
                   title="Kontakt"
@@ -83,16 +83,16 @@
                   <table>
                     <tr>
                       <td>Telefonnummer:</td>
-                      <td>{{patient.phoneNumber}}</td>
+                      <td>{{patientInformation.phoneNumber}}</td>
                     </tr>
                     <tr>
                       <td>Email:</td>
-                      <td><a href="">{{patient.email}}</a></td>
+                      <td><a href="">{{patientInformation.email}}</a></td>
                     </tr>
                   </table>
                 </a-card>
               </a-col>
-              <a-col :md="8" :span="24">
+              <a-col :md="12" :span="24">
                 <a-card
                   align="left"
                   title="Versicherung"
@@ -100,28 +100,11 @@
                   <table>
                     <tr>
                       <td>Versicherung:</td>
-                      <td>{{patient.insuranceCompany}}</td>
+                      <td>{{patientInformation.insuranceCompany}}</td>
                     </tr>
                     <tr>
                       <td>V-Nr:</td>
-                      <td>{{patient.insuranceMembershipNumber}}</td>
-                    </tr>
-                  </table>
-                </a-card>
-              </a-col>
-              <a-col :md="8" :span="24">
-                <a-card
-                  align="left"
-                  title="Arbeit"
-                >
-                  <table>
-                    <tr>
-                      <td>Beruf:</td>
-                      <td>{{patient.occupation || 'Keine Angabe'}}</td>
-                    </tr>
-                    <tr>
-                      <td>Arbeitgeber:</td>
-                      <td>{{patient.employer || 'Keine Angabe'}}</td>
+                      <td>{{patientInformation.insuranceMembershipNumber}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -141,16 +124,21 @@
                   <div v-bind:key="illness" v-for="illness in preIllnesses">{{illness}}</div>
                 </a-card>
               </a-col>
-              <a-col
-                :md="12"
-                :span="24"
-              >
+              <a-col :md="12" :span="24">
                 <a-card
-                  :extra="'Stand: ' + formatTimestamp(patient.creationTimestamp)"
                   align="left"
-                  title="Symptome"
+                  title="Arbeit"
                 >
-                  <div v-bind:key="symptom" v-for="symptom in symptoms">{{symptom}}</div>
+                  <table>
+                    <tr>
+                      <td>Beruf:</td>
+                      <td>{{patientInformation.occupation || 'Keine Angabe'}}</td>
+                    </tr>
+                    <tr>
+                      <td>Arbeitgeber:</td>
+                      <td>{{patientInformation.employer || 'Keine Angabe'}}</td>
+                    </tr>
+                  </table>
                 </a-card>
               </a-col>
             </a-row>
@@ -162,21 +150,29 @@
                   :title="'Status: ' + (patientStatus ? patientStatus.label : 'Unbekannt')"
                   align="left"
                 >
-                  <a-table
-                    :columns="columnsTests"
-                    :dataSource="tests"
-                    :scroll="{x: 0, y: 0}"
-                    class="imis-table-no-pagination"
-                    rowKey="id"
-                  >
-                    <div slot="testStatus" slot-scope="testStatus">
-                      <a-icon :type="testResults.find(type => type.id === testStatus).icon" style="margin-right: 5px" />
-                      {{testResults.find(type => type.id === testStatus).label}}
+                  <a-table :columns="columnsCases" :dataSource="patient.cases" class="imis-table-no-pagination"
+                           :expandedRowKeys="caseIds"
+                           rowKey="id">
+                    <div slot="symptoms" slot-scope="nothing, patientCase">
+                      {{symptoms.get(patientCase.id)}}
                     </div>
-                    <div slot="testType" slot-scope="testType">
-                      <a-icon :type="testTypes.find(type => type.id === testType).icon" style="margin-right: 5px" />
-                      {{testTypes.find(type => type.id === testType).label}}
-                    </div>
+                    <a-table
+                      slot="expandedRowRender"
+                      slot-scope="patientCase"
+                      :columns="columnsTests"
+                      :dataSource="patientCase.labTests"
+                      :scroll="{x: 0, y: 0}"
+                    >
+                      <div slot="testStatus" slot-scope="testStatus">
+                        <a-icon :type="testResults.find(type => type.id === testStatus).icon"
+                                style="margin-right: 5px" />
+                        {{testResults.find(type => type.id === testStatus).label}}
+                      </div>
+                      <div slot="testType" slot-scope="testType">
+                        <a-icon :type="testTypes.find(type => type.id === testType).icon" style="margin-right: 5px" />
+                        {{testTypes.find(type => type.id === testType).label}}
+                      </div>
+                    </a-table>
                   </a-table>
                 </a-card>
               </a-col>
@@ -215,13 +211,28 @@
 import Vue from 'vue'
 import moment from 'moment'
 import Api from '@/api'
-import { LabTest, Patient, Timestamp } from '@/api/SwaggerApi'
+import { LabTest, Patient, PatientInformation } from '@/api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
 import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
-import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
+import { SYMPTOMS } from '@/models/symptoms'
+
+const columnsCases: Partial<Column>[] = [
+  {
+    title: 'Krankheit',
+    dataIndex: 'illness',
+    key: 'illness',
+  }, {
+    title: 'Symptome',
+    dataIndex: 'symptoms',
+    key: 'symptoms',
+    scopedSlots: {
+      customRender: 'symptoms',
+    },
+  },
+]
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -251,14 +262,17 @@ const columnsTests: Partial<Column>[] = [
 
 interface State {
   patient: undefined | Patient;
+  patientInformation: undefined | PatientInformation;
   patientStatus: EventTypeItem | undefined;
   eventTypes: any[];
-  symptoms: string[];
+  symptoms: Map<string, string>; // case id to symptoms
   preIllnesses: string[];
   dateOfBirth: string;
   gender: string;
+  caseIds: string[];
   tests: LabTest[];
   columnsTests: Partial<Column>[];
+  columnsCases: Partial<Column>[];
   testResults: TestResultType[];
   testTypes: TestTypeItem[];
 }
@@ -278,16 +292,19 @@ export default Vue.extend({
   data(): State {
     return {
       patient: undefined,
+      patientInformation: undefined,
       patientStatus: undefined,
       eventTypes: eventTypes,
       testResults: testResults,
       testTypes: testTypes,
-      symptoms: [],
+      symptoms: new Map(),
       preIllnesses: [],
+      caseIds: [],
       dateOfBirth: '',
       gender: '',
       tests: [],
       columnsTests,
+      columnsCases,
     }
   },
 
@@ -310,20 +327,39 @@ export default Vue.extend({
         this.setPatient(patient)
         this.patient = patient
       }
+      this.caseIds = this.patient.cases?.map(patientCase => patientCase.id || '') || []
+      this.symptoms.clear()
+      if (this.patient.cases) {
+        this.patient.cases.forEach(patientCase => {
+          const symptoms = patientCase.symptoms?.filter(symptom => !!symptom)
+            .map(symptom => {
+              const patientSymptom = SYMPTOMS.find(symptomFind => symptomFind.value === symptom)
+              return patientSymptom ? patientSymptom.label : symptom
+            }) || []
+          if (symptoms.length === 0) {
+            this.symptoms.set(patientCase.id, 'Keine Angabe')
+          } else {
+            this.symptoms.set(patientCase.id, symptoms.join(', '))
+          }
+          console.log(symptoms.length)
+        })
+      }
 
       // Map patient attributes to their display representation
       this.patientStatus = eventTypes.find(type => type.id === this.patient?.patientStatus)
-      this.symptoms = this.patient.symptoms?.map(symptom => {
-        const patientSymptom = SYMPTOMS.find(symptomFind => symptomFind.value === symptom)
-        return patientSymptom ? patientSymptom.label : symptom
-      }) || []
-      this.preIllnesses = this.patient.preIllnesses?.map(preIllness => {
-        const patientIllness = PRE_ILLNESSES.find(illness => illness.value === preIllness)
-        return patientIllness ? patientIllness.label : preIllness
-      }) || []
-      this.dateOfBirth = moment(this.patient.dateOfBirth).format('DD.MM.YYYY')
-      const patientGender = this.patient.gender || ''
-      this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
+      if (this.patient.information && this.patient.information.length > 0) {
+        this.patientInformation = this.patient.information[this.patient.information.length - 1]
+
+        this.dateOfBirth = moment(this.patientInformation.dateOfBirth).format('DD.MM.YYYY')
+        const patientGender = this.patientInformation.gender || ''
+        this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
+        this.preIllnesses = this.patientInformation.preIllnesses?.map(preIllness => {
+          const patientIllness = PRE_ILLNESSES.find(illness => illness.value === preIllness)
+          return patientIllness ? patientIllness.label : preIllness
+        }) || []
+      } else {
+        this.preIllnesses = []
+      }
 
       // Tests
       this.tests = await Api.api.getLabTestForPatientUsingGet(patientId)
@@ -338,7 +374,7 @@ export default Vue.extend({
           return 'grey'
       }
     },
-    formatTimestamp(timestamp: Timestamp): string {
+    formatTimestamp(timestamp: string): string {
       const momentTimestamp = moment(timestamp)
       if (momentTimestamp.isValid()) {
         return moment(timestamp).format('DD.MM.YYYY HH:mm')

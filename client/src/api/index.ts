@@ -36,11 +36,11 @@ const apiWrapper = {
   }),
 }
 
-function createApiProxy(foo: Api): Api { // Proxy<Foo> is compatible with Foo
+function createApiProxy(foo: Api['api']): Api['api'] { // Proxy<Foo> is compatible with Foo
   const handler = {
-    get: (target: Api, prop: keyof Api, receiver: any) => {
-      if (Api.prototype[prop] !== null) {
-        return apiWrapper.api[prop]
+    get: (target: Api['api'], prop: keyof Api['api'], receiver: any) => {
+      if (Api.prototype.api[prop] !== null) {
+        return apiWrapper.api.api[prop]
       }
 
       return Reflect.get(target, prop, receiver)
@@ -68,4 +68,4 @@ export function removeBearerToken() {
   })
 }
 
-export default createApiProxy(apiWrapper.api)
+export default createApiProxy(apiWrapper.api.api)

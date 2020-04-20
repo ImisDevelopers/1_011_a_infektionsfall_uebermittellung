@@ -296,17 +296,17 @@ export default Vue.extend({
       if (this.showAdvancedSearch) {
         const formValues = { ...this.form, ...this.advancedForm }
 
-        if (formValues.patientStatus) {
+        if (!formValues.patientStatus) {
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
 
-        countPromise = Api.api.countQueryPatientsUsingPost(formValues)
-        queryPromise = Api.api.queryPatientsUsingPost(formValues)
+        countPromise = Api.countQueryPatientsUsingPost(formValues)
+        queryPromise = Api.queryPatientsUsingPost(formValues)
       } else {
         const query = this.form.query
-        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
-        queryPromise = Api.api.queryPatientsSimpleUsingPost({ ...this.form })
+        countPromise = Api.countQueryPatientsSimpleUsingGet({ query })
+        queryPromise = Api.queryPatientsSimpleUsingPost({ ...this.form })
       }
 
       countPromise.then(count => {
@@ -332,15 +332,15 @@ export default Vue.extend({
       let formValues: any
       if (this.showAdvancedSearch) {
         formValues = { ...this.form, ...this.advancedForm }
-        if (formValues.patientStatus) {
+        if (!formValues.patientStatus) {
           // Backend fails on empty string
-          formValues.patientStatus = undefined
+          delete formValues.patientStatus
         }
-        countPromise = Api.api.countQueryPatientsUsingPost(formValues)
+        countPromise = Api.countQueryPatientsUsingPost(formValues)
       } else {
         formValues = { ...this.form }
         const query = this.form.query
-        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
+        countPromise = Api.countQueryPatientsSimpleUsingGet({ query })
       }
 
       countPromise.then(count => {
@@ -350,9 +350,9 @@ export default Vue.extend({
 
         let queryPromise: Promise<Patient[]>
         if (this.showAdvancedSearch) {
-          queryPromise = Api.api.queryPatientsUsingPost(formValues)
+          queryPromise = Api.queryPatientsUsingPost(formValues)
         } else {
-          queryPromise = Api.api.queryPatientsSimpleUsingPost(formValues)
+          queryPromise = Api.queryPatientsSimpleUsingPost(formValues)
         }
 
         queryPromise.then(result => {
@@ -402,7 +402,7 @@ export default Vue.extend({
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .imis-table-no-pagination {
     .ant-table-pagination {
       display: none;
@@ -411,7 +411,7 @@ export default Vue.extend({
 </style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 
   h3 {
     margin: 20px 10px;

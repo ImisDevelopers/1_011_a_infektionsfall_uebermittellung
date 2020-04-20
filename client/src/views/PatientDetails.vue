@@ -323,7 +323,7 @@ export default Vue.extend({
       const patientId = this.$route.params.id
       this.patient = this.patientById(this.$route.params.id)
       if (!this.patient) {
-        const patient = await Api.api.getPatientForIdUsingGet(patientId)
+        const patient = await Api.getPatientForIdUsingGet(patientId)
         this.setPatient(patient)
         this.patient = patient
       }
@@ -362,7 +362,7 @@ export default Vue.extend({
       }
 
       // Tests
-      this.tests = await Api.api.getLabTestForPatientUsingGet(patientId)
+      this.tests = await Api.getLabTestForPatientUsingGet(patientId)
     },
     timelineColor(patientEventType: any) {
       switch (patientEventType) {
@@ -387,7 +387,7 @@ export default Vue.extend({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
   table {
     border-collapse: separate;
     border-spacing: 15px

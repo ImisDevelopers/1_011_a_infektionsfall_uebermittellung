@@ -37,33 +37,21 @@ public class TestDataLoader implements ApplicationRunner {
 	private final PasswordEncoder encoder;
 	private final UserDetailsService userDetailsService;
 
+	private static final ObjectMapper mapper = new ObjectMapper();
+
 	static <T> Object makeDTO(String testFileName, Class<T> clazz)
 			throws IOException {
 
-		ObjectMapper mapper = new ObjectMapper();
-		final String string = getAsString(testFileName);
-		return mapper.readValue(string, clazz);
+		return mapper.readValue(getResourceStream(testFileName), clazz);
 	}
 
-	static String getAsString(String resourcePath) throws IOException {
+	static BufferedInputStream getResourceStream(String resourcePath) throws IOException {
 		final String fullResourcePath = "sample_data" + File.separator + resourcePath;
-		// getResourceAsStream never throws IOException. Instead it returns null
-		final InputStream inputStream = TestDataLoader.class.getClassLoader().getResourceAsStream(fullResourcePath);
-		if (inputStream == null) {
+		final InputStream rStream = TestDataLoader.class.getClassLoader().getResourceAsStream(fullResourcePath);
+		if (rStream == null) {
 			throw new IOException("Ressource " + resourcePath + " nicht vorhanden.");
-		}
-		try (
-				final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))
-		) {
-			final StringBuilder content = new StringBuilder();
-			var line = bufferedReader.readLine();
-			while (line != null) {
-				content.append(line).append(System.lineSeparator());
-				line = bufferedReader.readLine();
-			}
-			return content.toString();
-		} catch (Exception e) {
-			throw new IOException("Konnte Ressource " + resourcePath + " nicht lesen.", e);
+		} else {
+			return new BufferedInputStream(rStream);
 		}
 	}
 

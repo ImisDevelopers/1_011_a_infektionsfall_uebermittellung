@@ -35,7 +35,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
   async fetchPatients(instance: Vue) {
     try {
       // this.commit('shared/startedLoading', 'fetchPatients', { root: true })
-      const patients = await Api.api.getAllPatientsUsingGet()
+      const patients = await Api.getAllPatientsUsingGet()
       this.commit('setPatients', patients)
     } catch (err) {
       instance.$notification.error({
@@ -49,7 +49,7 @@ class PatientActions extends Actions<PatientState, PatientGetters, PatientMutati
   async registerPatient(patient: CreatePatientDTO): Promise<Patient> {
     // commit('shared/startedLoading', 'registerPatient', { root: true })
     try {
-      const patientResponse = await Api.api.addPatientUsingPost(patient)
+      const patientResponse = await Api.addPatientUsingPost(patient)
       this.commit('setPatient', patientResponse)
       return patientResponse
     } catch (err) {

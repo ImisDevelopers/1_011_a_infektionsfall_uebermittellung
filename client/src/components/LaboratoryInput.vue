@@ -49,7 +49,7 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        result = await Api.api.queryAllLaboratoriesUsingGet({ id: value })
+        result = await Api.queryAllLaboratoriesUsingGet({ id: value })
       }
       this.result = result
     },
@@ -57,6 +57,6 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

@@ -204,7 +204,7 @@ export default Vue.extend({
             userRole: 'USER_ROLE_ADMIN',
           },
         }
-        Api.api.registerInstitutionUsingPost(values).then(() => {
+        Api.registerInstitutionUsingPost(values).then(() => {
           this.form.resetFields()
           const notification = {
             message: 'Institution registriert.',
@@ -228,7 +228,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .wrapper {
     text-align: left;
     padding: 2%;

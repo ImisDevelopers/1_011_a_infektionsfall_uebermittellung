@@ -66,7 +66,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped lang="scss">
   .app-container {
     min-height: 100vh;
   }

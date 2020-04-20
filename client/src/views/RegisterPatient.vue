@@ -400,7 +400,7 @@ export default Vue.extend({
 
         const patientString = request.gender === 'female' ? 'Patientin' : 'Patient'
 
-        Api.api.addPatientUsingPost(request).then((patient: Patient) => {
+        Api.addPatientUsingPost(request).then((patient: Patient) => {
           this.form.resetFields()
           this.createdPatient = patient as any
           this.disableExposureLocation = true
@@ -450,7 +450,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .wrapper {
     text-align: left;
     padding: 2%;

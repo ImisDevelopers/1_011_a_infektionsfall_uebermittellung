@@ -65,7 +65,7 @@ export default Vue.extend({
   },
 })
 </script>
-<style scoped>
+<style scoped lang="scss">
   @media (max-width: 700px) {
     .imis-title {
       display: none;

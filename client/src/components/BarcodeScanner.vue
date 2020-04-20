@@ -24,10 +24,10 @@
 
   </div>
 </template>
-<script>
-// import { BrowserMultiFormatReader } from '@zxing/library'
+<script lang="ts">
+import Vue from 'vue'
 
-export default {
+export default Vue.extend({
   name: 'BarcodeScanner',
   data() {
     // const codeReader = new BrowserMultiFormatReader()
@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    handleDeviceChange(device) {
+    handleDeviceChange(device: string) {
       this.device = device
       this.startScanning()
     },
@@ -55,7 +55,7 @@ export default {
           console.log('notificaiton')
           console.log(err)
           this.$notification.error({
-            title: 'No Camera',
+            message: 'No Camera',
             description: 'No Camera or no Camera Permissions',
           })
         }
@@ -92,9 +92,9 @@ export default {
     //   })
     // }
   },
-}
+})
 </script>
-<style>
+<style scoped lang="scss">
   .scanner-wrapper {
     top: 0;
     left: 0;

@@ -80,66 +80,71 @@
   </a-card>
 </template>
 
-<script>
+<script lang="ts">
+import { CreateLabTestDTO, LabTest } from '@/api/SwaggerApi'
 import Vue from 'vue'
 
 import Api from '@/api'
-import BarcodeInput from '../components/TestInput'
-import PatientInput from '../components/PatientInput'
-import LaboratoryInput from '../components/LaboratoryInput'
-import { testTypes } from '@/models/test-types'
-import Component from 'vue-class-component'
+import PatientInput from '../components/PatientInput.vue'
+import LaboratoryInput from '../components/LaboratoryInput.vue'
+import { TestTypeItem, testTypes } from '@/models/test-types'
 import { testResults } from '@/models/event-types'
 
-@Component({
+interface State {
+  form: any;
+  createdLabTest?: LabTest;
+  createdLabTestStatus: string;
+  testTypes: TestTypeItem[];
+}
+
+export default Vue.extend({
+  name: 'RegisterTest',
   components: {
-    BarcodeInput,
     PatientInput,
     LaboratoryInput,
   },
-})
-export default class RegisterTest extends Vue {
-  data() {
+  data(): State {
     return {
       form: this.$form.createForm(this),
-      createdLabTest: null,
+      createdLabTest: undefined,
       createdLabTestStatus: '',
       testTypes: testTypes,
     }
-  }
-
-  handleSubmit() {
-    this.form.validateFields((err, values) => {
-      if (err) {
-        return
-      }
-      const request = {
-        ...values,
-      }
-
-      Api.api.createTestForPatientUsingPost(request).then(labTest => {
-        this.createdLabTest = labTest
-        this.createdLabTestStatus = testResults
-          .find(testResult => testResult.id === labTest.testStatus)
-          .label
-
-        const notification = {
-          message: 'Test angelegt und verknüpft.',
-          description:
-            'Der Test ' + labTest.testId + ' wurde erfolgreich angelegt und mit dem Patienten verknüpft.',
+  },
+  methods: {
+    handleSubmit() {
+      this.form.validateFields((err: Error, values: CreateLabTestDTO) => {
+        if (err) {
+          return
         }
-        this.$notification.success(notification)
-        this.form.resetFields()
-      }).catch(err => {
-        const notification = {
-          message: 'Fehler beim Anlegen des Tests.',
-          description: err.message,
+        const request = {
+          ...values,
         }
-        this.$notification.error(notification)
+
+        Api.createTestForPatientUsingPost(request).then(labTest => {
+          this.createdLabTest = labTest
+          this.createdLabTestStatus = testResults
+            .find(testResult => testResult.id === labTest.testStatus)
+            ?.label || ''
+
+          const notification = {
+            message: 'Test angelegt und verknüpft.',
+            description:
+              'Der Test ' + labTest.testId + ' wurde erfolgreich angelegt und mit dem Patienten verknüpft.',
+          }
+          this.$notification.success(notification)
+          this.form.resetFields()
+        }).catch(err => {
+          const notification = {
+            message: 'Fehler beim Anlegen des Tests.',
+            description: err.message,
+          }
+          this.$notification.error(notification)
+        })
       })
-    })
-  }
-}
+    },
+  },
+})
 </script>
 
-<style></style>
+<style scoped lang="scss"></style>

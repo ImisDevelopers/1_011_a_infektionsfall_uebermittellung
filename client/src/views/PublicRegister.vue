@@ -264,7 +264,7 @@ export default Vue.extend({
           .find((illness: string) => illness === 'IMMUNODEFICIENCY')
         request.coronaContacts = !!request.riskAreas // TODO: DO we need this field?
           .find((riskArea: string) => riskArea.startsWith('CONTACT_WITH_CORONA'))
-        Api.api.addPatientUsingPost(request).then(patient => {
+        Api.addPatientUsingPost(request).then(patient => {
           this.createdPatient = patient
         })
       })
@@ -290,7 +290,7 @@ export default Vue.extend({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style scoped lang="scss">
 
   .public-register-outer-container {
     position: absolute;

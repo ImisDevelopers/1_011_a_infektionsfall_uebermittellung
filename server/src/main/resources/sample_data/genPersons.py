@@ -14,7 +14,7 @@ last_names = ['Peters', 'Müller', 'Schulz', 'Schulze', 'Weber', 'Wagner', 'Rich
 male_first_names = ['Peter', 'Daniel', 'Hans', 'Franz', 'Karl', 'Tim', 'Jan', 'Jens', 'Kai']
 female_fist_names = ['Jana', 'Lisa', 'Anna', 'Annika', 'Petra', 'Marie', 'Susanne', 'Daniela', 'Petra']
 
-genders = ['männlich', 'weiblich']
+genders = ['male', 'female']
 
 email_providers = ['t-online', 'posteo', 'gmail', 'gmx', 'web']
 

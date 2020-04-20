@@ -55,29 +55,38 @@ export const eventTypes: EventTypeItem[] = [
 ]
 
 export interface TestResultType {
-  id: 'TEST_SUBMITTED' | 'TEST_IN_PROGRESS' | 'TEST_POSITIVE' | 'TEST_NEGATIVE' | 'TEST_INVALID';
+  id: 'TEST_SCHEDULED' | 'TEST_SUBMITTED_IN_PROGRESS' | 'TEST_FINISHED_POSITIVE' | 'TEST_FINISHED_NEGATIVE' | 'TEST_FINISHED_INVALID';
   label: string;
   icon: string;
 }
+
+/*
+    | "TEST_SCHEDULED"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID";
+ */
+
 export const testResults: TestResultType[] = [
   {
-    id: 'TEST_SUBMITTED',
-    label: 'Test eingereicht',
+    id: 'TEST_SCHEDULED',
+    label: 'Test geplant',
     icon: 'login',
   }, {
-    id: 'TEST_IN_PROGRESS',
+    id: 'TEST_SUBMITTED_IN_PROGRESS',
     label: 'Test läuft',
     icon: 'clock-circle',
   }, {
-    id: 'TEST_POSITIVE',
+    id: 'TEST_FINISHED_POSITIVE',
     label: 'Test positiv',
     icon: 'check',
   }, {
-    id: 'TEST_NEGATIVE',
+    id: 'TEST_FINISHED_NEGATIVE',
     label: 'Test negativ',
     icon: 'stop',
   }, {
-    id: 'TEST_INVALID',
+    id: 'TEST_FINISHED_INVALID',
     label: 'Test invalide',
     icon: 'warning',
   },

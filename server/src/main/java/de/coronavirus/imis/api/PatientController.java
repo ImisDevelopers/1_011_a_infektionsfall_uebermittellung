@@ -40,7 +40,7 @@ public class PatientController {
 
 
 	@PostMapping("/query-simple")
-	@PreAuthorize("hasAnyRole('CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE')")
+	@PreAuthorize("hasAnyRole('CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE', 'DEPARTMENT_OF_HEALTH')")
 	public List<Patient> queryPatientsSimple(@RequestBody PatientSimpleSearchParamsDTO query) {
 		return patientService.queryPatientsSimple(query);
 	}

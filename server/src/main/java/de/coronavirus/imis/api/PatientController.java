@@ -38,7 +38,6 @@ public class PatientController {
 		return ResponseEntity.ok(patientService.getAllPatients());
 	}
 
-
 	@PostMapping("/query-simple")
 	@PreAuthorize("hasAnyRole('CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE', 'DEPARTMENT_OF_HEALTH')")
 	public List<Patient> queryPatientsSimple(@RequestBody PatientSimpleSearchParamsDTO query) {
@@ -46,19 +45,19 @@ public class PatientController {
 	}
 
 	@GetMapping("/query-simple/count")
-	@PreAuthorize("hasAnyRole('CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE')")
+	@PreAuthorize("hasAnyRole('CLINIC', 'DEPARTMENT_OF_HEALTH', 'DOCTORS_OFFICE', 'TEST_SITE')")
 	public Long countQueryPatientsSimple(@RequestParam String query) {
 		return patientService.queryPatientsSimpleCount(query);
 	}
 
 	@PostMapping("/query")
-	@PreAuthorize("hasAnyRole('CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE')")
+	@PreAuthorize("hasAnyRole('CLINIC', 'DEPARTMENT_OF_HEALTH', 'DOCTORS_OFFICE', 'TEST_SITE')")
 	public List<Patient> queryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO) {
 		return patientService.queryPatients(patientSearchParamsDTO);
 	}
 
 	@PostMapping("/query/count")
-	@PreAuthorize("hasAnyRole('CLINIC', 'DOCTORS_OFFICE', 'TEST_SITE')")
+	@PreAuthorize("hasAnyRole('CLINIC', 'DEPARTMENT_OF_HEALTH', 'DOCTORS_OFFICE', 'TEST_SITE')")
 	public Long countQueryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO) {
 		return patientService.countQueryPatients(patientSearchParamsDTO);
 	}

@@ -38,7 +38,7 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        const labTests = await Api.api.queryLabTestsByIdUsingGet({ labTestIdQuery: value })
+        const labTests = await Api.queryLabTestsByIdUsingGet({ labTestIdQuery: value })
         result = labTests.map(labTest => labTest.testId)
       }
       this.result = result
@@ -47,6 +47,6 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

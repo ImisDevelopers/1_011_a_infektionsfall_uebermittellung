@@ -13,6 +13,7 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 const columns = [
   {
     title: 'PLZ',
@@ -102,7 +103,7 @@ const data = [
     deaths: '35',
   },
 ]
-export default {
+export default Vue.extend({
   name: 'PublicStatisticsComponent',
   props: {
     msg: String,
@@ -116,11 +117,11 @@ export default {
     }
   },
   methods: {},
-}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped  lang="scss">
   h3 {
     margin: 20px 10px;
   }

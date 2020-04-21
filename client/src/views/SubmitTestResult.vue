@@ -5,7 +5,7 @@
         :form="form"
         :label-col="{ span: 6 }"
         :wrapper-col="{ span: 18 }"
-        @submit="handleSubmit"
+        @submit.prevent="handleSubmit"
       >
 
         <!-- Labor -->
@@ -85,16 +85,26 @@
   </a-card>
 </template>
 
-<script>
-import Api from '@/api'
-import TestInput from '../components/TestInput'
-import LaboratoryInput from '../components/LaboratoryInput'
+<script lang="ts">
+import { Institution, LabTest } from '@/api/SwaggerApi'
 import Vue from 'vue'
+import Api from '@/api'
+import TestInput from '@/components/TestInput.vue'
+import LaboratoryInput from '@/components/LaboratoryInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
-import { testResults } from '@/models/event-types'
+import { testResults, TestResultType } from '@/models/event-types'
+
+interface State {
+  form: any;
+  fileBytes?: any;
+  testResults: TestResultType[];
+  laboratories: Institution[];
+  updatedLabTest?: LabTest;
+  updatedLabTestStatus: string;
+}
 
 export default Vue.extend({
-  name: 'LinkTestResultAndPatient',
+  name: 'SubmitTestResult',
   computed: {
     ...authMapper.mapGetters({ institution: 'institution' }),
   },
@@ -103,13 +113,13 @@ export default Vue.extend({
     LaboratoryInput,
   },
   props: {},
-  data() {
+  data(): State {
     return {
       form: this.$form.createForm(this),
-      fileBytes: null,
+      fileBytes: undefined,
       testResults: testResults,
       laboratories: [],
-      updatedLabTest: null,
+      updatedLabTest: undefined,
       updatedLabTestStatus: '',
     }
   },
@@ -141,13 +151,13 @@ export default Vue.extend({
       }
       this.$notification.info(notification)
     },
-    beforeUpload(file) {
-      const setFileBytes = fileBytes => {
+    beforeUpload(file: File) {
+      const setFileBytes = (fileBytes: any) => {
         this.fileBytes = fileBytes
       }
 
       const reader = new FileReader()
-      reader.onload = e => {
+      reader.onload = (e: any) => {
         const utf8 = unescape(encodeURIComponent(e.target.result))
         const array = []
         for (let i = 0; i < utf8.length; i++) {
@@ -159,10 +169,8 @@ export default Vue.extend({
 
       return false
     },
-    handleSubmit(e) {
-      e.preventDefault()
-
-      this.form.validateFields((err, values) => {
+    handleSubmit() {
+      this.form.validateFields((err: Error, values: any) => {
         if (err) {
           return
         }
@@ -176,10 +184,10 @@ export default Vue.extend({
         }
 
         const testResult = this.testResults.find(testResult => values.testResult === testResult.id)
-        Api.api.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {
+        Api.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {
           const notification = {
             message: 'Test ' + labTest.testId + ' aktualisiert.',
-            description: 'Status geändert auf "' + testResult.label + '"',
+            description: 'Status geändert auf "' + testResult?.label + '"',
           }
           this.$notification.success(notification)
           this.form.resetFields([
@@ -189,7 +197,7 @@ export default Vue.extend({
           this.updatedLabTest = labTest
           this.updatedLabTestStatus = testResults
             .find(testResult => testResult.id === labTest.testStatus)
-            .label
+            ?.label || ''
         }).catch(err => {
           const notification = {
             message: 'Fehler beim Hinzufügen des Testergebnisses.',
@@ -203,5 +211,5 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped lang="scss">
 </style>

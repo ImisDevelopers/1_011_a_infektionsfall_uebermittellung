@@ -159,7 +159,7 @@
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
                 <a-card
-                  :title="'Status: ' + (patientStatus ? patientStatus.label : 'Unbekannt')"
+                  :title="'Status: ' + (patientStatus ? patientStatus.label : 'Unbekannt') + (patient.quarantineUntil ? (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')"
                   align="left"
                 >
                   <a-table

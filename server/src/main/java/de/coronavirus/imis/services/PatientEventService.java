@@ -85,13 +85,16 @@ public class PatientEventService {
 		return patientEventRepository.save(event);
 	}
 
-	public void createQuarantineEvent (Patient patient, String until) {
+	public void createQuarantineEvent (Patient patient, String until, String comment) {
+
+		var commentField = String.format("Bis: %s; %s", until, comment);
+
 		var event = new PatientEvent()
 				.setIllness(Illness.CORONA)
 				.setEventType(EventType.QUARANTINE_MANDATED)
 				.setEventTimestamp(Timestamp.valueOf(LocalDateTime.now()))
 				.setPatient(patient)
-				.setComment(until);
+				.setComment(commentField);
 
 		patientEventRepository.saveAndFlush(event);
 	}

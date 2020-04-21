@@ -64,7 +64,7 @@ public class PatientController {
 	}
 
 	@PostMapping("/quarantine/{id}")
-	@PreAuthorize("hasAnyRole('DepartmentOfHealth')")
+	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
 	public ResponseEntity<Patient> sendToQuarantine (@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
 		return ResponseEntity.ok(patientService.sendToQuaratine(patientId, statusDTO));
 	}

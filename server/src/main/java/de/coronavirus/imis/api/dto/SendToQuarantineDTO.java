@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SendToQuarantineDTO {
 	private String dateUntil;
+	private String comment;
 }

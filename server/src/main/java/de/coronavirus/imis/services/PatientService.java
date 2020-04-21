@@ -216,7 +216,7 @@ public class PatientService {
 
 		updatePatient(patient);
 
-		eventService.createQuarantineEvent(patient, dto.getDateUntil());
+		eventService.createQuarantineEvent(patient, dto.getDateUntil(), dto.getComment());
 
 		return patient;
 	}

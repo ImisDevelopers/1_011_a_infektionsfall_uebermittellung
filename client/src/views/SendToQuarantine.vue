@@ -86,6 +86,7 @@ export default class RegisterTest extends Vue {
       }
       const request = {
         dateUntil: values.dateUntil.format('YYYY-MM-DD'),
+        comment: values.comment,
       }
 
       Api.api.sendToQuarantineUsingPost(values.patientId, request).then(patient => {

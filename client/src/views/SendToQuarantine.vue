@@ -87,7 +87,7 @@ export default Vue.extend({
           return
         }
         const request = {
-          dateUntil: values.dateUntil,
+          dateUntil: values.dateUntil.format('YYYY-MM-DD'),
           comment: values.comment,
         }
 

@@ -84,6 +84,7 @@ export interface CreatePatientDTO {
     | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
+  quarantineUntil?: string;
   riskAreas?: string[];
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
@@ -403,6 +404,7 @@ export interface RequestLabTestDTO {
 }
 
 export interface SendToQuarantineDTO {
+  comment?: string;
   dateUntil?: string;
 }
 

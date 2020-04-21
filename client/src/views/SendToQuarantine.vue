@@ -43,8 +43,6 @@
       </a-form-item>
     </a-form>
 
-    <!-- TODO AB HIER -->
-    <!-- Confirmation after creation -->
     <div v-if="patient">
       <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" type="check-circle" />
       <div>
@@ -54,61 +52,66 @@
         <div>In Quarantäne bis: {{ patient.quarantineUntil }}</div>
       </div>
     </div>
+
   </a-card>
 </template>
 
-<script>
-import Vue from 'vue'
-
+<script lang="ts">
+import { Patient, SendToQuarantineDTO } from '@/api/SwaggerApi'
 import Api from '@/api'
-import DateInput from '../components/DateInput'
-import PatientInput from '../components/PatientInput'
-import Component from 'vue-class-component'
+import Vue from 'vue'
+import DateInput from '../components/DateInput.vue'
+import PatientInput from '../components/PatientInput.vue'
 
-@Component({
+interface State {
+  form: any; // eslint-disable-next-line
+  patient?: Patient;
+}
+
+export default Vue.extend({
+  name: 'SendToQuarantine',
   components: {
     PatientInput,
     DateInput,
   },
-})
-export default class RegisterTest extends Vue {
-  data() {
+  data(): State {
     return {
       form: this.$form.createForm(this),
-      patient: null,
+      patient: undefined,
     }
-  }
-
-  handleSubmit() {
-    this.form.validateFields((err, values) => {
-      if (err) {
-        return
-      }
-      const request = {
-        dateUntil: values.dateUntil.format('YYYY-MM-DD'),
-        comment: values.comment,
-      }
-
-      Api.api.sendToQuarantineUsingPost(values.patientId, request).then(patient => {
-        this.patient = patient
-
-        const notification = {
-          message: 'Quarantäne vermerkt',
-          description:
-            'Der Quarantänevermerk für ' + patient.firstName + ' ' + patient.lastName + ' wurde erfolgreich hinterlegt.',
+  },
+  methods: {
+    handleSubmit() {
+      this.form.validateFields((err: Error, values: any) => { // eslint-disable-next-line
+        if (err) {
+          return
         }
-        this.$notification.success(notification)
-        this.form.resetFields()
-      }).catch(err => {
-        const notification = {
-          message: 'Fehler beim hinterlegen des Quarantänevermerks',
-          description: err.message,
+        const request = {
+          dateUntil: values.dateUntil,
+          comment: values.comment,
         }
-        this.$notification.error(notification)
+
+        Api.sendToQuarantineUsingPost(values.patientId, request).then(patient => {
+          this.patient = patient
+
+          const notification = {
+            message: 'Quarantäne vermerkt',
+            description:
+              'Der Quarantänevermerk für ' + patient.firstName + ' ' + patient.lastName + ' wurde erfolgreich hinterlegt.',
+          }
+          this.$notification.success(notification)
+          this.form.resetFields()
+        }).catch(err => {
+          const notification = {
+            message: 'Fehler beim hinterlegen des Quarantänevermerks',
+            description: err.message,
+          }
+          this.$notification.error(notification)
+        })
       })
-    })
-  }
-}
+    },
+  },
+})
 </script>
 
 <style></style>

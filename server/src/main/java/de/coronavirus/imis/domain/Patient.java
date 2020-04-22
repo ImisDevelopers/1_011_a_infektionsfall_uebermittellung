@@ -72,4 +72,6 @@ public class Patient {
 	private LocalDate dateOfHospitalization;
 	private LocalDate dateOfIllness;
 	private Boolean onIntensiveCareUnit;
+
+	private LocalDate quarantineUntil;
 }

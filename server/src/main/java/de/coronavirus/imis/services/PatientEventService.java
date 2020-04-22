@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,6 +83,20 @@ public class PatientEventService {
 				.setResponsibleDoctor(doctor)
 				.setPatient(patient);
 		return patientEventRepository.save(event);
+	}
+
+	public void createQuarantineEvent (Patient patient, String until, String comment) {
+
+		var commentField = String.format("Bis: %s; %s", until, comment);
+
+		var event = new PatientEvent()
+				.setIllness(Illness.CORONA)
+				.setEventType(EventType.QUARANTINE_MANDATED)
+				.setEventTimestamp(Timestamp.valueOf(LocalDateTime.now()))
+				.setPatient(patient)
+				.setComment(commentField);
+
+		patientEventRepository.saveAndFlush(event);
 	}
 
 	public List<PatientEvent> getAllForPatient(Patient patient) {

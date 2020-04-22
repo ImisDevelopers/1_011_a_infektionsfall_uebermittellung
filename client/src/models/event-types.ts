@@ -52,6 +52,11 @@ export const eventTypes: EventTypeItem[] = [
     label: 'Arztbesuch',
     icon: 'reconciliation',
   },
+  {
+    id: 'QUARANTINE_MANDATED',
+    label: 'Quarantäne angeordnet',
+    icon: 'safety',
+  },
 ]
 
 export interface TestResultType {

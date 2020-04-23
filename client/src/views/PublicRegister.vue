@@ -11,13 +11,13 @@
       </div>
       <div style="margin-top: 35px">
         <a-steps id="scroll-anchor" style="margin-bottom: 20px"
-          @change="(current) => this.current = current"
-          :current="current"
-          :direction="stepsDirection">
+                 @change="(current) => this.current = current"
+                 :current="current"
+                 :direction="stepsDirection">
 
           <a-step :key="item.title" :title="item.title"
-            :disabled="maxCurrent < steps.findIndex((elem) => elem.title === item.title)"
-            v-for="item in steps" />
+                  :disabled="maxCurrent < steps.findIndex((elem) => elem.title === item.title)"
+                  v-for="item in steps" />
         </a-steps>
 
         <a-form :form="form" :labelCol="{ sm: { span: 8 },  xs: { span: 24 }  }"
@@ -323,8 +323,13 @@ export default Vue.extend({
 })
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<!-- Bitte kein scoped hinzufügen. -->
+<!-- Damit die Usability (v.a. auf Touchgeräten) besser ist, -->
+<!-- greifen wir etwas in das antdesign css ein. -->
+<!-- Mit scoped geht das nicht. Wir verhindern, dass andere Views betroffen -->
+<!-- sind, indem wir die Eingriffe nur unterhalb der -->
+<!-- Klasse public-register-outer-container gelten lassen. -->
+<style lang="scss">
 
   .public-register-outer-container {
     position: absolute;
@@ -412,16 +417,6 @@ export default Vue.extend({
       h1 {
         display: none;
       }
-      /*
-      .ant-steps {
-        min-height: 1px;
-        display: flex;
-        justify-content: space-around;
-      }
-      .ant-steps-item-content {
-        display: none !important;
-      }
-      */
       .card {
         max-width: 95%;
         margin: 3rem auto 3rem auto;

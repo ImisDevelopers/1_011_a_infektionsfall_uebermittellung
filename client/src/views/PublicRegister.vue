@@ -10,8 +10,14 @@
         <h1 style="margin: 0">Selbstregistrierung</h1>
       </div>
       <div style="margin-top: 35px">
-        <a-steps :current="current" style="margin-bottom: 20px">
-          <a-step :key="item.title" :title="item.title" v-for="item in steps" />
+        <a-steps id="scroll-anchor" style="margin-bottom: 20px"
+          @change="(current) => this.current = current"
+          :current="current"
+          :direction="stepsDirection">
+
+          <a-step :key="item.title" :title="item.title"
+            :disabled="maxCurrent < steps.findIndex((elem) => elem.title === item.title)"
+            v-for="item in steps" />
         </a-steps>
 
         <a-form :form="form" :labelCol="{ sm: { span: 8 },  xs: { span: 24 }  }"
@@ -160,6 +166,7 @@ import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
 interface State {
   form: any;
   current: number;
+  maxCurrent: number;
   createdPatient: Patient | null;
   symptoms: Option[];
   exposures: Option[];
@@ -181,6 +188,7 @@ export default Vue.extend({
     return {
       form: this.$form.createForm(this),
       current: 0,
+      maxCurrent: 0,
       createdPatient: null,
       symptoms: SYMPTOMS,
       preIllnesses: PRE_ILLNESSES,
@@ -188,7 +196,7 @@ export default Vue.extend({
       exposureLocation: EXPOSURE_LOCATIONS,
       steps: [
         {
-          title: 'Symtpome',
+          title: 'Symptome',
         },
         {
           title: 'Exposition',
@@ -207,19 +215,45 @@ export default Vue.extend({
       showOtherSymptoms: false,
     }
   },
+  computed: {
+    stepsDirection() {
+      return window.innerWidth >= 700 ? 'horizontal' : 'vertical'
+    },
+  },
   methods: {
+    scrollToFormTop() {
+      (document.getElementById('scroll-anchor') as Element).scrollIntoView()
+
+      /*
+      // Scroll all parents
+      let currElem: Element = scrollAnchor
+      let container: Element | null = currElem.parentElement
+      while (container) {
+        container.scrollTo({ top: currElem.offsetY })
+
+        currElem = container
+        container = currElem.parentElement
+      }
+      */
+    },
     prev() {
       this.current--
+      this.scrollToFormTop()
     },
     next() {
+      const showNext = () => {
+        this.current++
+        this.maxCurrent = Math.max(this.current, this.maxCurrent)
+        this.scrollToFormTop()
+      }
       if (this.current === 3) {
         this.form.validateFields((err: any) => {
           if (!err) {
-            this.current++
+            showNext()
           }
         })
       } else {
-        this.current++
+        showNext()
       }
     },
     save() {
@@ -378,6 +412,7 @@ export default Vue.extend({
       h1 {
         display: none;
       }
+      /*
       .ant-steps {
         min-height: 1px;
         display: flex;
@@ -386,6 +421,7 @@ export default Vue.extend({
       .ant-steps-item-content {
         display: none !important;
       }
+      */
       .card {
         max-width: 95%;
         margin: 3rem auto 3rem auto;

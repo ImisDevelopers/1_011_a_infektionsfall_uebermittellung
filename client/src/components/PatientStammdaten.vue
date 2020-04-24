@@ -91,7 +91,9 @@
 
       <a-divider />
       <p style="text-align: center">Adresse:</p>
-      <!-- Straße / Hausnummer -->
+      <location-form-group :form="form" :required="true" />
+
+      <!-- <!- Straße / Hausnummer ->
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Straße">
@@ -115,7 +117,7 @@
         </a-col>
       </a-row>
 
-      <!-- PLZ / Ort -->
+      <!- PLZ / Ort ->
       <a-row>
         <a-col :lg="12" :sm="24">
           <PlzInput :decorator="['zip', { rules: [{
@@ -141,13 +143,19 @@
                 ]}]"/>
           </a-form-item>
         </a-col>
-      </a-row>
+      </a-row> -->
 
       <!-- Aufenthaltsort -->
       <div v-if="showStay">
         <a-divider />
         <p style="text-align: center">Aufenthaltsort, falls von Adresse abweichend:</p>
-        <!-- Straße / Hausnummer -->
+        <location-form-group
+          :form="form"
+          :required="false"
+          inputKeyPrefix="stay"/>
+
+        <!--
+        <!- Straße / Hausnummer ->
         <a-row>
           <a-col :lg="12" :sm="24">
             <a-form-item label="Straße">
@@ -165,7 +173,7 @@
           </a-col>
         </a-row>
 
-        <!-- PLZ / Ort -->
+        <!- PLZ / Ort ->
         <a-row>
           <a-col :lg="12" :sm="24">
             <PlzInput :decorator="['stayZip']" @plzChanged="setStayPLZ" />
@@ -178,6 +186,7 @@
             </a-form-item>
           </a-col>
         </a-row>
+        -->
       </div>
 
       <!-- Email / Telefon -->
@@ -260,11 +269,10 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import { Plz } from '@/util/plz-service'
 import { RiskOccupation } from '@/models'
 import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
 import DateInput from '@/components/DateInput.vue'
-import PlzInput from '@/components/PlzInput.vue'
+import LocationFormGroup from '@/components/LocationFormGroup.vue'
 
 /**
  * Autocomplete for Patients
@@ -274,7 +282,6 @@ import PlzInput from '@/components/PlzInput.vue'
  */
 
 export interface State {
-  plzs: Plz[];
   disableOccupation: boolean;
   riskOccupations: RiskOccupationOption[];
   showDateOfDeath: boolean;
@@ -285,7 +292,6 @@ export default Vue.extend({
   props: ['form', 'showStay', 'showDeath'],
   data(): State {
     return {
-      plzs: [],
       disableOccupation: true,
       riskOccupations: RISK_OCCUPATIONS,
       showDateOfDeath: false,
@@ -293,42 +299,16 @@ export default Vue.extend({
   },
   components: {
     DateInput,
-    PlzInput,
+    LocationFormGroup,
   },
   methods: {
-    setStayPLZ(plz: Plz) {
-      this.form.setFieldsValue({
-        stayZip: plz.fields.plz,
-        stayCity: plz.fields.note,
-      })
-      let nextInput = document.getElementById('coordinated_email')
-      if (!nextInput) {
-        nextInput = document.getElementById('email')
-      }
-      if (nextInput) {
-        nextInput.focus()
-      }
-    },
-    setPLZ(plz: Plz) {
-      this.form.setFieldsValue({
-        zip: plz.fields.plz,
-        city: plz.fields.note,
-      })
-      let nextInput = document.getElementById('coordinated_email')
-      if (!nextInput) {
-        nextInput = document.getElementById('email')
-      }
-      if (nextInput) {
-        nextInput.focus()
-      }
-    },
     riskOccupationSelected(value: RiskOccupation) {
       this.disableOccupation = value !== 'NO_RISK_OCCUPATION'
       let occupation
       if (this.disableOccupation) {
         occupation = this.riskOccupations.find(riskOccupation => riskOccupation.value === value)?.label || ''
       } else {
-        const occupationInput = (this.$refs.occupation.$el as HTMLElement)
+        const occupationInput = ((this.$refs.occupation as Vue).$el as HTMLElement)
         setTimeout(() => {
           occupationInput.focus()
         }, 0)

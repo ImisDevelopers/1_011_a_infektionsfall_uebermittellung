@@ -1,6 +1,9 @@
 package de.coronavirus.imis.api;
 
-import de.coronavirus.imis.api.dto.*;
+import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
+import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +34,11 @@ public class PatientController {
 	public ResponseEntity<Patient> getPatientForId(@PathVariable("id") String id) {
 		return patientService.findPatientById(id).map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
+	}
+
+	@PutMapping
+	public Patient updatePatient(@RequestBody Patient patient) {
+		return patientService.updatePatient(patient);
 	}
 
 	@GetMapping
@@ -64,7 +72,7 @@ public class PatientController {
 
 	@PostMapping("/quarantine/{id}")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public ResponseEntity<Patient> sendToQuarantine (@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
+	public ResponseEntity<Patient> sendToQuarantine(@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
 		return ResponseEntity.ok(patientService.sendToQuaratine(patientId, statusDTO));
 	}
 }

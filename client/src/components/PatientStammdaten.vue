@@ -37,7 +37,7 @@
       <!-- Geschlecht / Geburtsdatum -->
       <a-row>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Geschlecht">
+          <a-form-item label="Mediz. Geschlecht">
             <a-radio-group
               @change="genderSelected"
               buttonStyle="solid"
@@ -57,6 +57,18 @@
                         required: true,
                         message: 'Bitte Geburtsdatum eingeben',
                       }]}]" label="Geburtsdatum" />
+        </a-col>
+      </a-row>
+
+      <!-- Staatsangehörigkeit -->
+      <a-row>
+        <a-col :lg="12" :sm="24">
+          <a-form-item label="Staatsangehörigkeit">
+            <a-input
+              v-decorator="['nationality', { rules: [
+                { required: true, message: 'Bitte Staatsangehörigkeit angeben' }
+                ]}]"/>
+          </a-form-item>
         </a-col>
       </a-row>
 
@@ -92,7 +104,7 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Hausnummer">
+          <a-form-item label="Hausnr.">
             <a-input
               v-decorator="['houseNumber', { rules: [{
                         required: true,
@@ -117,6 +129,16 @@
               required: true,
               message: 'Bitte Ort eingeben',
             }] }]" />
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row>
+        <a-col :lg="12" :sm="24">
+          <a-form-item label="Land">
+            <a-input
+              v-decorator="['country', { rules: [
+                { required: true, message: 'Bitte Land eingeben' }
+                ]}]"/>
           </a-form-item>
         </a-col>
       </a-row>
@@ -201,6 +223,7 @@
                 </a-select-option>
               </a-select>
               <a-input
+                ref="occupation"
                 :disabled="disableOccupation"
                 v-decorator="['occupation', { rules: [{
                         required: true,
@@ -304,6 +327,11 @@ export default Vue.extend({
       let occupation
       if (this.disableOccupation) {
         occupation = this.riskOccupations.find(riskOccupation => riskOccupation.value === value)?.label || ''
+      } else {
+        const occupationInput = (this.$refs.occupation.$el as HTMLElement)
+        setTimeout(() => {
+          occupationInput.focus()
+        }, 0)
       }
       this.form.setFieldsValue({
         occupation: occupation,

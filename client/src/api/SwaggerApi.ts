@@ -482,7 +482,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8642/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 

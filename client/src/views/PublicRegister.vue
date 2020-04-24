@@ -64,9 +64,19 @@
             <h2>Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?</h2>
             <div style="display: flex">
               <span style="flex: 1 1 auto" />
-              <a-form-item>
-                <a-checkbox-group :options="preIllnesses" class="checkbox-group" v-decorator="['preIllnesses']" />
-              </a-form-item>
+              <div>
+                <a-form-item style="margin-bottom: 0">
+                  <a-checkbox-group :options="preIllnesses" class="checkbox-group" v-decorator="['preIllnesses']" />
+                </a-form-item>
+                <div class="checkbox-group">
+                  <div style="display: flex; align-items: center; align-self: stretch">
+                    <a-checkbox @change="preIllnessesChanged">Andere:</a-checkbox>
+                    <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
+                      <a-input :disabled="!showOtherPreIllnesses" v-decorator="['preIllnessesOther']" />
+                    </a-form-item>
+                  </div>
+                </div>
+              </div>
               <span style="flex: 1 1 auto" />
             </div>
           </div>
@@ -170,6 +180,7 @@ interface State {
   showCheckedError: boolean;
   disableExposureLocation: boolean;
   showOtherSymptoms: boolean;
+  showOtherPreIllnesses: boolean;
 }
 
 export default Vue.extend({
@@ -205,6 +216,7 @@ export default Vue.extend({
       showCheckedError: false,
       disableExposureLocation: true,
       showOtherSymptoms: false,
+      showOtherPreIllnesses: false,
     }
   },
   methods: {
@@ -254,6 +266,9 @@ export default Vue.extend({
         if (this.showOtherSymptoms) {
           request.symptoms.push(values.symptomsOther)
         }
+        if (this.showOtherPreIllnesses) {
+          request.preIllnesses.push(values.preIllnessesOther)
+        }
         if (values.exposureLocation) {
           request.riskAreas = request.riskAreas.concat(
             values.exposureLocation
@@ -281,6 +296,10 @@ export default Vue.extend({
     symptomsChanged(event: Event) {
       const target = event.target as any
       this.showOtherSymptoms = target.checked
+    },
+    preIllnessesChanged(event: Event) {
+      const target = event.target as any
+      this.showOtherPreIllnesses = target.checked
     },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')

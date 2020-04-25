@@ -10,6 +10,10 @@ export const PRE_ILLNESSES: Option[] = [
     value: 'DIABETES',
   },
   {
+    label: 'Fettleibigkeit',
+    value: 'ADIPOSITAS',
+  },
+  {
     label: 'Herz-Kreislauf (inkl. Bluthochdruck)',
     value: 'CARDIOVASCULAR_DISEASE',
   },
@@ -34,8 +38,8 @@ export const PRE_ILLNESSES: Option[] = [
     value: 'KIDNEY_DISEASE',
   },
   {
-    label: 'Postpartum (weniger als 6 Wochen)',
-    value: 'POSTPARTUM',
+    label: 'Raucher',
+    value: 'SMOKING',
   },
   {
     label: 'Schwangerschaft',

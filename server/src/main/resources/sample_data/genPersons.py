@@ -12,7 +12,7 @@ last_names = ['Peters', 'Müller', 'Schulz', 'Schulze', 'Weber', 'Wagner', 'Rich
 male_first_names = ['Peter', 'Daniel', 'Hans', 'Franz', 'Karl', 'Tim', 'Jan', 'Jens', 'Kai']
 female_fist_names = ['Jana', 'Lisa', 'Anna', 'Annika', 'Petra', 'Marie', 'Susanne', 'Daniela', 'Petra']
 
-genders = ['männlich', 'weiblich']
+genders = ['male', 'female']
 
 email_providers = ['t-online', 'posteo', 'gmail', 'gmx', 'web']
 
@@ -81,7 +81,7 @@ def replace_umlauts(inp):
 
 def gen_person():
 	gender = choice(genders)
-	first_name = choice(male_first_names) if gender == 'männlich' else choice(female_fist_names)
+	first_name = choice(male_first_names) if gender == 'male' else choice(female_fist_names)
 	last_name = choice(last_names)
 
 	_email = f'{first_name[0].lower()}.{last_name.lower()}@{choice(email_providers)}.de'

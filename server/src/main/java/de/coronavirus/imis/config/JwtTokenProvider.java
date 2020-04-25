@@ -1,8 +1,13 @@
 package de.coronavirus.imis.config;
 
-import io.jsonwebtoken.*;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.Base64;
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -10,11 +15,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Base64;
-import java.util.Date;
-import java.util.List;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
@@ -24,14 +31,18 @@ public class JwtTokenProvider {
 	private static final String AUTHORIZATION = "Authorization";
 	private static final String ROLES = "roles";
 	private final UserDetailsService userDetailsService;
-	@Value("${security.jwt.token.secret-key:secret}")
 	private String secretKey;
 	@Value("${security.jwt.token.expire-length:86400000}")
 	private long validityInMilliseconds;
 
+
 	@PostConstruct
 	protected void init() {
-		secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+		//This is okay since it is a single so it will be created with the first request either
+		//we generate this on the server and secure it somewhere or we let it random but I DON'T feel comfortable having
+		//static secrets in the source code
+		var randomSecret = RandomStringUtils.randomAlphabetic(12);
+		secretKey = Base64.getEncoder().encodeToString(randomSecret.getBytes());
 	}
 
 	public String createToken(String username, List<String> role) {

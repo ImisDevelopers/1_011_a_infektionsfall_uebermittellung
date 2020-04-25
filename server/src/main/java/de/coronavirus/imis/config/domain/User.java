@@ -3,6 +3,8 @@ package de.coronavirus.imis.config.domain;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import de.coronavirus.imis.config.domain.access.AccessRights;
 import de.coronavirus.imis.domain.InstitutionImpl;
 import de.coronavirus.imis.domain.InstitutionType;
 import lombok.AllArgsConstructor;
@@ -55,6 +57,11 @@ public class User implements UserDetails {
 		return List.of(new SimpleGrantedAuthority("ROLE_" + this.institution.getType().name()),
 				new SimpleGrantedAuthority(userRole.name()));
 	}
+
+	public AccessRights getAccessRights() {
+		return AccessRights.forInstitutionType(institution, userRole);
+	}
+
 
 	public Long getId() {
 		return this.id;

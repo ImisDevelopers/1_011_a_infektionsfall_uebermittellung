@@ -171,6 +171,14 @@
                   </a-col>
                 </a-row>
               </a-checkbox-group>
+              <div style="display: flex; align-items: center; align-self: stretch">
+                <a-checkbox :checked="showOtherPreIllnesses" @change="preIllnessesChanged" style="flex: 0 0 auto">
+                  Andere:
+                </a-checkbox>
+                <a-form-item style="flex: 1 1 100%; margin-bottom: 0; max-width: 600px">
+                  <a-input :disabled="!showOtherPreIllnesses" v-decorator="['preIllnessesOther']" />
+                </a-form-item>
+              </div>
             </a-form-item>
           </a-collapse-panel>
 
@@ -302,6 +310,7 @@ interface State {
   EXPOSURE_LOCATIONS: Option[];
   EVENT_TYPES: EventTypeItem[];
   showOtherSymptoms: boolean;
+  showOtherPreIllnesses: boolean;
   patientString: string;
   disableExposureLocation: boolean;
   disableHospitalization: boolean;
@@ -328,6 +337,7 @@ export default Vue.extend({
       EVENT_TYPES: eventTypes,
       disableExposureLocation: true,
       showOtherSymptoms: false,
+      showOtherPreIllnesses: false,
       patientString: 'der Patient',
       disableHospitalization: true,
       disableTestOrder: true,
@@ -391,6 +401,9 @@ export default Vue.extend({
         if (this.showOtherSymptoms) {
           request.symptoms.push(values.symptomsOther)
         }
+        if (this.showOtherPreIllnesses) {
+          request.preIllnesses.push(values.preIllnessesOther)
+        }
         if (values.exposureLocation) {
           request.riskAreas = request.riskAreas.concat(
             values.exposureLocation
@@ -410,6 +423,8 @@ export default Vue.extend({
           this.form.setFieldsValue({
             symptomsOther: undefined,
             symptomsOtherActivated: undefined,
+            preIllnessesOther: undefined,
+            preIllnessesActivated: undefined,
           })
           const notification = {
             message: patientString + ' registriert.',
@@ -430,6 +445,10 @@ export default Vue.extend({
     symptomsChanged(event: Event) {
       const target = event.target as any
       this.showOtherSymptoms = target.checked
+    },
+    preIllnessesChanged(event: Event) {
+      const target = event.target as any
+      this.showOtherPreIllnesses = target.checked
     },
     genderSelected(gender: string) {
       this.patientString = gender === 'female' ? 'die Patientin' : 'der Patient'

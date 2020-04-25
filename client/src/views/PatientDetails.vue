@@ -40,6 +40,10 @@
                       <td>Geschlecht:</td>
                       <td>{{gender}}</td>
                     </tr>
+                    <tr>
+                      <td>Staatsangehörigkeit:</td>
+                      <td>{{patient.nationality}}</td>
+                    </tr>
                   </table>
                 </a-card>
               </a-col>
@@ -67,6 +71,10 @@
                     <tr>
                       <td>Ort:</td>
                       <td>{{patient.city}}</td>
+                    </tr>
+                    <tr>
+                      <td>Land:</td>
+                      <td>{{patient.country}}</td>
                     </tr>
                   </table>
                 </a-card>

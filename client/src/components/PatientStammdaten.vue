@@ -37,7 +37,7 @@
       <!-- Geschlecht / Geburtsdatum -->
       <a-row>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Geschlecht">
+          <a-form-item label="Mediz. Geschlecht">
             <a-radio-group
               @change="genderSelected"
               buttonStyle="solid"
@@ -46,9 +46,9 @@
                         message: 'Bitte Geschlecht eingeben',
                       }], initialValue: patientInput.gender}]"
             >
-              <a-radio value="male">Männl.</a-radio>
-              <a-radio value="female">Weibl.</a-radio>
-              <a-radio value="divers">Div.</a-radio>
+              <a-radio value="male">Männlich</a-radio>
+              <a-radio value="female">Weiblich</a-radio>
+              <a-radio value="divers">Divers</a-radio>
             </a-radio-group>
           </a-form-item>
         </a-col>
@@ -57,6 +57,18 @@
                         required: true,
                         message: 'Bitte Geburtsdatum eingeben',
                       }], initialValue: initialDateOfBirth}]" label="Geburtsdatum" />
+        </a-col>
+      </a-row>
+
+      <!-- Staatsangehörigkeit -->
+      <a-row>
+        <a-col :lg="12" :sm="24">
+          <a-form-item label="Staatsangehörigkeit">
+            <a-input
+              v-decorator="['nationality', { rules: [
+                { required: true, message: 'Bitte Staatsangehörigkeit angeben' }
+                ]}]"/>
+          </a-form-item>
         </a-col>
       </a-row>
 
@@ -79,85 +91,24 @@
         </a-col>
       </a-row>
 
+      <!-- Wohnsitz -->
       <a-divider />
       <p style="text-align: center">Adresse:</p>
-      <!-- Straße / Hausnummer -->
-      <a-row>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Straße">
-            <a-input
-              v-decorator="['street', { rules: [{
-                        required: true,
-                        message: 'Bitte Straße eingeben',
-                      }], initialValue: patientInput.street }]"
-            />
-          </a-form-item>
-        </a-col>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Hausnummer">
-            <a-input
-              v-decorator="['houseNumber', { rules: [{
-                        required: true,
-                        message: 'Bitte Hausnummer eingeben',
-                      }], initialValue: patientInput.houseNumber}]"
-            />
-          </a-form-item>
-        </a-col>
-      </a-row>
-
-      <!-- PLZ / Ort -->
-      <a-row>
-        <a-col :lg="12" :sm="24">
-          <PlzInput :decorator="['zip', { rules: [{
-              required: true,
-              message: 'Bitte PLZ eingeben',
-            }], initialValue: patientInput.zip}]" @plzChanged="setPLZ" />
-        </a-col>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Ort">
-            <a-input v-decorator="['city', { rules: [{
-              required: true,
-              message: 'Bitte Ort eingeben',
-            }], initialValue: patientInput.city }]" />
-          </a-form-item>
-        </a-col>
-      </a-row>
+      <location-form-group
+        :form="form"
+        :data="patient"
+        :required="true" />
 
       <!-- Aufenthaltsort -->
       <div v-if="showStay">
         <a-divider />
         <p style="text-align: center">Aufenthaltsort, falls von Adresse abweichend:</p>
-        <!-- Straße / Hausnummer -->
-        <a-row>
-          <a-col :lg="12" :sm="24">
-            <a-form-item label="Straße">
-              <a-input
-                v-decorator="['stayStreet', {initialValue: patientInput.stayStreet}]"
-              />
-            </a-form-item>
-          </a-col>
-          <a-col :lg="12" :sm="24">
-            <a-form-item label="Hausnummer">
-              <a-input
-                v-decorator="['stayHouseNumber', {initialValue: patientInput.stayHouseNumber}]"
-              />
-            </a-form-item>
-          </a-col>
-        </a-row>
-
-        <!-- PLZ / Ort -->
-        <a-row>
-          <a-col :lg="12" :sm="24">
-            <PlzInput :decorator="['stayZip', {initialValue: patientInput.stayZip}]" @plzChanged="setStayPLZ" />
-          </a-col>
-          <a-col :lg="12" :sm="24">
-            <a-form-item label="Ort">
-              <a-input
-                v-decorator="['stayCity', {initialValue: patientInput.stayCity}]"
-              />
-            </a-form-item>
-          </a-col>
-        </a-row>
+        <location-form-group
+          :form="form"
+          :data="patient"
+          :required="false"
+          inputKeyPrefix="stay"
+          :useInputKeysForData="true"/>
       </div>
 
       <!-- Email / Telefon -->
@@ -203,6 +154,7 @@
                 </a-select-option>
               </a-select>
               <a-input
+                ref="occupation"
                 :disabled="disableOccupation"
                 v-decorator="['occupation', { rules: [{
                         required: true,
@@ -240,10 +192,10 @@
 <script lang="ts">
 
 import Vue from 'vue'
-import { Plz } from '@/util/plz-service'
 import { RiskOccupation } from '@/models'
 import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
 import DateInput from '@/components/DateInput.vue'
+import LocationFormGroup from '@/components/LocationFormGroup.vue'
 import PlzInput from '@/components/PlzInput.vue'
 import { Patient } from '@/api/SwaggerApi'
 import moment, { Moment } from 'moment'
@@ -256,7 +208,6 @@ import moment, { Moment } from 'moment'
  */
 
 export interface State {
-  plzs: Plz[];
   disableOccupation: boolean;
   riskOccupations: RiskOccupationOption[];
   showDateOfDeath: boolean;
@@ -282,7 +233,6 @@ export default Vue.extend({
   },
   data(): State {
     return {
-      plzs: [],
       disableOccupation: true,
       riskOccupations: RISK_OCCUPATIONS,
       showDateOfDeath: false,
@@ -294,40 +244,19 @@ export default Vue.extend({
   },
   components: {
     DateInput,
-    PlzInput,
+    LocationFormGroup,
   },
   methods: {
-    setStayPLZ(plz: Plz) {
-      this.form.setFieldsValue({
-        stayZip: plz.fields.plz,
-        stayCity: plz.fields.note,
-      })
-      let nextInput = document.getElementById('coordinated_email')
-      if (!nextInput) {
-        nextInput = document.getElementById('email')
-      }
-      if (nextInput) {
-        nextInput.focus()
-      }
-    },
-    setPLZ(plz: Plz) {
-      this.form.setFieldsValue({
-        zip: plz.fields.plz,
-        city: plz.fields.note,
-      })
-      let nextInput = document.getElementById('coordinated_email')
-      if (!nextInput) {
-        nextInput = document.getElementById('email')
-      }
-      if (nextInput) {
-        nextInput.focus()
-      }
-    },
     riskOccupationSelected(value: RiskOccupation) {
       this.disableOccupation = value !== 'NO_RISK_OCCUPATION'
       let occupation
       if (this.disableOccupation) {
         occupation = this.riskOccupations.find(riskOccupation => riskOccupation.value === value)?.label || ''
+      } else {
+        const occupationInput = ((this.$refs.occupation as Vue).$el as HTMLElement)
+        setTimeout(() => {
+          occupationInput.focus()
+        }, 0)
       }
       this.form.setFieldsValue({
         occupation: occupation,

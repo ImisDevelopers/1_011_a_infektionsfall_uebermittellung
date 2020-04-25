@@ -451,7 +451,6 @@ export default Vue.extend({
       this.showOtherPreIllnesses = target.checked
     },
     genderSelected(gender: string) {
-      console.log(gender)
       this.patientString = gender === 'female' ? 'die Patientin' : 'der Patient'
     },
     exposuresChanged(checkedValues: string[]) {

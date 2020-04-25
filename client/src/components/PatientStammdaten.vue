@@ -46,9 +46,9 @@
                         message: 'Bitte Geschlecht eingeben',
                       }], initialValue: patientInput.gender}]"
             >
-              <a-radio value="male">Männl.</a-radio>
-              <a-radio value="female">Weibl.</a-radio>
-              <a-radio value="divers">Div.</a-radio>
+              <a-radio value="male">Männlich</a-radio>
+              <a-radio value="female">Weiblich</a-radio>
+              <a-radio value="divers">Divers</a-radio>
             </a-radio-group>
           </a-form-item>
         </a-col>

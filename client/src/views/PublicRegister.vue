@@ -11,6 +11,7 @@
       </div>
       <div style="margin-top: 35px">
         <a-steps id="scroll-anchor" style="margin-bottom: 20px"
+                 class="steps"
                  @change="(current) => this.current = current"
                  :current="current"
                  :direction="stepsDirection">
@@ -96,6 +97,7 @@
               </a-form-item>
               <a-button
                 @click="save"
+                :disabled="!checked"
                 block
                 shape="round"
                 size="large"
@@ -392,6 +394,12 @@ export default Vue.extend({
       border-radius: 10px;
       box-shadow: 0 8px 9px -5px rgba(0, 0, 0, .2), 0 15px 22px 2px rgba(0, 0, 0, .14), 0 6px 28px 5px rgba(0, 0, 0, .12);
       border: none;
+    }
+
+    .steps {
+      text-align: start;
+      padding-left: 10pt;
+      padding-right: 10pt;
     }
 
     h1 {

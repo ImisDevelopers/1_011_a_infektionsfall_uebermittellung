@@ -89,61 +89,12 @@
         </a-col>
       </a-row>
 
+      <!-- Wohnsitz -->
       <a-divider />
       <p style="text-align: center">Adresse:</p>
-      <location-form-group :form="form" :required="true" />
-
-      <!-- <!- Straße / Hausnummer ->
-      <a-row>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Straße">
-            <a-input
-              v-decorator="['street', { rules: [{
-                        required: true,
-                        message: 'Bitte Straße eingeben',
-                      }] }]"
-            />
-          </a-form-item>
-        </a-col>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Hausnr.">
-            <a-input
-              v-decorator="['houseNumber', { rules: [{
-                        required: true,
-                        message: 'Bitte Hausnummer eingeben',
-                      }]}]"
-            />
-          </a-form-item>
-        </a-col>
-      </a-row>
-
-      <!- PLZ / Ort ->
-      <a-row>
-        <a-col :lg="12" :sm="24">
-          <PlzInput :decorator="['zip', { rules: [{
-              required: true,
-              message: 'Bitte PLZ eingeben',
-            }]}]" @plzChanged="setPLZ" />
-        </a-col>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Ort">
-            <a-input v-decorator="['city', { rules: [{
-              required: true,
-              message: 'Bitte Ort eingeben',
-            }] }]" />
-          </a-form-item>
-        </a-col>
-      </a-row>
-      <a-row>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Land">
-            <a-input
-              v-decorator="['country', { rules: [
-                { required: true, message: 'Bitte Land eingeben' }
-                ]}]"/>
-          </a-form-item>
-        </a-col>
-      </a-row> -->
+      <location-form-group
+        :form="form"
+        :required="true" />
 
       <!-- Aufenthaltsort -->
       <div v-if="showStay">
@@ -153,40 +104,6 @@
           :form="form"
           :required="false"
           inputKeyPrefix="stay"/>
-
-        <!--
-        <!- Straße / Hausnummer ->
-        <a-row>
-          <a-col :lg="12" :sm="24">
-            <a-form-item label="Straße">
-              <a-input
-                v-decorator="['stayStreet']"
-              />
-            </a-form-item>
-          </a-col>
-          <a-col :lg="12" :sm="24">
-            <a-form-item label="Hausnummer">
-              <a-input
-                v-decorator="['stayHouseNumber']"
-              />
-            </a-form-item>
-          </a-col>
-        </a-row>
-
-        <!- PLZ / Ort ->
-        <a-row>
-          <a-col :lg="12" :sm="24">
-            <PlzInput :decorator="['stayZip']" @plzChanged="setStayPLZ" />
-          </a-col>
-          <a-col :lg="12" :sm="24">
-            <a-form-item label="Ort">
-              <a-input
-                v-decorator="['stayCity']"
-              />
-            </a-form-item>
-          </a-col>
-        </a-row>
-        -->
       </div>
 
       <!-- Email / Telefon -->

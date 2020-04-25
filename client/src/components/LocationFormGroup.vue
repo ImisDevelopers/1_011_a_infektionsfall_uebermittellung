@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="location-form-group">
     <slot>
       <!-- Straße / Hausnummer -->
       <a-row>
@@ -8,6 +8,7 @@
             <a-input-group compact>
               <a-input
                 ref="street"
+                class="custom-input"
                 style="width: calc(100% - 40pt);"
                 placeholder="Straße"
                 v-decorator="[keys.street, { rules: [{
@@ -16,6 +17,7 @@
                         }] }]"
               />
               <a-input
+                class="custom-input"
                 style="width: 40pt;"
                 placeholder="HNr."
                 v-decorator="[keys.houseNum, { rules: [{
@@ -31,6 +33,7 @@
             <a-input-group compact>
               <a-auto-complete
                 ref="plz"
+                class="custom-input"
                 style="width: 50pt;"
                 placeholder="PLZ"
                 :dataSource="plzs"
@@ -46,6 +49,7 @@
                 }]}]" />
               <a-input
                 ref="city"
+                class="custom-input"
                 style="width: calc(100% - 60pt);"
                 placeholder="Ort"
                 v-decorator="[keys.city, { rules: [{
@@ -61,6 +65,7 @@
           <a-form-item label="Land">
             <a-input
               ref="country"
+              class="custom-input"
               v-decorator="[keys.country, { rules: [
                 { required: $props.required === false ? false : true, message: 'Bitte Land eingeben' }
                 ]}]"/>
@@ -85,20 +90,6 @@ interface PlzEntry {
   value: string;
   plzData: Plz;
 }
-
-/*
-export interface State {
-  keys: {
-    street: string;
-    houseNum: string;
-    plz: string;
-    city: string;
-    country: string;
-  };
-  plzs: PlzEntry[];
-  currentPlzSearch: string;
-}
-*/
 
 export default Vue.extend({
   name: 'LocationFormGroup',
@@ -202,5 +193,11 @@ export default Vue.extend({
   .ant-select-dropdown-menu-item {
     overflow: unset;
     text-overflow: unset;
+  }
+
+  .location-form-group {
+    input.custom-input, .custom-input input {
+      text-align: left;
+    }
   }
 </style>

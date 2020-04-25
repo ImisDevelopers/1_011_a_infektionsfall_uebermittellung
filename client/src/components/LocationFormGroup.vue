@@ -11,19 +11,25 @@
                 class="custom-input"
                 style="width: calc(100% - 40pt);"
                 placeholder="Straße"
-                v-decorator="[keys.street, { rules: [{
-                          required: $props.required === false ? false : true,
-                          message: 'Bitte Straße eingeben',
-                        }] }]"
+                v-decorator="[keys.street, {
+                  rules: [{
+                    required: $props.required === false ? false : true,
+                    message: 'Bitte Straße eingeben',
+                  }],
+                  initialValue: initialData('street'),
+                }]"
               />
               <a-input
                 class="custom-input"
                 style="width: 40pt;"
                 placeholder="HNr."
-                v-decorator="[keys.houseNum, { rules: [{
-                          required: $props.required === false ? false : true,
-                          message: 'Bitte Hausnummer eingeben',
-                        }]}]"
+                v-decorator="[keys.houseNumber, {
+                  rules: [{
+                    required: $props.required === false ? false : true,
+                    message: 'Bitte Hausnummer eingeben',
+                  }],
+                  initialValue: initialData('houseNumber'),
+                }]"
               />
             </a-input-group>
           </a-form-item>
@@ -32,30 +38,36 @@
           <a-form-item label="PLZ, Ort">
             <a-input-group compact>
               <a-auto-complete
-                ref="plz"
+                ref="zip"
                 class="custom-input"
                 style="width: 50pt;"
                 placeholder="PLZ"
-                :dataSource="plzs"
+                :dataSource="zips"
                 optionLabelProp="value"
-                @search="handlePlzSearch"
-                @select="(val) => handlePlzSelection(val)"
+                @search="handleZipSearch"
+                @select="(val) => handleZipSelection(val)"
                 :dropdownMenuStyle="{
                   width: 'max-content'
                 }"
-                v-decorator="[keys.plz, { rules: [{
-                  required: $props.required === false ? false : true,
-                  message: 'Bitte PLZ eingeben',
-                }]}]" />
+                v-decorator="[keys.zip, {
+                  rules: [{
+                    required: $props.required === false ? false : true,
+                    message: 'Bitte PLZ eingeben',
+                  }],
+                  initialValue: initialData('zip'),
+                }]" />
               <a-input
                 ref="city"
                 class="custom-input"
                 style="width: calc(100% - 60pt);"
                 placeholder="Ort"
-                v-decorator="[keys.city, { rules: [{
-                required: $props.required === false ? false : true,
-                message: 'Bitte Ort eingeben',
-              }] }]" />
+                v-decorator="[keys.city, {
+                  rules: [{
+                    required: $props.required === false ? false : true,
+                    message: 'Bitte Ort eingeben',
+                  }],
+                  initialValue: initialData('city'),
+                }]" />
             </a-input-group>
           </a-form-item>
         </a-col>
@@ -66,9 +78,12 @@
             <a-input
               ref="country"
               class="custom-input"
-              v-decorator="[keys.country, { rules: [
-                { required: $props.required === false ? false : true, message: 'Bitte Land eingeben' }
-                ]}]"/>
+              v-decorator="[keys.country, {
+                rules: [
+                  { required: $props.required === false ? false : true, message: 'Bitte Land eingeben' }
+                ],
+                initialValue: initialData('country'),
+              }]"/>
           </a-form-item>
         </a-col>
       </a-row>
@@ -85,10 +100,10 @@ interface Input extends Vue {
   focus: () => void;
 }
 
-interface PlzEntry {
+interface ZipEntry {
   text: string;
   value: string;
-  plzData: Plz;
+  zipData: Plz;
 }
 
 export default Vue.extend({
@@ -96,14 +111,23 @@ export default Vue.extend({
   props: [
     'form',
     'required',
+    'data',
     'streetInputKey',
-    'houseNumInputKey',
+    'houseNumberInputKey',
     'zipInputKey',
     'cityInputKey',
     'countryInputKey',
     'inputKeyPrefix',
+    'useInputKeysForData',
   ],
   data() {
+    const keynames = [
+      'street',
+      'houseNumber',
+      'zip',
+      'city',
+      'country',
+    ]
     const prefixed = (val: string) => {
       if (this.$props.inputKeyPrefix) {
         const capitalized = val.charAt(0).toUpperCase() + val.substring(1)
@@ -113,54 +137,59 @@ export default Vue.extend({
       }
     }
 
+    const keys = Object.fromEntries(Object.values(keynames).map(keyname => {
+      return [keyname, this.$props[keyname + 'InputKey'] || prefixed(keyname)]
+    }))
+    const dataKeys = Object.fromEntries(Object.values(keynames).map(keyname => {
+      return [keyname, this.$props.useInputKeysForData ? keys[keyname] : keyname]
+    }))
+
     return {
-      keys: {
-        street: this.$props.streetInputKey || prefixed('street') as string,
-        houseNum: this.$props.houseNumInputKey || prefixed('houseNumber') as string,
-        plz: this.$props.zipInputKey || prefixed('zip') as string,
-        city: this.$props.cityInputKey || prefixed('city') as string,
-        country: this.$props.countryInputKey || prefixed('country') as string,
-      },
-      plzs: [] as PlzEntry[],
-      currentPlzSearch: '' as string,
+      keys,
+      dataKeys,
+      zips: [] as ZipEntry[],
+      currentZipSearch: '' as string,
     }
   },
   methods: {
-    updateByPlzData(plzData: Plz) {
+    initialData(keyname: string) {
+      return this.$props.data ? this.$props.data[this.keys[keyname]] : null
+    },
+    updateByZipData(plzData: Plz) {
       this.$props.form.setFieldsValue({
-        [this.keys.plz]: plzData.fields.plz,
+        [this.keys.zips]: plzData.fields.plz,
         [this.keys.city]: plzData.fields.note,
         [this.keys.country]: 'Deutschland',
       })
     },
-    async handlePlzSearch(value: string) {
-      this.currentPlzSearch = value
+    async handleZipSearch(value: string) {
+      this.currentZipSearch = value
       if (!value || value.length < 2) {
-        this.plzs = []
+        this.zips = []
       } else {
         const result: Plz[] = await getPlzs(value)
-        if (this.currentPlzSearch !== value) {
+        if (this.currentZipSearch !== value) {
           // If a request takes longer, this request might be outdated since the user already changed the input
           return
         }
         if (result.length === 1) {
           setTimeout(() => {
-            this.updateByPlzData(result[0]);
+            this.updateByZipData(result[0]);
             (this.$refs.city as Input).focus()
           }, 0)
-          this.plzs = []
+          this.zips = []
         } else {
-          this.plzs = result.map((elem: Plz) => ({
+          this.zips = result.map((elem: Plz) => ({
             text: `${elem.fields.plz} ${elem.fields.note}`,
             value: elem.fields.plz,
-            plzData: elem,
-          })) as PlzEntry[]
+            zipData: elem,
+          })) as ZipEntry[]
 
           const tweakDropdown = () => {
             // Adjust width of PLZ dropdown
             const ddRootId = document.evaluate(
               'string(./descendant-or-self::*[@aria-controls and contains(@class, "ant-select-selection")]/@aria-controls)',
-              (this.$refs.plz as Vue).$el,
+              (this.$refs.zip as Vue).$el,
               null, XPathResult.STRING_TYPE).stringValue
 
             let ddRoot = document.getElementById(ddRootId)
@@ -176,11 +205,11 @@ export default Vue.extend({
         }
       }
     },
-    handlePlzSelection(value: string) {
-      const plzEntry = this.plzs.find((entry: PlzEntry) => entry.value === value) as PlzEntry
-      if (plzEntry) {
+    handleZipSelection(value: string) {
+      const zipEntry = this.zips.find((entry: ZipEntry) => entry.value === value) as ZipEntry
+      if (zipEntry) {
         setTimeout(() => {
-          this.updateByPlzData(plzEntry.plzData);
+          this.updateByZipData(zipEntry.zipData);
           (this.$refs.city as Input).focus()
         }, 0)
       }

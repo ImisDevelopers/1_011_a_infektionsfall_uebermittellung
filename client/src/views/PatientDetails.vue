@@ -1,5 +1,11 @@
 <template style="margin: auto">
   <div>
+    <ChangePatientStammdatenForm
+      @cancel="() => { showChangePatientStammdatenForm = false }"
+      @create="() => { showChangePatientStammdatenForm = false; this.loadData() }"
+      :visible="showChangePatientStammdatenForm"
+      :patient="patient"
+    />
     <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
       <a-tabs
         defaultActiveKey="1"
@@ -9,6 +15,11 @@
           key="1"
           tab="Stammdaten"
         >
+          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
+            <a-button type="primary" icon="edit" @click="editPatientStammdaten">
+              Stammdaten editieren
+            </a-button>
+          </div>
           <!-- display user data here-->
           <div>
 
@@ -230,6 +241,7 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
+import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -264,6 +276,7 @@ interface State {
   symptoms: string[];
   preIllnesses: string[];
   dateOfBirth: string;
+  showChangePatientStammdatenForm: boolean;
   gender: string;
   tests: LabTest[];
   columnsTests: Partial<Column>[];
@@ -273,6 +286,9 @@ interface State {
 
 export default Vue.extend({
   name: 'PatientDetails',
+  components: {
+    ChangePatientStammdatenForm,
+  },
   computed: {
     ...patientMapper.mapGetters({
       patientById: 'patientById',
@@ -291,6 +307,7 @@ export default Vue.extend({
       testResults: testResults,
       testTypes: testTypes,
       symptoms: [],
+      showChangePatientStammdatenForm: false,
       preIllnesses: [],
       dateOfBirth: '',
       gender: '',
@@ -310,6 +327,7 @@ export default Vue.extend({
       setPatient: 'setPatient',
     }),
     async loadData() {
+      console.log('loading')
       // Load Patient
       const patientId = this.$route.params.id
       this.patient = this.patientById(this.$route.params.id)
@@ -353,6 +371,9 @@ export default Vue.extend({
       } else {
         return 'Unbekannt'
       }
+    },
+    editPatientStammdaten(): void {
+      this.showChangePatientStammdatenForm = true
     },
   },
 })

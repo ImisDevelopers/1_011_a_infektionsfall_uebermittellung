@@ -62,7 +62,7 @@ public class TestDataLoader implements ApplicationRunner {
 			log.info("Inserting patients");
 			for (int i = 0; i < 100; i++) {
 				var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
-				patientService.addPatient(createPersonDTO);
+				patientService.addPatient(createPersonDTO, true);
 			}
 
 			// SETUP OUR WORLD
@@ -127,7 +127,7 @@ public class TestDataLoader implements ApplicationRunner {
 			// PERSON GETS SICK AND GOES TO THE DOCTOR
 			// PERSON GETS REGISTERED
 			var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);
-			var person = patientService.addPatient(createPersonDTO);
+			var person = patientService.addPatient(createPersonDTO, true);
 
 			// THE DOCTOR CREATES AND SEND SAMPLE TO LAB
 			// FIXME: 22.03.20 the naming of the API endpoint is off...

@@ -53,6 +53,7 @@ export interface CreateLabTestDTO {
 export interface CreatePatientDTO {
   city?: string;
   coronaContacts?: boolean;
+  country?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
   dateOfHospitalization?: string;
@@ -67,11 +68,13 @@ export interface CreatePatientDTO {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -89,6 +92,7 @@ export interface CreatePatientDTO {
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -275,6 +279,7 @@ export interface Patient {
   comment?: string;
   confirmed?: boolean;
   coronaContacts?: boolean;
+  country?: string;
   creationTimestamp?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
@@ -291,11 +296,13 @@ export interface Patient {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -313,6 +320,7 @@ export interface Patient {
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -329,6 +337,7 @@ export interface PatientEvent {
   eventType?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -366,6 +375,7 @@ export interface PatientSearchParamsDTO {
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -560,7 +570,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8642/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -801,6 +811,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     updatePatientUsingPut: (patient: Patient, params?: RequestParams) =>
       this.request<Patient, any>(`/api/patients`, "PUT", params, patient, true),
+
+    /**
+     * @tags patient-controller
+     * @name createOrderTestEventUsingPOST
+     * @summary createOrderTestEvent
+     * @request POST:/api/patients/event/order-test
+     * @secure
+     */
+    createOrderTestEventUsingPost: (query?: { patientId?: string }, params?: RequestParams) =>
+      this.request<PatientEvent, any>(
+        `/api/patients/event/order-test${this.addQueryParams(query)}`,
+        "POST",
+        params,
+        null,
+        true,
+      ),
 
     /**
      * @tags patient-controller

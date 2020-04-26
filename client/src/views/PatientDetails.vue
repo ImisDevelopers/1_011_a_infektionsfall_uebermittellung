@@ -19,9 +19,9 @@
             <div style="padding-right: 1rem">
               <a-dropdown>
                 <a-menu slot="overlay" @click="handleActionClick">
-                  <a-menu-item key="ARRANGE_TEST"><a-icon type="user" />Test anordnen</a-menu-item>
+                  <a-menu-item key="ARRANGE_TEST"><a-icon type="user" />Neuen Test anordnen</a-menu-item>
                   <a-menu-item key="SEND_TO_QUARANTINE"><a-icon type="user" />Patienten in Quarantäne schicken</a-menu-item>
-  <!--                <a-menu-item key="HISPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
+  <!--                <a-menu-item key="HOSPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
                 </a-menu>
                 <a-button style="margin-left: 8px" type="primary"> Aktionen <a-icon type="down" /> </a-button>
               </a-dropdown>
@@ -391,11 +391,28 @@ export default Vue.extend({
           this.$router.push({ name: 'send-to-quarantine', params: { patientId: this.patient?.id || '' } })
           break
         case 'ARRANGE_TEST':
-
+          this.scheduleTest()
           break
       }
     },
-
+    scheduleTest() {
+      if (this.patient) {
+        Api.createOrderTestEventUsingPost({
+          patientId: this.patient.id,
+        }).then(() => {
+          this.$notification.success({
+            message: 'Test angefordert',
+            description: '',
+          })
+          this.loadData()
+        }).catch(() => {
+          this.$notification.error({
+            message: 'Es ist ein Fehler aufgetreten',
+            description: '',
+          })
+        })
+      }
+    },
   },
 })
 </script>

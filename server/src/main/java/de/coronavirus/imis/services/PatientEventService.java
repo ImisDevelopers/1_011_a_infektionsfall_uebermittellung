@@ -99,6 +99,19 @@ public class PatientEventService {
 		patientEventRepository.saveAndFlush(event);
 	}
 
+	public PatientEvent createOrderTestEvent (Patient patient) {
+		patient.setPatientStatus(EventType.ORDER_TEST);
+		patientRepository.save(patient);
+		var event = new PatientEvent()
+				.setIllness(Illness.CORONA)
+				.setEventType(EventType.ORDER_TEST)
+				.setEventTimestamp(Timestamp.valueOf(LocalDateTime.now()))
+				.setPatient(patient);
+		patientEventRepository.saveAndFlush(event);
+		return event;
+
+	}
+
 	public List<PatientEvent> getAllForPatient(Patient patient) {
 		return patientEventRepository.findAllByPatient(patient);
 	}

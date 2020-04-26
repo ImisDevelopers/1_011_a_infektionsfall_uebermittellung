@@ -47,15 +47,15 @@
         <a-form-item label="Geschlecht">
           <a-select placeholder="Geschlecht" style="width: 120px" v-model="advancedForm.gender">
             <a-select-option value="">Alle</a-select-option>
-            <a-select-option value="weiblich">
+            <a-select-option value="female">
               <a-icon style="margin-right: 5px" type="woman" />
               Weiblich
             </a-select-option>
-            <a-select-option value="männlich">
+            <a-select-option value="male">
               <a-icon style="margin-right: 5px" type="man" />
               Männlich
             </a-select-option>
-            <a-select-option value="sonstiges">Sonstiges</a-select-option>
+            <a-select-option value="divers">Sonstiges</a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item label="Stadt">
@@ -122,6 +122,9 @@
         class="imis-table-no-pagination"
         rowKey="id"
       >
+        <div slot="gender" slot-scope="gender">
+          {{gender === 'male' ? 'männlich' : gender === 'female' ? 'weiblich' : 'divers'}}
+        </div>
         <div slot="patientStatus" slot-scope="patientStatus">
           <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
           {{eventTypes.find(type => type.id === patientStatus).label}}
@@ -180,6 +183,9 @@ const columnsSchema: Partial<Column>[] = [
     title: 'Geschlecht',
     dataIndex: 'gender',
     key: 'gender',
+    scopedSlots: {
+      customRender: 'gender',
+    },
   },
   {
     title: 'Status',

@@ -3,6 +3,7 @@ package de.coronavirus.imis.api;
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.LabTest;
+import de.coronavirus.imis.services.DeprecatedIncidentService;
 import de.coronavirus.imis.services.LabTestService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,11 @@ import java.util.Set;
 public class LabTestController {
 
 	private final LabTestService service;
+	private final DeprecatedIncidentService incidentService;
 
 	@PostMapping
 	public ResponseEntity<LabTest> createTestForPatient(@RequestBody CreateLabTestDTO createLabTestRequest) {
+		incidentService.addIncident(createLabTestRequest);
 		return ResponseEntity.ok(
 				service.createLabTest(createLabTestRequest)
 		);

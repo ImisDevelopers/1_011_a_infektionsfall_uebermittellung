@@ -6,6 +6,7 @@ import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.repositories.IncidentRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /*
@@ -17,25 +18,27 @@ Next steps: Build an Incident API and migrate the Frontend.
 @Service
 public class DeprecatedIncidentService {
 
+	@Autowired
 	IncidentRepository incidentRepository;
+	@Autowired
 	LaboratoryRepository laboratoryRepository;
+	@Autowired
 	PatientRepository patientRepository;
+	@Autowired
+	RandomService randomService;
 
 
 	public Incident addIncident (CreateLabTestDTO info)
 	{
-		// ToDo Mapstruct
-		var test = new TestIncident()
+		var incident = new TestIncident()
 				.setTestId(info.getTestId())
 				.setComment(info.getComment())
 				.setType(info.getTestType())
 				.setStatus(TestStatus.TEST_SUBMITTED)
-				.setLaboratory(laboratoryRepository.findById(info.getLaboratoryId()).orElseThrow());
-
-		var incident = new TestIncident()
-				.setTestId(info.getTestId())
+				.setLaboratory(laboratoryRepository.findById(info.getLaboratoryId()).orElseThrow(LaboratoryNotFoundException::new))
 				.setEventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
-				.setPatient(patientRepository.findById(info.getPatientId()).orElseThrow());
+				.setPatient(patientRepository.findById(info.getPatientId()).orElseThrow(PatientNotFoundException::new))
+				.setId(randomService.getRandomString(10));
 
 		incidentRepository.saveAndFlush(incident);
 		return incident;

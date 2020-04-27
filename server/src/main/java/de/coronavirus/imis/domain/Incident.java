@@ -27,7 +27,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Accessors(chain = true)
-@Entity
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class Incident {
 
 	@Transient
@@ -52,11 +53,11 @@ public abstract class Incident {
 	private int version;
 
 	@LastModifiedDate
-	private LocalDateTime versionCreated;
+	private LocalDateTime versionTimestamp;
 
 	// https://www.baeldung.com/database-auditing-jpa
 	@ManyToOne
 	@LastModifiedBy
-	private User user;
+	private User versionUser;
 
 }

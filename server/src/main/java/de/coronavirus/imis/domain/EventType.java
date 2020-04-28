@@ -3,6 +3,7 @@ package de.coronavirus.imis.domain;
 public enum EventType {
 	REGISTERED,
 	SUSPECTED,
+	ORDER_TEST,
 	SCHEDULED_FOR_TESTING,
 	TEST_SUBMITTED_IN_PROGRESS,
 	TEST_FINISHED_POSITIVE,

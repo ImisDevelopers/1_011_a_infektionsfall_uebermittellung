@@ -8,6 +8,7 @@
     > <!-- :colon="false" -->
 
       <PatientInput
+        v-if="this.showPatientInput"
         :form="form"
         :validation="['patientId',{ rules: [{
           required: true,
@@ -80,6 +81,14 @@ export default Vue.extend({
       patient: undefined,
     }
   },
+  computed: {
+    givenPatientId(): string | undefined {
+      return this.$route.params.patientId
+    },
+    showPatientInput(): boolean {
+      return !this.givenPatientId
+    },
+  },
   methods: {
     handleSubmit() {
       this.form.validateFields((err: Error, values: any) => { // eslint-disable-next-line
@@ -90,8 +99,9 @@ export default Vue.extend({
           dateUntil: values.dateUntil.format('YYYY-MM-DD'),
           comment: values.comment,
         }
+        const patientId = this.givenPatientId ? this.givenPatientId : values.patientId
 
-        Api.sendToQuarantineUsingPost(values.patientId, request).then(patient => {
+        Api.sendToQuarantineUsingPost(patientId, request).then(patient => {
           this.patient = patient
 
           const notification = {

@@ -1,6 +1,7 @@
 import { InstitutionRole } from '@/models'
 import AccountView from '@/views/Account.vue'
 import AppRoot from '@/views/AppRoot.vue'
+import Dashboard from '@/views/Dashboard.vue'
 import LandingPage from '@/views/LandingPage.vue'
 import Login from '@/views/Login.vue'
 import PatientDetails from '@/views/PatientDetails.vue'
@@ -64,6 +65,18 @@ const ALL_INSTITUTIONS: InstitutionRole[] = [
 ]
 
 const appRoutes: AppRoute[] = [
+  {
+    name: 'dashboard',
+    path: 'dashboard',
+    component: Dashboard,
+    meta: {
+      navigationInfo: {
+        icon: 'dashboard',
+        title: 'Dashboard',
+        authorities: ALL_INSTITUTIONS,
+      },
+    },
+  },
   {
     name: 'account',
     path: 'account',

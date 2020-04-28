@@ -140,9 +140,6 @@ export default Vue.extend({
 
       countPromise.then(count => {
         this.count = count
-        if (this.currentPage === 0) {
-          this.currentPage = 1
-        }
       })
       queryPromise.then((result: Patient[]) => {
         this.unprocessedCases = result.map(patient => {

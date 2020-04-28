@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Deprecated
 public class PatientEventService {
 
 	private final PatientEventRepository patientEventRepository;

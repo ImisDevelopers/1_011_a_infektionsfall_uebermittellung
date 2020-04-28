@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Deprecated
 public interface LabTestRepository extends JpaRepository<LabTest, String> {
 
 	Optional<LabTest> findFirstByTestIdAndLaboratoryId(String testId, String laboratoryId);

@@ -213,7 +213,7 @@ const routes = [
     path: '/app',
     component: AppRoot,
     children: appRoutes,
-    redirect: { name: 'account' },
+    redirect: { name: 'dashboard' },
     meta: {
       requiresAuth: true,
     },

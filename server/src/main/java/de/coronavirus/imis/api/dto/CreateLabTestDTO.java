@@ -4,7 +4,6 @@ import de.coronavirus.imis.domain.TestType;
 import lombok.Data;
 
 @Data
-@Deprecated
 public class CreateLabTestDTO {
 	private String patientId;
 	private String laboratoryId;

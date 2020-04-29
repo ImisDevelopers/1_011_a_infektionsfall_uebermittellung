@@ -19,20 +19,7 @@ import javax.persistence.ManyToOne;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Deprecated
 public class LabTest {
-
-	@Deprecated
-	public LabTest (TestIncident from)
-	{
-		this.id = from.getId();
-		this.testId = from.getTestId();
-		this.laboratory = from.getLaboratory();
-		this.testStatus = from.getStatus();
-		this.testType = from.getType();
-		this.comment = from.getComment();
-		this.report = from.getReport();
-	}
 
 	@Id
 	@GeneratedValue(generator = "uuid2")

@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-@Deprecated
 public class LabTestService {
 
 	private final PatientService patientService;

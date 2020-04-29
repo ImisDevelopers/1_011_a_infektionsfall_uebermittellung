@@ -20,8 +20,8 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 @Getter
 @Setter
 @Accessors(chain = true)
-@EntityListeners(AuditingEntityListener.class) // for LastModifiedBy and LastModifiedDate
-@Audited // For Envers Revisioning
+@EntityListeners(AuditingEntityListener.class)
+@Audited
 @MappedSuperclass
 public abstract class Incident {
 
@@ -44,11 +44,11 @@ public abstract class Incident {
 	private EventType eventType;
 
 	@LastModifiedDate
-	private LocalDateTime timestamp;
+	private LocalDateTime versionTimestamp;
 
 	@Audited(targetAuditMode = NOT_AUDITED)
 	@ManyToOne
 	@LastModifiedBy
-	private User user;
+	private User versionUser;
 
 }

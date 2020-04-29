@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Deprecated
 public class UpdateTestStatusDTO {
 	private TestStatus status;
 	private String comment;

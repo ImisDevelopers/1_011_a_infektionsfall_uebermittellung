@@ -1,12 +1,12 @@
 {
   "institutionType": "DEPARTMENT_OF_HEALTH",
-  "name": "Krankenhaus",
-  "street": "Rhein-Straße",
-  "houseNumber": "13a",
-  "zip": "3454325",
-  "city": "Köln",
-  "email": "clinic@example.de",
+  "name": "Gesundheitsamt",
+  "street": "Hauptstrasse",
+  "houseNumber": "10-12",
+  "zip": "66117",
+  "city": "Saarbrücken",
+  "email": "healthagency@example.de",
   "phoneNumber": "43345",
-  "comment": "this is a comment for the clinic",
+  "comment": "this is a comment for the health agency",
   "id": "asdfa"
 }

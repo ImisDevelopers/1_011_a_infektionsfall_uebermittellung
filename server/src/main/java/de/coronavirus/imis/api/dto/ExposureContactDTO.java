@@ -32,10 +32,20 @@ public abstract class ExposureContactDTO {
   @ApiModel("ExposureContactFromServer")
   @Data
   public static class FromServer {
-    private Patient.IdentityView source;
-    private Patient.IdentityView contact;
+    private ExposureContactDTO.ContactView source;
+    private ExposureContactDTO.ContactView contact;
 
     @JsonUnwrapped
     private ExposureContactDTO.Common common;
   }
+
+	@ApiModel("ExposureContactContactView")
+	@Data
+  public static class ContactView {
+		private String id;
+		private String firstName;
+		private String lastName;
+		private boolean infected;
+		private boolean inQuarantine;
+	}
 }

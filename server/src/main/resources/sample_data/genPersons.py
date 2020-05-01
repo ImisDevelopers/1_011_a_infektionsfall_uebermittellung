@@ -106,7 +106,8 @@ def gen_person():
 		'coronaContacts': bool(getrandbits(1)),
 		'riskAreas': [choice(riscAreas)],
 		'weakenedImmuneSystem': bool(getrandbits(1)),
-		'preIllnesses': [choice(preIllnesses)]
+		'preIllnesses': [choice(preIllnesses)],
+		'nationality': 'deutsch'
 	}
 
 

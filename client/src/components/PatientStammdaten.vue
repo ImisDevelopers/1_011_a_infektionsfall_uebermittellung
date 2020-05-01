@@ -67,7 +67,7 @@
             <a-input
               v-decorator="['nationality', { rules: [
                 { required: true, message: 'Bitte Staatsangehörigkeit angeben' }
-                ]}]"/>
+                ], initialValue: patientInput.nationality || 'deutsch'}]"/>
           </a-form-item>
         </a-col>
       </a-row>

@@ -13,7 +13,7 @@
                 placeholder="Straße"
                 v-decorator="[keys.street, {
                   rules: [{
-                    required: $props.required === false ? false : true,
+                    required: $props.required!==false,
                     message: 'Bitte Straße eingeben',
                   }],
                   initialValue: initialData('street'),
@@ -25,7 +25,7 @@
                 placeholder="HNr."
                 v-decorator="[keys.houseNumber, {
                   rules: [{
-                    required: $props.required === false ? false : true,
+                    required: $props.required!==false,
                     message: 'Bitte Hausnummer eingeben',
                   }],
                   initialValue: initialData('houseNumber'),
@@ -51,7 +51,7 @@
                 }"
                 v-decorator="[keys.zip, {
                   rules: [{
-                    required: $props.required === false ? false : true,
+                    required: $props.required!==false,
                     message: 'Bitte PLZ eingeben',
                   }],
                   initialValue: initialData('zip'),
@@ -63,7 +63,7 @@
                 placeholder="Ort"
                 v-decorator="[keys.city, {
                   rules: [{
-                    required: $props.required === false ? false : true,
+                    required: $props.required!==false,
                     message: 'Bitte Ort eingeben',
                   }],
                   initialValue: initialData('city'),
@@ -80,10 +80,10 @@
               class="custom-input"
               v-decorator="[keys.country, {
                 rules: [
-                  { required: $props.required === false ? false : true, message: 'Bitte Land eingeben' }
+                  { required: $props.required!==false, message: 'Bitte Land eingeben' }
                 ],
                 initialValue: initialData('country'),
-              }]"/>
+              }]" />
           </a-form-item>
         </a-col>
       </a-row>
@@ -170,6 +170,9 @@ export default Vue.extend({
         const result: Plz[] = await getPlzs(value)
         if (this.currentZipSearch !== value) {
           // If a request takes longer, this request might be outdated since the user already changed the input
+          return
+        }
+        if (result.length === 0) {
           return
         }
         if (result.length === 1) {

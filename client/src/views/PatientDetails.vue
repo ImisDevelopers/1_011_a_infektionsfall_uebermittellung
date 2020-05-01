@@ -78,12 +78,8 @@
                 >
                   <table>
                     <tr>
-                      <td>Straße:</td>
-                      <td>{{patient.street}}</td>
-                    </tr>
-                    <tr>
-                      <td>Hausnummer:</td>
-                      <td>{{patient.houseNumber}}</td>
+                      <td>Straße/Hausnr.:</td>
+                      <td>{{patient.street}} {{patient.houseNumber}}</td>
                     </tr>
                     <tr>
                       <td>PLZ:</td>

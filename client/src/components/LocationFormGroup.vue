@@ -25,7 +25,6 @@
                 placeholder="HNr."
                 v-decorator="[keys.houseNumber, {
                   rules: [{
-                    required: $props.required === false ? false : true,
                     message: 'Bitte Hausnummer eingeben',
                   }],
                   initialValue: initialData('houseNumber'),

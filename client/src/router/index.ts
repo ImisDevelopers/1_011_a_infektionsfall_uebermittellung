@@ -78,18 +78,6 @@ const appRoutes: AppRoute[] = [
     },
   },
   {
-    name: 'account',
-    path: 'account',
-    component: AccountView,
-    meta: {
-      navigationInfo: {
-        icon: 'user',
-        title: 'Account',
-        authorities: ALL_INSTITUTIONS,
-      },
-    },
-  },
-  {
     name: 'register-patient',
     path: 'register-patient',
     component: RegisterPatient,
@@ -177,6 +165,18 @@ const appRoutes: AppRoute[] = [
     name: 'patient-detail',
     path: 'patient/:id',
     component: PatientDetails,
+  },
+  {
+    name: 'account',
+    path: 'account',
+    component: AccountView,
+    meta: {
+      navigationInfo: {
+        icon: 'user',
+        title: 'Benutzerkonto',
+        authorities: ALL_INSTITUTIONS,
+      },
+    },
   },
   {
     path: '*',

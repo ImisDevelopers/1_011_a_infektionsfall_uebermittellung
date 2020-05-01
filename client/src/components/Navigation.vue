@@ -28,7 +28,7 @@
       >
         <a-icon type="logout" />
         <span class="nav-text">
-          Logout
+          Abmelden
         </span>
       </a-menu-item>
     </a-menu>

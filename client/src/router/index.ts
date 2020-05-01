@@ -11,9 +11,9 @@ import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
 import RegisterPatient from '@/views/RegisterPatient.vue'
 import RegisterTest from '@/views/RegisterTest.vue'
+import SendToQuarantine from '@/views/SendToQuarantine.vue'
 import SubmitTestResult from '@/views/SubmitTestResult.vue'
 import TestList from '@/views/TestList.vue'
-import SendToQuarantine from '@/views/SendToQuarantine.vue'
 import Vue from 'vue'
 import VueRouter, { Route, RouteConfig } from 'vue-router'
 
@@ -51,6 +51,7 @@ export interface AppRoute extends RouteConfig {
       icon: string;
       title: string;
       authorities: InstitutionRole[];
+      showInSidenav: boolean;
     };
   };
 }
@@ -74,6 +75,7 @@ const appRoutes: AppRoute[] = [
         icon: 'dashboard',
         title: 'Dashboard',
         authorities: ALL_INSTITUTIONS,
+        showInSidenav: true,
       },
     },
   },
@@ -86,6 +88,7 @@ const appRoutes: AppRoute[] = [
         icon: 'user-add',
         title: 'Patient Registrieren',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -98,6 +101,7 @@ const appRoutes: AppRoute[] = [
         icon: 'deployment-unit',
         title: 'Probe Zuordnen',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -110,6 +114,7 @@ const appRoutes: AppRoute[] = [
         icon: 'experiment',
         title: 'Testresultat Zuordnen',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -122,6 +127,7 @@ const appRoutes: AppRoute[] = [
         icon: 'unordered-list',
         title: 'Alle Tests',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -134,6 +140,7 @@ const appRoutes: AppRoute[] = [
         icon: 'team',
         title: 'Alle Patienten',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -146,6 +153,7 @@ const appRoutes: AppRoute[] = [
         icon: 'safety',
         title: 'In Quarantäne senden',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH'],
+        showInSidenav: true,
       },
     },
   },
@@ -158,6 +166,7 @@ const appRoutes: AppRoute[] = [
         icon: 'stock',
         title: 'Statistiken',
         authorities: ALL_INSTITUTIONS,
+        showInSidenav: true,
       },
     },
   },
@@ -175,6 +184,7 @@ const appRoutes: AppRoute[] = [
         icon: 'user',
         title: 'Benutzerkonto',
         authorities: ALL_INSTITUTIONS,
+        showInSidenav: false,
       },
     },
   },
@@ -225,7 +235,7 @@ const routes = [
 ]
 
 export const navigationRoutes = appRoutes
-  .filter(r => !r.path.includes('*') && r.meta?.navigationInfo)
+  .filter(r => !r.path.includes('*') && r.meta?.navigationInfo?.showInSidenav)
 
 const router = new VueRouter({
   mode: 'history',

@@ -235,6 +235,71 @@
             </a-timeline>
           </a-card>
         </a-tab-pane>
+        <a-tab-pane
+          forceRender
+          key="3"
+          tab="Kontaktpersonen">
+          <!-- exposed contacts -->
+          <a-card>
+            <div slot="extra">
+              <a-button
+                icon="plus"
+                @click="addExposureContact">
+                Hinzufügen
+              </a-button>
+            </div>
+
+            <a-table
+              :columns="columnsExposureContacts"
+              :dataSource="exposureContacts"
+              class="imis-table-no-pagination"
+              :rowKey="contact => contact.contact.id"
+              :loading="exposureContactsLoading"
+              :customRow="contact => ({
+                on: { dblclick: () => showExposureContact(contact.id) }
+              })">
+              <template slot="dateOfContact" slot-scope="contact">
+                {{ moment(contact.dateOfContact).format('DD.MM.YYYY') }}
+              </template>
+              <template slot="infectionState" slot-scope="contact">
+                <span v-if="contact.contact.infected"
+                  style="color: red;">
+                  Infiziert
+                </span>
+                <span v-else>
+                  Unbekannt
+                </span>
+              </template>
+              <template slot="quarantineState" slot-scope="contact">
+                <span v-if="contact.contact.inQuarantine">
+                  In Quarantäne
+                </span>
+                <span v-else
+                  :style="`color: ${contact.contact.infected ? 'red' : 'unset'};`">
+                  Keine Quarantäne
+                </span>
+              </template>
+              <template slot="actions" slot-scope="contact">
+                <a-button ghost
+                  icon="close"
+                  type="danger"
+                  title="Entfernen"
+                  @click="removeExposureContact(contact.id)"/>
+              </template>
+            </a-table>
+          </a-card>
+          <a-modal title="Kontaktperson bearbeiten"
+            ref="exposureContactModal"
+            :visible="!!exposureContactInEditing"
+            @ok="persistExposureContact()
+              .then((success) => { if (success) exposureContactInEditing = null })"
+            @cancel="exposureContactInEditing = null">
+            <a-form :form="exposureContactForm" :selfUpdate="true">
+              <EditExposureContact
+                :disableOriginatorPatient="true"/>
+            </a-form>
+          </a-modal>
+        </a-tab-pane>
       </a-tabs>
     </div>
   </div>
@@ -242,9 +307,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import moment from 'moment'
+import moment, { Moment } from 'moment'
 import Api from '@/api'
-import { LabTest, Patient, Timestamp } from '@/api/SwaggerApi'
+import { LabTest, Patient, Timestamp, ExposureContactFromServer } from '@/api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
 import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
 import { SYMPTOMS } from '@/models/symptoms'
@@ -252,6 +317,8 @@ import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
 import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
+import EditExposureContact from '@/components/EditExposureContact.vue'
+import { map } from '@/util/mapping'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -279,8 +346,55 @@ const columnsTests: Partial<Column>[] = [
   },
 ]
 
+const columnsExposureContacts: Partial<Column>[] = [
+  {
+    title: 'Nachname',
+    key: 'lastName',
+    dataIndex: 'contact.lastName',
+  },
+  {
+    title: 'Vorname',
+    key: 'firstName',
+    dataIndex: 'contact.firstName',
+  },
+  {
+    title: 'Datum des Kontakts',
+    key: 'dateOfContact',
+    scopedSlots: {
+      customRender: 'dateOfContact',
+    },
+  },
+  {
+    title: 'Infektionsstatus',
+    key: 'infected',
+    scopedSlots: {
+      customRender: 'infectionState',
+    },
+  },
+  {
+    title: 'Quarantänestatus',
+    key: 'quarantine',
+    scopedSlots: {
+      customRender: 'quarantineState',
+    },
+  },
+  {
+    title: 'Aktionen',
+    key: 'actions',
+    width: '70pt',
+    align: 'center',
+    scopedSlots: {
+      customRender: 'actions',
+    },
+  },
+]
+
 interface State {
   patient: undefined | Patient;
+  exposureContacts: ExposureContactFromServer[];
+  exposureContactsLoading: boolean;
+  exposureContactForm: any;
+  exposureContactInEditing: any;
   patientStatus: EventTypeItem | undefined;
   eventTypes: any[];
   symptoms: string[];
@@ -290,6 +404,7 @@ interface State {
   gender: string;
   tests: LabTest[];
   columnsTests: Partial<Column>[];
+  columnsExposureContacts: Partial<Column>[];
   testResults: TestResultType[];
   testTypes: TestTypeItem[];
 }
@@ -298,6 +413,7 @@ export default Vue.extend({
   name: 'PatientDetails',
   components: {
     ChangePatientStammdatenForm,
+    EditExposureContact,
   },
   computed: {
     ...patientMapper.mapGetters({
@@ -307,11 +423,20 @@ export default Vue.extend({
 
   async created() {
     this.loadData()
+    this.exposureContactForm = this.$form.createForm(
+      this.$refs.exposureContactModal as Vue, {
+        name: 'exposure-contact',
+      },
+    )
   },
 
   data(): State {
     return {
       patient: undefined,
+      exposureContacts: [],
+      exposureContactsLoading: false,
+      exposureContactForm: undefined,
+      exposureContactInEditing: null,
       patientStatus: undefined,
       eventTypes: eventTypes,
       testResults: testResults,
@@ -323,6 +448,7 @@ export default Vue.extend({
       gender: '',
       tests: [],
       columnsTests,
+      columnsExposureContacts,
     }
   },
 
@@ -337,7 +463,8 @@ export default Vue.extend({
       setPatient: 'setPatient',
     }),
     async loadData() {
-      console.log('loading')
+      this.exposureContactsLoading = true
+
       // Load Patient
       const patientId = this.$route.params.id
       this.patient = this.patientById(this.$route.params.id)
@@ -363,6 +490,10 @@ export default Vue.extend({
 
       // Tests
       this.tests = await Api.getLabTestForPatientUsingGet(patientId)
+
+      // Retrieve exposure contacts data
+      this.exposureContacts = await Api.getExposureContactsForPatientUsingGet(patientId)
+      this.exposureContactsLoading = false
     },
     timelineColor(eventType: any) {
       switch (eventType) {
@@ -413,6 +544,62 @@ export default Vue.extend({
         })
       }
     },
+    addExposureContact() {
+      const patientId = this.patient?.id
+
+      this.exposureContactInEditing = {}
+
+      Vue.nextTick(() => {
+        this.exposureContactForm.resetFields()
+        this.exposureContactForm.setFieldsValue({
+          source: this.patient,
+        })
+      })
+    },
+    showExposureContact(contactId: number) {
+      const contact = this.exposureContacts.find((contact: any) => contact.id === contactId)
+
+      this.exposureContactInEditing = contact
+
+      Vue.nextTick(() => {
+        this.exposureContactForm.setFieldsValue(map(contact as {[x: string]: any}, {
+          // source: patient => patient.id,
+          // contact: patient => patient.id,
+          dateOfContact: moment,
+        }))
+      })
+    },
+    persistExposureContact(): Promise<boolean> {
+      const stringFromMoment = (value: Moment): string => value.format('YYYY-MM-DD')
+
+      return new Promise((resolve: () => void) => {
+        this.exposureContactForm.validateFields(async(err: Error[], values: {[x: string]: any}) => {
+          if (err) {
+            resolve(false)
+            return
+          }
+
+          // Convert values to transport format
+          values = map(values, {
+            id: parseInt,
+            dateOfContact: stringFromMoment,
+          })
+
+          if (values.id) {
+            Object.assign(this.exposureContactInEditing, await Api.updateExposureContactUsingPut(values))
+          } else {
+            this.exposureContacts.push(await Api.createExposureContactUsingPost(values))
+          }
+
+          resolve(true)
+        })
+      })
+    },
+    async removeExposureContact(contactId: number) {
+      await Api.removeExposureContactUsingDelete(contactId)
+      this.exposureContacts = this.exposureContacts.filter(contact => contact.id !== contactId)
+    },
+    moment,
   },
 })
 </script>

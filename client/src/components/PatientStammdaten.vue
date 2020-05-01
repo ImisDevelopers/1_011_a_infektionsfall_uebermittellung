@@ -53,10 +53,12 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <DateInput :decorator="['dateOfBirth', { rules: [{
-                        required: true,
-                        message: 'Bitte Geburtsdatum eingeben',
-                      }], initialValue: initialDateOfBirth}]" label="Geburtsdatum" />
+          <a-form-item label="Geburtsdatum">
+            <DateInput v-decorator="['dateOfBirth', { rules: [{
+                          required: true,
+                          message: 'Bitte Geburtsdatum eingeben',
+                        }], initialValue: initialDateOfBirth}]" />
+          </a-form-item>
         </a-col>
       </a-row>
 
@@ -85,9 +87,10 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <DateInput :decorator="['dateOfDeath', {initialValue: initialDateOfDeath}]"
-                     :disabled="!showDateOfDeath"
-                     label="Todesdatum" />
+          <a-form-item label="Todesdatum">
+            <DateInput v-decorator="['dateOfDeath', {initialValue: initialDateOfDeath}]"
+                       :disabled="!showDateOfDeath" />
+          </a-form-item>
         </a-col>
       </a-row>
 

@@ -17,14 +17,14 @@
         label="Labor"
       />
 
-      <PatientInput
-        :form="form"
-        :validation="['patientId',{ rules: [{
-          required: true,
-          message: 'Bitte geben Sie die Patienten-ID ein.'
-        }]}]"
-        label="Patienten-ID"
-      />
+      <a-form-item label="Patienten-ID">
+        <PatientInput
+          v-decorator="['patientId',{ rules: [{
+            required: true,
+            message: 'Bitte geben Sie die Patienten-ID ein.'
+          }]}]"
+        />
+      </a-form-item>
 
       <!-- Test ID -->
       <a-form-item label="Test-ID">

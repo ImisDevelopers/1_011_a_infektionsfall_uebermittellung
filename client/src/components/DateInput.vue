@@ -1,21 +1,19 @@
 <template>
-  <a-form-item :label="label">
-    <a-date-picker
-      :format="$props.dateFormat"
-      :open="dateOfBirthPickerOpen"
-      @focus="datePickerFocused"
-      @openChange="openChanged"
-      placeholder="TT.MM.JJJJ (z.B. 28.02.1986)"
-      style="width: 100%"
-      v-bind="$attrs"
-      v-decorator="decorator"
-    />
-  </a-form-item>
+  <a-date-picker
+    v-bind="$attrs"
+    v-on="$listeners"
+    :value="value"
+    :format="format"
+    :open="open || dateOfBirthPickerOpen"
+    @focus="datePickerFocused"
+    @openChange="openChanged"
+    :placeholder="placeholder"
+  />
 </template>
 
 <script lang="ts">
-
 import Vue from 'vue'
+import { FormControlMixin } from '@/util/forms'
 
 /**
  * Input that supports 1d and 2d Barcodes
@@ -30,11 +28,17 @@ export interface State {
 }
 
 export default Vue.extend({
-  name: 'LaboratoryInput',
+  name: 'DateInput',
+  mixins: [FormControlMixin],
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
   props: {
-    label: { default: undefined },
-    dateFormat: { default: 'DD.MM.YYYY' },
-    decorator: { default: undefined },
+    value: { default: undefined },
+    open: { default: false },
+    placeholder: { default: 'TT.MM.JJJJ (z.B. 28.02.1986)' },
+    format: { default: 'DD.MM.YYYY' },
   },
   data(): State {
     return {

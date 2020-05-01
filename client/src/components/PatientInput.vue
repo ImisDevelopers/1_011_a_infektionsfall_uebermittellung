@@ -19,6 +19,7 @@ import Api from '@/api'
 import Vue from 'vue'
 import { Select } from 'ant-design-vue'
 import { Patient } from '@/api/SwaggerApi'
+import { FormControlMixin } from '@/util/forms'
 
 declare interface State {
   result: {
@@ -37,6 +38,7 @@ declare interface State {
 export default Vue.extend({
   name: 'PatientInput',
   inheritAttrs: false,
+  mixins: [FormControlMixin],
   props: {
     placeholder: { default: 'Suche über ID, Name, Telefon, Mail' },
     value: { default: '' },
@@ -44,6 +46,21 @@ export default Vue.extend({
   model: {
     prop: 'value',
     event: 'change',
+  },
+  fieldValueConvert(val: any): string {
+    const hasProp = (obj: Record<string, any>, prop: string): boolean =>
+      Object.prototype.hasOwnProperty.call(obj, prop)
+
+    if (typeof val === 'object' && hasProp(val, 'id')) {
+      const patient = val as Patient
+      this.result = [{
+        label: this.getPatientLabel(patient),
+        value: patient.id,
+      }]
+      return patient.id
+    } else {
+      return val
+    }
   },
   inject: {
     FormContext: { default: () => ({}) },
@@ -57,23 +74,6 @@ export default Vue.extend({
     externListeners() {
       const { search, ...listeners } = this.$listeners
       return listeners
-    },
-  },
-  watch: {
-    value() {
-      const hasProp = (obj: Record<string, any>, prop: string): boolean => Object.prototype.hasOwnProperty.call(obj, prop)
-      if (typeof this.value === 'object' && hasProp(this.value, 'id')) {
-        const patient = this.value as Patient
-        this.result = [{
-          label: this.getPatientLabel(patient),
-          value: patient.id,
-        }]
-        if (hasProp(this.$attrs, 'data-__meta')) {
-          this.FormContext.form.setFieldsValue({
-            [this.$attrs['data-__meta'].name]: patient.id,
-          })
-        }
-      }
     },
   },
   methods: {

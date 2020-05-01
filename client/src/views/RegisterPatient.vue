@@ -46,8 +46,8 @@
     <!-- Patient Registration Form -->
     <div>
       <h3>
-        Registrieren Sie hier neue Patienten in IMIS. Bitte füllen Sie den Bogen
-        vollständig aus.
+        Registrieren Sie hier neue Patienten in IMIS. Bitte erfassen Sie die nachfolgenden Daten so vollständig wie
+        möglich. Pflichtangaben sind mit "*" markiert.
       </h3>
 
       <a-form
@@ -61,7 +61,7 @@
         <a-collapse defaultActiveKey="1">
 
           <!-- Stammdaten -->
-          <a-collapse-panel header="Allgemeines" key="1">
+          <a-collapse-panel header="Personendaten" key="1">
             <PatientStammdaten :form="form" :show-death="true" :show-stay="true" @gender="genderSelected" />
           </a-collapse-panel>
 

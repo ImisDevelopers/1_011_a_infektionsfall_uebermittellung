@@ -1,5 +1,15 @@
 import { Option } from '@/models/index'
 
+export const ADDITIONAL_PRE_ILLNESSES: Option[] = [
+  {
+    label: 'Akutes schweres Atemsyndrom (ARDS)',
+    value: 'ARDS',
+  }, {
+    label: 'Beatmungspflichtige Atemwegserkrankung',
+    value: 'RESPIRATORY_DISEASE',
+  },
+]
+
 export const PRE_ILLNESSES: Option[] = [
   {
     label: 'Chronische Lungenerkrankung (z.B. COPD)',

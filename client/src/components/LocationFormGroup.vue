@@ -81,7 +81,7 @@
                 rules: [
                   { required: $props.required!==false, message: 'Bitte Land eingeben' }
                 ],
-                initialValue: initialData('country'),
+                initialValue: initialCountry(),
               }]" />
           </a-form-item>
         </a-col>
@@ -151,6 +151,14 @@ export default Vue.extend({
     }
   },
   methods: {
+    initialCountry() {
+      const initialData = this.initialData('country')
+      if (!initialData && this.required) {
+        return 'Deutschland'
+      } else {
+        return initialData
+      }
+    },
     initialData(keyname: string) {
       return this.$props.data ? this.$props.data[this.keys[keyname]] : null
     },

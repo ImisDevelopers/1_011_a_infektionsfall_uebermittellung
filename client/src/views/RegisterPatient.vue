@@ -97,6 +97,7 @@
           <!-- Symptoms -->
           <a-collapse-panel header="Symptome" key="3">
             <a-form-item
+              class="no-double-colon-form-field"
               :label="'Welche Symptome weist ' + patientString + ' auf?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
@@ -105,11 +106,6 @@
                 <a-row>
                   <a-col :key="symptom.value" :span="symptom.value === 'LOSS_OF_SENSE_OF_SMELL_TASTE' ? 12 : 6"
                          v-for="symptom in SYMPTOMS">
-                    <a-checkbox :value="symptom.value">
-                      {{symptom.label}}
-                    </a-checkbox>
-                  </a-col>
-                  <a-col :key="symptom.value" :span="12" v-for="symptom in ADDITIONAL_SYMPTOMS">
                     <a-checkbox :value="symptom.value">
                       {{symptom.label}}
                     </a-checkbox>
@@ -129,6 +125,7 @@
             <a-form-item
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
+              class="no-double-colon-form-field"
               label="Wie schnell sind die Beschwerden aufgetreten?"
             >
               <a-radio-group
@@ -144,6 +141,7 @@
             </a-form-item>
 
             <a-form-item
+              class="no-double-colon-form-field"
               :label="'Hat ' + patientString + ' für diese Saison eine Influenza-Impfung erhalten?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
@@ -156,15 +154,21 @@
           </a-collapse-panel>
 
           <!-- Risks / Pre Illnesses -->
-          <a-collapse-panel header="Vorerkrankungen" key="4">
+          <a-collapse-panel header="Vorerkrankungen und Risikofaktoren" key="4">
             <a-form-item
-              :label="'Welche Vererkrankungen und Risikofaktoren liegen vor?'"
+              class="no-double-colon-form-field"
+              :label="'Welche Vorerkrankungen und Risikofaktoren liegen vor?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
               <a-checkbox-group v-decorator="['preIllnesses']">
                 <a-row>
                   <a-col :key="preIllness.value" :span="8" v-for="preIllness in PRE_ILLNESSES">
+                    <a-checkbox :value="preIllness.value">
+                      {{preIllness.label}}
+                    </a-checkbox>
+                  </a-col>
+                  <a-col :key="preIllness.value" :span="12" v-for="preIllness in ADDITIONAL_PRE_ILLNESSES">
                     <a-checkbox :value="preIllness.value">
                       {{preIllness.label}}
                     </a-checkbox>
@@ -183,7 +187,28 @@
           </a-collapse-panel>
 
           <!-- Krankheitsdetails -->
-          <a-collapse-panel header="Krankheit" key="5">
+          <a-collapse-panel header="Krankheit und Zustand" key="5">
+            <a-row>
+              <a-col :span="12">
+                <a-form-item label="Art der Erkrankung">
+                  <a-select
+                    placeholder="Bitte wählen..."
+                    v-decorator="['illnessType', { rules: [{
+                      required: true,
+                      message: 'Bitte Erkrankung wählen',
+                    }], initialValue: 'CORONA'}]"
+                  >
+                    <a-select-option value="CORONA">COVID-19</a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-col>
+              <a-col :span="12">
+                <DateInput :decorator="['dateOfIllness', { rules: [{
+                      required: true,
+                      message: 'Bitte Erkrankungsdatum wählen',
+                    }], initialValue: today}]" label="Erkrankungsdatum" />
+              </a-col>
+            </a-row>
             <a-row>
               <a-col :span="4" />
               <a-col :span="20">
@@ -201,27 +226,6 @@
                     </a-checkbox>
                   </a-form-item>
                 </div>
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="12">
-                <a-form-item label="Art der Erkrankung">
-                  <a-select
-                    placeholder="Bitte wählen..."
-                    v-decorator="['illnessType', { rules: [{
-                      required: true,
-                      message: 'Bitte Erkrankung wählen',
-                    }], initialValue: 'CORONA'}]"
-                  >
-                    <a-select-option value="CORONA">SARS-nCoV-2</a-select-option>
-                  </a-select>
-                </a-form-item>
-              </a-col>
-              <a-col :span="12">
-                <DateInput :decorator="['dateOfIllness', { rules: [{
-                      required: true,
-                      message: 'Bitte Erkrankungsdatum wählen',
-                    }], initialValue: today}]" label="Erkrankungsdatum" />
               </a-col>
             </a-row>
             <a-row>
@@ -291,9 +295,9 @@ import Vue from 'vue'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
 import PatientStammdaten from '@/components/PatientStammdaten.vue'
-import { ADDITIONAL_SYMPTOMS, SYMPTOMS } from '@/models/symptoms'
+import { SYMPTOMS } from '@/models/symptoms'
 import { Option } from '@/models'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import { ADDITIONAL_PRE_ILLNESSES, PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 import DateInput from '@/components/DateInput.vue'
 import { EventTypeItem, eventTypes } from '@/models/event-types'
@@ -305,7 +309,7 @@ interface State {
   createdPatient: Patient | null;
   SYMPTOMS: Option[];
   PRE_ILLNESSES: Option[];
-  ADDITIONAL_SYMPTOMS: Option[];
+  ADDITIONAL_PRE_ILLNESSES: Option[];
   EXPOSURES_INTERNAL: Option[];
   EXPOSURE_LOCATIONS: Option[];
   EVENT_TYPES: EventTypeItem[];
@@ -330,7 +334,7 @@ export default Vue.extend({
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdPatient: null,
       SYMPTOMS,
-      ADDITIONAL_SYMPTOMS,
+      ADDITIONAL_PRE_ILLNESSES,
       PRE_ILLNESSES,
       EXPOSURES_INTERNAL,
       EXPOSURE_LOCATIONS,
@@ -468,7 +472,18 @@ export default Vue.extend({
 })
 </script>
 
+<style lang="scss">
+  .no-double-colon-form-field {
+    .ant-form-item-label {
+      label::after {
+        display: none;
+      }
+    }
+  }
+</style>
+
 <style scoped lang="scss">
+
   .wrapper {
     text-align: left;
     padding: 2%;

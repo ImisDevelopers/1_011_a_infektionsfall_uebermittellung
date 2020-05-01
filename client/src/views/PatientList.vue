@@ -258,7 +258,7 @@ export default Vue.extend({
         id: '',
       },
       content: '',
-      count: 0,
+      count: 10,
       currentPage: 1, // Starts at 1
       columnsSchema,
       data: [], // data
@@ -407,14 +407,6 @@ export default Vue.extend({
 })
 
 </script>
-
-<style scoped lang="scss">
-  .imis-table-no-pagination {
-    .ant-table-pagination {
-      display: none;
-    }
-  }
-</style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">

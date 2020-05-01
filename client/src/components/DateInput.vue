@@ -1,13 +1,13 @@
 <template>
   <a-form-item :label="label">
     <a-date-picker
-      :disabled="disabled"
-      :format="dateFormat"
+      :format="$props.dateFormat"
       :open="dateOfBirthPickerOpen"
       @focus="datePickerFocused"
       @openChange="openChanged"
       placeholder="TT.MM.JJJJ (z.B. 28.02.1986)"
       style="width: 100%"
+      v-bind="$attrs"
       v-decorator="decorator"
     />
   </a-form-item>
@@ -27,17 +27,19 @@ import Vue from 'vue'
 export interface State {
   dateOfBirthPickerOpen: boolean;
   wasJustFocused: boolean;
-  dateFormat: string;
 }
 
 export default Vue.extend({
   name: 'LaboratoryInput',
-  props: ['decorator', 'label', 'disabled'],
+  props: {
+    label: { default: undefined },
+    dateFormat: { default: 'DD.MM.YYYY' },
+    decorator: { default: undefined },
+  },
   data(): State {
     return {
       dateOfBirthPickerOpen: false,
       wasJustFocused: false,
-      dateFormat: 'DD.MM.YYYY',
     }
   },
   methods: {

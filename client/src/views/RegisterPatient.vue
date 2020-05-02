@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper register-patient-container">
 
     <!-- Patient successfully created info -->
     <div style="display: flex; justify-content: center; text-align: center" v-if="createdPatient">
@@ -189,7 +189,8 @@
           <!-- Krankheitsdetails -->
           <a-collapse-panel header="Krankheit und Zustand" key="5">
             <a-row>
-              <a-col :span="12">
+              <a-col :span="1"></a-col>
+              <a-col :span="8">
                 <a-form-item label="Art der Erkrankung">
                   <a-select
                     placeholder="Bitte wählen..."
@@ -202,16 +203,38 @@
                   </a-select>
                 </a-form-item>
               </a-col>
-              <a-col :span="12">
+              <a-col :span="8">
+                <a-form-item label="Fallstatus">
+                  <a-select placeholder="Status" style="width: 250px" v-decorator="['patientStatus', { rules: [{
+                      required: true,
+                      message: 'Bitte Status wählen',
+                    }], initialValue: 'SUSPECTED' }]">
+                    <a-select-option :key="eventType.id" v-for="eventType in EVENT_TYPES">
+                      <a-icon :type="eventType.icon" style="margin-right: 5px" />
+                      {{eventType.label}}
+                    </a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row>
+              <a-col :span="1"></a-col>
+              <a-col :span="8">
                 <DateInput :decorator="['dateOfIllness', { rules: [{
                       required: true,
                       message: 'Bitte Erkrankungsdatum wählen',
                     }], initialValue: today}]" label="Erkrankungsdatum" />
               </a-col>
+              <a-col :span="8">
+                <DateInput :decorator="['dateOfReporting', { rules: [{
+                      required: true,
+                      message: 'Bitte Meldedatum wählen'
+                    }], initialValue: today}]" label="Meldedatum" />
+              </a-col>
             </a-row>
             <a-row>
-              <a-col :span="4" />
-              <a-col :span="20">
+              <a-col :span="2" />
+              <a-col :span="16">
                 <div style="display: flex; align-items: center;">
                   <a-form-item :wrapperCol="{span: 24}">
                     <a-checkbox :checked="!disableHospitalization" @change="hospitalizationChanged">
@@ -226,49 +249,6 @@
                     </a-checkbox>
                   </a-form-item>
                 </div>
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="12">
-                <a-form-item label="Fallstatus">
-                  <a-select placeholder="Status" style="width: 250px" v-decorator="['patientStatus', { rules: [{
-                      required: true,
-                      message: 'Bitte Status wählen',
-                    }], initialValue: 'SUSPECTED' }]">
-                    <a-select-option :key="eventType.id" v-for="eventType in EVENT_TYPES">
-                      <a-icon :type="eventType.icon" style="margin-right: 5px" />
-                      {{eventType.label}}
-                    </a-select-option>
-                  </a-select>
-                </a-form-item>
-              </a-col>
-              <a-col :span="12">
-                <DateInput :decorator="['dateOfReporting', { rules: [{
-                      required: true,
-                      message: 'Bitte Meldedatum wählen'
-                    }], initialValue: today}]" label="Meldedatum" />
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="4" />
-              <a-col :span="20">
-                <a-checkbox :checked="!disableTestOrder" @change="testOrderedChanged"
-                            style="margin-bottom: 15px">
-                  Wurde eine Erregerdiagnostik beauftragt?
-                </a-checkbox>
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="12">
-                <LaboratoryInput
-                  :disabled="disableTestOrder"
-                  :form="form"
-                  :validation="['laboratoryId']"
-                  label="Labor"
-                />
-              </a-col>
-              <a-col :span="12">
-                <DateInput :decorator="['dateOfTest']" :disabled="disableTestOrder" label="Datum der Probenentnahme" />
               </a-col>
             </a-row>
           </a-collapse-panel>
@@ -302,7 +282,6 @@ import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 import DateInput from '@/components/DateInput.vue'
 import { EventTypeItem, eventTypes } from '@/models/event-types'
 import moment, { Moment } from 'moment'
-import LaboratoryInput from '@/components/LaboratoryInput.vue'
 
 interface State {
   form: any;
@@ -318,7 +297,6 @@ interface State {
   patientString: string;
   disableExposureLocation: boolean;
   disableHospitalization: boolean;
-  disableTestOrder: boolean;
   today: Moment;
 }
 
@@ -326,7 +304,6 @@ export default Vue.extend({
   components: {
     PatientStammdaten,
     DateInput,
-    LaboratoryInput,
   },
   name: 'RegisterPatient',
   data(): State {
@@ -344,7 +321,6 @@ export default Vue.extend({
       showOtherPreIllnesses: false,
       patientString: 'der Patient',
       disableHospitalization: true,
-      disableTestOrder: true,
       today: moment(),
     }
   },
@@ -391,14 +367,6 @@ export default Vue.extend({
           request.onIntensiveCareUnit = null
         }
 
-        if (!this.disableTestOrder) {
-          request.laboratoryId = values.laboratoryId
-          request.dateOfTest = values.dateOfTest.format('YYYY-MM-DD')
-        } else {
-          request.laboratoryId = null
-          request.dateOfTest = null
-        }
-
         if (values.exposures) {
           request.riskAreas = request.riskAreas.concat(values.exposures)
         }
@@ -421,7 +389,6 @@ export default Vue.extend({
           this.form.resetFields()
           this.createdPatient = patient as any
           this.disableExposureLocation = true
-          this.disableTestOrder = true
           this.disableHospitalization = true
           this.showOtherSymptoms = false
           this.form.setFieldsValue({
@@ -464,22 +431,30 @@ export default Vue.extend({
       const target = event.target as any
       this.disableHospitalization = !target.checked
     },
-    testOrderedChanged(event: Event) {
-      const target = event.target as any
-      this.disableTestOrder = !target.checked
-    },
   },
 })
 </script>
 
 <style lang="scss">
-  .no-double-colon-form-field {
-    .ant-form-item-label {
-      label::after {
-        display: none;
+
+  .register-patient-container {
+    .no-double-colon-form-field {
+      .ant-form-item-label {
+        label::after {
+          display: none;
+        }
       }
     }
+
+    .ant-row.ant-form-item {
+      margin-bottom: 8px;
+    }
+
+    .ant-divider {
+      margin: 1rem 0;
+    }
   }
+
 </style>
 
 <style scoped lang="scss">

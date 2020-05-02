@@ -10,9 +10,7 @@
           <div style="display: flex; align-items: center; margin: 10px">
             <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" type="check-circle" />
             <h3 style="margin-bottom: 0">
-              <span v-if="createdPatient.gender === 'female'">Patientin</span>
-              <span v-else>Patient</span>
-              wurde erfolgreich registriert.
+              Patient/in wurde erfolgreich registriert.
             </h3>
           </div>
           <table style="border-collapse: separate; border-spacing: 15px 5px; text-align: left">
@@ -30,7 +28,7 @@
           <div style="margin-top: 15px">
             <router-link :to="{ name: 'patient-detail', params: { id: createdPatient.id } }" style="margin-right: 15px">
               <a-button type="primary">
-                Patienten einsehen
+                Patienten/in einsehen
               </a-button>
             </router-link>
             <router-link :to="{ name: 'register-test' }">
@@ -62,7 +60,7 @@
 
           <!-- Stammdaten -->
           <a-collapse-panel header="Personendaten" key="1">
-            <PatientStammdaten :form="form" :show-death="true" :show-stay="true" @gender="genderSelected" />
+            <PatientStammdaten :form="form" :show-death="true" :show-stay="true" />
           </a-collapse-panel>
 
           <!-- Infektionskette / Exposure -->
@@ -98,7 +96,7 @@
           <a-collapse-panel header="Symptome" key="3">
             <a-form-item
               class="no-double-colon-form-field"
-              :label="'Welche Symptome weist ' + patientString + ' auf?'"
+              :label="'Welche Symptome weist der Patient/die Patientin auf?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
@@ -142,7 +140,7 @@
 
             <a-form-item
               class="no-double-colon-form-field"
-              :label="'Hat ' + patientString + ' für diese Saison eine Influenza-Impfung erhalten?'"
+              :label="'Hat der Patient/die Patientin für diese Saison eine Influenza-Impfung erhalten?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
@@ -238,7 +236,7 @@
                 <div style="display: flex; align-items: center;">
                   <a-form-item :wrapperCol="{span: 24}">
                     <a-checkbox :checked="!disableHospitalization" @change="hospitalizationChanged">
-                      {{patientString}} ist hospitalisiert
+                      Patient/in ist hospitalisiert
                     </a-checkbox>
                   </a-form-item>
                   <DateInput :decorator="['dateOfHospitalization']" :disabled="disableHospitalization" label="Seit"
@@ -294,7 +292,6 @@ interface State {
   EVENT_TYPES: EventTypeItem[];
   showOtherSymptoms: boolean;
   showOtherPreIllnesses: boolean;
-  patientString: string;
   disableExposureLocation: boolean;
   disableHospitalization: boolean;
   today: Moment;
@@ -319,7 +316,6 @@ export default Vue.extend({
       disableExposureLocation: true,
       showOtherSymptoms: false,
       showOtherPreIllnesses: false,
-      patientString: 'der Patient',
       disableHospitalization: true,
       today: moment(),
     }
@@ -383,8 +379,6 @@ export default Vue.extend({
           )
         }
 
-        const patientString = request.gender === 'female' ? 'Patientin' : 'Patient'
-
         Api.addPatientUsingPost(request).then((patient: Patient) => {
           this.form.resetFields()
           this.createdPatient = patient as any
@@ -398,16 +392,16 @@ export default Vue.extend({
             preIllnessesActivated: undefined,
           })
           const notification = {
-            message: patientString + ' registriert.',
-            description: 'Der ' + patientString + ' wurde erfolgreich registriert.',
+            message: 'Patient/in registriert.',
+            description: 'Patient/in wurde erfolgreich registriert.',
           }
           this.$notification.success(notification)
           window.scrollTo(0, 0)
         }).catch((error: Error) => {
           console.error(error)
           const notification = {
-            message: patientString + ' nicht registriert.',
-            description: 'Der ' + patientString + ' konnte nicht registriert werden.',
+            message: 'Patient/in nicht registriert.',
+            description: 'Patient/in konnte nicht registriert werden.',
           }
           this.$notification.error(notification)
         })
@@ -420,9 +414,6 @@ export default Vue.extend({
     preIllnessesChanged(event: Event) {
       const target = event.target as any
       this.showOtherPreIllnesses = target.checked
-    },
-    genderSelected(gender: string) {
-      this.patientString = gender === 'female' ? 'die Patientin' : 'der Patient'
     },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')

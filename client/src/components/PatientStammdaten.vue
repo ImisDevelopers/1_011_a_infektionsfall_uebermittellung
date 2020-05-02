@@ -157,7 +157,6 @@
                 ref="occupation"
                 :disabled="disableOccupation"
                 v-decorator="['occupation', { rules: [{
-                        required: true,
                         message: 'Bitte Beruf eingeben',
                       }], initialValue: patientInput.occupation}]"
               />

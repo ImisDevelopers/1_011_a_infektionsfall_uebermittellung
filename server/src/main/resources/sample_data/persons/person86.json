@@ -5,11 +5,12 @@
   "email": "p.schulz@gmx.de",
   "firstName": "Petra",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 27,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "E907932366",
   "lastName": "Schulz",
+  "nationality": "deutsch",
   "phoneNumber": "21890910275",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

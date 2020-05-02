@@ -10,8 +10,15 @@
         <h1 style="margin: 0">Selbstregistrierung</h1>
       </div>
       <div style="margin-top: 35px">
-        <a-steps :current="current" style="margin-bottom: 20px">
-          <a-step :key="item.title" :title="item.title" v-for="item in steps" />
+        <a-steps id="scroll-anchor" style="margin-bottom: 20px"
+                 class="steps"
+                 @change="(current) => this.current = current"
+                 :current="current"
+                 :direction="stepsDirection">
+
+          <a-step :key="item.title" :title="item.title"
+                  :disabled="maxCurrent < steps.findIndex((elem) => elem.title === item.title)"
+                  v-for="item in steps" />
         </a-steps>
 
         <a-form :form="form" :labelCol="{ sm: { span: 8 },  xs: { span: 24 }  }"
@@ -64,9 +71,19 @@
             <h2>Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?</h2>
             <div style="display: flex">
               <span style="flex: 1 1 auto" />
-              <a-form-item>
-                <a-checkbox-group :options="preIllnesses" class="checkbox-group" v-decorator="['preIllnesses']" />
-              </a-form-item>
+              <div>
+                <a-form-item style="margin-bottom: 0">
+                  <a-checkbox-group :options="preIllnesses" class="checkbox-group" v-decorator="['preIllnesses']" />
+                </a-form-item>
+                <div class="checkbox-group">
+                  <div style="display: flex; align-items: center; align-self: stretch">
+                    <a-checkbox @change="preIllnessesChanged">Andere:</a-checkbox>
+                    <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
+                      <a-input :disabled="!showOtherPreIllnesses" v-decorator="['preIllnessesOther']" />
+                    </a-form-item>
+                  </div>
+                </div>
+              </div>
               <span style="flex: 1 1 auto" />
             </div>
           </div>
@@ -90,6 +107,7 @@
               </a-form-item>
               <a-button
                 @click="save"
+                :disabled="!checked"
                 block
                 shape="round"
                 size="large"
@@ -160,6 +178,7 @@ import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
 interface State {
   form: any;
   current: number;
+  maxCurrent: number;
   createdPatient: Patient | null;
   symptoms: Option[];
   exposures: Option[];
@@ -170,6 +189,7 @@ interface State {
   showCheckedError: boolean;
   disableExposureLocation: boolean;
   showOtherSymptoms: boolean;
+  showOtherPreIllnesses: boolean;
 }
 
 export default Vue.extend({
@@ -181,6 +201,7 @@ export default Vue.extend({
     return {
       form: this.$form.createForm(this),
       current: 0,
+      maxCurrent: 0,
       createdPatient: null,
       symptoms: SYMPTOMS,
       preIllnesses: PRE_ILLNESSES,
@@ -188,7 +209,7 @@ export default Vue.extend({
       exposureLocation: EXPOSURE_LOCATIONS,
       steps: [
         {
-          title: 'Symtpome',
+          title: 'Symptome',
         },
         {
           title: 'Exposition',
@@ -205,21 +226,48 @@ export default Vue.extend({
       showCheckedError: false,
       disableExposureLocation: true,
       showOtherSymptoms: false,
+      showOtherPreIllnesses: false,
     }
   },
+  computed: {
+    stepsDirection() {
+      return window.innerWidth >= 700 ? 'horizontal' : 'vertical'
+    },
+  },
   methods: {
+    scrollToFormTop() {
+      (document.getElementById('scroll-anchor') as Element).scrollIntoView()
+
+      /*
+      // Scroll all parents
+      let currElem: Element = scrollAnchor
+      let container: Element | null = currElem.parentElement
+      while (container) {
+        container.scrollTo({ top: currElem.offsetY })
+
+        currElem = container
+        container = currElem.parentElement
+      }
+      */
+    },
     prev() {
       this.current--
+      this.scrollToFormTop()
     },
     next() {
+      const showNext = () => {
+        this.current++
+        this.maxCurrent = Math.max(this.current, this.maxCurrent)
+        this.scrollToFormTop()
+      }
       if (this.current === 3) {
         this.form.validateFields((err: any) => {
           if (!err) {
-            this.current++
+            showNext()
           }
         })
       } else {
-        this.current++
+        showNext()
       }
     },
     save() {
@@ -254,6 +302,9 @@ export default Vue.extend({
         if (this.showOtherSymptoms) {
           request.symptoms.push(values.symptomsOther)
         }
+        if (this.showOtherPreIllnesses) {
+          request.preIllnesses.push(values.preIllnessesOther)
+        }
         if (values.exposureLocation) {
           request.riskAreas = request.riskAreas.concat(
             values.exposureLocation
@@ -264,7 +315,7 @@ export default Vue.extend({
           .find((illness: string) => illness === 'IMMUNODEFICIENCY')
         request.coronaContacts = !!request.riskAreas // TODO: DO we need this field?
           .find((riskArea: string) => riskArea.startsWith('CONTACT_WITH_CORONA'))
-        Api.api.addPatientUsingPost(request).then(patient => {
+        Api.addPatientUsingPost(request).then(patient => {
           this.createdPatient = patient
         })
       })
@@ -282,6 +333,10 @@ export default Vue.extend({
       const target = event.target as any
       this.showOtherSymptoms = target.checked
     },
+    preIllnessesChanged(event: Event) {
+      const target = event.target as any
+      this.showOtherPreIllnesses = target.checked
+    },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')
     },
@@ -289,7 +344,12 @@ export default Vue.extend({
 })
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Bitte kein scoped hinzufügen. -->
+<!-- Damit die Usability (v.a. auf Touchgeräten) besser ist, -->
+<!-- greifen wir etwas in das antdesign css ein. -->
+<!-- Mit scoped geht das nicht. Wir verhindern, dass andere Views betroffen -->
+<!-- sind, indem wir die Eingriffe nur unterhalb der -->
+<!-- Klasse public-register-outer-container gelten lassen. -->
 <style lang="scss">
 
   .public-register-outer-container {
@@ -355,6 +415,12 @@ export default Vue.extend({
       border: none;
     }
 
+    .steps {
+      text-align: start;
+      padding-left: 10pt;
+      padding-right: 10pt;
+    }
+
     h1 {
       font-weight: bold;
       color: rgba(0, 0, 0, 0.78);
@@ -377,14 +443,6 @@ export default Vue.extend({
     @media (max-width: 750px) {
       h1 {
         display: none;
-      }
-      .ant-steps {
-        min-height: 1px;
-        display: flex;
-        justify-content: space-around;
-      }
-      .ant-steps-item-content {
-        display: none !important;
       }
       .card {
         max-width: 95%;

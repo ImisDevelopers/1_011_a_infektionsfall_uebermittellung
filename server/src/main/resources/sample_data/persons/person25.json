@@ -5,11 +5,12 @@
   "email": "m.wagner@t-online.de",
   "firstName": "Marie",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 14,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "Q488457631",
   "lastName": "Wagner",
+  "nationality": "deutsch",
   "phoneNumber": "74106807154",
   "preIllnesses": [
     ""

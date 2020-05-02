@@ -5,11 +5,12 @@
   "email": "j.klein@gmx.de",
   "firstName": "Jan",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 91,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "X436730606",
   "lastName": "Klein",
+  "nationality": "deutsch",
   "phoneNumber": "0260647468",
   "preIllnesses": [
     ""

@@ -10,29 +10,55 @@
       />
       <span class="imis-title" style="color: white">IMIS</span>
     </div>
-    <a-form :form="form" style="flex: 0 1 700px; display: flex; align-items: center">
-      <a-button @click="searchPatient" class="search-link" html-type="submit" type="link">
-        <a-icon type="search" />
-      </a-button>
-      <PatientInput
-        :form="form"
-        :validation="['patientQuery']"
-        @select="selectPatient"
-        style="margin: 0; flex: 1 1 auto"
-      />
-    </a-form>
-    <div style="flex: 0 0 auto">
-      <a-icon
-        style="color: #aaa; padding: 1.5rem"
-        type="user"
-      />
-      <span class="username" style="margin-right: 15px; color: rgba(255, 255, 255, 0.87)">{{username}}</span>
-    </div>
+    <span style="flex: 1 1 auto"></span>
+    <a-popover v-model="visible" :title="username" trigger="click" class="header-user-popover">
+      <a slot="content">
+
+        <a-menu
+          mode="inline"
+          :selectedKeys="[]"
+          style="border: none">
+          <a-menu-item
+            key="1"
+            class="menu-item"
+          >
+            <router-link
+              :to="{ name: 'account' }"
+              @click.native="routeClicked"
+            >
+              <a-icon type="user" />
+              <span class="nav-text">Benutzerkonto</span>
+            </router-link>
+          </a-menu-item>
+          <a-menu-item
+            @click="onLogout"
+            class="menu-item"
+          >
+            <a-icon type="logout" />
+            <span class="nav-text">
+          Abmelden
+        </span>
+          </a-menu-item>
+        </a-menu>
+
+      </a>
+      <div style="flex: 0 0 auto; cursor: pointer">
+        <a-icon
+          style="color: #aaa; padding: 1.5rem"
+          type="user"
+        />
+        <span class="username" style="margin-right: 15px; color: rgba(255, 255, 255, 0.87)">{{username}}</span>
+        <a-icon
+          style="color: #aaa; padding: 1.5rem 1.5rem 1.5rem 0"
+          type="caret-down"
+        />
+      </div>
+    </a-popover>
+
   </a-layout-header>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import PatientInput from '@/components/PatientInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
 
 export default Vue.extend({
@@ -45,27 +71,27 @@ export default Vue.extend({
       return this.user?.username || ''
     },
   },
-  components: {
-    PatientInput,
-  },
   data() {
     return {
       form: this.$form.createForm(this),
+      visible: false,
     }
   },
   methods: {
-    searchPatient() {
-      this.$router.push({ name: 'patient-list', query: { query: this.form.getFieldValue('patientQuery') } }).catch(err => {
-        console.warn('Received ' + err.name + ' while navigating to patient list')
-      })
+    ...authMapper.mapActions({
+      logout: 'logout',
+    }),
+    onLogout() {
+      this.logout()
     },
-    selectPatient(patientId: string) {
-      this.$router.push({ name: 'patient-detail', params: { id: patientId } })
+    routeClicked() {
+      this.visible = false
+      this.$emit('route-clicked')
     },
   },
 })
 </script>
-<style scoped>
+<style scoped lang="scss">
   @media (max-width: 700px) {
     .imis-title {
       display: none;
@@ -78,6 +104,10 @@ export default Vue.extend({
     .username {
       display: none;
     }
+  }
+
+  .menu-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
 </style>

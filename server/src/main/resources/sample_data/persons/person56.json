@@ -5,11 +5,12 @@
   "email": "p.weber@t-online.de",
   "firstName": "Petra",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 71,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "B247141682",
   "lastName": "Weber",
+  "nationality": "deutsch",
   "phoneNumber": "84910912165",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

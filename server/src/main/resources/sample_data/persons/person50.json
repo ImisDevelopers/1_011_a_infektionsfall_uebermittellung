@@ -5,11 +5,12 @@
   "email": "p.lange@t-online.de",
   "firstName": "Petra",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 16,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "E829137330",
   "lastName": "Lange",
+  "nationality": "deutsch",
   "phoneNumber": "658102029107",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

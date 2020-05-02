@@ -5,11 +5,12 @@
   "email": "s.weber@gmx.de",
   "firstName": "Susanne",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 50,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "K747693166",
   "lastName": "Weber",
+  "nationality": "deutsch",
   "phoneNumber": "31079937124",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

@@ -5,11 +5,12 @@
   "email": "j.klein@posteo.de",
   "firstName": "Jana",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 10,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "F938313402",
   "lastName": "Klein",
+  "nationality": "deutsch",
   "phoneNumber": "881076107677",
   "preIllnesses": [
     "Krebserkrankung"

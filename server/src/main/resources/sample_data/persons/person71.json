@@ -5,11 +5,12 @@
   "email": "m.weber@gmx.de",
   "firstName": "Marie",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 51,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "P565906941",
   "lastName": "Weber",
+  "nationality": "deutsch",
   "phoneNumber": "7933410110100",
   "preIllnesses": [
     "Herz-Kreislauf"

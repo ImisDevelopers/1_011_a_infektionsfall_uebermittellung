@@ -5,11 +5,12 @@
   "email": "p.klein@posteo.de",
   "firstName": "Petra",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 40,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "H600871106",
   "lastName": "Klein",
+  "nationality": "deutsch",
   "phoneNumber": "1027677359",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

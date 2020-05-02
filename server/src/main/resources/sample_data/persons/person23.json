@@ -5,11 +5,12 @@
   "email": "f.weber@t-online.de",
   "firstName": "Franz",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 36,
   "insuranceCompany": "IKK Nord",
   "insuranceMembershipNumber": "D684719405",
   "lastName": "Weber",
+  "nationality": "deutsch",
   "phoneNumber": "8120679740",
   "preIllnesses": [
     "Krebserkrankung"

@@ -5,11 +5,12 @@
   "email": "t.schulz@t-online.de",
   "firstName": "Tim",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 37,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "P371993587",
   "lastName": "Schulz",
+  "nationality": "deutsch",
   "phoneNumber": "1021077102217",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

@@ -5,11 +5,12 @@
   "email": "a.mueller@t-online.de",
   "firstName": "Annika",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 15,
   "insuranceCompany": "DAK Gesundheit",
   "insuranceMembershipNumber": "L861863296",
   "lastName": "M\u00fcller",
+  "nationality": "deutsch",
   "phoneNumber": "6814473947",
   "preIllnesses": [
     "Krebserkrankung"

@@ -5,11 +5,12 @@
   "email": "l.schulze@web.de",
   "firstName": "Lisa",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 10,
   "insuranceCompany": "IKK Nord",
   "insuranceMembershipNumber": "V240346956",
   "lastName": "Schulze",
+  "nationality": "deutsch",
   "phoneNumber": "0241038657",
   "preIllnesses": [
     "Krebserkrankung"

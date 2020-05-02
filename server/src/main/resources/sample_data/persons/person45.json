@@ -5,11 +5,12 @@
   "email": "d.klein@gmail.de",
   "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 13,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "N198476695",
   "lastName": "Klein",
+  "nationality": "deutsch",
   "phoneNumber": "62392401075",
   "preIllnesses": [
     ""

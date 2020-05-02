@@ -5,11 +5,12 @@
   "email": "t.schroeder@web.de",
   "firstName": "Tim",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 28,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "W290546084",
   "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
   "phoneNumber": "3784270103",
   "preIllnesses": [
     "Krebserkrankung"

@@ -5,11 +5,12 @@
   "email": "p.peters@web.de",
   "firstName": "Petra",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 28,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "L556881239",
   "lastName": "Peters",
+  "nationality": "deutsch",
   "phoneNumber": "67837107701",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

@@ -5,11 +5,12 @@
   "email": "d.wagner@web.de",
   "firstName": "Daniela",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 10,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "R847508242",
   "lastName": "Wagner",
+  "nationality": "deutsch",
   "phoneNumber": "91086652404",
   "preIllnesses": [
     "Krebserkrankung"

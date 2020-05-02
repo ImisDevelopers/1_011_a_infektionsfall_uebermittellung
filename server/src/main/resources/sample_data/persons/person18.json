@@ -5,11 +5,12 @@
   "email": "p.winter@gmail.de",
   "firstName": "Petra",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 91,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "Z144097647",
   "lastName": "Winter",
+  "nationality": "deutsch",
   "phoneNumber": "12419049106",
   "preIllnesses": [
     "Herz-Kreislauf"

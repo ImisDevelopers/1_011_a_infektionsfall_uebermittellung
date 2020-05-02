@@ -5,11 +5,12 @@
   "email": "j.bauer@gmx.de",
   "firstName": "Jens",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 40,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "Q733701411",
   "lastName": "Bauer",
+  "nationality": "deutsch",
   "phoneNumber": "8675339636",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

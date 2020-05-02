@@ -12,6 +12,7 @@ export type UserRole = Exclude<RegisterUserRequest['userRole'], undefined>;
 export type PatientStatus = 'REGISTERED'
   | 'SUSPECTED'
   | 'SCHEDULED_FOR_TESTING'
+  | 'ORDER_TEST'
   | 'TEST_SUBMITTED_IN_PROGRESS'
   | 'TEST_FINISHED_POSITIVE'
   | 'TEST_FINISHED_NEGATIVE'
@@ -19,7 +20,8 @@ export type PatientStatus = 'REGISTERED'
   | 'TEST_FINISHED_RECOVERED'
   | 'TEST_FINISHED_NOT_RECOVERED'
   | 'PATIENT_DEAD'
-  | 'DOCTORS_VISIT';
+  | 'DOCTORS_VISIT'
+  | 'QUARANTINE_MANDATED';
 export type RiskOccupation = 'NO_RISK_OCCUPATION' | 'FIRE_FIGHTER' | 'DOCTOR' | 'CAREGIVER' | 'NURSE'
 
 export interface Option {

@@ -5,11 +5,12 @@
   "email": "k.schulze@web.de",
   "firstName": "Karl",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 76,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "R833303441",
   "lastName": "Schulze",
+  "nationality": "deutsch",
   "phoneNumber": "64100376137",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

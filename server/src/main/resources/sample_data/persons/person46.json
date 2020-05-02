@@ -5,11 +5,12 @@
   "email": "a.peters@gmail.de",
   "firstName": "Annika",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 10,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "Y409346714",
   "lastName": "Peters",
+  "nationality": "deutsch",
   "phoneNumber": "5220472779",
   "preIllnesses": [
     "Herz-Kreislauf"

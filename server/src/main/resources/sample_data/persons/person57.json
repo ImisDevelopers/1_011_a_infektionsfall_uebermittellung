@@ -5,11 +5,12 @@
   "email": "p.bauer@web.de",
   "firstName": "Petra",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 88,
   "insuranceCompany": "DAK Gesundheit",
   "insuranceMembershipNumber": "B726553348",
   "lastName": "Bauer",
+  "nationality": "deutsch",
   "phoneNumber": "47055101694",
   "preIllnesses": [
     "Herz-Kreislauf"

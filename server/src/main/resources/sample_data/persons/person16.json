@@ -5,11 +5,12 @@
   "email": "d.peters@gmail.de",
   "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 49,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "M735540030",
   "lastName": "Peters",
+  "nationality": "deutsch",
   "phoneNumber": "6889373467",
   "preIllnesses": [
     "Krebserkrankung"

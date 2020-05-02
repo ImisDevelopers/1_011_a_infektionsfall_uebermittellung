@@ -5,11 +5,12 @@
   "email": "j.winkler@posteo.de",
   "firstName": "Jan",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 48,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "P306442077",
   "lastName": "Winkler",
+  "nationality": "deutsch",
   "phoneNumber": "97028385107",
   "preIllnesses": [
     "Herz-Kreislauf"

@@ -5,11 +5,12 @@
   "email": "k.wagner@t-online.de",
   "firstName": "Kai",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 62,
   "insuranceCompany": "IKK Nord",
   "insuranceMembershipNumber": "J888121101",
   "lastName": "Wagner",
+  "nationality": "deutsch",
   "phoneNumber": "10691545226",
   "preIllnesses": [
     "Herz-Kreislauf"

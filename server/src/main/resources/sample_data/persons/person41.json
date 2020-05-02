@@ -5,11 +5,12 @@
   "email": "h.winter@gmx.de",
   "firstName": "Hans",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 56,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "Q179661615",
   "lastName": "Winter",
+  "nationality": "deutsch",
   "phoneNumber": "97109101095105",
   "preIllnesses": [
     "Herz-Kreislauf"

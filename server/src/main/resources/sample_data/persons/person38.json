@@ -5,11 +5,12 @@
   "email": "h.schroeder@gmx.de",
   "firstName": "Hans",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 39,
   "insuranceCompany": "DAK Gesundheit",
   "insuranceMembershipNumber": "C392168202",
   "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
   "phoneNumber": "10018366752",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

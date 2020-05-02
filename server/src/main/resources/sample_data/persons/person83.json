@@ -5,11 +5,12 @@
   "email": "a.winkler@posteo.de",
   "firstName": "Anna",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 48,
   "insuranceCompany": "IKK Nord",
   "insuranceMembershipNumber": "P451424185",
   "lastName": "Winkler",
+  "nationality": "deutsch",
   "phoneNumber": "5310672910410",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

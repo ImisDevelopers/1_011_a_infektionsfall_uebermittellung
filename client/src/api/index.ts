@@ -30,17 +30,17 @@ const baseApiParams: RequestParams = {
 }
 
 const apiWrapper = {
-  api: new Api({
+  apiInstance: new Api({
     baseUrl: baseUrl,
     baseApiParams: baseApiParams,
   }),
 }
 
-function createApiProxy(foo: Api): Api { // Proxy<Foo> is compatible with Foo
+function createApiProxy(foo: Api['api']): Api['api'] { // Proxy<Foo> is compatible with Foo
   const handler = {
-    get: (target: Api, prop: keyof Api, receiver: any) => {
-      if (Api.prototype[prop] !== null) {
-        return apiWrapper.api[prop]
+    get: (target: Api['api'], prop: keyof Api['api'], receiver: any) => {
+      if (apiWrapper.apiInstance.api[prop] !== null) {
+        return apiWrapper.apiInstance.api[prop]
       }
 
       return Reflect.get(target, prop, receiver)
@@ -50,7 +50,7 @@ function createApiProxy(foo: Api): Api { // Proxy<Foo> is compatible with Foo
 }
 
 export function setBearerToken(token: string) {
-  apiWrapper.api = new Api({
+  apiWrapper.apiInstance = new Api({
     baseUrl: baseUrl,
     baseApiParams: {
       ...baseApiParams,
@@ -63,9 +63,9 @@ export function setBearerToken(token: string) {
 }
 
 export function removeBearerToken() {
-  apiWrapper.api = new Api({
+  apiWrapper.apiInstance = new Api({
     baseUrl: baseUrl,
   })
 }
 
-export default createApiProxy(apiWrapper.api)
+export default createApiProxy(apiWrapper.apiInstance.api)

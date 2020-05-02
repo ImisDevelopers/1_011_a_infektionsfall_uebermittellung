@@ -57,7 +57,7 @@
           size="large"
           style="flex:  0 1 300px; margin-left: 20px"
           type="primary"
-        >Zur Sebstregistrierung
+        >Zur Selbstregistrierung
         </a-button>
       </router-link>
       <router-link :to="{ name: 'app' }" style="margin: 10px 0">
@@ -138,8 +138,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'LandingPage',
   data() {
     return {
@@ -150,10 +152,10 @@ export default {
 
     }
   },
-}
+})
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
   .button-container {
     display: flex;

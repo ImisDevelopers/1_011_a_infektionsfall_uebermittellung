@@ -5,11 +5,12 @@
   "email": "k.winter@posteo.de",
   "firstName": "Kai",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 22,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "W235591568",
   "lastName": "Winter",
+  "nationality": "deutsch",
   "phoneNumber": "7498941343",
   "preIllnesses": [
     "Herz-Kreislauf"

@@ -5,11 +5,12 @@
   "email": "a.peters@gmail.de",
   "firstName": "Anna",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 69,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "G121882877",
   "lastName": "Peters",
+  "nationality": "deutsch",
   "phoneNumber": "7556464170",
   "preIllnesses": [
     "Krebserkrankung"

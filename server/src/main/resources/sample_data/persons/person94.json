@@ -5,11 +5,12 @@
   "email": "p.richter@gmx.de",
   "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 51,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "A169226321",
   "lastName": "Richter",
+  "nationality": "deutsch",
   "phoneNumber": "3171210032",
   "preIllnesses": [
     "Herz-Kreislauf"

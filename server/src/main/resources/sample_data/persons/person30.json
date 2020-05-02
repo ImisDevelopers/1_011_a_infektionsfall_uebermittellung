@@ -5,11 +5,12 @@
   "email": "p.klein@gmail.de",
   "firstName": "Petra",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 50,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "T961067882",
   "lastName": "Klein",
+  "nationality": "deutsch",
   "phoneNumber": "7136959440",
   "preIllnesses": [
     "Krebserkrankung"

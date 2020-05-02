@@ -5,11 +5,12 @@
   "email": "t.wagner@gmx.de",
   "firstName": "Tim",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 14,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "M554234434",
   "lastName": "Wagner",
+  "nationality": "deutsch",
   "phoneNumber": "104991102513",
   "preIllnesses": [
     ""

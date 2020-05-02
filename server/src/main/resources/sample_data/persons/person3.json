@@ -5,11 +5,12 @@
   "email": "h.bauer@gmx.de",
   "firstName": "Hans",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 59,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "Y788227492",
   "lastName": "Bauer",
+  "nationality": "deutsch",
   "phoneNumber": "121021069166",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

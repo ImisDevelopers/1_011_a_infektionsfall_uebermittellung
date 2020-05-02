@@ -62,6 +62,6 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

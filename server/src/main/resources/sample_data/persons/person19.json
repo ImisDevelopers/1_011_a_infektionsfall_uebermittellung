@@ -5,11 +5,12 @@
   "email": "d.winkler@posteo.de",
   "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 31,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "A630757561",
   "lastName": "Winkler",
+  "nationality": "deutsch",
   "phoneNumber": "81049877694",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

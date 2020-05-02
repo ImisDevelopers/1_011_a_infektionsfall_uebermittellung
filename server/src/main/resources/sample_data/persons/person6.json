@@ -5,11 +5,12 @@
   "email": "j.schulze@gmx.de",
   "firstName": "Jens",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 12,
   "insuranceCompany": "IKK Nord",
   "insuranceMembershipNumber": "E552991960",
   "lastName": "Schulze",
+  "nationality": "deutsch",
   "phoneNumber": "1106566701010",
   "preIllnesses": [
     "Krebserkrankung"

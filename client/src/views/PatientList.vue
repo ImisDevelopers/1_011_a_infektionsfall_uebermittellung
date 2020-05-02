@@ -47,15 +47,15 @@
         <a-form-item label="Geschlecht">
           <a-select placeholder="Geschlecht" style="width: 120px" v-model="advancedForm.gender">
             <a-select-option value="">Alle</a-select-option>
-            <a-select-option value="weiblich">
+            <a-select-option value="female">
               <a-icon style="margin-right: 5px" type="woman" />
               Weiblich
             </a-select-option>
-            <a-select-option value="männlich">
+            <a-select-option value="male">
               <a-icon style="margin-right: 5px" type="man" />
               Männlich
             </a-select-option>
-            <a-select-option value="sonstiges">Sonstiges</a-select-option>
+            <a-select-option value="divers">Sonstiges</a-select-option>
           </a-select>
         </a-form-item>
         <a-form-item label="Stadt">
@@ -122,6 +122,9 @@
         class="imis-table-no-pagination"
         rowKey="id"
       >
+        <div slot="gender" slot-scope="gender">
+          {{gender === 'male' ? 'männlich' : gender === 'female' ? 'weiblich' : 'divers'}}
+        </div>
         <div slot="patientStatus" slot-scope="patientStatus">
           <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
           {{eventTypes.find(type => type.id === patientStatus).label}}
@@ -180,6 +183,9 @@ const columnsSchema: Partial<Column>[] = [
     title: 'Geschlecht',
     dataIndex: 'gender',
     key: 'gender',
+    scopedSlots: {
+      customRender: 'gender',
+    },
   },
   {
     title: 'Status',
@@ -252,7 +258,7 @@ export default Vue.extend({
         id: '',
       },
       content: '',
-      count: 0,
+      count: 10,
       currentPage: 1, // Starts at 1
       columnsSchema,
       data: [], // data
@@ -296,17 +302,17 @@ export default Vue.extend({
       if (this.showAdvancedSearch) {
         const formValues = { ...this.form, ...this.advancedForm }
 
-        if (formValues.patientStatus) {
+        if (!formValues.patientStatus) {
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
 
-        countPromise = Api.api.countQueryPatientsUsingPost(formValues)
-        queryPromise = Api.api.queryPatientsUsingPost(formValues)
+        countPromise = Api.countQueryPatientsUsingPost(formValues)
+        queryPromise = Api.queryPatientsUsingPost(formValues)
       } else {
         const query = this.form.query
-        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
-        queryPromise = Api.api.queryPatientsSimpleUsingPost({ ...this.form })
+        countPromise = Api.countQueryPatientsSimpleUsingGet({ query })
+        queryPromise = Api.queryPatientsSimpleUsingPost({ ...this.form })
       }
 
       countPromise.then(count => {
@@ -332,15 +338,15 @@ export default Vue.extend({
       let formValues: any
       if (this.showAdvancedSearch) {
         formValues = { ...this.form, ...this.advancedForm }
-        if (formValues.patientStatus) {
+        if (!formValues.patientStatus) {
           // Backend fails on empty string
-          formValues.patientStatus = undefined
+          delete formValues.patientStatus
         }
-        countPromise = Api.api.countQueryPatientsUsingPost(formValues)
+        countPromise = Api.countQueryPatientsUsingPost(formValues)
       } else {
         formValues = { ...this.form }
         const query = this.form.query
-        countPromise = Api.api.countQueryPatientsSimpleUsingGet({ query })
+        countPromise = Api.countQueryPatientsSimpleUsingGet({ query })
       }
 
       countPromise.then(count => {
@@ -350,9 +356,9 @@ export default Vue.extend({
 
         let queryPromise: Promise<Patient[]>
         if (this.showAdvancedSearch) {
-          queryPromise = Api.api.queryPatientsUsingPost(formValues)
+          queryPromise = Api.queryPatientsUsingPost(formValues)
         } else {
-          queryPromise = Api.api.queryPatientsSimpleUsingPost(formValues)
+          queryPromise = Api.queryPatientsSimpleUsingPost(formValues)
         }
 
         queryPromise.then(result => {
@@ -402,16 +408,8 @@ export default Vue.extend({
 
 </script>
 
-<style lang="scss">
-  .imis-table-no-pagination {
-    .ant-table-pagination {
-      display: none;
-    }
-  }
-</style>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 
   h3 {
     margin: 20px 10px;

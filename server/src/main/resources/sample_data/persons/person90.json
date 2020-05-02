@@ -5,11 +5,12 @@
   "email": "d.bauer@gmail.de",
   "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 65,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "F137971349",
   "lastName": "Bauer",
+  "nationality": "deutsch",
   "phoneNumber": "92524191013",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

@@ -5,11 +5,12 @@
   "email": "l.weber@web.de",
   "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 97,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "M671855941",
   "lastName": "Weber",
+  "nationality": "deutsch",
   "phoneNumber": "4036900343",
   "preIllnesses": [
     "Herz-Kreislauf"

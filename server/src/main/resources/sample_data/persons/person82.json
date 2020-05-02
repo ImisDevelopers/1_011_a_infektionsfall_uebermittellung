@@ -5,11 +5,12 @@
   "email": "l.winkler@posteo.de",
   "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 54,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "I740871060",
   "lastName": "Winkler",
+  "nationality": "deutsch",
   "phoneNumber": "4517133959",
   "preIllnesses": [
     ""

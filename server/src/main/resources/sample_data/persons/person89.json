@@ -5,11 +5,12 @@
   "email": "f.mueller@gmx.de",
   "firstName": "Franz",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 63,
   "insuranceCompany": "DAK Gesundheit",
   "insuranceMembershipNumber": "D928316966",
   "lastName": "M\u00fcller",
+  "nationality": "deutsch",
   "phoneNumber": "904101021020",
   "preIllnesses": [
     ""

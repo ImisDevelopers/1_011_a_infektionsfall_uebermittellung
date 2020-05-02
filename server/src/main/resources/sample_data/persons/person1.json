@@ -5,11 +5,12 @@
   "email": "d.richter@t-online.de",
   "firstName": "Daniel",
   "fluImmunization": false,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 46,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "D508157429",
   "lastName": "Richter",
+  "nationality": "deutsch",
   "phoneNumber": "40781618410",
   "preIllnesses": [
     ""

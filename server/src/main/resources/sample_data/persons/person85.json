@@ -5,11 +5,12 @@
   "email": "l.wagner@posteo.de",
   "firstName": "Lisa",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 75,
   "insuranceCompany": "IKK Nord",
   "insuranceMembershipNumber": "W241921987",
   "lastName": "Wagner",
+  "nationality": "deutsch",
   "phoneNumber": "43610110371",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

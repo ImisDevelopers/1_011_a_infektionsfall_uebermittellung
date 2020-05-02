@@ -1,7 +1,7 @@
 {
   "lastName": "Doe",
   "firstName": "Joe",
-  "gender": "weiblich",
+  "gender": "male",
   "dateOfBirth": "2012-02-22",
   "email": "email@address.com",
   "phoneNumber": "telefonNr",

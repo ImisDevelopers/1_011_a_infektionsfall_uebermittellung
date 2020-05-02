@@ -5,11 +5,12 @@
   "email": "a.lange@gmail.de",
   "firstName": "Anna",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 70,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "V367930513",
   "lastName": "Lange",
+  "nationality": "deutsch",
   "phoneNumber": "8680112805",
   "preIllnesses": [
     "Krebserkrankung"

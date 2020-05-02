@@ -53,6 +53,7 @@ export interface CreateLabTestDTO {
 export interface CreatePatientDTO {
   city?: string;
   coronaContacts?: boolean;
+  country?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
   dateOfHospitalization?: string;
@@ -67,11 +68,13 @@ export interface CreatePatientDTO {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -80,13 +83,16 @@ export interface CreatePatientDTO {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
+  quarantineUntil?: string;
   riskAreas?: string[];
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -273,6 +279,7 @@ export interface Patient {
   comment?: string;
   confirmed?: boolean;
   coronaContacts?: boolean;
+  country?: string;
   creationTimestamp?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
@@ -289,11 +296,13 @@ export interface Patient {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -302,13 +311,16 @@ export interface Patient {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
+  quarantineUntil?: string;
   riskAreas?: string[];
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -325,6 +337,7 @@ export interface PatientEvent {
   eventType?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -333,7 +346,8 @@ export interface PatientEvent {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   id?: string;
   illness?: "CORONA";
   labTest?: LabTest;
@@ -361,6 +375,7 @@ export interface PatientSearchParamsDTO {
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -369,7 +384,8 @@ export interface PatientSearchParamsDTO {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   street?: string;
   zip?: string;
@@ -395,6 +411,11 @@ export interface RequestLabTestDTO {
   doctorId?: string;
   laboratoryId?: string;
   patientId?: string;
+}
+
+export interface SendToQuarantineDTO {
+  comment?: string;
+  dateUntil?: string;
 }
 
 export interface Timestamp {
@@ -471,7 +492,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8642/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -494,36 +515,18 @@ class HttpClient<SecurityDataType> {
     this.securityData = data;
   };
 
-  public request = <T = any, E = any>(
-    path: string,
-    method: string,
-    { secure, ...params }: RequestParams = {},
-    body?: any,
-    secureByDefault?: boolean,
-  ): Promise<T> =>
-    fetch(`${this.baseUrl}${path}`, {
-      // @ts-ignore
-      ...this.mergeRequestOptions(params, (secureByDefault || secure) && this.securityWorker(this.securityData)),
-      method,
-      body: body ? JSON.stringify(body) : null,
-    }).then(async (response) => {
-      const data = await this.safeParseResponse<T, E>(response);
-      if (!response.ok) throw data;
-      return data;
-    });
-
-  protected addQueryParams(query?: RequestQueryParamsType): string {
-    const fixedQuery = query || {};
-    const keys = Object.keys(fixedQuery).filter((key) => "undefined" !== typeof fixedQuery[key]);
-    return keys.length === 0 ? "" : `?${keys.map((key) => this.addQueryParam(fixedQuery, key)).join("&")}`;
-  }
-
   private addQueryParam(query: RequestQueryParamsType, key: string) {
     return (
       encodeURIComponent(key) +
       "=" +
       encodeURIComponent(Array.isArray(query[key]) ? (query[key] as any).join(",") : query[key])
     );
+  }
+
+  protected addQueryParams(query?: RequestQueryParamsType): string {
+    const fixedQuery = query || {};
+    const keys = Object.keys(fixedQuery).filter((key) => "undefined" !== typeof fixedQuery[key]);
+    return keys.length === 0 ? "" : `?${keys.map((key) => this.addQueryParam(fixedQuery, key)).join("&")}`;
   }
 
   private mergeRequestOptions(params: RequestParams, securityParams?: RequestParams): RequestParams {
@@ -544,12 +547,30 @@ class HttpClient<SecurityDataType> {
       .json()
       .then((data) => data)
       .catch((e) => response.text);
+
+  public request = <T = any, E = any>(
+    path: string,
+    method: string,
+    { secure, ...params }: RequestParams = {},
+    body?: any,
+    secureByDefault?: boolean,
+  ): Promise<T> =>
+    fetch(`${this.baseUrl}${path}`, {
+      // @ts-ignore
+      ...this.mergeRequestOptions(params, (secureByDefault || secure) && this.securityWorker(this.securityData)),
+      method,
+      body: body ? JSON.stringify(body) : null,
+    }).then(async (response) => {
+      const data = await this.safeParseResponse<T, E>(response);
+      if (!response.ok) throw data;
+      return data;
+    });
 }
 
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8642/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -783,6 +804,42 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags patient-controller
+     * @name updatePatientUsingPUT
+     * @summary updatePatient
+     * @request PUT:/api/patients
+     * @secure
+     */
+    updatePatientUsingPut: (patient: Patient, params?: RequestParams) =>
+      this.request<Patient, any>(`/api/patients`, "PUT", params, patient, true),
+
+    /**
+     * @tags patient-controller
+     * @name createOrderTestEventUsingPOST
+     * @summary createOrderTestEvent
+     * @request POST:/api/patients/event/order-test
+     * @secure
+     */
+    createOrderTestEventUsingPost: (query?: { patientId?: string }, params?: RequestParams) =>
+      this.request<PatientEvent, any>(
+        `/api/patients/event/order-test${this.addQueryParams(query)}`,
+        "POST",
+        params,
+        null,
+        true,
+      ),
+
+    /**
+     * @tags patient-controller
+     * @name sendToQuarantineUsingPOST
+     * @summary sendToQuarantine
+     * @request POST:/api/patients/quarantine/{id}
+     * @secure
+     */
+    sendToQuarantineUsingPost: (id: string, statusDTO: SendToQuarantineDTO, params?: RequestParams) =>
+      this.request<Patient, any>(`/api/patients/quarantine/${id}`, "POST", params, statusDTO, true),
+
+    /**
+     * @tags patient-controller
      * @name queryPatientsUsingPOST
      * @summary queryPatients
      * @request POST:/api/patients/query
@@ -889,70 +946,72 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingGET
-     * @summary errorHtml
+     * @name errorUsingGET
+     * @summary error
      * @request GET:/error
      * @secure
      */
-    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
+    errorUsingGet: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingHEAD
-     * @summary errorHtml
+     * @name errorUsingHEAD
+     * @summary error
      * @request HEAD:/error
      * @secure
      */
-    errorHtmlUsingHead: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
+    errorUsingHead: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPOST
-     * @summary errorHtml
+     * @name errorUsingPOST
+     * @summary error
      * @request POST:/error
      * @secure
      */
-    errorHtmlUsingPost: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
+    errorUsingPost: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPUT
-     * @summary errorHtml
+     * @name errorUsingPUT
+     * @summary error
      * @request PUT:/error
      * @secure
      */
-    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
+    errorUsingPut: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingDELETE
-     * @summary errorHtml
+     * @name errorUsingDELETE
+     * @summary error
      * @request DELETE:/error
      * @secure
      */
-    errorHtmlUsingDelete: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
+    errorUsingDelete: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingOPTIONS
-     * @summary errorHtml
+     * @name errorUsingOPTIONS
+     * @summary error
      * @request OPTIONS:/error
      * @secure
      */
-    errorHtmlUsingOptions: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
+    errorUsingOptions: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPATCH
-     * @summary errorHtml
+     * @name errorUsingPATCH
+     * @summary error
      * @request PATCH:/error
      * @secure
      */
-    errorHtmlUsingPatch: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
+    errorUsingPatch: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
   };
 }

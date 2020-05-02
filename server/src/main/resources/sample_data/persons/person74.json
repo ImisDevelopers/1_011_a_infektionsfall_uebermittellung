@@ -5,11 +5,12 @@
   "email": "l.schulz@t-online.de",
   "firstName": "Lisa",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 76,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "S659531734",
   "lastName": "Schulz",
+  "nationality": "deutsch",
   "phoneNumber": "8886101581",
   "preIllnesses": [
     "Herz-Kreislauf"

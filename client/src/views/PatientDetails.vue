@@ -1,5 +1,11 @@
 <template style="margin: auto">
   <div>
+    <ChangePatientStammdatenForm
+      @cancel="() => { showChangePatientStammdatenForm = false }"
+      @create="() => { showChangePatientStammdatenForm = false; this.loadData() }"
+      :visible="showChangePatientStammdatenForm"
+      :patient="patient"
+    />
     <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
       <a-tabs
         defaultActiveKey="1"
@@ -9,6 +15,21 @@
           key="1"
           tab="Stammdaten"
         >
+          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
+            <div style="padding-right: 1rem">
+              <a-dropdown>
+                <a-menu slot="overlay" @click="handleActionClick">
+                  <a-menu-item key="ARRANGE_TEST"><a-icon type="user" />Neuen Test anordnen</a-menu-item>
+                  <a-menu-item key="SEND_TO_QUARANTINE"><a-icon type="user" />Patienten in Quarantäne schicken</a-menu-item>
+  <!--                <a-menu-item key="HOSPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
+                </a-menu>
+                <a-button style="margin-left: 8px" type="primary"> Aktionen <a-icon type="down" /> </a-button>
+              </a-dropdown>
+            </div>
+            <a-button type="primary" icon="edit" @click="editPatientStammdaten">
+              Stammdaten editieren
+            </a-button>
+          </div>
           <!-- display user data here-->
           <div>
 
@@ -40,6 +61,10 @@
                       <td>Geschlecht:</td>
                       <td>{{gender}}</td>
                     </tr>
+                    <tr>
+                      <td>Staatsangehörigkeit:</td>
+                      <td>{{patient.nationality}}</td>
+                    </tr>
                   </table>
                 </a-card>
               </a-col>
@@ -53,12 +78,8 @@
                 >
                   <table>
                     <tr>
-                      <td>Straße:</td>
-                      <td>{{patient.street}}</td>
-                    </tr>
-                    <tr>
-                      <td>Hausnummer:</td>
-                      <td>{{patient.houseNumber}}</td>
+                      <td>Straße/Hausnr.:</td>
+                      <td>{{patient.street}} {{patient.houseNumber}}</td>
                     </tr>
                     <tr>
                       <td>PLZ:</td>
@@ -67,6 +88,10 @@
                     <tr>
                       <td>Ort:</td>
                       <td>{{patient.city}}</td>
+                    </tr>
+                    <tr>
+                      <td>Land:</td>
+                      <td>{{patient.country}}</td>
                     </tr>
                   </table>
                 </a-card>
@@ -159,7 +184,7 @@
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
                 <a-card
-                  :title="'Status: ' + (patientStatus ? patientStatus.label : 'Unbekannt')"
+                  :title="'Status: ' + (patientStatus ? patientStatus.label : 'Unbekannt') + (patient.quarantineUntil ? (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')"
                   align="left"
                 >
                   <a-table
@@ -222,6 +247,7 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
+import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -256,6 +282,7 @@ interface State {
   symptoms: string[];
   preIllnesses: string[];
   dateOfBirth: string;
+  showChangePatientStammdatenForm: boolean;
   gender: string;
   tests: LabTest[];
   columnsTests: Partial<Column>[];
@@ -265,6 +292,9 @@ interface State {
 
 export default Vue.extend({
   name: 'PatientDetails',
+  components: {
+    ChangePatientStammdatenForm,
+  },
   computed: {
     ...patientMapper.mapGetters({
       patientById: 'patientById',
@@ -283,6 +313,7 @@ export default Vue.extend({
       testResults: testResults,
       testTypes: testTypes,
       symptoms: [],
+      showChangePatientStammdatenForm: false,
       preIllnesses: [],
       dateOfBirth: '',
       gender: '',
@@ -302,11 +333,12 @@ export default Vue.extend({
       setPatient: 'setPatient',
     }),
     async loadData() {
+      console.log('loading')
       // Load Patient
       const patientId = this.$route.params.id
       this.patient = this.patientById(this.$route.params.id)
       if (!this.patient) {
-        const patient = await Api.api.getPatientForIdUsingGet(patientId)
+        const patient = await Api.getPatientForIdUsingGet(patientId)
         this.setPatient(patient)
         this.patient = patient
       }
@@ -326,7 +358,7 @@ export default Vue.extend({
       this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
 
       // Tests
-      this.tests = await Api.api.getLabTestForPatientUsingGet(patientId)
+      this.tests = await Api.getLabTestForPatientUsingGet(patientId)
     },
     timelineColor(eventType: any) {
       switch (eventType) {
@@ -346,12 +378,43 @@ export default Vue.extend({
         return 'Unbekannt'
       }
     },
+    editPatientStammdaten(): void {
+      this.showChangePatientStammdatenForm = true
+    },
+    handleActionClick(e: { key: string}) {
+      switch (e.key) {
+        case 'SEND_TO_QUARANTINE':
+          this.$router.push({ name: 'send-to-quarantine', params: { patientId: this.patient?.id || '' } })
+          break
+        case 'ARRANGE_TEST':
+          this.scheduleTest()
+          break
+      }
+    },
+    scheduleTest() {
+      if (this.patient) {
+        Api.createOrderTestEventUsingPost({
+          patientId: this.patient.id,
+        }).then(() => {
+          this.$notification.success({
+            message: 'Test angefordert',
+            description: '',
+          })
+          this.loadData()
+        }).catch(() => {
+          this.$notification.error({
+            message: 'Es ist ein Fehler aufgetreten',
+            description: '',
+          })
+        })
+      }
+    },
   },
 })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
   table {
     border-collapse: separate;
     border-spacing: 15px

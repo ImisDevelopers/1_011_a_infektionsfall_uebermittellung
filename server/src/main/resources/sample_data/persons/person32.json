@@ -5,11 +5,12 @@
   "email": "m.mueller@posteo.de",
   "firstName": "Marie",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 14,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "E517305280",
   "lastName": "M\u00fcller",
+  "nationality": "deutsch",
   "phoneNumber": "8593101107410",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

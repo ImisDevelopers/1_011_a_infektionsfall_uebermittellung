@@ -5,11 +5,12 @@
   "email": "m.richter@web.de",
   "firstName": "Marie",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 72,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "K658712474",
   "lastName": "Richter",
+  "nationality": "deutsch",
   "phoneNumber": "103310918785",
   "preIllnesses": [
     "Krebserkrankung"

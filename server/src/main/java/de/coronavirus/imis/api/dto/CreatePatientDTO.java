@@ -4,6 +4,7 @@ import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.RiskOccupation;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -11,6 +12,7 @@ public class CreatePatientDTO {
 	private String lastName;
 	private String firstName;
 	private String gender;
+	private String nationality;
 	private String dateOfBirth;
 	private String dateOfDeath;
 
@@ -20,11 +22,13 @@ public class CreatePatientDTO {
 	private String houseNumber;
 	private String zip;
 	private String city;
+	private String country;
 
 	private String stayStreet;
 	private String stayHouseNumber;
 	private String stayZip;
 	private String stayCity;
+	private String stayCountry;
 
 	private String insuranceCompany;
 	private String insuranceMembershipNumber;
@@ -50,4 +54,6 @@ public class CreatePatientDTO {
 
 	// Meldedatum
 	private String dateOfReporting;
+
+	private LocalDate quarantineUntil;
 }

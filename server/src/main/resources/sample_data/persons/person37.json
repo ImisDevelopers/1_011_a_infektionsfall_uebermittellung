@@ -5,11 +5,12 @@
   "email": "k.schroeder@gmail.de",
   "firstName": "Karl",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 97,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "T806340901",
   "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
   "phoneNumber": "83210731585",
   "preIllnesses": [
     ""

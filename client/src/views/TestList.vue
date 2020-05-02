@@ -4,12 +4,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
-import Component from 'vue-class-component'
 
-@Component
-export default class TestList extends Vue {
-
-}
+export default Vue.extend({
+  name: 'TestList',
+})
 </script>

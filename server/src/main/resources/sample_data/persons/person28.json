@@ -5,11 +5,12 @@
   "email": "s.lange@t-online.de",
   "firstName": "Susanne",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 87,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "W421549249",
   "lastName": "Lange",
+  "nationality": "deutsch",
   "phoneNumber": "86510780913",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

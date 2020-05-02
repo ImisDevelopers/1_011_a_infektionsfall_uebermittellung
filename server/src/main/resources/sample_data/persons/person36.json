@@ -5,11 +5,12 @@
   "email": "d.schulze@gmx.de",
   "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 8,
   "insuranceCompany": "AOK",
   "insuranceMembershipNumber": "S702998820",
   "lastName": "Schulze",
+  "nationality": "deutsch",
   "phoneNumber": "615651045210",
   "preIllnesses": [
     "Herz-Kreislauf"

@@ -5,11 +5,12 @@
   "email": "j.mueller@gmail.de",
   "firstName": "Jana",
   "fluImmunization": true,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 72,
   "insuranceCompany": "DAK Gesundheit",
   "insuranceMembershipNumber": "X184211091",
   "lastName": "M\u00fcller",
+  "nationality": "deutsch",
   "phoneNumber": "0250392614",
   "preIllnesses": [
     "Herz-Kreislauf"

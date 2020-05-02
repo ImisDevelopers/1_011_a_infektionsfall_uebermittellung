@@ -5,11 +5,12 @@
   "email": "j.bauer@gmail.de",
   "firstName": "Jens",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 70,
   "insuranceCompany": "KNAPPSCHAFT",
   "insuranceMembershipNumber": "P369639388",
   "lastName": "Bauer",
+  "nationality": "deutsch",
   "phoneNumber": "010841012411",
   "preIllnesses": [
     ""

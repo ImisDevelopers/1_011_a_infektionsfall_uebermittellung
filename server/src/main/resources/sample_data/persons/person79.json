@@ -5,11 +5,12 @@
   "email": "d.schulze@gmx.de",
   "firstName": "Daniela",
   "fluImmunization": false,
-  "gender": "weiblich",
+  "gender": "female",
   "houseNumber": 0,
   "insuranceCompany": "Techniker Krankenkasse",
   "insuranceMembershipNumber": "K311606895",
   "lastName": "Schulze",
+  "nationality": "deutsch",
   "phoneNumber": "101066093796",
   "preIllnesses": [
     "Herz-Kreislauf"

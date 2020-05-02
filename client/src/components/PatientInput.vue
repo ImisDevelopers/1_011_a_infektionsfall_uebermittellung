@@ -24,7 +24,7 @@ import { Patient } from '@/api/SwaggerApi'
  * - validation: put in v-decorator object
  */
 
-export interface State {
+interface State {
   result: Patient[];
 }
 
@@ -42,7 +42,7 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        result = await Api.api.queryPatientsSimpleUsingPost({
+        result = await Api.queryPatientsSimpleUsingPost({
           query: value,
           offsetPage: 0,
           pageSize: 10,
@@ -59,6 +59,6 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

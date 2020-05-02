@@ -5,11 +5,12 @@
   "email": "p.winkler@gmail.de",
   "firstName": "Peter",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 64,
   "insuranceCompany": "IKK Nord",
   "insuranceMembershipNumber": "S398704996",
   "lastName": "Winkler",
+  "nationality": "deutsch",
   "phoneNumber": "11081960013",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"

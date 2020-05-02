@@ -5,11 +5,12 @@
   "email": "f.winkler@posteo.de",
   "firstName": "Franz",
   "fluImmunization": true,
-  "gender": "m\u00e4nnlich",
+  "gender": "male",
   "houseNumber": 37,
   "insuranceCompany": "Barmer",
   "insuranceMembershipNumber": "M304666325",
   "lastName": "Winkler",
+  "nationality": "deutsch",
   "phoneNumber": "86131711027",
   "preIllnesses": [
     "Herz-Kreislauf"

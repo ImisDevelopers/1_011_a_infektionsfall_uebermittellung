@@ -40,9 +40,6 @@ export default Vue.extend({
       routes: 'routes',
     }),
   },
-  created() {
-    console.log(location.pathname)
-  },
   data() {
     return {
       // we need to match the location path to the app route path

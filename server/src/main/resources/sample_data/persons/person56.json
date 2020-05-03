@@ -1,34 +1,35 @@
 {
-  "city": "Berlin",
+  "city": "Frankfurt",
   "coronaContacts": false,
-  "dateOfBirth": "1956-09-15",
-  "email": "p.weber@t-online.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "dateOfBirth": "1961-03-29",
+  "email": "d.lange@web.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 71,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "B247141682",
-  "lastName": "Weber",
+  "houseNumber": 38,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "C369085407",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "84910912165",
+  "phoneNumber": "81092268018",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Fieber",
     "Atemschwierigkeiten",
+    "Fieber",
     "Kopfschmerzen",
-    "Halschmerzen",
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen",
     "Erk\u00e4ltung",
-    "Schnupfen"
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "5239868"
+  "zip": "22535"
 }

@@ -1,30 +1,31 @@
 {
-  "city": "Berlin",
+  "city": "Kiel",
   "coronaContacts": false,
-  "dateOfBirth": "1957-06-07",
-  "email": "a.peters@gmail.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 69,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "G121882877",
-  "lastName": "Peters",
+  "dateOfBirth": "1937-01-30",
+  "email": "j.schulz@web.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 6,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y507083673",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "7556464170",
+  "phoneNumber": "699100110627",
   "preIllnesses": [
-    "Krebserkrankung"
+    ""
   ],
   "riskAreas": [
-    "Madrid"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
-    "Schnupfen",
+    "Fieber",
     "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "Husten",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "053101100"
+  "weakenedImmuneSystem": false,
+  "zip": "46537"
 }

@@ -1,31 +1,26 @@
 {
-  "city": "K\u00f6ln",
+  "city": "M\u00fcnchen",
   "coronaContacts": false,
-  "dateOfBirth": "1973-08-04",
-  "email": "m.schulz@t-online.de",
-  "firstName": "Marie",
+  "dateOfBirth": "2000-01-18",
+  "email": "k.schulz@gmail.de",
+  "firstName": "Kai",
   "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 38,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M583736219",
+  "gender": "male",
+  "houseNumber": 43,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "P179545125",
   "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "167191010022",
+  "phoneNumber": "42107109477",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Madrid"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Halschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen"
-  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "1318699"
+  "zip": "20471"
 }

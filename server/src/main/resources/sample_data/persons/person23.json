@@ -1,29 +1,29 @@
 {
   "city": "K\u00f6ln",
   "coronaContacts": false,
-  "dateOfBirth": "1985-04-06",
-  "email": "f.weber@t-online.de",
+  "dateOfBirth": "1952-10-20",
+  "email": "f.mueller@web.de",
   "firstName": "Franz",
   "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 36,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "D684719405",
-  "lastName": "Weber",
+  "houseNumber": 79,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "V187174381",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "8120679740",
+  "phoneNumber": "9386774964",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Halschmerzen"
+    "Fieber",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "471103410"
+  "zip": "091310"
 }

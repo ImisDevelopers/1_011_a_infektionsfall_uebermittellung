@@ -1,29 +1,35 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1963-12-16",
-  "email": "p.mueller@gmx.de",
-  "firstName": "Peter",
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1940-07-17",
+  "email": "a.schulze@web.de",
+  "firstName": "Anna",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 25,
+  "gender": "female",
+  "houseNumber": 17,
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "X876441691",
-  "lastName": "M\u00fcller",
+  "insuranceMembershipNumber": "K644725317",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "110208261077",
+  "phoneNumber": "0002578729",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "B\u00fcckerheide",
   "symptoms": [
-    "Halschmerzen",
-    "Gelenkschmerzen"
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Fieber",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "454100110"
+  "zip": "59526"
 }

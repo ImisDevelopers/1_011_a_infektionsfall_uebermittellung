@@ -1,34 +1,28 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "Kiel",
   "coronaContacts": false,
-  "dateOfBirth": "1934-12-18",
-  "email": "p.richter@gmx.de",
-  "firstName": "Peter",
-  "fluImmunization": false,
+  "dateOfBirth": "1991-08-20",
+  "email": "f.mueller@gmx.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 51,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "A169226321",
-  "lastName": "Richter",
+  "houseNumber": 63,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "X938725480",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "3171210032",
+  "phoneNumber": "904101021020",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Madrid"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
-    "Schnupfen",
-    "Husten",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Erk\u00e4ltung"
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "5101010199"
+  "zip": "58842"
 }

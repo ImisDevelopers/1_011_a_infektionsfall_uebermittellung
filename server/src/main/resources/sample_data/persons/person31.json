@@ -1,33 +1,26 @@
 {
-  "city": "Bochum",
-  "coronaContacts": false,
-  "dateOfBirth": "2001-10-12",
-  "email": "p.weber@gmx.de",
-  "firstName": "Peter",
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1930-05-21",
+  "email": "d.klein@gmail.de",
+  "firstName": "Daniel",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 64,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "E909763993",
-  "lastName": "Weber",
+  "houseNumber": 45,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "A707661655",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "2145623285",
+  "phoneNumber": "6474367136",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "B\u00fcckerheide",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Schnupfen",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "4247451"
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "944010"
 }

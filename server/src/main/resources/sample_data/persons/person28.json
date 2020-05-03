@@ -1,26 +1,33 @@
 {
-  "city": "Bochum",
+  "city": "Freiburg",
   "coronaContacts": false,
-  "dateOfBirth": "1963-11-28",
-  "email": "s.lange@t-online.de",
-  "firstName": "Susanne",
-  "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 87,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "W421549249",
-  "lastName": "Lange",
+  "dateOfBirth": "1930-10-22",
+  "email": "k.winkler@gmail.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 41,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K899621068",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "86510780913",
+  "phoneNumber": "7278755886",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "43161101"
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof",
+  "symptoms": [
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "33963"
 }

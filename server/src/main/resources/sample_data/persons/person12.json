@@ -1,35 +1,35 @@
 {
-  "city": "Kiel",
-  "coronaContacts": false,
-  "dateOfBirth": "1950-10-17",
-  "email": "m.winkler@gmail.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 92,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "D872830248",
-  "lastName": "Winkler",
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1954-06-09",
+  "email": "p.lange@posteo.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 33,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "X944420824",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "1693406088",
+  "phoneNumber": "145108610850",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Halschmerzen",
-    "Gelenkschmerzen",
     "Fieber",
-    "Husten"
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Husten",
+    "Kopfschmerzen",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "103561105"
+  "zip": "29401"
 }

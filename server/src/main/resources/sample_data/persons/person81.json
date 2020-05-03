@@ -1,34 +1,35 @@
 {
   "city": "Frankfurt",
   "coronaContacts": true,
-  "dateOfBirth": "1981-07-31",
-  "email": "j.klein@posteo.de",
-  "firstName": "Jana",
+  "dateOfBirth": "1997-07-22",
+  "email": "j.winter@gmail.de",
+  "firstName": "Jens",
   "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 10,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "F938313402",
-  "lastName": "Klein",
+  "gender": "male",
+  "houseNumber": 57,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "N683734594",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "881076107677",
+  "phoneNumber": "721043410266",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
   "symptoms": [
     "Fieber",
-    "Atemschwierigkeiten",
     "Husten",
+    "Gelenkschmerzen",
     "Schnupfen",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
     "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "9034043"
+  "weakenedImmuneSystem": true,
+  "zip": "97968"
 }

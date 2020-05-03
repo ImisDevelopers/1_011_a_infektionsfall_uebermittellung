@@ -1,35 +1,33 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1943-12-19",
-  "email": "p.bauer@web.de",
-  "firstName": "Petra",
+  "city": "Bochum",
+  "coronaContacts": true,
+  "dateOfBirth": "1932-05-21",
+  "email": "p.mueller@t-online.de",
+  "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 88,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "B726553348",
-  "lastName": "Bauer",
+  "gender": "male",
+  "houseNumber": 38,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "W164331134",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "47055101694",
+  "phoneNumber": "396910071084",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
   "symptoms": [
-    "Halschmerzen",
-    "Fieber",
-    "Kopfschmerzen",
     "Gelenkschmerzen",
-    "Husten",
-    "Schnupfen",
     "Erk\u00e4ltung",
-    "Atemschwierigkeiten"
+    "Fieber",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "100974109"
+  "zip": "731064"
 }

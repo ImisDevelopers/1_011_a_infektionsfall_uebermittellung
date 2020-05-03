@@ -37,6 +37,8 @@ public class LabTest {
 
 	private TestType testType;
 
+	private TestMaterial testMaterial;
+
 	private String comment;
 
 	private byte[] report;

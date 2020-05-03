@@ -1,34 +1,34 @@
 {
-  "city": "Berlin",
+  "city": "Bochum",
   "coronaContacts": true,
-  "dateOfBirth": "1985-06-14",
-  "email": "m.wagner@t-online.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
+  "dateOfBirth": "2000-07-24",
+  "email": "d.mueller@web.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 14,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "Q488457631",
-  "lastName": "Wagner",
+  "houseNumber": 34,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "F728492896",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "74106807154",
+  "phoneNumber": "59401310990",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe",
   "symptoms": [
-    "Husten",
     "Fieber",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Halschmerzen",
     "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "Schnupfen",
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "68010876"
+  "zip": "90278"
 }

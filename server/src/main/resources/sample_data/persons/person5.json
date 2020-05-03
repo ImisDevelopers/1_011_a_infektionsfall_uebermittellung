@@ -1,28 +1,35 @@
 {
-  "city": "Berlin",
+  "city": "M\u00fcnchen",
   "coronaContacts": false,
-  "dateOfBirth": "1966-07-22",
+  "dateOfBirth": "1989-11-16",
   "email": "k.winter@posteo.de",
   "firstName": "Kai",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 75,
+  "houseNumber": 85,
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "C133729406",
+  "insuranceMembershipNumber": "H168747287",
   "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "10578713315",
+  "phoneNumber": "8248963834",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
   "symptoms": [
-    "Erk\u00e4ltung"
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Husten",
+    "Halschmerzen",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "83930110"
+  "weakenedImmuneSystem": true,
+  "zip": "105787"
 }

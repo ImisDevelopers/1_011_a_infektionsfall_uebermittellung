@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.time.OffsetDateTime;
 
 @Entity
 @Data
@@ -42,6 +43,8 @@ public class LabTest {
 	private String comment;
 
 	private byte[] report;
+
+	private OffsetDateTime lastUpdate;
 
 	@JsonPOJOBuilder(withPrefix = "")
 	public static final class LabTestBuilder {

@@ -1,29 +1,31 @@
 {
-  "city": "Freiburg",
+  "city": "Frankfurt",
   "coronaContacts": false,
-  "dateOfBirth": "1950-03-24",
-  "email": "d.winkler@posteo.de",
-  "firstName": "Daniela",
+  "dateOfBirth": "1958-02-17",
+  "email": "t.bauer@gmx.de",
+  "firstName": "Tim",
   "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 31,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "A630757561",
-  "lastName": "Winkler",
+  "gender": "male",
+  "houseNumber": 19,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "O567694547",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "81049877694",
+  "phoneNumber": "105067165107",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Fieber"
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Fieber",
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "1473799"
+  "zip": "628104"
 }

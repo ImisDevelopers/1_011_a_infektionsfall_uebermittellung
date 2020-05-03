@@ -1,34 +1,35 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1978-07-29",
-  "email": "j.klein@gmx.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 91,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "X436730606",
-  "lastName": "Klein",
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1949-09-04",
+  "email": "d.schulze@t-online.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 51,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "J554200826",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "0260647468",
+  "phoneNumber": "01080132677",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg",
   "symptoms": [
+    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen",
     "Schnupfen",
+    "Kopfschmerzen",
     "Husten",
     "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Fieber",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "7234309"
+  "weakenedImmuneSystem": true,
+  "zip": "02606"
 }

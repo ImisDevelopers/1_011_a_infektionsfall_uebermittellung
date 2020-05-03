@@ -1,30 +1,31 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "K\u00f6ln",
   "coronaContacts": true,
-  "dateOfBirth": "1980-07-28",
-  "email": "p.klein@gmail.de",
-  "firstName": "Petra",
+  "dateOfBirth": "2002-01-11",
+  "email": "a.winkler@gmail.de",
+  "firstName": "Anna",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 50,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "T961067882",
-  "lastName": "Klein",
+  "houseNumber": 23,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S253671484",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "7136959440",
+  "phoneNumber": "0455623869",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
+  "speedOfSymptomsOutbreak": "Mittel",
   "street": "Nordtstra\u00dfe",
   "symptoms": [
-    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Schnupfen",
     "Kopfschmerzen",
-    "Halschmerzen"
+    "Husten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "40910097"
+  "zip": "22196"
 }

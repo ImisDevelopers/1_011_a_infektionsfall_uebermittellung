@@ -1,28 +1,31 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1981-04-24",
-  "email": "k.winter@posteo.de",
-  "firstName": "Kai",
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1938-06-14",
+  "email": "m.klein@web.de",
+  "firstName": "Marie",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 22,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "W235591568",
-  "lastName": "Winter",
+  "gender": "female",
+  "houseNumber": 15,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "S916267011",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "7498941343",
+  "phoneNumber": "8557444313",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
+  "speedOfSymptomsOutbreak": "Schnell",
   "street": "Abbachstra\u00dfe",
   "symptoms": [
-    "Husten"
+    "Fieber",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "4082400"
+  "zip": "82337"
 }

@@ -1,29 +1,31 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": false,
-  "dateOfBirth": "1976-09-07",
-  "email": "p.richter@gmx.de",
-  "firstName": "Peter",
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1948-05-31",
+  "email": "k.richter@posteo.de",
+  "firstName": "Karl",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 30,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "R735297732",
+  "houseNumber": 15,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Y433910025",
   "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "02843959910",
+  "phoneNumber": "54990410530",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe",
   "symptoms": [
-    "Halschmerzen",
-    "Atemschwierigkeiten"
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "42108364"
+  "weakenedImmuneSystem": false,
+  "zip": "742610"
 }

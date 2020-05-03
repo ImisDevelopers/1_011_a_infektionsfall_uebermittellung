@@ -9,8 +9,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.OffsetDateTime;
 
-@Mapper
+
+@Mapper(imports = OffsetDateTime.class)
 public abstract class LabTestMapper {
 
 	@Autowired
@@ -18,6 +20,7 @@ public abstract class LabTestMapper {
 
 	@Mapping(target = "laboratory", expression = "java( labById(dto.getLaboratoryId()) )")
 	@Mapping(target = "testStatus", constant = "TEST_SUBMITTED")
+	@Mapping(target = "lastUpdate", expression = "java( OffsetDateTime.now() )")
 	@Mapping(target = "id", ignore = true)
 	public abstract LabTest toLabTest(CreateLabTestDTO dto);
 

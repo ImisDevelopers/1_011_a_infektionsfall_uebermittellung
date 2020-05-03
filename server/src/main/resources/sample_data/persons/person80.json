@@ -1,35 +1,32 @@
 {
-  "city": "Hamburg",
+  "city": "K\u00f6ln",
   "coronaContacts": true,
-  "dateOfBirth": "1926-03-27",
-  "email": "t.wagner@gmx.de",
-  "firstName": "Tim",
-  "fluImmunization": false,
+  "dateOfBirth": "1957-06-15",
+  "email": "j.wagner@web.de",
+  "firstName": "Jan",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 14,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M554234434",
+  "houseNumber": 22,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "M400969989",
   "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "104991102513",
+  "phoneNumber": "56109245937",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete",
+  "street": "Abbachstra\u00dfe",
   "symptoms": [
-    "Schnupfen",
-    "Atemschwierigkeiten",
     "Fieber",
-    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
     "Gelenkschmerzen",
-    "Husten",
     "Halschmerzen",
     "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "2528669"
+  "weakenedImmuneSystem": false,
+  "zip": "654107"
 }

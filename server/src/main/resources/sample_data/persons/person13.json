@@ -1,30 +1,31 @@
 {
-  "city": "Kiel",
-  "coronaContacts": false,
-  "dateOfBirth": "2005-05-10",
-  "email": "k.richter@web.de",
-  "firstName": "Karl",
-  "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 65,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y352188235",
-  "lastName": "Richter",
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1926-06-22",
+  "email": "s.mueller@gmail.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 24,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "R995205588",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "369910577710",
+  "phoneNumber": "14841065648",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Schernerweg",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
     "Erk\u00e4ltung",
-    "Fieber",
-    "Husten"
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "721014810"
+  "weakenedImmuneSystem": false,
+  "zip": "6106102"
 }

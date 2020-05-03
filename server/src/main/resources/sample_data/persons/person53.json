@@ -1,31 +1,33 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1973-04-21",
-  "email": "p.weber@t-online.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1927-07-09",
+  "email": "j.winkler@gmail.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 75,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "C148814238",
-  "lastName": "Weber",
+  "houseNumber": 18,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Y792738367",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "842104981810",
+  "phoneNumber": "10011010658102",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Halschmerzen",
+    "Husten",
     "Atemschwierigkeiten",
-    "Gelenkschmerzen"
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "92210995"
+  "weakenedImmuneSystem": true,
+  "zip": "910702"
 }

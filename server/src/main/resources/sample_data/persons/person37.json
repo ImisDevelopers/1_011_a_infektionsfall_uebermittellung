@@ -1,31 +1,28 @@
 {
   "city": "Frankfurt",
   "coronaContacts": true,
-  "dateOfBirth": "1960-02-19",
-  "email": "k.schroeder@gmail.de",
-  "firstName": "Karl",
+  "dateOfBirth": "1954-07-22",
+  "email": "j.peters@gmx.de",
+  "firstName": "Jana",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 97,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "T806340901",
-  "lastName": "Schr\u00f6der",
+  "gender": "female",
+  "houseNumber": 79,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "O642831335",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "83210731585",
+  "phoneNumber": "1771159212",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete",
   "symptoms": [
-    "Husten",
-    "Fieber",
-    "Schnupfen",
-    "Kopfschmerzen"
+    "Fieber"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "4936899"
+  "weakenedImmuneSystem": true,
+  "zip": "109856"
 }

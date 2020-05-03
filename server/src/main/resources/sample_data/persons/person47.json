@@ -1,35 +1,31 @@
 {
-  "city": "Frankfurt",
+  "city": "Kiel",
   "coronaContacts": false,
-  "dateOfBirth": "1937-01-21",
-  "email": "d.klein@web.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1993-09-25",
+  "email": "h.mueller@gmail.de",
+  "firstName": "Hans",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 53,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Q944403809",
-  "lastName": "Klein",
+  "houseNumber": 23,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "X355046107",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "8932460953",
+  "phoneNumber": "88010592962",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
-    "Husten",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
     "Gelenkschmerzen",
-    "Kopfschmerzen",
     "Fieber",
-    "Schnupfen",
-    "Atemschwierigkeiten"
+    "Atemschwierigkeiten",
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "210101851"
+  "weakenedImmuneSystem": true,
+  "zip": "92706"
 }

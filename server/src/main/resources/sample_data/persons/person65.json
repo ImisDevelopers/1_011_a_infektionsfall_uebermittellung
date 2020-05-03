@@ -1,28 +1,33 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1955-09-05",
-  "email": "l.schulz@web.de",
-  "firstName": "Lisa",
-  "fluImmunization": false,
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1938-08-29",
+  "email": "d.lange@web.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 31,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Y116799547",
-  "lastName": "Schulz",
+  "houseNumber": 91,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "T785826598",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "30047108686",
+  "phoneNumber": "28743152710",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete",
   "symptoms": [
-    "Fieber"
+    "Kopfschmerzen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "7524310"
+  "weakenedImmuneSystem": true,
+  "zip": "20549"
 }

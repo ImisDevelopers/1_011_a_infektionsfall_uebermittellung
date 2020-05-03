@@ -43,8 +43,21 @@
               message: 'Bitte geben Sie den Typen des Tests an.'
             }]}]">
           <a-radio :key="testTypeItem.id" :value="testTypeItem.id" v-for="testTypeItem in testTypes">
-            <a-icon :type="testTypeItem.icon" />
             {{testTypeItem.label}}
+          </a-radio>
+        </a-radio-group>
+      </a-form-item>
+
+      <!-- TestType -->
+      <a-form-item label="Proben-Material">
+        <a-radio-group
+          class="imis-radio-group"
+          v-decorator="['testMaterial', { rules: [{
+              required: true,
+              message: 'Bitte geben Sie das Material des Tests an.'
+            }]}]">
+          <a-radio :key="testMaterialItem.id" :value="testMaterialItem.id" v-for="testMaterialItem in testMaterials">
+            {{testMaterialItem.label}}
           </a-radio>
         </a-radio-group>
       </a-form-item>
@@ -89,12 +102,14 @@ import PatientInput from '../components/PatientInput.vue'
 import LaboratoryInput from '../components/LaboratoryInput.vue'
 import { TestTypeItem, testTypes } from '@/models/test-types'
 import { testResults } from '@/models/event-types'
+import { TestMaterialItem, testMaterials } from '@/models/test-materials'
 
 interface State {
   form: any;
   createdLabTest?: LabTest;
   createdLabTestStatus: string;
   testTypes: TestTypeItem[];
+  testMaterials: TestMaterialItem[];
 }
 
 export default Vue.extend({
@@ -109,6 +124,7 @@ export default Vue.extend({
       createdLabTest: undefined,
       createdLabTestStatus: '',
       testTypes: testTypes,
+      testMaterials: testMaterials,
     }
   },
   methods: {

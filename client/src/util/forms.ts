@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 // Realise camelCase prefixing, whereas the prefixed name starts with capital
 function prefixed(name: string, prefix?: string): string {
   if (!prefix) {
@@ -16,25 +18,31 @@ function prefixedKeysArray(keys: string[], prefix?: string): string[] {
 }
 
 declare interface FormGroupMixinType {
-    $options: {
-      name: string;
-      inputKeys: string[];
-    };
-    $props: {
-      inputKeyPrefix?: string;
-      inputKeys: { [x: string]: string };
-    };
-    $watch: any;
-    $forceUpdate: () => void;
+  $options: {
+    name: string;
+    inputKeys: string[];
+  };
+  $props: {
+    inputKeyPrefix?: string;
+    inputKeys: { [x: string]: string };
+  };
+  $watch: any;
+  $forceUpdate: () => void;
 
-    formInputKey: (this: FormGroupMixinType, key: string) => string;
-    FormContext: any;
+  formInputKey: (this: FormGroupMixinType, key: string) => string;
+  FormContext: any;
 
-    prefixedKeysObject: (this: FormGroupMixinType, keys: {[x: string]: any}, prefix?: string) => {[x: string]: any};
-    prefixedKeysArray: (this: FormGroupMixinType, keys: string[], prefix?: string) => string[];
+  prefixedKeysObject: (this: FormGroupMixinType, keys: {[x: string]: any}, prefix?: string) => {[x: string]: any};
+  prefixedKeysArray: (this: FormGroupMixinType, keys: string[], prefix?: string) => string[];
 }
 
-export const FormGroupMixin = {
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    inputKeys?: string[];
+  }
+}
+
+export const FormGroupMixin = Vue.extend({
   props: {
     inputKeyPrefix: {
       default: undefined,
@@ -47,20 +55,22 @@ export const FormGroupMixin = {
     FormContext: { default: () => ({}) },
   },
   mounted(this: FormGroupMixinType) {
-    // Make sure all form items use selfUpdate; this is crucial for form items
-    // in the group to be re-rendered correctly when new values are set
-    this.$options.inputKeys.forEach((key: string) => {
-      if (!this.FormContext.form.formItems[this.formInputKey(key)].itemSelfUpdate) {
-        console.error(`[ ${this.$options.name} ]: ` +
-          `\`itemSelfUpdate\` is not enabled for form item of \`${key}\`. ` +
-          'This may lead to contents not being re-rendered when their ' +
-          'value is modified by calling `setFieldsValue` on its ' +
-          'containing form. To fix this, add `:selfUpdate="true"` to ' +
-          `the \`a-form-item\` component containing the \`${key}\` control ` +
-          'or add `:selfUpdate="true"` to the root `a-form` element.',
-        )
-      }
-    })
+    if (this.$options.inputKeys) {
+      // Make sure all form items use selfUpdate; this is crucial for form items
+      // in the group to be re-rendered correctly when new values are set
+      this.$options.inputKeys.forEach((key: string) => {
+        if (!this.FormContext.form.formItems[this.formInputKey(key)].itemSelfUpdate) {
+          console.error(`[ ${this.$options.name} ]: ` +
+            `\`itemSelfUpdate\` is not enabled for form item of \`${key}\`. ` +
+            'This may lead to contents not being re-rendered when their ' +
+            'value is modified by calling `setFieldsValue` on its ' +
+            'containing form. To fix this, add `:selfUpdate="true"` to ' +
+            `the \`a-form-item\` component containing the \`${key}\` control ` +
+            'or add `:selfUpdate="true"` to the root `a-form` element.',
+          )
+        }
+      })
+    }
   },
   methods: {
     formInputKey(this: FormGroupMixinType, key: string): string {
@@ -76,6 +86,10 @@ export const FormGroupMixin = {
       return prefixedKeysArray(keys, this.$props.inputKeyPrefix)
     },
     setData(this: FormGroupMixinType, data: {[x: string]: any}, usesPrefixedKeys: boolean | undefined) {
+      if (!this.$options.inputKeys) {
+        throw new Error(`[ ${this.$options.name} ]: \`setData\` not supported`)
+      }
+
       if (!usesPrefixedKeys) {
         data = this.prefixedKeysObject(data)
       }
@@ -88,6 +102,10 @@ export const FormGroupMixin = {
       this.FormContext.form.setFieldsValue(data)
     },
     getData(this: FormGroupMixinType, fieldNames?: string[], usesPrefixedKeys?: boolean): {[x: string]: any} {
+      if (!this.$options.inputKeys) {
+        throw new Error(`[ ${this.$options.name} ]: \`getData\` not supported`)
+      }
+
       if (fieldNames !== undefined && !usesPrefixedKeys) {
         fieldNames = this.prefixedKeysArray(fieldNames)
       }
@@ -103,7 +121,7 @@ export const FormGroupMixin = {
       return this.FormContext.form.getFieldsValue(fieldNames)
     },
   },
-}
+})
 
 declare interface FormControlMixinType {
   $options: {
@@ -129,14 +147,20 @@ declare interface FormControlMixinType {
     };
   };
 
-  __convValue: any;
+  FormControlConvValue: any;
   fieldName: string | null;
   isDecoratedFormField(): boolean;
   getOwnValue(): any;
   setOwnValue(val: any): void;
 }
 
-export const FormControlMixin = {
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    fieldValueConvert?(value: any): any;
+  }
+}
+
+export const FormControlMixin = Vue.extend({
   inject: {
     FormContext: { default: null },
   },
@@ -151,7 +175,7 @@ export const FormControlMixin = {
   },
   data() {
     return {
-      __convValue: undefined,
+      FormControlConvValue: undefined,
     }
   },
   created(this: FormControlMixinType) {
@@ -161,13 +185,13 @@ export const FormControlMixin = {
         : 'value'
 
       this.$watch(valueProp, (value: any) => {
-        if (this.__convValue === value) {
+        if (this.FormControlConvValue === value) {
           // Value has already been converted
-          this.__convValue = undefined
-        } else {
-          const newValue = this.$options.fieldValueConvert?.call(this, value)
+          this.FormControlConvValue = undefined
+        } else if (this.$options.fieldValueConvert) {
+          const newValue = this.$options.fieldValueConvert.call(this, value)
           if (newValue !== value) {
-            this.__convValue = newValue
+            this.FormControlConvValue = newValue
             this.setOwnValue(newValue)
           }
         }
@@ -192,4 +216,4 @@ export const FormControlMixin = {
       return (this as {[x: string]: any})[valueProp]
     },
   },
-}
+})

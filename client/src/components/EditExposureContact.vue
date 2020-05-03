@@ -9,6 +9,7 @@
       <!-- Originating and Contact Names -->
       <a-form-item
         :style="`display: ${$props.showOriginatorPatient ? 'unset' : 'none'}`"
+        :selfUpdate="true"
         label="Ursprungspatient"
         class="patient-input">
         <patient-input
@@ -24,6 +25,7 @@
         type="swap"/>
       <a-form-item
         :style="`display: ${$props.showContactPatient ? 'unset' : 'none'}`"
+        :selfUpdate="true"
         label="Kontaktperson"
         class="patient-input">
         <patient-input
@@ -45,7 +47,8 @@
     <a-row>
       <!-- When and How -->
       <a-col :md="12" :sm="24">
-        <a-form-item label="Datum des Kontakts">
+        <a-form-item label="Datum des Kontakts"
+          :selfUpdate="true">
           <date-input
             v-decorator="[ formInputKey('dateOfContact'), {
               rules: [
@@ -83,6 +86,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import mixins from 'vue-typed-mixins'
 import Api from '@/api'
 import moment from 'moment'
 
@@ -96,9 +100,8 @@ const exposureContexts = [
   'Kontakt in Gemeinschaftseinrichtung',
 ]
 
-export default Vue.extend({
+export default mixins(FormGroupMixin).extend({
   name: 'EditExposureFormGroup',
-  mixins: [FormGroupMixin],
   components: {
     DateInput,
     PatientInput,

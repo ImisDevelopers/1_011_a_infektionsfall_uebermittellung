@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import mixins from 'vue-typed-mixins'
 import { FormControlMixin } from '@/util/forms'
 
 /**
@@ -27,7 +28,7 @@ export interface State {
   wasJustFocused: boolean;
 }
 
-export default Vue.extend({
+export default mixins(FormControlMixin).extend({
   name: 'DateInput',
   mixins: [FormControlMixin],
   model: {

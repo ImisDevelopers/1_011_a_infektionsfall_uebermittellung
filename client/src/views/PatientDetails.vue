@@ -572,7 +572,7 @@ export default Vue.extend({
     persistExposureContact(): Promise<boolean> {
       const stringFromMoment = (value: Moment): string => value.format('YYYY-MM-DD')
 
-      return new Promise((resolve: () => void) => {
+      return new Promise((resolve: (success: boolean) => void) => {
         this.exposureContactForm.validateFields(async(err: Error[], values: {[x: string]: any}) => {
           if (err) {
             resolve(false)

@@ -17,6 +17,7 @@
 <script lang="ts">
 import Api from '@/api'
 import Vue from 'vue'
+import mixins from 'vue-typed-mixins'
 import { Select } from 'ant-design-vue'
 import { Patient } from '@/api/SwaggerApi'
 import { FormControlMixin } from '@/util/forms'
@@ -35,10 +36,9 @@ declare interface State {
  * - validation: put in v-decorator object
  */
 
-export default Vue.extend({
+export default mixins(FormControlMixin).extend({
   name: 'PatientInput',
   inheritAttrs: false,
-  mixins: [FormControlMixin],
   props: {
     placeholder: { default: 'Suche über ID, Name, Telefon, Mail' },
     value: { default: '' },
@@ -57,7 +57,7 @@ export default Vue.extend({
         label: this.getPatientLabel(patient),
         value: patient.id,
       }]
-      return patient.id
+      return patient.id || ''
     } else {
       return val
     }

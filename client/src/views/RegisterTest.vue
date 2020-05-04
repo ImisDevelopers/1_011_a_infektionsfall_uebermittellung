@@ -79,22 +79,11 @@
         </a-button>
       </a-form-item>
     </a-form>
-
-    <!-- Confirmation after creation -->
-    <div v-if="createdLabTest">
-      <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" type="check-circle" />
-      <div>
-        <div>Der Test wurde erfolgreich angelegt.</div>
-        <br />
-        <div>Test ID: {{ createdLabTest.testId }}</div>
-        <div>Test Status: {{ createdLabTestStatus }}</div>
-      </div>
-    </div>
   </a-card>
 </template>
 
 <script lang="ts">
-import { CreateLabTestDTO, LabTest } from '@/api/SwaggerApi'
+import { CreateLabTestDTO } from '@/api/SwaggerApi'
 import Vue from 'vue'
 
 import Api from '@/api'
@@ -106,8 +95,6 @@ import { TestMaterialItem, testMaterials } from '@/models/test-materials'
 
 interface State {
   form: any;
-  createdLabTest?: LabTest;
-  createdLabTestStatus: string;
   testTypes: TestTypeItem[];
   testMaterials: TestMaterialItem[];
 }
@@ -121,8 +108,6 @@ export default Vue.extend({
   data(): State {
     return {
       form: this.$form.createForm(this),
-      createdLabTest: undefined,
-      createdLabTestStatus: '',
       testTypes: testTypes,
       testMaterials: testMaterials,
     }
@@ -138,18 +123,19 @@ export default Vue.extend({
         }
 
         Api.createTestForPatientUsingPost(request).then(labTest => {
-          this.createdLabTest = labTest
-          this.createdLabTestStatus = testResults
+          const createdLabTest = labTest
+          const createdLabTestStatus = testResults
             .find(testResult => testResult.id === labTest.testStatus)
             ?.label || ''
-
-          const notification = {
-            message: 'Test angelegt und verknüpft.',
-            description:
-              'Der Test ' + labTest.testId + ' wurde erfolgreich angelegt und mit dem Patienten verknüpft.',
-          }
-          this.$notification.success(notification)
           this.form.resetFields()
+          const h = this.$createElement
+          this.$success({
+            title: 'Der Test wurde erfolgreich angelegt.',
+            content: h('div', {}, [
+              h('div', `Test ID: ${createdLabTest.testId}`),
+              h('div', `Test Status: ${createdLabTestStatus}`),
+            ]),
+          })
         }).catch(err => {
           const notification = {
             message: 'Fehler beim Anlegen des Tests.',

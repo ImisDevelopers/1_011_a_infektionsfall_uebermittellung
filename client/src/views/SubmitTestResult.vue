@@ -71,17 +71,6 @@
         </a-form-item>
       </a-form>
     </div>
-
-    <!-- Confirmation after creation -->
-    <div v-if="updatedLabTest">
-      <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px" type="check-circle" />
-      <div>
-        <div>Der Test wurde erfolgreich aktualisiert.</div>
-        <br />
-        <div>Test ID: {{ updatedLabTest.testId }}</div>
-        <div>Neuer Test Status: {{ updatedLabTestStatus }}</div>
-      </div>
-    </div>
   </a-card>
 </template>
 
@@ -183,21 +172,23 @@ export default Vue.extend({
           file: this.fileBytes,
         }
 
-        const testResult = this.testResults.find(testResult => values.testResult === testResult.id)
         Api.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {
-          const notification = {
-            message: 'Test ' + labTest.testId + ' aktualisiert.',
-            description: 'Status geändert auf "' + testResult?.label + '"',
-          }
-          this.$notification.success(notification)
           this.form.resetFields([
             'testId', 'testResult', 'comment',
           ])
           this.fileBytes = null
-          this.updatedLabTest = labTest
-          this.updatedLabTestStatus = testResults
+          const updatedLabTest = labTest
+          const updatedLabTestStatus = testResults
             .find(testResult => testResult.id === labTest.testStatus)
             ?.label || ''
+          const h = this.$createElement
+          this.$success({
+            title: 'Der Test wurde erfolgreich aktualisiert.',
+            content: h('div', {}, [
+              h('div', `Test ID: ${updatedLabTest.testId}`),
+              h('div', `Neuer Test Status: ${updatedLabTestStatus}`),
+            ]),
+          })
         }).catch(err => {
           const notification = {
             message: 'Fehler beim Hinzufügen des Testergebnisses.',

@@ -1,11 +1,15 @@
 package de.coronavirus.imis.services;
 
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
+import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
+import de.coronavirus.imis.mapper.PatientMapper;
+import de.coronavirus.imis.repositories.QuarantineIncidentRepository;
 import de.coronavirus.imis.repositories.TestIncidentRepository;
 import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +21,19 @@ This class is called deprectaed because it enables the frontend to work with  La
 instead of natively using IncidentDTOs.
 Next steps: Build an Incident API and migrate the Frontend.
  */
+@RequiredArgsConstructor
 @Service
 public class IncidentService {
 
-	@Autowired
-	TestIncidentRepository testIncidentRepo;
-	@Autowired
-	LaboratoryRepository laboratoryRepo;
-	@Autowired
-	PatientRepository patientRepo;
-	@Autowired
-	RandomService randomService;
+	private final TestIncidentRepository testIncidentRepo;
+	private final LaboratoryRepository laboratoryRepo;
+	private final PatientRepository patientRepo;
+	private final RandomService randomService;
+	private final PatientMapper patientMapper;
+	private final QuarantineIncidentRepository quarantineIncidentRepo;
 
 	@Transactional
-	public Incident addIncident (CreateLabTestDTO info)
+	public TestIncident addIncident (CreateLabTestDTO info)
 	{
 		var incident = (TestIncident) new TestIncident()
 				.setTestId(info.getTestId())
@@ -47,7 +50,7 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public Incident updateIncident (String labrotoryId, UpdateTestStatusDTO update)
+	public TestIncident updateIncident (String labrotoryId, UpdateTestStatusDTO update)
 	{
 		var incident = testIncidentRepo.findByTestId(update.getTestId()).get(0);
 		var laboratory = laboratoryRepo.findById(labrotoryId).orElseThrow();
@@ -64,17 +67,30 @@ public class IncidentService {
 	}
 
 	// Quarantine Incidents
-/*
-	public Incident addIncident (CreateQuarantinePeriodDTO info)
+	@Transactional
+	public QuarantineIncident addOrUpdateIncident (String patientId, SendToQuarantineDTO info)
 	{
-		return null;
+		// Patient & Date
+		var patient = patientRepo.findById(patientId).orElseThrow();
+		var until = patientMapper.parseDate(info.getDateUntil());
+
+		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
+		var incident = incidentOptional.isEmpty()
+				? (QuarantineIncident) new QuarantineIncident().setId(randomService.getRandomString(10)) // Set Id should happen in background
+				: incidentOptional.get(0);
+
+		// Apply to Incident
+		incident
+				.setComment(info.getComment())
+				.setUntil(until)
+				.setEventType(EventType.QUARANTINE_MANDATED)
+				.setPatient(patient);
+		quarantineIncidentRepo.saveAndFlush(incident);
+
+		return incident;
 	}
 
-	public Incident addIncident (UpdateQuarantinePeriodDTO info)
-	{
-		return null;
-	}
-*/
 
 	private EventType testStatusToEvent(TestStatus input) {
 		EventType result;

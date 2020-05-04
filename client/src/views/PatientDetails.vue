@@ -160,7 +160,43 @@
             <!-- Symptome und Risiken -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col
-                :md="12"
+                :md="8"
+              >
+                <a-card
+                  align="left"
+                  title="Infektionsstatus"
+                >
+                  <h4>Infektionsquelle:</h4>
+                  <div v-if="!!patientInfectionSource">
+                    <div>
+                      <a-icon type="user"/> Kontakt mit infizierter Person
+                    </div>
+                    <table class="compact" style="margin-top: 5px;">
+                      <tr>
+                        <td>Name:</td>
+                        <td>
+                          <a @click="showPatient(patientInfectionSource.source.id)">
+                            {{ patientInfectionSource.source.firstName }} {{ patientInfectionSource.source.lastName }}
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Kontaktdatum:</td>
+                        <td>{{ moment(patientInfectionSource.dateOfContact).format('DD.MM.YYYY') }}</td>
+                      </tr>
+                      <tr>
+                        <td>Umstand:</td>
+                        <td>{{ patientInfectionSource.context }}</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div v-else>
+                    Unbekannt
+                  </div>
+                </a-card>
+              </a-col>
+              <a-col
+                :md="8"
                 :span="24"
               >
                 <a-card
@@ -171,7 +207,7 @@
                 </a-card>
               </a-col>
               <a-col
-                :md="12"
+                :md="8"
                 :span="24"
               >
                 <a-card
@@ -391,6 +427,7 @@ const columnsExposureContacts: Partial<Column>[] = [
 
 interface State {
   patient: undefined | Patient;
+  patientInfectionSource: undefined | ExposureContactFromServer;
   exposureContacts: ExposureContactFromServer[];
   exposureContactsLoading: boolean;
   exposureContactForm: any;
@@ -433,6 +470,7 @@ export default Vue.extend({
   data(): State {
     return {
       patient: undefined,
+      patientInfectionSource: undefined,
       exposureContacts: [],
       exposureContactsLoading: false,
       exposureContactForm: undefined,
@@ -487,6 +525,11 @@ export default Vue.extend({
       this.dateOfBirth = moment(this.patient.dateOfBirth).format('DD.MM.YYYY')
       const patientGender = this.patient.gender || ''
       this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
+
+      // Source of Infection
+      try {
+        this.patientInfectionSource = await Api.getExposureSourceContactForPatientUsingGet(patientId)
+      } catch (e) {}
 
       // Tests
       this.tests = await Api.getLabTestForPatientUsingGet(patientId)
@@ -599,6 +642,9 @@ export default Vue.extend({
       await Api.removeExposureContactUsingDelete(contactId)
       this.exposureContacts = this.exposureContacts.filter(contact => contact.id !== contactId)
     },
+    showPatient(patientId: string) {
+      this.$router.push({ name: 'patient-detail', params: { id: patientId } })
+    },
     moment,
   },
 })
@@ -609,5 +655,9 @@ export default Vue.extend({
   table {
     border-collapse: separate;
     border-spacing: 15px
+  }
+
+  table.compact {
+    border-spacing: 15px 3px;
   }
 </style>

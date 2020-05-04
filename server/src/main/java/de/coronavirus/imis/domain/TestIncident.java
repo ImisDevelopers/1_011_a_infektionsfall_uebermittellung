@@ -5,12 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.envers.Audited;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 

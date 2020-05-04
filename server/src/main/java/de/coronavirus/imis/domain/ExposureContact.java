@@ -12,20 +12,11 @@ import de.coronavirus.imis.mapper.PatientMapper;
 import de.coronavirus.imis.repositories.PatientRepository;
 
 @Entity
-@Component
 @Data
 @Accessors(chain = true)
-public class ExposureContact {
-
-	@Id
-	@GeneratedValue
-	private long id;
-
+@DiscriminatorValue("person")
+public class ExposureContact extends InfectionSource {
 	@ManyToOne
 	private Patient source;
-	@OneToOne
-	private Patient contact;
-	private String context; // e.g. contact in a medical facility
-	private LocalDate dateOfContact;
-	private String comment;
+	private String context;
 }

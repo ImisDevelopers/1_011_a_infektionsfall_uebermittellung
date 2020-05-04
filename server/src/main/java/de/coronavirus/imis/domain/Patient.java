@@ -73,7 +73,7 @@ public class Patient {
 
 	@JsonIgnore
 	@OneToOne(mappedBy = "contact")
-	private ExposureContact exposureSourceContact;
+	private InfectionSource infectionSource;
 	@JsonIgnore
 	@OneToMany(mappedBy = "source")
 	private List<ExposureContact> exposureContacts;

@@ -5,15 +5,14 @@ import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;
-import de.coronavirus.imis.repositories.QuarantineIncidentRepository;
-import de.coronavirus.imis.repositories.TestIncidentRepository;
-import de.coronavirus.imis.repositories.LaboratoryRepository;
-import de.coronavirus.imis.repositories.PatientRepository;
+import de.coronavirus.imis.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.Optional;
 
 /*
 TODO
@@ -31,6 +30,8 @@ public class IncidentService {
 	private final RandomService randomService;
 	private final PatientMapper patientMapper;
 	private final QuarantineIncidentRepository quarantineIncidentRepo;
+	private final AdministrativeIncidentRepository adminIncidentRepo;
+	private final DoctorRepository doctorRepo;
 
 	@Transactional
 	public TestIncident addIncident (CreateLabTestDTO info)
@@ -91,6 +92,58 @@ public class IncidentService {
 		return incident;
 	}
 
+	// Administrative Incidents
+
+	// Presumtion Event (Former Initial Event)
+	@Transactional
+	public AdministrativeIncident addIncident (Patient patient,
+							 Optional<Illness> illness,
+							 EventType eventType,
+							 LocalDate dateOfReporting) {
+		var concreteIllness = illness.orElse(Illness.CORONA);
+
+		dateOfReporting = dateOfReporting==null ? LocalDate.now() : dateOfReporting;
+
+		var incident = (AdministrativeIncident) new AdministrativeIncident()
+				.setDateOfReporting(dateOfReporting)
+				.setIllness(concreteIllness)
+				.setEventType(eventType)
+				.setPatient(patient)
+				.setId(randomService.getRandomString(10));
+
+		adminIncidentRepo.saveAndFlush(incident);
+		return incident;
+	}
+
+	//SCHEDULED_FOR_TESTING
+	@Transactional
+	public AdministrativeIncident addIncident (Patient patient, String labId, String doctorId) {
+
+		// Todo: Is this necessary? Why? Move it?
+		final Laboratory laboratory = laboratoryRepo.findById(labId).orElseGet(() -> {
+			Laboratory lab = new Laboratory();
+			lab.setId(labId);
+			return laboratoryRepo.save(lab);
+		});
+		final Doctor doctor = doctorRepo.findById(doctorId).orElseGet(() ->
+				{
+					var newDoctor = new Doctor();
+					newDoctor.setId(doctorId);
+					return doctorRepo.save(newDoctor);
+				}
+		);
+
+		var incident = (AdministrativeIncident) new AdministrativeIncident()
+				.setDateOfReporting(LocalDate.now())
+				.setIllness(Illness.CORONA)
+				.setResponsibleDoctor(doctor)
+				.setEventType(EventType.SCHEDULED_FOR_TESTING)
+				.setPatient(patient)
+				.setId(randomService.getRandomString(10));
+		adminIncidentRepo.saveAndFlush(incident);
+
+		return incident;
+	}
 
 	private EventType testStatusToEvent(TestStatus input) {
 		EventType result;

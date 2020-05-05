@@ -50,6 +50,7 @@
         <a-form-item label="Datum des Kontakts"
           :selfUpdate="true">
           <date-input
+            :disabledDate="date => date.isAfter(moment())"
             v-decorator="[ formInputKey('dateOfContact'), {
               rules: [
                 { required: true, message: 'Bitte ein gültiges Datum angeben' },
@@ -119,6 +120,7 @@ export default mixins(FormGroupMixin).extend({
     }
   },
   methods: {
+    moment,
   },
 } as any)
 </script>

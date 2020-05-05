@@ -282,6 +282,7 @@
 
               <a-table
                 :columns="columnsExposureContacts"
+                :pagination="false"
                 :dataSource="exposureContacts"
                 class="imis-table-no-pagination"
                 :rowKey="contact => contact.contact.id"

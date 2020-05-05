@@ -34,6 +34,7 @@ declare interface FormGroupMixinType {
 
   prefixedKeysObject: (this: FormGroupMixinType, keys: {[x: string]: any}, prefix?: string) => {[x: string]: any};
   prefixedKeysArray: (this: FormGroupMixinType, keys: string[], prefix?: string) => string[];
+  getData(this: FormGroupMixinType, fieldNames?: string[], usesPrefixedKeys?: boolean): {[x: string]: any};
 }
 
 declare module 'vue/types/options' {
@@ -119,6 +120,10 @@ export const FormGroupMixin = Vue.extend({
         )
       }
       return this.FormContext.form.getFieldsValue(fieldNames)
+    },
+    getSingleValue(this: FormGroupMixinType, fieldName: string, usesPrefixedKeys?: boolean): any | undefined {
+      const key = usesPrefixedKeys ? fieldName : this.formInputKey(fieldName)
+      return this.getData([key], true)[key]
     },
   },
 })

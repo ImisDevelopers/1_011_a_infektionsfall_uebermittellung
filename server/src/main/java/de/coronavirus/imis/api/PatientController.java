@@ -6,12 +6,9 @@ import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
 import de.coronavirus.imis.domain.Patient;
-<<<<<<< HEAD
 import de.coronavirus.imis.services.IncidentService;
-=======
 import de.coronavirus.imis.domain.PatientEvent;
 import de.coronavirus.imis.services.PatientEventService;
->>>>>>> dev
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -31,7 +31,7 @@ public class IncidentController {
 		return incidentService.getCurrent(incidentId);
 	}
 
-	@GetMapping("/log/{id}")
+	@GetMapping("/{id}/log")
 	public List<Incident> getLog(@PathVariable("id") String incidentId) {
 		return incidentService.getLog(incidentId, false);
 	}
@@ -41,17 +41,17 @@ public class IncidentController {
 		return incidentService.getCurrentByPatient(patientId);
 	}
 
-	@GetMapping("/patient/{type}/{id}")
+	@GetMapping("/{type}/patient/{id}")
 	public List<Incident> getPatientCurrentByType(@PathVariable("type") IncidentType incidentType, @PathVariable("id") String patientId) {
 		return incidentService.getCurrentByPatient(patientId, incidentType);
 	}
 
-	@GetMapping("/patient/log/{id}")
+	@GetMapping("/patient/{id}/log")
 	public List<Incident> getPatientLog(@PathVariable("id") String patientId) {
 		return incidentService.getLog(patientId, true);
 	}
 
-	@GetMapping("/patient/log/{type}/{id}")
+	@GetMapping("/{type}/patient/{id}/log")
 	public List<Incident> getPatientLogByType(@PathVariable("type") IncidentType incidentType, @PathVariable("id") String patientId) {
 		return incidentService.getLog(incidentType.IMPLEMENTATION, patientId, true);
 	}

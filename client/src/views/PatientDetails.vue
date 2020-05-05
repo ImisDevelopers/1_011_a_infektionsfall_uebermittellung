@@ -8,11 +8,11 @@
     />
     <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
       <a-tabs
-        defaultActiveKey="1"
+        defaultActiveKey="overview"
         v-if="patient"
       >
         <a-tab-pane
-          key="1"
+          key="overview"
           tab="Stammdaten"
         >
           <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
@@ -160,43 +160,7 @@
             <!-- Symptome und Risiken -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col
-                :md="8"
-              >
-                <a-card
-                  align="left"
-                  title="Infektionsstatus"
-                >
-                  <h4>Infektionsquelle:</h4>
-                  <div v-if="!!patientInfectionSource">
-                    <div>
-                      <a-icon type="user"/> Kontakt mit infizierter Person
-                    </div>
-                    <table class="compact" style="margin-top: 5px;">
-                      <tr>
-                        <td>Name:</td>
-                        <td>
-                          <a @click="showPatient(patientInfectionSource.source.id)">
-                            {{ patientInfectionSource.source.firstName }} {{ patientInfectionSource.source.lastName }}
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Kontaktdatum:</td>
-                        <td>{{ moment(patientInfectionSource.dateOfContact).format('DD.MM.YYYY') }}</td>
-                      </tr>
-                      <tr>
-                        <td>Umstand:</td>
-                        <td>{{ patientInfectionSource.context }}</td>
-                      </tr>
-                    </table>
-                  </div>
-                  <div v-else>
-                    Unbekannt
-                  </div>
-                </a-card>
-              </a-col>
-              <a-col
-                :md="8"
+                :md="12"
                 :span="24"
               >
                 <a-card
@@ -207,7 +171,7 @@
                 </a-card>
               </a-col>
               <a-col
-                :md="8"
+                :md="12"
                 :span="24"
               >
                 <a-card
@@ -251,7 +215,7 @@
         </a-tab-pane>
         <a-tab-pane
           forceRender
-          key="2"
+          key="timeline"
           tab="Verlauf"
         >
           <a-card>
@@ -273,57 +237,103 @@
         </a-tab-pane>
         <a-tab-pane
           forceRender
-          key="3"
-          tab="Kontaktpersonen">
-          <!-- exposed contacts -->
-          <a-card>
-            <div slot="extra">
-              <a-button
-                icon="plus"
-                @click="addExposureContact">
-                Hinzufügen
-              </a-button>
-            </div>
+          key="infection-chain"
+          tab="Infektionskette">
 
-            <a-table
-              :columns="columnsExposureContacts"
-              :dataSource="exposureContacts"
-              class="imis-table-no-pagination"
-              :rowKey="contact => contact.contact.id"
-              :loading="exposureContactsLoading"
-              :customRow="contact => ({
-                on: { dblclick: () => showExposureContact(contact.id) }
-              })">
-              <template slot="dateOfContact" slot-scope="contact">
-                {{ moment(contact.dateOfContact).format('DD.MM.YYYY') }}
-              </template>
-              <template slot="infectionState" slot-scope="contact">
-                <span v-if="contact.contact.infected"
-                  style="color: red;">
-                  Infiziert
-                </span>
-                <span v-else>
+          <a-row :gutter="8" style="margin-top: 8px;">
+            <a-card
+              align="left"
+              title="Infektionsquelle"
+            >
+              <table>
+                <tr v-if="!!patientInfectionSource">
+                  <td>
+                    <a-icon type="user"/> Kontakt mit infizierter Person
+                  </td>
+                  <td>
+                    <a @click="showPatient(patientInfectionSource.source.id)">
+                      {{ patientInfectionSource.source.firstName }} {{ patientInfectionSource.source.lastName }},
+                    </a>
+                  </td>
+                  <td>{{ moment(patientInfectionSource.dateOfContact).format('DD.MM.YYYY') }};</td>
+                  <td>{{ patientInfectionSource.context }}</td>
+                </tr>
+                <tr v-else>
                   Unbekannt
-                </span>
-              </template>
-              <template slot="quarantineState" slot-scope="contact">
-                <span v-if="contact.contact.inQuarantine">
-                  In Quarantäne
-                </span>
-                <span v-else
-                  :style="`color: ${contact.contact.infected ? 'red' : 'unset'};`">
-                  Keine Quarantäne
-                </span>
-              </template>
-              <template slot="actions" slot-scope="contact">
-                <a-button ghost
-                  icon="close"
-                  type="danger"
-                  title="Entfernen"
-                  @click="removeExposureContact(contact.id)"/>
-              </template>
-            </a-table>
-          </a-card>
+                </tr>
+              </table>
+            </a-card>
+          </a-row>
+
+          <!-- exposed contacts -->
+          <a-row :gutter="8" style="margin-top: 8px;">
+            <a-card
+              title="Kontaktpersonen"
+              align="left"
+            >
+              <div slot="extra">
+                <a-button
+                  icon="plus"
+                  type="primary"
+                  @click="addExposureContact">
+                  Hinzufügen
+                </a-button>
+              </div>
+
+              <a-table
+                :columns="columnsExposureContacts"
+                :dataSource="exposureContacts"
+                class="imis-table-no-pagination"
+                :rowKey="contact => contact.contact.id"
+                :loading="exposureContactsLoading"
+                :customRow="contact => ({
+                  on: { dblclick: () => showExposureContact(contact.id) }
+                })">
+                <template slot="gotoPatient" slot-scope="contact">
+                  <a-button ghost
+                    icon="user"
+                    type="primary"
+                    title="Patientendaten anzeigen"
+                    @click="showPatient(contact.contact.id)"/>
+                </template>
+                <template slot="dateOfContact" slot-scope="contact">
+                  {{ moment(contact.dateOfContact).format('DD.MM.YYYY') }}
+                </template>
+                <template slot="infectionState" slot-scope="contact">
+                  <span v-if="contact.contact.infected"
+                    style="color: red;">
+                    Infiziert
+                  </span>
+                  <span v-else>
+                    Unbekannt
+                  </span>
+                </template>
+                <template slot="quarantineState" slot-scope="contact">
+                  <span v-if="contact.contact.inQuarantine">
+                    In Quarantäne
+                  </span>
+                  <span v-else
+                    :style="`color: ${contact.contact.infected ? 'red' : 'unset'};`">
+                    Keine Quarantäne
+                  </span>
+                </template>
+                <template slot="actions" slot-scope="contact">
+                  <div class="inline-buttons">
+                    <a-button ghost
+                      icon="edit"
+                      type="primary"
+                      title="Bearbeiten"
+                      @click="showExposureContact(contact.id)"/>
+                    <a-button ghost
+                      icon="close"
+                      type="danger"
+                      title="Entfernen"
+                      @click="removeExposureContact(contact.id)"/>
+                  </div>
+                </template>
+              </a-table>
+            </a-card>
+          </a-row>
           <a-modal title="Kontaktperson bearbeiten"
             ref="exposureContactModal"
             :visible="!!exposureContactInEditing"
@@ -384,6 +394,14 @@ const columnsTests: Partial<Column>[] = [
 
 const columnsExposureContacts: Partial<Column>[] = [
   {
+    key: 'gotoPatient',
+    width: '40pt',
+    align: 'center',
+    scopedSlots: {
+      customRender: 'gotoPatient',
+    },
+  },
+  {
     title: 'Nachname',
     key: 'lastName',
     dataIndex: 'contact.lastName',
@@ -417,7 +435,7 @@ const columnsExposureContacts: Partial<Column>[] = [
   {
     title: 'Aktionen',
     key: 'actions',
-    width: '70pt',
+    width: '120pt',
     align: 'center',
     scopedSlots: {
       customRender: 'actions',
@@ -529,7 +547,9 @@ export default Vue.extend({
       // Source of Infection
       try {
         this.patientInfectionSource = await Api.getExposureSourceContactForPatientUsingGet(patientId)
-      } catch (e) {}
+      } catch (e) {
+        this.patientInfectionSource = undefined
+      }
 
       // Tests
       this.tests = await Api.getLabTestForPatientUsingGet(patientId)
@@ -654,10 +674,23 @@ export default Vue.extend({
 <style scoped lang="scss">
   table {
     border-collapse: separate;
-    border-spacing: 15px
+    border-spacing: 5px;
+
+    tr {
+      padding: 15px;
+
+      td:first-of-type {
+        padding-right: 15px;
+      }
+    }
   }
 
   table.compact {
     border-spacing: 15px 3px;
+  }
+
+  .inline-buttons > button {
+    margin-left: 2px;
+    margin-right: 2px;
   }
 </style>

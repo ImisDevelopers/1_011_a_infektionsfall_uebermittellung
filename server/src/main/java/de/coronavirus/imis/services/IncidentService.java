@@ -116,6 +116,7 @@ public class IncidentService {
 	{
 		var incident = (TestIncident) new TestIncident()
 				.setTestId(info.getTestId())
+				.setTestMaterial(info.getTestMaterial())
 				.setComment(info.getComment())
 				.setType(info.getTestType())
 				.setStatus(TestStatus.TEST_SUBMITTED)
@@ -128,10 +129,10 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public TestIncident updateIncident (String labrotoryId, UpdateTestStatusDTO update)
+	public TestIncident updateIncident (String laboratoryId, UpdateTestStatusDTO update)
 	{
 		var incident = testIncidentRepo.findByTestId(update.getTestId()).get(0);
-		var laboratory = laboratoryRepo.findById(labrotoryId).orElseThrow();
+		var laboratory = laboratoryRepo.findById(laboratoryId).orElseThrow();
 		incident
 				.setLaboratory(laboratory)
 				.setStatus(update.getStatus())

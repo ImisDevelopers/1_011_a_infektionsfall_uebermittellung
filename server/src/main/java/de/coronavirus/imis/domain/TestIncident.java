@@ -7,6 +7,8 @@ import lombok.experimental.Accessors;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
@@ -20,8 +22,10 @@ public class TestIncident extends Incident {
 
 	private String testId;
 
+	@Enumerated(EnumType.STRING)
 	private TestType type;
 
+	@Enumerated(EnumType.STRING)
 	private TestStatus status;
 
 	@ManyToOne
@@ -30,6 +34,9 @@ public class TestIncident extends Incident {
 	private Laboratory laboratory;
 
 	private String comment;
+
+	@Enumerated(EnumType.STRING)
+	private TestMaterial testMaterial;
 
 	private byte[] report;
 

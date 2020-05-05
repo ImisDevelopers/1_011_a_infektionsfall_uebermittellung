@@ -2,9 +2,11 @@ package de.coronavirus.imis.domain;
 
 public enum IncidentType {
 
-	TEST(TestIncident.class),
-	QUARANTINE(QuarantineIncident.class),
-	ADMINISTRATIVE(AdministrativeIncident.class);
+	// lowercase to support direct casting from api route.
+
+	test(TestIncident.class),
+	quarantine(QuarantineIncident.class),
+	administrative(AdministrativeIncident.class);
 
 	public final Class IMPLEMENTATION;
 

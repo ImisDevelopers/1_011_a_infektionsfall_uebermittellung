@@ -30,6 +30,6 @@ public class AdministrativeIncident extends Incident {
 
 
 	public AdministrativeIncident() {
-		super(IncidentType.ADMINISTRATIVE);
+		super(IncidentType.administrative);
 	}
 }

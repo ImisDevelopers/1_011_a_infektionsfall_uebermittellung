@@ -21,7 +21,7 @@ public class QuarantineIncident extends Incident {
 	private String comment;
 
 	public QuarantineIncident() {
-		super(IncidentType.QUARANTINE);
+		super(IncidentType.quarantine);
 	}
 
 }

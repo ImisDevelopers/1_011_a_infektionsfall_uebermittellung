@@ -9,15 +9,10 @@ import de.coronavirus.imis.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.envers.AuditReader;
 import org.hibernate.envers.query.AuditEntity;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.annotation.BeanFactoryAnnotationUtils;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,11 +71,11 @@ public class IncidentService {
 
 		String prefix = id.split("_")[0];
 		switch (IncidentType.valueOf(prefix)) {
-			case TEST:
+			case test:
 				return testIncidentRepo.findById(id).orElseThrow();
-			case QUARANTINE:
+			case quarantine:
 				return quarantineIncidentRepo.findById(id).orElseThrow();
-			case ADMINISTRATIVE:
+			case administrative:
 				return adminIncidentRepo.findById(id).orElseThrow();
 		}
 
@@ -103,11 +98,11 @@ public class IncidentService {
 	public List<Incident> getCurrentByPatient (String patientId, IncidentType type) {
 
 		switch (type) {
-			case TEST:
+			case test:
 				return (List<Incident>)(List<?>) testIncidentRepo.findByPatientId(patientId);
-			case QUARANTINE:
+			case quarantine:
 				return (List<Incident>)(List<?>) quarantineIncidentRepo.findByPatientId(patientId);
-			case ADMINISTRATIVE:
+			case administrative:
 				return (List<Incident>)(List<?>) adminIncidentRepo.findByPatientId(patientId);
 		}
 

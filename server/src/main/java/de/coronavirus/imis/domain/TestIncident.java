@@ -34,6 +34,6 @@ public class TestIncident extends Incident {
 	private byte[] report;
 
 	public TestIncident() {
-		super(IncidentType.TEST);
+		super(IncidentType.test);
 	}
 }

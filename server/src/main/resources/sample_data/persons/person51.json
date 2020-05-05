@@ -1,34 +1,31 @@
 {
-  "city": "Kiel",
-  "coronaContacts": true,
-  "dateOfBirth": "1982-08-17",
-  "email": "a.mueller@t-online.de",
-  "firstName": "Annika",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 15,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "L861863296",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "6814473947",
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1960-09-11",
+  "email": "t.schulz@t-online.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 37,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M975535611",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "1021077102217",
   "preIllnesses": [
-    "Krebserkrankung"
+    ""
   ],
   "riskAreas": [
-    "GrandEst"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Fieber",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
     "Husten",
-    "Gelenkschmerzen"
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "21727110"
+  "zip": "30305"
 }

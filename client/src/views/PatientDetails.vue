@@ -13,21 +13,29 @@
       >
         <a-tab-pane
           key="overview"
-          tab="Stammdaten"
+          tab="Falldaten"
         >
           <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
             <div style="padding-right: 1rem">
               <a-dropdown>
                 <a-menu slot="overlay" @click="handleActionClick">
-                  <a-menu-item key="ARRANGE_TEST"><a-icon type="user" />Neuen Test anordnen</a-menu-item>
-                  <a-menu-item key="SEND_TO_QUARANTINE"><a-icon type="user" />Patienten in Quarantäne schicken</a-menu-item>
-  <!--                <a-menu-item key="HOSPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
+                  <a-menu-item key="ARRANGE_TEST">
+                    <a-icon type="user" />
+                    Neuen Test anordnen
+                  </a-menu-item>
+                  <a-menu-item key="SEND_TO_QUARANTINE">
+                    <a-icon type="user" />
+                    Patienten in Quarantäne schicken
+                  </a-menu-item>
+                  <!--                <a-menu-item key="HOSPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
                 </a-menu>
-                <a-button style="margin-left: 8px" type="primary"> Aktionen <a-icon type="down" /> </a-button>
+                <a-button style="margin-left: 8px" type="primary"> Aktionen
+                  <a-icon type="down" />
+                </a-button>
               </a-dropdown>
             </div>
             <a-button type="primary" icon="edit" @click="editPatientStammdaten">
-              Stammdaten editieren
+              Daten ändern
             </a-button>
           </div>
           <!-- display user data here-->
@@ -46,12 +54,8 @@
                 >
                   <table>
                     <tr>
-                      <td>Vorname:</td>
-                      <td>{{patient.firstName}}</td>
-                    </tr>
-                    <tr>
-                      <td>Nachname:</td>
-                      <td>{{patient.lastName}}</td>
+                      <td>Name:</td>
+                      <td>{{patient.lastName}}, {{patient.firstName}}</td>
                     </tr>
                     <tr>
                       <td>Geburtsdatum:</td>
@@ -78,20 +82,12 @@
                 >
                   <table>
                     <tr>
-                      <td>Straße:</td>
-                      <td>{{patient.street}}</td>
+                      <td>Straße/Hausnr.:</td>
+                      <td>{{patient.street}} {{patient.houseNumber}}</td>
                     </tr>
                     <tr>
-                      <td>Hausnummer:</td>
-                      <td>{{patient.houseNumber}}</td>
-                    </tr>
-                    <tr>
-                      <td>PLZ:</td>
-                      <td>{{patient.zip}}</td>
-                    </tr>
-                    <tr>
-                      <td>Ort:</td>
-                      <td>{{patient.city}}</td>
+                      <td>PLZ/Ort:</td>
+                      <td>{{patient.zip}} {{patient.city}}</td>
                     </tr>
                     <tr>
                       <td>Land:</td>
@@ -157,6 +153,42 @@
               </a-col>
             </a-row>
 
+            <!-- Tests -->
+            <a-row :gutter="8" style="margin-top: 8px;">
+              <a-col span="24">
+                <div style="background: white; border: 1px solid #e8e8e8">
+                  <div class="card-header">
+                    <div>
+                      Fall-Status: {{(patientStatus ? patientStatus.label : 'Unbekannt') + (patient.quarantineUntil ?
+                      (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')}}"
+                    </div>
+                    <div class="card-header-subtitle">Erkrankungsdatum: {{dateOfIllness}}</div>
+                    <div class="card-header-subtitle">Meldedatum: {{dateOfReporting}}</div>
+                  </div>
+                  <a-table
+                    :columns="columnsTests"
+                    :dataSource="tests"
+                    :scroll="{x: 0, y: 0}"
+                    class="imis-table-no-pagination"
+                    rowKey="id"
+                    style="padding: 0 24px"
+                  >
+                    <div slot="lastUpdate" slot-scope="lastUpdate">
+                      {{getDate(lastUpdate)}}
+                    </div>
+                    <div slot="testStatus" slot-scope="testStatus">
+                      <a-icon :type="testResults.find(type => type.id === testStatus).icon" style="margin-right: 5px" />
+                      {{testResults.find(type => type.id === testStatus).label}}
+                    </div>
+                    <div slot="testType" slot-scope="testType">
+                      <a-icon :type="testTypes.find(type => type.id === testType).icon" style="margin-right: 5px" />
+                      {{testTypes.find(type => type.id === testType).label}}
+                    </div>
+                  </a-table>
+                </div>
+              </a-col>
+            </a-row>
+
             <!-- Symptome und Risiken -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col
@@ -180,33 +212,6 @@
                   title="Symptome"
                 >
                   <div v-bind:key="symptom" v-for="symptom in symptoms">{{symptom}}</div>
-                </a-card>
-              </a-col>
-            </a-row>
-
-            <!-- Tests -->
-            <a-row :gutter="8" style="margin-top: 8px;">
-              <a-col span="24">
-                <a-card
-                  :title="'Status: ' + (patientStatus ? patientStatus.label : 'Unbekannt') + (patient.quarantineUntil ? (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')"
-                  align="left"
-                >
-                  <a-table
-                    :columns="columnsTests"
-                    :dataSource="tests"
-                    :scroll="{x: 0, y: 0}"
-                    class="imis-table-no-pagination"
-                    rowKey="id"
-                  >
-                    <div slot="testStatus" slot-scope="testStatus">
-                      <a-icon :type="testResults.find(type => type.id === testStatus).icon" style="margin-right: 5px" />
-                      {{testResults.find(type => type.id === testStatus).label}}
-                    </div>
-                    <div slot="testType" slot-scope="testType">
-                      <a-icon :type="testTypes.find(type => type.id === testType).icon" style="margin-right: 5px" />
-                      {{testTypes.find(type => type.id === testType).label}}
-                    </div>
-                  </a-table>
                 </a-card>
               </a-col>
             </a-row>
@@ -387,6 +392,13 @@ const columnsTests: Partial<Column>[] = [
       customRender: 'testStatus',
     },
   }, {
+    title: 'Aktualisiert',
+    dataIndex: 'lastUpdate',
+    key: 'lastUpdate',
+    scopedSlots: {
+      customRender: 'lastUpdate',
+    },
+  }, {
     title: 'Kommentar',
     dataIndex: 'comment',
     key: 'comment',
@@ -463,6 +475,9 @@ interface State {
   columnsExposureContacts: Partial<Column>[];
   testResults: TestResultType[];
   testTypes: TestTypeItem[];
+  dateOfReporting: string;
+  dateOfIllness: string;
+  dateFormat: string;
 }
 
 export default Vue.extend({
@@ -488,6 +503,7 @@ export default Vue.extend({
 
   data(): State {
     return {
+      dateFormat: 'DD.MM.YYYY',
       patient: undefined,
       patientInfectionSource: undefined,
       exposureContacts: [],
@@ -506,6 +522,8 @@ export default Vue.extend({
       tests: [],
       columnsTests,
       columnsExposureContacts,
+      dateOfReporting: '',
+      dateOfIllness: '',
     }
   },
 
@@ -531,6 +549,19 @@ export default Vue.extend({
         this.patient = patient
       }
 
+      if (this.patient.events) {
+        const event = this.patient.events.find(event => event.eventType === 'REGISTERED' || event.eventType === 'SUSPECTED')
+        if (event) {
+          this.dateOfReporting = moment(event.eventTimestamp).format(this.dateFormat)
+        }
+      }
+
+      if (this.patient.dateOfIllness) {
+        this.dateOfIllness = moment(this.patient.dateOfIllness).format(this.dateFormat)
+      } else {
+        this.dateOfIllness = this.dateOfReporting
+      }
+
       // Map patient attributes to their display representation
       this.patientStatus = eventTypes.find(type => type.id === this.patient?.patientStatus)
       this.symptoms = this.patient.symptoms?.map(symptom => {
@@ -541,7 +572,7 @@ export default Vue.extend({
         const patientIllness = PRE_ILLNESSES.find(illness => illness.value === preIllness)
         return patientIllness ? patientIllness.label : preIllness
       }) || []
-      this.dateOfBirth = moment(this.patient.dateOfBirth).format('DD.MM.YYYY')
+      this.dateOfBirth = moment(this.patient.dateOfBirth).format(this.dateFormat)
       const patientGender = this.patient.gender || ''
       this.gender = patientGender === 'male' ? 'männlich' : patientGender === 'female' ? 'weiblich' : 'divers'
 
@@ -580,7 +611,7 @@ export default Vue.extend({
     editPatientStammdaten(): void {
       this.showChangePatientStammdatenForm = true
     },
-    handleActionClick(e: { key: string}) {
+    handleActionClick(e: { key: string }) {
       switch (e.key) {
         case 'SEND_TO_QUARANTINE':
           this.$router.push({ name: 'send-to-quarantine', params: { patientId: this.patient?.id || '' } })
@@ -667,6 +698,9 @@ export default Vue.extend({
       this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
     moment,
+    getDate(date: string) {
+      return moment(date).format(this.dateFormat)
+    },
   },
 })
 </script>
@@ -693,5 +727,22 @@ export default Vue.extend({
   .inline-buttons > button {
     margin-left: 2px;
     margin-right: 2px;
+  }
+
+  .card-header {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+    font-size: 16px;
+    border-bottom: 1px solid #e8e8e8
+  }
+
+  .card-header-subtitle {
+    font-size: 14px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.65);
   }
 </style>

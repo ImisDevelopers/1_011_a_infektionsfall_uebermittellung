@@ -1,31 +1,31 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1960-06-20",
-  "email": "d.richter@t-online.de",
-  "firstName": "Daniel",
-  "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 46,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "D508157429",
-  "lastName": "Richter",
-  "phoneNumber": "40781618410",
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1962-02-03",
+  "email": "p.schulz@posteo.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 10,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C149203558",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "6155940781",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
   "symptoms": [
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Halschmerzen",
     "Fieber",
-    "Kopfschmerzen"
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Husten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "93101034"
+  "weakenedImmuneSystem": false,
+  "zip": "841095"
 }

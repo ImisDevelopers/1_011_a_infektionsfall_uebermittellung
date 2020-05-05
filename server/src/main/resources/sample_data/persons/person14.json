@@ -1,31 +1,33 @@
 {
-  "city": "Hamburg",
+  "city": "M\u00fcnchen",
   "coronaContacts": true,
-  "dateOfBirth": "1981-12-23",
-  "email": "j.richter@web.de",
-  "firstName": "Jens",
+  "dateOfBirth": "1984-11-03",
+  "email": "a.bauer@gmx.de",
+  "firstName": "Annika",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 89,
+  "gender": "female",
+  "houseNumber": 25,
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V670298515",
-  "lastName": "Richter",
-  "phoneNumber": "67632100163",
+  "insuranceMembershipNumber": "N776205431",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "4810109513104",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
   "symptoms": [
     "Gelenkschmerzen",
-    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Fieber",
     "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung"
+    "Husten",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "8708317"
+  "zip": "20037"
 }

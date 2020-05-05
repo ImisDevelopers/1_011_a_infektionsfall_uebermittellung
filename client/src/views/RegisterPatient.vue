@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper register-patient-container">
 
     <!-- Patient successfully created info -->
     <div style="display: flex; justify-content: center; text-align: center" v-if="createdPatient">
@@ -10,9 +10,7 @@
           <div style="display: flex; align-items: center; margin: 10px">
             <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin: 0 25px 0 0" type="check-circle" />
             <h3 style="margin-bottom: 0">
-              <span v-if="createdPatient.gender === 'female'">Patientin</span>
-              <span v-else>Patient</span>
-              wurde erfolgreich registriert.
+              Patient/in wurde erfolgreich registriert.
             </h3>
           </div>
           <table style="border-collapse: separate; border-spacing: 15px 5px; text-align: left">
@@ -30,7 +28,7 @@
           <div style="margin-top: 15px">
             <router-link :to="{ name: 'patient-detail', params: { id: createdPatient.id } }" style="margin-right: 15px">
               <a-button type="primary">
-                Patienten einsehen
+                Patienten/in einsehen
               </a-button>
             </router-link>
             <router-link :to="{ name: 'register-test' }">
@@ -46,8 +44,8 @@
     <!-- Patient Registration Form -->
     <div>
       <h3>
-        Registrieren Sie hier neue Patienten in IMIS. Bitte füllen Sie den Bogen
-        vollständig aus.
+        Registrieren Sie hier neue Patienten in IMIS. Bitte erfassen Sie die nachfolgenden Daten so vollständig wie
+        möglich. Pflichtangaben sind mit "*" markiert.
       </h3>
 
       <a-form
@@ -61,8 +59,8 @@
         <a-collapse defaultActiveKey="1">
 
           <!-- Stammdaten -->
-          <a-collapse-panel header="Allgemeines" key="1">
-            <PatientStammdaten :form="form" :show-death="true" :show-stay="true" @gender="genderSelected" />
+          <a-collapse-panel header="Personendaten" key="1">
+            <PatientStammdaten :form="form" :show-death="true" :show-stay="true" />
           </a-collapse-panel>
 
           <!-- Infektionskette / Exposure -->
@@ -97,7 +95,8 @@
           <!-- Symptoms -->
           <a-collapse-panel header="Symptome" key="3">
             <a-form-item
-              :label="'Welche Symptome weist ' + patientString + ' auf?'"
+              class="no-double-colon-form-field"
+              :label="'Welche Symptome weist der Patient/die Patientin auf?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
@@ -105,11 +104,6 @@
                 <a-row>
                   <a-col :key="symptom.value" :span="symptom.value === 'LOSS_OF_SENSE_OF_SMELL_TASTE' ? 12 : 6"
                          v-for="symptom in SYMPTOMS">
-                    <a-checkbox :value="symptom.value">
-                      {{symptom.label}}
-                    </a-checkbox>
-                  </a-col>
-                  <a-col :key="symptom.value" :span="12" v-for="symptom in ADDITIONAL_SYMPTOMS">
                     <a-checkbox :value="symptom.value">
                       {{symptom.label}}
                     </a-checkbox>
@@ -129,6 +123,7 @@
             <a-form-item
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
+              class="no-double-colon-form-field"
               label="Wie schnell sind die Beschwerden aufgetreten?"
             >
               <a-radio-group
@@ -144,7 +139,8 @@
             </a-form-item>
 
             <a-form-item
-              :label="'Hat ' + patientString + ' für diese Saison eine Influenza-Impfung erhalten?'"
+              class="no-double-colon-form-field"
+              :label="'Hat der Patient/die Patientin für diese Saison eine Influenza-Impfung erhalten?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
@@ -156,15 +152,21 @@
           </a-collapse-panel>
 
           <!-- Risks / Pre Illnesses -->
-          <a-collapse-panel header="Vorerkrankungen" key="4">
+          <a-collapse-panel header="Vorerkrankungen und Risikofaktoren" key="4">
             <a-form-item
-              :label="'Welche Vererkrankungen und Risikofaktoren liegen vor?'"
+              class="no-double-colon-form-field"
+              :label="'Welche Vorerkrankungen und Risikofaktoren liegen vor?'"
               :labelCol="{ div: 24 }"
               :wrapperCol="{ div: 24 }"
             >
               <a-checkbox-group v-decorator="['preIllnesses']">
                 <a-row>
                   <a-col :key="preIllness.value" :span="8" v-for="preIllness in PRE_ILLNESSES">
+                    <a-checkbox :value="preIllness.value">
+                      {{preIllness.label}}
+                    </a-checkbox>
+                  </a-col>
+                  <a-col :key="preIllness.value" :span="12" v-for="preIllness in ADDITIONAL_PRE_ILLNESSES">
                     <a-checkbox :value="preIllness.value">
                       {{preIllness.label}}
                     </a-checkbox>
@@ -183,28 +185,10 @@
           </a-collapse-panel>
 
           <!-- Krankheitsdetails -->
-          <a-collapse-panel header="Krankheit" key="5">
+          <a-collapse-panel header="Krankheit und Zustand" key="5">
             <a-row>
-              <a-col :span="4" />
-              <a-col :span="20">
-                <div style="display: flex; align-items: center;">
-                  <a-form-item :wrapperCol="{span: 24}">
-                    <a-checkbox :checked="!disableHospitalization" @change="hospitalizationChanged">
-                      {{patientString}} ist hospitalisiert
-                    </a-checkbox>
-                  </a-form-item>
-                  <DateInput :decorator="['dateOfHospitalization']" :disabled="disableHospitalization" label="Seit"
-                             style="flex: 0 1 400px" />
-                  <a-form-item :wrapperCol="{span: 24}" style="padding-left: 15px;">
-                    <a-checkbox :decorator="['onIntensiveCareUnit']" :disabled="disableHospitalization">
-                      Auf der Intensivstation
-                    </a-checkbox>
-                  </a-form-item>
-                </div>
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="12">
+              <a-col :span="1"></a-col>
+              <a-col :span="8">
                 <a-form-item label="Art der Erkrankung">
                   <a-select
                     placeholder="Bitte wählen..."
@@ -213,19 +197,11 @@
                       message: 'Bitte Erkrankung wählen',
                     }], initialValue: 'CORONA'}]"
                   >
-                    <a-select-option value="CORONA">SARS-nCoV-2</a-select-option>
+                    <a-select-option value="CORONA">COVID-19</a-select-option>
                   </a-select>
                 </a-form-item>
               </a-col>
-              <a-col :span="12">
-                <DateInput :decorator="['dateOfIllness', { rules: [{
-                      required: true,
-                      message: 'Bitte Erkrankungsdatum wählen',
-                    }], initialValue: today}]" label="Erkrankungsdatum" />
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="12">
+              <a-col :span="8">
                 <a-form-item label="Fallstatus">
                   <a-select placeholder="Status" style="width: 250px" v-decorator="['patientStatus', { rules: [{
                       required: true,
@@ -238,7 +214,16 @@
                   </a-select>
                 </a-form-item>
               </a-col>
-              <a-col :span="12">
+            </a-row>
+            <a-row>
+              <a-col :span="1"></a-col>
+              <a-col :span="8">
+                <DateInput :decorator="['dateOfIllness', { rules: [{
+                      required: true,
+                      message: 'Bitte Erkrankungsdatum wählen',
+                    }], initialValue: today}]" label="Erkrankungsdatum" />
+              </a-col>
+              <a-col :span="8">
                 <DateInput :decorator="['dateOfReporting', { rules: [{
                       required: true,
                       message: 'Bitte Meldedatum wählen'
@@ -246,25 +231,22 @@
               </a-col>
             </a-row>
             <a-row>
-              <a-col :span="4" />
-              <a-col :span="20">
-                <a-checkbox :checked="!disableTestOrder" @change="testOrderedChanged"
-                            style="margin-bottom: 15px">
-                  Wurde eine Erregerdiagnostik beauftragt?
-                </a-checkbox>
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="12">
-                <LaboratoryInput
-                  :disabled="disableTestOrder"
-                  :form="form"
-                  :validation="['laboratoryId']"
-                  label="Labor"
-                />
-              </a-col>
-              <a-col :span="12">
-                <DateInput :decorator="['dateOfTest']" :disabled="disableTestOrder" label="Datum der Probenentnahme" />
+              <a-col :span="2" />
+              <a-col :span="16">
+                <div style="display: flex; align-items: center;">
+                  <a-form-item :wrapperCol="{span: 24}">
+                    <a-checkbox :checked="!disableHospitalization" @change="hospitalizationChanged">
+                      Patient/in ist hospitalisiert
+                    </a-checkbox>
+                  </a-form-item>
+                  <DateInput :decorator="['dateOfHospitalization']" :disabled="disableHospitalization" label="Seit"
+                             style="flex: 0 1 400px" />
+                  <a-form-item :wrapperCol="{span: 24}" style="padding-left: 15px;">
+                    <a-checkbox :decorator="['onIntensiveCareUnit']" :disabled="disableHospitalization">
+                      Auf der Intensivstation
+                    </a-checkbox>
+                  </a-form-item>
+                </div>
               </a-col>
             </a-row>
           </a-collapse-panel>
@@ -291,30 +273,27 @@ import Vue from 'vue'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
 import PatientStammdaten from '@/components/PatientStammdaten.vue'
-import { ADDITIONAL_SYMPTOMS, SYMPTOMS } from '@/models/symptoms'
+import { SYMPTOMS } from '@/models/symptoms'
 import { Option } from '@/models'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
+import { ADDITIONAL_PRE_ILLNESSES, PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 import DateInput from '@/components/DateInput.vue'
 import { EventTypeItem, eventTypes } from '@/models/event-types'
 import moment, { Moment } from 'moment'
-import LaboratoryInput from '@/components/LaboratoryInput.vue'
 
 interface State {
   form: any;
   createdPatient: Patient | null;
   SYMPTOMS: Option[];
   PRE_ILLNESSES: Option[];
-  ADDITIONAL_SYMPTOMS: Option[];
+  ADDITIONAL_PRE_ILLNESSES: Option[];
   EXPOSURES_INTERNAL: Option[];
   EXPOSURE_LOCATIONS: Option[];
   EVENT_TYPES: EventTypeItem[];
   showOtherSymptoms: boolean;
   showOtherPreIllnesses: boolean;
-  patientString: string;
   disableExposureLocation: boolean;
   disableHospitalization: boolean;
-  disableTestOrder: boolean;
   today: Moment;
 }
 
@@ -322,7 +301,6 @@ export default Vue.extend({
   components: {
     PatientStammdaten,
     DateInput,
-    LaboratoryInput,
   },
   name: 'RegisterPatient',
   data(): State {
@@ -330,7 +308,7 @@ export default Vue.extend({
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdPatient: null,
       SYMPTOMS,
-      ADDITIONAL_SYMPTOMS,
+      ADDITIONAL_PRE_ILLNESSES,
       PRE_ILLNESSES,
       EXPOSURES_INTERNAL,
       EXPOSURE_LOCATIONS,
@@ -338,9 +316,7 @@ export default Vue.extend({
       disableExposureLocation: true,
       showOtherSymptoms: false,
       showOtherPreIllnesses: false,
-      patientString: 'der Patient',
       disableHospitalization: true,
-      disableTestOrder: true,
       today: moment(),
     }
   },
@@ -387,14 +363,6 @@ export default Vue.extend({
           request.onIntensiveCareUnit = null
         }
 
-        if (!this.disableTestOrder) {
-          request.laboratoryId = values.laboratoryId
-          request.dateOfTest = values.dateOfTest.format('YYYY-MM-DD')
-        } else {
-          request.laboratoryId = null
-          request.dateOfTest = null
-        }
-
         if (values.exposures) {
           request.riskAreas = request.riskAreas.concat(values.exposures)
         }
@@ -411,13 +379,10 @@ export default Vue.extend({
           )
         }
 
-        const patientString = request.gender === 'female' ? 'Patientin' : 'Patient'
-
         Api.addPatientUsingPost(request).then((patient: Patient) => {
           this.form.resetFields()
           this.createdPatient = patient as any
           this.disableExposureLocation = true
-          this.disableTestOrder = true
           this.disableHospitalization = true
           this.showOtherSymptoms = false
           this.form.setFieldsValue({
@@ -427,16 +392,16 @@ export default Vue.extend({
             preIllnessesActivated: undefined,
           })
           const notification = {
-            message: patientString + ' registriert.',
-            description: 'Der ' + patientString + ' wurde erfolgreich registriert.',
+            message: 'Patient/in registriert.',
+            description: 'Patient/in wurde erfolgreich registriert.',
           }
           this.$notification.success(notification)
           window.scrollTo(0, 0)
         }).catch((error: Error) => {
           console.error(error)
           const notification = {
-            message: patientString + ' nicht registriert.',
-            description: 'Der ' + patientString + ' konnte nicht registriert werden.',
+            message: 'Patient/in nicht registriert.',
+            description: 'Patient/in konnte nicht registriert werden.',
           }
           this.$notification.error(notification)
         })
@@ -450,9 +415,6 @@ export default Vue.extend({
       const target = event.target as any
       this.showOtherPreIllnesses = target.checked
     },
-    genderSelected(gender: string) {
-      this.patientString = gender === 'female' ? 'die Patientin' : 'der Patient'
-    },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')
     },
@@ -460,15 +422,34 @@ export default Vue.extend({
       const target = event.target as any
       this.disableHospitalization = !target.checked
     },
-    testOrderedChanged(event: Event) {
-      const target = event.target as any
-      this.disableTestOrder = !target.checked
-    },
   },
 })
 </script>
 
+<style lang="scss">
+
+  .register-patient-container {
+    .no-double-colon-form-field {
+      .ant-form-item-label {
+        label::after {
+          display: none;
+        }
+      }
+    }
+
+    .ant-row.ant-form-item {
+      margin-bottom: 8px;
+    }
+
+    .ant-divider {
+      margin: 1rem 0;
+    }
+  }
+
+</style>
+
 <style scoped lang="scss">
+
   .wrapper {
     text-align: left;
     padding: 2%;

@@ -1,31 +1,30 @@
 {
-  "city": "Hamburg",
+  "city": "M\u00fcnchen",
   "coronaContacts": false,
-  "dateOfBirth": "1936-10-22",
-  "email": "j.mueller@gmail.de",
-  "firstName": "Jana",
+  "dateOfBirth": "1999-05-13",
+  "email": "k.winkler@posteo.de",
+  "firstName": "Kai",
   "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 72,
+  "gender": "male",
+  "houseNumber": 26,
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "X184211091",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "0250392614",
+  "insuranceMembershipNumber": "Y614237373",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "109901391083",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof",
   "symptoms": [
-    "Husten",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
+    "Halschmerzen",
     "Fieber",
-    "Halschmerzen"
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "39610856"
+  "weakenedImmuneSystem": false,
+  "zip": "54033"
 }

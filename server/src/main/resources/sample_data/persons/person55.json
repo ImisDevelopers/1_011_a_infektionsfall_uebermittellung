@@ -1,32 +1,28 @@
 {
-  "city": "Bochum",
-  "coronaContacts": false,
-  "dateOfBirth": "1942-09-15",
-  "email": "a.winter@posteo.de",
-  "firstName": "Annika",
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1990-04-26",
+  "email": "t.bauer@posteo.de",
+  "firstName": "Tim",
   "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 45,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "R108780419",
-  "lastName": "Winter",
-  "phoneNumber": "7470168733",
+  "gender": "male",
+  "houseNumber": 78,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Y539625898",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "2370589578",
   "preIllnesses": [
-    "Krebserkrankung"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber"
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "004791010"
+  "weakenedImmuneSystem": true,
+  "zip": "11467"
 }

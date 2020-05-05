@@ -1,29 +1,29 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1999-07-21",
-  "email": "l.wagner@posteo.de",
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1965-02-08",
+  "email": "l.lange@posteo.de",
   "firstName": "Lisa",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 75,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "W241921987",
-  "lastName": "Wagner",
-  "phoneNumber": "43610110371",
+  "houseNumber": 49,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "F625749126",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "4125286692",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg",
+  "street": "Nordstra\u00dfe",
   "symptoms": [
-    "Halschmerzen",
-    "Husten",
-    "Kopfschmerzen"
+    "Kopfschmerzen",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "38107005"
+  "zip": "627108"
 }

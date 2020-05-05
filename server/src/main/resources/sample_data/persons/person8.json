@@ -1,28 +1,30 @@
 {
-  "city": "M\u00fcnchen",
+  "city": "Kiel",
   "coronaContacts": true,
-  "dateOfBirth": "1952-11-19",
-  "email": "p.schroeder@t-online.de",
+  "dateOfBirth": "1982-02-20",
+  "email": "p.bauer@t-online.de",
   "firstName": "Peter",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 85,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "R328872698",
-  "lastName": "Schr\u00f6der",
-  "phoneNumber": "98543105346",
+  "houseNumber": 10,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "G819112790",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "11036193990",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "street": "Nordstra\u00dfe",
   "symptoms": [
-    "Kopfschmerzen",
-    "Husten"
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "10475107"
+  "zip": "610998"
 }

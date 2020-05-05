@@ -1,25 +1,34 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1970-09-16",
-  "email": "d.weber@posteo.de",
-  "firstName": "Daniela",
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1990-08-05",
+  "email": "j.bauer@posteo.de",
+  "firstName": "Jana",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 10,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "K682624278",
-  "lastName": "Weber",
-  "phoneNumber": "10347143455",
+  "houseNumber": 57,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P772966010",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "71088957986",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
   "street": "B\u00fcckerheide",
-  "symptoms": [],
+  "symptoms": [
+    "Fieber",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "2236231"
+  "zip": "27743"
 }

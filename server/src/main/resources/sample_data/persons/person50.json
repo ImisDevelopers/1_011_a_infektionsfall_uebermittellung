@@ -1,31 +1,35 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1996-11-21",
-  "email": "p.lange@t-online.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 16,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "E829137330",
-  "lastName": "Lange",
-  "phoneNumber": "658102029107",
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1937-01-21",
+  "email": "d.klein@web.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 53,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Q684203557",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "8932460953",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Halschmerzen",
     "Husten",
-    "Atemschwierigkeiten",
-    "Fieber"
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Schnupfen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "13105569"
+  "zip": "2101018"
 }

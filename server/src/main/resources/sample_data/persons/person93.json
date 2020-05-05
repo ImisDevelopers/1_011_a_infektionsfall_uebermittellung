@@ -1,29 +1,28 @@
 {
-  "city": "Berlin",
-  "coronaContacts": false,
-  "dateOfBirth": "1992-03-04",
-  "email": "f.schulz@web.de",
-  "firstName": "Franz",
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1998-07-17",
+  "email": "k.schulze@t-online.de",
+  "firstName": "Karl",
   "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 59,
+  "houseNumber": 19,
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "K259261469",
-  "lastName": "Schulz",
-  "phoneNumber": "2775618537",
+  "insuranceMembershipNumber": "R450845460",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "410866611088",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete",
+  "street": "Nordstra\u00dfe",
   "symptoms": [
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
     "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "41121049"
+  "weakenedImmuneSystem": true,
+  "zip": "41418"
 }

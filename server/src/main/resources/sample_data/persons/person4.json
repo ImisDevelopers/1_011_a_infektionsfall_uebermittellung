@@ -1,28 +1,30 @@
 {
-  "city": "Bochum",
-  "coronaContacts": false,
-  "dateOfBirth": "1941-10-07",
-  "email": "k.mueller@gmail.de",
-  "firstName": "Kai",
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-03-17",
+  "email": "j.winkler@gmail.de",
+  "firstName": "Jana",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 46,
+  "gender": "female",
+  "houseNumber": 99,
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y671988889",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "2528809570",
+  "insuranceMembershipNumber": "L992994062",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "110410893252",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide",
   "symptoms": [
-    "Gelenkschmerzen",
+    "Husten",
+    "Fieber",
     "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "4303911"
+  "weakenedImmuneSystem": false,
+  "zip": "80957"
 }

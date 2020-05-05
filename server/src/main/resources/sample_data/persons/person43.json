@@ -1,34 +1,29 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1956-05-09",
-  "email": "t.mueller@web.de",
-  "firstName": "Tim",
-  "fluImmunization": true,
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1954-09-03",
+  "email": "f.richter@web.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 89,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Z452699013",
-  "lastName": "M\u00fcller",
-  "phoneNumber": "109251910254",
+  "houseNumber": 65,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "E374843786",
+  "lastName": "Richter",
+  "nationality": "deutsch",
+  "phoneNumber": "64535218101",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
+  "street": "B\u00fcckerheide",
   "symptoms": [
     "Fieber",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Husten",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten"
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "10629148"
+  "zip": "355102"
 }

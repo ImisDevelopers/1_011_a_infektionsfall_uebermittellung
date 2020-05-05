@@ -1,27 +1,33 @@
 {
-  "city": "Berlin",
+  "city": "K\u00f6ln",
   "coronaContacts": true,
-  "dateOfBirth": "1941-08-12",
-  "email": "h.peters@posteo.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
+  "dateOfBirth": "1974-12-02",
+  "email": "j.schroeder@t-online.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 70,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "W823737375",
-  "lastName": "Peters",
-  "phoneNumber": "0910109710700",
+  "houseNumber": 73,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "E808897689",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "6738302843",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "B\u00fcckerheide",
+  "street": "Nordufer",
   "symptoms": [
-    "Fieber"
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "6008484"
+  "weakenedImmuneSystem": true,
+  "zip": "599105"
 }

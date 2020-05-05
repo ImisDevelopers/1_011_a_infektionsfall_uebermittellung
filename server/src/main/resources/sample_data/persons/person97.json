@@ -1,25 +1,28 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1987-10-31",
-  "email": "t.schroeder@web.de",
-  "firstName": "Tim",
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1986-01-30",
+  "email": "k.winter@posteo.de",
+  "firstName": "Kai",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 28,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "W290546084",
-  "lastName": "Schr\u00f6der",
-  "phoneNumber": "3784270103",
+  "houseNumber": 94,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "B252872361",
+  "lastName": "Winter",
+  "nationality": "deutsch",
+  "phoneNumber": "603851005010",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [],
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Husten"
+  ],
   "weakenedImmuneSystem": true,
-  "zip": "0870593"
+  "zip": "41383"
 }

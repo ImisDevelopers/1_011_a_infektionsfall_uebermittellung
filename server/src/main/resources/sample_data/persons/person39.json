@@ -1,34 +1,26 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1943-09-22",
-  "email": "l.weber@web.de",
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1978-03-22",
+  "email": "l.schroeder@web.de",
   "firstName": "Lisa",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 97,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "M671855941",
-  "lastName": "Weber",
-  "phoneNumber": "4036900343",
+  "houseNumber": 71,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "V990626742",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "7315851493",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Schnupfen"
-  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "4451076"
+  "zip": "9910108"
 }

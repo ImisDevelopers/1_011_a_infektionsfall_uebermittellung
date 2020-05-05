@@ -1,27 +1,35 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1928-09-07",
-  "email": "k.schulze@web.de",
-  "firstName": "Karl",
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1967-01-15",
+  "email": "l.winkler@posteo.de",
+  "firstName": "Lisa",
   "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 76,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "R833303441",
-  "lastName": "Schulze",
-  "phoneNumber": "64100376137",
+  "gender": "female",
+  "houseNumber": 54,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L671532152",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "4517133959",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
   "street": "Nordtstra\u00dfe",
   "symptoms": [
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Fieber",
     "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "1805526"
+  "weakenedImmuneSystem": true,
+  "zip": "29233"
 }

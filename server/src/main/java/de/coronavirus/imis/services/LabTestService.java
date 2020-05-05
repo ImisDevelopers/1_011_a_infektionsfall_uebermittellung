@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -71,6 +72,7 @@ public class LabTestService {
 
 		labTest.setTestStatus(dto.getStatus());
 		labTest.setReport(dto.getFile());
+		labTest.setLastUpdate(OffsetDateTime.now());
 
 		final List<PatientEvent> event = eventService.getForLabTest(labTest);
 		var eventType = testStatusToEvent(dto.getStatus());

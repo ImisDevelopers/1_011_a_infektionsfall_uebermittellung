@@ -67,7 +67,7 @@
             <a-input
               v-decorator="['nationality', { rules: [
                 { required: true, message: 'Bitte Staatsangehörigkeit angeben' }
-                ]}]"/>
+                ], initialValue: patientInput.nationality || 'deutsch'}]"/>
           </a-form-item>
         </a-col>
       </a-row>
@@ -93,7 +93,7 @@
 
       <!-- Wohnsitz -->
       <a-divider />
-      <p style="text-align: center">Adresse:</p>
+      <p style="text-align: center">Wohnort:</p>
       <location-form-group
         :form="form"
         :data="patient"
@@ -102,7 +102,7 @@
       <!-- Aufenthaltsort -->
       <div v-if="showStay">
         <a-divider />
-        <p style="text-align: center">Aufenthaltsort, falls von Adresse abweichend:</p>
+        <p style="text-align: center">Aufenthaltsort, falls von Wohnort abweichend:</p>
         <location-form-group
           :form="form"
           :data="patient"
@@ -113,7 +113,7 @@
 
       <!-- Email / Telefon -->
       <a-divider />
-      <p style="text-align: center">Kontakt und Sonstiges:</p>
+      <p style="text-align: center">Kommunikation und Sonstiges:</p>
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="E-mail">
@@ -157,7 +157,6 @@
                 ref="occupation"
                 :disabled="disableOccupation"
                 v-decorator="['occupation', { rules: [{
-                        required: true,
                         message: 'Bitte Beruf eingeben',
                       }], initialValue: patientInput.occupation}]"
               />

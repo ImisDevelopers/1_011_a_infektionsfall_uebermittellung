@@ -15,7 +15,7 @@ public abstract class PatientMapper {
 	public static final String DATE_FORMAT = "yyyy-MM-dd";
 	public static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
-	@Mapping(target = "patientStatus", defaultValue = "SUSPECTED")
+	@Mapping(target = "patientStatus", defaultValue = "REGISTERED")
 	@Mapping(target = "creationTimestamp", expression = "java( OffsetDateTime.now() )")
 	@Mapping(target = "dateOfBirth", dateFormat = DATE_FORMAT)
 	@Mapping(target = "dateOfDeath", dateFormat = DATE_FORMAT)

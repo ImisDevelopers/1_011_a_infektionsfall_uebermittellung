@@ -1,15 +1,23 @@
 package de.coronavirus.imis.api;
 
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.api.dto.OrderTestEventDTO;
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
 import de.coronavirus.imis.domain.Patient;
+<<<<<<< HEAD
 import de.coronavirus.imis.services.IncidentService;
+=======
+import de.coronavirus.imis.domain.PatientEvent;
+import de.coronavirus.imis.services.PatientEventService;
+>>>>>>> dev
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,10 +29,13 @@ public class PatientController {
 
 	private final PatientService patientService;
 	private final IncidentService incidentService;
+	private final PatientEventService eventService;
 
 	@PostMapping
-	public ResponseEntity<Patient> addPatient(@RequestBody CreatePatientDTO dto) {
-		var patient = patientService.addPatient(dto);
+	public ResponseEntity<Patient> addPatient(@RequestBody CreatePatientDTO dto,
+			@AuthenticationPrincipal Authentication auth) {
+		boolean isAuthenticated = auth != null;
+		var patient = patientService.addPatient(dto, isAuthenticated);
 
 		if (patient == null) {
 			return ResponseEntity.status(500).build();
@@ -77,5 +88,13 @@ public class PatientController {
 	public ResponseEntity<Patient> sendToQuarantine(@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
 		incidentService.addOrUpdateIncident(patientId, statusDTO);
 		return ResponseEntity.ok(patientService.sendToQuaratine(patientId, statusDTO));
+	}
+
+	@PostMapping("/event/order-test")
+	@PreAuthorize("hasAnyRole('CLINIC', 'DEPARTMENT_OF_HEALTH', 'DOCTORS_OFFICE', 'TEST_SITE')")
+	public ResponseEntity<PatientEvent> createOrderTestEvent(OrderTestEventDTO eventDTO) {
+		var patient = patientService.findPatientById(eventDTO.getPatientId()).get();
+		var event = eventService.createOrderTestEvent(patient);
+		return ResponseEntity.ok(event);
 	}
 }

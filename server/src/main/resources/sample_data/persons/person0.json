@@ -1,6 +1,6 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
+  "city": "Frankfurt",
+  "coronaContacts": true,
   "dateOfBirth": "1974-04-05",
   "email": "p.winkler@gmail.de",
   "firstName": "Peter",
@@ -8,21 +8,19 @@
   "gender": "male",
   "houseNumber": 64,
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "S398704996",
+  "insuranceMembershipNumber": "H582334538",
   "lastName": "Winkler",
+  "nationality": "deutsch",
   "phoneNumber": "11081960013",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
+  "speedOfSymptomsOutbreak": "Mittel",
   "street": "Schernerweg",
-  "symptoms": [
-    "Halschmerzen",
-    "Schnupfen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "90831086"
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "908310"
 }

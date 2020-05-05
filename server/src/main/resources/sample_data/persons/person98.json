@@ -1,28 +1,29 @@
 {
-  "city": "Hamburg",
+  "city": "Bochum",
   "coronaContacts": false,
-  "dateOfBirth": "1958-12-31",
-  "email": "k.wagner@t-online.de",
-  "firstName": "Kai",
+  "dateOfBirth": "1931-02-17",
+  "email": "d.winkler@t-online.de",
+  "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 62,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "J888121101",
-  "lastName": "Wagner",
-  "phoneNumber": "10691545226",
+  "gender": "female",
+  "houseNumber": 37,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "H180195016",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "210619906102",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
   "symptoms": [
-    "Schnupfen",
-    "Kopfschmerzen"
+    "Fieber",
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "10528953"
+  "weakenedImmuneSystem": false,
+  "zip": "45655"
 }

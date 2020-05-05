@@ -1,33 +1,31 @@
 {
-  "city": "Berlin",
+  "city": "M\u00fcnchen",
   "coronaContacts": true,
-  "dateOfBirth": "1946-12-10",
-  "email": "p.klein@t-online.de",
-  "firstName": "Petra",
+  "dateOfBirth": "1969-12-28",
+  "email": "j.schulze@gmail.de",
+  "firstName": "Jana",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 41,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "I718740490",
-  "lastName": "Klein",
-  "phoneNumber": "6488771906",
+  "houseNumber": 69,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "F951078441",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "7110341091036",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
   "symptoms": [
     "Gelenkschmerzen",
-    "Schnupfen",
-    "Fieber",
-    "Atemschwierigkeiten",
+    "Husten",
     "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Kopfschmerzen"
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "94013109"
+  "weakenedImmuneSystem": true,
+  "zip": "310242"
 }

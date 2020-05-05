@@ -96,7 +96,7 @@ def gen_person():
 		'phoneNumber': rand_num_str(),
 		'street': choice(streets),
 		'houseNumber': randint(0, 100),
-		'zip': rand_num_str(7),
+		'zip': rand_num_str(5),
 		'city': choice(cities),
 		'insuranceCompany': choice(insurance_companies),
 		'insuranceMembershipNumber': insurance_number(),
@@ -106,7 +106,8 @@ def gen_person():
 		'coronaContacts': bool(getrandbits(1)),
 		'riskAreas': [choice(riscAreas)],
 		'weakenedImmuneSystem': bool(getrandbits(1)),
-		'preIllnesses': [choice(preIllnesses)]
+		'preIllnesses': [choice(preIllnesses)],
+		'nationality': 'deutsch'
 	}
 
 

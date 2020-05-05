@@ -1,34 +1,31 @@
 {
-  "city": "Frankfurt",
+  "city": "Bochum",
   "coronaContacts": false,
-  "dateOfBirth": "1966-09-01",
-  "email": "f.winkler@posteo.de",
-  "firstName": "Franz",
-  "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 37,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "M304666325",
-  "lastName": "Winkler",
-  "phoneNumber": "86131711027",
+  "dateOfBirth": "1935-01-15",
+  "email": "p.lange@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 52,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "O916033628",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "15451680108",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordufer",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof",
   "symptoms": [
     "Schnupfen",
-    "Halschmerzen",
-    "Husten",
     "Gelenkschmerzen",
     "Erk\u00e4ltung",
-    "Fieber",
-    "Atemschwierigkeiten",
     "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "8467737"
+  "weakenedImmuneSystem": true,
+  "zip": "03859"
 }

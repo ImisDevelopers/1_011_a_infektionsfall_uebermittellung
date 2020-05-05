@@ -1,27 +1,29 @@
 {
   "city": "Kiel",
   "coronaContacts": true,
-  "dateOfBirth": "1974-03-23",
-  "email": "a.winkler@posteo.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
+  "dateOfBirth": "1949-12-23",
+  "email": "m.klein@t-online.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 48,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "P451424185",
-  "lastName": "Winkler",
-  "phoneNumber": "5310672910410",
+  "houseNumber": 21,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "N596126873",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "75140105101",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
   "symptoms": [
-    "Gelenkschmerzen"
+    "Schnupfen",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "71101684"
+  "weakenedImmuneSystem": false,
+  "zip": "38282"
 }

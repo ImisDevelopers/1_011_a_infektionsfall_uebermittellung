@@ -1,32 +1,33 @@
 {
-  "city": "M\u00fcnchen",
+  "city": "Berlin",
   "coronaContacts": true,
-  "dateOfBirth": "1984-10-20",
-  "email": "p.winter@gmail.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 91,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Z144097647",
-  "lastName": "Winter",
-  "phoneNumber": "12419049106",
+  "dateOfBirth": "2003-10-05",
+  "email": "p.schulze@posteo.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 77,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "S827296111",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "32710193745",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
-    "Kopfschmerzen",
+    "Erk\u00e4ltung",
     "Husten",
     "Atemschwierigkeiten",
-    "Schnupfen",
+    "Fieber",
     "Halschmerzen",
-    "Fieber"
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "31910314"
+  "weakenedImmuneSystem": true,
+  "zip": "91241"
 }

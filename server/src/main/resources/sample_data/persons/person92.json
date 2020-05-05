@@ -1,30 +1,29 @@
 {
-  "city": "Berlin",
+  "city": "Hamburg",
   "coronaContacts": false,
-  "dateOfBirth": "1975-07-16",
-  "email": "l.schulze@web.de",
-  "firstName": "Lisa",
+  "dateOfBirth": "1928-09-07",
+  "email": "k.schulze@web.de",
+  "firstName": "Karl",
   "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 10,
+  "gender": "male",
+  "houseNumber": 76,
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V240346956",
+  "insuranceMembershipNumber": "S551898779",
   "lastName": "Schulze",
-  "phoneNumber": "0241038657",
+  "nationality": "deutsch",
+  "phoneNumber": "64100376137",
   "preIllnesses": [
-    "Krebserkrankung"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordufer",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe",
   "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen"
+    "Gelenkschmerzen",
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "91821061"
+  "weakenedImmuneSystem": true,
+  "zip": "18055"
 }

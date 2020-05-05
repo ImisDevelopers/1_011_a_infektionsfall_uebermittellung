@@ -1,30 +1,33 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "K\u00f6ln",
   "coronaContacts": true,
-  "dateOfBirth": "2001-01-10",
-  "email": "a.winkler@gmail.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
+  "dateOfBirth": "1972-11-26",
+  "email": "j.schroeder@gmx.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 64,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "F115122787",
-  "lastName": "Winkler",
-  "phoneNumber": "99154710887",
+  "houseNumber": 18,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "O436824737",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "99309728109",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
   "symptoms": [
     "Erk\u00e4ltung",
-    "Fieber",
+    "Gelenkschmerzen",
     "Atemschwierigkeiten",
-    "Gelenkschmerzen"
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "7431527"
+  "zip": "103091"
 }

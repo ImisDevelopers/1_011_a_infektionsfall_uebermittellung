@@ -56,9 +56,13 @@ public class PatientService {
 		return patientRepository.findById(id);
 	}
 
-	public Patient addPatient(CreatePatientDTO dto) {
+	public Patient addPatient(CreatePatientDTO dto, boolean registeredByInstitution) {
+		var patient = patientMapper.toPatient(dto);
+		if (registeredByInstitution) {
+			patient.setPatientStatus(EventType.SUSPECTED);
+		}
 		return this.addPatient(
-				patientMapper.toPatient(dto),
+				patient,
 				patientMapper.parseDate(dto.getDateOfReporting()));
 	}
 

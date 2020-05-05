@@ -1,29 +1,28 @@
 {
-  "city": "Berlin",
+  "city": "D\u00fcsseldorf",
   "coronaContacts": false,
-  "dateOfBirth": "1949-04-28",
-  "email": "t.schulze@gmx.de",
-  "firstName": "Tim",
-  "fluImmunization": false,
+  "dateOfBirth": "1962-02-15",
+  "email": "k.klein@gmail.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 15,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Z458102728",
-  "lastName": "Schulze",
-  "phoneNumber": "511058105064",
+  "houseNumber": 33,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M983063850",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "123101068516",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Madrid"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
   "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Atemschwierigkeiten"
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "7110310109"
+  "weakenedImmuneSystem": true,
+  "zip": "817510"
 }

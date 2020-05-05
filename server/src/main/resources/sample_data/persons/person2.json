@@ -1,29 +1,31 @@
 {
-  "city": "Freiburg",
+  "city": "Berlin",
   "coronaContacts": false,
-  "dateOfBirth": "1985-08-13",
-  "email": "k.winkler@posteo.de",
-  "firstName": "Kai",
+  "dateOfBirth": "1971-12-30",
+  "email": "t.wagner@posteo.de",
+  "firstName": "Tim",
   "fluImmunization": false,
   "gender": "male",
   "houseNumber": 34,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "O253407200",
-  "lastName": "Winkler",
-  "phoneNumber": "410831050305",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "B964411347",
+  "lastName": "Wagner",
+  "nationality": "deutsch",
+  "phoneNumber": "1010191028327",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
+  "speedOfSymptomsOutbreak": "Mittel",
   "street": "Niekampsweg",
   "symptoms": [
+    "Fieber",
+    "Gelenkschmerzen",
     "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "13953107"
+  "zip": "1083105"
 }

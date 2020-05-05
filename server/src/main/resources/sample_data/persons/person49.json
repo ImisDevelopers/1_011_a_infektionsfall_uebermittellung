@@ -1,28 +1,35 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "Berlin",
   "coronaContacts": false,
-  "dateOfBirth": "1949-07-11",
-  "email": "t.richter@gmx.de",
-  "firstName": "Tim",
-  "fluImmunization": true,
+  "dateOfBirth": "1941-06-08",
+  "email": "j.peters@gmx.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 23,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "O747060047",
-  "lastName": "Richter",
-  "phoneNumber": "2775841616",
+  "houseNumber": 4,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "A374796224",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "61530511052",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg",
   "symptoms": [
+    "Halschmerzen",
+    "Husten",
+    "Schnupfen",
+    "Fieber",
+    "Kopfschmerzen",
     "Gelenkschmerzen",
-    "Schnupfen"
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "84511510"
+  "zip": "47277"
 }

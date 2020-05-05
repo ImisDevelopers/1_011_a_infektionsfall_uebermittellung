@@ -47,12 +47,14 @@ export interface CreateLabTestDTO {
   laboratoryId?: string;
   patientId?: string;
   testId?: string;
+  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   testType?: "PCR" | "ANTIBODY";
 }
 
 export interface CreatePatientDTO {
   city?: string;
   coronaContacts?: boolean;
+  country?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
   dateOfHospitalization?: string;
@@ -67,11 +69,13 @@ export interface CreatePatientDTO {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -89,6 +93,7 @@ export interface CreatePatientDTO {
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -166,8 +171,10 @@ export interface InstitutionImpl {
 export interface LabTest {
   comment?: string;
   id?: string;
+  lastUpdate?: string;
   report?: string;
   testId: string;
+  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
   testType?: "PCR" | "ANTIBODY";
 }
@@ -275,6 +282,7 @@ export interface Patient {
   comment?: string;
   confirmed?: boolean;
   coronaContacts?: boolean;
+  country?: string;
   creationTimestamp?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
@@ -291,11 +299,13 @@ export interface Patient {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -313,6 +323,7 @@ export interface Patient {
   riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -329,6 +340,7 @@ export interface PatientEvent {
   eventType?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -366,6 +378,7 @@ export interface PatientSearchParamsDTO {
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -482,7 +495,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8642/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -801,6 +814,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     updatePatientUsingPut: (patient: Patient, params?: RequestParams) =>
       this.request<Patient, any>(`/api/patients`, "PUT", params, patient, true),
+
+    /**
+     * @tags patient-controller
+     * @name createOrderTestEventUsingPOST
+     * @summary createOrderTestEvent
+     * @request POST:/api/patients/event/order-test
+     * @secure
+     */
+    createOrderTestEventUsingPost: (query?: { patientId?: string }, params?: RequestParams) =>
+      this.request<PatientEvent, any>(
+        `/api/patients/event/order-test${this.addQueryParams(query)}`,
+        "POST",
+        params,
+        null,
+        true,
+      ),
 
     /**
      * @tags patient-controller

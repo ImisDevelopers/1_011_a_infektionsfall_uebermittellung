@@ -1,27 +1,29 @@
 {
   "city": "Freiburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1993-12-21",
-  "email": "a.peters@gmail.de",
-  "firstName": "Annika",
+  "coronaContacts": true,
+  "dateOfBirth": "1961-05-31",
+  "email": "l.schroeder@posteo.de",
+  "firstName": "Lisa",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 10,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y409346714",
-  "lastName": "Peters",
-  "phoneNumber": "5220472779",
+  "houseNumber": 16,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L119574893",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "1010629148610",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
     "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
+  "street": "Abbachstra\u00dfe",
   "symptoms": [
-    "Husten"
+    "Erk\u00e4ltung",
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "0432898"
+  "weakenedImmuneSystem": false,
+  "zip": "10108110"
 }

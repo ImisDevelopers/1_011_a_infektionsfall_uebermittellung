@@ -1,30 +1,33 @@
 {
-  "city": "Kiel",
-  "coronaContacts": false,
-  "dateOfBirth": "1996-05-28",
-  "email": "f.schulz@posteo.de",
-  "firstName": "Franz",
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1986-08-03",
+  "email": "m.lange@gmail.de",
+  "firstName": "Marie",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 19,
+  "gender": "female",
+  "houseNumber": 59,
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "X355046107",
-  "lastName": "Schulz",
-  "phoneNumber": "18880105929",
+  "insuranceMembershipNumber": "C760360225",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "77104490581",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete",
   "symptoms": [
     "Gelenkschmerzen",
-    "Fieber",
     "Atemschwierigkeiten",
-    "Halschmerzen"
+    "Halschmerzen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "2292706"
+  "weakenedImmuneSystem": false,
+  "zip": "70054"
 }

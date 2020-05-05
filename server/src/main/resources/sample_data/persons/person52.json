@@ -1,34 +1,31 @@
 {
-  "city": "Bochum",
+  "city": "D\u00fcsseldorf",
   "coronaContacts": false,
-  "dateOfBirth": "1935-10-12",
-  "email": "j.peters@gmail.de",
-  "firstName": "Jens",
+  "dateOfBirth": "1950-07-24",
+  "email": "p.mueller@gmail.de",
+  "firstName": "Petra",
   "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 98,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V655511084",
-  "lastName": "Peters",
-  "phoneNumber": "7829114678",
+  "gender": "female",
+  "houseNumber": 54,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D185973340",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "7652775841",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer",
   "symptoms": [
-    "Schnupfen",
-    "Halschmerzen",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Husten",
     "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
     "Gelenkschmerzen",
-    "Kopfschmerzen"
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "69125101"
+  "zip": "16928"
 }

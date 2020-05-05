@@ -1,6 +1,7 @@
 package de.coronavirus.imis.domain;
 
 import de.coronavirus.imis.config.domain.User;
+import de.coronavirus.imis.services.RandomService;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
@@ -25,11 +27,10 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 @MappedSuperclass
 public abstract class Incident {
 
-	@Transient
-	@Getter(AccessLevel.NONE)
-	@Setter(AccessLevel.NONE)
-	@Autowired
-	private Logger logger;
+	protected Incident (IncidentType type)
+	{
+		id = type.toString() + "_" + UUID.randomUUID().toString().replace("-", "");
+	}
 
 	@Id
 	private String id;
@@ -50,5 +51,4 @@ public abstract class Incident {
 	@ManyToOne
 	@LastModifiedBy
 	private User versionUser;
-
 }

@@ -28,4 +28,8 @@ public class AdministrativeIncident extends Incident {
 
 	private LocalDate dateOfReporting;
 
+
+	public AdministrativeIncident() {
+		super(IncidentType.ADMINISTRATIVE);
+	}
 }

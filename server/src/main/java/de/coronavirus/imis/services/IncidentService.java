@@ -7,11 +7,20 @@ import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;
 import de.coronavirus.imis.repositories.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.envers.AuditReader;
+import org.hibernate.envers.query.AuditEntity;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.annotation.BeanFactoryAnnotationUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /*
@@ -27,11 +36,85 @@ public class IncidentService {
 	private final TestIncidentRepository testIncidentRepo;
 	private final LaboratoryRepository laboratoryRepo;
 	private final PatientRepository patientRepo;
-	private final RandomService randomService;
 	private final PatientMapper patientMapper;
 	private final QuarantineIncidentRepository quarantineIncidentRepo;
 	private final AdministrativeIncidentRepository adminIncidentRepo;
 	private final DoctorRepository doctorRepo;
+	private final AuditReader auditReader;
+	private final ApplicationContext ctx;
+
+	// Reading
+
+	@Transactional
+	public List<Incident> getLog(String id, boolean byPatient) {
+		List<Incident> result = new ArrayList<Incident>();
+
+		result.addAll(getLog(TestIncident.class, id, byPatient));
+		result.addAll(getLog(QuarantineIncident.class, id, byPatient));
+		result.addAll(getLog(AdministrativeIncident.class, id, byPatient));
+
+		result.sort(
+				(Incident i1, Incident i2) -> i1.getVersionTimestamp().compareTo(i2.getVersionTimestamp())
+		);
+
+		return result;
+	}
+
+	@Transactional
+	public <T extends Incident> List<T> getLog(Class T, String id, boolean byPatient) {
+		var query = auditReader.createQuery().forRevisionsOfEntity(T, true, false);
+		if (byPatient) {
+			query.add(AuditEntity.relatedId("patient").eq(id));
+		} else {
+			query.add(AuditEntity.id().eq(id));
+		}
+		return query.getResultList();
+	}
+
+	@Transactional
+	public Incident getCurrent(String id) {
+
+		String prefix = id.split("_")[0];
+		switch (IncidentType.valueOf(prefix)) {
+			case TEST:
+				return testIncidentRepo.findById(id).orElseThrow();
+			case QUARANTINE:
+				return quarantineIncidentRepo.findById(id).orElseThrow();
+			case ADMINISTRATIVE:
+				return adminIncidentRepo.findById(id).orElseThrow();
+		}
+
+		return null;
+	}
+
+	@Transactional
+	public List<Incident> getCurrentByPatient (String patientId) {
+
+		List<Incident> result = new ArrayList<>();
+
+		result.addAll( testIncidentRepo.findByPatientId(patientId) );
+		result.addAll( quarantineIncidentRepo.findByPatientId(patientId) );
+		result.addAll( adminIncidentRepo.findByPatientId(patientId) );
+
+		return result;
+	}
+
+	@Transactional
+	public List<Incident> getCurrentByPatient (String patientId, IncidentType type) {
+
+		switch (type) {
+			case TEST:
+				return (List<Incident>)(List<?>) testIncidentRepo.findByPatientId(patientId);
+			case QUARANTINE:
+				return (List<Incident>)(List<?>) quarantineIncidentRepo.findByPatientId(patientId);
+			case ADMINISTRATIVE:
+				return (List<Incident>)(List<?>) adminIncidentRepo.findByPatientId(patientId);
+		}
+
+		return null;
+	}
+
+	// Writing
 
 	@Transactional
 	public TestIncident addIncident (CreateLabTestDTO info)
@@ -43,8 +126,7 @@ public class IncidentService {
 				.setStatus(TestStatus.TEST_SUBMITTED)
 				.setLaboratory(laboratoryRepo.findById(info.getLaboratoryId()).orElseThrow(LaboratoryNotFoundException::new))
 				.setEventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
-				.setPatient(patientRepo.findById(info.getPatientId()).orElseThrow(PatientNotFoundException::new))
-				.setId(randomService.getRandomString(10));
+				.setPatient(patientRepo.findById(info.getPatientId()).orElseThrow(PatientNotFoundException::new));
 
 		testIncidentRepo.saveAndFlush(incident);
 		return incident;
@@ -78,7 +160,7 @@ public class IncidentService {
 		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
 		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
 		var incident = incidentOptional.isEmpty()
-				? (QuarantineIncident) new QuarantineIncident().setId(randomService.getRandomString(10)) // Set Id should happen in background
+				? (QuarantineIncident) new QuarantineIncident()
 				: incidentOptional.get(0);
 
 		// Apply to Incident
@@ -108,8 +190,7 @@ public class IncidentService {
 				.setDateOfReporting(dateOfReporting)
 				.setIllness(concreteIllness)
 				.setEventType(eventType)
-				.setPatient(patient)
-				.setId(randomService.getRandomString(10));
+				.setPatient(patient);
 
 		adminIncidentRepo.saveAndFlush(incident);
 		return incident;
@@ -138,8 +219,7 @@ public class IncidentService {
 				.setIllness(Illness.CORONA)
 				.setResponsibleDoctor(doctor)
 				.setEventType(EventType.SCHEDULED_FOR_TESTING)
-				.setPatient(patient)
-				.setId(randomService.getRandomString(10));
+				.setPatient(patient);
 		adminIncidentRepo.saveAndFlush(incident);
 
 		return incident;

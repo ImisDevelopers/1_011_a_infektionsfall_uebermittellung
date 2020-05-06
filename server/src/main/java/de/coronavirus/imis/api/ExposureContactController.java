@@ -59,11 +59,10 @@ public class ExposureContactController {
       .collect(Collectors.toList());
   }
   @GetMapping("/by-contact/{id}")
-  public ExposureContactDTO.FromServer getExposureSourceContactForPatient(@PathVariable("id") String patientId) {
-    return exposureContactMapper.toExposureContactDTO(
-      exposureContactRepository.findByContactId(patientId)
-        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
-    );
+  public List<ExposureContactDTO.FromServer> getExposureSourceContactsForPatient(@PathVariable("id") String patientId) {
+    return exposureContactRepository.findByContactId(patientId)
+      .stream().map(contact -> exposureContactMapper.toExposureContactDTO(contact))
+      .collect(Collectors.toList());
   }
 
   @DeleteMapping("/{id}")

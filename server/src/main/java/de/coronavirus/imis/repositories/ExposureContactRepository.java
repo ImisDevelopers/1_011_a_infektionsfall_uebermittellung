@@ -12,5 +12,5 @@ import de.coronavirus.imis.domain.ExposureContact;
 public interface ExposureContactRepository extends JpaRepository<ExposureContact, Long> {
 
 	List<ExposureContact> findBySourceId(String patientId);
-	Optional<ExposureContact> findByContactId(String patientId);
+	List<ExposureContact> findByContactId(String patientId);
 }

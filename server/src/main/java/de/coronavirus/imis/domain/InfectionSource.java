@@ -28,7 +28,7 @@ public abstract class InfectionSource {
   @GeneratedValue
   private long id;
 
-  @OneToOne
+  @ManyToOne
   private Patient contact;
   private LocalDate dateOfContact;
   private String comment;

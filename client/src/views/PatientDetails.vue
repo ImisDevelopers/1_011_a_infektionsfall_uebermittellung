@@ -192,7 +192,32 @@
             <!-- Symptome und Risiken -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col
-                :md="12"
+                :md="8"
+                :span="24"
+              >
+                <a-card
+                  align="left"
+                  title="Infektionskette"
+                >
+                  <a-descriptions layout="vertical" :column="1">
+                    <a-descriptions-item>
+                      <span slot="label"><a-icon type="arrow-right"/><a-icon type="user" style="margin-right: 5px;"/> Kontakte mit Indexpatienten</span>
+                      <span v-if="patientInfectionSources.length > 0">{{ patientInfectionSources.length }}</span>
+                      <span v-else>Keine</span>
+                      bekannt
+                    </a-descriptions-item>
+                    <a-descriptions-item>
+                      <span slot="label"><a-icon type="user"/><a-icon type="arrow-right" style="margin-right: 5px;"/> Eigene Kontaktpersonen</span>
+                      <span v-if="exposureContacts.length > 0">{{ exposureContacts.length }}</span>
+                      <span v-else>Keine</span>
+                      angegeben
+                    </a-descriptions-item>
+                  </a-descriptions>
+                </a-card>
+              </a-col>
+
+              <a-col
+                :md="8"
                 :span="24"
               >
                 <a-card
@@ -203,7 +228,7 @@
                 </a-card>
               </a-col>
               <a-col
-                :md="12"
+                :md="8"
                 :span="24"
               >
                 <a-card

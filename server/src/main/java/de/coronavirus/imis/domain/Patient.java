@@ -72,8 +72,8 @@ public class Patient {
 	private Boolean coronaContacts;
 
 	@JsonIgnore
-	@OneToOne(mappedBy = "contact")
-	private InfectionSource infectionSource;
+	@OneToMany(mappedBy = "contact")
+	private List<InfectionSource> infectionSource;
 	@JsonIgnore
 	@OneToMany(mappedBy = "source")
 	private List<ExposureContact> exposureContacts;

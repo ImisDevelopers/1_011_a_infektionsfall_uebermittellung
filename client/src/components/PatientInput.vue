@@ -4,7 +4,7 @@
                    :placeholder="placeholder"
                    :showSearch="true"
                    :showArrow="false"
-                   :filterOption="false"
+                   :filterOption="filterOption"
                    :value="value"
                    @search="handleSearch">
     <a-select-option v-for="entry in result"
@@ -42,6 +42,7 @@ export default mixins(FormControlMixin).extend({
   props: {
     placeholder: { default: 'Suche über ID, Name, Telefon, Mail' },
     value: { default: '' },
+    filterOption: { default: false },
   },
   model: {
     prop: 'value',

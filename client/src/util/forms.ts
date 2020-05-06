@@ -25,6 +25,7 @@ declare interface FormGroupMixinType {
   $props: {
     inputKeyPrefix?: string;
     inputKeys: { [x: string]: string };
+    inputProps: Record<string, any>;
   };
   $watch: any;
   $forceUpdate: () => void;
@@ -50,6 +51,13 @@ export const FormGroupMixin = Vue.extend({
     },
     inputKeys: {
       default: () => ({}),
+    },
+    inputProps: {
+      default(this: FormGroupMixinType) {
+        return Object.fromEntries(
+          this.$options.inputKeys!.map((key: string) => [key, {}]),
+        )
+      },
     },
   },
   inject: {

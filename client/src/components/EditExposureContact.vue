@@ -13,7 +13,9 @@
         label="Ursprungspatient"
         class="patient-input">
         <patient-input
+          v-bind="inputProps.source"
           :disabled="$props.disableOriginatorPatient"
+          :filterOption="filterSources"
           v-decorator="[ formInputKey('source'), {
               rules: [
                 { required: true, message: 'Bitte Ursprungspatienten angeben' },
@@ -29,17 +31,12 @@
         label="Kontaktperson"
         class="patient-input">
         <patient-input
+          v-bind="inputProps.contact"
           :disabled="$props.disableContactPatient"
+          :filterOption="filterContacts"
           v-decorator="[ formInputKey('contact'), {
               rules: [
                 { required: true, message: 'Bitte Kontaktperson angeben' },
-                /* {
-                  validator: (value) => {
-                    const sourceKey = formInputKey('source')
-                    if (value === getData(sourceKey)[sourceKey]) throw new Error()
-                  },
-                  message: 'Ursprungsperson und Kontaktperson dürfen nicht übereinstimmen!'
-                }, */
               ],
           }]"/>
       </a-form-item>
@@ -50,6 +47,7 @@
         <a-form-item label="Datum des Kontakts"
           :selfUpdate="true">
           <date-input
+            v-bind="inputProps.dateOfContact"
             :disabledDate="date => date.isAfter(moment())"
             v-decorator="[ formInputKey('dateOfContact'), {
               rules: [
@@ -62,6 +60,7 @@
         <a-form-item label="Umgebung / Kontext"
           :selfUpdate="true">
           <a-auto-complete
+            v-bind="inputProps.context"
             :dataSource="contexts"
             :filterOption="false"
             v-decorator="[ formInputKey('context'), {
@@ -77,6 +76,7 @@
       <a-form-item label="Sonstiges / Kommentar"
         :selfUpdate="true">
         <a-textarea
+          v-bind="inputProps.comment"
           v-decorator="[ formInputKey('comment'), {
             rules: [],
           }]"/>
@@ -121,6 +121,12 @@ export default mixins(FormGroupMixin).extend({
   },
   methods: {
     moment,
+    filterContacts(inputVal: string, option: any) {
+      return option.key !== this.getSingleValue('source')
+    },
+    filterSources(inputVal: string, option: any) {
+      return option.key !== this.getSingleValue('contact')
+    },
   },
 } as any)
 </script>

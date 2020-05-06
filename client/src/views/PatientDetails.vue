@@ -248,25 +248,36 @@
           <a-row :gutter="8" style="margin-top: 8px;">
             <a-card
               align="left"
-              title="Infektionsquelle"
+              title="Infektionsquellen"
             >
-              <table>
-                <tr v-if="!!patientInfectionSource">
-                  <td>
-                    <a-icon type="user"/> Kontakt mit infizierter Person
-                  </td>
-                  <td>
-                    <a @click="showPatient(patientInfectionSource.source.id)">
-                      {{ patientInfectionSource.source.firstName }} {{ patientInfectionSource.source.lastName }},
-                    </a>
-                  </td>
-                  <td>{{ moment(patientInfectionSource.dateOfContact).format('DD.MM.YYYY') }};</td>
-                  <td>{{ patientInfectionSource.context }}</td>
-                </tr>
-                <tr v-else>
-                  Unbekannt
-                </tr>
-              </table>
+              <a-descriptions layout="vertical" :column="{ xs: 1, sm: 1, md: 2, lg: 2 }">
+                <a-descriptions-item>
+                  <span slot="label"><a-icon type="user" style="margin-right: 5px;"/> Kontakte mit Indexpatienten <span v-if="patientInfectionSources.length > 0">({{ patientInfectionSources.length }})</span></span>
+                  <div v-if="patientInfectionSources.length > 0">
+                    <a-table class="table-index-patients"
+                      :columns="columnsIndexPatients"
+                      :dataSource="patientInfectionSources"
+                      :rowKey="contact => contact.id"
+                      :showHeader="false"
+                      :pagination="false"
+                    >
+                      <template slot="name" slot-scope="contact">
+                        <a @click="showPatient(contact.source.id)">{{ contact.source.firstName }} {{ contact.source.lastName }}</a>,
+                      </template>
+                      <template slot="dateOfContact" slot-scope="contact">
+                        am {{ moment(contact.dateOfContact).format('DD.MM.YYYY') }},
+                      </template>
+                    </a-table>
+                  </div>
+                  <div v-else>
+                    Keine bekannt
+                  </div>
+                </a-descriptions-item>
+                <a-descriptions-item
+                  label="Sonstige">
+                  Keine bekannt
+                </a-descriptions-item>
+              </a-descriptions>
             </a-card>
           </a-row>
 
@@ -456,9 +467,31 @@ const columnsExposureContacts: Partial<Column>[] = [
   },
 ]
 
+const columnsIndexPatients = [
+  {
+    title: 'Name',
+    key: 'name',
+    scopedSlots: {
+      customRender: 'name',
+    },
+  },
+  {
+    title: 'Kontaktdatum',
+    key: 'dateOfContact',
+    scopedSlots: {
+      customRender: 'dateOfContact',
+    },
+  },
+  {
+    title: 'Wie?',
+    key: 'context',
+    dataIndex: 'context',
+  },
+]
+
 interface State {
   patient: undefined | Patient;
-  patientInfectionSource: undefined | ExposureContactFromServer;
+  patientInfectionSources: ExposureContactFromServer[];
   exposureContacts: ExposureContactFromServer[];
   exposureContactsLoading: boolean;
   exposureContactForm: any;
@@ -473,6 +506,7 @@ interface State {
   tests: LabTest[];
   columnsTests: Partial<Column>[];
   columnsExposureContacts: Partial<Column>[];
+  columnsIndexPatients: Partial<Column>[];
   testResults: TestResultType[];
   testTypes: TestTypeItem[];
   dateOfReporting: string;
@@ -505,7 +539,7 @@ export default Vue.extend({
     return {
       dateFormat: 'DD.MM.YYYY',
       patient: undefined,
-      patientInfectionSource: undefined,
+      patientInfectionSources: [],
       exposureContacts: [],
       exposureContactsLoading: false,
       exposureContactForm: undefined,
@@ -522,6 +556,7 @@ export default Vue.extend({
       tests: [],
       columnsTests,
       columnsExposureContacts,
+      columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
     }
@@ -578,9 +613,9 @@ export default Vue.extend({
 
       // Source of Infection
       try {
-        this.patientInfectionSource = await Api.getExposureSourceContactForPatientUsingGet(patientId)
+        this.patientInfectionSources = await Api.getExposureSourceContactsForPatientUsingGet(patientId)
       } catch (e) {
-        this.patientInfectionSource = undefined
+        this.patientInfectionSources = []
       }
 
       // Tests
@@ -744,5 +779,20 @@ export default Vue.extend({
     font-size: 14px;
     font-weight: normal;
     color: rgba(0, 0, 0, 0.65);
+  }
+</style>
+
+<style lang="scss">
+  .table-index-patients {
+    table {
+      width: unset;
+    }
+    .ant-table-tbody > tr > td {
+      border-bottom: none;
+      padding: 4px;
+    }
+  }
+  .ant-descriptions-item {
+    vertical-align: top;
   }
 </style>

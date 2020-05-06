@@ -121,11 +121,11 @@ export default mixins(FormGroupMixin).extend({
   },
   methods: {
     moment,
-    filterContacts(inputVal: string, option: any) {
-      return option.key !== this.getSingleValue('source')
+    filterContacts(inputVal: string, option: any): boolean {
+      return option.key !== (this as any).getSingleValue('source')
     },
-    filterSources(inputVal: string, option: any) {
-      return option.key !== this.getSingleValue('contact')
+    filterSources(inputVal: string, option: any): boolean {
+      return option.key !== (this as any).getSingleValue('contact')
     },
   },
 } as any)

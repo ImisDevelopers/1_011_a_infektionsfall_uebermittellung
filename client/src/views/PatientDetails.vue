@@ -23,7 +23,7 @@
                     <a-icon type="user" />
                     Neuen Test anordnen
                   </a-menu-item>
-                  <a-menu-item key="SEND_TO_QUARANTINE">
+                  <a-menu-item key="SEND_TO_QUARANTINE" v-if="permissions.sendToQuarantine">
                     <a-icon type="user" />
                     Patienten in Quarantäne schicken
                   </a-menu-item>
@@ -247,6 +247,7 @@
 import Vue from 'vue'
 import moment from 'moment'
 import Api from '@/api'
+import * as permissions from '@/util/permissions'
 import { LabTest, Patient, Timestamp } from '@/api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
 import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
@@ -290,6 +291,9 @@ const columnsTests: Partial<Column>[] = [
 ]
 
 interface State {
+  permissions: {
+    sendToQuarantine: boolean;
+  };
   patient: undefined | Patient;
   patientStatus: EventTypeItem | undefined;
   eventTypes: any[];
@@ -324,6 +328,9 @@ export default Vue.extend({
 
   data(): State {
     return {
+      permissions: {
+        sendToQuarantine: false,
+      },
       dateFormat: 'DD.MM.YYYY',
       patient: undefined,
       patientStatus: undefined,
@@ -353,6 +360,10 @@ export default Vue.extend({
       setPatient: 'setPatient',
     }),
     async loadData() {
+      this.permissions = permissions.checkAllowed({
+        sendToQuarantine: Api.sendToQuarantineUsingPost,
+      })
+
       // Load Patient
       const patientId = this.$route.params.id
       this.patient = this.patientById(this.$route.params.id)

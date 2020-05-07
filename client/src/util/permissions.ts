@@ -1,4 +1,5 @@
 import Api from '@/api'
+import { Api as ApiDefs } from '@/api/SwaggerApi'
 
 export interface ApiParams {
   path: string;
@@ -6,39 +7,47 @@ export interface ApiParams {
 }
 export type ApiFunction = (...args: any[]) => any;
 
+// Retrieve the request method and path for the given Swagger API function
 export function queryApiParams(apiFunc: ApiFunction): ApiParams {
-  // This client will be used as the this-context of apiFunc; this way,
-  // we can intercept the path and method used when executing the REST
-  // call that we need for checking permissions
-  const mockClient = {
-    ...Api,
-    apiParams: undefined as (undefined | ApiParams),
-    request(path: string, method: string) {
-      this.apiParams = {
-        path,
-        method,
-      }
-    },
+  /*
+  The following piece of code is a kind of ugly hack to find out the
+  request method and path used in the given Swagger API. It operates
+  by executing the exact same function on an own API copy with a
+  surrogate `request` function that fetches path and method parameters
+  to be returned as this function's result.
+  */
+
+  // Step 1: Create API copy with surrogate `request` operation
+  let resultParams = undefined as (undefined | ApiParams)
+  const myApiDefs = new ApiDefs() as any
+  myApiDefs.request = (path: string, method: string) => {
+    resultParams = {
+      path,
+      method,
+    }
   }
-  // Make sure additional parameters are wildcard-strings
-  const mockArgs = []
+
+  // Step 2: Generate wildcard-parameters to be included in the function call
+  const mockArgs = [] as string[]
   for (let i = 0; i < apiFunc.length - 1; i++) {
     mockArgs.push('*')
   }
-  apiFunc.call(mockClient, ...mockArgs)
 
-  if (!mockClient.apiParams) {
-    throw new Error('Could not extract api parameters from function. Is it a legal API-function?')
+  // Step 3: Do the function call on the own API copy
+  myApiDefs.api[apiFunc.name](...mockArgs)
+
+  if (!resultParams) {
+    throw new Error('Could not extract request parameters from function')
   } else {
-    return mockClient.apiParams
+    return resultParams
   }
 }
 
-export function checkAllowed(funcs: ApiFunction): boolean;
-export function checkAllowed(funcs: ApiFunction[] | undefined): boolean[];
-export function checkAllowed<T extends Record<string, ApiFunction>, R extends { [key in keyof T]: boolean }>(funcs: T): R;
+export async function checkAllowed(funcs: ApiFunction): Promise<boolean>;
+export async function checkAllowed(funcs: ApiFunction[] | undefined): Promise<boolean[]>;
+export async function checkAllowed<T extends Record<string, ApiFunction>, R extends { [key in keyof T]: boolean }>(funcs: T): Promise<R>;
 // export function checkAllowed(funcs: Record<string, ApiFunction>): Record<string, boolean>;
-export function checkAllowed(funcs: any): any {
+export async function checkAllowed(funcs: any): Promise<any> {
   const resultLabels = [] as string[]
   let singleResult = false
   if (!funcs) {
@@ -60,8 +69,14 @@ export function checkAllowed(funcs: any): any {
   // const params = funcs.map(queryApiParams)
 
   // Make the permission asking request
-  /* TODO */
-  const result = funcs.map(() => true)
+  const apiResult = await Api.queryPermissionsUsingPost(Object.fromEntries(
+    funcs.map((func: ApiFunction) => [func.name, queryApiParams(func)]),
+  )) as Record<string, boolean>
+
+  const result = [] as boolean[]
+  for (let i = 0; i < funcs.length; i++) {
+    result[i] = apiResult[funcs[i].name]
+  }
 
   if (singleResult) {
     return result[0]

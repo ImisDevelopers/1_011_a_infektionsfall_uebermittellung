@@ -360,9 +360,13 @@ export default Vue.extend({
       setPatient: 'setPatient',
     }),
     async loadData() {
-      this.permissions = permissions.checkAllowed({
-        sendToQuarantine: Api.sendToQuarantineUsingPost,
-      })
+      try {
+        this.permissions = await permissions.checkAllowed({
+          sendToQuarantine: Api.sendToQuarantineUsingPost,
+        })
+      } catch (err) {
+        console.log(err)
+      }
 
       // Load Patient
       const patientId = this.$route.params.id

@@ -95,7 +95,15 @@ export interface CreatePatientDTO {
   preIllnesses?: string[];
   quarantineUntil?: string;
   riskAreas?: string[];
-  riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
+  riskOccupation?:
+    | "NO_RISK_OCCUPATION"
+    | "FIRE_FIGHTER_POLICE"
+    | "TEACHER"
+    | "PUBLIC_ADMINISTRATION"
+    | "STUDENT"
+    | "DOCTOR"
+    | "CAREGIVER"
+    | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
   stayCountry?: string;
@@ -325,7 +333,15 @@ export interface Patient {
   preIllnesses?: string[];
   quarantineUntil?: string;
   riskAreas?: string[];
-  riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
+  riskOccupation?:
+    | "NO_RISK_OCCUPATION"
+    | "FIRE_FIGHTER_POLICE"
+    | "TEACHER"
+    | "PUBLIC_ADMINISTRATION"
+    | "STUDENT"
+    | "DOCTOR"
+    | "CAREGIVER"
+    | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
   stayCountry?: string;

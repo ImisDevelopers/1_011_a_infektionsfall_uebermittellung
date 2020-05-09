@@ -108,6 +108,14 @@
             <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
+        <a-form-item label="Quarantänestatus">
+          <a-select placeholder="Quarantänestatus" style="width: 250px" v-model="quarantineSelection">
+            <a-select-option value="">Alle</a-select-option>
+            <a-select-option key="QUARANTINE_MANDATED">Quarantäne angeordnet</a-select-option>
+            <a-select-option key="QUARANTINE_SELECTED">Quarantäne vorgemerkt</a-select-option>
+            <a-select-option key="NO_SELECTION">Keine Anordnung</a-select-option>
+          </a-select>
+        </a-form-item>
         <!-- Invisible Button so user can use enter to search -->
         <a-button @click="handleSearch" html-type="submit"
                   style="visibility: hidden" />
@@ -155,6 +163,7 @@ import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
 import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
 import { eventTypes } from '@/models/event-types'
+import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
@@ -225,6 +234,7 @@ interface SimpleForm {
 interface State {
   form: SimpleForm;
   advancedForm: Partial<PatientSearchParamsDTO>;
+  quarantineSelection: string;
 
   [key: string]: any;
 }
@@ -255,8 +265,10 @@ export default Vue.extend({
         firstName: '',
         lastName: '',
         patientStatus: undefined,
+        quarantineStatus: undefined,
         id: '',
       },
+      quarantineSelection: '',
       content: '',
       count: 10,
       currentPage: 1, // Starts at 1
@@ -306,6 +318,7 @@ export default Vue.extend({
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
+        formValues.quarantineStatus = this.getQuarantineSelection() as PatientStatus[]
 
         countPromise = Api.countQueryPatientsUsingPost(formValues)
         queryPromise = Api.queryPatientsUsingPost(formValues)
@@ -342,6 +355,7 @@ export default Vue.extend({
           // Backend fails on empty string
           delete formValues.patientStatus
         }
+        formValues.quarantineStatus = this.getQuarantineSelection()
         countPromise = Api.countQueryPatientsUsingPost(formValues)
       } else {
         formValues = { ...this.form }
@@ -363,7 +377,7 @@ export default Vue.extend({
 
         queryPromise.then(result => {
           const header = 'ID,Vorname,Nachname,Geschlecht,Status,Geburtsdatum,Stadt,E-Mail;Telefonnummer;' +
-            'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer;'
+            'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer'
           const patients = result.map((patient: Patient) =>
             `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};${patient.patientStatus};` +
             `${patient.dateOfBirth};${patient.city};${patient.email};${patient.phoneNumber};${patient.street};` +
@@ -401,6 +415,16 @@ export default Vue.extend({
         on: {
           dblclick: () => this.handlePatientClick(record),
         },
+      }
+    },
+    getQuarantineSelection(): (PatientStatus | null)[] {
+      if (!this.quarantineSelection) {
+        return []
+      }
+      if (this.quarantineSelection === 'NO_SELECTION') {
+        return ['QUARANTINE_RELEASED', 'QUARANTINE_PROFESSIONBAN_RELEASED', null]
+      } else {
+        return [this.quarantineSelection as PatientStatus]
       }
     },
   },

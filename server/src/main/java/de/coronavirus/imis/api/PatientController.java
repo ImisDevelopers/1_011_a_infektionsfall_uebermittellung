@@ -84,7 +84,7 @@ public class PatientController {
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
 	public ResponseEntity<Patient> sendToQuarantine(@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
 		incidentService.addOrUpdateIncident(patientId, statusDTO);
-		return ResponseEntity.ok(patientService.sendToQuaratine(patientId, statusDTO));
+		return ResponseEntity.ok(patientService.sendToQuarantine(patientId, statusDTO));
 	}
 
 	@PostMapping("/event/order-test")

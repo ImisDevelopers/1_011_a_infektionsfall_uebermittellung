@@ -1,100 +1,100 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.5.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'java'
-    id 'com.google.cloud.tools.jib' version '2.1.0'
+	id 'org.springframework.boot' version '2.2.5.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'com.google.cloud.tools.jib' version '2.1.0'
 }
 
 group = 'de.coronavirus'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 ext {
-    set('springCloudVersion', "Hoxton.SR3")
-    set('mapStructVersion', "1.3.1.Final")
+	set('springCloudVersion', "Hoxton.SR3")
+	set('mapStructVersion', "1.3.1.Final")
 }
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
 }
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'io.micrometer:micrometer-registry-prometheus'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'io.micrometer:micrometer-registry-prometheus'
 
-    implementation 'io.jsonwebtoken:jjwt:0.9.1'
-    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
-    implementation 'org.postgresql:postgresql:42.2.11'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
+	implementation 'org.postgresql:postgresql:42.2.11'
 	compile group: 'org.hibernate', name: 'hibernate-envers', version: '5.4.14.Final'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-    implementation 'io.springfox:springfox-swagger2:2.9.2'
-    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
-    implementation 'com.googlecode.perfect-hashes:perfect-hashes:1.0'
-    implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
-    implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+	implementation 'com.googlecode.perfect-hashes:perfect-hashes:1.0'
+	implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
+	implementation "org.mapstruct:mapstruct:${mapStructVersion}"
 
-    implementation("io.springfox:springfox-swagger2:2.9.2") {
-        exclude module: 'mapstruct' // necessary in my case to not end up with multiple mapstruct versions
-    }
-    implementation "io.springfox:springfox-bean-validators:2.9.2"
-    implementation "io.springfox:springfox-swagger-ui:2.9.2"
+	implementation("io.springfox:springfox-swagger2:2.9.2") {
+		exclude module: 'mapstruct' // necessary in my case to not end up with multiple mapstruct versions
+	}
+	implementation "io.springfox:springfox-bean-validators:2.9.2"
+	implementation "io.springfox:springfox-swagger-ui:2.9.2"
 
-    compileOnly 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
 
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
-    testImplementation 'com.h2database:h2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'com.h2database:h2'
 
-    testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+	testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
 }
 
 dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 jib {
-    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
+	jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
 }
 
 processResources {
-    from('../client/dist') {
-        into 'static'
-    }
+	from('../client/dist') {
+		into 'static'
+	}
 }
 
 bootJar {
-    archiveFileName = "imis.jar"
-    mainClassName = 'de.coronavirus.imis.App'
+	archiveFileName = "imis.jar"
+	mainClassName = 'de.coronavirus.imis.App'
 }
 tasks.processResources.dependsOn(':client:assemble')
 tasks.jib.dependsOn('processResources')
 bootJar.dependsOn('processResources')
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
 }
 
 compileJava {
-    options.compilerArgs = [
-        '-Amapstruct.defaultComponentModel=spring'
-    ]
+	options.compilerArgs = [
+			'-Amapstruct.defaultComponentModel=spring'
+	]
 }

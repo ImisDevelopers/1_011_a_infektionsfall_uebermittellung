@@ -158,7 +158,7 @@
                   <div class="card-header">
                     <div>
                       Fall-Status: {{(patientStatus ? patientStatus.label : 'Unbekannt') + (patient.quarantineUntil ?
-                      (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')}}"
+                      (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')}}
                     </div>
                     <div class="card-header-subtitle">Erkrankungsdatum: {{dateOfIllness}}</div>
                     <div class="card-header-subtitle">Meldedatum: {{dateOfReporting}}</div>

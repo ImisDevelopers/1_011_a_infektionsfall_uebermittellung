@@ -1,10 +1,13 @@
 package de.coronavirus.imis.services;
 
 import com.google.common.hash.Hashing;
-import de.coronavirus.imis.api.dto.*;
-import de.coronavirus.imis.domain.*;
+import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
+import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
+import de.coronavirus.imis.domain.EventType;
+import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.mapper.PatientMapper;
-import de.coronavirus.imis.repositories.PatientEventRepository;
 import de.coronavirus.imis.repositories.PatientRepository;
 import de.coronavirus.imis.services.util.LikeOperatorService;
 import lombok.AllArgsConstructor;
@@ -15,18 +18,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.nio.charset.StandardCharsets;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -41,6 +43,8 @@ public class PatientService {
 	private final RandomService randomService;
 	private final PatientMapper patientMapper;
 	private final IncidentService incidentService;
+	@PersistenceContext
+	private final EntityManager sessionFactory;
 
 
 	public List<Patient> getAllPatients() {
@@ -97,23 +101,6 @@ public class PatientService {
 		return patient;
 	}
 
-	private LocalDate parseDate(String localDateString) {
-		LocalDate localDate = null;
-		if (localDateString != null && !localDateString.isBlank()) {
-			localDate = LocalDate.parse(localDateString, DateTimeFormatter.ISO_LOCAL_DATE);
-		}
-		return localDate;
-	}
-
-	private Integer parseIntegerSafe(String toParse) {
-		try {
-			return Integer.parseInt(toParse);
-		} catch (Exception e) {
-			log.error("error parsing integer");
-		}
-		return Integer.MIN_VALUE;
-	}
-
 	public Long queryPatientsSimpleCount(String query) {
 		return this.patientRepository.count(getSimpleQuerySpecification(query));
 	}
@@ -162,35 +149,25 @@ public class PatientService {
 		} else {
 			orderBy = patientSearchParamsDTO.getOrderBy();
 		}
-		final Sort sortBy = Sort.by(Sort.Direction.fromOptionalString(patientSearchParamsDTO.getOrder()).orElse(Sort.Direction.ASC), orderBy);
+		final String sortOrder = patientSearchParamsDTO.getOrder() != null && !patientSearchParamsDTO.getOrder().isEmpty()
+				? patientSearchParamsDTO.getOrder() : "ASC";
 
-		final Pageable pageable = PageRequest.of(patientSearchParamsDTO.getOffsetPage().intValue(), patientSearchParamsDTO.getPageSize().intValue(), sortBy);
+		final String sql =
+				"select distinct pat from Patient pat "
+						+ this.getQueryPatientsSql(patientSearchParamsDTO)
+						+ " order by pat." + orderBy + " " + sortOrder;
+		final TypedQuery<Patient> query = this.getQuery(sql, patientSearchParamsDTO, Patient.class);
+		query.setFirstResult(patientSearchParamsDTO.getOffsetPage().intValue());
+		query.setMaxResults(patientSearchParamsDTO.getPageSize().intValue());
+		final List<Patient> patients = query.getResultList();
 
-		final var patients = patientRepository.findAllByPatientSearchParams(
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getFirstName())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getLastName())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getId())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getGender())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getEmail())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getPhoneNumber())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getStreet())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getHouseNumber())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getZip())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getCity())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getInsuranceCompany())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getInsuranceMembershipNumber())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getDoctorId())),
-				likeOperatorService.likeOperatorOrEmptyString(nvl(patientSearchParamsDTO.getLaboratoryId())),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()),
-				pageable);
 		if (patientSearchParamsDTO.isIncludePatientEvents()) {
-			return patients.stream().peek(patient -> {
+			patients.forEach(patient -> {
 				var lastEvent = eventService.findFirstByPatientOrderByEventTimestampDesc(patient);
 				patient.setEvents(List.of(lastEvent));
-			}).collect(Collectors.toList());
-		} else {
-			return patients;
+			});
 		}
+		return patients;
 	}
 
 	private String nvl(String text) {
@@ -198,26 +175,75 @@ public class PatientService {
 	}
 
 	public Long countQueryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
-		return patientRepository.countPatientSearchParams(
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getFirstName()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLastName()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getId()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getGender()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getEmail()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPhoneNumber()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getStreet()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getHouseNumber()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getZip()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getCity()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceCompany()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getInsuranceMembershipNumber()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getDoctorId()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getLaboratoryId()),
-				likeOperatorService.likeOperatorOrEmptyString(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
+		String sql = "select count(distinct pat) from Patient pat " + getQueryPatientsSql(patientSearchParamsDTO);
+		return this.getQuery(sql, patientSearchParamsDTO, Long.class).getSingleResult();
+	}
+
+	private <T> TypedQuery<T> getQuery(String sql, PatientSearchParamsDTO patientSearchParamsDTO, Class<T> returnClazz) {
+		final TypedQuery<T> query = this.sessionFactory.createQuery(sql, returnClazz);
+		query.setParameter(1, likeOperatorService.like(patientSearchParamsDTO.getFirstName()));
+		query.setParameter(2, likeOperatorService.like(patientSearchParamsDTO.getLastName()));
+		query.setParameter(3, likeOperatorService.like(patientSearchParamsDTO.getId()));
+		query.setParameter(4, likeOperatorService.like(patientSearchParamsDTO.getGender()));
+		query.setParameter(5, likeOperatorService.like(patientSearchParamsDTO.getEmail()));
+		query.setParameter(6, likeOperatorService.like(patientSearchParamsDTO.getPhoneNumber()));
+		query.setParameter(7, likeOperatorService.like(patientSearchParamsDTO.getStreet()));
+		query.setParameter(8, likeOperatorService.like(patientSearchParamsDTO.getHouseNumber()));
+		query.setParameter(9, likeOperatorService.like(patientSearchParamsDTO.getZip()));
+		query.setParameter(10, likeOperatorService.like(patientSearchParamsDTO.getCity()));
+		query.setParameter(11, likeOperatorService.like(patientSearchParamsDTO.getInsuranceCompany()));
+		query.setParameter(12, likeOperatorService.like(patientSearchParamsDTO.getInsuranceMembershipNumber()));
+		query.setParameter(13, likeOperatorService.like(patientSearchParamsDTO.getDoctorId()));
+		query.setParameter(14, likeOperatorService.like(patientSearchParamsDTO.getLaboratoryId()));
+		query.setParameter(15, likeOperatorService.like(patientSearchParamsDTO.getPatientStatus() == null ? "" : patientSearchParamsDTO.getPatientStatus().name()));
+		int positionParameter = 16;
+		if (patientSearchParamsDTO.getQuarantineStatus() != null && !patientSearchParamsDTO.getQuarantineStatus().isEmpty()) {
+			for (EventType quarantineStatus : patientSearchParamsDTO.getQuarantineStatus()) {
+				if (quarantineStatus != null) {
+					query.setParameter(positionParameter++, quarantineStatus.name());
+				}
+			}
+		}
+		return query;
+	}
+
+	private String getQueryPatientsSql(PatientSearchParamsDTO patientSearchParamsDTO) {
+		StringBuilder sql = new StringBuilder(
+						"left join PatientEvent pe on pe.patient = pat.id " +
+						"left join QuarantineIncident qi on qi.patient = pat " +
+						"where lower(pat.firstName) like lower(?1) " +
+						"AND lower(pat.lastName) like lower(?2) " +
+						"AND lower(pat.id) like lower(?3) " +
+						"AND lower(pat.gender) like lower(?4) " +
+						"AND lower(pat.email) like lower(?5) " +
+						"AND lower(pat.phoneNumber) like lower(?6) " +
+						"AND lower(pat.street) like lower(?7) " +
+						"AND lower(pat.houseNumber) like lower(?8) " +
+						"AND lower(pat.zip) like lower(?9) " +
+						"AND lower(pat.city) like lower(?10) " +
+						"AND lower(pat.insuranceCompany) like lower(?11) " +
+						"AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
+						"AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
+						"AND lower(coalesce(pe.labTest, '0')) like lower(?14) " +
+						"AND lower(pat.patientStatus) like lower(?15) "
+		);
+		int positionSql = 16;
+		if (patientSearchParamsDTO.getQuarantineStatus() != null && !patientSearchParamsDTO.getQuarantineStatus().isEmpty()) {
+			sql.append("AND ( 1=0 ");
+			for (EventType quarantineStatus : patientSearchParamsDTO.getQuarantineStatus()) {
+				if (quarantineStatus != null) {
+					sql.append("OR lower(qi.eventType) = lower(?").append(positionSql++).append(") ");
+				} else {
+					sql.append("OR qi.eventType is null ");
+				}
+			}
+			sql.append(" ) ");
+		}
+		return sql.toString();
 	}
 
 	@Transactional
-	public Patient sendToQuaratine(final String patientID, final SendToQuarantineDTO dto) {
+	public Patient sendToQuarantine(final String patientID, final SendToQuarantineDTO dto) {
 
 		var patient = findPatientById(patientID).orElseThrow();
 

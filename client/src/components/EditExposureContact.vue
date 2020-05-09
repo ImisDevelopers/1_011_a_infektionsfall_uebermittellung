@@ -43,7 +43,7 @@
     </a-row>
     <a-row>
       <!-- When and How -->
-      <a-col :md="12" :sm="24">
+      <a-col :md="11" :sm="24">
         <a-form-item label="Datum des Kontakts"
           :selfUpdate="true">
           <date-input
@@ -56,7 +56,8 @@
             }]"/>
         </a-form-item>
       </a-col>
-      <a-col :md="12" :sm="24">
+      <a-col :md="2" :sm="0"></a-col>
+      <a-col :md="11" :sm="24">
         <a-form-item label="Umgebung / Kontext"
           :selfUpdate="true">
           <a-auto-complete

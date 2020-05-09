@@ -52,7 +52,12 @@ spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
+  jpa:
+    hibernate:
+      ddl-auto: create
   cloud:
     gcp:
       storage:
         enabled: false
+
+

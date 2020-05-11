@@ -307,7 +307,6 @@ export default Vue.extend({
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdPatient: null,
       SYMPTOMS,
-      ADDITIONAL_SYMPTOMS,
       PRE_ILLNESSES,
       EXPOSURES_INTERNAL,
       EXPOSURE_LOCATIONS,

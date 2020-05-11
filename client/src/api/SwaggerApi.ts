@@ -125,6 +125,32 @@ export interface Doctor {
   zip?: string;
 }
 
+export interface ExposureContactContactView {
+  firstName?: string;
+  id?: string;
+  inQuarantine?: boolean;
+  infected?: boolean;
+  lastName?: string;
+}
+
+export interface ExposureContactFromServer {
+  comment?: string;
+  contact?: ExposureContactContactView;
+  context?: string;
+  dateOfContact?: string;
+  id?: number;
+  source?: ExposureContactContactView;
+}
+
+export interface ExposureContactToServer {
+  comment?: string;
+  contact?: string;
+  context?: string;
+  dateOfContact?: string;
+  id?: number;
+  source?: string;
+}
+
 export interface GrantedAuthority {
   authority?: string;
 }
@@ -511,7 +537,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8642/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -589,7 +615,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8642/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -704,6 +730,78 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     addScheduledEventUsingPost: (dto: RequestLabTestDTO, params?: RequestParams) =>
       this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name createExposureContactUsingPOST
+     * @summary createExposureContact
+     * @request POST:/api/exposure-contacts
+     * @secure
+     */
+    createExposureContactUsingPost: (dto: ExposureContactToServer, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts`, "POST", params, dto, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name updateExposureContactUsingPUT
+     * @summary updateExposureContact
+     * @request PUT:/api/exposure-contacts
+     * @secure
+     */
+    updateExposureContactUsingPut: (contact: ExposureContactToServer, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts`, "PUT", params, contact, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name getExposureSourceContactsForPatientUsingGET
+     * @summary getExposureSourceContactsForPatient
+     * @request GET:/api/exposure-contacts/by-contact/{id}
+     * @secure
+     */
+    getExposureSourceContactsForPatientUsingGet: (id: string, params?: RequestParams) =>
+      this.request<ExposureContactFromServer[], any>(
+        `/api/exposure-contacts/by-contact/${id}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name getExposureContactsForPatientUsingGET
+     * @summary getExposureContactsForPatient
+     * @request GET:/api/exposure-contacts/by-source/{id}
+     * @secure
+     */
+    getExposureContactsForPatientUsingGet: (id: string, params?: RequestParams) =>
+      this.request<ExposureContactFromServer[], any>(
+        `/api/exposure-contacts/by-source/${id}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name getExposureContactUsingGET
+     * @summary getExposureContact
+     * @request GET:/api/exposure-contacts/{id}
+     * @secure
+     */
+    getExposureContactUsingGet: (id: number, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name removeExposureContactUsingDELETE
+     * @summary removeExposureContact
+     * @request DELETE:/api/exposure-contacts/{id}
+     * @secure
+     */
+    removeExposureContactUsingDelete: (id: number, params?: RequestParams) =>
+      this.request<any, any>(`/api/exposure-contacts/${id}`, "DELETE", params, null, true),
 
     /**
      * @tags institution-controller

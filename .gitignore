@@ -4,6 +4,9 @@
 .idea
 .gradle
 .DS_Store
+**/.project
+**/.settings
+/.classpath
 # CMake
 cmake-build-*/
 

@@ -63,15 +63,15 @@
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Land">
-			  <a-select
-				placeholder="Bitte wählen..."
-				v-decorator="['keys.country', { rules: [{
-				  required: true,
-				  message: 'Bitte Land auswählen',
-				}], initialValue: 'DE'}]"
-			  >
-				<a-select-option value="DE">Deutschland</a-select-option>
-			  </a-select>
+            <a-input
+              ref="country"
+              class="custom-input"
+              v-decorator="[keys.country, {
+                rules: [
+                  { required: $props.required!==false, message: 'Bitte Land eingeben' }
+                ],
+                initialValue: initialData('country'),
+              }]" />
           </a-form-item>
 		</a-col>
       </a-row>

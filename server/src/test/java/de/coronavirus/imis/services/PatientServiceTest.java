@@ -19,7 +19,8 @@ class PatientServiceTest {
 				Mockito.mock(PatientEventService.class),
 				new LikeOperatorService(),
 				new RandomService(),
-				patientMapper);
+				patientMapper,
+				Mockito.mock(IncidentService.class));
 		final PatientSearchParamsDTO patientSearchParamsDTO = new PatientSearchParamsDTO();
 		patientSearchParamsDTO.setOrder(null);
 		patientSearchParamsDTO.setOrderBy(null);

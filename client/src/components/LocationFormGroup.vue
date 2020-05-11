@@ -9,25 +9,14 @@
               <a-input
                 ref="street"
                 class="custom-input"
-                style="width: calc(100% - 40pt);"
-                placeholder="Straße"
+                style="width: calc(100%);"
+                placeholder="Straße und Hausnummer"
                 v-decorator="[keys.street, {
                   rules: [{
                     required: $props.required!==false,
-                    message: 'Bitte Straße eingeben',
+                    message: 'Bitte Straße und Hausnummer eingeben',
                   }],
                   initialValue: initialData('street'),
-                }]"
-              />
-              <a-input
-                class="custom-input"
-                style="width: 40pt;"
-                placeholder="HNr."
-                v-decorator="[keys.houseNumber, {
-                  rules: [{
-                    message: 'Bitte Hausnummer eingeben',
-                  }],
-                  initialValue: initialData('houseNumber'),
                 }]"
               />
             </a-input-group>
@@ -74,15 +63,33 @@
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Land">
-            <a-input
+            <a-select
               ref="country"
               class="custom-input"
-              v-decorator="[keys.country, {
-                rules: [
-                  { required: $props.required!==false, message: 'Bitte Land eingeben' }
-                ],
-                initialValue: initialCountry(),
-              }]" />
+              placeholder="Bitte wählen..."
+              v-decorator="[keys.country, { rules: [{
+                required: $props.required!==false,
+                message: 'Bitte Land auswählen',
+              }], initialValue: initialCountry()}]"
+              >
+              <a-select-option value="BE">Belgien</a-select-option>
+              <a-select-option value="DK">Dänemark</a-select-option>
+              <a-select-option value="DE">Deutschland</a-select-option>
+              <a-select-option value="FR">Frankreich</a-select-option>
+              <a-select-option value="GR">Griechenland</a-select-option>
+              <a-select-option value="UK">Großbritannien</a-select-option>
+              <a-select-option value="IT">Italien</a-select-option>
+              <a-select-option value="LU">Luxemburg</a-select-option>
+              <a-select-option value="NL">Niederlande</a-select-option>
+              <a-select-option value="AT">Österreich</a-select-option>
+              <a-select-option value="PL">Polen</a-select-option>
+              <a-select-option value="PT">Portugal</a-select-option>
+              <a-select-option value="RU">Russland</a-select-option>
+              <a-select-option value="CH">Schweiz</a-select-option>
+              <a-select-option value="ES">Spanien</a-select-option>
+              <a-select-option value="CZ">Tschechien</a-select-option>
+              <a-select-option value="TR">Türkei</a-select-option>
+            </a-select>
           </a-form-item>
         </a-col>
       </a-row>
@@ -171,7 +178,7 @@ export default Vue.extend({
     },
     async handleZipSearch(value: string) {
       this.currentZipSearch = value
-      if (!value || value.length < 2) {
+      if (!value || value.length < 4) {
         this.zips = []
       } else {
         const result: Plz[] = await getPlzs(value)

@@ -10,7 +10,7 @@
                 ref="street"
                 class="custom-input"
                 style="width: calc(100%);"
-                placeholder="Straße"
+                placeholder="Straße und Hausnummer"
                 v-decorator="[keys.street, {
                   rules: [{
                     required: $props.required!==false,
@@ -63,15 +63,31 @@
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Land">
-            <a-input
-              ref="country"
-              class="custom-input"
-              v-decorator="[keys.country, {
-                rules: [
-                  { required: $props.required!==false, message: 'Bitte Land eingeben' }
-                ],
-                initialValue: initialData('country'),
-              }]" />
+            <a-select
+              placeholder="Bitte wählen..."
+              v-decorator="['keys.country', { rules: [{
+                required: true,
+                message: 'Bitte Land auswählen',
+              }], initialValue: 'DE'}]"
+              >
+              <a-select-option value="BE">Belgien</a-select-option>
+              <a-select-option value="DK">Dänemark</a-select-option>
+              <a-select-option value="DE">Deutschland</a-select-option>
+              <a-select-option value="FR">Frankreich</a-select-option>
+              <a-select-option value="GR">Griechenland</a-select-option>
+              <a-select-option value="UK">Großbritannien</a-select-option>
+              <a-select-option value="IT">Italien</a-select-option>
+              <a-select-option value="LU">Luxemburg</a-select-option>
+              <a-select-option value="NL">Niederlande</a-select-option>
+              <a-select-option value="AT">Österreich</a-select-option>
+              <a-select-option value="PL">Polen</a-select-option>
+              <a-select-option value="PT">Portugal</a-select-option>
+              <a-select-option value="RU">Russland</a-select-option>
+              <a-select-option value="CH">Schweiz</a-select-option>
+              <a-select-option value="ES">Spanien</a-select-option>
+              <a-select-option value="CZ">Tschechien</a-select-option>
+              <a-select-option value="TR">Türkei</a-select-option>
+            </a-select>
           </a-form-item>
         </a-col>
       </a-row>

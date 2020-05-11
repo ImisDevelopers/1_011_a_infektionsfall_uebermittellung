@@ -213,7 +213,7 @@
                       message: 'Bitte Erkrankung wählen',
                     }], initialValue: 'CORONA'}]"
                   >
-                    <a-select-option value="CORONA">SARS-nCoV-2</a-select-option>
+                    <a-select-option value="CORONA">COVID-19</a-select-option>
                   </a-select>
                 </a-form-item>
               </a-col>

@@ -300,7 +300,6 @@ export default Vue.extend({
   components: {
     PatientStammdaten,
     DateInput,
-    LaboratoryInput,
   },
   name: 'RegisterPatient',
   data(): State {

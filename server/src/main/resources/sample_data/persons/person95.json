@@ -1,30 +1,29 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1983-06-07",
-  "email": "j.richter@gmx.de",
-  "firstName": "Jana",
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1940-06-02",
+  "email": "l.klein@gmx.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 37,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "N314166184",
-  "lastName": "Richter",
+  "houseNumber": 94,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "L511221078",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "2447209993",
+  "phoneNumber": "79252419101",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
   "symptoms": [
     "Husten",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "7687014"
+  "zip": "80003"
 }

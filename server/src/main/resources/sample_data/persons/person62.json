@@ -1,35 +1,34 @@
 {
-  "city": "M\u00fcnchen",
+  "city": "K\u00f6ln",
   "coronaContacts": true,
-  "dateOfBirth": "1982-03-16",
-  "email": "j.lange@t-online.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
+  "dateOfBirth": "1938-07-11",
+  "email": "k.wagner@gmx.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 92,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "J271494637",
-  "lastName": "Lange",
+  "houseNumber": 61,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y410315830",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "5304637454",
+  "phoneNumber": "2785851010104",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
+  "speedOfSymptomsOutbreak": "Langsam",
   "street": "Nordstra\u00dfe",
   "symptoms": [
-    "Atemschwierigkeiten",
     "Kopfschmerzen",
-    "Husten",
-    "Schnupfen",
-    "Gelenkschmerzen",
     "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Fieber"
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "90410530"
+  "weakenedImmuneSystem": true,
+  "zip": "33484"
 }

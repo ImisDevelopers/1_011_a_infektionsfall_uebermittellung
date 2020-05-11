@@ -1,29 +1,31 @@
 {
-  "city": "K\u00f6ln",
+  "city": "M\u00fcnchen",
   "coronaContacts": false,
-  "dateOfBirth": "1971-03-01",
-  "email": "p.wagner@gmx.de",
-  "firstName": "Petra",
+  "dateOfBirth": "1965-05-27",
+  "email": "t.schulze@gmx.de",
+  "firstName": "Tim",
   "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 20,
+  "gender": "male",
+  "houseNumber": 51,
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Z517065508",
-  "lastName": "Wagner",
+  "insuranceMembershipNumber": "O108556837",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "5930407859",
+  "phoneNumber": "19518100238",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
+  "street": "Aarhusweg",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten"
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "13103480"
+  "zip": "17445"
 }

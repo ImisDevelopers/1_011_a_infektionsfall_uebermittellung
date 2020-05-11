@@ -1,32 +1,33 @@
 {
-  "city": "Kiel",
+  "city": "D\u00fcsseldorf",
   "coronaContacts": true,
-  "dateOfBirth": "1985-12-15",
-  "email": "a.lange@gmail.de",
-  "firstName": "Anna",
+  "dateOfBirth": "1979-12-11",
+  "email": "k.weber@web.de",
+  "firstName": "Karl",
   "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 70,
+  "gender": "male",
+  "houseNumber": 35,
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "V367930513",
-  "lastName": "Lange",
+  "insuranceMembershipNumber": "X574417266",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "8680112805",
+  "phoneNumber": "3101048740110",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Niekampsweg",
   "symptoms": [
+    "Husten",
+    "Gelenkschmerzen",
     "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
     "Fieber",
-    "Gelenkschmerzen"
+    "Kopfschmerzen",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "2620450"
+  "weakenedImmuneSystem": false,
+  "zip": "005210"
 }

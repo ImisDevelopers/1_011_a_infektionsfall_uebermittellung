@@ -1,28 +1,26 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": false,
-  "dateOfBirth": "1962-08-13",
-  "email": "d.schulze@gmx.de",
-  "firstName": "Daniela",
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1989-01-12",
+  "email": "a.mueller@t-online.de",
+  "firstName": "Anna",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 8,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "S702998820",
-  "lastName": "Schulze",
+  "houseNumber": 95,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q337887233",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "615651045210",
+  "phoneNumber": "3950240268",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbendiekshof",
-  "symptoms": [
-    "Halschmerzen"
-  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "1116152"
+  "zip": "17758"
 }

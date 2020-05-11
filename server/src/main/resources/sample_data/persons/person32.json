@@ -1,35 +1,30 @@
 {
-  "city": "K\u00f6ln",
+  "city": "M\u00fcnchen",
   "coronaContacts": true,
-  "dateOfBirth": "1945-01-20",
-  "email": "m.mueller@posteo.de",
-  "firstName": "Marie",
+  "dateOfBirth": "1977-11-07",
+  "email": "a.schroeder@gmail.de",
+  "firstName": "Annika",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 14,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "E517305280",
-  "lastName": "M\u00fcller",
+  "houseNumber": 39,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "K902601465",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "8593101107410",
+  "phoneNumber": "9410101021011010",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aarhusweg",
   "symptoms": [
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Fieber",
-    "Erk\u00e4ltung",
     "Schnupfen",
-    "Husten",
-    "Gelenkschmerzen"
+    "Halschmerzen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "2004711"
+  "zip": "70952"
 }

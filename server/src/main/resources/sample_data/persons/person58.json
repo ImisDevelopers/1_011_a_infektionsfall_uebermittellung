@@ -1,31 +1,34 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "Kiel",
   "coronaContacts": true,
-  "dateOfBirth": "1953-09-25",
-  "email": "j.winkler@posteo.de",
-  "firstName": "Jan",
-  "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 48,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "P306442077",
-  "lastName": "Winkler",
+  "dateOfBirth": "1940-09-04",
+  "email": "a.winter@gmail.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 49,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Y271092615",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "97028385107",
+  "phoneNumber": "5371473210",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "B\u00fcckerheide",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete",
   "symptoms": [
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Husten",
     "Atemschwierigkeiten",
     "Fieber",
-    "Schnupfen",
-    "Kopfschmerzen"
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "5278585"
+  "weakenedImmuneSystem": false,
+  "zip": "96325"
 }

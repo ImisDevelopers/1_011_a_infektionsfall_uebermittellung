@@ -22,24 +22,15 @@ export type PatientStatus = 'REGISTERED'
   | 'PATIENT_DEAD'
   | 'DOCTORS_VISIT'
   | 'QUARANTINE_MANDATED';
-export type PatientStatus2 = 'REGISTERED'
-  | 'CONTACT'
-  | 'SUSPECTED'
-  | 'TEST_FINISHED_POSITIVE'
-  | 'TEST_FINISHED_NEGATIVE'
-  | 'RECOVERED_WITH_EMISSION'
-  | 'RECOVERED_NO_EMISSION'
-  | 'RECOVERED_NO_TEST'
-  | 'PATIENT_DEAD'
-  | 'QUARANTINE_MANDATED';
-export type RiskOccupation = 'NO_RISK_OCCUPATION' 
-  | 'DOCTOR' 
-  | 'NURSE'
-  | 'CAREGIVER' 
+export type RiskOccupation =
+  'NO_RISK_OCCUPATION'
   | 'FIRE_FIGHTER_POLICE'
+  | 'TEACHER'
   | 'PUBLIC_ADMINISTRATION'
   | 'STUDENT'
-  | 'TEACHER';
+  | 'DOCTOR'
+  | 'CAREGIVER'
+  | 'NURSE'
 
 export interface Option {
   label: string;

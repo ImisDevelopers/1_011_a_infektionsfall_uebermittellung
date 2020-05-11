@@ -6,6 +6,7 @@ import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
 import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
 import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.services.IncidentService;
 import de.coronavirus.imis.domain.PatientEvent;
 import de.coronavirus.imis.services.PatientEventService;
 import de.coronavirus.imis.services.PatientService;
@@ -24,6 +25,7 @@ import java.util.List;
 public class PatientController {
 
 	private final PatientService patientService;
+	private final IncidentService incidentService;
 	private final PatientEventService eventService;
 
 	@PostMapping
@@ -81,6 +83,7 @@ public class PatientController {
 	@PostMapping("/quarantine/{id}")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
 	public ResponseEntity<Patient> sendToQuarantine(@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
+		incidentService.addOrUpdateIncident(patientId, statusDTO);
 		return ResponseEntity.ok(patientService.sendToQuaratine(patientId, statusDTO));
 	}
 

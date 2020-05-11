@@ -7,24 +7,24 @@
       @submit.prevent="handleSubmit"
     > <!-- :colon="false" -->
 
-      <PatientInput
-        v-if="this.showPatientInput"
-        :form="form"
-        :validation="['patientId',{ rules: [{
-          required: true,
-          message: 'Bitte geben Sie die Patienten-ID ein.'
-        }]}]"
-        label="Patienten-ID"
-      />
+      <a-form-item label="Patienten-ID"
+        v-if="this.showPatientInput">
+        <PatientInput
+          v-decorator="['patientId',{ rules: [{
+            required: true,
+            message: 'Bitte geben Sie die Patienten-ID ein.'
+          }]}]"
+        />
+      </a-form-item>
 
-      <DateInput
-        :form="form"
-        :decorator="['dateUntil', { rules: [{
-          required: true,
-          message: 'Bis wann soll der Patient in Quarantäne?',
-        }]}]"
-        label="Quarantäne bis"
-      />
+      <a-form-item label="Quarantäne bis">
+        <DateInput
+          v-decorator="['dateUntil', { rules: [{
+            required: true,
+            message: 'Bis wann soll der Patient in Quarantäne?',
+          }]}]"
+        />
+      </a-form-item>
 
       <!-- Kommentar -->
       <a-form-item label="Kommentar">

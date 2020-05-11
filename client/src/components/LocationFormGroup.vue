@@ -64,11 +64,13 @@
         <a-col :lg="12" :sm="24">
           <a-form-item label="Land">
             <a-select
+              ref="country"
+              class="custom-input"
               placeholder="Bitte wählen..."
-              v-decorator="['keys.country', { rules: [{
-                required: true,
+              v-decorator="[keys.country, { rules: [{
+                required: $props.required!==false,
                 message: 'Bitte Land auswählen',
-              }], initialValue: 'DE'}]"
+              }], initialValue: initialCountry()}]"
               >
               <a-select-option value="BE">Belgien</a-select-option>
               <a-select-option value="DK">Dänemark</a-select-option>
@@ -156,6 +158,14 @@ export default Vue.extend({
     }
   },
   methods: {
+    initialCountry() {
+      const initialData = this.initialData('country')
+      if (!initialData && this.required) {
+        return 'Deutschland'
+      } else {
+        return initialData
+      }
+    },
     initialData(keyname: string) {
       return this.$props.data ? this.$props.data[this.keys[keyname]] : null
     },

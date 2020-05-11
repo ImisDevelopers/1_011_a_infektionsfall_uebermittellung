@@ -65,6 +65,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(API_PREFIX + "/doctor/*").hasAnyRole(DEPARTMENT_OF_HEALTH, DOCTORS_OFFICE, CLINIC)
 				.mvcMatchers(POST, API_PREFIX + "/labtest").hasAnyRole(DEPARTMENT_OF_HEALTH, DOCTORS_OFFICE, CLINIC, TEST_SITE)
 				.antMatchers(API_PREFIX + "/labtest/patient/*").hasAnyRole(DEPARTMENT_OF_HEALTH, DOCTORS_OFFICE, CLINIC, TEST_SITE)
+				.antMatchers(API_PREFIX + "/incidents/*").hasAnyRole(DEPARTMENT_OF_HEALTH, DOCTORS_OFFICE, CLINIC, TEST_SITE)
 				.mvcMatchers(PUT, API_PREFIX + "/labtest/*").hasAnyRole(DEPARTMENT_OF_HEALTH, LABORATORY)
 				.antMatchers(API_PREFIX + "/stats").authenticated()
 				.antMatchers(API_PREFIX + "/auth/register").hasAuthority(UserRole.USER_ROLE_ADMIN.name())

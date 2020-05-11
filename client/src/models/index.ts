@@ -32,7 +32,14 @@ export type PatientStatus2 = 'REGISTERED'
   | 'RECOVERED_NO_TEST'
   | 'PATIENT_DEAD'
   | 'QUARANTINE_MANDATED';
-export type RiskOccupation = 'NO_RISK_OCCUPATION' | 'FIRE_FIGHTER' | 'DOCTOR' | 'CAREGIVER' | 'NURSE'
+export type RiskOccupation = 'NO_RISK_OCCUPATION' 
+  | 'DOCTOR' 
+  | 'NURSE'
+  | 'CAREGIVER' 
+  | 'FIRE_FIGHTER_POLICE'
+  | 'PUBLIC_ADMINISTRATION'
+  | 'STUDENT'
+  | 'TEACHER';
 
 export interface Option {
   label: string;

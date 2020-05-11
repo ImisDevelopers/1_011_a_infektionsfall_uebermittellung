@@ -70,16 +70,7 @@
 				  message: 'Bitte Land auswählen',
 				}], initialValue: 'DE'}]"
 			  >
-				<a-select-option value="BE">Belgien</a-select-option>
 				<a-select-option value="DE">Deutschland</a-select-option>
-				<a-select-option value="FR">Frankreich</a-select-option>
-				<a-select-option value="IT">Italien</a-select-option>
-				<a-select-option value="LU">Luxemburg</a-select-option>
-				<a-select-option value="NL">Niederlande</a-select-option>
-				<a-select-option value="PL">Polen</a-select-option>
-				<a-select-option value="CH">Schweiz</a-select-option>
-				<a-select-option value="CZ">Tschechien</a-select-option>
-				<a-select-option value="TR">Türkei</a-select-option>
 			  </a-select>
           </a-form-item>
 		</a-col>

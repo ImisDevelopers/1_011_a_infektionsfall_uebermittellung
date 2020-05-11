@@ -1,6 +1,6 @@
-import { expect } from 'chai'
-import { shallowMount } from '@vue/test-utils'
 import Header from '@/components/Header.vue'
+import { shallowMount } from '@vue/test-utils'
+import { expect } from 'chai'
 
 describe('Header.vue', () => {
   it('renders props.msg when passed', () => {

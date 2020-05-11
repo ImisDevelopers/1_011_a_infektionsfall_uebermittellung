@@ -1,1 +1,29 @@
-{"lastName": "Peters", "firstName": "Franz", "gender": "m\u00e4nnlich", "dateOfBirth": "1964-05-06 09", "email": "F.Peters@t-online.de", "phoneNumber": "85102895456", "street": "B\u00fcckerheide", "houseNumber": 23, "zip": "1947048", "city": "Bochum", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "K737483239", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung", "Husten", "Schnupfen", "Fieber", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1954-09-03",
+  "email": "f.richter@web.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 65,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "E374843786",
+  "lastName": "Richter",
+  "nationality": "deutsch",
+  "phoneNumber": "64535218101",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide",
+  "symptoms": [
+    "Fieber",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "355102"
+}

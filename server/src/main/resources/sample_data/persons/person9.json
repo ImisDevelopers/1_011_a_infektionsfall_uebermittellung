@@ -1,1 +1,28 @@
-{"lastName": "Klein", "firstName": "Daniela", "gender": "weiblich", "dateOfBirth": "1951-11-22", "email": "d.klein@gmail.de", "phoneNumber": "62511037117", "street": "Nordstra\u00dfe", "houseNumber": 79, "zip": "1983086", "city": "M\u00fcnchen", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "Q726596818", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Erk\u00e4ltung", "Fieber", "Husten", "Gelenkschmerzen", "Atemschwierigkeiten", "Schnupfen", "Halschmerzen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1926-10-04",
+  "email": "l.peters@gmx.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 20,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "V977358886",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "1838425135",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete",
+  "symptoms": [
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "784910"
+}

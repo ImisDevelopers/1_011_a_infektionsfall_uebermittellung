@@ -1,1 +1,32 @@
-{"lastName": "Schulz", "firstName": "Daniel", "gender": "m\u00e4nnlich", "dateOfBirth": "1939-02-20 10", "email": "D.Schulz@web.de", "phoneNumber": "0541519362", "street": "Schernerweg", "houseNumber": 88, "zip": "20579110", "city": "Kiel", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "I287759545", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Gelenkschmerzen", "Fieber", "Atemschwierigkeiten", "Schnupfen", "Husten", "Halschmerzen", "Kopfschmerzen", "Erk\u00e4ltung"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1953-07-25",
+  "email": "s.peters@gmail.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 38,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N421856529",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "18398210622",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aastwiete",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "47212"
+}

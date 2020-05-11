@@ -1,1 +1,31 @@
-{"lastName": "Richter", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1978-05-02", "email": "k.richter@gmx.de", "phoneNumber": "04801106219", "street": "B\u00fcckerheide", "houseNumber": 47, "zip": "557010410", "city": "Bochum", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "Z767551050", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Atemschwierigkeiten"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": false,
+  "dateOfBirth": "1958-02-17",
+  "email": "t.bauer@gmx.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 19,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "O567694547",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "105067165107",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Fieber",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "628104"
+}

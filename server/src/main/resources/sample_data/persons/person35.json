@@ -1,1 +1,32 @@
-{"lastName": "Schulz", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1944-10-04 10", "email": "P.Schulz@web.de", "phoneNumber": "491161076710", "street": "Aastwiete", "houseNumber": 18, "zip": "8565779", "city": "Frankfurt", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "I621586663", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Schnupfen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1998-07-09",
+  "email": "t.bauer@gmail.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 100,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "G729624046",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "3171103101090",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Schnupfen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "53293"
+}

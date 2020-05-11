@@ -1,1 +1,28 @@
-{"lastName": "Schulze", "firstName": "Annika", "gender": "weiblich", "dateOfBirth": "2002-11-14 13", "email": "A.Schulze@gmail.de", "phoneNumber": "52348450010", "street": "Aastwiete", "houseNumber": 60, "zip": "56091065", "city": "Bochum", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "L971342205", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": [], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1956-01-23",
+  "email": "j.schroeder@gmx.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 58,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M756387421",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "3341918255",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "141078"
+}

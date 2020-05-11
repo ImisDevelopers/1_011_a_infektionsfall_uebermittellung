@@ -1,21 +1,20 @@
 <template>
-  <a-form-item :label="label">
-    <a-date-picker
-      @focus="datePickerFocused"
-      @openChange="openChanged"
-      style="width: 100%"
-      :open="dateOfBirthPickerOpen"
-      :format="dateFormat"
-      :disabled="disabled"
-      v-decorator="decorator"
-      placeholder="TT.MM.JJJJ (z.B. 28.02.1986)"
-    />
-  </a-form-item>
+  <a-date-picker
+    v-bind="$attrs"
+    v-on="$listeners"
+    :value="value"
+    :format="format"
+    :open="open || dateOfBirthPickerOpen"
+    @focus="datePickerFocused"
+    @openChange="openChanged"
+    :placeholder="placeholder"
+  />
 </template>
 
 <script lang="ts">
-
 import Vue from 'vue'
+import mixins from 'vue-typed-mixins'
+import { FormControlMixin } from '@/util/forms'
 
 /**
  * Input that supports 1d and 2d Barcodes
@@ -27,17 +26,25 @@ import Vue from 'vue'
 export interface State {
   dateOfBirthPickerOpen: boolean;
   wasJustFocused: boolean;
-  dateFormat: string;
 }
 
-export default Vue.extend({
-  name: 'LaboratoryInput',
-  props: ['decorator', 'label', 'disabled'],
+export default mixins(FormControlMixin).extend({
+  name: 'DateInput',
+  mixins: [FormControlMixin],
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
+  props: {
+    value: { default: undefined },
+    open: { default: false },
+    placeholder: { default: 'TT.MM.JJJJ (z.B. 28.02.1986)' },
+    format: { default: 'DD.MM.YYYY' },
+  },
   data(): State {
     return {
       dateOfBirthPickerOpen: false,
       wasJustFocused: false,
-      dateFormat: 'DD.MM.YYYY',
     }
   },
   methods: {
@@ -57,6 +64,6 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

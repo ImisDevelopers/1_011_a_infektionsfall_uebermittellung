@@ -1,1 +1,29 @@
-{"lastName": "Weber", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "2005-05-11 04", "email": "P.Weber@gmx.de", "phoneNumber": "3539654365", "street": "Im KramersfeldAar\u00f6stra\u00dfe", "houseNumber": 28, "zip": "61015459", "city": "Hamburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "G294564806", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Schnupfen", "Husten", "Erk\u00e4ltung", "Atemschwierigkeiten", "Fieber", "Halschmerzen", "Kopfschmerzen", "Gelenkschmerzen"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1999-07-21",
+  "email": "t.lange@posteo.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 75,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "K977364141",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "43610110371",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "381070"
+}

@@ -1,21 +1,33 @@
 <template>
-  <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" placeholder="Suche über ID, Name, Telefon, Mail" v-decorator="validation"
-                     @select="emitSelection" :defaultActiveFirstOption="false">
-      <template slot="dataSource">
-        <a-select-option v-for="patient in result" :key="patient.id">
-          {{patient.firstName}} {{patient.lastName}} ({{patient.id}})
-        </a-select-option>
-      </template>
-    </a-auto-complete>
-  </a-form-item>
+  <a-select ref="input" v-bind="$attrs" v-on="externListeners"
+                   :defaultActiveFirstOption="false"
+                   :placeholder="placeholder"
+                   :showSearch="true"
+                   :showArrow="false"
+                   :filterOption="filterOption"
+                   :value="value"
+                   @search="handleSearch">
+    <a-select-option v-for="entry in result"
+      :key="entry.value">
+      {{ entry.label }}
+    </a-select-option>
+  </a-select>
 </template>
 
 <script lang="ts">
-
 import Api from '@/api'
 import Vue from 'vue'
-import {Patient} from '@/api/SwaggerApi'
+import mixins from 'vue-typed-mixins'
+import { Select } from 'ant-design-vue'
+import { Patient } from '@/api/SwaggerApi'
+import { FormControlMixin } from '@/util/forms'
+
+declare interface State {
+  result: {
+    label?: string;
+    value?: string;
+  }[];
+}
 
 /**
  * Autocomplete for Patients
@@ -24,25 +36,57 @@ import {Patient} from '@/api/SwaggerApi'
  * - validation: put in v-decorator object
  */
 
-export interface State {
-  result: Patient[];
-}
-
-export default Vue.extend({
+export default mixins(FormControlMixin).extend({
   name: 'PatientInput',
-  props: ['validation', 'label', 'form'],
+  inheritAttrs: false,
+  props: {
+    placeholder: { default: 'Suche über ID, Name, Telefon, Mail' },
+    value: { default: '' },
+    filterOption: { default: false },
+  },
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
+  fieldValueConvert(val: any): string {
+    const hasProp = (obj: Record<string, any>, prop: string): boolean =>
+      Object.prototype.hasOwnProperty.call(obj, prop)
+
+    if (typeof val === 'object' && hasProp(val, 'id')) {
+      const patient = val as Patient
+      this.result = [{
+        label: this.getPatientLabel(patient),
+        value: patient.id,
+      }]
+      return patient.id || ''
+    } else {
+      return val
+    }
+  },
+  inject: {
+    FormContext: { default: () => ({}) },
+  },
   data(): State {
     return {
       result: [],
     }
   },
+  computed: {
+    externListeners() {
+      const { search, ...listeners } = this.$listeners
+      return listeners
+    },
+  },
   methods: {
+    getPatientLabel(patientData: Patient) {
+      return `${patientData.firstName} ${patientData.lastName} (${patientData.id})`
+    },
     async handleSearch(value: string) {
       let result: Patient[]
       if (!value || value.length < 2) {
         result = []
       } else {
-        result = await Api.api.queryPatientsSimpleUsingPost({
+        result = await Api.queryPatientsSimpleUsingPost({
           query: value,
           offsetPage: 0,
           pageSize: 10,
@@ -50,15 +94,15 @@ export default Vue.extend({
           orderBy: 'lastName',
         })
       }
-      this.result = result
-    },
-    emitSelection(value: string) {
-      this.$emit('select', value)
+      this.result = result.map((patient: Patient) => ({
+        label: this.getPatientLabel(patient),
+        value: patient.id,
+      }))
     },
   },
 })
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

@@ -1,1 +1,26 @@
-{"lastName": "Wagner", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1964-11-24 05", "email": "P.Wagner@t-online.de", "phoneNumber": "3321045282", "street": "Nordufer", "houseNumber": 43, "zip": "2163086", "city": "Freiburg", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "P802436215", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Schnupfen", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1955-09-05",
+  "email": "l.schulz@web.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 31,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Z808881871",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "30047108686",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "75243"
+}

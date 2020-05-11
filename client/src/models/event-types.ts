@@ -16,6 +16,10 @@ export const eventTypes: EventTypeItem[] = [
     label: 'Verdachtsfall',
     icon: 'search',
   }, {
+    id: 'ORDER_TEST',
+    label: 'Test angefordert',
+    icon: 'experiment',
+  }, {
     id: 'SCHEDULED_FOR_TESTING',
     label: 'Wartet auf Test',
     icon: 'team',
@@ -51,6 +55,11 @@ export const eventTypes: EventTypeItem[] = [
     id: 'DOCTORS_VISIT',
     label: 'Arztbesuch',
     icon: 'reconciliation',
+  },
+  {
+    id: 'QUARANTINE_MANDATED',
+    label: 'Quarantäne angeordnet',
+    icon: 'safety',
   },
 ]
 

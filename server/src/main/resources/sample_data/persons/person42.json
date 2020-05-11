@@ -1,1 +1,29 @@
-{"lastName": "Peters", "firstName": "Jan", "gender": "m\u00e4nnlich", "dateOfBirth": "1996-12-01 18", "email": "J.Peters@gmail.de", "phoneNumber": "400301041051", "street": "Abbachstra\u00dfe", "houseNumber": 25, "zip": "7114412", "city": "Bochum", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "W330365702", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Fieber", "Halschmerzen", "Husten", "Gelenkschmerzen", "Atemschwierigkeiten", "Schnupfen"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1937-12-08",
+  "email": "a.schulz@gmx.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 40,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D534900128",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "88105160607",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "969610"
+}

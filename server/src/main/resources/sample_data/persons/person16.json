@@ -1,1 +1,35 @@
-{"lastName": "Wagner", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1970-07-27", "email": "p.wagner@t-online.de", "phoneNumber": "10411924134", "street": "Nordstra\u00dfe", "houseNumber": 17, "zip": "7172701", "city": "Kiel", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "F709064205", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": [], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1978-02-14",
+  "email": "f.richter@posteo.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 2,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "N677909930",
+  "lastName": "Richter",
+  "nationality": "deutsch",
+  "phoneNumber": "6587603669",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Schnupfen",
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Husten",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "96705"
+}

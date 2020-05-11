@@ -1,1 +1,34 @@
-{"lastName": "M\u00fcller", "firstName": "Lisa", "gender": "weiblich", "dateOfBirth": "1960-03-08", "email": "l.m\u00fcller@posteo.de", "phoneNumber": "910810301061", "street": "Im KramersfeldAar\u00f6stra\u00dfe", "houseNumber": 65, "zip": "6751667", "city": "Kiel", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "D384739852", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Fieber", "Gelenkschmerzen", "Schnupfen", "Husten", "Atemschwierigkeiten", "Erk\u00e4ltung"], "coronaContacts": false, "employer":  "VW", "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1974-12-18",
+  "email": "a.weber@posteo.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 11,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C513140753",
+  "lastName": "Weber",
+  "nationality": "deutsch",
+  "phoneNumber": "8496965328",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Husten",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "012102"
+}

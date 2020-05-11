@@ -1,1 +1,35 @@
-{"lastName": "M\u00fcller", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1944-02-21", "email": "k.m\u00fcller@gmail.de", "phoneNumber": "8759313117", "street": "Niekampsweg", "houseNumber": 27, "zip": "4393377", "city": "Berlin", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "B117787702", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Halschmerzen", "Husten", "Erk\u00e4ltung", "Gelenkschmerzen"], "coronaContacts": false, "employer":  "VW", "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1989-11-16",
+  "email": "k.winter@posteo.de",
+  "firstName": "Kai",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 85,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "H168747287",
+  "lastName": "Winter",
+  "nationality": "deutsch",
+  "phoneNumber": "8248963834",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Husten",
+    "Halschmerzen",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "105787"
+}

@@ -1,0 +1,12 @@
+{
+  "institutionType": "DEPARTMENT_OF_HEALTH",
+  "name": "Gesundheitsamt",
+  "street": "Hauptstrasse",
+  "houseNumber": "10-12",
+  "zip": "66117",
+  "city": "Saarbrücken",
+  "email": "healthagency@example.de",
+  "phoneNumber": "43345",
+  "comment": "this is a comment for the health agency",
+  "id": "asdfa"
+}

@@ -1,1 +1,31 @@
-{"lastName": "Schulze", "firstName": "Karl", "gender": "m\u00e4nnlich", "dateOfBirth": "1935-10-17 02", "email": "K.Schulze@posteo.de", "phoneNumber": "8241036101069", "street": "Aastwiete", "houseNumber": 70, "zip": "04461002", "city": "Berlin", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "Y971614839", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung", "Fieber", "Gelenkschmerzen", "Halschmerzen"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1950-07-24",
+  "email": "p.mueller@gmail.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 54,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D185973340",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "7652775841",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "16928"
+}

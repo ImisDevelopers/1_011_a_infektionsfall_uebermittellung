@@ -32,7 +32,7 @@ module.exports = {
       },
     ],
     'space-before-function-paren': ['error', 'never'],
-    'object-curly-spacing': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
   },
   overrides: [
     {

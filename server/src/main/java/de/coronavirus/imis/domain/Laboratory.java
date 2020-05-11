@@ -1,13 +1,12 @@
 package de.coronavirus.imis.domain;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -16,12 +15,12 @@ import lombok.Setter;
 public class Laboratory extends InstitutionImpl {
 
 
-    @OneToMany(mappedBy = "laboratory")
-    private List<LabTest> assignedLabTest;
+	@OneToMany(mappedBy = "laboratory")
+	private List<LabTest> assignedLabTest;
 
 
-    @Override
-    public InstitutionType getType() {
-        return InstitutionType.LABORATORY;
-    }
+	@Override
+	public InstitutionType getType() {
+		return InstitutionType.LABORATORY;
+	}
 }

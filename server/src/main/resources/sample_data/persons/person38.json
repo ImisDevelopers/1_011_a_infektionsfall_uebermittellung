@@ -1,1 +1,35 @@
-{"lastName": "Lange", "firstName": "Karl", "gender": "m\u00e4nnlich", "dateOfBirth": "1971-08-05 22", "email": "K.Lange@web.de", "phoneNumber": "50461030771", "street": "Haidth\u00f6heAarweg", "houseNumber": 96, "zip": "38384310", "city": "D\u00fcsseldorf", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "X239638258", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Gelenkschmerzen", "Schnupfen"], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1962-08-13",
+  "email": "d.schulze@gmx.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 8,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "R164404084",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "615651045210",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "11161"
+}

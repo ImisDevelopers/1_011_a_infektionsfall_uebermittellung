@@ -1,10 +1,12 @@
 package de.coronavirus.imis.api.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class TokenDTO {
-    private final String jwtToken;
+	private String jwtToken;
 }

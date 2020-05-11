@@ -1,1 +1,30 @@
-{"lastName": "Schr\u00f6der", "firstName": "Susanne", "gender": "weiblich", "dateOfBirth": "2002-01-01", "email": "s.schr\u00f6der@gmx.de", "phoneNumber": "6287512659", "street": "Aastwiete", "houseNumber": 73, "zip": "9720754", "city": "Bochum", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "H689704757", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Schnupfen", "Fieber", "Husten"], "coronaContacts": false, "employer":  "Wirecard", "riskAreas": ["Hubei"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1982-02-20",
+  "email": "p.bauer@t-online.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 10,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "G819112790",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "11036193990",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "610998"
+}

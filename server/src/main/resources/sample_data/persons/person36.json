@@ -1,1 +1,26 @@
-{"lastName": "Bauer", "firstName": "Jana", "gender": "weiblich", "dateOfBirth": "1926-12-13 23", "email": "J.Bauer@posteo.de", "phoneNumber": "7157938127", "street": "Abbachstra\u00dfe", "houseNumber": 89, "zip": "15001310", "city": "Freiburg", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "Q624873910", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Schnupfen", "Erk\u00e4ltung", "Gelenkschmerzen", "Halschmerzen", "Fieber"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1989-01-12",
+  "email": "a.mueller@t-online.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 95,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q337887233",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "3950240268",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "17758"
+}

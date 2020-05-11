@@ -1,1 +1,31 @@
-{"lastName": "Lange", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "2002-01-21 09", "email": "T.Lange@t-online.de", "phoneNumber": "9438240654", "street": "Nordtstra\u00dfe", "houseNumber": 86, "zip": "8885954", "city": "D\u00fcsseldorf", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "V480331539", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Fieber"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1993-09-25",
+  "email": "h.mueller@gmail.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 23,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "X355046107",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "88010592962",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "92706"
+}

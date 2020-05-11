@@ -1,1 +1,34 @@
-{"lastName": "Lange", "firstName": "Jana", "gender": "weiblich", "dateOfBirth": "1997-05-14 11", "email": "J.Lange@posteo.de", "phoneNumber": "371076108989", "street": "Nordufer", "houseNumber": 29, "zip": "4381720", "city": "Frankfurt", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "L505452767", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Gelenkschmerzen", "Husten", "Halschmerzen", "Schnupfen", "Atemschwierigkeiten", "Fieber", "Erk\u00e4ltung", "Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1938-07-11",
+  "email": "k.wagner@gmx.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 61,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y410315830",
+  "lastName": "Wagner",
+  "nationality": "deutsch",
+  "phoneNumber": "2785851010104",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "33484"
+}

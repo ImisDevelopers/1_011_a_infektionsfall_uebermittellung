@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.time.OffsetDateTime;
 
 @Entity
 @Data
@@ -21,29 +22,33 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class LabTest {
 
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private String id;
+	@Id
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	private String id;
 
-    @ApiModelProperty(required = true)
-    private String testId;
+	@ApiModelProperty(required = true)
+	private String testId;
 
-    @ManyToOne
-    @JsonIgnore
-    private Laboratory laboratory;
+	@ManyToOne
+	@JsonIgnore
+	private Laboratory laboratory;
 
-    private TestStatus testStatus;
+	private TestStatus testStatus;
 
-    private TestType testType;
+	private TestType testType;
 
-    private String comment;
+	private TestMaterial testMaterial;
 
-    private byte[] report;
+	private String comment;
 
-    @JsonPOJOBuilder(withPrefix = "")
-    public static final class LabTestBuilder {
+	private byte[] report;
 
-    }
+	private OffsetDateTime lastUpdate;
+
+	@JsonPOJOBuilder(withPrefix = "")
+	public static final class LabTestBuilder {
+
+	}
 
 }

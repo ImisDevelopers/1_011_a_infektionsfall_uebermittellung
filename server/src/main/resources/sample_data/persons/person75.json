@@ -1,1 +1,30 @@
-{"lastName": "Weber", "firstName": "Marie", "gender": "weiblich", "dateOfBirth": "1985-05-17 01", "email": "M.Weber@gmx.de", "phoneNumber": "1701502453", "street": "Aarhusweg", "houseNumber": 35, "zip": "11080171", "city": "M\u00fcnchen", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "M572611293", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": [], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Kiel",
+  "coronaContacts": true,
+  "dateOfBirth": "1937-05-01",
+  "email": "p.bauer@gmail.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 67,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "O706666479",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "81062118233",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "45461"
+}

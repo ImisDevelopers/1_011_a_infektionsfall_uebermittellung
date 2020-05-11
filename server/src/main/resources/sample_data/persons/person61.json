@@ -1,1 +1,33 @@
-{"lastName": "Bauer", "firstName": "Marie", "gender": "weiblich", "dateOfBirth": "1947-05-19 22", "email": "M.Bauer@t-online.de", "phoneNumber": "10401847602", "street": "Aastwiete", "houseNumber": 77, "zip": "6062274", "city": "Frankfurt", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "G433560164", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Erk\u00e4ltung", "Husten", "Fieber", "Atemschwierigkeiten", "Kopfschmerzen", "Halschmerzen", "Schnupfen"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1972-11-26",
+  "email": "j.schroeder@gmx.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 18,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "O436824737",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "99309728109",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "103091"
+}

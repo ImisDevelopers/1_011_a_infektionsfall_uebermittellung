@@ -5,7 +5,7 @@
       <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}">
       </a-table>
       <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">
-        <a-button type="primary" >CSV exportieren</a-button>
+        <a-button type="primary">CSV exportieren</a-button>
       </div>
     </a-card>
 
@@ -13,6 +13,7 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 const columns = [
   {
     title: 'PLZ',
@@ -102,7 +103,7 @@ const data = [
     deaths: '35',
   },
 ]
-export default {
+export default Vue.extend({
   name: 'PublicStatisticsComponent',
   props: {
     msg: String,
@@ -115,19 +116,20 @@ export default {
       data,
     }
   },
-  methods: {
-  },
-}
+  methods: {},
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped  lang="scss">
   h3 {
     margin: 20px 10px;
   }
+
   span {
     margin: 10px;
   }
+
   .table-container {
     width: 100%;
     overflow-x: auto;

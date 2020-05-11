@@ -1,1 +1,29 @@
-{"lastName": "Wagner", "firstName": "Daniel", "gender": "m\u00e4nnlich", "dateOfBirth": "1939-07-21 02", "email": "D.Wagner@gmx.de", "phoneNumber": "005236710109", "street": "Aastwiete", "houseNumber": 63, "zip": "107518410", "city": "Frankfurt", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "R408043904", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Atemschwierigkeiten", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1965-02-08",
+  "email": "l.lange@posteo.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 49,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "F625749126",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "4125286692",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "627108"
+}

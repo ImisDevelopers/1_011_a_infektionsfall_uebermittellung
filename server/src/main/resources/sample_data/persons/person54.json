@@ -1,1 +1,32 @@
-{"lastName": "Klein", "firstName": "Annika", "gender": "weiblich", "dateOfBirth": "2005-05-22 03", "email": "A.Klein@t-online.de", "phoneNumber": "6129380059", "street": "Nordufer", "houseNumber": 1, "zip": "4231610", "city": "Kiel", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "V431456868", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": [], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Bochum",
+  "coronaContacts": true,
+  "dateOfBirth": "1974-02-01",
+  "email": "s.wagner@gmail.de",
+  "firstName": "Susanne",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 36,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "W577934499",
+  "lastName": "Wagner",
+  "nationality": "deutsch",
+  "phoneNumber": "2786814473",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "73121"
+}

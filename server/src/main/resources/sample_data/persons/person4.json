@@ -1,1 +1,30 @@
-{"lastName": "Wagner", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1971-02-14", "email": "k.wagner@gmail.de", "phoneNumber": "41166521035", "street": "Nordstra\u00dfe", "houseNumber": 35, "zip": "86105586", "city": "M\u00fcnchen", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "I341670075", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Atemschwierigkeiten", "Gelenkschmerzen", "Husten"], "coronaContacts": true, "employer":  "VW", "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-03-17",
+  "email": "j.winkler@gmail.de",
+  "firstName": "Jana",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 99,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "L992994062",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "110410893252",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide",
+  "symptoms": [
+    "Husten",
+    "Fieber",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "80957"
+}

@@ -1,1 +1,33 @@
-{"lastName": "Klein", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1982-07-30", "email": "p.klein@gmx.de", "phoneNumber": "6918036215", "street": "Abbendiekshof", "houseNumber": 25, "zip": "8764670", "city": "Berlin", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "K708751796", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Kopfschmerzen", "Erk\u00e4ltung", "Schnupfen", "Gelenkschmerzen", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "2000-06-07",
+  "email": "p.weber@gmail.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 22,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "F945436943",
+  "lastName": "Weber",
+  "nationality": "deutsch",
+  "phoneNumber": "103101586923",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Husten",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "60256"
+}

@@ -17,6 +17,11 @@ export interface AuthRequestDTO {
   username?: string;
 }
 
+export interface ChangePasswordDTO {
+  newPassword?: string;
+  oldPassword?: string;
+}
+
 export interface CreateInstitutionDTO {
   city?: string;
   comment?: string;
@@ -42,12 +47,14 @@ export interface CreateLabTestDTO {
   laboratoryId?: string;
   patientId?: string;
   testId?: string;
+  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   testType?: "PCR" | "ANTIBODY";
 }
 
 export interface CreatePatientDTO {
   city?: string;
   coronaContacts?: boolean;
+  country?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
   dateOfHospitalization?: string;
@@ -62,11 +69,13 @@ export interface CreatePatientDTO {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -75,13 +84,24 @@ export interface CreatePatientDTO {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
+  quarantineUntil?: string;
   riskAreas?: string[];
-  riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
+  riskOccupation?:
+    | "NO_RISK_OCCUPATION"
+    | "FIRE_FIGHTER_POLICE"
+    | "TEACHER"
+    | "PUBLIC_ADMINISTRATION"
+    | "STUDENT"
+    | "DOCTOR"
+    | "CAREGIVER"
+    | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -103,6 +123,32 @@ export interface Doctor {
   type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY" | "DEPARTMENT_OF_HEALTH";
   users?: User[];
   zip?: string;
+}
+
+export interface ExposureContactContactView {
+  firstName?: string;
+  id?: string;
+  inQuarantine?: boolean;
+  infected?: boolean;
+  lastName?: string;
+}
+
+export interface ExposureContactFromServer {
+  comment?: string;
+  contact?: ExposureContactContactView;
+  context?: string;
+  dateOfContact?: string;
+  id?: number;
+  source?: ExposureContactContactView;
+}
+
+export interface ExposureContactToServer {
+  comment?: string;
+  contact?: string;
+  context?: string;
+  dateOfContact?: string;
+  id?: number;
+  source?: string;
 }
 
 export interface GrantedAuthority {
@@ -142,11 +188,27 @@ export interface InstitutionDTO {
   zip?: string;
 }
 
+export interface InstitutionImpl {
+  city?: string;
+  comment?: string;
+  email?: string;
+  houseNumber?: string;
+  id?: string;
+  name?: string;
+  phoneNumber?: string;
+  street?: string;
+  type?: "LABORATORY" | "TEST_SITE" | "CLINIC" | "DOCTORS_OFFICE" | "GOVERNMENT_AGENCY" | "DEPARTMENT_OF_HEALTH";
+  users?: User[];
+  zip?: string;
+}
+
 export interface LabTest {
   comment?: string;
   id?: string;
+  lastUpdate?: string;
   report?: string;
   testId: string;
+  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
   testType?: "PCR" | "ANTIBODY";
 }
@@ -254,6 +316,7 @@ export interface Patient {
   comment?: string;
   confirmed?: boolean;
   coronaContacts?: boolean;
+  country?: string;
   creationTimestamp?: string;
   dateOfBirth?: string;
   dateOfDeath?: string;
@@ -270,11 +333,13 @@ export interface Patient {
   insuranceCompany?: string;
   insuranceMembershipNumber?: string;
   lastName?: string;
+  nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -283,13 +348,24 @@ export interface Patient {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
+  quarantineUntil?: string;
   riskAreas?: string[];
-  riskOccupation?: "NO_RISK_OCCUPATION" | "FIRE_FIGHTER" | "DOCTOR" | "CAREGIVER" | "NURSE";
+  riskOccupation?:
+    | "NO_RISK_OCCUPATION"
+    | "FIRE_FIGHTER_POLICE"
+    | "TEACHER"
+    | "PUBLIC_ADMINISTRATION"
+    | "STUDENT"
+    | "DOCTOR"
+    | "CAREGIVER"
+    | "NURSE";
   speedOfSymptomsOutbreak?: string;
   stayCity?: string;
+  stayCountry?: string;
   stayHouseNumber?: string;
   stayStreet?: string;
   stayZip?: string;
@@ -306,6 +382,7 @@ export interface PatientEvent {
   eventType?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -314,7 +391,8 @@ export interface PatientEvent {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   id?: string;
   illness?: "CORONA";
   labTest?: LabTest;
@@ -342,6 +420,7 @@ export interface PatientSearchParamsDTO {
   patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
+    | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
     | "TEST_SUBMITTED_IN_PROGRESS"
     | "TEST_FINISHED_POSITIVE"
@@ -350,7 +429,8 @@ export interface PatientSearchParamsDTO {
     | "TEST_FINISHED_RECOVERED"
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
-    | "DOCTORS_VISIT";
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   street?: string;
   zip?: string;
@@ -365,6 +445,8 @@ export interface PatientSimpleSearchParamsDTO {
 }
 
 export interface RegisterUserRequest {
+  firstName?: string;
+  lastName?: string;
   password?: string;
   userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
   username?: string;
@@ -374,6 +456,11 @@ export interface RequestLabTestDTO {
   doctorId?: string;
   laboratoryId?: string;
   patientId?: string;
+}
+
+export interface SendToQuarantineDTO {
+  comment?: string;
+  dateUntil?: string;
 }
 
 export interface Timestamp {
@@ -396,7 +483,7 @@ export interface TokenDTO {
 export interface UpdateTestStatusDTO {
   comment?: string;
   file?: string;
-  status?: string;
+  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
   testId?: string;
 }
 
@@ -406,7 +493,9 @@ export interface User {
   authorities?: GrantedAuthority[];
   credentialsNonExpired?: boolean;
   enabled?: boolean;
+  firstName?: string;
   id?: number;
+  institution?: InstitutionImpl;
   institutionId?: string;
   institutionType?:
     | "LABORATORY"
@@ -415,6 +504,17 @@ export interface User {
     | "DOCTORS_OFFICE"
     | "GOVERNMENT_AGENCY"
     | "DEPARTMENT_OF_HEALTH";
+  lastName?: string;
+  userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
+  username?: string;
+}
+
+export interface UserDTO {
+  authorities?: GrantedAuthority[];
+  firstName?: string;
+  id?: number;
+  lastName?: string;
+  userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
   username?: string;
 }
 
@@ -579,7 +679,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     getInstitutionUsingGet: (params?: RequestParams) =>
-      this.request<Institution, any>(`/api/auth/institution`, "GET", params, null, true),
+      this.request<InstitutionDTO, any>(`/api/auth/institution`, "GET", params, null, true),
 
     /**
      * @tags auth-controller
@@ -612,6 +712,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<User, any>(`/api/auth/user`, "GET", params, null, true),
 
     /**
+     * @tags auth-controller
+     * @name changePasswordUsingPOST
+     * @summary changePassword
+     * @request POST:/api/auth/user/change-password
+     * @secure
+     */
+    changePasswordUsingPost: (changePasswordDTO: ChangePasswordDTO, params?: RequestParams) =>
+      this.request<any, any>(`/api/auth/user/change-password`, "POST", params, changePasswordDTO, true),
+
+    /**
      * @tags doctor-controller
      * @name addScheduledEventUsingPOST
      * @summary addScheduledEvent
@@ -622,6 +732,78 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, true),
 
     /**
+     * @tags exposure-contact-controller
+     * @name createExposureContactUsingPOST
+     * @summary createExposureContact
+     * @request POST:/api/exposure-contacts
+     * @secure
+     */
+    createExposureContactUsingPost: (dto: ExposureContactToServer, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts`, "POST", params, dto, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name updateExposureContactUsingPUT
+     * @summary updateExposureContact
+     * @request PUT:/api/exposure-contacts
+     * @secure
+     */
+    updateExposureContactUsingPut: (contact: ExposureContactToServer, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts`, "PUT", params, contact, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name getExposureSourceContactsForPatientUsingGET
+     * @summary getExposureSourceContactsForPatient
+     * @request GET:/api/exposure-contacts/by-contact/{id}
+     * @secure
+     */
+    getExposureSourceContactsForPatientUsingGet: (id: string, params?: RequestParams) =>
+      this.request<ExposureContactFromServer[], any>(
+        `/api/exposure-contacts/by-contact/${id}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name getExposureContactsForPatientUsingGET
+     * @summary getExposureContactsForPatient
+     * @request GET:/api/exposure-contacts/by-source/{id}
+     * @secure
+     */
+    getExposureContactsForPatientUsingGet: (id: string, params?: RequestParams) =>
+      this.request<ExposureContactFromServer[], any>(
+        `/api/exposure-contacts/by-source/${id}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name getExposureContactUsingGET
+     * @summary getExposureContact
+     * @request GET:/api/exposure-contacts/{id}
+     * @secure
+     */
+    getExposureContactUsingGet: (id: number, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name removeExposureContactUsingDELETE
+     * @summary removeExposureContact
+     * @request DELETE:/api/exposure-contacts/{id}
+     * @secure
+     */
+    removeExposureContactUsingDelete: (id: number, params?: RequestParams) =>
+      this.request<any, any>(`/api/exposure-contacts/${id}`, "DELETE", params, null, true),
+
+    /**
      * @tags institution-controller
      * @name createInstitutionUsingPOST
      * @summary createInstitution
@@ -630,6 +812,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     createInstitutionUsingPost: (createInstitutionDTO: CreateInstitutionDTO, params?: RequestParams) =>
       this.request<InstitutionDTO, any>(`/api/institutions`, "POST", params, createInstitutionDTO, true),
+
+    /**
+     * @tags institution-controller
+     * @name updateInstitutionUsingPUT
+     * @summary updateInstitution
+     * @request PUT:/api/institutions
+     * @secure
+     */
+    updateInstitutionUsingPut: (institutionDTO: InstitutionDTO, params?: RequestParams) =>
+      this.request<InstitutionDTO, any>(`/api/institutions`, "PUT", params, institutionDTO, true),
 
     /**
      * @tags institution-controller
@@ -729,6 +921,42 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags patient-controller
+     * @name updatePatientUsingPUT
+     * @summary updatePatient
+     * @request PUT:/api/patients
+     * @secure
+     */
+    updatePatientUsingPut: (patient: Patient, params?: RequestParams) =>
+      this.request<Patient, any>(`/api/patients`, "PUT", params, patient, true),
+
+    /**
+     * @tags patient-controller
+     * @name createOrderTestEventUsingPOST
+     * @summary createOrderTestEvent
+     * @request POST:/api/patients/event/order-test
+     * @secure
+     */
+    createOrderTestEventUsingPost: (query?: { patientId?: string }, params?: RequestParams) =>
+      this.request<PatientEvent, any>(
+        `/api/patients/event/order-test${this.addQueryParams(query)}`,
+        "POST",
+        params,
+        null,
+        true,
+      ),
+
+    /**
+     * @tags patient-controller
+     * @name sendToQuarantineUsingPOST
+     * @summary sendToQuarantine
+     * @request POST:/api/patients/quarantine/{id}
+     * @secure
+     */
+    sendToQuarantineUsingPost: (id: string, statusDTO: SendToQuarantineDTO, params?: RequestParams) =>
+      this.request<Patient, any>(`/api/patients/quarantine/${id}`, "POST", params, statusDTO, true),
+
+    /**
+     * @tags patient-controller
      * @name queryPatientsUsingPOST
      * @summary queryPatients
      * @request POST:/api/patients/query
@@ -792,6 +1020,45 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getForZipUsingGet: (query: { lowerBoundsZip: string; upperBoundsZips: string }, params?: RequestParams) =>
       this.request<AggregationResultZip[], any>(`/api/stats${this.addQueryParams(query)}`, "GET", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name getInstitutionUsersUsingGET
+     * @summary getInstitutionUsers
+     * @request GET:/api/users
+     * @secure
+     */
+    getInstitutionUsersUsingGet: (params?: RequestParams) =>
+      this.request<UserDTO[], any>(`/api/users`, "GET", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name updateInstitutionUserUsingPUT
+     * @summary updateInstitutionUser
+     * @request PUT:/api/users
+     * @secure
+     */
+    updateInstitutionUserUsingPut: (
+      query?: {
+        "authorities[0].authority"?: string;
+        firstName?: string;
+        id?: number;
+        lastName?: string;
+        userRole?: "USER_ROLE_ADMIN" | "USER_ROLE_REGULAR";
+        username?: string;
+      },
+      params?: RequestParams,
+    ) => this.request<UserDTO, any>(`/api/users${this.addQueryParams(query)}`, "PUT", params, null, true),
+
+    /**
+     * @tags user-controller
+     * @name deleteInstitutionUserUsingDELETE
+     * @summary deleteInstitutionUser
+     * @request DELETE:/api/users/{id}
+     * @secure
+     */
+    deleteInstitutionUserUsingDelete: (id: number, params?: RequestParams) =>
+      this.request<any, any>(`/api/users/${id}`, "DELETE", params, null, true),
   };
   error = {
     /**

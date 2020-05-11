@@ -1,1 +1,31 @@
-{"lastName": "Peters", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1979-07-28 22", "email": "K.Peters@t-online.de", "phoneNumber": "104814729510", "street": "Haidth\u00f6heAarweg", "houseNumber": 34, "zip": "6156672", "city": "D\u00fcsseldorf", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "H487951462", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Schnupfen", "Husten", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "2002-01-11",
+  "email": "a.winkler@gmail.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 23,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S253671484",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "0455623869",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "22196"
+}

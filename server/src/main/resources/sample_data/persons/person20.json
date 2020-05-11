@@ -1,1 +1,28 @@
-{"lastName": "Lange", "firstName": "Jens", "gender": "m\u00e4nnlich", "dateOfBirth": "1986-07-14 18", "email": "J.Lange@t-online.de", "phoneNumber": "37108698070", "street": "Schernerweg", "houseNumber": 75, "zip": "611021084", "city": "Kiel", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "B645460365", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Bochum",
+  "coronaContacts": false,
+  "dateOfBirth": "1964-03-16",
+  "email": "m.peters@gmx.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 10,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "W627015393",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "3545494808",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "36783"
+}

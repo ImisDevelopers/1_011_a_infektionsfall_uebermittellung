@@ -1,1 +1,28 @@
-{"lastName": "Winter", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1928-12-02 19", "email": "P.Winter@gmx.de", "phoneNumber": "5752171349", "street": "Haidth\u00f6heAarweg", "houseNumber": 87, "zip": "1905159", "city": "Kiel", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "E129141707", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Halschmerzen", "Husten", "Atemschwierigkeiten", "Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1962-12-03",
+  "email": "p.klein@t-online.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 46,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U459327003",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "81020377889",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "54665"
+}

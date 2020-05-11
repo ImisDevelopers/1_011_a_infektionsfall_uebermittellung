@@ -1,1 +1,33 @@
-{"lastName": "Richter", "firstName": "Daniel", "gender": "m\u00e4nnlich", "dateOfBirth": "1936-09-14 15", "email": "D.Richter@gmail.de", "phoneNumber": "1350496314", "street": "Nordstra\u00dfe", "houseNumber": 49, "zip": "50481041", "city": "Berlin", "insuranceCompany": "AOK", "insuranceMembershipNumber": "H825862110", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Atemschwierigkeiten", "Gelenkschmerzen", "Schnupfen", "Kopfschmerzen", "Husten", "Fieber"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1927-07-09",
+  "email": "j.winkler@gmail.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 18,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Y792738367",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "10011010658102",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Husten",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "910702"
+}

@@ -1,37 +1,37 @@
 <template>
   <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px">
     <a-form
-      :label-col="{ span: 6 }"
-      :wrapper-col="{ span: 18 }"
       :colon="false"
       :form="form"
+      :label-col="{ span: 6 }"
+      :wrapper-col="{ span: 18 }"
       @submit.prevent="handleSubmit"
     >
 
       <LaboratoryInput
-        label="Labor"
         :form="form"
         :validation="['laboratoryId',{ rules: [{
             required: true,
             message: 'Bitte wählen Sie ein Labor aus.'
           }]}]"
+        label="Labor"
       />
 
-      <PatientInput
-        label="Patienten-ID"
-        :form="form"
-        :validation="['patientId',{ rules: [{
-          required: true,
-          message: 'Bitte geben Sie die Patienten-ID ein.'
-        }]}]"
-      />
+      <a-form-item label="Patienten-ID">
+        <PatientInput
+          v-decorator="['patientId',{ rules: [{
+            required: true,
+            message: 'Bitte geben Sie die Patienten-ID ein.'
+          }]}]"
+        />
+      </a-form-item>
 
       <!-- Test ID -->
       <a-form-item label="Test-ID">
-        <a-input v-decorator="['testId', { rules: [{
+        <a-input placeholder="Neue Test ID" v-decorator="['testId', { rules: [{
           required: true,
           message: 'Bitte geben Sie die Test-ID ein.'
-        }]}]" placeholder="Neue Test ID"/>
+        }]}]" />
       </a-form-item>
 
       <!-- TestType -->
@@ -42,9 +42,22 @@
               required: true,
               message: 'Bitte geben Sie den Typen des Tests an.'
             }]}]">
-          <a-radio v-for="testTypeItem in testTypes" :value="testTypeItem.id" :key="testTypeItem.id">
-            <a-icon :type="testTypeItem.icon"/>
+          <a-radio :key="testTypeItem.id" :value="testTypeItem.id" v-for="testTypeItem in testTypes">
             {{testTypeItem.label}}
+          </a-radio>
+        </a-radio-group>
+      </a-form-item>
+
+      <!-- TestType -->
+      <a-form-item label="Proben-Material">
+        <a-radio-group
+          class="imis-radio-group"
+          v-decorator="['testMaterial', { rules: [{
+              required: true,
+              message: 'Bitte geben Sie das Material des Tests an.'
+            }]}]">
+          <a-radio :key="testMaterialItem.id" :value="testMaterialItem.id" v-for="testMaterialItem in testMaterials">
+            {{testMaterialItem.label}}
           </a-radio>
         </a-radio-group>
       </a-form-item>
@@ -52,94 +65,88 @@
       <!-- Kommentar -->
       <a-form-item label="Kommentar">
         <a-textarea
-          v-decorator="['comment']"
-          placeholder="Kommentar hinzufügen"
           :autoSize="{ minRows: 3, maxRows: 5 }"
+          placeholder="Kommentar hinzufügen"
+          v-decorator="['comment']"
         />
       </a-form-item>
 
       <!-- Submit -->
-      <a-divider/>
+      <a-divider />
       <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-        <a-button type="primary" html-type="submit">
+        <a-button html-type="submit" type="primary">
           Speichern
         </a-button>
       </a-form-item>
     </a-form>
-
-    <!-- Confirmation after creation -->
-    <div v-if="createdLabTest">
-      <a-icon type="check-circle" :style="{ fontSize: '38px', color: '#08c' }" style="margin-bottom: 20px"/>
-      <div>
-        <div>Der Test wurde erfolgreich angelegt.</div>
-        <br/>
-        <div>Test ID: {{ createdLabTest.testId }}</div>
-        <div>Test Status: {{ createdLabTestStatus }}</div>
-      </div>
-    </div>
   </a-card>
 </template>
 
-<script>
+<script lang="ts">
+import { CreateLabTestDTO } from '@/api/SwaggerApi'
 import Vue from 'vue'
 
 import Api from '@/api'
-import BarcodeInput from '../components/TestInput'
-import PatientInput from '../components/PatientInput'
-import LaboratoryInput from '../components/LaboratoryInput'
-import {testTypes} from '@/models/test-types'
-import Component from 'vue-class-component'
-import {testResults} from '@/models/event-types'
+import PatientInput from '../components/PatientInput.vue'
+import LaboratoryInput from '../components/LaboratoryInput.vue'
+import { TestTypeItem, testTypes } from '@/models/test-types'
+import { testResults } from '@/models/event-types'
+import { TestMaterialItem, testMaterials } from '@/models/test-materials'
 
-@Component({
+interface State {
+  form: any;
+  testTypes: TestTypeItem[];
+  testMaterials: TestMaterialItem[];
+}
+
+export default Vue.extend({
+  name: 'RegisterTest',
   components: {
-    BarcodeInput,
     PatientInput,
     LaboratoryInput,
   },
-})
-export default class RegisterTest extends Vue {
-  data() {
+  data(): State {
     return {
       form: this.$form.createForm(this),
-      createdLabTest: null,
-      createdLabTestStatus: '',
       testTypes: testTypes,
+      testMaterials: testMaterials,
     }
-  }
-
-  handleSubmit() {
-    this.form.validateFields((err, values) => {
-      if (err) {
-        return
-      }
-      const request = {
-        ...values,
-      }
-
-      Api.api.createTestForPatientUsingPost(request).then(labTest => {
-        this.createdLabTest = labTest
-        this.createdLabTestStatus = testResults
-          .find(testResult => testResult.id === labTest.testStatus)
-          .label
-
-        const notification = {
-          message: 'Test angelegt und verknüpft.',
-          description:
-            'Der Test ' + labTest.testId + ' wurde erfolgreich angelegt und mit dem Patienten verknüpft.',
+  },
+  methods: {
+    handleSubmit() {
+      this.form.validateFields((err: Error, values: CreateLabTestDTO) => {
+        if (err) {
+          return
         }
-        this.$notification.success(notification)
-        this.form.resetFields()
-      }).catch(err => {
-        const notification = {
-          message: 'Fehler beim Anlegen des Tests.',
-          description: err.message,
+        const request = {
+          ...values,
         }
-        this.$notification.error(notification)
+
+        Api.createTestForPatientUsingPost(request).then(labTest => {
+          const createdLabTest = labTest
+          const createdLabTestStatus = testResults
+            .find(testResult => testResult.id === labTest.testStatus)
+            ?.label || ''
+          this.form.resetFields()
+          const h = this.$createElement
+          this.$success({
+            title: 'Der Test wurde erfolgreich angelegt.',
+            content: h('div', {}, [
+              h('div', `Test ID: ${createdLabTest.testId}`),
+              h('div', `Test Status: ${createdLabTestStatus}`),
+            ]),
+          })
+        }).catch(err => {
+          const notification = {
+            message: 'Fehler beim Anlegen des Tests.',
+            description: err.message,
+          }
+          this.$notification.error(notification)
+        })
       })
-    })
-  }
-}
+    },
+  },
+})
 </script>
 
-<style></style>
+<style scoped lang="scss"></style>

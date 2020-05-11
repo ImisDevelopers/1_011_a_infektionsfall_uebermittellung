@@ -101,6 +101,8 @@
                 />
               </a-form-item>
             </a-col>
+          </a-row>
+          <a-row>
             <a-col>
               <a-form-item
                 label="Anmerkungen"
@@ -110,7 +112,8 @@
                 <a-input v-decorator="['comment']" />
               </a-form-item>
             </a-col>
-            <a-col :xs="6" :md="3"></a-col>
+          </a-row>
+          <a-row>
             <a-col>
               <!-- Datenschutzerklärung Bestätigung-->
               <a-form-item>
@@ -201,7 +204,7 @@ export default Vue.extend({
             userRole: 'USER_ROLE_ADMIN',
           },
         }
-        Api.api.registerInstitutionUsingPost(values).then(() => {
+        Api.registerInstitutionUsingPost(values).then(() => {
           this.form.resetFields()
           const notification = {
             message: 'Institution registriert.',
@@ -225,7 +228,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .wrapper {
     text-align: left;
     padding: 2%;

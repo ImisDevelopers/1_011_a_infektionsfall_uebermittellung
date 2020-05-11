@@ -1,1 +1,33 @@
-{"lastName": "Schulze", "firstName": "Susanne", "gender": "weiblich", "dateOfBirth": "1968-12-15 22", "email": "S.Schulze@posteo.de", "phoneNumber": "83597461003", "street": "Abbendiekshof", "houseNumber": 65, "zip": "36510009", "city": "Freiburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "Q755612517", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Halschmerzen", "Husten", "Schnupfen", "Erk\u00e4ltung", "Fieber", "Atemschwierigkeiten", "Gelenkschmerzen", "Kopfschmerzen"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Bochum",
+  "coronaContacts": true,
+  "dateOfBirth": "1988-07-25",
+  "email": "t.wagner@gmail.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 56,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "C207873599",
+  "lastName": "Wagner",
+  "nationality": "deutsch",
+  "phoneNumber": "2101021890910",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "531026"
+}

@@ -1,1 +1,29 @@
-{"lastName": "Winter", "firstName": "Hans", "gender": "m\u00e4nnlich", "dateOfBirth": "1933-09-25 16", "email": "H.Winter@web.de", "phoneNumber": "1527850420", "street": "Haidth\u00f6heAarweg", "houseNumber": 42, "zip": "1691207", "city": "D\u00fcsseldorf", "insuranceCompany": "AOK", "insuranceMembershipNumber": "O736085313", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Atemschwierigkeiten", "Erk\u00e4ltung", "Schnupfen", "Husten"], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Hamburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1928-09-07",
+  "email": "k.schulze@web.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 76,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S551898779",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "64100376137",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "18055"
+}

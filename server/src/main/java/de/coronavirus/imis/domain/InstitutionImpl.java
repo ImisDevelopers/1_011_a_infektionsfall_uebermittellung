@@ -1,15 +1,13 @@
 package de.coronavirus.imis.domain;
 
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.coronavirus.imis.config.domain.User;
+import lombok.Data;
 import lombok.Getter;
 import org.hibernate.annotations.GenericGenerator;
 
-import lombok.Data;
-
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -17,25 +15,25 @@ import java.util.List;
 @Getter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "id")
 public abstract class InstitutionImpl implements Institution {
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private String id;
+	@Id
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	private String id;
 
-    private String name;
-    private String houseNumber;
-    private String street;
-    private String city;
-    private String zip;
-    private String email;
-    private String phoneNumber;
-    private String comment;
+	private String name;
+	private String houseNumber;
+	private String street;
+	private String city;
+	private String zip;
+	private String email;
+	private String phoneNumber;
+	private String comment;
 
-    @OneToMany(mappedBy = "institution")
-    private List<User> users;
+	@OneToMany(mappedBy = "institution")
+	private List<User> users;
 
-
+	public abstract InstitutionType getType();
 }

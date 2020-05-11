@@ -1,1 +1,31 @@
-{"lastName": "Peters", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1954-03-25 04", "email": "K.Peters@gmx.de", "phoneNumber": "101755380410", "street": "Abbendiekshof", "houseNumber": 1, "zip": "6188581", "city": "M\u00fcnchen", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "C863251195", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": [], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": true, "preIllnesses": [""]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1948-05-31",
+  "email": "k.richter@posteo.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 15,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Y433910025",
+  "lastName": "Richter",
+  "nationality": "deutsch",
+  "phoneNumber": "54990410530",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "742610"
+}

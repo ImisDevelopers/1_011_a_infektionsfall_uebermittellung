@@ -1,1 +1,33 @@
-{"lastName": "Schr\u00f6der", "firstName": "Karl", "gender": "m\u00e4nnlich", "dateOfBirth": "1935-09-04 01", "email": "K.Schr\u00f6der@web.de", "phoneNumber": "010538773108", "street": "Abbendiekshof", "houseNumber": 53, "zip": "2755574", "city": "Frankfurt", "insuranceCompany": "AOK", "insuranceMembershipNumber": "L889305658", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Erk\u00e4ltung", "Fieber", "Schnupfen", "Atemschwierigkeiten", "Halschmerzen", "Kopfschmerzen", "Husten", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1930-10-22",
+  "email": "k.winkler@gmail.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 41,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K899621068",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "7278755886",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof",
+  "symptoms": [
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "33963"
+}

@@ -1,1 +1,28 @@
-{"lastName": "Richter", "firstName": "Franz", "gender": "m\u00e4nnlich", "dateOfBirth": "1968-12-17 02", "email": "F.Richter@gmx.de", "phoneNumber": "612106830103", "street": "Nordufer", "houseNumber": 53, "zip": "5374724", "city": "Kiel", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "F266232829", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": [], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1998-07-17",
+  "email": "k.schulze@t-online.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 19,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "R450845460",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "410866611088",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "41418"
+}

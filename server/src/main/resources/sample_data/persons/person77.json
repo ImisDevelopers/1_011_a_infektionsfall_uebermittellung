@@ -1,1 +1,34 @@
-{"lastName": "Bauer", "firstName": "Lisa", "gender": "weiblich", "dateOfBirth": "1942-02-07 09", "email": "L.Bauer@gmail.de", "phoneNumber": "13310037581", "street": "Niekampsweg", "houseNumber": 41, "zip": "108109100", "city": "M\u00fcnchen", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "W674024932", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Fieber", "Kopfschmerzen", "Schnupfen", "Halschmerzen", "Erk\u00e4ltung", "Gelenkschmerzen"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Freiburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1985-10-08",
+  "email": "j.mueller@gmail.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 12,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "A780884334",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "96108562185",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Husten",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "63159"
+}

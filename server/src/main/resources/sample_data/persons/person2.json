@@ -1,1 +1,31 @@
-{"lastName": "Richter", "firstName": "Jan", "gender": "m\u00e4nnlich", "dateOfBirth": "1975-04-28", "email": "j.richter@web.de", "phoneNumber": "7836824265", "street": "Nordstra\u00dfe", "houseNumber": 72, "zip": "624451010", "city": "Bochum", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "J121726114", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Gelenkschmerzen", "Erk\u00e4ltung", "Schnupfen", "Kopfschmerzen", "Halschmerzen", "Fieber"], "coronaContacts": true, "employer":  "Allianz", "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1971-12-30",
+  "email": "t.wagner@posteo.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 34,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "B964411347",
+  "lastName": "Wagner",
+  "nationality": "deutsch",
+  "phoneNumber": "1010191028327",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Fieber",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "1083105"
+}

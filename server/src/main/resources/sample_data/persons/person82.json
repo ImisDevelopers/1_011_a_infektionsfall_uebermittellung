@@ -1,1 +1,29 @@
-{"lastName": "Schulze", "firstName": "Hans", "gender": "m\u00e4nnlich", "dateOfBirth": "1964-07-12 12", "email": "H.Schulze@t-online.de", "phoneNumber": "2451661134", "street": "Haidth\u00f6heAarweg", "houseNumber": 67, "zip": "610101245", "city": "Hamburg", "insuranceCompany": "AOK", "insuranceMembershipNumber": "Q804305175", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Kopfschmerzen", "Husten"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1977-09-24",
+  "email": "p.mueller@gmail.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 88,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N192185888",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "88993756710",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "82507"
+}

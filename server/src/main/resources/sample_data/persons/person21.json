@@ -1,1 +1,31 @@
-{"lastName": "Schr\u00f6der", "firstName": "Daniel", "gender": "m\u00e4nnlich", "dateOfBirth": "1935-01-16 05", "email": "D.Schr\u00f6der@gmail.de", "phoneNumber": "051060291002", "street": "Schernerweg", "houseNumber": 83, "zip": "5733573", "city": "Hamburg", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "Q411766810", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Kopfschmerzen", "Atemschwierigkeiten", "Halschmerzen"], "coronaContacts": false, "riskAreas": ["Tirol"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1938-06-14",
+  "email": "m.klein@web.de",
+  "firstName": "Marie",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 15,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "S916267011",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "8557444313",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Fieber",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "82337"
+}

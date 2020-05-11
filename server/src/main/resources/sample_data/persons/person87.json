@@ -1,1 +1,35 @@
-{"lastName": "Peters", "firstName": "Jan", "gender": "m\u00e4nnlich", "dateOfBirth": "1986-01-08 10", "email": "J.Peters@posteo.de", "phoneNumber": "710667691089", "street": "Aarhusweg", "houseNumber": 84, "zip": "310585410", "city": "Kiel", "insuranceCompany": "KNAPPSCHAFT", "insuranceMembershipNumber": "A156091426", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Husten", "Fieber", "Erk\u00e4ltung", "Gelenkschmerzen", "Atemschwierigkeiten", "Kopfschmerzen", "Schnupfen"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": true, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1967-01-15",
+  "email": "l.winkler@posteo.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 54,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L671532152",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "4517133959",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "29233"
+}

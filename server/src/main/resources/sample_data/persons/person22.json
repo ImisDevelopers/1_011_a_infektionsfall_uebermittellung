@@ -1,1 +1,26 @@
-{"lastName": "Schulze", "firstName": "Jens", "gender": "m\u00e4nnlich", "dateOfBirth": "1927-01-09 18", "email": "J.Schulze@web.de", "phoneNumber": "47760410471", "street": "Im KramersfeldAar\u00f6stra\u00dfe", "houseNumber": 82, "zip": "0530521", "city": "Frankfurt", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "T967591122", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Husten"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "2000-01-18",
+  "email": "k.schulz@gmail.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 43,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "P179545125",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "42107109477",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "20471"
+}

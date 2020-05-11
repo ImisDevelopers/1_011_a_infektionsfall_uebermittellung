@@ -1,1 +1,28 @@
-{"lastName": "Lange", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1978-07-15 03", "email": "P.Lange@web.de", "phoneNumber": "651100297101", "street": "Aastwiete", "houseNumber": 4, "zip": "10371173", "city": "Hamburg", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "X504787964", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Schnupfen", "Kopfschmerzen", "Erk\u00e4ltung", "Husten", "Atemschwierigkeiten"], "coronaContacts": true, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Freiburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1935-07-03",
+  "email": "k.bauer@t-online.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 61,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "T645719501",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "31711027484",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "73782"
+}

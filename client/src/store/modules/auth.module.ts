@@ -1,16 +1,14 @@
 import Api, { removeBearerToken, setBearerToken } from '@/api'
-import { Institution, RegisterUserRequest, User } from '@/api/SwaggerApi'
+import { ChangePasswordDTO, Institution, InstitutionDTO, RegisterUserRequest, User, UserDTO } from '@/api/SwaggerApi'
 import { config } from '@/config'
 import { InstitutionRole } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
-import { Vue } from 'vue/types/vue'
 import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
 
 interface JwtData {
   roles: InstitutionRole[];
   exp: number;
-
   [key: string]: any;
 }
 
@@ -19,6 +17,7 @@ class AuthState {
   jwtData: JwtData | undefined = undefined
   user: User | undefined = undefined
   institution: Institution | undefined = undefined
+  institutionUsers: UserDTO[] | undefined = undefined
 }
 
 class AuthGetters extends Getters<AuthState> {
@@ -41,10 +40,7 @@ class AuthGetters extends Getters<AuthState> {
   }
 
   institutionUsers() {
-    return this.state.institution?.users?.map(user => ({
-      ...user,
-      role: user.authorities?.length === 2 ? user.authorities[1].authority : '',
-    }))
+    return this.state.institutionUsers || []
   }
 }
 
@@ -65,6 +61,10 @@ class AuthMutations extends Mutations<AuthState> {
     this.state.institution = institution
   }
 
+  setInstitutionUsers(users: UserDTO[]) {
+    this.state.institutionUsers = users
+  }
+
   setUser(user: User) {
     this.state.user = user
   }
@@ -73,7 +73,7 @@ class AuthMutations extends Mutations<AuthState> {
 class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthActions> {
   async login(payload: { username: string; password: string }) {
     // # TODO loading animation, encrypt jwt
-    const token: string | undefined = (await Api.api.signInUserUsingPost({
+    const token: string | undefined = (await Api.signInUserUsingPost({
       username: payload.username,
       password: payload.password,
     })).jwtToken
@@ -112,25 +112,42 @@ class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthAct
   }
 
   async getAuthenticatedInstitution() {
-    const institution = await Api.api.getInstitutionUsingGet()
+    const institution = await Api.getInstitutionUsingGet()
     this.commit('setAuthenticatedInstitution', institution)
   }
 
+  async getInstitutionUsers() {
+    const users = await Api.getInstitutionUsersUsingGet()
+    this.commit('setInstitutionUsers', users)
+  }
+
   async getAuthenticatedUser() {
-    const user = await Api.api.currentUserUsingGet()
+    const user = await Api.currentUserUsingGet()
     this.commit('setUser', user)
   }
 
-  async registerUserForInstitution(payload: { user: RegisterUserRequest; instance: Vue }) {
-    try {
-      const res = await Api.api.registerUserUsingPost(payload.user)
-      this.dispatch('getAuthenticatedInstitution')
-    } catch (err) {
-      payload.instance.$notification.error({
-        message: 'Error',
-        description: 'Nutzer konnte nicht hinzugefügt werden',
-      })
-    }
+  async updateInstitution(institution: InstitutionDTO) {
+    const updatedInstitution = await Api.updateInstitutionUsingPut(institution)
+    this.commit('setAuthenticatedInstitution', updatedInstitution)
+  }
+
+  async registerUserForInstitution(user: RegisterUserRequest) {
+    const res = await Api.registerUserUsingPost(user)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  async deleteUserForInstitution(userId: number) {
+    const res = await Api.deleteInstitutionUserUsingDelete(userId)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  async updateUserForInstitution(user: UserDTO) {
+    await Api.updateInstitutionUserUsingPut(user)
+    this.dispatch('getInstitutionUsers')
+  }
+
+  changePassword(changePassword: ChangePasswordDTO): Promise<void> {
+    return Api.changePasswordUsingPost(changePassword)
   }
 }
 

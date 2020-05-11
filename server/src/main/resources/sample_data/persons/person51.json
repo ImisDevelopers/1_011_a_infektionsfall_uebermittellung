@@ -1,1 +1,31 @@
-{"lastName": "M\u00fcller", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "1949-11-02 19", "email": "A.M\u00fcller@gmail.de", "phoneNumber": "70410741539", "street": "Nordufer", "houseNumber": 66, "zip": "83971019", "city": "Freiburg", "insuranceCompany": "AOK", "insuranceMembershipNumber": "Q310699022", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Atemschwierigkeiten", "Fieber", "Erk\u00e4ltung"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": false,
+  "dateOfBirth": "1960-09-11",
+  "email": "t.schulz@t-online.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 37,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M975535611",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "1021077102217",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Husten",
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "30305"
+}

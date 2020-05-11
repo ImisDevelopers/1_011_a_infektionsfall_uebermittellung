@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface LabTestRepository extends JpaRepository<LabTest, String> {
 
-    Optional<LabTest> findFirstByTestIdAndLaboratoryId(String testId, String laboratoryId);
+	Optional<LabTest> findFirstByTestIdAndLaboratoryId(String testId, String laboratoryId);
 
-    List<LabTest> findByTestIdContaining(String labTestId);
+	List<LabTest> findByTestIdContaining(String labTestId);
 }

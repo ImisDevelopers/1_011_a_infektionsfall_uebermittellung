@@ -1,1 +1,35 @@
-{"lastName": "Wagner", "firstName": "Annika", "gender": "weiblich", "dateOfBirth": "1946-11-18 14", "email": "A.Wagner@gmx.de", "phoneNumber": "09109516800", "street": "Abbendiekshof", "houseNumber": 32, "zip": "44972910", "city": "D\u00fcsseldorf", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "Z566548366", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Kopfschmerzen", "Fieber"], "coronaContacts": false, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1937-01-21",
+  "email": "d.klein@web.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 53,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Q684203557",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "8932460953",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe",
+  "symptoms": [
+    "Husten",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Schnupfen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "2101018"
+}

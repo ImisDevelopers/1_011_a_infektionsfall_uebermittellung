@@ -4,6 +4,9 @@
 .idea
 .gradle
 .DS_Store
+**/.project
+**/.settings
+/.classpath
 # CMake
 cmake-build-*/
 
@@ -72,3 +75,4 @@ client/npm-debug.log*
 client/yarn-debug.log*
 client/yarn-error.log*
 /build/
+/venv/

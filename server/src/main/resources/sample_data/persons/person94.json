@@ -1,1 +1,28 @@
-{"lastName": "Peters", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1987-04-12 02", "email": "T.Peters@gmail.de", "phoneNumber": "9514127699", "street": "Aarhusweg", "houseNumber": 85, "zip": "71013300", "city": "Bochum", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "F247507738", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Atemschwierigkeiten", "Fieber", "Kopfschmerzen", "Husten", "Halschmerzen"], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1991-08-20",
+  "email": "f.mueller@gmx.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 63,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "X938725480",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "904101021020",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "58842"
+}

@@ -1,19 +1,21 @@
+import { InstitutionRole } from '@/models'
 import AccountView from '@/views/Account.vue'
-import PublicRegister from '@/views/PublicRegister.vue'
-import Vue from 'vue'
-import VueRouter, { Route, RouteConfig } from 'vue-router'
-import Login from '@/views/Login.vue'
-import LandingPage from '@/views/LandingPage.vue'
 import AppRoot from '@/views/AppRoot.vue'
-import RegisterPatient from '@/views/RegisterPatient.vue'
-import RegisterTest from '@/views/RegisterTest.vue'
-import SubmitTestResult from '@/views/SubmitTestResult.vue'
-import TestList from '@/views/TestList.vue'
-import PatientList from '@/views/PatientList.vue'
+import Dashboard from '@/views/Dashboard.vue'
+import LandingPage from '@/views/LandingPage.vue'
+import Login from '@/views/Login.vue'
 import PatientDetails from '@/views/PatientDetails.vue'
+import PatientList from '@/views/PatientList.vue'
+import PublicRegister from '@/views/PublicRegister.vue'
 import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
-import { InstitutionRole } from '@/models'
+import RegisterPatient from '@/views/RegisterPatient.vue'
+import RegisterTest from '@/views/RegisterTest.vue'
+import SendToQuarantine from '@/views/SendToQuarantine.vue'
+import SubmitTestResult from '@/views/SubmitTestResult.vue'
+import TestList from '@/views/TestList.vue'
+import Vue from 'vue'
+import VueRouter, { Route, RouteConfig } from 'vue-router'
 
 Vue.use(VueRouter)
 
@@ -49,6 +51,7 @@ export interface AppRoute extends RouteConfig {
       icon: string;
       title: string;
       authorities: InstitutionRole[];
+      showInSidenav: boolean;
     };
   };
 }
@@ -64,14 +67,15 @@ const ALL_INSTITUTIONS: InstitutionRole[] = [
 
 const appRoutes: AppRoute[] = [
   {
-    name: 'account',
-    path: 'account',
-    component: AccountView,
+    name: 'dashboard',
+    path: 'dashboard',
+    component: Dashboard,
     meta: {
       navigationInfo: {
-        icon: 'user',
-        title: 'Account',
+        icon: 'dashboard',
+        title: 'Dashboard',
         authorities: ALL_INSTITUTIONS,
+        showInSidenav: true,
       },
     },
   },
@@ -84,6 +88,7 @@ const appRoutes: AppRoute[] = [
         icon: 'user-add',
         title: 'Patient Registrieren',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -96,6 +101,7 @@ const appRoutes: AppRoute[] = [
         icon: 'deployment-unit',
         title: 'Probe Zuordnen',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -108,6 +114,7 @@ const appRoutes: AppRoute[] = [
         icon: 'experiment',
         title: 'Testresultat Zuordnen',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -120,6 +127,7 @@ const appRoutes: AppRoute[] = [
         icon: 'unordered-list',
         title: 'Alle Tests',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
       },
     },
   },
@@ -132,6 +140,20 @@ const appRoutes: AppRoute[] = [
         icon: 'team',
         title: 'Alle Patienten',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
+      },
+    },
+  },
+  {
+    name: 'send-to-quarantine',
+    path: 'send-to-quarantine',
+    component: SendToQuarantine,
+    meta: {
+      navigationInfo: {
+        icon: 'safety',
+        title: 'In Quarantäne senden',
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'],
+        showInSidenav: true,
       },
     },
   },
@@ -144,6 +166,7 @@ const appRoutes: AppRoute[] = [
         icon: 'stock',
         title: 'Statistiken',
         authorities: ALL_INSTITUTIONS,
+        showInSidenav: true,
       },
     },
   },
@@ -151,6 +174,19 @@ const appRoutes: AppRoute[] = [
     name: 'patient-detail',
     path: 'patient/:id',
     component: PatientDetails,
+  },
+  {
+    name: 'account',
+    path: 'account',
+    component: AccountView,
+    meta: {
+      navigationInfo: {
+        icon: 'user',
+        title: 'Benutzerkonto',
+        authorities: ALL_INSTITUTIONS,
+        showInSidenav: false,
+      },
+    },
   },
   {
     path: '*',
@@ -187,7 +223,7 @@ const routes = [
     path: '/app',
     component: AppRoot,
     children: appRoutes,
-    redirect: { name: 'account' },
+    redirect: { name: 'dashboard' },
     meta: {
       requiresAuth: true,
     },
@@ -199,7 +235,7 @@ const routes = [
 ]
 
 export const navigationRoutes = appRoutes
-  .filter(r => !r.path.includes('*') && r.meta?.navigationInfo)
+  .filter(r => !r.path.includes('*') && r.meta?.navigationInfo?.showInSidenav)
 
 const router = new VueRouter({
   mode: 'history',

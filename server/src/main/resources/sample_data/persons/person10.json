@@ -1,1 +1,33 @@
-{"lastName": "Weber", "firstName": "Daniel", "gender": "m\u00e4nnlich", "dateOfBirth": "1939-03-31", "email": "d.weber@posteo.de", "phoneNumber": "8057061675", "street": "B\u00fcckerheide", "houseNumber": 27, "zip": "80881100", "city": "Hamburg", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "C112163445", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Fieber", "Halschmerzen", "Gelenkschmerzen", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": true, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "D\u00fcsseldorf",
+  "coronaContacts": true,
+  "dateOfBirth": "1979-12-11",
+  "email": "k.weber@web.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 35,
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "X574417266",
+  "lastName": "Weber",
+  "nationality": "deutsch",
+  "phoneNumber": "3101048740110",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Husten",
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Fieber",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "005210"
+}

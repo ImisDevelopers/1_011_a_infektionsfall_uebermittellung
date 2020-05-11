@@ -1,1 +1,28 @@
-{"lastName": "M\u00fcller", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1925-07-22 03", "email": "T.M\u00fcller@t-online.de", "phoneNumber": "103628326210", "street": "Niekampsweg", "houseNumber": 24, "zip": "9098567", "city": "Frankfurt", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "D280171627", "fluImmunization": true, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Gelenkschmerzen", "Husten", "Fieber", "Kopfschmerzen", "Halschmerzen", "Atemschwierigkeiten"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1954-07-22",
+  "email": "j.peters@gmx.de",
+  "firstName": "Jana",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 79,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "O642831335",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "1771159212",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete",
+  "symptoms": [
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "109856"
+}

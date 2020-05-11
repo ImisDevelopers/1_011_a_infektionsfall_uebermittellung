@@ -1,1 +1,29 @@
-{"lastName": "Wagner", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "1973-05-22 13", "email": "A.Wagner@gmail.de", "phoneNumber": "6440713348", "street": "B\u00fcckerheide", "houseNumber": 93, "zip": "0235035", "city": "D\u00fcsseldorf", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "R904926832", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": ["Fieber", "Husten", "Erk\u00e4ltung", "Atemschwierigkeiten", "Schnupfen", "Gelenkschmerzen", "Halschmerzen"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": true, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Bochum",
+  "coronaContacts": false,
+  "dateOfBirth": "1931-02-17",
+  "email": "d.winkler@t-online.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 37,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "H180195016",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "210619906102",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Fieber",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "45655"
+}

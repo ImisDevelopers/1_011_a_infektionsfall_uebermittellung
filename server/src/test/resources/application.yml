@@ -1,3 +1,9 @@
 spring:
   profiles:
     active: test
+  cloud:
+    gcp:
+      sql:
+        enabled: false
+      storage:
+        enabled: false

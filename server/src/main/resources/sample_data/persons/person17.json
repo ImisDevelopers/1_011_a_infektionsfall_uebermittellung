@@ -1,1 +1,31 @@
-{"lastName": "Weber", "firstName": "Anna", "gender": "weiblich", "dateOfBirth": "1961-06-09", "email": "a.weber@t-online.de", "phoneNumber": "8698684088", "street": "Abbachstra\u00dfe", "houseNumber": 46, "zip": "0835450", "city": "Freiburg", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "T435733081", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Fieber", "Halschmerzen", "Atemschwierigkeiten", "Husten"], "coronaContacts": false, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Kiel",
+  "coronaContacts": false,
+  "dateOfBirth": "1937-01-30",
+  "email": "j.schulz@web.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
+  "houseNumber": 6,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y507083673",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "699100110627",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "46537"
+}

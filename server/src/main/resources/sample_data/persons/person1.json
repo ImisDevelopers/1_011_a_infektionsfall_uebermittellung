@@ -1,1 +1,31 @@
-{"lastName": "Schulz", "firstName": "Jana", "gender": "weiblich", "dateOfBirth": "1983-12-08", "email": "j.schulz@gmail.de", "phoneNumber": "22807021043", "street": "Haidth\u00f6heAarweg", "houseNumber": 12, "zip": "6813867", "city": "Freiburg", "insuranceCompany": "AOK", "insuranceMembershipNumber": "F178938520", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Husten", "Halschmerzen", "Gelenkschmerzen", "Schnupfen", "Kopfschmerzen"], "coronaContacts": true, "employer":  "Allianz", "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": false,
+  "dateOfBirth": "1962-02-03",
+  "email": "p.schulz@posteo.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 10,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C149203558",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "6155940781",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg",
+  "symptoms": [
+    "Fieber",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "841095"
+}

@@ -12,13 +12,13 @@ import javax.persistence.Id;
 @Entity
 @Data
 public class TestSite extends InstitutionImpl {
-    @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private String id;
+	@Id
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	private String id;
 
-    @Override
-    public InstitutionType getType() {
-        return InstitutionType.TEST_SITE;
-    }
+	@Override
+	public InstitutionType getType() {
+		return InstitutionType.TEST_SITE;
+	}
 }

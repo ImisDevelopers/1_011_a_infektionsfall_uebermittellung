@@ -1,1 +1,34 @@
-{"lastName": "Schulze", "firstName": "Susanne", "gender": "weiblich", "dateOfBirth": "1959-01-27 13", "email": "S.Schulze@gmail.de", "phoneNumber": "9994950249", "street": "Aastwiete", "houseNumber": 43, "zip": "102345810", "city": "M\u00fcnchen", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "G795500277", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Husten"], "coronaContacts": true, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": ["Herz-Kreislauf"]}
+{
+  "city": "Bochum",
+  "coronaContacts": true,
+  "dateOfBirth": "2000-07-24",
+  "email": "d.mueller@web.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 34,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "F728492896",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "59401310990",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe",
+  "symptoms": [
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "90278"
+}

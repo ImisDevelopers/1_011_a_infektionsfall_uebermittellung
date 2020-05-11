@@ -1,10 +1,10 @@
 <template>
   <div class="scanner-wrapper">
     <video
-      id="video"
-      width="100%"
       height="100%"
+      id="video"
       style="border: 1px solid gray"
+      width="100%"
     ></video>
     <div class="result" v-if="result.length > 0">
       <p>{{result}}</p>
@@ -14,8 +14,8 @@
       </div>
     </div>
     <div class="scanner-input">
-      <a-select @change="handleDeviceChange" labelInValue :value="device" v-if="devices.length > 0">
-        <a-select-option v-for="d in devices" :key="d.deviceId">{{d.label}}</a-select-option>
+      <a-select :value="device" @change="handleDeviceChange" labelInValue v-if="devices.length > 0">
+        <a-select-option :key="d.deviceId" v-for="d in devices">{{d.label}}</a-select-option>
       </a-select>
       <div class="cancel-button" v-if="result.length === 0">
         <a-button type="secondary" v-on:click="onCancel">Cancel</a-button>
@@ -24,22 +24,22 @@
 
   </div>
 </template>
-<script>
-// import { BrowserMultiFormatReader } from '@zxing/library'
+<script lang="ts">
+import Vue from 'vue'
 
-export default {
+export default Vue.extend({
   name: 'BarcodeScanner',
   data() {
     // const codeReader = new BrowserMultiFormatReader()
     return {
-    //  codeReader,
+      //  codeReader,
       devices: [],
       device: '',
       result: '',
     }
   },
   methods: {
-    handleDeviceChange(device) {
+    handleDeviceChange(device: string) {
       this.device = device
       this.startScanning()
     },
@@ -55,7 +55,7 @@ export default {
           console.log('notificaiton')
           console.log(err)
           this.$notification.error({
-            title: 'No Camera',
+            message: 'No Camera',
             description: 'No Camera or no Camera Permissions',
           })
         }
@@ -92,9 +92,9 @@ export default {
     //   })
     // }
   },
-}
+})
 </script>
-<style>
+<style scoped lang="scss">
   .scanner-wrapper {
     top: 0;
     left: 0;

@@ -1,1 +1,33 @@
-{"lastName": "Richter", "firstName": "Kai", "gender": "m\u00e4nnlich", "dateOfBirth": "1941-03-30", "email": "k.richter@web.de", "phoneNumber": "01810477554", "street": "Aastwiete", "houseNumber": 42, "zip": "73249102", "city": "Hamburg", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "W353921221", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Erk\u00e4ltung", "Kopfschmerzen", "Fieber", "Husten", "Halschmerzen"], "coronaContacts": true, "riskAreas": ["New York"], "weakenedImmuneSystem": false, "preIllnesses": ["Imunsystemschw\u00e4che"]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "2003-10-05",
+  "email": "p.schulze@posteo.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 77,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "S827296111",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "32710193745",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Halschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "91241"
+}

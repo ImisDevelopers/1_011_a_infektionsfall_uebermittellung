@@ -1,1 +1,33 @@
-{"lastName": "Bauer", "firstName": "Tim", "gender": "m\u00e4nnlich", "dateOfBirth": "1955-06-15 22", "email": "T.Bauer@gmail.de", "phoneNumber": "10503310956", "street": "Aastwiete", "houseNumber": 14, "zip": "10487033", "city": "Bochum", "insuranceCompany": "Techniker Krankenkasse", "insuranceMembershipNumber": "E186611496", "fluImmunization": true, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1934-08-22",
+  "email": "d.schroeder@t-online.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 89,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N293253475",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "4064039106",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbachstra\u00dfe",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "18017"
+}

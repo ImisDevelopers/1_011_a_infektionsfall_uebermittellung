@@ -1,1 +1,29 @@
-{"lastName": "Winkler", "firstName": "Peter", "gender": "m\u00e4nnlich", "dateOfBirth": "1941-12-13 09", "email": "P.Winkler@gmx.de", "phoneNumber": "24683764109", "street": "Aarhusweg", "houseNumber": 73, "zip": "83710797", "city": "Bochum", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "S281717781", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": ["Halschmerzen", "Schnupfen", "Atemschwierigkeiten", "Fieber"], "coronaContacts": false, "riskAreas": ["Hubei"], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Berlin",
+  "coronaContacts": true,
+  "dateOfBirth": "1940-06-02",
+  "email": "l.klein@gmx.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 94,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "L511221078",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "79252419101",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [
+    "Husten",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "80003"
+}

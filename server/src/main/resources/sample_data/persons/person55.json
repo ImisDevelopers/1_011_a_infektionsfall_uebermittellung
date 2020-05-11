@@ -1,1 +1,28 @@
-{"lastName": "Winkler", "firstName": "Lisa", "gender": "weiblich", "dateOfBirth": "1988-05-01 15", "email": "L.Winkler@posteo.de", "phoneNumber": "361841022310", "street": "Schernerweg", "houseNumber": 58, "zip": "1658727", "city": "Frankfurt", "insuranceCompany": "IKK Nord", "insuranceMembershipNumber": "L992732371", "fluImmunization": false, "speedOfSymptomsOutbreak": "Schnell", "symptoms": [], "coronaContacts": false, "riskAreas": [""], "weakenedImmuneSystem": false, "preIllnesses": [""]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1990-04-26",
+  "email": "t.bauer@posteo.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 78,
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Y539625898",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "2370589578",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg",
+  "symptoms": [
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "11467"
+}

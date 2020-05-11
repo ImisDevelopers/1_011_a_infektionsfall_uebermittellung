@@ -6,7 +6,7 @@ on:
   push:
     branches:
     - dev
-    - jib-integration
+    - pilot
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -67,7 +67,10 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
+        gradle server:test --tests "*GenerateSwagger" -x processResources
+        gradle client:generateClient
         gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
+
 
     # Deploy the Docker image to the GKE cluster
     - name: Prepare Helm
@@ -82,12 +85,18 @@ jobs:
         echo -n "${CLOUD_STORE_SERVICE_ACCOUNT}" > chart/cloudstore.base64.json
         helm repo add stable "https://kubernetes-charts.storage.googleapis.com"
         helm upgrade --install traefik stable/traefik -f chart/traefik.values.yaml
+
+        values=""
+        target="${GITHUB_REF//refs\/heads\//}"
         if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
-          helm upgrade --install imis-production chart \
-            --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
-          kubectl rollout status deployment/imis-production
+          target="production"
+        elif [[ -f "chart/values.${target}.yml" ]]; then
+          values="-f chart/values.${target}.yml"
         else
-          helm upgrade --install imis-staging chart -f chart/values.staging.yml \
-                    --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
-          kubectl rollout status deployment/imis-staging
+          echo "unkown target ${target}"
+          exit 42
         fi
+
+        helm upgrade --install "imis-${target}" chart $values \
+          --set gitSha=${GITHUB_SHA} --set "secrets.postgres=$(echo -n ${POSTGRES_PASSWORD} | base64)"
+        kubectl rollout status "deployment/imis-${target}"

@@ -1,1 +1,34 @@
-{"lastName": "Richter", "firstName": "Karl", "gender": "m\u00e4nnlich", "dateOfBirth": "1935-02-25 13", "email": "K.Richter@gmail.de", "phoneNumber": "31058095726", "street": "Nordufer", "houseNumber": 93, "zip": "2075383", "city": "K\u00f6ln", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "F522817916", "fluImmunization": false, "speedOfSymptomsOutbreak": "Langsam", "symptoms": [], "coronaContacts": true, "riskAreas": ["Tirol"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "M\u00fcnchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1984-03-24",
+  "email": "a.winkler@gmail.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 97,
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "E109815572",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "872810080110",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "062103"
+}

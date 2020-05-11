@@ -1,1 +1,26 @@
-{"lastName": "Bauer", "firstName": "Petra", "gender": "weiblich", "dateOfBirth": "1945-04-25 14", "email": "P.Bauer@gmx.de", "phoneNumber": "7394795634", "street": "Schernerweg", "houseNumber": 90, "zip": "5516272", "city": "M\u00fcnchen", "insuranceCompany": "Barmer", "insuranceMembershipNumber": "V676876904", "fluImmunization": true, "speedOfSymptomsOutbreak": "Schnell", "symptoms": [], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Berlin",
+  "coronaContacts": false,
+  "dateOfBirth": "1978-03-22",
+  "email": "l.schroeder@web.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
+  "gender": "female",
+  "houseNumber": 71,
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "V990626742",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "7315851493",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "9910108"
+}

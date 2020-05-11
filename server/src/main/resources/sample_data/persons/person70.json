@@ -1,1 +1,33 @@
-{"lastName": "Richter", "firstName": "Susanne", "gender": "weiblich", "dateOfBirth": "1942-03-20 06", "email": "S.Richter@web.de", "phoneNumber": "844821019102", "street": "Im KramersfeldAar\u00f6stra\u00dfe", "houseNumber": 37, "zip": "2511675", "city": "M\u00fcnchen", "insuranceCompany": "AOK", "insuranceMembershipNumber": "P627338739", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Atemschwierigkeiten", "Halschmerzen", "Kopfschmerzen"], "coronaContacts": false, "riskAreas": ["GrandEst"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "K\u00f6ln",
+  "coronaContacts": true,
+  "dateOfBirth": "1974-12-02",
+  "email": "j.schroeder@t-online.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
+  "houseNumber": 73,
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "E808897689",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "6738302843",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "599105"
+}

@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{- include "imis.fullname" . -}}"
+  labels:
+    {{- include "imis.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
@@ -26,10 +28,8 @@ spec:
           value: {{ .Values.env }}
         - name: SPRING_PROFILES_ACTIVE
           value: production
-        - name: SPRING_DATASOURCE_URL{{ if eq .Values.env "production" }}
-          value: jdbc:postgresql://localhost:5432/postgres
-          {{ else }}
-          value: jdbc:postgresql://localhost:5432/staging{{ end }}
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://localhost:5432/{{- .Values.database }}
         - name: SPRING_DATASOURCE_USERNAME
           value: postgres
         - name: SPRING_DATASOURCE_PASSWORD
@@ -57,6 +57,13 @@ spec:
           timeoutSeconds: 2
           periodSeconds: 8
           failureThreshold: 1
+        resources:
+          requests:
+            cpu: 10m
+            memory: 350Mi
+          limits: # exactly 1 * g1-small
+            cpu: 940m
+            memory: 1.2Gi
       - name: cloudsql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.14
         command: ["/cloud_sql_proxy",

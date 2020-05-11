@@ -1,1 +1,26 @@
-{"lastName": "Weber", "firstName": "Jana", "gender": "weiblich", "dateOfBirth": "1985-05-17 12", "email": "J.Weber@posteo.de", "phoneNumber": "1049281925", "street": "Abbachstra\u00dfe", "houseNumber": 87, "zip": "8876407", "city": "Frankfurt", "insuranceCompany": "DAK Gesundheit", "insuranceMembershipNumber": "T903756361", "fluImmunization": false, "speedOfSymptomsOutbreak": "Mittel", "symptoms": ["Schnupfen", "Kopfschmerzen", "Fieber", "Erk\u00e4ltung"], "coronaContacts": true, "riskAreas": ["Madrid"], "weakenedImmuneSystem": false, "preIllnesses": ["Krebserkrankung"]}
+{
+  "city": "Frankfurt",
+  "coronaContacts": true,
+  "dateOfBirth": "1960-04-15",
+  "email": "s.mueller@web.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
+  "gender": "female",
+  "houseNumber": 41,
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "V420877774",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "47411210490",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "21356"
+}

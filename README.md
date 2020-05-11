@@ -1,7 +1,9 @@
+# Achtung: Bitte Milestone Simulation mit oberster Priorität abarbeiten!!
+# Für Simulations-Features (sofern nicht generell gültig) Branch 'Pilot' nutzen.
 [![IMIS Cover](client/public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
 
-  * [Demo](http://imis-prototyp.de)
-  * [Swagger API](http://imis-prototyp.de/swagger-ui.html)
+  * [Demo](https://imis-prototyp.de)
+  * [Swagger API](https://imis-prototyp.de/swagger-ui.html)
   * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)
  
 Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.org/)-Hackathon. 
@@ -11,7 +13,9 @@ Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.
   * Mit freundlicher Unterstützung von [https://covidmeldeprozess.de/](https://covidmeldeprozess.de/)
   
 # Development
-![Build](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=dev) and ![Deployment](https://github.com/imis-Infektionsfall-uebermittellung/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Deploy%20to%20GKE/badge.svg?branch=dev)
+### [Prod](https://imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=master&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/imisDevelopers/1_011_a_infektionsfall_uebermittellung?color=green)
+### [Dev](https://staing.imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=dev&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg?branch=dev&event=push)
+### [Pilot](https://pilot.imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=pilot&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg?branch=pilot&event=push)
 
 ## General Guidelines
 _DO NOT COMMIT TO MASTER_ 
@@ -86,7 +90,7 @@ But you have to run Postgres in docker or install it and run it locally manually
 ## API communication
 
 An API developed by the backend is served via swagger on the server: http://localhost/swagger-ui.html
-We are using the swagger docs to auto-generate the typescript api client.
+We are using the swagger docs to autogenerate the typescript api client.
 ```yarn generate:api-client```
 Make sure the server is running locally, the command updates the ts api client
 
@@ -95,8 +99,6 @@ When you make changes to the backend, make sure to generate a new client.
 ## CI system
 All commits to `dev`, `master`, `feature/*` and all PRs will be CI checked.
 
-New commit to `dev` will result in new release to:
-    * [staging.imis-prototyp.de](https://staging.imis-prototyp.de)
-    * [Swagger API](https://staging.imis-prototyp.de/swagger-ui.html)
+New commit to `dev` will result in new release to `staging.imis-prototyp.de`.
 
-A new release to `imis-prototyp.de` is not triggered by commit on `master` but by a [new release tag](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/releases/new). 
+A new release to `imis-prototyp.de` is not triggerd by commit on `master` but by a new release tag. 

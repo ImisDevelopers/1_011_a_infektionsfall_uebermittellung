@@ -13,4 +13,6 @@ public interface ExposureContactRepository extends JpaRepository<ExposureContact
 
 	List<ExposureContact> findBySourceId(String patientId);
 	List<ExposureContact> findByContactId(String patientId);
+
+	Optional<ExposureContact> findBySourceIdAndContactId(String sourceId, String contactId);
 }

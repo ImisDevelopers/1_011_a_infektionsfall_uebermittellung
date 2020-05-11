@@ -73,7 +73,7 @@
                 initialValue: initialData('country'),
               }]" />
           </a-form-item>
-		</a-col>
+        </a-col>
       </a-row>
     </slot>
   </div>

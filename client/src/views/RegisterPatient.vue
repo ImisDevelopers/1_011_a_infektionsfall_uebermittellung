@@ -231,9 +231,9 @@
                       required: true,
                       message: 'Bitte Status wählen',
                     }], initialValue: 'SUSPECTED' }]">
-                    <a-select-option :key="eventType.id" v-for="eventType in EVENT_TYPES">
-                      <a-icon :type="eventType.icon" style="margin-right: 5px" />
-                      {{eventType.label}}
+                    <a-select-option :key="caseStatus.id" v-for="caseStatus in CASE_STATUS">
+                      <a-icon :type="caseStatus.icon" style="margin-right: 5px" />
+                      {{caseStatus.label}}
                     </a-select-option>
                   </a-select>
                 </a-form-item>
@@ -243,28 +243,6 @@
                       required: true,
                       message: 'Bitte Meldedatum wählen'
                     }], initialValue: today}]" label="Meldedatum" />
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="4" />
-              <a-col :span="20">
-                <a-checkbox :checked="!disableTestOrder" @change="testOrderedChanged"
-                            style="margin-bottom: 15px">
-                  Wurde eine Erregerdiagnostik beauftragt?
-                </a-checkbox>
-              </a-col>
-            </a-row>
-            <a-row>
-              <a-col :span="12">
-                <LaboratoryInput
-                  :disabled="disableTestOrder"
-                  :form="form"
-                  :validation="['laboratoryId']"
-                  label="Labor"
-                />
-              </a-col>
-              <a-col :span="12">
-                <DateInput :decorator="['dateOfTest']" :disabled="disableTestOrder" label="Datum der Probenentnahme" />
               </a-col>
             </a-row>
           </a-collapse-panel>

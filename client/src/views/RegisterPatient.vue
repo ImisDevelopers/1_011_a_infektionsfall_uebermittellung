@@ -218,16 +218,20 @@
             <a-row>
               <a-col :span="1"></a-col>
               <a-col :span="8">
-                <DateInput :decorator="['dateOfIllness', { rules: [{
-                      required: true,
-                      message: 'Bitte Erkrankungsdatum wählen',
-                    }], initialValue: today}]" label="Erkrankungsdatum" />
+                <a-form-item label="Erkrankungsdatum">
+                  <DateInput v-decorator="['dateOfIllness', { rules: [{
+                        required: true,
+                        message: 'Bitte Erkrankungsdatum wählen',
+                      }], initialValue: today}]" />
+                </a-form-item>
               </a-col>
               <a-col :span="8">
-                <DateInput :decorator="['dateOfReporting', { rules: [{
-                      required: true,
-                      message: 'Bitte Meldedatum wählen'
-                    }], initialValue: today}]" label="Meldedatum" />
+                <a-form-item label="Meldedatum">
+                  <DateInput v-decorator="['dateOfReporting', { rules: [{
+                        required: true,
+                        message: 'Bitte Meldedatum wählen'
+                      }], initialValue: today}]" />
+                </a-form-item>
               </a-col>
             </a-row>
             <a-row>

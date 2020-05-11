@@ -85,10 +85,7 @@ export interface CreatePatientDTO {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -128,33 +125,34 @@ export interface Doctor {
   zip?: string;
 }
 
-export interface GrantedAuthority {
-  authority?: string;
+export interface ExposureContactContactView {
+  firstName?: string;
+  id?: string;
+  inQuarantine?: boolean;
+  infected?: boolean;
+  lastName?: string;
 }
 
-export interface Incident {
-  caseId?: string;
-  eventType?:
-    | "REGISTERED"
-    | "SUSPECTED"
-    | "ORDER_TEST"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
-    | "PATIENT_DEAD"
-    | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
-  id?: string;
-  patient?: Patient;
-  versionTimestamp?: string;
-  versionUser?: User;
+export interface ExposureContactFromServer {
+  comment?: string;
+  contact?: ExposureContactContactView;
+  context?: string;
+  dateOfContact?: string;
+  id?: number;
+  source?: ExposureContactContactView;
+}
+
+export interface ExposureContactToServer {
+  comment?: string;
+  contact?: string;
+  context?: string;
+  dateOfContact?: string;
+  id?: number;
+  source?: string;
+}
+
+export interface GrantedAuthority {
+  authority?: string;
 }
 
 export interface Institution {
@@ -351,10 +349,7 @@ export interface Patient {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -397,10 +392,7 @@ export interface PatientEvent {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_MANDATED";
   id?: string;
   illness?: "CORONA";
   labTest?: LabTest;
@@ -438,29 +430,8 @@ export interface PatientSearchParamsDTO {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_MANDATED";
   phoneNumber?: string;
-  quarantineStatus?: Array<
-    | "REGISTERED"
-    | "SUSPECTED"
-    | "ORDER_TEST"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
-    | "PATIENT_DEAD"
-    | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED"
-  >;
   street?: string;
   zip?: string;
 }
@@ -490,23 +461,6 @@ export interface RequestLabTestDTO {
 export interface SendToQuarantineDTO {
   comment?: string;
   dateUntil?: string;
-  status?:
-    | "REGISTERED"
-    | "SUSPECTED"
-    | "ORDER_TEST"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
-    | "PATIENT_DEAD"
-    | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
 }
 
 export interface Timestamp {
@@ -583,7 +537,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8642/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -661,7 +615,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8642/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -778,67 +732,76 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, true),
 
     /**
-     * @tags incident-controller
-     * @name getPatientCurrentUsingGET
-     * @summary getPatientCurrent
-     * @request GET:/api/incidents/patient/{id}
+     * @tags exposure-contact-controller
+     * @name createExposureContactUsingPOST
+     * @summary createExposureContact
+     * @request POST:/api/exposure-contacts
      * @secure
      */
-    getPatientCurrentUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/patient/${id}`, "GET", params, null, true),
+    createExposureContactUsingPost: (dto: ExposureContactToServer, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts`, "POST", params, dto, true),
 
     /**
-     * @tags incident-controller
-     * @name getPatientLogUsingGET
-     * @summary getPatientLog
-     * @request GET:/api/incidents/patient/{id}/log
+     * @tags exposure-contact-controller
+     * @name updateExposureContactUsingPUT
+     * @summary updateExposureContact
+     * @request PUT:/api/exposure-contacts
      * @secure
      */
-    getPatientLogUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/patient/${id}/log`, "GET", params, null, true),
+    updateExposureContactUsingPut: (contact: ExposureContactToServer, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts`, "PUT", params, contact, true),
 
     /**
-     * @tags incident-controller
-     * @name getIncidentUsingGET
-     * @summary getIncident
-     * @request GET:/api/incidents/{id}
+     * @tags exposure-contact-controller
+     * @name getExposureSourceContactsForPatientUsingGET
+     * @summary getExposureSourceContactsForPatient
+     * @request GET:/api/exposure-contacts/by-contact/{id}
      * @secure
      */
-    getIncidentUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident, any>(`/api/incidents/${id}`, "GET", params, null, true),
+    getExposureSourceContactsForPatientUsingGet: (id: string, params?: RequestParams) =>
+      this.request<ExposureContactFromServer[], any>(
+        `/api/exposure-contacts/by-contact/${id}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
 
     /**
-     * @tags incident-controller
-     * @name getLogUsingGET
-     * @summary getLog
-     * @request GET:/api/incidents/{id}/log
+     * @tags exposure-contact-controller
+     * @name getExposureContactsForPatientUsingGET
+     * @summary getExposureContactsForPatient
+     * @request GET:/api/exposure-contacts/by-source/{id}
      * @secure
      */
-    getLogUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/${id}/log`, "GET", params, null, true),
+    getExposureContactsForPatientUsingGet: (id: string, params?: RequestParams) =>
+      this.request<ExposureContactFromServer[], any>(
+        `/api/exposure-contacts/by-source/${id}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
 
     /**
-     * @tags incident-controller
-     * @name getPatientCurrentByTypeUsingGET
-     * @summary getPatientCurrentByType
-     * @request GET:/api/incidents/{type}/patient/{id}
+     * @tags exposure-contact-controller
+     * @name getExposureContactUsingGET
+     * @summary getExposureContact
+     * @request GET:/api/exposure-contacts/{id}
      * @secure
      */
-    getPatientCurrentByTypeUsingGet: (
-      id: string,
-      type: "test" | "quarantine" | "administrative",
-      params?: RequestParams,
-    ) => this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}`, "GET", params, null, true),
+    getExposureContactUsingGet: (id: number, params?: RequestParams) =>
+      this.request<ExposureContactFromServer, any>(`/api/exposure-contacts/${id}`, "GET", params, null, true),
 
     /**
-     * @tags incident-controller
-     * @name getPatientLogByTypeUsingGET
-     * @summary getPatientLogByType
-     * @request GET:/api/incidents/{type}/patient/{id}/log
+     * @tags exposure-contact-controller
+     * @name removeExposureContactUsingDELETE
+     * @summary removeExposureContact
+     * @request DELETE:/api/exposure-contacts/{id}
      * @secure
      */
-    getPatientLogByTypeUsingGet: (id: string, type: "test" | "quarantine" | "administrative", params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}/log`, "GET", params, null, true),
+    removeExposureContactUsingDelete: (id: number, params?: RequestParams) =>
+      this.request<any, any>(`/api/exposure-contacts/${id}`, "DELETE", params, null, true),
 
     /**
      * @tags institution-controller
@@ -1100,72 +1063,70 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorUsingGET
-     * @summary error
+     * @name errorHtmlUsingGET
+     * @summary errorHtml
      * @request GET:/error
      * @secure
      */
-    errorUsingGet: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
+    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingHEAD
-     * @summary error
+     * @name errorHtmlUsingHEAD
+     * @summary errorHtml
      * @request HEAD:/error
      * @secure
      */
-    errorUsingHead: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
+    errorHtmlUsingHead: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPOST
-     * @summary error
+     * @name errorHtmlUsingPOST
+     * @summary errorHtml
      * @request POST:/error
      * @secure
      */
-    errorUsingPost: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
+    errorHtmlUsingPost: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPUT
-     * @summary error
+     * @name errorHtmlUsingPUT
+     * @summary errorHtml
      * @request PUT:/error
      * @secure
      */
-    errorUsingPut: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
+    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingDELETE
-     * @summary error
+     * @name errorHtmlUsingDELETE
+     * @summary errorHtml
      * @request DELETE:/error
      * @secure
      */
-    errorUsingDelete: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
+    errorHtmlUsingDelete: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingOPTIONS
-     * @summary error
+     * @name errorHtmlUsingOPTIONS
+     * @summary errorHtml
      * @request OPTIONS:/error
      * @secure
      */
-    errorUsingOptions: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
+    errorHtmlUsingOptions: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPATCH
-     * @summary error
+     * @name errorHtmlUsingPATCH
+     * @summary errorHtml
      * @request PATCH:/error
      * @secure
      */
-    errorUsingPatch: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
+    errorHtmlUsingPatch: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
   };
 }

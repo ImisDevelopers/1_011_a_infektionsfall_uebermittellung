@@ -40,6 +40,7 @@ public class PatientService {
 	private final LikeOperatorService likeOperatorService;
 	private final RandomService randomService;
 	private final PatientMapper patientMapper;
+	private final IncidentService incidentService;
 
 
 	public List<Patient> getAllPatients() {
@@ -89,6 +90,10 @@ public class PatientService {
 				patient.getPatientStatus(),
 				dateOfReporting);
 		log.info("inserted event for patient {}", patient);
+		incidentService.addIncident(
+				patient, Optional.empty(),
+				patient.getPatientStatus(),
+				dateOfReporting);
 		return patient;
 	}
 

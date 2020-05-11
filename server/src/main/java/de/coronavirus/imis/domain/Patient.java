@@ -1,10 +1,15 @@
 package de.coronavirus.imis.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import io.swagger.annotations.ApiModel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
@@ -12,7 +17,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Collections;
 import java.util.List;
+
+import de.coronavirus.imis.domain.ExposureContact;
+import de.coronavirus.imis.repositories.ExposureContactRepository;
 
 
 @Entity
@@ -61,6 +70,14 @@ public class Patient {
 	@Convert(converter = StringListConverter.class)
 	private List<String> symptoms;
 	private Boolean coronaContacts;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "contact")
+	private List<InfectionSource> infectionSource;
+	@JsonIgnore
+	@OneToMany(mappedBy = "source")
+	private List<ExposureContact> exposureContacts;
+
 	@Convert(converter = StringListConverter.class)
 	private List<String> riskAreas;
 	private Boolean weakenedImmuneSystem;
@@ -77,4 +94,13 @@ public class Patient {
 	private Boolean onIntensiveCareUnit;
 
 	private LocalDate quarantineUntil;
+
+	@ApiModel("PatientIdentity")
+	@Getter
+	@Setter
+	public static class IdentityView {
+		private String id;
+		private String firstName;
+		private String lastName;
+	}
 }

@@ -37,7 +37,7 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
     implementation 'org.postgresql:postgresql:42.2.11'
-	compile group: 'org.hibernate', name: 'hibernate-envers', version: '5.4.14.Final'
+    compile group: 'org.hibernate', name: 'hibernate-envers', version: '5.4.14.Final'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     implementation 'io.springfox:springfox-swagger2:2.9.2'
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'

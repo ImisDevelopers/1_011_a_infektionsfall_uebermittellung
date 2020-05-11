@@ -283,7 +283,7 @@ interface State {
   createdPatient: Patient | null;
   SYMPTOMS: Option[];
   PRE_ILLNESSES: Option[];
-  ADDITIONAL_SYMPTOMS: Option[];
+  ADDITIONAL_PRE_ILLNESSES: Option[];
   EXPOSURES_INTERNAL: Option[];
   EXPOSURE_LOCATIONS: Option[];
   EVENT_TYPES: EventTypeItem[];
@@ -307,6 +307,7 @@ export default Vue.extend({
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdPatient: null,
       SYMPTOMS,
+      ADDITIONAL_PRE_ILLNESSES,
       PRE_ILLNESSES,
       EXPOSURES_INTERNAL,
       EXPOSURE_LOCATIONS,

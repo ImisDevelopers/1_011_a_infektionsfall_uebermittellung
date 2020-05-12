@@ -41,6 +41,11 @@ public class IncidentService {
 	// Reading
 
 	@Transactional
+	public List<QuarantineIncident> getPatientsSelectedForQuarantine() {
+		return this.quarantineIncidentRepo.findByEventType(EventType.QUARANTINE_SELECTED);
+	}
+
+	@Transactional
 	public Optional<QuarantineIncident> getQuarantineIncident(String patientId) {
 		final List<QuarantineIncident> incidents = getLog(QuarantineIncident.class, patientId, true);
 		if (incidents != null && !incidents.isEmpty()) {
@@ -175,6 +180,18 @@ public class IncidentService {
 		quarantineIncidentRepo.saveAndFlush(incident);
 
 		return incident;
+	}
+
+	@Transactional
+	public void updateQuarantineIncident(String patientId, EventType status) {
+		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
+		if (incidentOptional.isEmpty()) {
+			throw new QuarantineNotFoundException("No Quarantine for " + patientId);
+		}
+		var incident = incidentOptional.get(0);
+		incident.setEventType(status);
+		quarantineIncidentRepo.saveAndFlush(incident);
 	}
 
 	// Administrative Incidents

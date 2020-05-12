@@ -673,7 +673,7 @@ export default Vue.extend({
     handleActionClick(e: { key: string }) {
       switch (e.key) {
         case 'SEND_TO_QUARANTINE':
-          this.$router.push({ name: 'send-to-quarantine', params: { patientId: this.patient?.id || '' } })
+          this.$router.push({ name: 'request-quarantine', params: { patientId: this.patient?.id || '' } })
           break
         case 'ARRANGE_TEST':
           this.scheduleTest()
@@ -699,8 +699,6 @@ export default Vue.extend({
       }
     },
     addExposureContact() {
-      const patientId = this.patient?.id
-
       this.exposureContactInEditing = {}
 
       Vue.nextTick(() => {

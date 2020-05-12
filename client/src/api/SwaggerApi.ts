@@ -85,7 +85,10 @@ export interface CreatePatientDTO {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_MANDATED";
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -153,6 +156,31 @@ export interface ExposureContactToServer {
 
 export interface GrantedAuthority {
   authority?: string;
+}
+
+export interface Incident {
+  caseId?: string;
+  eventType?:
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "ORDER_TEST"
+    | "SCHEDULED_FOR_TESTING"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID"
+    | "TEST_FINISHED_RECOVERED"
+    | "TEST_FINISHED_NOT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+  id?: string;
+  patient?: Patient;
+  versionTimestamp?: string;
+  versionUser?: User;
 }
 
 export interface Institution {
@@ -349,7 +377,10 @@ export interface Patient {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_MANDATED";
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -392,7 +423,10 @@ export interface PatientEvent {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_MANDATED";
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED";
   id?: string;
   illness?: "CORONA";
   labTest?: LabTest;
@@ -430,8 +464,29 @@ export interface PatientSearchParamsDTO {
     | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
-    | "QUARANTINE_MANDATED";
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED";
   phoneNumber?: string;
+  quarantineStatus?: Array<
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "ORDER_TEST"
+    | "SCHEDULED_FOR_TESTING"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID"
+    | "TEST_FINISHED_RECOVERED"
+    | "TEST_FINISHED_NOT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+  >;
   street?: string;
   zip?: string;
 }
@@ -461,6 +516,23 @@ export interface RequestLabTestDTO {
 export interface SendToQuarantineDTO {
   comment?: string;
   dateUntil?: string;
+  status?:
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "ORDER_TEST"
+    | "SCHEDULED_FOR_TESTING"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID"
+    | "TEST_FINISHED_RECOVERED"
+    | "TEST_FINISHED_NOT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED";
 }
 
 export interface Timestamp {
@@ -537,7 +609,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8642/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -615,7 +687,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl //localhost:8642/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -802,6 +874,69 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     removeExposureContactUsingDelete: (id: number, params?: RequestParams) =>
       this.request<any, any>(`/api/exposure-contacts/${id}`, "DELETE", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getPatientCurrentUsingGET
+     * @summary getPatientCurrent
+     * @request GET:/api/incidents/patient/{id}
+     * @secure
+     */
+    getPatientCurrentUsingGet: (id: string, params?: RequestParams) =>
+      this.request<Incident[], any>(`/api/incidents/patient/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getPatientLogUsingGET
+     * @summary getPatientLog
+     * @request GET:/api/incidents/patient/{id}/log
+     * @secure
+     */
+    getPatientLogUsingGet: (id: string, params?: RequestParams) =>
+      this.request<Incident[], any>(`/api/incidents/patient/${id}/log`, "GET", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getIncidentUsingGET
+     * @summary getIncident
+     * @request GET:/api/incidents/{id}
+     * @secure
+     */
+    getIncidentUsingGet: (id: string, params?: RequestParams) =>
+      this.request<Incident, any>(`/api/incidents/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getLogUsingGET
+     * @summary getLog
+     * @request GET:/api/incidents/{id}/log
+     * @secure
+     */
+    getLogUsingGet: (id: string, params?: RequestParams) =>
+      this.request<Incident[], any>(`/api/incidents/${id}/log`, "GET", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getPatientCurrentByTypeUsingGET
+     * @summary getPatientCurrentByType
+     * @request GET:/api/incidents/{type}/patient/{id}
+     * @secure
+     */
+    getPatientCurrentByTypeUsingGet: (
+      id: string,
+      type: "test" | "quarantine" | "administrative",
+      params?: RequestParams,
+    ) => this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getPatientLogByTypeUsingGET
+     * @summary getPatientLogByType
+     * @request GET:/api/incidents/{type}/patient/{id}/log
+     * @secure
+     */
+    getPatientLogByTypeUsingGet: (id: string, type: "test" | "quarantine" | "administrative", params?: RequestParams) =>
+      this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}/log`, "GET", params, null, true),
 
     /**
      * @tags institution-controller

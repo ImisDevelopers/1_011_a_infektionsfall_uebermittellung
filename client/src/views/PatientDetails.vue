@@ -25,9 +25,8 @@
                   </a-menu-item>
                   <a-menu-item key="SEND_TO_QUARANTINE">
                     <a-icon type="user" />
-                    Patienten in Quarantäne schicken
+                    Quarantäne vormerken
                   </a-menu-item>
-                  <!--                <a-menu-item key="HOSPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
                 </a-menu>
                 <a-button style="margin-left: 8px" type="primary"> Aktionen
                   <a-icon type="down" />

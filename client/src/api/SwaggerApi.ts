@@ -499,6 +499,33 @@ export interface PatientSimpleSearchParamsDTO {
   query?: string;
 }
 
+export interface QuarantineIncident {
+  caseId?: string;
+  comment?: string;
+  eventType?:
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "ORDER_TEST"
+    | "SCHEDULED_FOR_TESTING"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID"
+    | "TEST_FINISHED_RECOVERED"
+    | "TEST_FINISHED_NOT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+  id?: string;
+  patient?: Patient;
+  until?: string;
+  versionTimestamp?: string;
+  versionUser?: User;
+}
+
 export interface RegisterUserRequest {
   firstName?: string;
   lastName?: string;
@@ -894,6 +921,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getPatientLogUsingGet: (id: string, params?: RequestParams) =>
       this.request<Incident[], any>(`/api/incidents/patient/${id}/log`, "GET", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getSelectedForQuarantineUsingGET
+     * @summary getSelectedForQuarantine
+     * @request GET:/api/incidents/selected-for-quarantine
+     * @secure
+     */
+    getSelectedForQuarantineUsingGet: (params?: RequestParams) =>
+      this.request<QuarantineIncident[], any>(`/api/incidents/selected-for-quarantine`, "GET", params, null, true),
 
     /**
      * @tags incident-controller

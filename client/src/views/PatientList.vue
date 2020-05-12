@@ -376,7 +376,7 @@ export default Vue.extend({
         }
 
         queryPromise.then(result => {
-          const header = 'ID,Vorname,Nachname,Geschlecht,Status,Geburtsdatum,Stadt,E-Mail;Telefonnummer;' +
+          const header = 'ID;Vorname;Nachname;Geschlecht;Status;Geburtsdatum;Stadt;E-Mail;Telefonnummer;' +
             'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer'
           const patients = result.map((patient: Patient) =>
             `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};${patient.patientStatus};` +

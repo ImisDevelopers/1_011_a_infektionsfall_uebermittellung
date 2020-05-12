@@ -41,6 +41,11 @@ public class IncidentService {
 	// Reading
 
 	@Transactional
+	public List<QuarantineIncident> getPatientsSelectedForQuarantine() {
+		return this.quarantineIncidentRepo.findByEventType(EventType.QUARANTINE_SELECTED);
+	}
+
+	@Transactional
 	public Optional<QuarantineIncident> getQuarantineIncident(String patientId) {
 		final List<QuarantineIncident> incidents = getLog(QuarantineIncident.class, patientId, true);
 		if (incidents != null && !incidents.isEmpty()) {

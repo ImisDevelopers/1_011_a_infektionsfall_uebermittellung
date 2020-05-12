@@ -182,6 +182,18 @@ public class IncidentService {
 		return incident;
 	}
 
+	@Transactional
+	public void updateQuarantineIncident(String patientId, EventType status) {
+		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
+		if (incidentOptional.isEmpty()) {
+			throw new QuarantineNotFoundException("No Quarantine for " + patientId);
+		}
+		var incident = incidentOptional.get(0);
+		incident.setEventType(status);
+		quarantineIncidentRepo.saveAndFlush(incident);
+	}
+
 	// Administrative Incidents
 
 	// Presumtion Event (Former Initial Event)

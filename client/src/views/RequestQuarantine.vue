@@ -92,7 +92,7 @@ export default Vue.extend({
         }
         const patientId = this.givenPatientId ? this.givenPatientId : values.patientId
 
-        Api.sendToQuarantineUsingPost(patientId, request).then(patient => {
+        Api.requestQuarantineUsingPost(patientId, request).then(patient => {
           const h = this.$createElement
           this.$success({
             title: 'Der Quarantänevermerk wurde erfasst.',

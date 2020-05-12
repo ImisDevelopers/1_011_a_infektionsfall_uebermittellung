@@ -1,7 +1,15 @@
 <template>
   <div class="send-to-quarantine">
+    <a-modal v-model="confirmVisible" title="Bitte bestätigen" ok-text="Ja" cancel-text="Abbrechen"
+             @ok="updatePatients">
+      <p>Sollen die Quarantänen von {{quarantinesByZip.length}} Patienten in den Status 'Quarantäne angeordnet'
+        überführt werden?</p>
+    </a-modal>
     <a-button class="download-all-button" type="primary" @click="downloadAll" icon="download" size="large">
       Alle Herunterladen
+    </a-button>
+    <a-button class="clear-all-button" type="primary" @click="showModal" icon="play-circle" size="large">
+      Quarantäne anordnen
     </a-button>
     <h2 style="margin-top: 30px">Es wurden {{quarantinesByZip.length}} Patienten für eine Quarantäne vorgemerkt.</h2>
     <a-card style="max-width: 500px; margin: 2rem auto;"
@@ -73,6 +81,7 @@ interface QuarantinesForZip {
 interface State {
   quarantinesByZip: QuarantinesForZip[];
   columnsQuarantines: Partial<Column>[];
+  confirmVisible: boolean;
 }
 
 export default Vue.extend({
@@ -106,6 +115,7 @@ export default Vue.extend({
     return {
       quarantinesByZip: [],
       columnsQuarantines: columnsQuarantines,
+      confirmVisible: false,
     }
   },
   methods: {
@@ -131,6 +141,32 @@ export default Vue.extend({
       const filename = moment().format('YYYY_MM_DD') + '_quarantaene_anordnung.csv'
       downloadCsv(header + '\n' + content, filename)
     },
+    updatePatients() {
+      this.confirmVisible = false
+      const patientIds: string[] = []
+      for (const quarantinesByZip of this.quarantinesByZip) {
+        patientIds.push(...quarantinesByZip.quarantines.map(quarantine => quarantine.patient?.id || ''))
+      }
+      Api.sendToQuarantineUsingPost(patientIds).then(() => {
+        const h = this.$createElement
+        this.$success({
+          title: 'Quarantänen aktualisiert.',
+          content: h('div', {}, [
+            h('div', `Die Quarantänen von ${patientIds.length} Patienten wurden aktualisiert.`),
+          ]),
+        })
+        this.quarantinesByZip = []
+      }).catch(error => {
+        const notification = {
+          message: 'Fehler beim Aktualisieren der Quarantänen',
+          description: error.message,
+        }
+        this.$notification.error(notification)
+      })
+    },
+    showModal() {
+      this.confirmVisible = true
+    },
   },
 })
 </script>
@@ -147,6 +183,12 @@ export default Vue.extend({
   .download-all-button {
     position: absolute;
     top: 90px;
+    right: 25px;
+  }
+
+  .clear-all-button {
+    position: absolute;
+    top: 150px;
     right: 25px;
   }
 </style>

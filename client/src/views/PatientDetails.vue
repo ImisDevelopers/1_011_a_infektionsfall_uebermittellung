@@ -187,7 +187,6 @@
                     :scroll="{x: 0, y: 0}"
                     class="imis-table-no-pagination"
                     rowKey="id"
-                    style="padding: 0 24px"
                   >
                     <div slot="lastUpdate" slot-scope="lastUpdate">
                       {{getDate(lastUpdate)}}
@@ -325,6 +324,7 @@
             <a-card
               title="Kontaktpersonen"
               align="left"
+              bodyStyle="padding:0"
             >
               <div slot="extra">
                 <a-button
@@ -482,6 +482,11 @@ const columnsExposureContacts: Partial<Column>[] = [
     },
   },
   {
+    title: 'Kontaktart',
+    key: 'context',
+    dataIndex: 'context',
+  },
+  {
     title: 'Infektionsstatus',
     key: 'infected',
     scopedSlots: {
@@ -522,7 +527,7 @@ const columnsIndexPatients = [
     },
   },
   {
-    title: 'Wie?',
+    title: 'Kontaktart',
     key: 'context',
     dataIndex: 'context',
   },

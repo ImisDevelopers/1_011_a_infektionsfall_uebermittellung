@@ -13,7 +13,9 @@ public class AuditorAwareImpl implements AuditorAware<User> {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		if(authentication != null && SecurityContextHolder.getContext().getAuthentication().isAuthenticated())
+		if(authentication != null
+				&& SecurityContextHolder.getContext().getAuthentication().isAuthenticated()
+				&& authentication.getPrincipal()!="anonymousUser")
 		{
 			var user = (User) authentication.getPrincipal();
 			Optional<User> opt = Optional.of(user);

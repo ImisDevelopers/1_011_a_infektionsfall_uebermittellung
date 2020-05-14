@@ -45,6 +45,15 @@
           </a-radio-group>
         </a-form-item>
 
+        <a-form-item label="Ergebnisdatum">
+        <DateInput
+          v-decorator="['eventDate', { rules: [{
+            required: false,
+            message: 'Datum der Probenabnahme',
+          }]}]"
+        />
+      </a-form-item>
+
         <!-- Kommentar -->
         <a-form-item label="Kommentar">
           <a-textarea
@@ -80,6 +89,7 @@ import Vue from 'vue'
 import Api from '@/api'
 import TestInput from '@/components/TestInput.vue'
 import LaboratoryInput from '@/components/LaboratoryInput.vue'
+import DateInput from '@/components/DateInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
 
@@ -100,6 +110,7 @@ export default Vue.extend({
   components: {
     TestInput,
     LaboratoryInput,
+    DateInput,
   },
   props: {},
   data(): State {
@@ -170,6 +181,7 @@ export default Vue.extend({
           status: values.testResult,
           comment: values.comment,
           file: this.fileBytes,
+          eventDate: values.eventDate,
         }
 
         Api.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {

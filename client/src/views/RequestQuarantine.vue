@@ -26,6 +26,15 @@
         />
       </a-form-item>
 
+      <a-form-item label="Vorgemerkt am">
+        <DateInput
+          v-decorator="['eventDate', { rules: [{
+            required: false,
+            message: 'Datum, für welches der Vermerk erfasst werden soll.',
+          }]}]"
+        />
+      </a-form-item>
+
       <!-- Kommentar -->
       <a-form-item label="Kommentar">
         <a-textarea
@@ -88,6 +97,7 @@ export default Vue.extend({
         }
         const request = {
           dateUntil: values.dateUntil.format('YYYY-MM-DD'),
+          eventDate: values.eventDate ? values.eventDate.format('YYYY-MM-DD') : undefined,
           comment: values.comment,
         }
         const patientId = this.givenPatientId ? this.givenPatientId : values.patientId

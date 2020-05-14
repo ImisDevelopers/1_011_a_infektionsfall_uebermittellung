@@ -62,6 +62,15 @@
         </a-radio-group>
       </a-form-item>
 
+      <a-form-item label="Abnahmedatum">
+        <DateInput
+          v-decorator="['eventDate', { rules: [{
+            required: false,
+            message: 'Datum der Probenabnahme',
+          }]}]"
+        />
+      </a-form-item>
+
       <!-- Kommentar -->
       <a-form-item label="Kommentar">
         <a-textarea
@@ -85,7 +94,7 @@
 <script lang="ts">
 import { CreateLabTestDTO } from '@/api/SwaggerApi'
 import Vue from 'vue'
-
+import DateInput from '../components/DateInput.vue'
 import Api from '@/api'
 import PatientInput from '../components/PatientInput.vue'
 import LaboratoryInput from '../components/LaboratoryInput.vue'
@@ -104,6 +113,7 @@ export default Vue.extend({
   components: {
     PatientInput,
     LaboratoryInput,
+    DateInput,
   },
   data(): State {
     return {

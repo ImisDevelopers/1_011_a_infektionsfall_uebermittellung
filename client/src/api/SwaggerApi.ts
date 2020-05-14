@@ -49,6 +49,7 @@ export interface CreateInstitutionDTO {
 
 export interface CreateLabTestDTO {
   comment?: string;
+  eventDate?: string;
   laboratoryId?: string;
   patientId?: string;
   testId?: string;
@@ -165,6 +166,7 @@ export interface GrantedAuthority {
 
 export interface Incident {
   caseId?: string;
+  eventDate?: string;
   eventType?:
     | "REGISTERED"
     | "SUSPECTED"
@@ -507,6 +509,7 @@ export interface PatientSimpleSearchParamsDTO {
 export interface QuarantineIncident {
   caseId?: string;
   comment?: string;
+  eventDate?: string;
   eventType?:
     | "REGISTERED"
     | "SUSPECTED"
@@ -548,6 +551,7 @@ export interface RequestLabTestDTO {
 export interface SendToQuarantineDTO {
   comment?: string;
   dateUntil?: string;
+  eventDate?: string;
   status?:
     | "REGISTERED"
     | "SUSPECTED"
@@ -586,6 +590,7 @@ export interface TokenDTO {
 
 export interface UpdateTestStatusDTO {
   comment?: string;
+  eventDate?: string;
   file?: string;
   status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
   testId?: string;
@@ -641,7 +646,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8642/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -719,7 +724,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8642/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {

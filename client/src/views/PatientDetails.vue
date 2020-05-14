@@ -7,16 +7,19 @@
       :patient="patient"
     />
     <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
-      <a-tabs
-        defaultActiveKey="overview"
-        v-if="patient"
+
+      <a-page-header
+        :title="`${patient.lastName}, ${patient.firstName}`"
+        :sub-title="patient.id"
+        @back="() => $router.go(-1)"
+        style="padding: 1rem 0;"
       >
-        <a-tab-pane
-          key="overview"
-          tab="Falldaten"
-        >
-          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
-            <div style="padding-right: 1rem">
+        <template slot="tags">
+          <a-tag v-if="patientStatus">
+            {{ patientStatus.label }}
+          </a-tag>
+        </template>
+        <template slot="extra">
               <a-dropdown>
                 <a-menu slot="overlay" @click="handleActionClick">
                   <a-menu-item key="ARRANGE_TEST">
@@ -28,18 +31,27 @@
                     Quarantäne vormerken
                   </a-menu-item>
                 </a-menu>
-                <a-button style="margin-left: 8px" type="primary"> Aktionen
+                <a-button style="margin-left: 8px"> Aktionen
                   <a-icon type="down" />
                 </a-button>
               </a-dropdown>
-            </div>
-            <a-button type="primary" icon="edit" @click="editPatientStammdaten">
+        </template>
+      </a-page-header>
+
+      <a-tabs
+        defaultActiveKey="master-data"
+        v-if="patient"
+        style="text-align: left"
+      >
+        <a-tab-pane
+          key="master-data"
+          tab="Stammdaten"
+        >
+          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
+            <a-button icon="edit" @click="editPatientStammdaten">
               Daten ändern
             </a-button>
           </div>
-          <!-- display user data here-->
-          <div>
-
             <!-- Allgemein & Adresse -->
             <a-row :gutter="8">
               <a-col
@@ -151,7 +163,12 @@
                 </a-card>
               </a-col>
             </a-row>
+        </a-tab-pane>
 
+        <a-tab-pane
+          key="overview"
+          tab="Falldaten"
+        >
             <!-- Tests -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
@@ -170,7 +187,6 @@
                     :scroll="{x: 0, y: 0}"
                     class="imis-table-no-pagination"
                     rowKey="id"
-                    style="padding: 0 24px"
                   >
                     <div slot="lastUpdate" slot-scope="lastUpdate">
                       {{getDate(lastUpdate)}}
@@ -239,8 +255,6 @@
                 </a-card>
               </a-col>
             </a-row>
-          </div>
-          <br>
         </a-tab-pane>
         <a-tab-pane
           forceRender
@@ -310,6 +324,7 @@
             <a-card
               title="Kontaktpersonen"
               align="left"
+              bodyStyle="padding:0"
             >
               <div slot="extra">
                 <a-button
@@ -467,6 +482,11 @@ const columnsExposureContacts: Partial<Column>[] = [
     },
   },
   {
+    title: 'Kontaktart',
+    key: 'context',
+    dataIndex: 'context',
+  },
+  {
     title: 'Infektionsstatus',
     key: 'infected',
     scopedSlots: {
@@ -507,7 +527,7 @@ const columnsIndexPatients = [
     },
   },
   {
-    title: 'Wie?',
+    title: 'Kontaktart',
     key: 'context',
     dataIndex: 'context',
   },

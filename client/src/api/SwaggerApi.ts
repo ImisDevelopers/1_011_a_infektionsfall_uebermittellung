@@ -12,6 +12,11 @@
 
 export type AggregationResultZip = object;
 
+export interface ApiFunctionSpec {
+  method?: string;
+  path?: string;
+}
+
 export interface AuthRequestDTO {
   password?: string;
   username?: string;
@@ -1192,6 +1197,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getPatientForIdUsingGet: (id: string, params?: RequestParams) =>
       this.request<Patient, any>(`/api/patients/${id}`, "GET", params, null, true),
+
+    /**
+     * @tags permission-query-controller
+     * @name queryPermissionsUsingPOST
+     * @summary queryPermissions
+     * @request POST:/api/permissions
+     * @secure
+     */
+    queryPermissionsUsingPost: (items: Record<string, ApiFunctionSpec>, params?: RequestParams) =>
+      this.request<Record<string, boolean>, any>(`/api/permissions`, "POST", params, items, true),
 
     /**
      * @tags stats-controller

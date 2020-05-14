@@ -41,6 +41,21 @@ public class IncidentService {
 	// Reading
 
 	@Transactional
+	public List<QuarantineIncident> getPatientsSelectedForQuarantine() {
+		return this.quarantineIncidentRepo.findByEventType(EventType.QUARANTINE_SELECTED);
+	}
+
+	@Transactional
+	public Optional<QuarantineIncident> getQuarantineIncident(String patientId) {
+		final List<QuarantineIncident> incidents = getLog(QuarantineIncident.class, patientId, true);
+		if (incidents != null && !incidents.isEmpty()) {
+			return Optional.of(incidents.get(0));
+		} else {
+			return Optional.empty();
+		}
+	}
+
+	@Transactional
 	public List<Incident> getLog(String id, boolean byPatient) {
 		List<Incident> result = new ArrayList<Incident>();
 
@@ -56,7 +71,7 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public <T extends Incident> List<T> getLog(Class T, String id, boolean byPatient) {
+	public <T extends Incident> List<T> getLog(Class<T> T, String id, boolean byPatient) {
 		var query = auditReader.createQuery().forRevisionsOfEntity(T, true, false);
 		if (byPatient) {
 			query.add(AuditEntity.relatedId("patient").eq(id));
@@ -83,27 +98,27 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public List<Incident> getCurrentByPatient (String patientId) {
+	public List<Incident> getCurrentByPatient(String patientId) {
 
 		List<Incident> result = new ArrayList<>();
 
-		result.addAll( testIncidentRepo.findByPatientId(patientId) );
-		result.addAll( quarantineIncidentRepo.findByPatientId(patientId) );
-		result.addAll( adminIncidentRepo.findByPatientId(patientId) );
+		result.addAll(testIncidentRepo.findByPatientId(patientId));
+		result.addAll(quarantineIncidentRepo.findByPatientId(patientId));
+		result.addAll(adminIncidentRepo.findByPatientId(patientId));
 
 		return result;
 	}
 
 	@Transactional
-	public List<Incident> getCurrentByPatient (String patientId, IncidentType type) {
+	public List<Incident> getCurrentByPatient(String patientId, IncidentType type) {
 
 		switch (type) {
 			case test:
-				return (List<Incident>)(List<?>) testIncidentRepo.findByPatientId(patientId);
+				return (List<Incident>) (List<?>) testIncidentRepo.findByPatientId(patientId);
 			case quarantine:
-				return (List<Incident>)(List<?>) quarantineIncidentRepo.findByPatientId(patientId);
+				return (List<Incident>) (List<?>) quarantineIncidentRepo.findByPatientId(patientId);
 			case administrative:
-				return (List<Incident>)(List<?>) adminIncidentRepo.findByPatientId(patientId);
+				return (List<Incident>) (List<?>) adminIncidentRepo.findByPatientId(patientId);
 		}
 
 		return null;
@@ -112,8 +127,7 @@ public class IncidentService {
 	// Writing
 
 	@Transactional
-	public TestIncident addIncident (CreateLabTestDTO info)
-	{
+	public TestIncident addIncident(CreateLabTestDTO info) {
 		var incident = (TestIncident) new TestIncident()
 				.setTestId(info.getTestId())
 				.setTestMaterial(info.getTestMaterial())
@@ -129,8 +143,7 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public TestIncident updateIncident (String laboratoryId, UpdateTestStatusDTO update)
-	{
+	public TestIncident updateIncident(String laboratoryId, UpdateTestStatusDTO update) {
 		var incident = testIncidentRepo.findByTestId(update.getTestId()).get(0);
 		var laboratory = laboratoryRepo.findById(laboratoryId).orElseThrow();
 		incident
@@ -147,8 +160,7 @@ public class IncidentService {
 
 	// Quarantine Incidents
 	@Transactional
-	public QuarantineIncident addOrUpdateIncident (String patientId, SendToQuarantineDTO info)
-	{
+	public QuarantineIncident addOrUpdateIncident(String patientId, SendToQuarantineDTO info) {
 		// Patient & Date
 		var patient = patientRepo.findById(patientId).orElseThrow();
 		var until = patientMapper.parseDate(info.getDateUntil());
@@ -156,31 +168,43 @@ public class IncidentService {
 		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
 		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
 		var incident = incidentOptional.isEmpty()
-				? (QuarantineIncident) new QuarantineIncident()
+				? new QuarantineIncident()
 				: incidentOptional.get(0);
 
 		// Apply to Incident
 		incident
 				.setComment(info.getComment())
 				.setUntil(until)
-				.setEventType(EventType.QUARANTINE_MANDATED)
+				.setEventType(info.getStatus() != null ? info.getStatus() : EventType.QUARANTINE_SELECTED)
 				.setPatient(patient);
 		quarantineIncidentRepo.saveAndFlush(incident);
 
 		return incident;
 	}
 
+	@Transactional
+	public void updateQuarantineIncident(String patientId, EventType status) {
+		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
+		if (incidentOptional.isEmpty()) {
+			throw new QuarantineNotFoundException("No Quarantine for " + patientId);
+		}
+		var incident = incidentOptional.get(0);
+		incident.setEventType(status);
+		quarantineIncidentRepo.saveAndFlush(incident);
+	}
+
 	// Administrative Incidents
 
 	// Presumtion Event (Former Initial Event)
 	@Transactional
-	public AdministrativeIncident addIncident (Patient patient,
-							 Optional<Illness> illness,
-							 EventType eventType,
-							 LocalDate dateOfReporting) {
+	public AdministrativeIncident addIncident(Patient patient,
+											  Optional<Illness> illness,
+											  EventType eventType,
+											  LocalDate dateOfReporting) {
 		var concreteIllness = illness.orElse(Illness.CORONA);
 
-		dateOfReporting = dateOfReporting==null ? LocalDate.now() : dateOfReporting;
+		dateOfReporting = dateOfReporting == null ? LocalDate.now() : dateOfReporting;
 
 		var incident = (AdministrativeIncident) new AdministrativeIncident()
 				.setDateOfReporting(dateOfReporting)
@@ -194,7 +218,7 @@ public class IncidentService {
 
 	//SCHEDULED_FOR_TESTING
 	@Transactional
-	public AdministrativeIncident addIncident (Patient patient, String labId, String doctorId) {
+	public AdministrativeIncident addIncident(Patient patient, String labId, String doctorId) {
 
 		// Todo: Is this necessary? Why? Move it?
 		final Laboratory laboratory = laboratoryRepo.findById(labId).orElseGet(() -> {

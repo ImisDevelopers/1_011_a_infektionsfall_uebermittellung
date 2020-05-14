@@ -207,9 +207,9 @@ public class IncidentService {
 		dateOfReporting = dateOfReporting == null ? LocalDate.now() : dateOfReporting;
 
 		var incident = (AdministrativeIncident) new AdministrativeIncident()
-				.setDateOfReporting(dateOfReporting)
 				.setIllness(concreteIllness)
 				.setEventType(eventType)
+				.setEventDate(dateOfReporting)
 				.setPatient(patient);
 
 		adminIncidentRepo.saveAndFlush(incident);
@@ -235,10 +235,10 @@ public class IncidentService {
 		);
 
 		var incident = (AdministrativeIncident) new AdministrativeIncident()
-				.setDateOfReporting(LocalDate.now())
 				.setIllness(Illness.CORONA)
 				.setResponsibleDoctor(doctor)
 				.setEventType(EventType.SCHEDULED_FOR_TESTING)
+				.setEventDate(LocalDate.now())
 				.setPatient(patient);
 		adminIncidentRepo.saveAndFlush(incident);
 

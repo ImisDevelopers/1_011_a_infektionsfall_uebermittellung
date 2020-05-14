@@ -6,7 +6,7 @@
       :visible="showChangePatientStammdatenForm"
       :patient="patient"
     />
-    <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
+    <div v-if="patient" style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
 
       <a-page-header
         :title="`${patient.lastName}, ${patient.firstName}`"
@@ -324,7 +324,7 @@
             <a-card
               title="Kontaktpersonen"
               align="left"
-              bodyStyle="padding:0"
+              :bodyStyle="{padding: 0}"
             >
               <div slot="extra">
                 <a-button

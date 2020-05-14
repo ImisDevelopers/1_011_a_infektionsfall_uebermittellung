@@ -165,7 +165,7 @@ export default Vue.extend({
       }
       const request = {
         patientIds: patientIds,
-        eventDate: this.form.getFieldValue('eventDate'),
+        eventDate: this.form.getFieldValue('eventDate') ? this.form.getFieldValue('eventDate').format('YYYY-MM-DD') : undefined,
       }
       Api.sendToQuarantineUsingPost(request).then(() => {
         const h = this.$createElement
@@ -176,7 +176,7 @@ export default Vue.extend({
           ]),
         })
         this.quarantinesByZip = []
-      }).catch(error => {
+      }).catch((error: Error) => {
         const notification = {
           message: 'Fehler beim Aktualisieren der Quarantänen',
           description: error.message,

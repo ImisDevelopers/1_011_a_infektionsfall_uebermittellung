@@ -396,9 +396,9 @@
             @ok="persistExposureContact()
               .then((success) => { if (success) exposureContactInEditing = null })"
             @cancel="exposureContactInEditing = null">
-            <a-form :form="exposureContactForm" :selfUpdate="true">
+            <a-form :form="exposureContactForm" :selfUpdate="true" layout="vertical">
               <EditExposureContact
-                :disableOriginatorPatient="true"/>
+                :disableOriginatorPatient="true" :showOriginatorPatient="false" />
             </a-form>
           </a-modal>
         </a-tab-pane>

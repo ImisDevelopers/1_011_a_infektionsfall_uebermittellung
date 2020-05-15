@@ -3,6 +3,7 @@
     :collapsed="sideNavCollapsed"
     :collapsedWidth="0"
     :trigger="null"
+    width="230"
     breakpoint="md"
   >
     <a-menu

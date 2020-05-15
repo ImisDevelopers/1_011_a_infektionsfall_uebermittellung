@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
 .imis-table-no-pagination {
   .ant-table-pagination {
     display: none;
@@ -5,7 +11,6 @@
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -50,9 +55,22 @@
   }
 }
 
-.fading-enter-active, .fading-leave-active {
-  transition: opacity .3s;
+.ant-divider-horizontal {
+  margin: 16px 0;
+}
+
+h4 {
+  font-weight: bold,
+}
+
+.fading-enter-active,
+.fading-leave-active {
+  transition: opacity 0.3s;
 }
 .fading-enter, .fading-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.ant-form-item {
+  margin-bottom: 10px;
 }

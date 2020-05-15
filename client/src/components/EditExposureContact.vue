@@ -5,10 +5,9 @@
       <a-input type="hidden"
         v-decorator="[ formInputKey('id') ]"/>
     </a-form-item>
-    <a-row>
+    <a-row :style="`display: ${showOriginatorPatient ? 'unset' : 'none'}`">
       <!-- Originating and Contact Names -->
       <a-form-item
-        :style="`display: ${$props.showOriginatorPatient ? 'unset' : 'none'}`"
         :selfUpdate="true"
         label="Ursprungspatient"
         class="patient-input">
@@ -22,9 +21,10 @@
               ], initialValue: undefined
           }]"/>
       </a-form-item>
-    </a-row>
 
-    <a-divider/>
+      <a-divider/>
+
+    </a-row>
 
     <h4>Kontaktperson</h4>
 
@@ -68,9 +68,7 @@
                 @change='fetchPropositions'
                 :disabledDate="date => date.isAfter(moment())"
                 v-decorator="[ formInputKey('contactDateOfBirth'), {
-                  rules: [
-                    { required: true, message: 'Bitte ein gültiges Datum angeben' },
-                  ],
+                  rules: [],
                 }]"/>
             </a-form-item>
           </a-col>
@@ -107,7 +105,7 @@
 
       </div>
 
-      <div key="selected-contact" v-else>
+      <div key="selected-contact" v-else style="margin-bottom: 20px;">
         <a-card :title="`${contact.lastName}, ${contact.firstName}`" size="small">
           <a-button slot="extra" ghost size="small" type="primary" @click="removeProposition()">manuell eingeben</a-button>
           <a-descriptions  layout="horizontal" :column="1" size="small">
@@ -121,6 +119,8 @@
         </a-card>
       </div>
     </transition>
+
+    <h4>Kontaktdetails</h4>
 
     <a-row :gutter="8">
       <!-- When and How -->
@@ -194,7 +194,7 @@ export default mixins(FormGroupMixin).extend({
     DateInput,
     PatientInput,
   },
-  inputKeys: ['id', 'source', 'contact', 'contactFirstName', 'contactLastName', 'contactDateOfBirth', 'dateOfContact', 'context', 'comment', 'patientId', 'patient'],
+  inputKeys: ['id', 'source', 'contact', 'contactFirstName', 'contactLastName', 'contactDateOfBirth', 'dateOfContact', 'context', 'comment'],
   props: {
     showOriginatorPatient: { default: true },
     disableOriginatorPatient: { default: false },
@@ -238,6 +238,7 @@ export default mixins(FormGroupMixin).extend({
     },
     removeProposition() {
       this.contact = undefined
+      this.patientPropositions = []
     },
   },
 })

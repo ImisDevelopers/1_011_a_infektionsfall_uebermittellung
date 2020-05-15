@@ -5,16 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SendToQuarantineDTO {
-	private List<String> patientIds;
+public class RequestQuarantineDTO {
+	private String dateUntil;
+	private String comment;
+	private EventType status;
 	private LocalDate eventDate;
 }

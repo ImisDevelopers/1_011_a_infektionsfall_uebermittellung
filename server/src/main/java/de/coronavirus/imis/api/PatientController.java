@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -79,15 +80,15 @@ public class PatientController {
 
 	@PostMapping("/quarantine/{id}")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public ResponseEntity<Patient> requestQuarantine(@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
+	public ResponseEntity<Patient> requestQuarantine(@PathVariable("id") String patientId, @RequestBody RequestQuarantineDTO statusDTO) {
 		incidentService.addOrUpdateIncident(patientId, statusDTO);
 		return ResponseEntity.ok(patientService.sendToQuarantine(patientId, statusDTO));
 	}
 
 	@PostMapping("/quarantine")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public void sendToQuarantine(@RequestBody List<String> patientIds) {
-		patientIds.forEach(patientId -> this.incidentService.updateQuarantineIncident(patientId, EventType.QUARANTINE_MANDATED));
+	public void sendToQuarantine(@RequestBody SendToQuarantineDTO dto) {
+		dto.getPatientIds().forEach(patientId -> this.incidentService.updateQuarantineIncident(patientId, EventType.QUARANTINE_MANDATED, dto.getEventDate()));
 	}
 
 	@PostMapping("/event/order-test")

@@ -4,7 +4,7 @@ import com.google.common.hash.Hashing;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
 import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
-import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
+import de.coronavirus.imis.api.dto.RequestQuarantineDTO;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.mapper.PatientMapper;
@@ -169,7 +169,7 @@ public class PatientService {
 	}
 
 	@Transactional
-	public Patient sendToQuarantine(final String patientID, final SendToQuarantineDTO dto) {
+	public Patient sendToQuarantine(final String patientID, final RequestQuarantineDTO dto) {
 
 		var patient = findPatientById(patientID).orElseThrow();
 

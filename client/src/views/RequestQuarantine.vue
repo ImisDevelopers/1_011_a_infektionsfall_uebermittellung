@@ -19,9 +19,20 @@
 
       <a-form-item label="Quarantäne bis">
         <DateInput
+          :value = "today"
           v-decorator="['dateUntil', { rules: [{
             required: true,
             message: 'Bis wann soll der Patient in Quarantäne?',
+          }]}]"
+        />
+      </a-form-item>
+
+      <a-form-item label="Vorgemerkt am">
+        <DateInput
+          :defaultValue= 'today'
+          v-decorator="['eventDate', { rules: [{
+            required: false,
+            message: 'Datum, für welches der Vermerk erfasst werden soll.',
           }]}]"
         />
       </a-form-item>
@@ -58,6 +69,7 @@ import moment from 'moment'
 interface State {
   form: any; // eslint-disable-next-line
   patient?: Patient;
+  today: moment.Moment;
 }
 
 export default Vue.extend({
@@ -70,6 +82,7 @@ export default Vue.extend({
     return {
       form: this.$form.createForm(this),
       patient: undefined,
+      today: moment(),
     }
   },
   computed: {
@@ -88,6 +101,7 @@ export default Vue.extend({
         }
         const request = {
           dateUntil: values.dateUntil.format('YYYY-MM-DD'),
+          eventDate: values.eventDate ? values.eventDate.format('YYYY-MM-DD') : undefined,
           comment: values.comment,
         }
         const patientId = this.givenPatientId ? this.givenPatientId : values.patientId

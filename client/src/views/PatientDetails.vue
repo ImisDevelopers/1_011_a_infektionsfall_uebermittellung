@@ -264,16 +264,16 @@
           <a-card>
             <a-timeline
               style="text-align: left; margin-left: 40px"
-              v-if="patient.events.length"
+              v-if="incidents.length"
             >
               <!-- List all the events recorded corresponding to the patient over time -->
               <a-timeline-item
-                :color="timelineColor(event.eventType)"
-                :key="event.id"
-                v-for="event in this.patient.events"
+                :color="timelineColor(incident.eventType)"
+                :key="incident.id"
+                v-for="incident in this.incidents"
               >
-                {{ formatTimestamp(event.eventTimestamp) }},
-                {{ eventTypes.find(type => type.id === event.eventType).label }}
+                {{ formatTimestamp(incident.eventTimestamp) }},
+                {{ eventTypes.find(type => type.id === incident.eventType).label }}
               </a-timeline-item>
             </a-timeline>
           </a-card>
@@ -560,6 +560,7 @@ interface State {
   dateOfReporting: string;
   dateOfIllness: string;
   dateFormat: string;
+  incidents: any[];
 }
 
 export default Vue.extend({
@@ -610,6 +611,7 @@ export default Vue.extend({
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
+      incidents: [],
     }
   },
 
@@ -641,6 +643,8 @@ export default Vue.extend({
         this.setPatient(patient)
         this.patient = patient
       }
+
+      this.incidents = await Api.getPatientLogUsingGet(patientId)
 
       if (this.patient.events) {
         const event = this.patient.events.find(event => event.eventType === 'REGISTERED' || event.eventType === 'SUSPECTED')

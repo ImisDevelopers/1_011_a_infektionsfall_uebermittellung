@@ -64,6 +64,7 @@
 
       <a-form-item label="Abnahmedatum">
         <DateInput
+          :defaultValue= today
           v-decorator="['eventDate', { rules: [{
             required: false,
             message: 'Datum der Probenabnahme',
@@ -101,11 +102,13 @@ import LaboratoryInput from '../components/LaboratoryInput.vue'
 import { TestTypeItem, testTypes } from '@/models/test-types'
 import { testResults } from '@/models/event-types'
 import { TestMaterialItem, testMaterials } from '@/models/test-materials'
+import moment from 'moment'
 
 interface State {
   form: any;
   testTypes: TestTypeItem[];
   testMaterials: TestMaterialItem[];
+  today: moment.Moment;
 }
 
 export default Vue.extend({
@@ -120,6 +123,7 @@ export default Vue.extend({
       form: this.$form.createForm(this),
       testTypes: testTypes,
       testMaterials: testMaterials,
+      today: moment(),
     }
   },
   methods: {

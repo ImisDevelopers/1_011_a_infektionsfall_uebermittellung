@@ -7,10 +7,11 @@
         <a-form :form="form">
           <a-form-item label="Datum der Anordnung (optional):">
             <DateInput
-            v-decorator="['eventDate', { rules: [{
-              required: false,
-              message: 'Datum der Anordnung',
-            }]}]"
+              :defaultValue= 'today'
+              v-decorator="['eventDate', { rules: [{
+                required: false,
+                message: 'Datum der Anordnung',
+              }]}]"
             />
           </a-form-item>
         </a-form>
@@ -94,6 +95,7 @@ interface State {
   columnsQuarantines: Partial<Column>[];
   confirmVisible: boolean; // eslint-disable-next-line
   form: any; 
+  today: moment.Moment;
 }
 
 export default Vue.extend({
@@ -132,6 +134,7 @@ export default Vue.extend({
       columnsQuarantines: columnsQuarantines,
       confirmVisible: false,
       form: this.$form.createForm(this),
+      today: moment(),
     }
   },
   methods: {

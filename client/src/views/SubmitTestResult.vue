@@ -47,6 +47,7 @@
 
         <a-form-item label="Ergebnisdatum">
         <DateInput
+          :defaultValue= 'today'
           v-decorator="['eventDate', { rules: [{
             required: false,
             message: 'Datum der Probenabnahme',
@@ -92,6 +93,7 @@ import LaboratoryInput from '@/components/LaboratoryInput.vue'
 import DateInput from '@/components/DateInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
+import moment from 'moment'
 
 interface State {
   form: any;
@@ -100,6 +102,7 @@ interface State {
   laboratories: Institution[];
   updatedLabTest?: LabTest;
   updatedLabTestStatus: string;
+  today: moment.Moment;
 }
 
 export default Vue.extend({
@@ -121,6 +124,7 @@ export default Vue.extend({
       laboratories: [],
       updatedLabTest: undefined,
       updatedLabTestStatus: '',
+      today: moment(),
     }
   },
   async mounted() {

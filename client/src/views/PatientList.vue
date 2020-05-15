@@ -173,13 +173,12 @@
 <script lang="ts">
 import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
-import { ExposureContactContactView, Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
+import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
 import { eventTypes } from '@/models/event-types'
 import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
-import PlzInput from '@/components/PlzInput.vue'
 import IndexPatientTableCell from '@/components/IndexPatientTableCell.vue'
 
 const columnsSchema: Partial<Column>[] = [
@@ -303,7 +302,6 @@ export default Vue.extend({
       showAdvancedSearch: false,
       eventTypes: eventTypes,
       currentPatients: [],
-      indexPatientMap: new Map(),
     }
   },
   watch: {

@@ -771,6 +771,14 @@ export default Vue.extend({
             dateOfContact: stringFromMoment,
           })
 
+          if (!values.contact) {
+            values.contact = JSON.stringify({
+              firstName: values.contactFirstName,
+              lastName: values.contactLastName,
+              dateOfBirth: stringFromMoment(values.contactDateOfBirth),
+            })
+          }
+
           if (values.id) {
             Object.assign(this.exposureContactInEditing, await Api.updateExposureContactUsingPut(values))
           } else {

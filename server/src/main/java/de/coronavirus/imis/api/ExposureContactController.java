@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import de.coronavirus.imis.api.converter.ExOrNewContactConverter;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,11 @@ import de.coronavirus.imis.repositories.ExposureContactRepository;
 public class ExposureContactController {
   private final ExposureContactRepository exposureContactRepository;
   private final ExposureContactMapper exposureContactMapper;
+  private final ExOrNewContactConverter exOrNewContactConverter;
 
   @PostMapping
   public ExposureContactDTO.FromServer createExposureContact(@RequestBody ExposureContactDTO.ToServer dto) {
+  	dto.setContact(exOrNewContactConverter.convert(dto.getContact()));
     return exposureContactMapper.toExposureContactDTO(
       exposureContactRepository.saveAndFlush(
         exposureContactMapper.toExposureContact(dto)

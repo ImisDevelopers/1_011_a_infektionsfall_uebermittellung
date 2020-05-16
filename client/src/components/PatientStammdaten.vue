@@ -107,11 +107,9 @@
         <a-divider />
         <p style="text-align: center">Aufenthaltsort, falls von Wohnort abweichend:</p>
         <location-form-group
-          :form="form"
           :data="patient"
           :required="false"
-          inputKeyPrefix="stay"
-          :useInputKeysForData="true"/>
+          fieldNamePrefix="stay"/>
       </div>
 
       <!-- Email / Telefon -->

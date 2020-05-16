@@ -1,13 +1,10 @@
 package de.coronavirus.imis.api;
 
-import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.api.dto.OrderTestEventDTO;
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
-import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
+import de.coronavirus.imis.api.dto.*;
+import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.services.IncidentService;
 import de.coronavirus.imis.domain.PatientEvent;
+import de.coronavirus.imis.services.IncidentService;
 import de.coronavirus.imis.services.PatientEventService;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,7 +28,7 @@ public class PatientController {
 
 	@PostMapping
 	public ResponseEntity<Patient> addPatient(@RequestBody CreatePatientDTO dto,
-			@AuthenticationPrincipal Authentication auth) {
+											  @AuthenticationPrincipal Authentication auth) {
 		boolean isAuthenticated = auth != null;
 		var patient = patientService.addPatient(dto, isAuthenticated);
 
@@ -82,9 +80,15 @@ public class PatientController {
 
 	@PostMapping("/quarantine/{id}")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public ResponseEntity<Patient> sendToQuarantine(@PathVariable("id") String patientId, @RequestBody SendToQuarantineDTO statusDTO) {
+	public ResponseEntity<Patient> requestQuarantine(@PathVariable("id") String patientId, @RequestBody RequestQuarantineDTO statusDTO) {
 		incidentService.addOrUpdateIncident(patientId, statusDTO);
-		return ResponseEntity.ok(patientService.sendToQuaratine(patientId, statusDTO));
+		return ResponseEntity.ok(patientService.sendToQuarantine(patientId, statusDTO));
+	}
+
+	@PostMapping("/quarantine")
+	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
+	public void sendToQuarantine(@RequestBody SendToQuarantineDTO dto) {
+		dto.getPatientIds().forEach(patientId -> this.incidentService.updateQuarantineIncident(patientId, EventType.QUARANTINE_MANDATED, dto.getEventDate()));
 	}
 
 	@PostMapping("/event/order-test")

@@ -4,6 +4,8 @@ import de.coronavirus.imis.domain.TestMaterial;
 import de.coronavirus.imis.domain.TestType;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class CreateLabTestDTO {
 	private String patientId;
@@ -12,4 +14,5 @@ public class CreateLabTestDTO {
 	private String comment;
 	private TestType testType;
 	private TestMaterial testMaterial;
+	private LocalDate eventDate;
 }

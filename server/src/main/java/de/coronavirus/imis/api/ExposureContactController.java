@@ -8,22 +8,15 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import de.coronavirus.imis.api.dto.ExposureContactDTO;
-import de.coronavirus.imis.domain.ExposureContact;
 import de.coronavirus.imis.mapper.ExposureContactMapper;
 import de.coronavirus.imis.repositories.ExposureContactRepository;
 import de.coronavirus.imis.services.util.BulkOperationService;
 import static de.coronavirus.imis.services.util.BulkOperationService.*;
+
 
 @RestController
 @RequestMapping("/api/exposure-contacts")

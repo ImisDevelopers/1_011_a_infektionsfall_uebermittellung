@@ -26,9 +26,6 @@ public class AdministrativeIncident extends Incident {
 	@ManyToOne
 	private Doctor responsibleDoctor;
 
-	private LocalDate dateOfReporting;
-
-
 	public AdministrativeIncident() {
 		super(IncidentType.administrative);
 	}

@@ -118,6 +118,7 @@ const appRoutes: AppRoute[] = [
       },
     },
   },
+  /*
   {
     name: 'test-list',
     path: 'test-list',
@@ -131,6 +132,7 @@ const appRoutes: AppRoute[] = [
       },
     },
   },
+  */
   {
     name: 'patient-list',
     path: 'patient-list',

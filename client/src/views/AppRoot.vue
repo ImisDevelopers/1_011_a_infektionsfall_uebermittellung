@@ -16,6 +16,7 @@
             <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
               <router-view></router-view>
             </div>
+            <!--
             <a-layout-footer style="textAlign: center">
               IMIS ©2020 with
               <a-icon style="color: red;" type="heart">❤</a-icon>
@@ -24,6 +25,7 @@
                 #WeVsVirus
               </a-button>
             </a-layout-footer>
+            -->
           </a-layout-content>
         </a-layout>
       </a-layout>

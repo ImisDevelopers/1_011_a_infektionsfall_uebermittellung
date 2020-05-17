@@ -3,7 +3,7 @@
     <a-form-item style="display: none;"
       :selfUpdate="true">
       <a-input type="hidden"
-        v-decorator="[ formInputKey('id') ]"/>
+        v-decorator="[ formFieldName('id') ]"/>
     </a-form-item>
     <a-row class="patients-flex">
       <!-- Originating and Contact Names -->
@@ -16,7 +16,7 @@
           v-bind="inputProps.source"
           :disabled="$props.disableOriginatorPatient"
           :filterOption="filterSources"
-          v-decorator="[ formInputKey('source'), {
+          v-decorator="[ formFieldName('source'), {
               rules: [
                 { required: true, message: 'Bitte Ursprungspatienten angeben' },
               ],
@@ -34,7 +34,7 @@
           v-bind="inputProps.contact"
           :disabled="$props.disableContactPatient"
           :filterOption="filterContacts"
-          v-decorator="[ formInputKey('contact'), {
+          v-decorator="[ formFieldName('contact'), {
               rules: [
                 { required: true, message: 'Bitte Kontaktperson angeben' },
               ],
@@ -49,7 +49,7 @@
           <date-input
             v-bind="inputProps.dateOfContact"
             :disabledDate="date => date.isAfter(moment())"
-            v-decorator="[ formInputKey('dateOfContact'), {
+            v-decorator="[ formFieldName('dateOfContact'), {
               rules: [
                 { required: true, message: 'Bitte ein gültiges Datum angeben' },
               ],
@@ -64,7 +64,7 @@
             v-bind="inputProps.context"
             :dataSource="contexts"
             :filterOption="false"
-            v-decorator="[ formInputKey('context'), {
+            v-decorator="[ formFieldName('context'), {
               rules: [
                 { required: true, message: 'Bitte den Umstand des Kontakts angeben' }
               ]
@@ -78,7 +78,7 @@
         :selfUpdate="true">
         <a-textarea
           v-bind="inputProps.comment"
-          v-decorator="[ formInputKey('comment'), {
+          v-decorator="[ formFieldName('comment'), {
             rules: [],
           }]"/>
       </a-form-item>
@@ -89,6 +89,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import mixins from 'vue-typed-mixins'
+import * as typing from '@/util/typing'
 import Api from '@/api'
 import moment from 'moment'
 
@@ -108,7 +109,7 @@ export default mixins(FormGroupMixin).extend({
     DateInput,
     PatientInput,
   },
-  inputKeys: ['id', 'source', 'contact', 'dateOfContact', 'context', 'comment'],
+  fieldIdentifiers: ['id', 'source', 'contact', 'dateOfContact', 'context', 'comment'],
   props: {
     showOriginatorPatient: { default: true },
     showContactPatient: { default: true },
@@ -121,15 +122,18 @@ export default mixins(FormGroupMixin).extend({
     }
   },
   methods: {
+    withExts() {
+      return typing.extended(this, typing.TypeArg<FormGroupMixin>())
+    },
     moment,
     filterContacts(inputVal: string, option: any): boolean {
-      return option.key !== (this as any).getSingleValue('source')
+      return option.key !== this.withExts().getSingleValue('source')
     },
     filterSources(inputVal: string, option: any): boolean {
-      return option.key !== (this as any).getSingleValue('contact')
+      return option.key !== this.withExts().getSingleValue('contact')
     },
   },
-} as any)
+})
 </script>
 
 <style lang="scss">

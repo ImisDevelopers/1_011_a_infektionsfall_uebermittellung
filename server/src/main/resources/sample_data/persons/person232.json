@@ -1,0 +1,29 @@
+{
+  "city": "V\u00f6lklingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1997-05-22",
+  "email": "l.bauer@t-online.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "F637552108",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "01193932105",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 11",
+  "symptoms": [
+    "Fieber",
+    "Husten",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66249"
+}

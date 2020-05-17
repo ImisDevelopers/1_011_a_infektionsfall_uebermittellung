@@ -1,34 +1,33 @@
 {
-  "city": "Frankfurt",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1956-09-17",
-  "email": "j.schulz@posteo.de",
-  "firstName": "Jens",
-  "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 3,
+  "dateOfBirth": "1926-07-26",
+  "email": "j.winter@gmail.de",
+  "firstName": "Jana",
+  "fluImmunization": true,
+  "gender": "female",
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "F938313402",
-  "lastName": "Schulz",
+  "insuranceMembershipNumber": "J889065340",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "107610767721",
+  "phoneNumber": "57561092459",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
+  "street": "Rosenstra\u00dfe 25",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen",
-    "Halschmerzen",
     "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "34043"
+  "zip": "66752"
 }

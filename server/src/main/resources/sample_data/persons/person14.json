@@ -1,33 +1,34 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1984-11-03",
-  "email": "a.bauer@gmx.de",
-  "firstName": "Annika",
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
+  "dateOfBirth": "1956-10-07",
+  "email": "s.berger@t-online.de",
+  "firstName": "Susanne",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 25,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "N776205431",
-  "lastName": "Bauer",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "D872830248",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "4810109513104",
+  "phoneNumber": "406088101035",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kaiserstra\u00dfe 8",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber",
+    "Atemschwierigkeiten",
     "Kopfschmerzen",
-    "Husten",
-    "Halschmerzen"
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "20037"
+  "weakenedImmuneSystem": true,
+  "zip": "661059"
 }

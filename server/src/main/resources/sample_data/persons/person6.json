@@ -1,30 +1,33 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1943-04-18",
-  "email": "k.schulze@gmail.de",
-  "firstName": "Kai",
-  "fluImmunization": false,
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "dateOfBirth": "1962-01-19",
+  "email": "f.klein@t-online.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 55,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "M881913386",
-  "lastName": "Schulze",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "P330035022",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "2997376311",
+  "phoneNumber": "83930110031",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 42",
   "symptoms": [
     "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
     "Fieber",
-    "Atemschwierigkeiten"
+    "Husten",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "56670"
+  "zip": "66183"
 }

@@ -116,11 +116,11 @@ def gen_person():
 		'email': email,
 		'phoneNumber': rand_num_str(),
 # include house number within street field
-		'street': {choice(streets)} {randint(0, 100)},
+		'street': '{} {}'.format(choice(streets), randint(0, 100)),
 #		'houseNumber': randint(0, 100),
 # temporarily filter zip codes to saarland region (approximately)
 #		'zip': rand_num_str(5),
-		'zip': {'66'}{rand_num_str(3)},
+		'zip': '66{}'.format(rand_num_str(3)),
 		'city': choice(cities),
 		'insuranceCompany': choice(insurance_companies),
 		'insuranceMembershipNumber': insurance_number(),
@@ -136,9 +136,14 @@ def gen_person():
 
 
 def main():
+	import sys
 	pathlib.Path('persons').mkdir(parents=True, exist_ok=True)
 
-	for i in range(100):
+	amount = 250  # default
+	if len(sys.argv) >= 1:
+		amount = int(sys.argv[1])
+
+	for i in range(amount):
 		with open(f'persons/person{i}.json', 'w+') as f:
 			f.write(json.dumps(gen_person(), sort_keys=True, indent=2))
 

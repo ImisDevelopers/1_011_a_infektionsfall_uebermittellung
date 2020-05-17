@@ -1,0 +1,25 @@
+{
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1961-11-22",
+  "email": "j.klein@gmx.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "K358655621",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "106289001028",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordufer 60",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66721"
+}

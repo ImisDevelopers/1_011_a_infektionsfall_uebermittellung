@@ -1,34 +1,32 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1974-03-23",
-  "email": "a.winkler@posteo.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "dateOfBirth": "1992-01-04",
+  "email": "o.lange@gmx.de",
+  "firstName": "Olivia",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 48,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "I845932321",
-  "lastName": "Winkler",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "A618371508",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "5310672910410",
+  "phoneNumber": "4388899375",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Niekampsweg",
+  "street": "Z\u00e4hringerstra\u00dfe 59",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten",
+    "Fieber",
     "Husten",
     "Kopfschmerzen",
-    "Halschmerzen",
-    "Fieber"
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "711016"
+  "zip": "661098"
 }

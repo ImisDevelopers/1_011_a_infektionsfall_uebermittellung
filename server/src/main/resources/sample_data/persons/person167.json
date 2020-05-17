@@ -1,0 +1,28 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1981-02-06",
+  "email": "p.bauer@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "F209815321",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "24110797497",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg 41",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66020"
+}

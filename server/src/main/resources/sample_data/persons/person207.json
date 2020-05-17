@@ -1,0 +1,28 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "dateOfBirth": "1961-04-24",
+  "email": "k.schulze@gmx.de",
+  "firstName": "Kai",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "C749276419",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "44300910910",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 27",
+  "symptoms": [
+    "Fieber",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "669101"
+}

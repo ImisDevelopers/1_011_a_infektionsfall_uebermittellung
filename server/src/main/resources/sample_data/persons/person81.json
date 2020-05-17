@@ -1,35 +1,32 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1997-07-22",
-  "email": "j.winter@gmail.de",
-  "firstName": "Jens",
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "1986-04-07",
+  "email": "d.schulze@web.de",
+  "firstName": "Daniel",
   "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 57,
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "N683734594",
-  "lastName": "Winter",
+  "insuranceMembershipNumber": "U915599098",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "721043410266",
+  "phoneNumber": "9845461567",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Hubei"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 31",
   "symptoms": [
-    "Fieber",
-    "Husten",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
     "Halschmerzen",
-    "Erk\u00e4ltung"
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Husten",
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "97968"
+  "weakenedImmuneSystem": false,
+  "zip": "663410"
 }

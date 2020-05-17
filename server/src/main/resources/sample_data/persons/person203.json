@@ -1,0 +1,25 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "2004-08-15",
+  "email": "k.lange@web.de",
+  "firstName": "Konrad",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "P720774271",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "8795654420",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Rosenstra\u00dfe 76",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66494"
+}

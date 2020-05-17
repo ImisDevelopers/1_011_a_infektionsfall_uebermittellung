@@ -1,0 +1,25 @@
+{
+  "city": "St. Ingbert",
+  "coronaContacts": true,
+  "dateOfBirth": "1929-07-18",
+  "email": "p.peters@web.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "F820457041",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "81435361082",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe 23",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66394"
+}

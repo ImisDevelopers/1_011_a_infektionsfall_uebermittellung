@@ -1,31 +1,33 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1969-12-28",
-  "email": "j.schulze@gmail.de",
-  "firstName": "Jana",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 69,
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1970-12-19",
+  "email": "f.richter@gmx.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "male",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "F951078441",
-  "lastName": "Schulze",
+  "insuranceMembershipNumber": "R413679331",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "7110341091036",
+  "phoneNumber": "8941343524",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aarhusweg 90",
   "symptoms": [
-    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen",
     "Husten",
-    "Erk\u00e4ltung",
-    "Schnupfen"
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "310242"
+  "weakenedImmuneSystem": false,
+  "zip": "66824"
 }

@@ -17,7 +17,7 @@
         >
           <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
             <div style="padding-right: 1rem">
-              <a-dropdown>
+              <a-dropdown v-if="!myRoles().includes('ROLE_TEST_SITE')">
                 <a-menu slot="overlay" @click="handleActionClick">
                   <a-menu-item key="ARRANGE_TEST">
                     <a-icon type="user" />
@@ -398,6 +398,7 @@ import Vue from 'vue'
 import moment, { Moment } from 'moment'
 import Api from '@/api'
 import { LabTest, Patient, Timestamp, ExposureContactFromServer } from '@/api/SwaggerApi'
+import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
 import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
 import { SYMPTOMS } from '@/models/symptoms'
@@ -546,6 +547,9 @@ export default Vue.extend({
     EditExposureContact,
   },
   computed: {
+    ...authMapper.mapGetters({
+      myRoles: 'roles',
+    }),
     ...patientMapper.mapGetters({
       patientById: 'patientById',
     }),

@@ -1,0 +1,25 @@
+{
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "dateOfBirth": "1953-11-14",
+  "email": "m.lange@gmail.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "A655778818",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "5939836845",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Waldstra\u00dfe 57",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66600"
+}

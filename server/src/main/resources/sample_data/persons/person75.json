@@ -1,30 +1,25 @@
 {
-  "city": "Kiel",
-  "coronaContacts": true,
-  "dateOfBirth": "1937-05-01",
-  "email": "p.bauer@gmail.de",
-  "firstName": "Peter",
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "1951-09-13",
+  "email": "k.schmitt@web.de",
+  "firstName": "Karl",
   "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 67,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "O706666479",
-  "lastName": "Bauer",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "T136052248",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "81062118233",
+  "phoneNumber": "33752431010",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "New York"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Husten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "45461"
+  "street": "Kaiserstra\u00dfe 78",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66033"
 }

@@ -1,0 +1,32 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "dateOfBirth": "1976-02-10",
+  "email": "a.bauer@gmx.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N488984224",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "9864300981",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hafenstra\u00dfe 0",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "666103"
+}

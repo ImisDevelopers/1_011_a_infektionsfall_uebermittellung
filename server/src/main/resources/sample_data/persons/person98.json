@@ -1,29 +1,29 @@
 {
-  "city": "Bochum",
+  "city": "P\u00fcttlingen",
   "coronaContacts": false,
-  "dateOfBirth": "1931-02-17",
-  "email": "d.winkler@t-online.de",
-  "firstName": "Daniela",
+  "dateOfBirth": "1990-10-24",
+  "email": "d.schulze@posteo.de",
+  "firstName": "Daniel",
   "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 37,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "H180195016",
-  "lastName": "Winkler",
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "A806957378",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "210619906102",
+  "phoneNumber": "65652341013",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Poststra\u00dfe 76",
   "symptoms": [
-    "Fieber",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
     "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "45655"
+  "zip": "66994"
 }

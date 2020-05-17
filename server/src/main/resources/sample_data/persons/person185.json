@@ -1,0 +1,34 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1953-04-24",
+  "email": "j.peters@gmail.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "X435971123",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "10331279757",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof 54",
+  "symptoms": [
+    "Husten",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66609"
+}

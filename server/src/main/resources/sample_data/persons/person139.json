@@ -1,0 +1,30 @@
+{
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "dateOfBirth": "1957-01-14",
+  "email": "h.berger@t-online.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Y771482340",
+  "lastName": "Berger",
+  "nationality": "deutsch",
+  "phoneNumber": "4842294057",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Rosenstra\u00dfe 19",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66025"
+}

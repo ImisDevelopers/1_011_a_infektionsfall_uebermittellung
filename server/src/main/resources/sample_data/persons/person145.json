@@ -1,0 +1,28 @@
+{
+  "city": "Neunkirchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1993-04-24",
+  "email": "k.schulz@gmail.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "T808049250",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "975521010314",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 8",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66357"
+}

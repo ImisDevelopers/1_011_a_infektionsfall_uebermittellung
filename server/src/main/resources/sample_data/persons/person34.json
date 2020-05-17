@@ -1,17 +1,16 @@
 {
-  "city": "Hamburg",
+  "city": "Bous",
   "coronaContacts": false,
-  "dateOfBirth": "1967-11-14",
-  "email": "d.lange@gmx.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1946-11-09",
+  "email": "m.weber@posteo.de",
+  "firstName": "Martina",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 49,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "U206323670",
-  "lastName": "Lange",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "I590523712",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "1200471138",
+  "phoneNumber": "741007410821",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
@@ -19,15 +18,12 @@
     "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "street": "Waldstra\u00dfe 44",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Husten",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Fieber",
+    "Halschmerzen",
+    "Gelenkschmerzen",
     "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "751086"
+  "weakenedImmuneSystem": false,
+  "zip": "669410"
 }

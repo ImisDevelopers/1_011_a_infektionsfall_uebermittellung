@@ -1,31 +1,25 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": true,
-  "dateOfBirth": "2002-01-11",
-  "email": "a.winkler@gmail.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 23,
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "dateOfBirth": "1942-12-10",
+  "email": "j.schulze@posteo.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "S253671484",
-  "lastName": "Winkler",
+  "insuranceMembershipNumber": "K945805127",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "0455623869",
+  "phoneNumber": "8467737826",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Husten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "22196"
+  "street": "Niekampsweg 76",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66821"
 }

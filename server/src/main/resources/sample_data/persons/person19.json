@@ -1,31 +1,32 @@
 {
-  "city": "Frankfurt",
+  "city": "Bous",
   "coronaContacts": false,
-  "dateOfBirth": "1958-02-17",
-  "email": "t.bauer@gmx.de",
-  "firstName": "Tim",
-  "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 19,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "O567694547",
-  "lastName": "Bauer",
+  "dateOfBirth": "1946-03-20",
+  "email": "e.winter@posteo.de",
+  "firstName": "Emma",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "G588229686",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "105067165107",
+  "phoneNumber": "806991001106",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordufer",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 59",
   "symptoms": [
-    "Kopfschmerzen",
+    "Atemschwierigkeiten",
     "Halschmerzen",
-    "Fieber",
-    "Husten"
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Husten",
+    "Fieber"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "628104"
+  "weakenedImmuneSystem": true,
+  "zip": "66204"
 }

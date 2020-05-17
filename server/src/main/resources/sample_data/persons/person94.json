@@ -1,28 +1,31 @@
 {
-  "city": "Kiel",
-  "coronaContacts": false,
-  "dateOfBirth": "1991-08-20",
-  "email": "f.mueller@gmx.de",
-  "firstName": "Franz",
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1974-03-23",
+  "email": "k.weber@posteo.de",
+  "firstName": "Karl",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 63,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "X938725480",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "M653635749",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "904101021020",
+  "phoneNumber": "5310672910410",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "Tirol"
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "street": "Kaiserstra\u00dfe 48",
   "symptoms": [
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten",
     "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "58842"
+  "weakenedImmuneSystem": true,
+  "zip": "667110"
 }

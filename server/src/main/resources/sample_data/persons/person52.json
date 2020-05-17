@@ -1,31 +1,28 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": false,
-  "dateOfBirth": "1950-07-24",
-  "email": "p.mueller@gmail.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-09-14",
+  "email": "d.schroeder@gmx.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 54,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "D185973340",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "I582452834",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "7652775841",
+  "phoneNumber": "23924010758",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordufer",
+  "street": "Schernerweg 91",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Halschmerzen"
+    "Halschmerzen",
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "16928"
+  "weakenedImmuneSystem": true,
+  "zip": "66814"
 }

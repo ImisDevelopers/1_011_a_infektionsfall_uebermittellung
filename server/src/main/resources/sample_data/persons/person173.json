@@ -1,0 +1,25 @@
+{
+  "city": "V\u00f6lklingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1938-10-23",
+  "email": "b.winter@gmx.de",
+  "firstName": "Ben",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "X546626348",
+  "lastName": "Winter",
+  "nationality": "deutsch",
+  "phoneNumber": "94053910310",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Steinstra\u00dfe 10",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "667100"
+}

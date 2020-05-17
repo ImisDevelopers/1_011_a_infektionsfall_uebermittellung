@@ -1,0 +1,29 @@
+{
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "dateOfBirth": "1952-05-26",
+  "email": "j.richter@gmail.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "A230955221",
+  "lastName": "Richter",
+  "nationality": "deutsch",
+  "phoneNumber": "7570512046",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg 69",
+  "symptoms": [
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66723"
+}

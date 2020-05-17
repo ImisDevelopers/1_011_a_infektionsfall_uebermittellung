@@ -1,28 +1,28 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": false,
-  "dateOfBirth": "1962-02-15",
-  "email": "k.klein@gmail.de",
-  "firstName": "Karl",
-  "fluImmunization": true,
+  "city": "Bous",
+  "coronaContacts": true,
+  "dateOfBirth": "1993-11-23",
+  "email": "m.schulz@gmx.de",
+  "firstName": "Matthias",
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 33,
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M983063850",
-  "lastName": "Klein",
+  "insuranceMembershipNumber": "V950961305",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "123101068516",
+  "phoneNumber": "1724005045",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hauptstra\u00dfe 55",
   "symptoms": [
-    "Erk\u00e4ltung"
+    "Fieber",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "817510"
+  "zip": "66238"
 }

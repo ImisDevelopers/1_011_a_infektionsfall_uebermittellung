@@ -1,0 +1,28 @@
+{
+  "city": "Bous",
+  "coronaContacts": false,
+  "dateOfBirth": "1966-08-16",
+  "email": "j.lange@t-online.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "V665646221",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "0538338848",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Steinstra\u00dfe 79",
+  "symptoms": [
+    "Husten",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "662100"
+}

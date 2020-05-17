@@ -1,26 +1,25 @@
 {
-  "city": "Frankfurt",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
-  "dateOfBirth": "1960-04-15",
-  "email": "s.mueller@web.de",
+  "dateOfBirth": "1942-11-20",
+  "email": "s.schulze@posteo.de",
   "firstName": "Susanne",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 41,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "V420877774",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C114810579",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "47411210490",
+  "phoneNumber": "1805526965",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
+  "street": "Poststra\u00dfe 87",
   "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "21356"
+  "zip": "66271"
 }

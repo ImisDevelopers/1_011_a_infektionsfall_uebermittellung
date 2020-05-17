@@ -1,0 +1,30 @@
+{
+  "city": "Bous",
+  "coronaContacts": true,
+  "dateOfBirth": "1969-11-06",
+  "email": "c.sommer@gmail.de",
+  "firstName": "Cornelius",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "U139732456",
+  "lastName": "Sommer",
+  "nationality": "deutsch",
+  "phoneNumber": "41093631230",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 39",
+  "symptoms": [
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66778"
+}

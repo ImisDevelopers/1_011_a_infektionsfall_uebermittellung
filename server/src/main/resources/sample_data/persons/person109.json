@@ -1,0 +1,28 @@
+{
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1977-01-29",
+  "email": "p.lange@web.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S956191734",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "4078593213",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Bismarckstra\u00dfe 30",
+  "symptoms": [
+    "Schnupfen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66480"
+}

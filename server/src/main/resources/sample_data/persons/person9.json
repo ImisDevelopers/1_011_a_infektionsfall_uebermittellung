@@ -1,28 +1,30 @@
 {
-  "city": "Frankfurt",
+  "city": "Bous",
   "coronaContacts": false,
-  "dateOfBirth": "1926-10-04",
-  "email": "l.peters@gmx.de",
-  "firstName": "Lisa",
+  "dateOfBirth": "1998-09-03",
+  "email": "p.berger@posteo.de",
+  "firstName": "Petra",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 20,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "V977358886",
-  "lastName": "Peters",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "S706907788",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "1838425135",
+  "phoneNumber": "21911036193",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete",
+  "street": "Hohenzollerstra\u00dfe 76",
   "symptoms": [
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Halschmerzen",
     "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "784910"
+  "weakenedImmuneSystem": false,
+  "zip": "66091"
 }

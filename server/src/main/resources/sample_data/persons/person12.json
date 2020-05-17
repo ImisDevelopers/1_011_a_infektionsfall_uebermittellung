@@ -1,35 +1,27 @@
 {
-  "city": "Freiburg",
+  "city": "Riegelsberg",
   "coronaContacts": true,
-  "dateOfBirth": "1954-06-09",
-  "email": "p.lange@posteo.de",
-  "firstName": "Peter",
-  "fluImmunization": false,
+  "dateOfBirth": "1974-11-04",
+  "email": "k.winkler@posteo.de",
+  "firstName": "Konrad",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 33,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "X944420824",
-  "lastName": "Lange",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "I270937380",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "145108610850",
+  "phoneNumber": "5869232260",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe 94",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Husten",
-    "Kopfschmerzen",
     "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "29401"
+  "zip": "665610"
 }

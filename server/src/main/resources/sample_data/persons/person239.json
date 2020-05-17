@@ -1,0 +1,31 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "dateOfBirth": "1947-11-28",
+  "email": "p.lange@t-online.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "D841809534",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "6986407905",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 73",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66659"
+}

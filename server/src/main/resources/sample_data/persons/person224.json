@@ -1,0 +1,28 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1965-10-05",
+  "email": "f.schulze@t-online.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D126763237",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "74523801055",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 47",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66782"
+}

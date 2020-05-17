@@ -1,0 +1,33 @@
+{
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1934-03-10",
+  "email": "p.schroeder@posteo.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "L379773344",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "172482105101",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbendiekshof 45",
+  "symptoms": [
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66346"
+}

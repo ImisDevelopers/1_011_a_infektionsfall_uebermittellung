@@ -1,26 +1,29 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1955-09-05",
-  "email": "l.schulz@web.de",
-  "firstName": "Lisa",
+  "city": "Dudweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1999-11-29",
+  "email": "d.klein@posteo.de",
+  "firstName": "Daniel",
   "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 31,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Z808881871",
-  "lastName": "Schulz",
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "U610778600",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "30047108686",
+  "phoneNumber": "83103016571",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "GrandEst"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "75243"
+  "street": "Bismarckstra\u00dfe 98",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66208"
 }

@@ -1,0 +1,25 @@
+{
+  "city": "Bous",
+  "coronaContacts": true,
+  "dateOfBirth": "1970-08-28",
+  "email": "t.schroeder@gmail.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "P915499713",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "10132475469",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kronenstra\u00dfe 11",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66373"
+}

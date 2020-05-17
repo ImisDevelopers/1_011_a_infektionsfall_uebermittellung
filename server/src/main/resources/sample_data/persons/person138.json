@@ -1,0 +1,33 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1927-11-24",
+  "email": "i.schmitt@t-online.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "A898509546",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "831086384100",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 49",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "666105"
+}

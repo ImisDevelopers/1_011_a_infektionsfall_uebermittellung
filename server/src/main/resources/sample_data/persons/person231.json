@@ -1,0 +1,27 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "1939-06-06",
+  "email": "c.schmitt@web.de",
+  "firstName": "Cornelius",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Y563048450",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "4013223423",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aastwiete 10",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66611"
+}

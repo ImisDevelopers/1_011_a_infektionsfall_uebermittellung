@@ -1,0 +1,27 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "1953-07-12",
+  "email": "e.schulz@t-online.de",
+  "firstName": "Emma",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "G835898867",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "53559100425",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Eisenbahnstra\u00dfe 56",
+  "symptoms": [
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66927"
+}

@@ -1,35 +1,25 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": false,
-  "dateOfBirth": "1949-09-04",
-  "email": "d.schulze@t-online.de",
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1998-07-24",
+  "email": "d.mueller@t-online.de",
   "firstName": "Daniela",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 51,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "J554200826",
-  "lastName": "Schulze",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "D154318806",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "01080132677",
+  "phoneNumber": "5133387262",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
     ""
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Fieber",
-    "Halschmerzen",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung"
-  ],
+  "street": "Sonnenweg 59",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "02606"
+  "zip": "66317"
 }

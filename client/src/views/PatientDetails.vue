@@ -653,13 +653,13 @@ export default Vue.extend({
 
       this.incidents = await Api.getPatientLogUsingGet(patientId)
       this.incidents.sort((a: Incident, b: Incident) => {
-        return a.eventDate.localeCompare(b.eventDate) || a.versionTimestamp.localeCompare(b.versionTimestamp)
+        return a.eventDate!.localeCompare(b.eventDate!) || a.versionTimestamp!.localeCompare(b.versionTimestamp!)
       })
 
       if (this.patient.events) {
         const event = this.patient.events.find(event => event.eventType === 'REGISTERED' || event.eventType === 'SUSPECTED')
         if (event) {
-          this.dateOfReporting = moment(event.versionTimestamp).format(this.dateFormat)
+          this.dateOfReporting = moment(event.eventTimestamp).format(this.dateFormat)
         }
       }
 

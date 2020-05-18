@@ -108,6 +108,14 @@
             <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
+        <a-form-item label="Quarantänestatus">
+          <a-select placeholder="Quarantänestatus" style="width: 250px" v-model="quarantineSelection">
+            <a-select-option value="">Alle</a-select-option>
+            <a-select-option key="QUARANTINE_MANDATED">Quarantäne angeordnet</a-select-option>
+            <a-select-option key="QUARANTINE_SELECTED">Quarantäne vorgemerkt</a-select-option>
+            <a-select-option key="NO_SELECTION">Keine Anordnung</a-select-option>
+          </a-select>
+        </a-form-item>
         <!-- Invisible Button so user can use enter to search -->
         <a-button @click="handleSearch" html-type="submit"
                   style="visibility: hidden" />
@@ -115,7 +123,7 @@
       <a-table
         :columns="columnsSchema"
         :customRow="customRow"
-        :dataSource="actualPatients"
+        :dataSource="currentPatients"
         :pagination="{ pageSize: 500 }"
         :scroll="{x: 0, y: 0}"
         @change="handleTableChange"
@@ -130,7 +138,19 @@
           {{eventTypes.find(type => type.id === patientStatus).label}}
         </div>
         <div slot="operation" slot-scope="nothing, patient" style="cursor: pointer">
-          <a-icon @click="() => handlePatientClick(patient)" style="margin-right: 5px; cursor: pointer" type="search" />
+          <a-icon @click="() => handlePatientClick(patient)" style="margin-right: 5px; cursor: pointer" type="import" />
+        </div>
+        <div slot="name" slot-scope="patient">
+          {{patient.lastName}}, {{patient.firstName}}
+        </div>
+        <div slot="city" slot-scope="patient">
+          {{patient.zip}} {{patient.city}}
+        </div>
+        <div slot="age" slot-scope="dateOfBirth">
+          {{moment().diff(moment(dateOfBirth), 'years')}}
+        </div>
+        <div slot="indexpatient" slot-scope="id">
+          <index-patient-table-cell :patient-id="id"></index-patient-table-cell>
         </div>
       </a-table>
       <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end; align-items: center">
@@ -155,9 +175,11 @@ import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
 import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
 import { eventTypes } from '@/models/event-types'
+import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
+import IndexPatientTableCell from '@/components/IndexPatientTableCell.vue'
 
 const columnsSchema: Partial<Column>[] = [
   {
@@ -168,16 +190,11 @@ const columnsSchema: Partial<Column>[] = [
     },
   },
   {
-    title: 'Nachname',
-    // sorter: (a, b) => a.lastName.localeCompare(b.lastName),
-    dataIndex: 'lastName',
+    title: 'Name',
     key: 'lastName',
-  },
-  {
-    title: 'Vorname',
-    // sorter: (a, b) => a.firstName.localeCompare(b.firstName),
-    dataIndex: 'firstName',
-    key: 'firstName',
+    scopedSlots: {
+      customRender: ['name'],
+    },
   },
   {
     title: 'Geschlecht',
@@ -198,13 +215,26 @@ const columnsSchema: Partial<Column>[] = [
   },
   {
     title: 'Stadt',
-    dataIndex: 'city',
     key: 'city',
+    scopedSlots: {
+      customRender: 'city',
+    },
   },
   {
-    title: 'E-Mail',
-    dataIndex: 'email',
-    key: 'email',
+    title: 'Alter',
+    dataIndex: 'dateOfBirth',
+    key: 'age',
+    scopedSlots: {
+      customRender: 'age',
+    },
+  },
+  {
+    title: 'Indexpatient',
+    dataIndex: 'id',
+    key: 'indexpatient',
+    scopedSlots: {
+      customRender: 'indexpatient',
+    },
   },
   {
     title: 'ID',
@@ -225,12 +255,17 @@ interface SimpleForm {
 interface State {
   form: SimpleForm;
   advancedForm: Partial<PatientSearchParamsDTO>;
+  quarantineSelection: string;
+  currentPatients: Patient[];
 
   [key: string]: any;
 }
 
 export default Vue.extend({
   name: 'PatientList',
+  components: {
+    IndexPatientTableCell,
+  },
   data(): State {
     return {
       form: {
@@ -255,8 +290,10 @@ export default Vue.extend({
         firstName: '',
         lastName: '',
         patientStatus: undefined,
+        quarantineStatus: undefined,
         id: '',
       },
+      quarantineSelection: '',
       content: '',
       count: 10,
       currentPage: 1, // Starts at 1
@@ -264,7 +301,7 @@ export default Vue.extend({
       data: [], // data
       showAdvancedSearch: false,
       eventTypes: eventTypes,
-      actualPatients: [],
+      currentPatients: [],
     }
   },
   watch: {
@@ -276,6 +313,7 @@ export default Vue.extend({
     },
   },
   created() {
+    this.indexPatientMap = new Map()
     this.loadAfterUrlChange()
   },
   methods: {
@@ -306,6 +344,7 @@ export default Vue.extend({
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
+        formValues.quarantineStatus = this.getQuarantineSelection() as PatientStatus[]
 
         countPromise = Api.countQueryPatientsUsingPost(formValues)
         queryPromise = Api.queryPatientsUsingPost(formValues)
@@ -319,7 +358,7 @@ export default Vue.extend({
         this.count = count
       })
       queryPromise.then((result: Patient[]) => {
-        this.actualPatients = result
+        this.currentPatients = result
       }).catch(error => {
         console.error(error)
         const notification = {
@@ -342,6 +381,7 @@ export default Vue.extend({
           // Backend fails on empty string
           delete formValues.patientStatus
         }
+        formValues.quarantineStatus = this.getQuarantineSelection()
         countPromise = Api.countQueryPatientsUsingPost(formValues)
       } else {
         formValues = { ...this.form }
@@ -362,8 +402,8 @@ export default Vue.extend({
         }
 
         queryPromise.then(result => {
-          const header = 'ID,Vorname,Nachname,Geschlecht,Status,Geburtsdatum,Stadt,E-Mail;Telefonnummer;' +
-            'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer;'
+          const header = 'ID;Vorname;Nachname;Geschlecht;Status;Geburtsdatum;Stadt;E-Mail;Telefonnummer;' +
+            'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer'
           const patients = result.map((patient: Patient) =>
             `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};${patient.patientStatus};` +
             `${patient.dateOfBirth};${patient.city};${patient.email};${patient.phoneNumber};${patient.street};` +
@@ -403,6 +443,17 @@ export default Vue.extend({
         },
       }
     },
+    getQuarantineSelection(): (PatientStatus | null)[] {
+      if (!this.quarantineSelection) {
+        return []
+      }
+      if (this.quarantineSelection === 'NO_SELECTION') {
+        return ['QUARANTINE_RELEASED', 'QUARANTINE_PROFESSIONBAN_RELEASED', null]
+      } else {
+        return [this.quarantineSelection as PatientStatus]
+      }
+    },
+    moment,
   },
 })
 

@@ -7,40 +7,52 @@
       :patient="patient"
     />
     <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
-      <a-tabs
-        defaultActiveKey="overview"
+
+      <a-page-header
         v-if="patient"
+        :title="`${patient.lastName}, ${patient.firstName}`"
+        :sub-title="patient.id"
+        @back="() => $router.go(-1)"
+        style="padding: 1rem 0;"
       >
-        <a-tab-pane
-          key="overview"
-          tab="Falldaten"
-        >
-          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
-            <div style="padding-right: 1rem">
+        <template slot="tags">
+          <a-tag v-if="patientStatus">
+            {{ patientStatus.label }}
+          </a-tag>
+        </template>
+        <template slot="extra">
               <a-dropdown>
                 <a-menu slot="overlay" @click="handleActionClick">
                   <a-menu-item key="ARRANGE_TEST">
                     <a-icon type="user" />
                     Neuen Test anordnen
                   </a-menu-item>
-                  <a-menu-item key="SEND_TO_QUARANTINE">
+                  <a-menu-item key="SEND_TO_QUARANTINE" v-if="permissions.sendToQuarantine">
                     <a-icon type="user" />
-                    Patienten in Quarantäne schicken
+                    Quarantäne vormerken
                   </a-menu-item>
-                  <!--                <a-menu-item key="HOSPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
                 </a-menu>
-                <a-button style="margin-left: 8px" type="primary"> Aktionen
+                <a-button style="margin-left: 8px"> Aktionen
                   <a-icon type="down" />
                 </a-button>
               </a-dropdown>
-            </div>
-            <a-button type="primary" icon="edit" @click="editPatientStammdaten">
+        </template>
+      </a-page-header>
+
+      <a-tabs
+        defaultActiveKey="master-data"
+        v-if="patient"
+        style="text-align: left"
+      >
+        <a-tab-pane
+          key="master-data"
+          tab="Stammdaten"
+        >
+          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
+            <a-button icon="edit" @click="editPatientStammdaten">
               Daten ändern
             </a-button>
           </div>
-          <!-- display user data here-->
-          <div>
-
             <!-- Allgemein & Adresse -->
             <a-row :gutter="8">
               <a-col
@@ -152,7 +164,12 @@
                 </a-card>
               </a-col>
             </a-row>
+        </a-tab-pane>
 
+        <a-tab-pane
+          key="overview"
+          tab="Falldaten"
+        >
             <!-- Tests -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
@@ -160,7 +177,7 @@
                   <div class="card-header">
                     <div>
                       Fall-Status: {{(patientStatus ? patientStatus.label : 'Unbekannt') + (patient.quarantineUntil ?
-                      (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')}}"
+                      (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')}}
                     </div>
                     <div class="card-header-subtitle">Erkrankungsdatum: {{dateOfIllness}}</div>
                     <div class="card-header-subtitle">Meldedatum: {{dateOfReporting}}</div>
@@ -171,7 +188,6 @@
                     :scroll="{x: 0, y: 0}"
                     class="imis-table-no-pagination"
                     rowKey="id"
-                    style="padding: 0 24px"
                   >
                     <div slot="lastUpdate" slot-scope="lastUpdate">
                       {{getDate(lastUpdate)}}
@@ -240,8 +256,6 @@
                 </a-card>
               </a-col>
             </a-row>
-          </div>
-          <br>
         </a-tab-pane>
         <a-tab-pane
           forceRender
@@ -311,6 +325,7 @@
             <a-card
               title="Kontaktpersonen"
               align="left"
+              :bodyStyle="{ padding: 0 }"
             >
               <div slot="extra">
                 <a-button
@@ -397,6 +412,7 @@
 import Vue from 'vue'
 import moment, { Moment } from 'moment'
 import Api from '@/api'
+import * as permissions from '@/util/permissions'
 import { LabTest, Patient, Timestamp, ExposureContactFromServer } from '@/api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
 import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
@@ -468,6 +484,11 @@ const columnsExposureContacts: Partial<Column>[] = [
     },
   },
   {
+    title: 'Kontaktart',
+    key: 'context',
+    dataIndex: 'context',
+  },
+  {
     title: 'Infektionsstatus',
     key: 'infected',
     scopedSlots: {
@@ -508,13 +529,16 @@ const columnsIndexPatients = [
     },
   },
   {
-    title: 'Wie?',
+    title: 'Kontaktart',
     key: 'context',
     dataIndex: 'context',
   },
 ]
 
 interface State {
+  permissions: {
+    sendToQuarantine: boolean;
+  };
   patient: undefined | Patient;
   patientInfectionSources: ExposureContactFromServer[];
   exposureContacts: ExposureContactFromServer[];
@@ -562,6 +586,9 @@ export default Vue.extend({
 
   data(): State {
     return {
+      permissions: {
+        sendToQuarantine: false,
+      },
       dateFormat: 'DD.MM.YYYY',
       patient: undefined,
       patientInfectionSources: [],
@@ -599,6 +626,13 @@ export default Vue.extend({
     }),
     async loadData() {
       this.exposureContactsLoading = true
+      try {
+        this.permissions = await permissions.checkAllowed({
+          sendToQuarantine: Api.sendToQuarantineUsingPost,
+        })
+      } catch (err) {
+        console.log(err)
+      }
 
       // Load Patient
       const patientId = this.$route.params.id
@@ -674,7 +708,7 @@ export default Vue.extend({
     handleActionClick(e: { key: string }) {
       switch (e.key) {
         case 'SEND_TO_QUARANTINE':
-          this.$router.push({ name: 'send-to-quarantine', params: { patientId: this.patient?.id || '' } })
+          this.$router.push({ name: 'request-quarantine', params: { patientId: this.patient?.id || '' } })
           break
         case 'ARRANGE_TEST':
           this.scheduleTest()
@@ -700,8 +734,6 @@ export default Vue.extend({
       }
     },
     addExposureContact() {
-      const patientId = this.patient?.id
-
       this.exposureContactInEditing = {}
 
       Vue.nextTick(() => {

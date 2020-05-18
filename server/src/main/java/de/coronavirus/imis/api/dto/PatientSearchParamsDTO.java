@@ -1,9 +1,13 @@
 package de.coronavirus.imis.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import de.coronavirus.imis.domain.EventType;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PatientSearchParamsDTO {
 
 	private String firstName;
@@ -32,6 +36,7 @@ public class PatientSearchParamsDTO {
 	private boolean includePatientEvents;
 
 	private EventType patientStatus;
+	private List<EventType> quarantineStatus;
 
 	public Long getPageSize() {
 		if (pageSize != null && pageSize > 0) {

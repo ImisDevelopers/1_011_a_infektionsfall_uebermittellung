@@ -4,14 +4,14 @@
       <!-- Straße / Hausnummer -->
       <a-row>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Straße, Hausnummer">
+          <a-form-item label="Straße, Hausnummer" :itemSelfUpdate="true">
             <a-input-group compact>
               <a-input
                 ref="street"
                 class="custom-input"
                 style="width: calc(100%);"
                 placeholder="Straße und Hausnummer"
-                v-decorator="[keys.street, {
+                v-decorator="[formFieldName('street'), {
                   rules: [{
                     required: $props.required!==false,
                     message: 'Bitte Straße und Hausnummer eingeben',
@@ -23,7 +23,7 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="PLZ, Ort">
+          <a-form-item label="PLZ, Ort" :itemSelfUpdate="true">
             <a-input-group compact>
               <a-auto-complete
                 ref="zip"
@@ -37,7 +37,7 @@
                 :dropdownMenuStyle="{
                   width: 'max-content'
                 }"
-                v-decorator="[keys.zip, {
+                v-decorator="[formFieldName('zip'), {
                   rules: [{
                     required: $props.required!==false,
                     message: 'Bitte PLZ eingeben',
@@ -49,7 +49,7 @@
                 class="custom-input"
                 style="width: calc(100% - 60pt);"
                 placeholder="Ort"
-                v-decorator="[keys.city, {
+                v-decorator="[formFieldName('city'), {
                   rules: [{
                     required: $props.required!==false,
                     message: 'Bitte Ort eingeben',
@@ -62,12 +62,12 @@
       </a-row>
       <a-row>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Land">
+          <a-form-item label="Land" :itemSelfUpdate="true">
             <a-select
               ref="country"
               class="custom-input"
               placeholder="Bitte wählen..."
-              v-decorator="[keys.country, { rules: [{
+              v-decorator="[formFieldName('country'), { rules: [{
                 required: $props.required!==false,
                 message: 'Bitte Land auswählen',
               }], initialValue: initialCountry()}]"
@@ -99,7 +99,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import mixins from 'vue-typed-mixins'
+import * as typing from '@/util/typing'
 import { getPlzs, Plz } from '@/util/plz-service'
+import { FormGroupMixin } from '@/util/forms'
 
 interface Input extends Vue {
   value: string;
@@ -112,52 +115,23 @@ interface ZipEntry {
   zipData: Plz;
 }
 
-export default Vue.extend({
+export default mixins(FormGroupMixin).extend({
   name: 'LocationFormGroup',
+  fieldIdentifiers: ['street', 'zip', 'city', 'country'],
   props: [
-    'form',
     'required',
     'data',
-    'streetInputKey',
-    'houseNumberInputKey',
-    'zipInputKey',
-    'cityInputKey',
-    'countryInputKey',
-    'inputKeyPrefix',
-    'useInputKeysForData',
   ],
   data() {
-    const keynames = [
-      'street',
-      'houseNumber',
-      'zip',
-      'city',
-      'country',
-    ]
-    const prefixed = (val: string) => {
-      if (this.$props.inputKeyPrefix) {
-        const capitalized = val.charAt(0).toUpperCase() + val.substring(1)
-        return this.$props.inputKeyPrefix + capitalized
-      } else {
-        return val
-      }
-    }
-
-    const keys = Object.fromEntries(Object.values(keynames).map(keyname => {
-      return [keyname, this.$props[keyname + 'InputKey'] || prefixed(keyname)]
-    }))
-    const dataKeys = Object.fromEntries(Object.values(keynames).map(keyname => {
-      return [keyname, this.$props.useInputKeysForData ? keys[keyname] : keyname]
-    }))
-
     return {
-      keys,
-      dataKeys,
       zips: [] as ZipEntry[],
       currentZipSearch: '' as string,
     }
   },
   methods: {
+    withExts() {
+      return typing.extended(this, typing.TypeArg<FormGroupMixin>())
+    },
     initialCountry() {
       const initialData = this.initialData('country')
       if (!initialData && this.required) {
@@ -166,14 +140,14 @@ export default Vue.extend({
         return initialData
       }
     },
-    initialData(keyname: string) {
-      return this.$props.data ? this.$props.data[this.keys[keyname]] : null
+    initialData(fieldId: string) {
+      return this.$props.data ? this.$props.data[this.withExts().formFieldName(fieldId)] : null
     },
     updateByZipData(plzData: Plz) {
-      this.$props.form.setFieldsValue({
-        [this.keys.zips]: plzData.fields.plz,
-        [this.keys.city]: plzData.fields.note,
-        [this.keys.country]: 'Deutschland',
+      this.withExts().setData({
+        zip: plzData.fields.plz,
+        city: plzData.fields.note,
+        country: 'Deutschland',
       })
     },
     async handleZipSearch(value: string) {

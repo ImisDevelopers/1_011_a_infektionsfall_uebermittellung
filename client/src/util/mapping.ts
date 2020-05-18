@@ -6,7 +6,9 @@ export declare type MapperDef = { [x: string]: ((x: any) => any | Partial<Mapper
 export function map(object: {[x: string]: any}, mapperDef: MapperDef) {
   return Object.fromEntries(Object.entries(object).map(
     (entry: [any, any]) => {
-      let [key, val] = entry
+      const key = entry[0];
+      let val = entry[1];
+
       let mapperEntry: any = mapperDef[key]
 
       if (mapperEntry) {

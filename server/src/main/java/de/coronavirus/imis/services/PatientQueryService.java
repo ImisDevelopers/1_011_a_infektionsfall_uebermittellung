@@ -19,11 +19,16 @@ public class PatientQueryService {
 	private final EntityManager sessionFactory;
 
 	public <T> TypedQuery<T> getQuery(String sql, PatientSearchParamsDTO patientSearchParamsDTO, Class<T> returnClazz) {
+		String genderQueryString = "%";
+		// Cant surround gender with "%" like the other attributes (%male% matches female)
+		if (patientSearchParamsDTO.getGender() != null && !patientSearchParamsDTO.getGender().isBlank()) {
+			genderQueryString = patientSearchParamsDTO.getGender();
+		}
 		final TypedQuery<T> query = this.sessionFactory.createQuery(sql, returnClazz);
 		query.setParameter(1, likeOperatorService.like(patientSearchParamsDTO.getFirstName()));
 		query.setParameter(2, likeOperatorService.like(patientSearchParamsDTO.getLastName()));
 		query.setParameter(3, likeOperatorService.like(patientSearchParamsDTO.getId()));
-		query.setParameter(4, likeOperatorService.like(patientSearchParamsDTO.getGender()));
+		query.setParameter(4, genderQueryString);
 		query.setParameter(5, likeOperatorService.like(patientSearchParamsDTO.getEmail()));
 		query.setParameter(6, likeOperatorService.like(patientSearchParamsDTO.getPhoneNumber()));
 		query.setParameter(7, likeOperatorService.like(patientSearchParamsDTO.getStreet()));

@@ -31,17 +31,25 @@
         v-if="showAdvancedSearch"
       >
         <a-form-item label="Vorname">
-          <a-input placeholder="Vorname" v-model="advancedForm.firstName">
+          <a-input
+            placeholder="Vorname"
+            v-model="advancedForm.firstName"
+            autocomplete="no"
+          >
             <a-icon slot="prefix" type="user" />
           </a-input>
         </a-form-item>
         <a-form-item label="Nachname">
-          <a-input placeholder="Nachname" v-model="advancedForm.lastName">
+          <a-input
+            placeholder="Nachname"
+            v-model="advancedForm.lastName"
+            autocomplete="no"
+          >
             <a-icon slot="prefix" type="user" />
           </a-input>
         </a-form-item>
         <a-form-item label="ID">
-          <a-input placeholder="ID" v-model="advancedForm.id">
+          <a-input placeholder="ID" v-model="advancedForm.id" autocomplete="no">
             <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
@@ -64,22 +72,38 @@
           </a-select>
         </a-form-item>
         <a-form-item label="Stadt">
-          <a-input placeholder="Stadt" v-model="advancedForm.city">
+          <a-input
+            placeholder="Stadt"
+            v-model="advancedForm.city"
+            autocomplete="no"
+          >
             <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Straße">
-          <a-input placeholder="Straße" v-model="advancedForm.street">
+          <a-input
+            placeholder="Straße"
+            v-model="advancedForm.street"
+            autocomplete="no"
+          >
             <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Hausnummer" style="width: 100px;">
-          <a-input placeholder="Hausnr." v-model="advancedForm.houseNumber">
+          <a-input
+            placeholder="Hausnr."
+            v-model="advancedForm.houseNumber"
+            autocomplete="no"
+          >
             <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
         <a-form-item label="Postleitzahl" style="width: 100px;">
-          <a-input placeholder="PLZ" v-model="advancedForm.zip">
+          <a-input
+            placeholder="PLZ"
+            v-model="advancedForm.zip"
+            autocomplete="no"
+          >
             <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
@@ -87,6 +111,7 @@
           <a-input
             placeholder="Versicherung"
             v-model="advancedForm.insuranceCompany"
+            autocomplete="no"
           >
             <a-icon slot="prefix" type="hdd" />
           </a-input>

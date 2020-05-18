@@ -45,6 +45,16 @@
           </a-radio-group>
         </a-form-item>
 
+        <a-form-item label="Ergebnisdatum">
+          <DateInput
+            :defaultValue='today'
+            v-decorator="['eventDate', { rules: [{
+            required: false,
+            message: 'Datum der Probenabnahme',
+          }]}]"
+          />
+        </a-form-item>
+
         <!-- Kommentar -->
         <a-form-item label="Kommentar">
           <a-textarea
@@ -80,8 +90,10 @@ import Vue from 'vue'
 import Api from '@/api'
 import TestInput from '@/components/TestInput.vue'
 import LaboratoryInput from '@/components/LaboratoryInput.vue'
+import DateInput from '@/components/DateInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
+import moment from 'moment'
 
 interface State {
   form: any;
@@ -90,6 +102,7 @@ interface State {
   laboratories: Institution[];
   updatedLabTest?: LabTest;
   updatedLabTestStatus: string;
+  today: moment.Moment;
 }
 
 export default Vue.extend({
@@ -100,16 +113,19 @@ export default Vue.extend({
   components: {
     TestInput,
     LaboratoryInput,
+    DateInput,
   },
   props: {},
   data(): State {
     return {
       form: this.$form.createForm(this),
       fileBytes: undefined,
-      testResults: testResults,
+      // TODO: After simulation, remove the filter
+      testResults: testResults.filter(testResult => testResult.id === 'TEST_POSITIVE' || testResult.id === 'TEST_NEGATIVE'),
       laboratories: [],
       updatedLabTest: undefined,
       updatedLabTestStatus: '',
+      today: moment(),
     }
   },
   async mounted() {
@@ -170,6 +186,7 @@ export default Vue.extend({
           status: values.testResult,
           comment: values.comment,
           file: this.fileBytes,
+          eventDate: values.eventDate,
         }
 
         Api.updateTestStatusUsingPut(values.laboratoryId, request).then(labTest => {

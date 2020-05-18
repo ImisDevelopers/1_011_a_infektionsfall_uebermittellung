@@ -3,7 +3,7 @@
     <a-form-item style="display: none;"
       :selfUpdate="true">
       <a-input type="hidden"
-        v-decorator="[ formInputKey('id') ]"/>
+        v-decorator="[ formFieldName('id') ]"/>
     </a-form-item>
     <a-row :style="`display: ${showOriginatorPatient ? 'unset' : 'none'}`">
       <!-- Originating and Contact Names -->
@@ -15,7 +15,7 @@
           v-bind="inputProps.source"
           :disabled="$props.disableOriginatorPatient"
           :filterOption="filterSources"
-          v-decorator="[ formInputKey('source'), {
+          v-decorator="[ formFieldName('source'), {
               rules: [
                 { required: true, message: 'Bitte Ursprungspatienten angeben' },
               ], initialValue: undefined
@@ -124,13 +124,13 @@
 
     <a-row :gutter="8">
       <!-- When and How -->
-      <a-col :md="12">
+      <a-col :md="11" :sm="24">
         <a-form-item label="Datum des Kontakts"
           :selfUpdate="true">
           <date-input
             v-bind="inputProps.dateOfContact"
             :disabledDate="date => date.isAfter(moment())"
-            v-decorator="[ formInputKey('dateOfContact'), {
+            v-decorator="[ formFieldName('dateOfContact'), {
               rules: [
                 { required: true, message: 'Bitte ein gültiges Datum angeben' },
               ],
@@ -144,7 +144,7 @@
             v-bind="inputProps.context"
             :dataSource="contexts"
             :filterOption="false"
-            v-decorator="[ formInputKey('context'), {
+            v-decorator="[ formFieldName('context'), {
               rules: [
                 { required: true, message: 'Bitte den Umstand des Kontakts angeben' }
               ]
@@ -158,7 +158,7 @@
         :selfUpdate="true">
         <a-textarea
           v-bind="inputProps.comment"
-          v-decorator="[ formInputKey('comment'), {
+          v-decorator="[ formFieldName('comment'), {
             rules: [],
           }]"/>
       </a-form-item>
@@ -170,6 +170,7 @@
 import mixins from 'vue-typed-mixins'
 import moment from 'moment'
 
+import * as typing from '@/util/typing'
 import Api from '@/api'
 import DateInput from '@/components/DateInput.vue'
 import PatientInput from '@/components/PatientInput.vue'
@@ -194,7 +195,7 @@ export default mixins(FormGroupMixin).extend({
     DateInput,
     PatientInput,
   },
-  inputKeys: ['id', 'source', 'contact', 'contactFirstName', 'contactLastName', 'contactDateOfBirth', 'dateOfContact', 'context', 'comment'],
+  fieldIdentifiers: ['id', 'source', 'contact', 'contactFirstName', 'contactLastName', 'contactDateOfBirth', 'dateOfContact', 'context', 'comment'],
   props: {
     showOriginatorPatient: { default: true },
     disableOriginatorPatient: { default: false },
@@ -214,12 +215,15 @@ export default mixins(FormGroupMixin).extend({
     },
   },
   methods: {
+    withExts() {
+      return typing.extended(this, typing.TypeArg<FormGroupMixin>())
+    },
     moment,
     filterContacts(inputVal: string, option: any): boolean {
-      return option.key !== (this as any).getSingleValue('source')
+      return option.key !== this.withExts().getSingleValue('source')
     },
     filterSources(inputVal: string, option: any): boolean {
-      return option.key !== (this as any).getSingleValue('contact')
+      return option.key !== this.withExts().getSingleValue('contact')
     },
     async fetchPropositions() {
       const query = [(this as any).getSingleValue('contactFirstName'), (this as any).getSingleValue('contactLastName')].filter(u => u).join(' ').trim()

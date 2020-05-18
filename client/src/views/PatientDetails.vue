@@ -324,7 +324,7 @@
             <a-card
               title="Kontaktpersonen"
               align="left"
-              :bodyStyle="{padding: 0}"
+              :bodyStyle="{ padding: 0 }"
             >
               <div slot="extra">
                 <a-button

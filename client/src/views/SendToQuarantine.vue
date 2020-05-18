@@ -4,6 +4,17 @@
              @ok="updatePatients">
       <p>Sollen die Quarantänen von {{quarantinesByZip.length}} Patienten in den Status 'Quarantäne angeordnet'
         überführt werden?</p>
+        <a-form :form="form">
+          <a-form-item label="Datum der Anordnung (optional):">
+            <DateInput
+              :defaultValue= 'today'
+              v-decorator="['eventDate', { rules: [{
+                required: false,
+                message: 'Datum der Anordnung',
+              }]}]"
+            />
+          </a-form-item>
+        </a-form>
     </a-modal>
     <a-button class="download-all-button" type="primary" @click="downloadAll" icon="download" size="large">
       Alle Herunterladen
@@ -45,6 +56,7 @@ import { Column } from 'ant-design-vue/types/table/column'
 import moment from 'moment'
 import { getPlzs } from '@/util/plz-service'
 import { downloadCsv } from '@/util/export-service'
+import DateInput from '../components/DateInput.vue'
 
 const columnsQuarantines = [
   {
@@ -81,11 +93,16 @@ interface QuarantinesForZip {
 interface State {
   quarantinesByZip: QuarantinesForZip[];
   columnsQuarantines: Partial<Column>[];
-  confirmVisible: boolean;
+  confirmVisible: boolean; // eslint-disable-next-line
+  form: any; 
+  today: moment.Moment;
 }
 
 export default Vue.extend({
   name: 'SendToQuarantine',
+  components: {
+    DateInput,
+  },
   async created() {
     const quarantineIncidents = await Api.getSelectedForQuarantineUsingGet()
     const quarantinesByZip: QuarantinesForZip[] = []
@@ -116,6 +133,8 @@ export default Vue.extend({
       quarantinesByZip: [],
       columnsQuarantines: columnsQuarantines,
       confirmVisible: false,
+      form: this.$form.createForm(this),
+      today: moment(),
     }
   },
   methods: {
@@ -147,7 +166,11 @@ export default Vue.extend({
       for (const quarantinesByZip of this.quarantinesByZip) {
         patientIds.push(...quarantinesByZip.quarantines.map(quarantine => quarantine.patient?.id || ''))
       }
-      Api.sendToQuarantineUsingPost(patientIds).then(() => {
+      const request = {
+        patientIds: patientIds,
+        eventDate: this.form.getFieldValue('eventDate') ? this.form.getFieldValue('eventDate').format('YYYY-MM-DD') : undefined,
+      }
+      Api.sendToQuarantineUsingPost(request).then(() => {
         const h = this.$createElement
         this.$success({
           title: 'Quarantänen aktualisiert.',
@@ -156,7 +179,7 @@ export default Vue.extend({
           ]),
         })
         this.quarantinesByZip = []
-      }).catch(error => {
+      }).catch((error: Error) => {
         const notification = {
           message: 'Fehler beim Aktualisieren der Quarantänen',
           description: error.message,

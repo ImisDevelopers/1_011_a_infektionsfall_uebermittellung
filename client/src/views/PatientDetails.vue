@@ -398,7 +398,9 @@
             @cancel="exposureContactInEditing = null">
             <a-form :form="exposureContactForm" :selfUpdate="true" layout="vertical">
               <EditExposureContact
-                :disableOriginatorPatient="true" :showOriginatorPatient="false" />
+                :disableOriginatorPatient="true" :showOriginatorPatient="false"
+                @showPatient="showPatient"
+                :contactPatient="exposureContactInEditing ? exposureContactInEditing.contact : null" />
             </a-form>
           </a-modal>
         </a-tab-pane>
@@ -422,6 +424,7 @@ import { TestTypeItem, testTypes } from '@/models/test-types'
 import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
 import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
+import { Modal } from 'ant-design-vue'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -751,6 +754,7 @@ export default Vue.extend({
         this.exposureContactForm.setFieldsValue(map(contact as {[x: string]: any}, {
           // source: patient => patient.id,
           // contact: patient => patient.id,
+          contact: contact => contact.id,
           dateOfContact: moment,
         }))
       })
@@ -771,11 +775,12 @@ export default Vue.extend({
             dateOfContact: stringFromMoment,
           })
 
+          // send initial patient data in contact field as string
           if (!values.contact) {
             values.contact = JSON.stringify({
               firstName: values.contactFirstName,
               lastName: values.contactLastName,
-              dateOfBirth: stringFromMoment(values.contactDateOfBirth),
+              dateOfBirth: values.contactDateOfBirth ? stringFromMoment(values.contactDateOfBirth) : undefined,
             })
           }
 
@@ -794,6 +799,7 @@ export default Vue.extend({
       this.exposureContacts = this.exposureContacts.filter(contact => contact.id !== contactId)
     },
     showPatient(patientId: string) {
+      (this.$refs.exposureContactModal as Modal).$emit('cancel')
       this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
     moment,

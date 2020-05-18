@@ -3,6 +3,7 @@ package de.coronavirus.imis.api.converter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
@@ -17,28 +18,28 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ExOrNewContactConverter {
 
-  private final PatientService patientService;
+	private final PatientService patientService;
 
-  private final ObjectMapper jsonMapper = new ObjectMapper();
+	private final ObjectMapper jsonMapper = new ObjectMapper();
 
-  public String convert(String contact) {
-	  JsonNode in;
-	  try {
-		  in = jsonMapper.readTree(contact);
-	  } catch (JsonProcessingException e) {
-		  return contact;
-	  }
-	  if (in == null) {
-      return null;
-    } else if (in.isTextual()) {
-      return in.textValue();
-    } else {
-      try {
-        CreatePatientDTO newPatientDto = this.jsonMapper.treeToValue(in, CreatePatientDTO.class);
-        return patientService.addPatient(newPatientDto, true).getId();
-      } catch (JsonProcessingException e) {
-        throw new RuntimeException(e);
-      }
-    }
-  }
+	public String convert(String contact) {
+		JsonNode in;
+		try {
+			in = jsonMapper.readTree(contact);
+		} catch (JsonProcessingException e) {
+			return contact;
+		}
+		if (in == null) {
+			return null;
+		} else if (in.isEmpty() || in.isTextual()) {
+			return contact;
+		} else {
+			try {
+				CreatePatientDTO newPatientDto = this.jsonMapper.treeToValue(in, CreatePatientDTO.class);
+				return patientService.addPatient(newPatientDto, true).getId();
+			} catch (JsonProcessingException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
 }

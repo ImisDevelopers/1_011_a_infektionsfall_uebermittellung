@@ -65,7 +65,7 @@ h4 {
 
 .fading-enter-active,
 .fading-leave-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.2s;
 }
 .fading-enter, .fading-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

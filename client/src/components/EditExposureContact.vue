@@ -31,7 +31,7 @@
     <a-form-item style="display: none;"
       :selfUpdate="true">
       <a-input type="hidden"
-        v-decorator="[ formInputKey('contact') ]"/>
+        v-decorator="[ formFieldName('contact') ]"/>
     </a-form-item>
 
     <transition name="fading" mode="out-in">
@@ -44,7 +44,7 @@
               <a-input
                 v-bind="inputProps.contactLastName"
                 @keyup='fetchPropositions'
-                v-decorator="[ formInputKey('contactLastName'), {
+                v-decorator="[ formFieldName('contactLastName'), {
                   rules: [],
                 }]"/>
             </a-form-item>
@@ -55,7 +55,7 @@
               <a-input
                 v-bind="inputProps.contactFirstName"
                 @keyup='fetchPropositions'
-                v-decorator="[ formInputKey('contactFirstName'), {
+                v-decorator="[ formFieldName('contactFirstName'), {
                   rules: [],
                 }]"/>
             </a-form-item>
@@ -67,7 +67,7 @@
                 v-bind="inputProps.dateOfContact"
                 @change='fetchPropositions'
                 :disabledDate="date => date.isAfter(moment())"
-                v-decorator="[ formInputKey('contactDateOfBirth'), {
+                v-decorator="[ formFieldName('contactDateOfBirth'), {
                   rules: [],
                 }]"/>
             </a-form-item>
@@ -107,7 +107,8 @@
 
       <div key="selected-contact" v-else style="margin-bottom: 20px;">
         <a-card :title="`${contact.lastName}, ${contact.firstName}`" size="small">
-          <a-button slot="extra" ghost size="small" type="primary" @click="removeProposition()">manuell eingeben</a-button>
+          <a-button slot="extra" ghost size="small" type="primary" @click="removeProposition()" v-if="!lockContactEditing">manuell eingeben</a-button>
+          <a-button slot="extra" size="small" type="link" @click="showPatient(contact.id)" v-if="lockContactEditing">Patient bearbeiten</a-button>
           <a-descriptions  layout="horizontal" :column="1" size="small">
             <a-descriptions-item label="Geburtsdatum">
               {{moment(contact.dateOfBirth).format('DD.MM.YYYY')}}
@@ -176,6 +177,7 @@ import DateInput from '@/components/DateInput.vue'
 import PatientInput from '@/components/PatientInput.vue'
 import { FormGroupMixin } from '@/util/forms.ts'
 import { Patient } from '@/api/SwaggerApi'
+import { Modal } from 'ant-design-vue'
 
 const exposureContexts = [
   'Haushaltskontakt',
@@ -187,6 +189,7 @@ interface State {
   contexts: string[];
   patientPropositions: Patient[];
   contact?: Patient;
+  lockContactEditing: boolean;
 }
 
 export default mixins(FormGroupMixin).extend({
@@ -199,12 +202,14 @@ export default mixins(FormGroupMixin).extend({
   props: {
     showOriginatorPatient: { default: true },
     disableOriginatorPatient: { default: false },
+    contactPatient: { type: Object, default: null },
   },
   data(): State {
     return {
       contexts: exposureContexts,
       patientPropositions: [],
       contact: undefined,
+      lockContactEditing: false,
     }
   },
   watch: {
@@ -213,6 +218,22 @@ export default mixins(FormGroupMixin).extend({
         (this as any).setData({ contact: c.id })
       }
     },
+    async contactPatient(contactPatient: {id: string}) {
+      if (contactPatient) {
+        this.contact = await Api.getPatientForIdUsingGet(contactPatient.id)
+        this.lockContactEditing = true
+      } else {
+        this.contact = undefined
+        this.patientPropositions = []
+        this.lockContactEditing = false
+      }
+    },
+  },
+  async mounted() {
+    if (this.contactPatient?.id) {
+      this.contact = await Api.getPatientForIdUsingGet(this.contactPatient.id)
+      this.lockContactEditing = true
+    }
   },
   methods: {
     withExts() {
@@ -242,7 +263,11 @@ export default mixins(FormGroupMixin).extend({
     },
     removeProposition() {
       this.contact = undefined
+      this.withExts().setData({ contact: undefined })
       this.patientPropositions = []
+    },
+    showPatient(patientId: string) {
+      this.$emit('showPatient', patientId)
     },
   },
 })

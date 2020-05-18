@@ -61,6 +61,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				// OPTIONS matcher for CORS, do not delete
 				.antMatchers(OPTIONS, "/**").permitAll()
 				.antMatchers("/api/auth").permitAll()
+				.mvcMatchers(POST, API_PREFIX + "/patients").permitAll()
 				.antMatchers(API_PREFIX + "/patients").hasAnyRole(DEPARTMENT_OF_HEALTH, CLINIC, DOCTORS_OFFICE, TEST_SITE)
 				.antMatchers(API_PREFIX + "/patients/quarantine/*").hasAnyRole(DEPARTMENT_OF_HEALTH)
 				.antMatchers(API_PREFIX + "/exposure-contacts/**").hasAnyRole(DEPARTMENT_OF_HEALTH, CLINIC, DOCTORS_OFFICE, TEST_SITE)

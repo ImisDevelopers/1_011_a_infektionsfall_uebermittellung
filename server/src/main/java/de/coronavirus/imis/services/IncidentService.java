@@ -1,7 +1,7 @@
 package de.coronavirus.imis.services;
 
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
-import de.coronavirus.imis.api.dto.SendToQuarantineDTO;
+import de.coronavirus.imis.api.dto.RequestQuarantineDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;
@@ -128,6 +128,10 @@ public class IncidentService {
 
 	@Transactional
 	public TestIncident addIncident(CreateLabTestDTO info) {
+
+		if(info.getEventDate()==null)
+			info.setEventDate(LocalDate.now());
+
 		var incident = (TestIncident) new TestIncident()
 				.setTestId(info.getTestId())
 				.setTestMaterial(info.getTestMaterial())
@@ -136,7 +140,8 @@ public class IncidentService {
 				.setStatus(TestStatus.TEST_SUBMITTED)
 				.setLaboratory(laboratoryRepo.findById(info.getLaboratoryId()).orElseThrow(LaboratoryNotFoundException::new))
 				.setEventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
-				.setPatient(patientRepo.findById(info.getPatientId()).orElseThrow(PatientNotFoundException::new));
+				.setPatient(patientRepo.findById(info.getPatientId()).orElseThrow(PatientNotFoundException::new))
+				.setEventDate(info.getEventDate());
 
 		testIncidentRepo.saveAndFlush(incident);
 		return incident;
@@ -144,6 +149,10 @@ public class IncidentService {
 
 	@Transactional
 	public TestIncident updateIncident(String laboratoryId, UpdateTestStatusDTO update) {
+
+		if(update.getEventDate()==null)
+			update.setEventDate(LocalDate.now());
+
 		var incident = testIncidentRepo.findByTestId(update.getTestId()).get(0);
 		var laboratory = laboratoryRepo.findById(laboratoryId).orElseThrow();
 		incident
@@ -151,7 +160,8 @@ public class IncidentService {
 				.setStatus(update.getStatus())
 				.setComment(update.getComment())
 				.setReport(update.getFile())
-				.setEventType(testStatusToEvent(update.getStatus()));
+				.setEventType(testStatusToEvent(update.getStatus()))
+				.setEventDate(update.getEventDate());
 		// ToDo bei setStatus und setEventType: Semantik? Sinnvoll so?
 
 		testIncidentRepo.saveAndFlush(incident);
@@ -160,7 +170,7 @@ public class IncidentService {
 
 	// Quarantine Incidents
 	@Transactional
-	public QuarantineIncident addOrUpdateIncident(String patientId, SendToQuarantineDTO info) {
+	public QuarantineIncident addOrUpdateIncident(String patientId, RequestQuarantineDTO info) {
 		// Patient & Date
 		var patient = patientRepo.findById(patientId).orElseThrow();
 		var until = patientMapper.parseDate(info.getDateUntil());
@@ -171,11 +181,15 @@ public class IncidentService {
 				? new QuarantineIncident()
 				: incidentOptional.get(0);
 
+		if(info.getEventDate()==null)
+			info.setEventDate(LocalDate.now());
+
 		// Apply to Incident
 		incident
 				.setComment(info.getComment())
 				.setUntil(until)
 				.setEventType(info.getStatus() != null ? info.getStatus() : EventType.QUARANTINE_SELECTED)
+				.setEventDate(info.getEventDate())
 				.setPatient(patient);
 		quarantineIncidentRepo.saveAndFlush(incident);
 
@@ -183,14 +197,19 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public void updateQuarantineIncident(String patientId, EventType status) {
+	public void updateQuarantineIncident(String patientId, EventType status, LocalDate date) {
 		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
 		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
 		if (incidentOptional.isEmpty()) {
 			throw new QuarantineNotFoundException("No Quarantine for " + patientId);
 		}
 		var incident = incidentOptional.get(0);
-		incident.setEventType(status);
+
+		date = date == null ? LocalDate.now() : date;
+
+		incident
+				.setEventDate(date)
+				.setEventType(status);
 		quarantineIncidentRepo.saveAndFlush(incident);
 	}
 
@@ -207,9 +226,9 @@ public class IncidentService {
 		dateOfReporting = dateOfReporting == null ? LocalDate.now() : dateOfReporting;
 
 		var incident = (AdministrativeIncident) new AdministrativeIncident()
-				.setDateOfReporting(dateOfReporting)
 				.setIllness(concreteIllness)
 				.setEventType(eventType)
+				.setEventDate(dateOfReporting)
 				.setPatient(patient);
 
 		adminIncidentRepo.saveAndFlush(incident);
@@ -235,10 +254,10 @@ public class IncidentService {
 		);
 
 		var incident = (AdministrativeIncident) new AdministrativeIncident()
-				.setDateOfReporting(LocalDate.now())
 				.setIllness(Illness.CORONA)
 				.setResponsibleDoctor(doctor)
 				.setEventType(EventType.SCHEDULED_FOR_TESTING)
+				.setEventDate(LocalDate.now())
 				.setPatient(patient);
 		adminIncidentRepo.saveAndFlush(incident);
 

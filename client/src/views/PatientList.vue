@@ -40,22 +40,6 @@
             <a-icon slot="prefix" type="user" />
           </a-input>
         </a-form-item>
-        <a-form-item label="Status">
-          <a-select
-            placeholder="Status"
-            style="width: 250px;"
-            v-model="advancedForm.patientStatus"
-          >
-            <a-select-option value="">Alle</a-select-option>
-            <a-select-option
-              :key="eventType.id"
-              v-for="eventType in eventTypes"
-            >
-              <a-icon :type="eventType.icon" style="margin-right: 5px;" />
-              {{ eventType.label }}
-            </a-select-option>
-          </a-select>
-        </a-form-item>
         <a-form-item label="ID">
           <a-input placeholder="ID" v-model="advancedForm.id">
             <a-icon slot="prefix" type="hdd" />
@@ -84,19 +68,6 @@
             <a-icon slot="prefix" type="home" />
           </a-input>
         </a-form-item>
-        <a-form-item label="E-Mail">
-          <a-input placeholder="E-Mail" v-model="advancedForm.email">
-            <a-icon slot="prefix" type="mail" />
-          </a-input>
-        </a-form-item>
-        <a-form-item label="Telefonnummer">
-          <a-input
-            placeholder="Telefonnummer"
-            v-model="advancedForm.phoneNumber"
-          >
-            <a-icon slot="prefix" type="phone" />
-          </a-input>
-        </a-form-item>
         <a-form-item label="Straße">
           <a-input placeholder="Straße" v-model="advancedForm.street">
             <a-icon slot="prefix" type="home" />
@@ -120,24 +91,6 @@
             <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
-        <a-form-item label="Versicherungsnummer">
-          <a-input
-            placeholder="Versicherungsnummer"
-            v-model="advancedForm.insuranceMembershipNumber"
-          >
-            <a-icon slot="prefix" type="idcard" />
-          </a-input>
-        </a-form-item>
-        <a-form-item label="Arzt-ID">
-          <a-input placeholder="Arzt-ID" v-model="advancedForm.doctorId">
-            <a-icon slot="prefix" type="hdd" />
-          </a-input>
-        </a-form-item>
-        <a-form-item label="Labor-ID">
-          <a-input placeholder="Labor-ID" v-model="advancedForm.laboratoryId">
-            <a-icon slot="prefix" type="hdd" />
-          </a-input>
-        </a-form-item>
         <a-form-item label="Quarantänestatus">
           <a-select
             placeholder="Quarantänestatus"
@@ -146,14 +99,14 @@
           >
             <a-select-option value="">Alle</a-select-option>
             <a-select-option key="QUARANTINE_MANDATED"
-              >Quarantäne angeordnet</a-select-option
-            >
+              >Quarantäne angeordnet
+            </a-select-option>
             <a-select-option key="QUARANTINE_SELECTED"
-              >Quarantäne vorgemerkt</a-select-option
-            >
+              >Quarantäne vorgemerkt
+            </a-select-option>
             <a-select-option key="NO_SELECTION"
-              >Keine Anordnung</a-select-option
-            >
+              >Keine Anordnung
+            </a-select-option>
           </a-select>
         </a-form-item>
         <!-- Invisible Button so user can use enter to search -->
@@ -226,8 +179,8 @@
           @click="downloadPatients"
           style="margin-right: 50px;"
           type="primary"
-          >CSV exportieren</a-button
-        >
+          >CSV exportieren
+        </a-button>
         <span style="margin-right: 10px;">{{ count }} Patienten</span>
         <a-pagination
           :pageSize.sync="form.pageSize"
@@ -351,18 +304,12 @@ export default Vue.extend({
       advancedForm: {
         gender: '',
         city: '',
-        email: '',
-        phoneNumber: '',
         street: '',
         houseNumber: '',
         zip: '',
         insuranceCompany: '',
-        insuranceMembershipNumber: '',
-        doctorId: '',
-        laboratoryId: '',
         firstName: '',
         lastName: '',
-        patientStatus: undefined,
         quarantineStatus: undefined,
         id: '',
       },

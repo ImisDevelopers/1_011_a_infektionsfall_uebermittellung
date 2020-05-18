@@ -780,6 +780,7 @@ export default Vue.extend({
             values.contact = JSON.stringify({
               firstName: values.contactFirstName,
               lastName: values.contactLastName,
+              gender: values.contactGender,
               dateOfBirth: values.contactDateOfBirth ? stringFromMoment(values.contactDateOfBirth) : undefined,
             })
           }

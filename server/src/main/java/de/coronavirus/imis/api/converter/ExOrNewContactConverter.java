@@ -3,11 +3,9 @@ package de.coronavirus.imis.api.converter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
 /**

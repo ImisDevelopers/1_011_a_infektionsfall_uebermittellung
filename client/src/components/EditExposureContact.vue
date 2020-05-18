@@ -45,7 +45,7 @@
                 v-bind="inputProps.contactLastName"
                 @keyup='fetchPropositions'
                 v-decorator="[ formFieldName('contactLastName'), {
-                  rules: [],
+                  rules: [], initialValue: undefined
                 }]"/>
             </a-form-item>
           </a-col>
@@ -56,7 +56,7 @@
                 v-bind="inputProps.contactFirstName"
                 @keyup='fetchPropositions'
                 v-decorator="[ formFieldName('contactFirstName'), {
-                  rules: [],
+                  rules: [], initialValue: undefined
                 }]"/>
             </a-form-item>
           </a-col>
@@ -70,6 +70,22 @@
                 v-decorator="[ formFieldName('contactDateOfBirth'), {
                   rules: [],
                 }]"/>
+            </a-form-item>
+          </a-col>
+          <a-col :md="12">
+            <a-form-item label="Mediz. Geschlecht">
+              <a-radio-group
+                buttonStyle="solid"
+                :selfUpdate="true"
+                v-decorator="[formFieldName('contactGender'), { rules: [{
+                          required: true,
+                          message: 'Bitte Geschlecht eingeben',
+                        }], initialValue: undefined}]"
+              >
+                <a-radio value="male">Männlich</a-radio>
+                <a-radio value="female">Weiblich</a-radio>
+                <a-radio value="divers">Divers</a-radio>
+              </a-radio-group>
             </a-form-item>
           </a-col>
 
@@ -134,7 +150,7 @@
             v-decorator="[ formFieldName('dateOfContact'), {
               rules: [
                 { required: true, message: 'Bitte ein gültiges Datum angeben' },
-              ],
+              ], initialValue: undefined
             }]"/>
         </a-form-item>
       </a-col>
@@ -148,7 +164,8 @@
             v-decorator="[ formFieldName('context'), {
               rules: [
                 { required: true, message: 'Bitte den Umstand des Kontakts angeben' }
-              ]
+              ],
+              initialValue: undefined
             }]"/>
         </a-form-item>
       </a-col>
@@ -161,6 +178,7 @@
           v-bind="inputProps.comment"
           v-decorator="[ formFieldName('comment'), {
             rules: [],
+            initialValue: undefined
           }]"/>
       </a-form-item>
     </a-row>
@@ -198,7 +216,7 @@ export default mixins(FormGroupMixin).extend({
     DateInput,
     PatientInput,
   },
-  fieldIdentifiers: ['id', 'source', 'contact', 'contactFirstName', 'contactLastName', 'contactDateOfBirth', 'dateOfContact', 'context', 'comment'],
+  fieldIdentifiers: ['id', 'source', 'contact', 'contactFirstName', 'contactLastName', 'contactDateOfBirth', 'contactGender', 'dateOfContact', 'context', 'comment'],
   props: {
     showOriginatorPatient: { default: true },
     disableOriginatorPatient: { default: false },

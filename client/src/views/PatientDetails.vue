@@ -9,6 +9,7 @@
     <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
 
       <a-page-header
+        v-if="patient"
         :title="`${patient.lastName}, ${patient.firstName}`"
         :sub-title="patient.id"
         @back="() => $router.go(-1)"
@@ -331,7 +332,7 @@
             <a-card
               title="Kontaktpersonen"
               align="left"
-              bodyStyle="padding:0"
+              :bodyStyle="{ padding: 0 }"
             >
               <div slot="extra">
                 <a-button

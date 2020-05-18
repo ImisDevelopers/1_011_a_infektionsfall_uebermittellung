@@ -8,7 +8,11 @@
     > <!-- :colon="false" -->
 
       <a-form-item label="Patienten-ID"
-                   v-if="this.showPatientInput">
+                   v-if="this.givenPatientId">
+        {{this.$route.params.patientFirstName}} {{this.$route.params.patientLastName}}
+        ({{this.$route.params.patientId}})
+      </a-form-item>
+      <a-form-item label="Patienten-ID" v-else>
         <PatientInput
           v-decorator="['patientId',{ rules: [{
             required: true,
@@ -88,9 +92,6 @@ export default Vue.extend({
   computed: {
     givenPatientId(): string | undefined {
       return this.$route.params.patientId
-    },
-    showPatientInput(): boolean {
-      return !this.givenPatientId
     },
   },
   methods: {

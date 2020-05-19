@@ -1,9 +1,9 @@
 <template>
-  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px;">
+  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px;" align="center">
     <a-form
         :form="form"
-        :label-col="{ span: 6 }"
-        :wrapper-col="{ span: 18 }"
+        :label-col="{ span: 7 }"
+        :wrapper-col="{ span: 17 }"
         @submit.prevent="handleSubmit"
     > <!-- :colon="false" -->
       <a-form-item label="Patienten-ID"
@@ -64,6 +64,7 @@
       </a-form-item>
 
       <a-checkbox
+          :disabled="contacts.length === 0"
           :checked="sendContactsToQuarantine"
           @change="sendContactsToQuarantineChanged"
           style="margin-bottom: 15px;"
@@ -72,6 +73,7 @@
       </a-checkbox>
 
       <div style="margin-bottom: 15px;">
+        <div v-if="contacts.length === 0" style="margin-bottom: 15px">Keine Kontaktpersonen hinterlegt</div>
         <div
             v-for="contact in contacts"
             :key="contact.id"
@@ -161,6 +163,11 @@ export default Vue.extend({
   components: {
     PatientInput,
     DateInput,
+  },
+  created() {
+    if (this.givenPatientId) {
+      this.onPatientSwitch(this.givenPatientId)
+    }
   },
   data(): State {
     return {

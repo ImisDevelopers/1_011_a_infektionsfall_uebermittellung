@@ -6,10 +6,9 @@
       :visible="showChangePatientStammdatenForm"
       :patient="patient"
     />
-    <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
+    <div v-if="patient" style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
 
       <a-page-header
-        v-if="patient"
         :title="`${patient.lastName}, ${patient.firstName}`"
         :sub-title="patient.id"
         @back="() => $router.go(-1)"
@@ -401,12 +400,13 @@
           <a-modal title="Kontaktperson bearbeiten"
             ref="exposureContactModal"
             :visible="!!exposureContactInEditing"
-            @ok="persistExposureContact()
-              .then((success) => { if (success) exposureContactInEditing = null })"
+            @ok="persistExposureContact()"
             @cancel="exposureContactInEditing = null">
-            <a-form :form="exposureContactForm" :selfUpdate="true">
+            <a-form :form="exposureContactForm" :selfUpdate="true" layout="vertical">
               <EditExposureContact
-                :disableOriginatorPatient="true"/>
+                :disableOriginatorPatient="true" :showOriginatorPatient="false"
+                @showPatient="showPatient"
+                :contactPatient="exposureContactInEditing ? exposureContactInEditing.contact : null" />
             </a-form>
           </a-modal>
         </a-tab-pane>
@@ -430,6 +430,7 @@ import { TestTypeItem, testTypes } from '@/models/test-types'
 import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
 import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
+import { Modal } from 'ant-design-vue'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -756,7 +757,7 @@ export default Vue.extend({
       }
     },
     addExposureContact() {
-      this.exposureContactInEditing = {}
+      this.exposureContactInEditing = { contact: { id: undefined } }
 
       Vue.nextTick(() => {
         this.exposureContactForm.resetFields()
@@ -774,25 +775,31 @@ export default Vue.extend({
         this.exposureContactForm.setFieldsValue(map(contact as {[x: string]: any}, {
           // source: patient => patient.id,
           // contact: patient => patient.id,
+          contact: contact => contact.id,
           dateOfContact: moment,
         }))
       })
     },
-    persistExposureContact(): Promise<boolean> {
+    persistExposureContact() {
       const stringFromMoment = (value: Moment): string => value.format('YYYY-MM-DD')
 
-      return new Promise((resolve: (success: boolean) => void) => {
-        this.exposureContactForm.validateFields(async(err: Error[], values: {[x: string]: any}) => {
-          if (err) {
-            resolve(false)
-            return
-          }
-
+      this.exposureContactForm.validateFields()
+        .then(async(values: any) => {
           // Convert values to transport format
           values = map(values, {
             id: parseInt,
             dateOfContact: stringFromMoment,
           })
+
+          // send initial patient data in contact field as string
+          if (!values.contact) {
+            values.contact = JSON.stringify({
+              firstName: values.contactFirstName,
+              lastName: values.contactLastName,
+              gender: values.contactGender,
+              dateOfBirth: values.contactDateOfBirth ? stringFromMoment(values.contactDateOfBirth) : undefined,
+            })
+          }
 
           if (values.id) {
             Object.assign(this.exposureContactInEditing, await Api.updateExposureContactUsingPut(values))
@@ -800,15 +807,15 @@ export default Vue.extend({
             this.exposureContacts.push(await Api.createExposureContactUsingPost(values))
           }
 
-          resolve(true)
+          this.exposureContactInEditing = null
         })
-      })
     },
     async removeExposureContact(contactId: number) {
       await Api.removeExposureContactUsingDelete(contactId)
       this.exposureContacts = this.exposureContacts.filter(contact => contact.id !== contactId)
     },
     showPatient(patientId: string) {
+      (this.$refs.exposureContactModal as Modal).$emit('cancel')
       this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
     moment,

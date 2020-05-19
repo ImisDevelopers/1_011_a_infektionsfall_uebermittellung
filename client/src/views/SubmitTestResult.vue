@@ -46,14 +46,14 @@
         </a-form-item>
 
         <a-form-item label="Ergebnisdatum">
-        <DateInput
-          :defaultValue= 'today'
-          v-decorator="['eventDate', { rules: [{
+          <DateInput
+            :defaultValue='today'
+            v-decorator="['eventDate', { rules: [{
             required: false,
             message: 'Datum der Probenabnahme',
           }]}]"
-        />
-      </a-form-item>
+          />
+        </a-form-item>
 
         <!-- Kommentar -->
         <a-form-item label="Kommentar">
@@ -120,7 +120,8 @@ export default Vue.extend({
     return {
       form: this.$form.createForm(this),
       fileBytes: undefined,
-      testResults: testResults,
+      // TODO: After simulation, remove the filter
+      testResults: testResults.filter(testResult => testResult.id === 'TEST_POSITIVE' || testResult.id === 'TEST_NEGATIVE'),
       laboratories: [],
       updatedLabTest: undefined,
       updatedLabTestStatus: '',

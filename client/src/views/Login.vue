@@ -45,12 +45,14 @@
     </a-form>
     <div>
       <p>Demo-Zugänge:</p>
+      <!--
       <p><strong>test_lab</strong> mit Passwort <strong>asdf</strong></p>
       <p><strong>test_doctor</strong> mit Passwort <strong>asdf</strong></p>
+      -->
       <p><strong>test_testing_site</strong> mit Passwort <strong>asdf</strong></p>
       <p><strong>test_department_of_health</strong> mit Passwort <strong>asdf</strong></p>
-      <router-link :to="{ name: 'register-institution', params: { id: 'demo' } }">Als Institution registrieren
-      </router-link>
+      <!--<router-link :to="{ name: 'register-institution', params: { id: 'demo' } }">Als Institution registrieren
+      </router-link>-->
     </div>
   </a-card>
 </template>

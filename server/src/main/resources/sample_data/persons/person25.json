@@ -1,34 +1,33 @@
 {
-  "city": "Bochum",
+  "city": "Kirkel",
   "coronaContacts": true,
-  "dateOfBirth": "2000-07-24",
-  "email": "d.mueller@web.de",
-  "firstName": "Daniela",
-  "fluImmunization": false,
+  "dateOfBirth": "1997-07-16",
+  "email": "i.schmidt@t-online.de",
+  "firstName": "Isabella",
+  "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 34,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "F728492896",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "H932894596",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "59401310990",
+  "phoneNumber": "191010022941",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbendiekshof 15",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
     "Schnupfen",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
     "Halschmerzen",
     "Kopfschmerzen",
-    "Gelenkschmerzen",
     "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "90278"
+  "zip": "66869"
 }

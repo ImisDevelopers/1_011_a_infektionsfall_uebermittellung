@@ -1,30 +1,33 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1968-01-10",
-  "email": "m.winter@posteo.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
+  "city": "V\u00f6lklingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1934-02-11",
+  "email": "a.winkler@web.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 89,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "B819228743",
-  "lastName": "Winter",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "X435775088",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "15710473384",
+  "phoneNumber": "3714732104",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "B\u00fcckerheide",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 78",
   "symptoms": [
+    "Gelenkschmerzen",
     "Erk\u00e4ltung",
+    "Schnupfen",
+    "Halschmerzen",
     "Husten",
-    "Halschmerzen"
+    "Atemschwierigkeiten",
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "42199"
+  "zip": "66632"
 }

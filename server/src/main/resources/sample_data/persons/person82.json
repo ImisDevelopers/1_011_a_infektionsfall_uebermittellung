@@ -1,29 +1,32 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1977-09-24",
-  "email": "p.mueller@gmail.de",
-  "firstName": "Peter",
+  "city": "V\u00f6lklingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1933-02-17",
+  "email": "i.sommer@gmail.de",
+  "firstName": "Isabella",
   "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 88,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "N192185888",
-  "lastName": "M\u00fcller",
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "G730325223",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "88993756710",
+  "phoneNumber": "03397401104",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
+  "street": "Poststra\u00dfe 72",
   "symptoms": [
+    "Fieber",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
     "Kopfschmerzen",
-    "Schnupfen"
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "82507"
+  "weakenedImmuneSystem": false,
+  "zip": "661002"
 }

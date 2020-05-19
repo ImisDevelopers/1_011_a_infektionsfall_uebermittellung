@@ -1,31 +1,29 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": false,
-  "dateOfBirth": "1960-09-11",
-  "email": "t.schulz@t-online.de",
-  "firstName": "Tim",
-  "fluImmunization": true,
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1989-10-13",
+  "email": "f.lange@web.de",
+  "firstName": "Fin",
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 37,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M975535611",
-  "lastName": "Schulz",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Z582032731",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "1021077102217",
+  "phoneNumber": "22292706510",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Tulpenweg 30",
   "symptoms": [
-    "Husten",
+    "Atemschwierigkeiten",
     "Halschmerzen",
-    "Kopfschmerzen",
-    "Fieber"
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "30305"
+  "weakenedImmuneSystem": false,
+  "zip": "66794"
 }

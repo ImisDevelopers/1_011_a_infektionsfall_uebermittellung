@@ -5,8 +5,13 @@
       :label-col="{ span: 6 }"
       :wrapper-col="{ span: 18 }"
       @submit.prevent="handleSubmit"
-    >
-      <a-form-item label="Patienten-ID" v-if="this.showPatientInput">
+    > <!-- :colon="false" -->
+      <a-form-item label="Patienten-ID"
+                   v-if="this.givenPatientId">
+        {{this.$route.params.patientFirstName}} {{this.$route.params.patientLastName}}
+        ({{this.$route.params.patientId}})
+      </a-form-item>
+      <a-form-item label="Patienten-ID" v-else>
         <PatientInput
           v-decorator="[
             'patientId',
@@ -169,9 +174,6 @@ export default Vue.extend({
   computed: {
     givenPatientId(): string | undefined {
       return this.$route.params.patientId
-    },
-    showPatientInput(): boolean {
-      return !this.givenPatientId
     },
   },
   methods: {

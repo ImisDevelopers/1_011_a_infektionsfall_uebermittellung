@@ -1,0 +1,28 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "1936-01-17",
+  "email": "k.sommer@gmx.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "L757965465",
+  "lastName": "Sommer",
+  "nationality": "deutsch",
+  "phoneNumber": "56102718750",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg 86",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66369"
+}

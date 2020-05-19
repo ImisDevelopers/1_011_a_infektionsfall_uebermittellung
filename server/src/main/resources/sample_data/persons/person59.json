@@ -1,34 +1,28 @@
 {
-  "city": "Kiel",
+  "city": "Homburg",
   "coronaContacts": false,
-  "dateOfBirth": "1929-11-22",
-  "email": "p.weber@gmx.de",
-  "firstName": "Peter",
-  "fluImmunization": false,
+  "dateOfBirth": "1978-10-10",
+  "email": "k.bauer@gmx.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 5,
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "J178954113",
-  "lastName": "Weber",
+  "insuranceMembershipNumber": "J422076028",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "7480162456",
+  "phoneNumber": "73121727110",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer 40",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Gelenkschmerzen",
     "Kopfschmerzen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Schnupfen"
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "60983"
+  "zip": "661051"
 }

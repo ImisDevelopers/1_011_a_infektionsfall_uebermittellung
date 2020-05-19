@@ -1,0 +1,28 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1997-11-18",
+  "email": "o.klein@gmail.de",
+  "firstName": "Olivia",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C147005473",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "63810782945",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kaiserstra\u00dfe 82",
+  "symptoms": [
+    "Husten",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66511"
+}

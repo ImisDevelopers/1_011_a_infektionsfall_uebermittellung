@@ -1,0 +1,28 @@
+{
+  "city": "Heusweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1961-01-05",
+  "email": "h.weber@t-online.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "W738843080",
+  "lastName": "Weber",
+  "nationality": "deutsch",
+  "phoneNumber": "01099451016",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe 20",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "661049"
+}

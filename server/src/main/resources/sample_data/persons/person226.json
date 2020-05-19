@@ -1,0 +1,33 @@
+{
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "dateOfBirth": "1943-06-20",
+  "email": "k.winter@posteo.de",
+  "firstName": "Kai",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "R194058316",
+  "lastName": "Winter",
+  "nationality": "deutsch",
+  "phoneNumber": "98010562656",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 1",
+  "symptoms": [
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66455"
+}

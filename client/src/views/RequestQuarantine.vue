@@ -1,19 +1,24 @@
 <template>
-  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px;" align="center">
+  <a-card
+    style="max-width: 500px; margin: 2rem auto; min-height: 300px;"
+    align="center"
+  >
     <a-form
-        :form="form"
-        :label-col="{ span: 7 }"
-        :wrapper-col="{ span: 17 }"
-        @submit.prevent="handleSubmit"
-    > <!-- :colon="false" -->
-      <a-form-item label="Patienten-ID"
-                   v-if="this.givenPatientId">
-        {{this.$route.params.patientFirstName}} {{this.$route.params.patientLastName}}
-        ({{this.$route.params.patientId}})
+      :form="form"
+      :label-col="{ span: 7 }"
+      :wrapper-col="{ span: 17 }"
+      @submit.prevent="handleSubmit"
+    >
+      <!-- :colon="false" -->
+      <a-form-item label="Patienten-ID" v-if="this.givenPatientId">
+        {{ this.$route.params.patientFirstName }}
+        {{ this.$route.params.patientLastName }} ({{
+          this.$route.params.patientId
+        }})
       </a-form-item>
       <a-form-item label="Patienten-ID" v-else>
         <PatientInput
-            v-decorator="[
+          v-decorator="[
             'patientId',
             {
               rules: [
@@ -24,13 +29,13 @@
               ],
             },
           ]"
-            v-on:select="onPatientSwitch"
+          v-on:select="onPatientSwitch"
         />
       </a-form-item>
 
       <a-form-item label="Quarantäne bis">
         <DateInput
-            v-decorator="[
+          v-decorator="[
             'dateUntil',
             {
               rules: [
@@ -47,7 +52,7 @@
 
       <a-form-item label="Vorgemerkt am">
         <DateInput
-            v-decorator="[
+          v-decorator="[
             'eventDate',
             {
               rules: [
@@ -64,35 +69,37 @@
       </a-form-item>
 
       <a-checkbox
-          :disabled="contacts.length === 0"
-          :checked="sendContactsToQuarantine"
-          @change="sendContactsToQuarantineChanged"
-          style="margin-bottom: 15px;"
+        :disabled="contacts.length === 0"
+        :checked="sendContactsToQuarantine"
+        @change="sendContactsToQuarantineChanged"
+        style="margin-bottom: 15px;"
       >
         Quarantäne auch für alle Kontaktpersonen vormerken
       </a-checkbox>
 
       <div style="margin-bottom: 15px;">
-        <div v-if="contacts.length === 0" style="margin-bottom: 15px">Keine Kontaktpersonen hinterlegt</div>
+        <div v-if="contacts.length === 0" style="margin-bottom: 15px;">
+          Keine Kontaktpersonen hinterlegt
+        </div>
         <div
-            v-for="contact in contacts"
-            :key="contact.id"
-            style="
+          v-for="contact in contacts"
+          :key="contact.id"
+          style="
             padding: 10px;
             display: flex;
             text-align: left;
             align-items: center;
           "
-            v-bind:class="
+          v-bind:class="
             sendContactsToQuarantine ? '' : 'send-to-quarantine-disabled'
           "
         >
           <a-button
-              icon="user"
-              :type="sendContactsToQuarantine ? 'primary' : 'dashed'"
-              title="Patientendaten anzeigen"
-              @click="showPatient(contact.contact.id)"
-              style="margin-right: 15px;"
+            icon="user"
+            :type="sendContactsToQuarantine ? 'primary' : 'dashed'"
+            title="Patientendaten anzeigen"
+            @click="showPatient(contact.contact.id)"
+            style="margin-right: 15px;"
           />
           <div>
             <div>
@@ -112,8 +119,8 @@
                 In Quarantäne
               </span>
               <span
-                  v-else
-                  :style="`color: ${contact.contact.infected ? 'red' : 'unset'};`"
+                v-else
+                :style="`color: ${contact.contact.infected ? 'red' : 'unset'};`"
               >
                 Keine Quarantäne
               </span>
@@ -125,9 +132,9 @@
       <!-- Kommentar -->
       <a-form-item label="Kommentar">
         <a-textarea
-            :autoSize="{ minRows: 3, maxRows: 5 }"
-            placeholder="Kommentar hinzufügen"
-            v-decorator="['comment']"
+          :autoSize="{ minRows: 3, maxRows: 5 }"
+          placeholder="Kommentar hinzufügen"
+          v-decorator="['comment']"
         />
       </a-form-item>
 
@@ -151,11 +158,11 @@ import PatientInput from '../components/PatientInput.vue'
 import moment from 'moment'
 
 interface State {
-  form: any;
-  patient?: Patient;
-  today: moment.Moment;
-  contacts: ExposureContactFromServer[];
-  sendContactsToQuarantine: boolean;
+  form: any
+  patient?: Patient
+  today: moment.Moment
+  contacts: ExposureContactFromServer[]
+  sendContactsToQuarantine: boolean
 }
 
 export default Vue.extend({
@@ -195,7 +202,7 @@ export default Vue.extend({
       this.sendContactsToQuarantine = !this.sendContactsToQuarantine
     },
     handleSubmit() {
-      this.form.validateFields(async(err: Error, values: any) => {
+      this.form.validateFields(async (err: Error, values: any) => {
         // eslint-disable-next-line
         if (err) {
           return
@@ -203,19 +210,19 @@ export default Vue.extend({
         const request = {
           dateUntil: values.dateUntil.format('YYYY-MM-DD'),
           eventDate: values.eventDate
-              ? values.eventDate.format('YYYY-MM-DD')
-              : undefined,
+            ? values.eventDate.format('YYYY-MM-DD')
+            : undefined,
           comment: values.comment,
         }
         const patientId = this.givenPatientId
-            ? this.givenPatientId
-            : values.patientId
+          ? this.givenPatientId
+          : values.patientId
 
         let quarantineUntil = ''
         try {
           const patient = await Api.requestQuarantineUsingPost(
-              patientId,
-              request
+            patientId,
+            request
           )
           quarantineUntil = moment(patient.quarantineUntil).format('DD.MM.YYYY')
           if (!this.sendContactsToQuarantine) {
@@ -255,12 +262,12 @@ export default Vue.extend({
               console.error('Could not send ' + patientId + ' to quarantine:')
               console.error(e)
               const patientStr =
-                  contact.firstName +
-                  ' ' +
-                  contact.lastName +
-                  ' (ID: ' +
-                  patientId +
-                  ')'
+                contact.firstName +
+                ' ' +
+                contact.lastName +
+                ' (ID: ' +
+                patientId +
+                ')'
               failedPatients.push(patientStr)
             }
           }
@@ -268,7 +275,7 @@ export default Vue.extend({
             const notification = {
               message: 'Fehler beim hinterlegen des Quarantänevermerks',
               description: `${failedPatients.length} von ${
-                  this.contacts.length + 1
+                this.contacts.length + 1
               } Quarantänen konnten nicht vorgemerkt werden. Fehler bei: ${failedPatients}`,
             }
             this.$notification.error(notification)
@@ -278,10 +285,10 @@ export default Vue.extend({
               title: 'Der Quarantänevermerk wurde vermerkt.',
               content: h('div', {}, [
                 h(
-                    'div',
-                    `Quarantäne für ${
-                        this.contacts.length + 1
-                    } Patienten wurde vorgemerkt`
+                  'div',
+                  `Quarantäne für ${
+                    this.contacts.length + 1
+                  } Patienten wurde vorgemerkt`
                 ),
                 h('div', `In Quarantäne bis: ${quarantineUntil}`),
               ]),
@@ -300,13 +307,13 @@ export default Vue.extend({
           params: { id: this.givenPatientId },
         })
       }
-    }
+    },
   },
 })
 </script>
 
 <style>
-  .send-to-quarantine-disabled {
-    color: rgba(0, 0, 0, 0.45);
-  }
+.send-to-quarantine-disabled {
+  color: rgba(0, 0, 0, 0.45);
+}
 </style>

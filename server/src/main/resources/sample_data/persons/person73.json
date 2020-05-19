@@ -1,33 +1,33 @@
 {
-  "city": "Freiburg",
+  "city": "Neunkirchen",
   "coronaContacts": true,
-  "dateOfBirth": "1940-08-15",
-  "email": "p.weber@gmail.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
+  "dateOfBirth": "1935-09-07",
+  "email": "l.schulze@t-online.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 18,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "E310659326",
-  "lastName": "Weber",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "O241674152",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "1753556093",
+  "phoneNumber": "98225871103",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Rosenstra\u00dfe 74",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
+    "Husten",
     "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
     "Schnupfen",
-    "Kopfschmerzen",
-    "Fieber"
+    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "04899"
+  "zip": "66718"
 }

@@ -1,29 +1,29 @@
 {
-  "city": "Hamburg",
+  "city": "Saarlouis",
   "coronaContacts": false,
-  "dateOfBirth": "1965-02-08",
-  "email": "l.lange@posteo.de",
-  "firstName": "Lisa",
+  "dateOfBirth": "1974-10-17",
+  "email": "s.schulz@web.de",
+  "firstName": "Susanne",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 49,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "F625749126",
-  "lastName": "Lange",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Z182593686",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "4125286692",
+  "phoneNumber": "21062244472",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg 21",
   "symptoms": [
-    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
     "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "627108"
+  "zip": "66646"
 }

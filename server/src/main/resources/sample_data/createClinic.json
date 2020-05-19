@@ -3,10 +3,10 @@
   "name": "Krankenhaus",
   "street": "Rhein-Straße",
   "houseNumber": "13a",
-  "zip": "3454325",
+  "zip": "50667",
   "city": "Köln",
   "email": "clinic@example.de",
-  "phoneNumber": "43345",
-  "comment": "this is a comment for the clinic",
+  "phoneNumber": "+49 221 123456",
+  "comment": "This is a comment for the clinic",
   "id": "asdfa"
 }

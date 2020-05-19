@@ -1,29 +1,27 @@
 {
-  "city": "Berlin",
-  "coronaContacts": false,
-  "dateOfBirth": "1952-05-07",
-  "email": "d.schroeder@gmx.de",
-  "firstName": "Daniela",
+  "city": "Heusweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1991-11-21",
+  "email": "p.sommer@t-online.de",
+  "firstName": "Petra",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 85,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "G423646570",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "L263894795",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "815614101097",
+  "phoneNumber": "8367365766",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "B\u00fcckerheide",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Tulpenweg 12",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Schnupfen"
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "40369"
+  "zip": "66565"
 }

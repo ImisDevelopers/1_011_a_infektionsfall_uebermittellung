@@ -1,44 +1,81 @@
 <template>
   <div class="send-to-quarantine">
-    <a-modal v-model="confirmVisible" title="Bitte bestätigen" ok-text="Ja" cancel-text="Abbrechen"
-             @ok="updatePatients">
-      <p>Sollen die Quarantänen von {{quarantinesByZip.length}} Patienten in den Status 'Quarantäne angeordnet'
-        überführt werden?</p>
-        <a-form :form="form">
-          <a-form-item label="Datum der Anordnung (optional):">
-            <DateInput
-              :defaultValue= 'today'
-              v-decorator="['eventDate', { rules: [{
-                required: false,
-                message: 'Datum der Anordnung',
-              }]}]"
-            />
-          </a-form-item>
-        </a-form>
+    <a-modal
+      v-model="confirmVisible"
+      title="Bitte bestätigen"
+      ok-text="Ja"
+      cancel-text="Abbrechen"
+      @ok="updatePatients"
+    >
+      <p>
+        Sollen die Quarantänen von {{ quarantinesByZip.length }} Patienten in
+        den Status 'Quarantäne angeordnet' überführt werden?
+      </p>
+      <a-form :form="form">
+        <a-form-item label="Datum der Anordnung (optional):">
+          <DateInput
+            :defaultValue="today"
+            v-decorator="[
+              'eventDate',
+              {
+                rules: [
+                  {
+                    required: false,
+                    message: 'Datum der Anordnung',
+                  },
+                ],
+              },
+            ]"
+          />
+        </a-form-item>
+      </a-form>
     </a-modal>
-    <a-button class="download-all-button" type="primary" @click="downloadAll" icon="download" size="large">
+    <a-button
+      class="download-all-button"
+      type="primary"
+      @click="downloadAll"
+      icon="download"
+      size="large"
+    >
       Alle Herunterladen
     </a-button>
-    <a-button class="clear-all-button" type="primary" @click="showModal" icon="play-circle" size="large">
+    <a-button
+      class="clear-all-button"
+      type="primary"
+      @click="showModal"
+      icon="play-circle"
+      size="large"
+    >
       Quarantäne anordnen
     </a-button>
-    <h2 style="margin-top: 30px">Es wurden {{quarantinesByZip.length}} Patienten für eine Quarantäne vorgemerkt.</h2>
-    <a-card style="max-width: 500px; margin: 2rem auto;"
-            v-for="quarantinesByZip of quarantinesByZip"
-            :title="'PLZ ' + quarantinesByZip.zip + (quarantinesByZip.cityName ? ' - ' + quarantinesByZip.cityName : '')"
-            align="left"
-            :key="quarantinesByZip.zip">
-
-      <a-table :columns="columnsQuarantines"
-               :dataSource="quarantinesByZip.quarantines"
-               :rowKey="contact => contact.id"
-               :pagination="false"
+    <h2 style="margin-top: 30px;">
+      Es wurden {{ quarantinesByZip.length }} Patienten für eine Quarantäne
+      vorgemerkt.
+    </h2>
+    <a-card
+      style="max-width: 500px; margin: 2rem auto;"
+      v-for="quarantinesByZip of quarantinesByZip"
+      :title="
+        'PLZ ' +
+        quarantinesByZip.zip +
+        (quarantinesByZip.cityName ? ' - ' + quarantinesByZip.cityName : '')
+      "
+      align="left"
+      :key="quarantinesByZip.zip"
+    >
+      <a-table
+        :columns="columnsQuarantines"
+        :dataSource="quarantinesByZip.quarantines"
+        :rowKey="(contact) => contact.id"
+        :pagination="false"
       >
         <template slot="until" slot-scope="until">
           {{ moment(until).format('DD.MM.YYYY') }}
         </template>
         <template slot="name" slot-scope="patient">
-          <a @click="showPatient(patient.id)">{{ patient.firstName }} {{ patient.lastName }}</a>
+          <a @click="showPatient(patient.id)"
+            >{{ patient.firstName }} {{ patient.lastName }}</a
+          >
         </template>
         <template slot="timestamp" slot-scope="timestamp">
           {{ moment(timestamp).format('DD.MM.YYYY HH:mm') }}
@@ -85,17 +122,17 @@ const columnsQuarantines = [
 ]
 
 interface QuarantinesForZip {
-  zip: string;
-  quarantines: QuarantineIncident[];
-  cityName: string;
+  zip: string
+  quarantines: QuarantineIncident[]
+  cityName: string
 }
 
 interface State {
-  quarantinesByZip: QuarantinesForZip[];
-  columnsQuarantines: Partial<Column>[];
-  confirmVisible: boolean; // eslint-disable-next-line
+  quarantinesByZip: QuarantinesForZip[]
+  columnsQuarantines: Partial<Column>[]
+  confirmVisible: boolean // eslint-disable-next-line
   form: any; 
-  today: moment.Moment;
+  today: moment.Moment
 }
 
 export default Vue.extend({
@@ -108,7 +145,7 @@ export default Vue.extend({
     const quarantinesByZip: QuarantinesForZip[] = []
     for (const quarantineIncident of quarantineIncidents) {
       const zip = quarantineIncident?.patient?.zip || 'Unbekannt'
-      let byZip = quarantinesByZip.find(quarantine => quarantine.zip === zip)
+      let byZip = quarantinesByZip.find((quarantine) => quarantine.zip === zip)
       if (!byZip) {
         byZip = {
           zip: zip,
@@ -121,7 +158,7 @@ export default Vue.extend({
     }
     this.quarantinesByZip = quarantinesByZip
     for (const quarantinesForZip of quarantinesByZip) {
-      getPlzs(quarantinesForZip.zip).then(plzs => {
+      getPlzs(quarantinesForZip.zip).then((plzs) => {
         if (plzs && plzs.length > 0) {
           quarantinesForZip.cityName = plzs[0].fields.note
         }
@@ -146,46 +183,65 @@ export default Vue.extend({
       const header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse'
       let content = ''
       for (const quarantineIncidents of this.quarantinesByZip) {
-        content += quarantineIncidents.quarantines.map(quarantine => {
-          const patient = quarantine.patient
-          if (patient) {
-            const address = `${patient.street} ${patient.houseNumber} ${patient.zip} ${patient.city}`
-            return `${quarantineIncidents.zip};${moment(quarantine.until).format('DD.MM.YYYY')};${patient?.firstName};${patient?.lastName};${address}`
-          } else {
-            console.warn('Quarantine without patient')
-            return ''
-          }
-        }).join('\n') + '\n'
+        content +=
+          quarantineIncidents.quarantines
+            .map((quarantine) => {
+              const patient = quarantine.patient
+              if (patient) {
+                const address = `${patient.street} ${patient.houseNumber} ${patient.zip} ${patient.city}`
+                return `${quarantineIncidents.zip};${moment(
+                  quarantine.until
+                ).format('DD.MM.YYYY')};${patient?.firstName};${
+                  patient?.lastName
+                };${address}`
+              } else {
+                console.warn('Quarantine without patient')
+                return ''
+              }
+            })
+            .join('\n') + '\n'
       }
-      const filename = moment().format('YYYY_MM_DD') + '_quarantaene_anordnung.csv'
+      const filename =
+        moment().format('YYYY_MM_DD') + '_quarantaene_anordnung.csv'
       downloadCsv(header + '\n' + content, filename)
     },
     updatePatients() {
       this.confirmVisible = false
       const patientIds: string[] = []
       for (const quarantinesByZip of this.quarantinesByZip) {
-        patientIds.push(...quarantinesByZip.quarantines.map(quarantine => quarantine.patient?.id || ''))
+        patientIds.push(
+          ...quarantinesByZip.quarantines.map(
+            (quarantine) => quarantine.patient?.id || ''
+          )
+        )
       }
       const request = {
         patientIds: patientIds,
-        eventDate: this.form.getFieldValue('eventDate') ? this.form.getFieldValue('eventDate').format('YYYY-MM-DD') : undefined,
+        eventDate: this.form.getFieldValue('eventDate')
+          ? this.form.getFieldValue('eventDate').format('YYYY-MM-DD')
+          : undefined,
       }
-      Api.sendToQuarantineUsingPost(request).then(() => {
-        const h = this.$createElement
-        this.$success({
-          title: 'Quarantänen aktualisiert.',
-          content: h('div', {}, [
-            h('div', `Die Quarantänen von ${patientIds.length} Patienten wurden aktualisiert.`),
-          ]),
+      Api.sendToQuarantineUsingPost(request)
+        .then(() => {
+          const h = this.$createElement
+          this.$success({
+            title: 'Quarantänen aktualisiert.',
+            content: h('div', {}, [
+              h(
+                'div',
+                `Die Quarantänen von ${patientIds.length} Patienten wurden aktualisiert.`
+              ),
+            ]),
+          })
+          this.quarantinesByZip = []
         })
-        this.quarantinesByZip = []
-      }).catch((error: Error) => {
-        const notification = {
-          message: 'Fehler beim Aktualisieren der Quarantänen',
-          description: error.message,
-        }
-        this.$notification.error(notification)
-      })
+        .catch((error: Error) => {
+          const notification = {
+            message: 'Fehler beim Aktualisieren der Quarantänen',
+            description: error.message,
+          }
+          this.$notification.error(notification)
+        })
     },
     showModal() {
       this.confirmVisible = true
@@ -195,23 +251,23 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-  .send-to-quarantine {
-    .ant-card-body {
-      padding: 0;
-    }
+.send-to-quarantine {
+  .ant-card-body {
+    padding: 0;
   }
+}
 </style>
 
 <style lang="scss" scoped>
-  .download-all-button {
-    position: absolute;
-    top: 90px;
-    right: 25px;
-  }
+.download-all-button {
+  position: absolute;
+  top: 90px;
+  right: 25px;
+}
 
-  .clear-all-button {
-    position: absolute;
-    top: 150px;
-    right: 25px;
-  }
+.clear-all-button {
+  position: absolute;
+  top: 150px;
+  right: 25px;
+}
 </style>

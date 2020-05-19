@@ -11,13 +11,18 @@
                 class="custom-input"
                 style="width: calc(100%);"
                 placeholder="Straße und Hausnummer"
-                v-decorator="[formFieldName('street'), {
-                  rules: [{
-                    required: $props.required!==false,
-                    message: 'Bitte Straße und Hausnummer eingeben',
-                  }],
-                  initialValue: initialData('street'),
-                }]"
+                v-decorator="[
+                  formFieldName('street'),
+                  {
+                    rules: [
+                      {
+                        required: $props.required !== false,
+                        message: 'Bitte Straße und Hausnummer eingeben',
+                      },
+                    ],
+                    initialValue: initialData('street'),
+                  },
+                ]"
               />
             </a-input-group>
           </a-form-item>
@@ -35,27 +40,39 @@
                 @search="handleZipSearch"
                 @select="(val) => handleZipSelection(val)"
                 :dropdownMenuStyle="{
-                  width: 'max-content'
+                  width: 'max-content',
                 }"
-                v-decorator="[formFieldName('zip'), {
-                  rules: [{
-                    required: $props.required!==false,
-                    message: 'Bitte PLZ eingeben',
-                  }],
-                  initialValue: initialData('zip'),
-                }]" />
+                v-decorator="[
+                  formFieldName('zip'),
+                  {
+                    rules: [
+                      {
+                        required: $props.required !== false,
+                        message: 'Bitte PLZ eingeben',
+                      },
+                    ],
+                    initialValue: initialData('zip'),
+                  },
+                ]"
+              />
               <a-input
                 ref="city"
                 class="custom-input"
                 style="width: calc(100% - 60pt);"
                 placeholder="Ort"
-                v-decorator="[formFieldName('city'), {
-                  rules: [{
-                    required: $props.required!==false,
-                    message: 'Bitte Ort eingeben',
-                  }],
-                  initialValue: initialData('city'),
-                }]" />
+                v-decorator="[
+                  formFieldName('city'),
+                  {
+                    rules: [
+                      {
+                        required: $props.required !== false,
+                        message: 'Bitte Ort eingeben',
+                      },
+                    ],
+                    initialValue: initialData('city'),
+                  },
+                ]"
+              />
             </a-input-group>
           </a-form-item>
         </a-col>
@@ -67,11 +84,19 @@
               ref="country"
               class="custom-input"
               placeholder="Bitte wählen..."
-              v-decorator="[formFieldName('country'), { rules: [{
-                required: $props.required!==false,
-                message: 'Bitte Land auswählen',
-              }], initialValue: initialCountry()}]"
-              >
+              v-decorator="[
+                formFieldName('country'),
+                {
+                  rules: [
+                    {
+                      required: $props.required !== false,
+                      message: 'Bitte Land auswählen',
+                    },
+                  ],
+                  initialValue: initialCountry(),
+                },
+              ]"
+            >
               <a-select-option value="BE">Belgien</a-select-option>
               <a-select-option value="DK">Dänemark</a-select-option>
               <a-select-option value="DE">Deutschland</a-select-option>
@@ -105,23 +130,20 @@ import { getPlzs, Plz } from '@/util/plz-service'
 import { FormGroupMixin } from '@/util/forms'
 
 interface Input extends Vue {
-  value: string;
-  focus: () => void;
+  value: string
+  focus: () => void
 }
 
 interface ZipEntry {
-  text: string;
-  value: string;
-  zipData: Plz;
+  text: string
+  value: string
+  zipData: Plz
 }
 
 export default mixins(FormGroupMixin).extend({
   name: 'LocationFormGroup',
   fieldIdentifiers: ['street', 'zip', 'city', 'country'],
-  props: [
-    'required',
-    'data',
-  ],
+  props: ['required', 'data'],
   data() {
     return {
       zips: [] as ZipEntry[],
@@ -141,7 +163,9 @@ export default mixins(FormGroupMixin).extend({
       }
     },
     initialData(fieldId: string) {
-      return this.$props.data ? this.$props.data[this.withExts().formFieldName(fieldId)] : null
+      return this.$props.data
+        ? this.$props.data[this.withExts().formFieldName(fieldId)]
+        : null
     },
     updateByZipData(plzData: Plz) {
       this.withExts().setData({
@@ -165,8 +189,8 @@ export default mixins(FormGroupMixin).extend({
         }
         if (result.length === 1) {
           setTimeout(() => {
-            this.updateByZipData(result[0]);
-            (this.$refs.city as Input).focus()
+            this.updateByZipData(result[0])
+            ;(this.$refs.city as Input).focus()
           }, 0)
           this.zips = []
         } else {
@@ -181,7 +205,9 @@ export default mixins(FormGroupMixin).extend({
             const ddRootId = document.evaluate(
               'string(./descendant-or-self::*[@aria-controls and contains(@class, "ant-select-selection")]/@aria-controls)',
               (this.$refs.zip as Vue).$el,
-              null, XPathResult.STRING_TYPE).stringValue
+              null,
+              XPathResult.STRING_TYPE
+            ).stringValue
 
             let ddRoot = document.getElementById(ddRootId)
             if (ddRoot) {
@@ -197,11 +223,13 @@ export default mixins(FormGroupMixin).extend({
       }
     },
     handleZipSelection(value: string) {
-      const zipEntry = this.zips.find((entry: ZipEntry) => entry.value === value) as ZipEntry
+      const zipEntry = this.zips.find(
+        (entry: ZipEntry) => entry.value === value
+      ) as ZipEntry
       if (zipEntry) {
         setTimeout(() => {
-          this.updateByZipData(zipEntry.zipData);
-          (this.$refs.city as Input).focus()
+          this.updateByZipData(zipEntry.zipData)
+          ;(this.$refs.city as Input).focus()
         }, 0)
       }
     },
@@ -210,14 +238,15 @@ export default mixins(FormGroupMixin).extend({
 </script>
 
 <style lang="scss">
-  .ant-select-dropdown-menu-item {
-    overflow: unset;
-    text-overflow: unset;
-  }
+.ant-select-dropdown-menu-item {
+  overflow: unset;
+  text-overflow: unset;
+}
 
-  .location-form-group {
-    input.custom-input, .custom-input input {
-      text-align: left;
-    }
+.location-form-group {
+  input.custom-input,
+  .custom-input input {
+    text-align: left;
   }
+}
 </style>

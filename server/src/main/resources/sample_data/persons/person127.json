@@ -1,0 +1,27 @@
+{
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "dateOfBirth": "1984-07-01",
+  "email": "d.winkler@posteo.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "T152169850",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "3323098215",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Rosenstra\u00dfe 83",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "660610"
+}

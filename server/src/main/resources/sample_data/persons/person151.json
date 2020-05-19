@@ -1,0 +1,28 @@
+{
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "dateOfBirth": "1945-08-06",
+  "email": "f.schmitt@web.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C346760672",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "36929291084",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbachstra\u00dfe 92",
+  "symptoms": [
+    "Fieber",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "661057"
+}

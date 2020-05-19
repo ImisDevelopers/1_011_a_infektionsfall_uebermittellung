@@ -1,35 +1,31 @@
 {
-  "city": "Frankfurt",
+  "city": "Bous",
   "coronaContacts": false,
-  "dateOfBirth": "1961-03-29",
-  "email": "d.lange@web.de",
-  "firstName": "Daniela",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 38,
+  "dateOfBirth": "1955-09-16",
+  "email": "t.schroeder@web.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "C369085407",
-  "lastName": "Lange",
+  "insuranceMembershipNumber": "F632794158",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "81092268018",
+  "phoneNumber": "401034501054",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Schernerweg 47",
   "symptoms": [
     "Atemschwierigkeiten",
-    "Fieber",
-    "Kopfschmerzen",
-    "Schnupfen",
+    "Halschmerzen",
     "Husten",
-    "Gelenkschmerzen",
     "Erk\u00e4ltung",
-    "Halschmerzen"
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "22535"
+  "zip": "66667"
 }

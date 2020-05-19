@@ -1,0 +1,28 @@
+{
+  "city": "Bous",
+  "coronaContacts": false,
+  "dateOfBirth": "1992-07-02",
+  "email": "j.richter@gmail.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P645818292",
+  "lastName": "Richter",
+  "nationality": "deutsch",
+  "phoneNumber": "1010917710982",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Steinstra\u00dfe 0",
+  "symptoms": [
+    "Schnupfen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66808"
+}

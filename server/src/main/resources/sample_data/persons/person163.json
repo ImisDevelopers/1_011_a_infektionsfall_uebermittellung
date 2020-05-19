@@ -1,0 +1,31 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "1943-12-15",
+  "email": "m.lange@web.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "F468965063",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "169471022105",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kaiserstra\u00dfe 80",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66996"
+}

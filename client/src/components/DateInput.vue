@@ -26,8 +26,8 @@ import moment from 'moment'
  */
 
 export interface State {
-  dateOfBirthPickerOpen: boolean;
-  wasJustFocused: boolean;
+  dateOfBirthPickerOpen: boolean
+  wasJustFocused: boolean
 }
 
 export default mixins(FormControlMixin).extend({
@@ -40,7 +40,7 @@ export default mixins(FormControlMixin).extend({
   props: {
     value: { default: undefined },
     open: { default: false },
-    placeholder: { default: 'TT.MM.JJJJ (z.B. 28.02.1986)' },
+    placeholder: { default: 'z.B. 28.02.1986' },
     format: { default: 'DD.MM.YYYY' },
     defaultValue: { default: undefined },
   },
@@ -67,6 +67,4 @@ export default mixins(FormControlMixin).extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

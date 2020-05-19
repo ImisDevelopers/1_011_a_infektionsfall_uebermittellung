@@ -1,0 +1,27 @@
+{
+  "city": "Kirkel",
+  "coronaContacts": true,
+  "dateOfBirth": "1989-01-23",
+  "email": "p.richter@gmail.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S693516844",
+  "lastName": "Richter",
+  "nationality": "deutsch",
+  "phoneNumber": "9042177625",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 37",
+  "symptoms": [
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "669210"
+}

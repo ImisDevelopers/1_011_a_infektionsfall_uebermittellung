@@ -1,0 +1,27 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "2004-12-14",
+  "email": "i.schmitt@gmail.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q523398047",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "3356939290",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Kaiserstra\u00dfe 5",
+  "symptoms": [
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66078"
+}

@@ -1,31 +1,27 @@
 {
-  "city": "M\u00fcnchen",
+  "city": "Riegelsberg",
   "coronaContacts": false,
-  "dateOfBirth": "1965-05-27",
-  "email": "t.schulze@gmx.de",
-  "firstName": "Tim",
+  "dateOfBirth": "1989-11-10",
+  "email": "j.sommer@posteo.de",
+  "firstName": "Jana",
   "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 51,
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "O108556837",
-  "lastName": "Schulze",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Y351410032",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "19518100238",
+  "phoneNumber": "2411054151010",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Hubei"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aarhusweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe 6",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
     "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "17445"
+  "weakenedImmuneSystem": false,
+  "zip": "666104"
 }

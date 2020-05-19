@@ -3,10 +3,10 @@
   "name": "Doktor123",
   "street": "Bahnhofstraße",
   "houseNumber": "13",
-  "zip": "54252",
+  "zip": "60306",
   "city": "Frankfurt",
   "email": "doctor@example.de",
-  "phoneNumber": "57657654535",
-  "comment": "this is a comment from the doctor",
+  "phoneNumber": "+49 69 123456",
+  "comment": "This is a comment from the doctor",
   "id": "asdfa"
 }

@@ -5,8 +5,8 @@
   "houseNumber": "12",
   "zip": "10115",
   "city": "Berlin",
-  "email": "email@example.de",
-  "phoneNumber": "123456",
-  "comment": "this is a comment",
+  "email": "lab1@example.de",
+  "phoneNumber": "+49 30 123456",
+  "comment": "This is a comment for Lab",
   "id": "1234"
 }

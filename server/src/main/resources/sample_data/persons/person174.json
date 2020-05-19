@@ -1,0 +1,33 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1978-09-04",
+  "email": "c.schroeder@t-online.de",
+  "firstName": "Cornelius",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Y785717617",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "13863381039",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kronenstra\u00dfe 22",
+  "symptoms": [
+    "Halschmerzen",
+    "Husten",
+    "Fieber",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66886"
+}

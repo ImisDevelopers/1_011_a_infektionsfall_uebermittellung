@@ -1,0 +1,27 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "2005-12-04",
+  "email": "k.wagner@web.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "N221166907",
+  "lastName": "Wagner",
+  "nationality": "deutsch",
+  "phoneNumber": "38759271012",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 45",
+  "symptoms": [
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66663"
+}

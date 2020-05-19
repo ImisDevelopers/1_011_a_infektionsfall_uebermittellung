@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/patients")
@@ -96,6 +97,7 @@ public class PatientController {
 	public ResponseEntity<PatientEvent> createOrderTestEvent(OrderTestEventDTO eventDTO) {
 		var patient = patientService.findPatientById(eventDTO.getPatientId()).get();
 		var event = eventService.createOrderTestEvent(patient);
+		incidentService.addIncident(patient, Optional.empty(), EventType.ORDER_TEST, LocalDate.now());
 		return ResponseEntity.ok(event);
 	}
 }

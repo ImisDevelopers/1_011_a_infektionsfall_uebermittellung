@@ -11,6 +11,7 @@ import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
 import RegisterPatient from '@/views/RegisterPatient.vue'
 import RegisterTest from '@/views/RegisterTest.vue'
+import RequestQuarantine from '@/views/RequestQuarantine.vue'
 import SendToQuarantine from '@/views/SendToQuarantine.vue'
 import SubmitTestResult from '@/views/SubmitTestResult.vue'
 import TestList from '@/views/TestList.vue'
@@ -142,6 +143,19 @@ const appRoutes: AppRoute[] = [
         icon: 'team',
         title: 'Alle Patienten',
         authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        showInSidenav: true,
+      },
+    },
+  },
+  {
+    name: 'request-quarantine',
+    path: 'request-quarantine',
+    component: RequestQuarantine,
+    meta: {
+      navigationInfo: {
+        icon: 'safety',
+        title: 'Quarantäne vormerken',
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'],
         showInSidenav: true,
       },
     },

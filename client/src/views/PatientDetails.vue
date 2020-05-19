@@ -6,41 +6,52 @@
       :visible="showChangePatientStammdatenForm"
       :patient="patient"
     />
-    <div style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
-      <a-tabs
-        defaultActiveKey="overview"
-        v-if="patient"
+    <div v-if="patient" style="max-width: 1020px; margin: 0 auto; padding: 0 1rem">
+
+      <a-page-header
+        :title="`${patient.lastName}, ${patient.firstName}`"
+        :sub-title="patient.id"
+        @back="() => $router.go(-1)"
+        style="padding: 1rem 0;"
       >
-        <a-tab-pane
-          key="overview"
-          tab="Falldaten"
-        >
-          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
-            <div style="padding-right: 1rem">
-              <a-dropdown v-if="myRoles().includes('ROLE_DEPARTMENT_OF_HEALTH')">
+        <template slot="tags">
+          <a-tag v-if="patientStatus">
+            {{ patientStatus.label }}
+          </a-tag>
+        </template>
+        <template slot="extra">
+              <a-dropdown>
                 <a-menu slot="overlay" @click="handleActionClick">
                   <a-menu-item key="ARRANGE_TEST">
                     <a-icon type="user" />
                     Neuen Test anordnen
                   </a-menu-item>
-                  <a-menu-item key="SEND_TO_QUARANTINE">
+                  <a-menu-item key="SEND_TO_QUARANTINE" v-if="permissions.sendToQuarantine">
                     <a-icon type="user" />
-                    Patienten in Quarantäne schicken
+                    Quarantäne vormerken
                   </a-menu-item>
-                  <!--                <a-menu-item key="HOSPITALIZATION"><a-icon type="user" />Krankenhaus einweisung</a-menu-item>-->
                 </a-menu>
-                <a-button style="margin-left: 8px" type="primary"> Aktionen
+                <a-button style="margin-left: 8px"> Aktionen
                   <a-icon type="down" />
                 </a-button>
               </a-dropdown>
-            </div>
-            <a-button type="primary" icon="edit" @click="editPatientStammdaten">
+        </template>
+      </a-page-header>
+
+      <a-tabs
+        defaultActiveKey="master-data"
+        v-if="patient"
+        style="text-align: left"
+      >
+        <a-tab-pane
+          key="master-data"
+          tab="Stammdaten"
+        >
+          <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
+            <a-button icon="edit" @click="editPatientStammdaten">
               Daten ändern
             </a-button>
           </div>
-          <!-- display user data here-->
-          <div>
-
             <!-- Allgemein & Adresse -->
             <a-row :gutter="8">
               <a-col
@@ -152,7 +163,12 @@
                 </a-card>
               </a-col>
             </a-row>
+        </a-tab-pane>
 
+        <a-tab-pane
+          key="overview"
+          tab="Falldaten"
+        >
             <!-- Tests -->
             <a-row :gutter="8" style="margin-top: 8px;">
               <a-col span="24">
@@ -160,7 +176,7 @@
                   <div class="card-header">
                     <div>
                       Fall-Status: {{(patientStatus ? patientStatus.label : 'Unbekannt') + (patient.quarantineUntil ?
-                      (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')}}"
+                      (', Quarantäne angeordnet bis ' + patient.quarantineUntil) : '')}}
                     </div>
                     <div class="card-header-subtitle">Erkrankungsdatum: {{dateOfIllness}}</div>
                     <div class="card-header-subtitle">Meldedatum: {{dateOfReporting}}</div>
@@ -171,7 +187,6 @@
                     :scroll="{x: 0, y: 0}"
                     class="imis-table-no-pagination"
                     rowKey="id"
-                    style="padding: 0 24px"
                   >
                     <div slot="lastUpdate" slot-scope="lastUpdate">
                       {{getDate(lastUpdate)}}
@@ -240,8 +255,6 @@
                 </a-card>
               </a-col>
             </a-row>
-          </div>
-          <br>
         </a-tab-pane>
         <a-tab-pane
           forceRender
@@ -250,17 +263,24 @@
         >
           <a-card>
             <a-timeline
+              mode="left"
               style="text-align: left; margin-left: 40px"
-              v-if="patient.events.length"
+              v-if="incidents.length"
             >
               <!-- List all the events recorded corresponding to the patient over time -->
               <a-timeline-item
-                :color="timelineColor(event.eventType)"
-                :key="event.id"
-                v-for="event in this.patient.events"
+                :color="timelineColor(incident.eventType)"
+                :key="incident.id"
+                v-for="incident in this.incidents"
               >
-                {{ formatTimestamp(event.eventTimestamp) }},
-                {{ eventTypes.find(type => type.id === event.eventType).label }}
+                {{ formatDate(incident.eventDate) }},
+                {{ eventTypes.find(type => type.id === incident.eventType).label }}
+                <div v-if='incident.versionUser'>
+                  erfasst {{ formatTimestamp(incident.versionTimestamp) }} durch {{ incident.versionUser.institution.name }}
+                </div>
+                <div v-else>
+                  erfasst {{ formatTimestamp(incident.versionTimestamp) }}
+                </div>
               </a-timeline-item>
             </a-timeline>
           </a-card>
@@ -311,6 +331,7 @@
             <a-card
               title="Kontaktpersonen"
               align="left"
+              :bodyStyle="{ padding: 0 }"
             >
               <div slot="extra">
                 <a-button
@@ -379,12 +400,13 @@
           <a-modal title="Kontaktperson bearbeiten"
             ref="exposureContactModal"
             :visible="!!exposureContactInEditing"
-            @ok="persistExposureContact()
-              .then((success) => { if (success) exposureContactInEditing = null })"
+            @ok="persistExposureContact()"
             @cancel="exposureContactInEditing = null">
-            <a-form :form="exposureContactForm" :selfUpdate="true">
+            <a-form :form="exposureContactForm" :selfUpdate="true" layout="vertical">
               <EditExposureContact
-                :disableOriginatorPatient="true"/>
+                :disableOriginatorPatient="true" :showOriginatorPatient="false"
+                @showPatient="showPatient"
+                :contactPatient="exposureContactInEditing ? exposureContactInEditing.contact : null" />
             </a-form>
           </a-modal>
         </a-tab-pane>
@@ -397,6 +419,8 @@
 import Vue from 'vue'
 import moment, { Moment } from 'moment'
 import Api from '@/api'
+import * as permissions from '@/util/permissions'
+import { LabTest, Patient, Timestamp, ExposureContactFromServer, Incident } from '@/api/SwaggerApi'
 import { LabTest, Patient, Timestamp, ExposureContactFromServer } from '@/api/SwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
@@ -408,6 +432,7 @@ import { TestTypeItem, testTypes } from '@/models/test-types'
 import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
 import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
+import { Modal } from 'ant-design-vue'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -469,6 +494,11 @@ const columnsExposureContacts: Partial<Column>[] = [
     },
   },
   {
+    title: 'Kontaktart',
+    key: 'context',
+    dataIndex: 'context',
+  },
+  {
     title: 'Infektionsstatus',
     key: 'infected',
     scopedSlots: {
@@ -509,13 +539,16 @@ const columnsIndexPatients = [
     },
   },
   {
-    title: 'Wie?',
+    title: 'Kontaktart',
     key: 'context',
     dataIndex: 'context',
   },
 ]
 
 interface State {
+  permissions: {
+    sendToQuarantine: boolean;
+  };
   patient: undefined | Patient;
   patientInfectionSources: ExposureContactFromServer[];
   exposureContacts: ExposureContactFromServer[];
@@ -538,6 +571,7 @@ interface State {
   dateOfReporting: string;
   dateOfIllness: string;
   dateFormat: string;
+  incidents: any[];
 }
 
 export default Vue.extend({
@@ -566,6 +600,9 @@ export default Vue.extend({
 
   data(): State {
     return {
+      permissions: {
+        sendToQuarantine: false,
+      },
       dateFormat: 'DD.MM.YYYY',
       patient: undefined,
       patientInfectionSources: [],
@@ -588,6 +625,7 @@ export default Vue.extend({
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
+      incidents: [],
     }
   },
 
@@ -603,6 +641,13 @@ export default Vue.extend({
     }),
     async loadData() {
       this.exposureContactsLoading = true
+      try {
+        this.permissions = await permissions.checkAllowed({
+          sendToQuarantine: Api.sendToQuarantineUsingPost,
+        })
+      } catch (err) {
+        console.log(err)
+      }
 
       // Load Patient
       const patientId = this.$route.params.id
@@ -612,6 +657,11 @@ export default Vue.extend({
         this.setPatient(patient)
         this.patient = patient
       }
+
+      this.incidents = await Api.getPatientLogUsingGet(patientId)
+      this.incidents.sort((a: Incident, b: Incident) => {
+        return a.eventDate!.localeCompare(b.eventDate!) || a.versionTimestamp!.localeCompare(b.versionTimestamp!)
+      })
 
       if (this.patient.events) {
         const event = this.patient.events.find(event => event.eventType === 'REGISTERED' || event.eventType === 'SUSPECTED')
@@ -672,13 +722,21 @@ export default Vue.extend({
         return 'Unbekannt'
       }
     },
+    formatDate(date: string): string {
+      const momentTimestamp = moment(date)
+      if (momentTimestamp.isValid()) {
+        return momentTimestamp.format('DD.MM.YYYY')
+      } else {
+        return 'Unbekannt'
+      }
+    },
     editPatientStammdaten(): void {
       this.showChangePatientStammdatenForm = true
     },
     handleActionClick(e: { key: string }) {
       switch (e.key) {
         case 'SEND_TO_QUARANTINE':
-          this.$router.push({ name: 'send-to-quarantine', params: { patientId: this.patient?.id || '' } })
+          this.$router.push({ name: 'request-quarantine', params: { patientId: this.patient?.id || '' } })
           break
         case 'ARRANGE_TEST':
           this.scheduleTest()
@@ -704,9 +762,7 @@ export default Vue.extend({
       }
     },
     addExposureContact() {
-      const patientId = this.patient?.id
-
-      this.exposureContactInEditing = {}
+      this.exposureContactInEditing = { contact: { id: undefined } }
 
       Vue.nextTick(() => {
         this.exposureContactForm.resetFields()
@@ -724,25 +780,31 @@ export default Vue.extend({
         this.exposureContactForm.setFieldsValue(map(contact as {[x: string]: any}, {
           // source: patient => patient.id,
           // contact: patient => patient.id,
+          contact: contact => contact.id,
           dateOfContact: moment,
         }))
       })
     },
-    persistExposureContact(): Promise<boolean> {
+    persistExposureContact() {
       const stringFromMoment = (value: Moment): string => value.format('YYYY-MM-DD')
 
-      return new Promise((resolve: (success: boolean) => void) => {
-        this.exposureContactForm.validateFields(async(err: Error[], values: {[x: string]: any}) => {
-          if (err) {
-            resolve(false)
-            return
-          }
-
+      this.exposureContactForm.validateFields()
+        .then(async(values: any) => {
           // Convert values to transport format
           values = map(values, {
             id: parseInt,
             dateOfContact: stringFromMoment,
           })
+
+          // send initial patient data in contact field as string
+          if (!values.contact) {
+            values.contact = JSON.stringify({
+              firstName: values.contactFirstName,
+              lastName: values.contactLastName,
+              gender: values.contactGender,
+              dateOfBirth: values.contactDateOfBirth ? stringFromMoment(values.contactDateOfBirth) : undefined,
+            })
+          }
 
           if (values.id) {
             Object.assign(this.exposureContactInEditing, await Api.updateExposureContactUsingPut(values))
@@ -750,15 +812,15 @@ export default Vue.extend({
             this.exposureContacts.push(await Api.createExposureContactUsingPost(values))
           }
 
-          resolve(true)
+          this.exposureContactInEditing = null
         })
-      })
     },
     async removeExposureContact(contactId: number) {
       await Api.removeExposureContactUsingDelete(contactId)
       this.exposureContacts = this.exposureContacts.filter(contact => contact.id !== contactId)
     },
     showPatient(patientId: string) {
+      (this.$refs.exposureContactModal as Modal).$emit('cancel')
       this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
     moment,

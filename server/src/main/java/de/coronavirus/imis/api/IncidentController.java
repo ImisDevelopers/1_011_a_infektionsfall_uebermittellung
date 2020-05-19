@@ -13,9 +13,13 @@ To ease migration, incidents are currently automatically created when
 
 import de.coronavirus.imis.domain.Incident;
 import de.coronavirus.imis.domain.IncidentType;
+import de.coronavirus.imis.domain.QuarantineIncident;
 import de.coronavirus.imis.services.IncidentService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -39,6 +43,11 @@ public class IncidentController {
 	@GetMapping("/patient/{id}")
 	public List<Incident> getPatientCurrent(@PathVariable("id") String patientId) {
 		return incidentService.getCurrentByPatient(patientId);
+	}
+
+	@GetMapping("/selected-for-quarantine")
+	public List<QuarantineIncident> getSelectedForQuarantine() {
+		return this.incidentService.getPatientsSelectedForQuarantine();
 	}
 
 	@GetMapping("/{type}/patient/{id}")

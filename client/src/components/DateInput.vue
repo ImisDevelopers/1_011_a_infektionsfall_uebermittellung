@@ -3,6 +3,7 @@
     v-bind="$attrs"
     v-on="$listeners"
     :value="value"
+    :defaultValue="defaultValue"
     :format="format"
     :open="open || dateOfBirthPickerOpen"
     @focus="datePickerFocused"
@@ -15,6 +16,7 @@
 import Vue from 'vue'
 import mixins from 'vue-typed-mixins'
 import { FormControlMixin } from '@/util/forms'
+import moment from 'moment'
 
 /**
  * Input that supports 1d and 2d Barcodes
@@ -38,8 +40,9 @@ export default mixins(FormControlMixin).extend({
   props: {
     value: { default: undefined },
     open: { default: false },
-    placeholder: { default: 'TT.MM.JJJJ (z.B. 28.02.1986)' },
+    placeholder: { default: 'z.B. 28.02.1986' },
     format: { default: 'DD.MM.YYYY' },
+    defaultValue: { default: undefined },
   },
   data(): State {
     return {

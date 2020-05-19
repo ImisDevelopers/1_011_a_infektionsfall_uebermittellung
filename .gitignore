@@ -4,6 +4,7 @@
 .idea
 .gradle
 .DS_Store
+.vscode
 **/.project
 **/.settings
 /.classpath

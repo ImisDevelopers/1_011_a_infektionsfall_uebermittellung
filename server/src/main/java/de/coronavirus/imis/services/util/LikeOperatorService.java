@@ -13,7 +13,7 @@ public class LikeOperatorService {
 	 * @param searchParam Search Param
 	 * @return like operator
 	 */
-	public String likeOperatorOrEmptyString(final String searchParam) {
+	public String like(final String searchParam) {
 		if (searchParam == null) {
 			return "%%";
 		} else {

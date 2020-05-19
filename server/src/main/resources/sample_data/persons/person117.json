@@ -1,0 +1,30 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "dateOfBirth": "1984-04-26",
+  "email": "c.schmitt@posteo.de",
+  "firstName": "Christopher",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "R526656677",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "320611063102",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 76",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Husten",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66451"
+}

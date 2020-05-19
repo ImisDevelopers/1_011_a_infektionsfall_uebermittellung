@@ -1,0 +1,30 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "dateOfBirth": "1994-06-20",
+  "email": "m.schulz@web.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "X883803621",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "97061029620",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Schernerweg 42",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Husten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66336"
+}

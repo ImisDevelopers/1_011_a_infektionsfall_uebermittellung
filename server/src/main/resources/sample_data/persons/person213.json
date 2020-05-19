@@ -1,0 +1,27 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1970-03-25",
+  "email": "t.schulz@t-online.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "C106817809",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "6258273902",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg 80",
+  "symptoms": [
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66962"
+}

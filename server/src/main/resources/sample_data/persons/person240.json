@@ -1,0 +1,30 @@
+{
+  "city": "Neunkirchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1978-05-09",
+  "email": "j.schulz@web.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "G472928235",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "0496391919",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "S\u00fcdweg 34",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66198"
+}

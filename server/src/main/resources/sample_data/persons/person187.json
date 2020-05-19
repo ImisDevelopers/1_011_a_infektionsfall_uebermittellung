@@ -1,0 +1,28 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1985-12-24",
+  "email": "l.bauer@gmail.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "K707191953",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "11171051868",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 20",
+  "symptoms": [
+    "Schnupfen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66686"
+}

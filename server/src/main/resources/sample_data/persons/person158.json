@@ -1,0 +1,30 @@
+{
+  "city": "Neunkirchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1965-07-31",
+  "email": "e.klein@posteo.de",
+  "firstName": "Emma",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "L334683594",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "58804341610",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Tulpenweg 43",
+  "symptoms": [
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66182"
+}

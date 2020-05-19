@@ -1,0 +1,33 @@
+{
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "dateOfBirth": "1956-11-09",
+  "email": "j.peters@t-online.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C300164147",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "1010510410636",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hafenstra\u00dfe 90",
+  "symptoms": [
+    "Husten",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66157"
+}

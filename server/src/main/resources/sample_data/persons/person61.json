@@ -1,33 +1,31 @@
 {
-  "city": "K\u00f6ln",
+  "city": "Dudweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1972-11-26",
-  "email": "j.schroeder@gmx.de",
-  "firstName": "Jana",
+  "dateOfBirth": "1977-06-17",
+  "email": "a.wagner@gmail.de",
+  "firstName": "Anna",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 18,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "O436824737",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "S265564833",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "99309728109",
+  "phoneNumber": "414310842104",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 68",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
+    "Husten",
     "Halschmerzen",
-    "Schnupfen"
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "103091"
+  "zip": "661810"
 }

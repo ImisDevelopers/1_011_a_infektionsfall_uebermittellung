@@ -1,28 +1,33 @@
 {
-  "city": "D\u00fcsseldorf",
+  "city": "Neunkirchen",
   "coronaContacts": true,
-  "dateOfBirth": "1957-09-17",
-  "email": "d.klein@gmail.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 13,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Q258214411",
-  "lastName": "Klein",
+  "dateOfBirth": "1966-08-15",
+  "email": "t.berger@t-online.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "U302120588",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "62392401075",
+  "phoneNumber": "00541101998",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "B\u00fcckerheide",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Z\u00e4hringerstra\u00dfe 59",
   "symptoms": [
-    "Erk\u00e4ltung"
+    "Schnupfen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "81412"
+  "weakenedImmuneSystem": false,
+  "zip": "66980"
 }

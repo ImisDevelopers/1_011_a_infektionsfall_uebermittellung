@@ -1,0 +1,25 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "dateOfBirth": "1933-11-10",
+  "email": "f.lange@gmail.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L217787669",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "6519098624",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 47",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66800"
+}

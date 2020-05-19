@@ -1,26 +1,32 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1989-01-12",
-  "email": "a.mueller@t-online.de",
-  "firstName": "Anna",
+  "city": "Neunkirchen",
+  "coronaContacts": false,
+  "dateOfBirth": "1968-06-24",
+  "email": "h.weber@t-online.de",
+  "firstName": "Hanna",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 95,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Q337887233",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "E909763993",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "3950240268",
+  "phoneNumber": "6232858842",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "17758"
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Sonnenweg 61",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Schnupfen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66451"
 }

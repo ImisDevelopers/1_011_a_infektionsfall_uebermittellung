@@ -1,33 +1,29 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "2003-10-05",
-  "email": "p.schulze@posteo.de",
-  "firstName": "Peter",
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1963-09-15",
+  "email": "d.sommer@gmx.de",
+  "firstName": "Daniel",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 77,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "S827296111",
-  "lastName": "Schulze",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "X686405096",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "32710193745",
+  "phoneNumber": "6036690967",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 45",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Husten",
-    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
     "Fieber",
-    "Halschmerzen",
     "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "91241"
+  "weakenedImmuneSystem": false,
+  "zip": "66466"
 }

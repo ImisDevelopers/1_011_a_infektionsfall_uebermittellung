@@ -1,28 +1,27 @@
 {
-  "city": "Berlin",
-  "coronaContacts": false,
-  "dateOfBirth": "1962-12-03",
-  "email": "p.klein@t-online.de",
-  "firstName": "Peter",
+  "city": "Bous",
+  "coronaContacts": true,
+  "dateOfBirth": "1988-05-10",
+  "email": "f.schroeder@posteo.de",
+  "firstName": "Franz",
   "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 46,
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "U459327003",
-  "lastName": "Klein",
+  "insuranceMembershipNumber": "B568387228",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "81020377889",
+  "phoneNumber": "5107622683",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "street": "Hafenstra\u00dfe 71",
   "symptoms": [
-    "Halschmerzen"
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "54665"
+  "zip": "661051"
 }

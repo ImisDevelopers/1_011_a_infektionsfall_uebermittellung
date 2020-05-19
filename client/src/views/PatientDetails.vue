@@ -264,17 +264,24 @@
         >
           <a-card>
             <a-timeline
+              mode="left"
               style="text-align: left; margin-left: 40px"
-              v-if="patient.events.length"
+              v-if="incidents.length"
             >
               <!-- List all the events recorded corresponding to the patient over time -->
               <a-timeline-item
-                :color="timelineColor(event.eventType)"
-                :key="event.id"
-                v-for="event in this.patient.events"
+                :color="timelineColor(incident.eventType)"
+                :key="incident.id"
+                v-for="incident in this.incidents"
               >
-                {{ formatTimestamp(event.eventTimestamp) }},
-                {{ eventTypes.find(type => type.id === event.eventType).label }}
+                {{ formatDate(incident.eventDate) }},
+                {{ eventTypes.find(type => type.id === incident.eventType).label }}
+                <div v-if='incident.versionUser'>
+                  erfasst {{ formatTimestamp(incident.versionTimestamp) }} durch {{ incident.versionUser.institution.name }}
+                </div>
+                <div v-else>
+                  erfasst {{ formatTimestamp(incident.versionTimestamp) }}
+                </div>
               </a-timeline-item>
             </a-timeline>
           </a-card>
@@ -413,7 +420,7 @@ import Vue from 'vue'
 import moment, { Moment } from 'moment'
 import Api from '@/api'
 import * as permissions from '@/util/permissions'
-import { LabTest, Patient, Timestamp, ExposureContactFromServer } from '@/api/SwaggerApi'
+import { LabTest, Patient, Timestamp, ExposureContactFromServer, Incident } from '@/api/SwaggerApi'
 import { patientMapper } from '@/store/modules/patients.module'
 import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
 import { SYMPTOMS } from '@/models/symptoms'
@@ -561,6 +568,7 @@ interface State {
   dateOfReporting: string;
   dateOfIllness: string;
   dateFormat: string;
+  incidents: any[];
 }
 
 export default Vue.extend({
@@ -611,6 +619,7 @@ export default Vue.extend({
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
+      incidents: [],
     }
   },
 
@@ -642,6 +651,11 @@ export default Vue.extend({
         this.setPatient(patient)
         this.patient = patient
       }
+
+      this.incidents = await Api.getPatientLogUsingGet(patientId)
+      this.incidents.sort((a: Incident, b: Incident) => {
+        return a.eventDate!.localeCompare(b.eventDate!) || a.versionTimestamp!.localeCompare(b.versionTimestamp!)
+      })
 
       if (this.patient.events) {
         const event = this.patient.events.find(event => event.eventType === 'REGISTERED' || event.eventType === 'SUSPECTED')
@@ -698,6 +712,14 @@ export default Vue.extend({
       const momentTimestamp = moment(timestamp)
       if (momentTimestamp.isValid()) {
         return moment(timestamp).format('DD.MM.YYYY HH:mm')
+      } else {
+        return 'Unbekannt'
+      }
+    },
+    formatDate(date: string): string {
+      const momentTimestamp = moment(date)
+      if (momentTimestamp.isValid()) {
+        return momentTimestamp.format('DD.MM.YYYY')
       } else {
         return 'Unbekannt'
       }

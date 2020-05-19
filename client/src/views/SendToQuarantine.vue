@@ -143,14 +143,17 @@ export default Vue.extend({
       this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
     downloadAll() {
-      const header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse'
+      const header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse;Geschlecht;Geburtsdatum;Quarantäne Kommentar;Aufenthaltsort'
       let content = ''
       for (const quarantineIncidents of this.quarantinesByZip) {
         content += quarantineIncidents.quarantines.map(quarantine => {
           const patient = quarantine.patient
           if (patient) {
             const address = `${patient.street} ${patient.houseNumber} ${patient.zip} ${patient.city}`
-            return `${quarantineIncidents.zip};${moment(quarantine.until).format('DD.MM.YYYY')};${patient?.firstName};${patient?.lastName};${address}`
+            let stayaddress = `${patient.stayStreet} ${patient.stayHouseNumber} ${patient.stayZip} ${patient.stayCity}`
+            stayaddress = stayaddress === 'null null null null' ? '' : stayaddress
+            const comment = quarantine.comment ? quarantine.comment : ''
+            return `${quarantineIncidents.zip};${moment(quarantine.until).format('DD.MM.YYYY')};${patient?.firstName};${patient?.lastName};${address};${patient.gender};${patient?.dateOfBirth};${comment};${stayaddress}`
           } else {
             console.warn('Quarantine without patient')
             return ''

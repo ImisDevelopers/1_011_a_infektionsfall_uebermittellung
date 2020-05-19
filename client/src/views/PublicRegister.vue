@@ -1,13 +1,18 @@
 <template>
   <div class="public-register-outer-container">
     <a-card class="card">
-      <div style="display: flex; align-items: center; justify-content: center">
-        <img
-          aspect-ratio="1.7"
-          src="../assets/logo.png"
-          style="vertical-align: middle; height: 100px; margin-right: 25px"
-        />
-        <h1 style="margin: 0">Selbstregistrierung</h1>
+      <div style="position: relative;">
+        <div style="position: absolute; left: 5pt; display: flex; align-items: center; height: 100%">
+          <a-button type="primary" icon="home" :ghost="true" @click="gotoHome">Zur Startseite</a-button>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <img
+            aspect-ratio="1.7"
+            src="../assets/logo.png"
+            style="vertical-align: middle; height: 100px; margin-right: 25px"
+          />
+          <h1 style="margin: 0">Selbstregistrierung</h1>
+        </div>
       </div>
       <div style="margin-top: 35px">
         <a-steps id="scroll-anchor" style="margin-bottom: 20px"
@@ -125,6 +130,7 @@
                         type="check-circle" />
                 <span>Sie erhalten in Kürze eine Email zur Bestätigung.</span>
               </div>
+              <a-button type="primary" @click="gotoHome"><a-icon type="home"/> Zur Startseite</a-button>
             </div>
           </div>
 
@@ -290,6 +296,7 @@ export default Vue.extend({
           // TODO: exposures is not listed here, so currently we "misuse" risk areas...
           riskAreas: [],
         }
+
         if (!request.symptoms) {
           request.symptoms = []
         }
@@ -339,6 +346,9 @@ export default Vue.extend({
     },
     exposuresChanged(checkedValues: string[]) {
       this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')
+    },
+    gotoHome() {
+      this.$router.push({ path: '/' })
     },
   },
 })

@@ -1,0 +1,27 @@
+{
+  "city": "Neunkirchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1970-02-23",
+  "email": "l.schulze@posteo.de",
+  "firstName": "Lisa",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U123066440",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "272381004610",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Poststra\u00dfe 16",
+  "symptoms": [
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66756"
+}

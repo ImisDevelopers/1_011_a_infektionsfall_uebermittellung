@@ -1,0 +1,28 @@
+{
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "dateOfBirth": "1983-05-31",
+  "email": "p.schulze@gmx.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Z100197929",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "619110965710",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Bismarckstra\u00dfe 7",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66132"
+}

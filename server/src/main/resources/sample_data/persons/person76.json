@@ -1,26 +1,28 @@
 {
-  "city": "Berlin",
+  "city": "Saarlouis",
   "coronaContacts": false,
-  "dateOfBirth": "1935-08-02",
-  "email": "j.richter@gmx.de",
-  "firstName": "Jan",
+  "dateOfBirth": "1988-09-10",
+  "email": "a.richter@t-online.de",
+  "firstName": "Annika",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 5,
+  "gender": "female",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "V401048226",
+  "insuranceMembershipNumber": "R735297732",
   "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "100217610591",
+  "phoneNumber": "39599105342",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "B\u00fcckerheide",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "33974"
+  "street": "Bismarckstra\u00dfe 66",
+  "symptoms": [
+    "Halschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66364"
 }

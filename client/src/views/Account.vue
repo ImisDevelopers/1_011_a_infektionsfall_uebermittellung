@@ -45,7 +45,7 @@
                 </td>
               </tr>
             </table>
-            <a-button type="primary" @click="showChangePasswordForm=true" icon="edit">Passwort wechseln</a-button>
+            <!--<a-button type="primary" @click="showChangePasswordForm=true" icon="edit">Passwort wechseln</a-button>-->
           </div>
         </a-card>
       </a-col>
@@ -101,12 +101,12 @@
         <div slot="operation" slot-scope="nothing, user">
           <a-button v-if="isAdmin" type="primary" @click="() => changeUser(user)" icon="edit"
                     style="margin-right: 10px"></a-button>
-          <a-popconfirm
+          <!--<a-popconfirm
             title="Soll der Benutzer wirklich gelöscht werden?"
             @confirm="() => deleteUser(user)"
           >
             <a-button v-if="isAdmin" type="primary" icon="delete"></a-button>
-          </a-popconfirm>
+          </a-popconfirm>-->
         </div>
       </a-table>
     </a-card>

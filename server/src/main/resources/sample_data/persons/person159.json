@@ -1,0 +1,30 @@
+{
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
+  "dateOfBirth": "1976-04-27",
+  "email": "c.bauer@posteo.de",
+  "firstName": "Cornelius",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "K628646448",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "395211110107",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 0",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66807"
+}

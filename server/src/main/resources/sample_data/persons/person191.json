@@ -1,0 +1,29 @@
+{
+  "city": "Bous",
+  "coronaContacts": true,
+  "dateOfBirth": "1925-08-16",
+  "email": "b.schmidt@web.de",
+  "firstName": "Ben",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K475433873",
+  "lastName": "Schmidt",
+  "nationality": "deutsch",
+  "phoneNumber": "29343010710",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe 15",
+  "symptoms": [
+    "Husten",
+    "Kopfschmerzen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66396"
+}

@@ -1,33 +1,33 @@
 {
-  "city": "Bochum",
+  "city": "Homburg",
   "coronaContacts": true,
-  "dateOfBirth": "1988-07-25",
-  "email": "t.wagner@gmail.de",
-  "firstName": "Tim",
-  "fluImmunization": false,
+  "dateOfBirth": "1990-04-10",
+  "email": "f.weber@gmail.de",
+  "firstName": "Fin",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 56,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "C207873599",
-  "lastName": "Wagner",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U286009450",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "2101021890910",
+  "phoneNumber": "1252866929",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Halschmerzen"
+  "riskAreas": [
+    "Hubei"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "531026"
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 54",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Halschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "662710"
 }

@@ -1,0 +1,27 @@
+{
+  "city": "Kirkel",
+  "coronaContacts": true,
+  "dateOfBirth": "1990-11-22",
+  "email": "k.schroeder@gmx.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "I774305616",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "46271030147",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg 76",
+  "symptoms": [
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66597"
+}

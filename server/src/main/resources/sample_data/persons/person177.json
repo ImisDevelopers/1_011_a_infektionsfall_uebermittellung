@@ -1,0 +1,28 @@
+{
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "dateOfBirth": "1932-07-03",
+  "email": "b.schroeder@t-online.de",
+  "firstName": "Ben",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "B442863523",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "05566131090",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Kronenstra\u00dfe 99",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "661060"
+}

@@ -1,29 +1,29 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1937-12-08",
-  "email": "a.schulz@gmx.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 40,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "D534900128",
-  "lastName": "Schulz",
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "dateOfBirth": "1934-01-19",
+  "email": "m.winkler@posteo.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "G266140258",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "88105160607",
+  "phoneNumber": "885101651060",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "street": "Wintergasse 76",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Halschmerzen"
+    "Fieber",
+    "Schnupfen",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "969610"
+  "weakenedImmuneSystem": true,
+  "zip": "66451"
 }

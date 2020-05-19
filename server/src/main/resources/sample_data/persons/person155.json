@@ -1,0 +1,29 @@
+{
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1929-07-03",
+  "email": "c.weber@gmx.de",
+  "firstName": "Cornelius",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "U630824004",
+  "lastName": "Weber",
+  "nationality": "deutsch",
+  "phoneNumber": "1435190669",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kronenstra\u00dfe 66",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66490"
+}

@@ -1,31 +1,27 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1962-02-03",
-  "email": "p.schulz@posteo.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "city": "Heusweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1978-06-04",
+  "email": "m.bauer@posteo.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 10,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "C149203558",
-  "lastName": "Schulz",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L719927151",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "6155940781",
+  "phoneNumber": "1615594078",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg 48",
   "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Gelenkschmerzen",
     "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "841095"
+  "weakenedImmuneSystem": true,
+  "zip": "66184"
 }

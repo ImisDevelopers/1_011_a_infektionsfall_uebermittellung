@@ -1,28 +1,27 @@
 {
-  "city": "Freiburg",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1935-07-03",
-  "email": "k.bauer@t-online.de",
-  "firstName": "Karl",
-  "fluImmunization": true,
+  "dateOfBirth": "1966-10-24",
+  "email": "d.mueller@posteo.de",
+  "firstName": "Daniel",
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 61,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "T645719501",
-  "lastName": "Bauer",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "K748232591",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "31711027484",
+  "phoneNumber": "9471746488",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
+  "street": "Steinstra\u00dfe 56",
   "symptoms": [
-    "Atemschwierigkeiten"
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "73782"
+  "weakenedImmuneSystem": true,
+  "zip": "66190"
 }

@@ -1,31 +1,29 @@
 {
-  "city": "Bochum",
+  "city": "Heusweiler",
   "coronaContacts": false,
-  "dateOfBirth": "1935-01-15",
-  "email": "p.lange@gmx.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 52,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "O916033628",
-  "lastName": "Lange",
+  "dateOfBirth": "1975-03-18",
+  "email": "k.schulz@posteo.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "I945923902",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "15451680108",
+  "phoneNumber": "1206797403",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Wintergasse 90",
   "symptoms": [
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "Halschmerzen",
+    "Husten",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "03859"
+  "weakenedImmuneSystem": false,
+  "zip": "66471"
 }

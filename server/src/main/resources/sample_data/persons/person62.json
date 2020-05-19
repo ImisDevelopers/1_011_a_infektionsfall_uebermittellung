@@ -1,34 +1,28 @@
 {
-  "city": "K\u00f6ln",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1938-07-11",
-  "email": "k.wagner@gmx.de",
-  "firstName": "Kai",
-  "fluImmunization": true,
+  "dateOfBirth": "2002-08-29",
+  "email": "c.sommer@web.de",
+  "firstName": "Christopher",
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 61,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "Y410315830",
-  "lastName": "Wagner",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "O319068042",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "2785851010104",
+  "phoneNumber": "1084104731064",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Waldstra\u00dfe 9",
   "symptoms": [
     "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Fieber",
-    "Husten"
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "33484"
+  "zip": "66027"
 }

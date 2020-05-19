@@ -1,0 +1,33 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "dateOfBirth": "1937-12-29",
+  "email": "i.schulze@posteo.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "H377721135",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "610110207501",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg 6",
+  "symptoms": [
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66248"
+}

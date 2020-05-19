@@ -1,0 +1,27 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "2003-03-24",
+  "email": "s.wagner@posteo.de",
+  "firstName": "Susanne",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "D381805975",
+  "lastName": "Wagner",
+  "nationality": "deutsch",
+  "phoneNumber": "31041326111",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Steinstra\u00dfe 70",
+  "symptoms": [
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66006"
+}

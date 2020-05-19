@@ -1,0 +1,33 @@
+{
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1964-01-04",
+  "email": "p.berger@web.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "U245764637",
+  "lastName": "Berger",
+  "nationality": "deutsch",
+  "phoneNumber": "10556990235",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe 43",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Husten",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "661077"
+}

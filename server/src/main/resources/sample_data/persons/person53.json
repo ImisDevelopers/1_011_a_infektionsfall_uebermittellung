@@ -1,33 +1,33 @@
 {
-  "city": "M\u00fcnchen",
+  "city": "Neunkirchen",
   "coronaContacts": false,
-  "dateOfBirth": "1927-07-09",
-  "email": "j.winkler@gmail.de",
+  "dateOfBirth": "1955-09-12",
+  "email": "j.sommer@t-online.de",
   "firstName": "Jana",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 18,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "Y792738367",
-  "lastName": "Winkler",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "E914799481",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "10011010658102",
+  "phoneNumber": "36153051105",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg",
+  "street": "Nordstra\u00dfe 18",
   "symptoms": [
     "Husten",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Halschmerzen",
     "Schnupfen",
-    "Kopfschmerzen"
+    "Fieber",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "910702"
+  "weakenedImmuneSystem": false,
+  "zip": "66204"
 }

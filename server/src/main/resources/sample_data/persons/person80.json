@@ -1,32 +1,32 @@
 {
-  "city": "K\u00f6ln",
+  "city": "Heusweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1957-06-15",
-  "email": "j.wagner@web.de",
-  "firstName": "Jan",
+  "dateOfBirth": "2005-07-05",
+  "email": "c.schulz@t-online.de",
+  "firstName": "Cornelius",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 22,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "M400969989",
-  "lastName": "Wagner",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "A107099962",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "56109245937",
+  "phoneNumber": "10312038750",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 81",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten",
+    "Husten",
     "Gelenkschmerzen",
-    "Halschmerzen",
-    "Kopfschmerzen"
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "654107"
+  "weakenedImmuneSystem": true,
+  "zip": "661097"
 }

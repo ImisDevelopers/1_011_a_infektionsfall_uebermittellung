@@ -296,20 +296,20 @@ const columnsSchema: Partial<Column>[] = [
 ]
 
 interface SimpleForm {
-  query: string
-  order: string
-  orderBy: string
-  offsetPage: number
-  pageSize: number
+  query: string;
+  order: string;
+  orderBy: string;
+  offsetPage: number;
+  pageSize: number;
 }
 
 interface State {
-  form: SimpleForm
-  advancedForm: Partial<PatientSearchParamsDTO>
-  quarantineSelection: string
-  currentPatients: Patient[]
+  form: SimpleForm;
+  advancedForm: Partial<PatientSearchParamsDTO>;
+  quarantineSelection: string;
+  currentPatients: Patient[];
 
-  [key: string]: any
+  [key: string]: any;
 }
 
 export default Vue.extend({

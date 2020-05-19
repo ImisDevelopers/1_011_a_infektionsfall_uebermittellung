@@ -1,29 +1,32 @@
 {
-  "city": "Berlin",
-  "coronaContacts": false,
-  "dateOfBirth": "1999-07-21",
-  "email": "t.lange@posteo.de",
-  "firstName": "Tim",
+  "city": "Heusweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1930-07-13",
+  "email": "j.richter@gmx.de",
+  "firstName": "Jana",
   "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 75,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "K977364141",
-  "lastName": "Lange",
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q786237617",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "43610110371",
+  "phoneNumber": "0334191825",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 25",
   "symptoms": [
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Schnupfen",
     "Gelenkschmerzen",
-    "Husten"
+    "Fieber"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "381070"
+  "weakenedImmuneSystem": true,
+  "zip": "66714"
 }

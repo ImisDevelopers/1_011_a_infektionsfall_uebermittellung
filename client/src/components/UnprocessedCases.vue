@@ -5,21 +5,40 @@
       :customRow="customRow"
       :dataSource="unprocessedCases"
       :pagination="{ pageSize: 500 }"
-      :scroll="{x: 0, y: 0}"
+      :scroll="{ x: 0, y: 0 }"
       @change="handleTableChange"
       class="imis-table-no-pagination"
       rowKey="id"
     >
       <div slot="patientStatus" slot-scope="patientStatus">
-        <a-icon :type="eventTypes.find(type => type.id === patientStatus).icon" style="margin-right: 5px" />
-        {{eventTypes.find(type => type.id === patientStatus).label}}
+        <a-icon
+          :type="eventTypes.find((type) => type.id === patientStatus).icon"
+          style="margin-right: 5px;"
+        />
+        {{ eventTypes.find((type) => type.id === patientStatus).label }}
       </div>
-      <div slot="operation" slot-scope="nothing, patient" style="cursor: pointer">
-        <a-icon @click="() => handlePatientClick(patient)" style="margin-right: 5px; cursor: pointer" type="search" />
+      <div
+        slot="operation"
+        slot-scope="nothing, patient"
+        style="cursor: pointer;"
+      >
+        <a-icon
+          @click="() => handlePatientClick(patient)"
+          style="margin-right: 5px; cursor: pointer;"
+          type="search"
+        />
       </div>
     </a-table>
-    <div style="display: flex; width: 100%; margin: 15px 0; justify-content: flex-end; align-items: center">
-      <span style="margin-right: 10px">{{count}} Patienten</span>
+    <div
+      style="
+        display: flex;
+        width: 100%;
+        margin: 15px 0;
+        justify-content: flex-end;
+        align-items: center;
+      "
+    >
+      <span style="margin-right: 10px;">{{ count }} Patienten</span>
       <a-pagination
         :pageSize.sync="pageSize"
         :total="count"
@@ -83,18 +102,18 @@ const columnsSchema: Partial<Column>[] = [
 ]
 
 interface State {
-  unprocessedCases: PatientWithTimestamp[];
-  currentPage: number;
-  pageSize: number;
-  columnsSchema: Partial<Column>[];
-  order: string;
-  orderBy: string;
-  count: number;
-  eventTypes: EventTypeItem[];
+  unprocessedCases: PatientWithTimestamp[]
+  currentPage: number
+  pageSize: number
+  columnsSchema: Partial<Column>[]
+  order: string
+  orderBy: string
+  count: number
+  eventTypes: EventTypeItem[]
 }
 
 interface PatientWithTimestamp extends Patient {
-  lastEventTimestamp: string;
+  lastEventTimestamp: string
 }
 
 export default Vue.extend({
@@ -138,28 +157,32 @@ export default Vue.extend({
       const countPromise = Api.countQueryPatientsUsingPost(request)
       const queryPromise = Api.queryPatientsUsingPost(request)
 
-      countPromise.then(count => {
+      countPromise.then((count) => {
         this.count = count
       })
-      queryPromise.then((result: Patient[]) => {
-        this.unprocessedCases = result.map(patient => {
-          let lastTimestamp: any
-          if (patient.events && patient.events.length > 0) {
-            lastTimestamp = moment(patient.events[patient.events.length - 1].eventTimestamp).format('DD.MM.YYYY')
-          }
-          return {
-            ...patient,
-            lastEventTimestamp: lastTimestamp,
-          }
+      queryPromise
+        .then((result: Patient[]) => {
+          this.unprocessedCases = result.map((patient) => {
+            let lastTimestamp: any
+            if (patient.events && patient.events.length > 0) {
+              lastTimestamp = moment(
+                patient.events[patient.events.length - 1].eventTimestamp
+              ).format('DD.MM.YYYY')
+            }
+            return {
+              ...patient,
+              lastEventTimestamp: lastTimestamp,
+            }
+          })
         })
-      }).catch(error => {
-        console.error(error)
-        const notification = {
-          message: 'Fehler beim Laden der Patientendaten.',
-          description: error.message,
-        }
-        this.$notification.error(notification)
-      })
+        .catch((error) => {
+          console.error(error)
+          const notification = {
+            message: 'Fehler beim Laden der Patientendaten.',
+            description: error.message,
+          }
+          this.$notification.error(notification)
+        })
     },
     handleTableChange(pagination: any, filters: any, sorter: any) {
       console.log('Table Changed to ' + this.currentPage)
@@ -174,7 +197,10 @@ export default Vue.extend({
     },
     handlePatientClick(patient: Patient) {
       if (patient.id) {
-        this.$router.push({ name: 'patient-detail', params: { id: patient.id } })
+        this.$router.push({
+          name: 'patient-detail',
+          params: { id: patient.id },
+        })
       }
     },
     customRow(record: Patient) {
@@ -190,29 +216,28 @@ export default Vue.extend({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.imis-table-no-pagination {
+  .ant-table-pagination {
+    display: none;
+  }
+}
 
-  .imis-table-no-pagination {
-    .ant-table-pagination {
-      display: none;
-    }
+.header {
+  display: flex;
+  align-items: center;
+  background: white;
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+
+  .icon {
+    font-size: 32px;
+    margin: 0 15px;
   }
 
-  .header {
-    display: flex;
-    align-items: center;
-    background: white;
-    margin-bottom: 24px;
-    padding: 16px;
-    border-radius: 4px;
-    border: 1px solid #e8e8e8;
-
-    .icon {
-      font-size: 32px;
-      margin: 0 15px;
-    }
-
-    .text {
-      font-size: 22px;
-    }
+  .text {
+    font-size: 22px;
   }
+}
 </style>

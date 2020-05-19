@@ -26,8 +26,8 @@ import moment from 'moment'
  */
 
 export interface State {
-  dateOfBirthPickerOpen: boolean;
-  wasJustFocused: boolean;
+  dateOfBirthPickerOpen: boolean
+  wasJustFocused: boolean
 }
 
 export default mixins(FormControlMixin).extend({
@@ -67,6 +67,4 @@ export default mixins(FormControlMixin).extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

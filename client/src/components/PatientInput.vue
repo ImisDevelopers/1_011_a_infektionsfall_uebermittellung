@@ -1,15 +1,15 @@
 <template>
   <a-select
-    ref="input"
-    v-bind="$attrs"
-    v-on="externListeners"
-    :defaultActiveFirstOption="false"
-    :placeholder="placeholder"
-    :showSearch="true"
-    :showArrow="false"
-    :filterOption="filterOption"
-    :value="value"
-    @search="handleSearch"
+      ref="input"
+      v-bind="$attrs"
+      v-on="externListeners"
+      :defaultActiveFirstOption="false"
+      :placeholder="placeholder"
+      :showSearch="true"
+      :showArrow="false"
+      :filterOption="filterOption"
+      :value="value"
+      @search="handleSearch"
   >
     <a-select-option v-for="entry in result" :key="entry.value">
       {{ entry.label }}
@@ -25,9 +25,9 @@ import { FormControlMixin } from '@/util/forms'
 
 declare interface State {
   result: {
-    label?: string
-    value?: string
-  }[]
+    label?: string;
+    value?: string;
+  }[];
 }
 
 /**
@@ -51,7 +51,7 @@ export default mixins(FormControlMixin).extend({
   },
   fieldValueConvert(val: any): string {
     const hasProp = (obj: Record<string, any>, prop: string): boolean =>
-      Object.prototype.hasOwnProperty.call(obj, prop)
+        Object.prototype.hasOwnProperty.call(obj, prop)
 
     if (typeof val === 'object' && hasProp(val, 'id')) {
       const patient = val as Patient

@@ -1,15 +1,19 @@
 import { CreateInstitutionDTO, RegisterUserRequest } from '@/api/SwaggerApi'
 
-export type InstitutionType = Exclude<CreateInstitutionDTO['institutionType'], undefined>;
+export type InstitutionType = Exclude<
+  CreateInstitutionDTO['institutionType'],
+  undefined
+>
 export type InstitutionRole =
-  'ROLE_TEST_SITE'
+  | 'ROLE_TEST_SITE'
   | 'ROLE_LABORATORY'
   | 'ROLE_DOCTORS_OFFICE'
   | 'ROLE_CLINIC'
   | 'ROLE_GOVERNMENT_AGENCY'
   | 'ROLE_DEPARTMENT_OF_HEALTH'
-export type UserRole = Exclude<RegisterUserRequest['userRole'], undefined>;
-export type PatientStatus = 'REGISTERED'
+export type UserRole = Exclude<RegisterUserRequest['userRole'], undefined>
+export type PatientStatus =
+  | 'REGISTERED'
   | 'SUSPECTED'
   | 'SCHEDULED_FOR_TESTING'
   | 'ORDER_TEST'
@@ -24,9 +28,9 @@ export type PatientStatus = 'REGISTERED'
   | 'QUARANTINE_SELECTED' /* Vorgemerkt */
   | 'QUARANTINE_MANDATED'
   | 'QUARANTINE_RELEASED'
-  | 'QUARANTINE_PROFESSIONBAN_RELEASED';
+  | 'QUARANTINE_PROFESSIONBAN_RELEASED'
 export type RiskOccupation =
-  'NO_RISK_OCCUPATION'
+  | 'NO_RISK_OCCUPATION'
   | 'FIRE_FIGHTER_POLICE'
   | 'TEACHER'
   | 'PUBLIC_ADMINISTRATION'
@@ -36,6 +40,6 @@ export type RiskOccupation =
   | 'NURSE'
 
 export interface Option {
-  label: string;
-  value: string;
+  label: string
+  value: string
 }

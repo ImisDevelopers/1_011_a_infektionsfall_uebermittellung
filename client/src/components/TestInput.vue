@@ -1,15 +1,20 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete @search="handleSearch" placeholder="Suche über ID" v-decorator="validation">
+    <a-auto-complete
+      @search="handleSearch"
+      placeholder="Suche über ID"
+      v-decorator="validation"
+    >
       <template slot="dataSource">
-        <a-select-option :key="testId" v-for="testId in result">{{testId}}</a-select-option>
+        <a-select-option :key="testId" v-for="testId in result">{{
+          testId
+        }}</a-select-option>
       </template>
     </a-auto-complete>
   </a-form-item>
 </template>
 
 <script lang="ts">
-
 import Api from '@/api'
 import Vue from 'vue'
 
@@ -21,7 +26,7 @@ import Vue from 'vue'
  */
 
 export interface State {
-  result: string[];
+  result: string[]
 }
 
 export default Vue.extend({
@@ -38,8 +43,10 @@ export default Vue.extend({
       if (!value || value.length < 2) {
         result = []
       } else {
-        const labTests = await Api.queryLabTestsByIdUsingGet({ labTestIdQuery: value })
-        result = labTests.map(labTest => labTest.testId)
+        const labTests = await Api.queryLabTestsByIdUsingGet({
+          labTestIdQuery: value,
+        })
+        result = labTests.map((labTest) => labTest.testId)
       }
       this.result = result
     },
@@ -47,6 +54,4 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

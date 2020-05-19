@@ -227,6 +227,7 @@ export default Vue.extend({
                 h('div', `In Quarantäne bis: ${quarantineUntil}`),
               ]),
             })
+            this.resetForm()
           }
         } catch (err) {
           console.error(err)
@@ -285,10 +286,21 @@ export default Vue.extend({
                 h('div', `In Quarantäne bis: ${quarantineUntil}`),
               ]),
             })
+            this.resetForm()
           }
         }
       })
     },
+    resetForm() {
+      this.form.resetFields()
+      this.contacts = []
+      if (this.givenPatientId) {
+        this.$router.push({
+          name: 'patient-detail',
+          params: { id: this.givenPatientId },
+        })
+      }
+    }
   },
 })
 </script>

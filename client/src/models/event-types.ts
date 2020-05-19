@@ -58,12 +58,12 @@ export const eventTypes: EventTypeItem[] = [
   },
   {
     id: 'QUARANTINE_SELECTED',
-    label: 'Quarantäne angeordnet',
+    label: 'Quarantäne vorgemerkt',
     icon: 'safety',
   },
   {
     id: 'QUARANTINE_MANDATED',
-    label: 'Quarantäne vorgemerkt',
+    label: 'Quarantäne angeordnet',
     icon: 'safety',
   },
   {

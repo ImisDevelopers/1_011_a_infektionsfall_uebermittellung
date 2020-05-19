@@ -1,33 +1,28 @@
 {
-  "city": "Bochum",
+  "city": "Sulzbach",
   "coronaContacts": true,
-  "dateOfBirth": "1932-05-21",
-  "email": "p.mueller@t-online.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1964-11-10",
+  "email": "m.schulze@t-online.de",
+  "firstName": "Marie",
   "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 38,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "W164331134",
-  "lastName": "M\u00fcller",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U536164913",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "396910071084",
+  "phoneNumber": "4796275705",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 55",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Halschmerzen"
+    "Husten",
+    "Fieber"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "731064"
+  "weakenedImmuneSystem": true,
+  "zip": "664100"
 }

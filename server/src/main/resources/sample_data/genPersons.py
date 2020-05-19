@@ -7,10 +7,13 @@ from random import randint, randrange, choice, sample, getrandbits, seed
 seed(42)
 
 last_names = ['Peters', 'Müller', 'Schulz', 'Schulze', 'Weber', 'Wagner', 'Richter', 'Klein', 'Bauer', 'Schröder',
-			  'Lange', 'Winkler', 'Winter']
+			  'Lange', 'Winkler', 'Winter', 'Sommer', 'Schmitt', 'Schmidt', 'Berger']
 
-male_first_names = ['Peter', 'Daniel', 'Hans', 'Franz', 'Karl', 'Tim', 'Jan', 'Jens', 'Kai']
-female_fist_names = ['Jana', 'Lisa', 'Anna', 'Annika', 'Petra', 'Marie', 'Susanne', 'Daniela', 'Petra']
+male_first_names = ['Peter', 'Daniel', 'Hans', 'Franz', 'Karl', 'Tim', 'Jan', 'Jens', 'Kai', 'Ben', 'Fin', 'Matthias',
+              'Christopher', 'Cornelius', 'Konrad']
+
+female_fist_names = ['Jana', 'Lisa', 'Anna', 'Annika', 'Petra', 'Marie', 'Susanne', 'Daniela', 'Petra', 'Martina',
+              'Emma', 'Hanna', 'Olivia', 'Isabella']
 
 genders = ['male', 'female']
 
@@ -27,12 +30,30 @@ streets = [
 	"Abbachstraße",
 	"Niekampsweg",
 	"Abbendiekshof",
+	"Sonnenweg",
+	"Wintergasse",
+    "Südweg",
+	"Hauptstraße",
+    "Zähringerstraße",
+    "Kaiserstraße",
+    "Waldstraße",
+    "Steinstraße",
+    "Hafenstraße",
+    "Poststraße",
+    "Hohenzollerstraße",
+    "Eisenbahnstraße",
+    "Kronenstraße",
+    "Bismarckstraße",
+    "Rosenstraße",
+    "Tulpenweg",
 	"Bückerheide",
 	"Nordstraße",
 	"Nordtstraße",
 	"Nordufer"]
 
-cities = ['Berlin', 'München', 'Hamburg', 'Köln', 'Düsseldorf', 'Kiel', 'Freiburg', 'Bochum', 'Frankfurt']
+# temporarily replace possible cities for simulation
+# cities = ['Berlin', 'München', 'Hamburg', 'Köln', 'Düsseldorf', 'Kiel', 'Freiburg', 'Bochum', 'Frankfurt', 'Saarbrücken']
+cities = ['Saarbrücken', 'Sulzbach', 'Dudweiler', 'St. Ingbert', 'Saarlouis', 'Völklingen', 'Bous', 'Neunkirchen', 'Homburg', 'Kirkel', 'Heusweiler', 'Riegelsberg', 'Püttlingen']
 
 insurance_companies = ['AOK', 'Barmer', 'Techniker Krankenkasse', 'IKK Nord', 'KNAPPSCHAFT', 'DAK Gesundheit']
 
@@ -63,7 +84,7 @@ def rand_num_str(len=10):
 	return ''.join([str(randint(0, 10)) for _ in range(len)])
 
 
-riscAreas = ['', 'GrandEst', 'Hubei', 'Tirol', 'Madrid', 'New York']
+riscAreas = ['', 'GrandEst', 'Hubei', 'Tirol', 'Madrid', 'New York', 'Moscow']
 
 preIllnesses = ['', 'Krebserkrankung', 'Imunsystemschwäche', 'Herz-Kreislauf']
 
@@ -94,9 +115,12 @@ def gen_person():
 		'dateOfBirth': gen_date_of_birth(),
 		'email': email,
 		'phoneNumber': rand_num_str(),
-		'street': choice(streets),
-		'houseNumber': randint(0, 100),
-		'zip': rand_num_str(5),
+# include house number within street field
+		'street': '{} {}'.format(choice(streets), randint(0, 100)),
+#		'houseNumber': randint(0, 100),
+# temporarily filter zip codes to saarland region (approximately)
+#		'zip': rand_num_str(5),
+		'zip': '66{}'.format(rand_num_str(3)),
 		'city': choice(cities),
 		'insuranceCompany': choice(insurance_companies),
 		'insuranceMembershipNumber': insurance_number(),
@@ -112,9 +136,14 @@ def gen_person():
 
 
 def main():
+	import sys
 	pathlib.Path('persons').mkdir(parents=True, exist_ok=True)
 
-	for i in range(100):
+	amount = 250  # default
+	if len(sys.argv) >= 1:
+		amount = int(sys.argv[1])
+
+	for i in range(amount):
 		with open(f'persons/person{i}.json', 'w+') as f:
 			f.write(json.dumps(gen_person(), sort_keys=True, indent=2))
 

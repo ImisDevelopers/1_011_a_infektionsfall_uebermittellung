@@ -1,30 +1,25 @@
 {
-  "city": "Berlin",
+  "city": "Dudweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1941-03-17",
-  "email": "j.winkler@gmail.de",
-  "firstName": "Jana",
+  "dateOfBirth": "1991-05-14",
+  "email": "f.bauer@gmail.de",
+  "firstName": "Fin",
   "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 99,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "L992994062",
-  "lastName": "Winkler",
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y273461957",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "110410893252",
+  "phoneNumber": "27048281104",
   "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
-  "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "B\u00fcckerheide",
-  "symptoms": [
-    "Husten",
-    "Fieber",
-    "Atemschwierigkeiten"
+  "riskAreas": [
+    "Hubei"
   ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe 81",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "80957"
+  "zip": "66893"
 }

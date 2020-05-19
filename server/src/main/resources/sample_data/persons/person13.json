@@ -1,31 +1,25 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": true,
-  "dateOfBirth": "1926-06-22",
-  "email": "s.mueller@gmail.de",
-  "firstName": "Susanne",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 24,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "R995205588",
-  "lastName": "M\u00fcller",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1966-04-08",
+  "email": "f.schmitt@gmail.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "I291735734",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "14841065648",
+  "phoneNumber": "010365414510",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
-  "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen"
-  ],
+  "street": "Hafenstra\u00dfe 51",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "6106102"
+  "zip": "661085"
 }

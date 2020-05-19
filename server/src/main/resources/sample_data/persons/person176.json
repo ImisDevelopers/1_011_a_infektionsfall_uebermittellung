@@ -1,0 +1,27 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "dateOfBirth": "1940-09-19",
+  "email": "c.bauer@web.de",
+  "firstName": "Christopher",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M711028819",
+  "lastName": "Bauer",
+  "nationality": "deutsch",
+  "phoneNumber": "9210752245",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 31",
+  "symptoms": [
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66344"
+}

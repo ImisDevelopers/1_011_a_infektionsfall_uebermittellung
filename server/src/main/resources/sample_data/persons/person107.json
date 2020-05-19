@@ -1,0 +1,32 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1925-11-03",
+  "email": "f.winter@gmail.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S565098113",
+  "lastName": "Winter",
+  "nationality": "deutsch",
+  "phoneNumber": "99410131072",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg 42",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66107"
+}

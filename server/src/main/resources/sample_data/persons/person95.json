@@ -1,29 +1,25 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1940-06-02",
-  "email": "l.klein@gmx.de",
-  "firstName": "Lisa",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1937-07-07",
+  "email": "e.winkler@t-online.de",
+  "firstName": "Emma",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 94,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "L511221078",
-  "lastName": "Klein",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "U941695219",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "79252419101",
+  "phoneNumber": "6374545892",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
-  "symptoms": [
-    "Husten",
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "80003"
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hohenzollerstra\u00dfe 62",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "665100"
 }

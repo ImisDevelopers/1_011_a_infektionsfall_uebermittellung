@@ -17,6 +17,7 @@ task buildFrontend(type: YarnTask) {
 task lint(type: YarnTask) {
   args = ['run', 'lint']
 }
+
 task test(type: YarnTask) {
   args = ['run', 'test:unit']
 }

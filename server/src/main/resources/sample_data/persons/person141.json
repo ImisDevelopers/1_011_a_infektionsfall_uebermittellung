@@ -1,0 +1,27 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "dateOfBirth": "1973-09-24",
+  "email": "o.schulze@gmx.de",
+  "firstName": "Olivia",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Y677646075",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "4085887704",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kronenstra\u00dfe 24",
+  "symptoms": [
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66581"
+}

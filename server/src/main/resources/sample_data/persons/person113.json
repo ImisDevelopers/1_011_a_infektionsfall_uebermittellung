@@ -1,0 +1,30 @@
+{
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "dateOfBirth": "1956-08-24",
+  "email": "m.peters@t-online.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "C958128631",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "6267658617",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe 73",
+  "symptoms": [
+    "Husten",
+    "Schnupfen",
+    "Halschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "6610103"
+}

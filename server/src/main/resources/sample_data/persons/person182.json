@@ -1,0 +1,29 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "1925-05-08",
+  "email": "e.winkler@gmail.de",
+  "firstName": "Emma",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "M659116527",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "84010460843",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete 43",
+  "symptoms": [
+    "Halschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "666102"
+}

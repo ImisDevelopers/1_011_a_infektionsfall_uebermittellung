@@ -1,31 +1,27 @@
 {
-  "city": "Kiel",
+  "city": "Kirkel",
   "coronaContacts": false,
-  "dateOfBirth": "1993-09-25",
-  "email": "h.mueller@gmail.de",
-  "firstName": "Hans",
-  "fluImmunization": true,
+  "dateOfBirth": "1973-04-06",
+  "email": "f.schulze@posteo.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
   "gender": "male",
-  "houseNumber": 23,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "X355046107",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "U439451556",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "88010592962",
+  "phoneNumber": "921012107799",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg",
+  "street": "Waldstra\u00dfe 87",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Halschmerzen"
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "92706"
+  "weakenedImmuneSystem": false,
+  "zip": "6691010"
 }

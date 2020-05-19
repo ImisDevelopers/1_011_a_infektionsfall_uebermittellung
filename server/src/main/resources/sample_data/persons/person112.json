@@ -1,0 +1,31 @@
+{
+  "city": "V\u00f6lklingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1955-10-02",
+  "email": "h.peters@web.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "U195268824",
+  "lastName": "Peters",
+  "nationality": "deutsch",
+  "phoneNumber": "29593109172",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 95",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Husten",
+    "Schnupfen",
+    "Fieber",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66135"
+}

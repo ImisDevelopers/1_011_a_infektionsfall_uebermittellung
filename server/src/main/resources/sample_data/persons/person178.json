@@ -1,0 +1,34 @@
+{
+  "city": "P\u00fcttlingen",
+  "coronaContacts": false,
+  "dateOfBirth": "1977-07-10",
+  "email": "d.berger@t-online.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "E918226618",
+  "lastName": "Berger",
+  "nationality": "deutsch",
+  "phoneNumber": "6225179086",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Sonnenweg 10",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Schnupfen",
+    "Husten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66686"
+}

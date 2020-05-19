@@ -1,0 +1,27 @@
+{
+  "city": "Dudweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1970-06-05",
+  "email": "a.klein@gmx.de",
+  "firstName": "Annika",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "G382646055",
+  "lastName": "Klein",
+  "nationality": "deutsch",
+  "phoneNumber": "10577754781",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe 82",
+  "symptoms": [
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66914"
+}

@@ -1,26 +1,30 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": false,
-  "dateOfBirth": "2000-01-18",
-  "email": "k.schulz@gmail.de",
-  "firstName": "Kai",
-  "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 43,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "P179545125",
-  "lastName": "Schulz",
+  "city": "Neunkirchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1971-06-28",
+  "email": "d.sommer@web.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "L956665975",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "42107109477",
+  "phoneNumber": "31473799106",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
     "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "20471"
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "S\u00fcdweg 3",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Husten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66752"
 }

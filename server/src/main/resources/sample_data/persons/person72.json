@@ -1,30 +1,29 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1999-05-13",
-  "email": "k.winkler@posteo.de",
-  "firstName": "Kai",
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-12-25",
+  "email": "p.wagner@gmx.de",
+  "firstName": "Petra",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 26,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Y614237373",
-  "lastName": "Winkler",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P913198930",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "109901391083",
+  "phoneNumber": "41104593327",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete 58",
   "symptoms": [
-    "Halschmerzen",
-    "Fieber",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
     "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "54033"
+  "zip": "66956"
 }

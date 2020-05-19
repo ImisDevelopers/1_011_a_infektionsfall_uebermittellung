@@ -1,34 +1,31 @@
 {
-  "city": "Frankfurt",
-  "coronaContacts": true,
-  "dateOfBirth": "1945-09-26",
-  "email": "m.richter@web.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 72,
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
+  "dateOfBirth": "1986-07-23",
+  "email": "j.lange@gmx.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "F452313624",
-  "lastName": "Richter",
+  "insuranceMembershipNumber": "O672440825",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "103310918785",
+  "phoneNumber": "3689702838",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe",
+  "street": "S\u00fcdweg 84",
   "symptoms": [
-    "Fieber",
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
     "Atemschwierigkeiten",
+    "Gelenkschmerzen",
     "Erk\u00e4ltung",
-    "Husten",
+    "Fieber",
     "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "10883"
+  "zip": "66786"
 }

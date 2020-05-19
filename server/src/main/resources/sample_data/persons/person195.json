@@ -1,0 +1,31 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1964-04-07",
+  "email": "b.schroeder@posteo.de",
+  "firstName": "Ben",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "G682535775",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "44857101422",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Sonnenweg 14",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66098"
+}

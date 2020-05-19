@@ -1,0 +1,31 @@
+{
+  "city": "Dudweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1968-09-23",
+  "email": "j.schmitt@web.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "J979843968",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "7392855749",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer 70",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Husten",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66218"
+}

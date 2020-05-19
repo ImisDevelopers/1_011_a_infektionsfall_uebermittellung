@@ -1,0 +1,25 @@
+{
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1958-09-18",
+  "email": "p.schmidt@posteo.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Z463394867",
+  "lastName": "Schmidt",
+  "nationality": "deutsch",
+  "phoneNumber": "74495621013",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Waldstra\u00dfe 100",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66213"
+}

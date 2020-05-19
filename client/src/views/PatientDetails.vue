@@ -421,6 +421,7 @@ import moment, { Moment } from 'moment'
 import Api from '@/api'
 import * as permissions from '@/util/permissions'
 import { LabTest, Patient, Timestamp, ExposureContactFromServer, Incident } from '@/api/SwaggerApi'
+import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
 import { EventTypeItem, eventTypes, testResults, TestResultType } from '@/models/event-types'
 import { SYMPTOMS } from '@/models/symptoms'
@@ -579,6 +580,9 @@ export default Vue.extend({
     EditExposureContact,
   },
   computed: {
+    ...authMapper.mapGetters({
+      myRoles: 'roles',
+    }),
     ...patientMapper.mapGetters({
       patientById: 'patientById',
     }),
@@ -731,7 +735,14 @@ export default Vue.extend({
     handleActionClick(e: { key: string }) {
       switch (e.key) {
         case 'SEND_TO_QUARANTINE':
-          this.$router.push({ name: 'request-quarantine', params: { patientId: this.patient?.id || '' } })
+          this.$router.push({
+            name: 'request-quarantine',
+            params: {
+              patientId: this.patient?.id || '',
+              patientFirstName: this.patient?.firstName || '',
+              patientLastName: this.patient?.lastName || '',
+            },
+          })
           break
         case 'ARRANGE_TEST':
           this.scheduleTest()

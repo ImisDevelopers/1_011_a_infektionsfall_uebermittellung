@@ -1,26 +1,29 @@
 {
-  "city": "Frankfurt",
+  "city": "St. Ingbert",
   "coronaContacts": true,
-  "dateOfBirth": "1974-04-05",
-  "email": "p.winkler@gmail.de",
+  "dateOfBirth": "1977-03-24",
+  "email": "p.bauer@posteo.de",
   "firstName": "Peter",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 64,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "H582334538",
-  "lastName": "Winkler",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U853041955",
+  "lastName": "Bauer",
   "nationality": "deutsch",
   "phoneNumber": "11081960013",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Schernerweg",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "908310"
+  "street": "Abbendiekshof 64",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66908"
 }

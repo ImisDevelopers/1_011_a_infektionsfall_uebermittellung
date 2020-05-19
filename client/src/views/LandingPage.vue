@@ -131,9 +131,11 @@
         <span>0681 / 500 66 72 0</span>
         <span>imis-team@gmx.de</span>
       </div>
+      <!--
       <div style="justify-content: center">
         &copy; 2020 Das IMIS Team
       </div>
+      -->
     </div>
   </div>
 </template>

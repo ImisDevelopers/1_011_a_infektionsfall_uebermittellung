@@ -1,28 +1,34 @@
 {
-  "city": "Frankfurt",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
-  "dateOfBirth": "1954-07-22",
-  "email": "j.peters@gmx.de",
-  "firstName": "Jana",
-  "fluImmunization": true,
+  "dateOfBirth": "1976-08-01",
+  "email": "i.winkler@t-online.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 79,
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "O642831335",
-  "lastName": "Peters",
+  "insuranceMembershipNumber": "P224683417",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "1771159212",
+  "phoneNumber": "985931011074",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kronenstra\u00dfe 52",
   "symptoms": [
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
     "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "109856"
+  "zip": "66120"
 }

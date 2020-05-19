@@ -1,0 +1,32 @@
+{
+  "city": "Homburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1945-10-20",
+  "email": "b.schulze@posteo.de",
+  "firstName": "Ben",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "L146641502",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "08811710298",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe 0",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "6610106"
+}

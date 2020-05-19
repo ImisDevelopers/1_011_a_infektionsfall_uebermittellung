@@ -1,26 +1,31 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1987-10-22",
-  "email": "m.peters@posteo.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "1930-02-15",
+  "email": "d.winkler@web.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 43,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "E269017588",
-  "lastName": "Peters",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "W576271425",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "61210018366",
+  "phoneNumber": "839010847100",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "25459"
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 61",
+  "symptoms": [
+    "Schnupfen",
+    "Husten",
+    "Fieber",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "666610"
 }

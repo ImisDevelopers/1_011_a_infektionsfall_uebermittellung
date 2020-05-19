@@ -19,9 +19,7 @@
 
 <script lang="ts">
 import Api from '@/api'
-import Vue from 'vue'
 import mixins from 'vue-typed-mixins'
-import { Select } from 'ant-design-vue'
 import { Patient } from '@/api/SwaggerApi'
 import { FormControlMixin } from '@/util/forms'
 
@@ -53,7 +51,7 @@ export default mixins(FormControlMixin).extend({
   },
   fieldValueConvert(val: any): string {
     const hasProp = (obj: Record<string, any>, prop: string): boolean =>
-      Object.prototype.hasOwnProperty.call(obj, prop)
+        Object.prototype.hasOwnProperty.call(obj, prop)
 
     if (typeof val === 'object' && hasProp(val, 'id')) {
       const patient = val as Patient

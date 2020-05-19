@@ -30,25 +30,27 @@
         </a-form-item>
       </a-form>
     </a-modal>
-    <a-button
-      class="download-all-button"
-      type="primary"
-      @click="downloadAll"
-      icon="download"
-      size="large"
-    >
-      Alle Herunterladen
-    </a-button>
-    <a-button
-      class="clear-all-button"
-      type="primary"
-      @click="showModal"
-      icon="play-circle"
-      size="large"
-    >
-      Quarantäne anordnen
-    </a-button>
-    <h2 style="margin-top: 30px;">
+    <div style="display: flex; justify-content: flex-end;">
+      <a-button
+        class="download-all-button"
+        type="primary"
+        @click="downloadAll"
+        icon="download"
+        size="large"
+      >
+        Alle Herunterladen
+      </a-button>
+      <a-button
+        class="clear-all-button"
+        type="primary"
+        @click="showModal"
+        icon="play-circle"
+        size="large"
+      >
+        Quarantäne anordnen
+      </a-button>
+    </div>
+    <h2 style="margin-top: 30px; text-align: center;">
       Es wurden {{ quarantinesByZip.length }} Patienten für eine Quarantäne
       vorgemerkt.
     </h2>
@@ -131,7 +133,7 @@ interface State {
   quarantinesByZip: QuarantinesForZip[]
   columnsQuarantines: Partial<Column>[]
   confirmVisible: boolean // eslint-disable-next-line
-  form: any; 
+  form: any;
   today: moment.Moment
 }
 
@@ -269,5 +271,17 @@ export default Vue.extend({
   position: absolute;
   top: 150px;
   right: 25px;
+}
+
+@media (max-width: 1300px) {
+  .download-all-button {
+    position: inherit;
+    margin: 10px;
+  }
+
+  .clear-all-button {
+    position: inherit;
+    margin: 10px;
+  }
 }
 </style>

@@ -1,9 +1,13 @@
 <template>
   <a-form-item label="PLZ">
-    <a-auto-complete @search="handlePlzSearch" @select="handlePlzSelection" v-decorator="decorator">
+    <a-auto-complete
+      @search="handlePlzSearch"
+      @select="handlePlzSelection"
+      v-decorator="decorator"
+    >
       <template slot="dataSource">
         <a-select-option :key="plz.fields.plz" v-for="plz in plzs">
-          {{plz.fields.plz}} {{plz.fields.note}}
+          {{ plz.fields.plz }} {{ plz.fields.note }}
         </a-select-option>
       </template>
     </a-auto-complete>
@@ -11,13 +15,12 @@
 </template>
 
 <script lang="ts">
-
 import Vue from 'vue'
 import { getPlzs, Plz } from '@/util/plz-service'
 
 export interface State {
-  plzs: Plz[];
-  currentSearch: string;
+  plzs: Plz[]
+  currentSearch: string
 }
 
 export default Vue.extend({
@@ -49,7 +52,7 @@ export default Vue.extend({
       }
     },
     handlePlzSelection(value: string) {
-      const plz = this.plzs.find(plz => plz.fields.plz === value)
+      const plz = this.plzs.find((plz) => plz.fields.plz === value)
       if (plz) {
         this.setPLZ(plz)
       }
@@ -62,6 +65,4 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

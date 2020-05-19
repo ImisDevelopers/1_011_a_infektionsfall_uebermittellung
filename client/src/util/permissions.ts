@@ -2,10 +2,10 @@ import Api from '@/api'
 import { Api as ApiDefs } from '@/api/SwaggerApi'
 
 export interface ApiParams {
-  path: string;
-  method: string;
+  path: string
+  method: string
 }
-export type ApiFunction = (...args: any[]) => any;
+export type ApiFunction = (...args: any[]) => any
 
 // Retrieve the request method and path for the given Swagger API function
 export function queryApiParams(apiFunc: ApiFunction): ApiParams {
@@ -18,7 +18,7 @@ export function queryApiParams(apiFunc: ApiFunction): ApiParams {
   */
 
   // Step 1: Create API copy with surrogate `request` operation
-  let resultParams = undefined as (undefined | ApiParams)
+  let resultParams = undefined as undefined | ApiParams
   const myApiDefs = new ApiDefs() as any
   myApiDefs.request = (path: string, method: string) => {
     resultParams = {
@@ -43,9 +43,14 @@ export function queryApiParams(apiFunc: ApiFunction): ApiParams {
   }
 }
 
-export async function checkAllowed(funcs: ApiFunction): Promise<boolean>;
-export async function checkAllowed(funcs: ApiFunction[] | undefined): Promise<boolean[]>;
-export async function checkAllowed<T extends Record<string, ApiFunction>, R extends { [key in keyof T]: boolean }>(funcs: T): Promise<R>;
+export async function checkAllowed(funcs: ApiFunction): Promise<boolean>
+export async function checkAllowed(
+  funcs: ApiFunction[] | undefined
+): Promise<boolean[]>
+export async function checkAllowed<
+  T extends Record<string, ApiFunction>,
+  R extends { [key in keyof T]: boolean }
+>(funcs: T): Promise<R>
 // export function checkAllowed(funcs: Record<string, ApiFunction>): Record<string, boolean>;
 export async function checkAllowed(funcs: any): Promise<any> {
   const resultLabels = [] as string[]
@@ -69,8 +74,10 @@ export async function checkAllowed(funcs: any): Promise<any> {
   // const params = funcs.map(queryApiParams)
 
   // Make the permission asking request
-  const apiResult = await Api.queryPermissionsUsingPost(Object.fromEntries(
-    funcs.map((func: ApiFunction) => [func.name, queryApiParams(func)]),
+  const apiResult = (await Api.queryPermissionsUsingPost(
+    Object.fromEntries(
+      funcs.map((func: ApiFunction) => [func.name, queryApiParams(func)])
+    )
   )) as Record<string, boolean>
 
   const result = [] as boolean[]

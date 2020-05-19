@@ -17,7 +17,7 @@
         >
           <div style="display: flex; justify-content: flex-end; padding-bottom: 10px">
             <div style="padding-right: 1rem">
-              <a-dropdown v-if="!myRoles().includes('ROLE_TEST_SITE')">
+              <a-dropdown v-if="myRoles().includes('ROLE_DEPARTMENT_OF_HEALTH')">
                 <a-menu slot="overlay" @click="handleActionClick">
                   <a-menu-item key="ARRANGE_TEST">
                     <a-icon type="user" />

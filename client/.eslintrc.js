@@ -6,33 +6,19 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:@typescript-eslint/recommended',
     'plugin:vue/essential',
-    '@vue/standard',
+    'eslint:recommended',
     '@vue/typescript/recommended',
+    '@vue/prettier',
+    '@vue/prettier/@typescript-eslint',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
   },
   rules: {
-    // '@typescript-eslint/rule-name': 'error',
     '@typescript-eslint/no-extra-semi': 'error',
-
-    'no-console': 'off', // process.env.NODE_ENV === 'production' ? 'error' :
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'comma-dangle': [
-      'error',
-      {
-        arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'always-multiline',
-        exports: 'always-multiline',
-        functions: 'always-multiline',
-      },
-    ],
-    'space-before-function-paren': ['error', 'never'],
-    'object-curly-spacing': ['error', 'always'],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   overrides: [
     {

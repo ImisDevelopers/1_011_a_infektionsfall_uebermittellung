@@ -735,7 +735,14 @@ export default Vue.extend({
     handleActionClick(e: { key: string }) {
       switch (e.key) {
         case 'SEND_TO_QUARANTINE':
-          this.$router.push({ name: 'request-quarantine', params: { patientId: this.patient?.id || '' } })
+          this.$router.push({
+            name: 'request-quarantine',
+            params: {
+              patientId: this.patient?.id || '',
+              patientFirstName: this.patient?.firstName || '',
+              patientLastName: this.patient?.lastName || '',
+            },
+          })
           break
         case 'ARRANGE_TEST':
           this.scheduleTest()

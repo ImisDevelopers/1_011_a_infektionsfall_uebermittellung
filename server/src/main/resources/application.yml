@@ -15,6 +15,9 @@ spring:
     password: password
     initialization-mode: always
     platform: postgres
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
   jpa:
     show-sql: true
     hibernate:
@@ -59,5 +62,3 @@ spring:
     gcp:
       storage:
         enabled: false
-
-

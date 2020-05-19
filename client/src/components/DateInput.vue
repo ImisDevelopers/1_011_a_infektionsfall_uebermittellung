@@ -40,7 +40,7 @@ export default mixins(FormControlMixin).extend({
   props: {
     value: { default: undefined },
     open: { default: false },
-    placeholder: { default: 'TT.MM.JJJJ (z.B. 28.02.1986)' },
+    placeholder: { default: 'z.B. 28.02.1986' },
     format: { default: 'DD.MM.YYYY' },
     defaultValue: { default: undefined },
   },

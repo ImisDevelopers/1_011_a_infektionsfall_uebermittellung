@@ -57,8 +57,23 @@ export const eventTypes: EventTypeItem[] = [
     icon: 'reconciliation',
   },
   {
-    id: 'QUARANTINE_MANDATED',
+    id: 'QUARANTINE_SELECTED',
     label: 'Quarantäne angeordnet',
+    icon: 'safety',
+  },
+  {
+    id: 'QUARANTINE_MANDATED',
+    label: 'Quarantäne vorgemerkt',
+    icon: 'safety',
+  },
+  {
+    id: 'QUARANTINE_RELEASED',
+    label: 'Quarantäne aufgehoben',
+    icon: 'safety',
+  },
+  {
+    id: 'QUARANTINE_PROFESSIONBAN_RELEASED',
+    label: 'Arbeitsverbot aufgehoben',
     icon: 'safety',
   },
 ]

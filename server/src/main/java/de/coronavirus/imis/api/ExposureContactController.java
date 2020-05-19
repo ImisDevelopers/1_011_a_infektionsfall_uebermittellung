@@ -4,6 +4,24 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import de.coronavirus.imis.api.converter.ExOrNewContactConverter;
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -24,12 +42,13 @@ import static de.coronavirus.imis.services.util.BulkOperationService.*;
 public class ExposureContactController {
   private final ExposureContactRepository exposureContactRepository;
   private final ExposureContactMapper exposureContactMapper;
+  private final ExOrNewContactConverter exOrNewContactConverter;
 
   private final BulkOperationService bulkOps;
 
   @PostMapping
   public ExposureContactDTO.FromServer createExposureContact(@RequestBody ExposureContactDTO.ToServer dto) {
-    return exposureContactMapper.toExposureContactDTO(
+    dto.setContact(exOrNewContactConverter.convert(dto.getContact()));return exposureContactMapper.toExposureContactDTO(
       exposureContactRepository.saveAndFlush(
         exposureContactMapper.toExposureContact(dto)
       )

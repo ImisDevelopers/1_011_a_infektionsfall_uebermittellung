@@ -237,7 +237,7 @@ export default mixins(FormGroupMixin).extend({
       }
     },
     async contactPatient(contactPatient: {id: string}) {
-      if (contactPatient) {
+      if (contactPatient?.id) {
         this.contact = await Api.getPatientForIdUsingGet(contactPatient.id)
         this.lockContactEditing = true
       } else {

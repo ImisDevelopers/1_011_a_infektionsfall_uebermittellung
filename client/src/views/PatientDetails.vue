@@ -393,8 +393,7 @@
           <a-modal title="Kontaktperson bearbeiten"
             ref="exposureContactModal"
             :visible="!!exposureContactInEditing"
-            @ok="persistExposureContact()
-              .then((success) => { if (success) exposureContactInEditing = null })"
+            @ok="persistExposureContact()"
             @cancel="exposureContactInEditing = null">
             <a-form :form="exposureContactForm" :selfUpdate="true" layout="vertical">
               <EditExposureContact
@@ -736,7 +735,7 @@ export default Vue.extend({
       }
     },
     addExposureContact() {
-      this.exposureContactInEditing = {}
+      this.exposureContactInEditing = { contact: { id: undefined } }
 
       Vue.nextTick(() => {
         this.exposureContactForm.resetFields()
@@ -759,16 +758,11 @@ export default Vue.extend({
         }))
       })
     },
-    persistExposureContact(): Promise<boolean> {
+    persistExposureContact() {
       const stringFromMoment = (value: Moment): string => value.format('YYYY-MM-DD')
 
-      return new Promise((resolve: (success: boolean) => void) => {
-        this.exposureContactForm.validateFields(async(err: Error[], values: {[x: string]: any}) => {
-          if (err) {
-            resolve(false)
-            return
-          }
-
+      this.exposureContactForm.validateFields()
+        .then(async(values: any) => {
           // Convert values to transport format
           values = map(values, {
             id: parseInt,
@@ -791,9 +785,8 @@ export default Vue.extend({
             this.exposureContacts.push(await Api.createExposureContactUsingPost(values))
           }
 
-          resolve(true)
+          this.exposureContactInEditing = null
         })
-      })
     },
     async removeExposureContact(contactId: number) {
       await Api.removeExposureContactUsingDelete(contactId)

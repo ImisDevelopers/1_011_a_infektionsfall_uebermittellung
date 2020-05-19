@@ -1,5 +1,6 @@
 package de.coronavirus.imis.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.coronavirus.imis.config.domain.User;
@@ -14,9 +15,6 @@ import java.util.List;
 @Entity(name = "institution")
 @Getter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "id")
 public abstract class InstitutionImpl implements Institution {
 	@Id
 	@GeneratedValue(generator = "uuid2")
@@ -33,6 +31,7 @@ public abstract class InstitutionImpl implements Institution {
 	private String comment;
 
 	@OneToMany(mappedBy = "institution")
+	@JsonBackReference
 	private List<User> users;
 
 	public abstract InstitutionType getType();

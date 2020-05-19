@@ -19,8 +19,8 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
-		// Does not work with delimiter "none" even though documentation says otherwise:
-		'@typescript-eslint/member-delimiter-style': 'off',
+    // Does not work with delimiter "none" even though documentation says otherwise:
+    '@typescript-eslint/member-delimiter-style': 'off',
   },
   overrides: [
     {

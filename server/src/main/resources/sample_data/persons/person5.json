@@ -1,35 +1,29 @@
 {
-  "city": "M\u00fcnchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1989-11-16",
-  "email": "k.winter@posteo.de",
-  "firstName": "Kai",
-  "fluImmunization": false,
+  "city": "Bous",
+  "coronaContacts": true,
+  "dateOfBirth": "1975-01-08",
+  "email": "k.winkler@gmail.de",
+  "firstName": "Konrad",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 85,
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "H168747287",
-  "lastName": "Winter",
+  "insuranceMembershipNumber": "R910959828",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "8248963834",
+  "phoneNumber": "91171822107",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Poststra\u00dfe 21",
   "symptoms": [
-    "Erk\u00e4ltung",
     "Atemschwierigkeiten",
-    "Fieber",
-    "Husten",
-    "Halschmerzen",
-    "Schnupfen",
-    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
     "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "105787"
+  "weakenedImmuneSystem": false,
+  "zip": "66489"
 }

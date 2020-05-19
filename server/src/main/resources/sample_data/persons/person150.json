@@ -1,0 +1,25 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "1979-10-06",
+  "email": "e.schmidt@gmx.de",
+  "firstName": "Emma",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "I293313837",
+  "lastName": "Schmidt",
+  "nationality": "deutsch",
+  "phoneNumber": "10603029922",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kronenstra\u00dfe 65",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66092"
+}

@@ -1,26 +1,28 @@
 {
-  "city": "Freiburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1930-05-21",
-  "email": "d.klein@gmail.de",
-  "firstName": "Daniel",
+  "city": "Heusweiler",
+  "coronaContacts": false,
+  "dateOfBirth": "1963-09-25",
+  "email": "j.schmidt@gmail.de",
+  "firstName": "Jens",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 45,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "A707661655",
-  "lastName": "Klein",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "E631855083",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "6474367136",
+  "phoneNumber": "8675339636",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 40",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Halschmerzen"
+  ],
   "weakenedImmuneSystem": true,
-  "zip": "944010"
+  "zip": "66766"
 }

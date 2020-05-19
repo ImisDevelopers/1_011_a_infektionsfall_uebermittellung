@@ -1,0 +1,32 @@
+{
+  "city": "St. Ingbert",
+  "coronaContacts": true,
+  "dateOfBirth": "1985-04-17",
+  "email": "m.schulz@t-online.de",
+  "firstName": "Martina",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "N494707031",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "102910657724",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbachstra\u00dfe 87",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Husten",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66954"
+}

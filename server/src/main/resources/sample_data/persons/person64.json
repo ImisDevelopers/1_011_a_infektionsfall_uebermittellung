@@ -1,31 +1,31 @@
 {
-  "city": "Hamburg",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
-  "dateOfBirth": "1985-07-21",
-  "email": "h.peters@web.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
+  "dateOfBirth": "1999-05-16",
+  "email": "b.winkler@t-online.de",
+  "firstName": "Ben",
+  "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 73,
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "M946066287",
-  "lastName": "Peters",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "B712335251",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "771034541001",
+  "phoneNumber": "910107480162",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
-  "symptoms": [
-    "Husten",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten"
+  "riskAreas": [
+    "Madrid"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "38026"
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Sonnenweg 93",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66565"
 }

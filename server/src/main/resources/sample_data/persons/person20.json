@@ -1,28 +1,30 @@
 {
-  "city": "Bochum",
-  "coronaContacts": false,
-  "dateOfBirth": "1964-03-16",
-  "email": "m.peters@gmx.de",
-  "firstName": "Marie",
+  "city": "Kirkel",
+  "coronaContacts": true,
+  "dateOfBirth": "2002-04-07",
+  "email": "a.schulz@t-online.de",
+  "firstName": "Annika",
   "fluImmunization": false,
   "gender": "female",
-  "houseNumber": 10,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "W627015393",
-  "lastName": "Peters",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "X871330207",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "3545494808",
+  "phoneNumber": "09232710193",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg",
+  "street": "Waldstra\u00dfe 89",
   "symptoms": [
-    "Atemschwierigkeiten"
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "36783"
+  "zip": "66452"
 }

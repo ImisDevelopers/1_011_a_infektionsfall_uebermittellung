@@ -1,33 +1,30 @@
 {
-  "city": "Berlin",
-  "coronaContacts": true,
-  "dateOfBirth": "1934-08-22",
-  "email": "d.schroeder@t-online.de",
-  "firstName": "Daniela",
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "dateOfBirth": "1943-06-16",
+  "email": "o.schroeder@posteo.de",
+  "firstName": "Olivia",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 89,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "N293253475",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "C471904990",
   "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "4064039106",
+  "phoneNumber": "58441910866",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 44",
   "symptoms": [
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
     "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Husten"
+    "Fieber",
+    "Halschmerzen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "18017"
+  "zip": "66240"
 }

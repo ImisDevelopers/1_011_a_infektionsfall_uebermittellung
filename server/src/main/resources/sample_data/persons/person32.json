@@ -1,30 +1,25 @@
 {
-  "city": "M\u00fcnchen",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
-  "dateOfBirth": "1977-11-07",
-  "email": "a.schroeder@gmail.de",
-  "firstName": "Annika",
+  "dateOfBirth": "1987-07-28",
+  "email": "k.schmitt@t-online.de",
+  "firstName": "Kai",
   "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 39,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "K902601465",
-  "lastName": "Schr\u00f6der",
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "W915401487",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "9410101021011010",
+  "phoneNumber": "102174596101",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aarhusweg",
-  "symptoms": [
-    "Schnupfen",
-    "Halschmerzen",
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "70952"
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer 42",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "661086"
 }

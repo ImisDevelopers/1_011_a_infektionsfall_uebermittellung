@@ -1,0 +1,25 @@
+{
+  "city": "P\u00fcttlingen",
+  "coronaContacts": false,
+  "dateOfBirth": "1992-09-03",
+  "email": "a.sommer@web.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "V594694805",
+  "lastName": "Sommer",
+  "nationality": "deutsch",
+  "phoneNumber": "8451848947",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Z\u00e4hringerstra\u00dfe 72",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66735"
+}

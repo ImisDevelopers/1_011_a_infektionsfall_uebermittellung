@@ -1,0 +1,31 @@
+{
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "dateOfBirth": "1996-06-23",
+  "email": "c.berger@gmail.de",
+  "firstName": "Cornelius",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "R844704803",
+  "lastName": "Berger",
+  "nationality": "deutsch",
+  "phoneNumber": "10691545226",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe 81",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "667105"
+}

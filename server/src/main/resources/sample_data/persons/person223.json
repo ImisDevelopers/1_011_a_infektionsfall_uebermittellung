@@ -1,0 +1,28 @@
+{
+  "city": "Dudweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1943-10-22",
+  "email": "m.lange@gmail.de",
+  "firstName": "Martina",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "J589547387",
+  "lastName": "Lange",
+  "nationality": "deutsch",
+  "phoneNumber": "8877492424",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 61",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66540"
+}

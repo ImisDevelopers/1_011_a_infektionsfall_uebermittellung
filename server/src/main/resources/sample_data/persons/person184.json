@@ -1,0 +1,34 @@
+{
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
+  "dateOfBirth": "1986-04-04",
+  "email": "p.schmitt@gmail.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "W937332060",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "2209949993",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Eisenbahnstra\u00dfe 29",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Husten"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "663100"
+}

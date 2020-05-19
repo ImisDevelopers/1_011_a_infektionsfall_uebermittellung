@@ -1,29 +1,30 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1952-10-20",
-  "email": "f.mueller@web.de",
-  "firstName": "Franz",
-  "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 79,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "V187174381",
-  "lastName": "M\u00fcller",
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1943-08-26",
+  "email": "d.klein@gmx.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "K477753674",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "9386774964",
+  "phoneNumber": "01436341095",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Steinstra\u00dfe 70",
   "symptoms": [
+    "Atemschwierigkeiten",
+    "Schnupfen",
     "Fieber",
-    "Gelenkschmerzen"
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "091310"
+  "zip": "66856"
 }

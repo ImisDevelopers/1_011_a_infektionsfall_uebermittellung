@@ -1,0 +1,34 @@
+{
+  "city": "Homburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1972-08-15",
+  "email": "a.schmitt@t-online.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "M978755907",
+  "lastName": "Schmitt",
+  "nationality": "deutsch",
+  "phoneNumber": "434902101110",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hauptstra\u00dfe 69",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Husten",
+    "Kopfschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66693"
+}

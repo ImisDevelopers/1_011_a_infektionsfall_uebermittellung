@@ -1,0 +1,31 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1937-11-12",
+  "email": "p.mueller@t-online.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "S927315167",
+  "lastName": "M\u00fcller",
+  "nationality": "deutsch",
+  "phoneNumber": "691045441410",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hohenzollerstra\u00dfe 50",
+  "symptoms": [
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "667103"
+}

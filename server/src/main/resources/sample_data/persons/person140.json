@@ -1,0 +1,31 @@
+{
+  "city": "Neunkirchen",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-03-14",
+  "email": "h.berger@t-online.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Y797180693",
+  "lastName": "Berger",
+  "nationality": "deutsch",
+  "phoneNumber": "88615331055",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hauptstra\u00dfe 37",
+  "symptoms": [
+    "Gelenkschmerzen",
+    "Fieber",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66398"
+}

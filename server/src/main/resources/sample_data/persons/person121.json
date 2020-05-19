@@ -1,0 +1,25 @@
+{
+  "city": "St. Ingbert",
+  "coronaContacts": false,
+  "dateOfBirth": "1935-06-12",
+  "email": "c.schmidt@web.de",
+  "firstName": "Cornelius",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "U539705006",
+  "lastName": "Schmidt",
+  "nationality": "deutsch",
+  "phoneNumber": "2414060293",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer 28",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "6610310"
+}

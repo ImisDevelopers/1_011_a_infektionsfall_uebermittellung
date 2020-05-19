@@ -1,30 +1,25 @@
 {
-  "city": "Kiel",
+  "city": "Saarlouis",
   "coronaContacts": true,
-  "dateOfBirth": "1982-02-20",
-  "email": "p.bauer@t-online.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1978-07-29",
+  "email": "j.schmidt@gmx.de",
+  "firstName": "Jan",
   "fluImmunization": true,
   "gender": "male",
-  "houseNumber": 10,
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "G819112790",
-  "lastName": "Bauer",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "B721890096",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "11036193990",
+  "phoneNumber": "0260647468",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Fieber"
-  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Bismarckstra\u00dfe 91",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "610998"
+  "zip": "66723"
 }

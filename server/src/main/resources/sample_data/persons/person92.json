@@ -1,29 +1,33 @@
 {
-  "city": "Hamburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1928-09-07",
-  "email": "k.schulze@web.de",
-  "firstName": "Karl",
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "dateOfBirth": "1934-09-21",
+  "email": "a.richter@gmx.de",
+  "firstName": "Anna",
   "fluImmunization": false,
-  "gender": "male",
-  "houseNumber": 76,
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "S551898779",
-  "lastName": "Schulze",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "R409957384",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "64100376137",
+  "phoneNumber": "76107677219",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aarhusweg 97",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Halschmerzen"
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Schnupfen",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "18055"
+  "weakenedImmuneSystem": false,
+  "zip": "66340"
 }

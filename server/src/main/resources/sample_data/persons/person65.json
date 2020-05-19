@@ -1,33 +1,31 @@
 {
-  "city": "K\u00f6ln",
-  "coronaContacts": false,
-  "dateOfBirth": "1938-08-29",
-  "email": "d.lange@web.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
-  "gender": "female",
-  "houseNumber": 91,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "T785826598",
-  "lastName": "Lange",
+  "city": "Dudweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1962-09-12",
+  "email": "d.winter@gmail.de",
+  "firstName": "Daniel",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Q250088694",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "28743152710",
+  "phoneNumber": "2398680002",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Rosenstra\u00dfe 42",
   "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
+    "Schnupfen",
     "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten"
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "20549"
+  "zip": "66787"
 }

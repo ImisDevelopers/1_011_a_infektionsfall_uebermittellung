@@ -985,6 +985,20 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags incident-controller
+     * @name getPatientsCurrentByTypeUsingPOST
+     * @summary getPatientsCurrentByType
+     * @request POST:/api/incidents/{type}/patient
+     * @secure
+     */
+    getPatientsCurrentByTypeUsingPost: (
+      type: "test" | "quarantine" | "administrative",
+      patientIds: string[],
+      params?: RequestParams,
+    ) =>
+      this.request<Record<string, Incident[]>, any>(`/api/incidents/${type}/patient`, "POST", params, patientIds, true),
+
+    /**
+     * @tags incident-controller
      * @name getPatientCurrentByTypeUsingGET
      * @summary getPatientCurrentByType
      * @request GET:/api/incidents/{type}/patient/{id}

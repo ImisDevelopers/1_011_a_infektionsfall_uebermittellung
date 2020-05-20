@@ -96,6 +96,7 @@ import moment from 'moment'
 import { getPlzs } from '@/util/plz-service'
 import { downloadCsv } from '@/util/export-service'
 import DateInput from '../components/DateInput.vue'
+import { testResults, TestResultType } from '@/models/event-types'
 
 const columnsQuarantines = [
   {
@@ -135,7 +136,8 @@ interface State {
   confirmVisible: boolean // eslint-disable-next-line
   form: any;
   today: moment.Moment
-  infectionSources: Map<string, ExposureContactFromServer[]>
+  patientInfectionSources: Map<string, ExposureContactFromServer[]> // Patient-ID - ExposureContactFromServer list
+  patientTestResults: Map<string, string[]> // Patient-ID - Test result list
 }
 
 export default Vue.extend({
@@ -167,7 +169,7 @@ export default Vue.extend({
         }
       })
     }
-    // Infections Sources for CSV download
+    // Involved Patients
     let patientIDs :string[] = []
     for (const quarantineIncidents of this.quarantinesByZip) {
       for (const incident of quarantineIncidents.quarantines)
@@ -176,14 +178,21 @@ export default Vue.extend({
           patientIDs.push(incident.patient!.id!)
       }
     }
+    // Infections Sources for CSV download
     const exposures = await Api.getExposureSourceContactsForPatientsUsingPost(patientIDs)
     function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
         return value !== null && value !== undefined;
     }
-    for (const key in exposures)
+    for (const patientId in exposures)
     {
-      const sources = exposures[key].filter( notEmpty )
-      this.infectionSources.set(key, sources)
+      const sources = exposures[patientId].filter( notEmpty )
+      this.patientInfectionSources.set(patientId, sources)
+    }
+    // Test Results for CSV download
+    const testIncidents = await Api.getPatientsCurrentByTypeUsingPost("test", patientIDs)
+    for (const patientId in testIncidents)
+    {
+      this.patientTestResults.set(patientId, testIncidents[patientId].map( (incident :any) => incident.status ))
     }
   },
   data(): State {
@@ -193,7 +202,8 @@ export default Vue.extend({
       confirmVisible: false,
       form: this.$form.createForm(this),
       today: moment(),
-      infectionSources: new Map<string, ExposureContactFromServer[]>(),
+      patientInfectionSources: new Map<string, ExposureContactFromServer[]>(),
+      patientTestResults: new Map<string, string[]>(),
     }
   },
   methods: {
@@ -216,21 +226,32 @@ export default Vue.extend({
                 stayaddress = stayaddress === 'null null null null' ? '' : stayaddress
                 const comment = quarantine.comment ? quarantine.comment : ''
 
-                const sourcesObjects = this.infectionSources!.get(patient.id!)
+                const sourcesObjects = this.patientInfectionSources!.get(patient.id!)
                 let sources = ""
-                if (sourcesObjects)
-                {
+                if (sourcesObjects) {
                   sources = sourcesObjects!.map( source => {
                     return `${source.source!.firstName} ${source.source!.lastName};${source.dateOfContact};${source.context}`
                   }).join(';')
                   maxInfectionSources = maxInfectionSources<sourcesObjects!.length ? sourcesObjects!.length : maxInfectionSources
                 }
 
+                const patientTestResults = this.patientTestResults!.get(patient.id!)
+                let tests = ''
+                if (patientTestResults) {
+                  tests = patientTestResults.map( result => {              
+                    const type = testResults.find(tr => tr.id===result)
+                    if (type)
+                      return type.label
+                    else
+                      return result
+                  } ).join(' - ') // One patient can have multiple test results.
+                }
+
                 return `${quarantineIncidents.zip};${moment(
                   quarantine.until
                 ).format('DD.MM.YYYY')};${patient?.firstName};${
                   patient?.lastName
-                };${address};${patient.gender};${patient?.dateOfBirth};${comment};${stayaddress};${sources}`
+                };${address};${patient.gender};${patient?.dateOfBirth};${comment};${tests};${stayaddress};${sources}`
               } else {
                 console.warn('Quarantine without patient')
                 return ''
@@ -238,7 +259,7 @@ export default Vue.extend({
             })
             .join('\n') + '\n'
       }
-      let header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse;Geschlecht;Geburtsdatum;Quarantäne Kommentar;Aufenthaltsort'
+      let header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse;Geschlecht;Geburtsdatum;Quarantänekommentar;Testresultat;Aufenthaltsort'
       if (maxInfectionSources===1)
         header += ';Indexpatient Name;Indexpatient Kontaktdatum;Indexpatient Kontext'
       else

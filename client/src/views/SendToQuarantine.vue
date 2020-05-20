@@ -90,7 +90,11 @@
 <script lang="ts">
 import Api from '@/api'
 import Vue from 'vue'
-import { QuarantineIncident, ExposureContactFromServer, ExposureContactContactView } from '@/api/SwaggerApi'
+import {
+  QuarantineIncident,
+  ExposureContactFromServer,
+  ExposureContactContactView,
+} from '@/api/SwaggerApi'
 import { Column } from 'ant-design-vue/types/table/column'
 import moment from 'moment'
 import { getPlzs } from '@/util/plz-service'
@@ -170,29 +174,36 @@ export default Vue.extend({
       })
     }
     // Involved Patients
-    let patientIDs :string[] = []
+    const patientIDs: string[] = []
     for (const quarantineIncidents of this.quarantinesByZip) {
-      for (const incident of quarantineIncidents.quarantines)
-      {
+      for (const incident of quarantineIncidents.quarantines) {
         if (patientIDs.indexOf(incident.patient!.id!) < 0)
           patientIDs.push(incident.patient!.id!)
       }
     }
     // Infections Sources for CSV download
-    const exposures = await Api.getExposureSourceContactsForPatientsUsingPost(patientIDs)
-    function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
-        return value !== null && value !== undefined;
+    const exposures = await Api.getExposureSourceContactsForPatientsUsingPost(
+      patientIDs
+    )
+    function notEmpty<TValue>(
+      value: TValue | null | undefined
+    ): value is TValue {
+      return value !== null && value !== undefined
     }
-    for (const patientId in exposures)
-    {
-      const sources = exposures[patientId].filter( notEmpty )
+    for (const patientId in exposures) {
+      const sources = exposures[patientId].filter(notEmpty)
       this.patientInfectionSources.set(patientId, sources)
     }
     // Test Results for CSV download
-    const testIncidents = await Api.getPatientsCurrentByTypeUsingPost("test", patientIDs)
-    for (const patientId in testIncidents)
-    {
-      this.patientTestResults.set(patientId, testIncidents[patientId].map( (incident :any) => incident.status ))
+    const testIncidents = await Api.getPatientsCurrentByTypeUsingPost(
+      'test',
+      patientIDs
+    )
+    for (const patientId in testIncidents) {
+      this.patientTestResults.set(
+        patientId,
+        testIncidents[patientId].map((incident: any) => incident.status)
+      )
     }
   },
   data(): State {
@@ -213,45 +224,58 @@ export default Vue.extend({
     },
     downloadAll() {
       let content = ''
-      let maxInfectionSources = 0; // Needed for #Cols in Header
+      let maxInfectionSources = 0 // Needed for #Cols in Header
       for (const quarantineIncidents of this.quarantinesByZip) {
         content +=
           quarantineIncidents.quarantines
             .map((quarantine) => {
               const patient = quarantine.patient
               if (patient) {
-
                 const address = `${patient.street} ${patient.houseNumber} ${patient.zip} ${patient.city}`
                 let stayaddress = `${patient.stayStreet} ${patient.stayHouseNumber} ${patient.stayZip} ${patient.stayCity}`
-                stayaddress = stayaddress === 'null null null null' ? '' : stayaddress
+                stayaddress =
+                  stayaddress === 'null null null null' ? '' : stayaddress
                 const comment = quarantine.comment ? quarantine.comment : ''
 
-                const sourcesObjects = this.patientInfectionSources!.get(patient.id!)
-                let sources = ""
+                const sourcesObjects = this.patientInfectionSources!.get(
+                  patient.id!
+                )
+                let sources = ''
                 if (sourcesObjects) {
-                  sources = sourcesObjects!.map( source => {
-                    return `${source.source!.firstName} ${source.source!.lastName};${source.dateOfContact};${source.context}`
-                  }).join(';')
-                  maxInfectionSources = maxInfectionSources<sourcesObjects!.length ? sourcesObjects!.length : maxInfectionSources
+                  sources = sourcesObjects!
+                    .map((source) => {
+                      return `${source.source!.firstName} ${
+                        source.source!.lastName
+                      };${source.dateOfContact};${source.context}`
+                    })
+                    .join(';')
+                  maxInfectionSources =
+                    maxInfectionSources < sourcesObjects!.length
+                      ? sourcesObjects!.length
+                      : maxInfectionSources
                 }
 
-                const patientTestResults = this.patientTestResults!.get(patient.id!)
+                const patientTestResults = this.patientTestResults!.get(
+                  patient.id!
+                )
                 let tests = ''
                 if (patientTestResults) {
-                  tests = patientTestResults.map( result => {              
-                    const type = testResults.find(tr => tr.id===result)
-                    if (type)
-                      return type.label
-                    else
-                      return result
-                  } ).join(' - ') // One patient can have multiple test results.
+                  tests = patientTestResults
+                    .map((result) => {
+                      const type = testResults.find((tr) => tr.id === result)
+                      if (type) return type.label
+                      else return result
+                    })
+                    .join(' - ') // One patient can have multiple test results.
                 }
 
                 return `${quarantineIncidents.zip};${moment(
                   quarantine.until
                 ).format('DD.MM.YYYY')};${patient?.firstName};${
                   patient?.lastName
-                };${address};${patient.gender};${patient?.dateOfBirth};${comment};${tests};${stayaddress};${sources}`
+                };${address};${patient.gender};${
+                  patient?.dateOfBirth
+                };${comment};${tests};${stayaddress};${sources}`
               } else {
                 console.warn('Quarantine without patient')
                 return ''
@@ -259,11 +283,13 @@ export default Vue.extend({
             })
             .join('\n') + '\n'
       }
-      let header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse;Geschlecht;Geburtsdatum;Quarantänekommentar;Testresultat;Aufenthaltsort'
-      if (maxInfectionSources===1)
-        header += ';Indexpatient Name;Indexpatient Kontaktdatum;Indexpatient Kontext'
+      let header =
+        'PLZ;Quarantäne bis;Vorname;Nachname;Adresse;Geschlecht;Geburtsdatum;Quarantänekommentar;Testresultat;Aufenthaltsort'
+      if (maxInfectionSources === 1)
+        header +=
+          ';Indexpatient Name;Indexpatient Kontaktdatum;Indexpatient Kontext'
       else
-        for (let i=1; i<maxInfectionSources+1; i++)
+        for (let i = 1; i < maxInfectionSources + 1; i++)
           header += `;Indexpatient ${i} Name;Indexpatient ${i} Kontaktdatum;Indexpatient ${i} Kontext`
       const filename =
         moment().format('YYYY_MM_DD') + '_quarantaene_anordnung.csv'

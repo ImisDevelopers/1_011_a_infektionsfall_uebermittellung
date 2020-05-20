@@ -255,9 +255,9 @@
 
           <!-- Krankheitsdetails -->
           <a-collapse-panel header="Krankheit und Zustand" key="5">
-            <a-row>
-              <a-col :span="1"></a-col>
-              <a-col :span="8">
+            <h4>Erkrankung</h4>
+            <a-row :gutter="12">
+              <a-col :md="12">
                 <a-form-item label="Art der Erkrankung">
                   <a-select
                     placeholder="Bitte wählen..."
@@ -278,7 +278,7 @@
                   </a-select>
                 </a-form-item>
               </a-col>
-              <a-col :span="8">
+              <a-col :md="12">
                 <a-form-item label="Fallstatus">
                   <a-select
                     placeholder="Status"
@@ -310,9 +310,8 @@
                 </a-form-item>
               </a-col>
             </a-row>
-            <a-row>
-              <a-col :span="1"></a-col>
-              <a-col :span="8">
+            <a-row :gutter="12">
+              <a-col :md="12">
                 <a-form-item label="Erkrankungsdatum">
                   <DateInput
                     v-decorator="[
@@ -330,7 +329,7 @@
                   />
                 </a-form-item>
               </a-col>
-              <a-col :span="8">
+              <a-col :md="12">
                 <a-form-item label="Meldedatum">
                   <DateInput
                     v-decorator="[
@@ -349,36 +348,46 @@
                 </a-form-item>
               </a-col>
             </a-row>
-            <a-row>
-              <a-col :span="2" />
-              <a-col :span="16">
-                <div style="display: flex; align-items: center;">
-                  <a-form-item :wrapperCol="{ span: 24 }">
-                    <a-checkbox
-                      :checked="!disableHospitalization"
-                      @change="hospitalizationChanged"
-                    >
-                      Patient/in ist hospitalisiert
-                    </a-checkbox>
-                  </a-form-item>
+
+            <a-divider />
+
+            <h4>Hospitalisierung</h4>
+            <a-row :gutter="12">
+              <a-col :md="12">
+                <a-form-item>
+                  <a-checkbox v-model="patientHospitalized">
+                    Patient/in ist hospitalisiert
+                  </a-checkbox>
+                </a-form-item>
+              </a-col>
+              <a-col :md="12">
+                <a-form-item label="Datum der Hospitalisierung">
                   <DateInput
-                    :decorator="['dateOfHospitalization']"
-                    :disabled="disableHospitalization"
+                    v-decorator="[
+                      'dateOfHospitalization',
+                      {
+                        rules: [
+                          {
+                            required: patientHospitalized,
+                            message: 'Bitte Datum wählen',
+                          },
+                        ],
+                        initialValue: today,
+                      },
+                    ]"
+                    :disabled="!patientHospitalized"
                     label="Seit"
                     style="flex: 0 1 400px;"
                   />
-                  <a-form-item
-                    :wrapperCol="{ span: 24 }"
-                    style="padding-left: 15px;"
+                </a-form-item>
+                <a-form-item>
+                  <a-checkbox
+                    v-decorator="['onIntensiveCareUnit']"
+                    :disabled="!patientHospitalized"
                   >
-                    <a-checkbox
-                      :decorator="['onIntensiveCareUnit']"
-                      :disabled="disableHospitalization"
-                    >
-                      Auf der Intensivstation
-                    </a-checkbox>
-                  </a-form-item>
-                </div>
+                    Auf der Intensivstation
+                  </a-checkbox>
+                </a-form-item>
               </a-col>
             </a-row>
           </a-collapse-panel>
@@ -428,7 +437,7 @@ interface State {
   showOtherSymptoms: boolean
   showOtherPreIllnesses: boolean
   disableExposureLocation: boolean
-  disableHospitalization: boolean
+  patientHospitalized: boolean
   today: Moment
 }
 
@@ -451,7 +460,7 @@ export default Vue.extend({
       disableExposureLocation: true,
       showOtherSymptoms: false,
       showOtherPreIllnesses: false,
-      disableHospitalization: true,
+      patientHospitalized: false,
       today: moment(),
     }
   },
@@ -490,7 +499,7 @@ export default Vue.extend({
           request.dateOfDeath = request.dateOfDeath.format('YYYY-MM-DD')
         }
 
-        if (!this.disableHospitalization) {
+        if (this.patientHospitalized) {
           request.dateOfHospitalization = values.dateOfHospitalization.format(
             'YYYY-MM-DD'
           )
@@ -521,8 +530,7 @@ export default Vue.extend({
           .then((patient: Patient) => {
             this.form.resetFields()
             this.createdPatient = patient as any
-            this.disableExposureLocation = true
-            this.disableHospitalization = true
+            this.patientHospitalized = false
             this.showOtherSymptoms = false
             this.form.setFieldsValue({
               symptomsOther: undefined,
@@ -559,10 +567,6 @@ export default Vue.extend({
       this.disableExposureLocation = !checkedValues.includes(
         'CONTACT_WITH_CORONA_CASE'
       )
-    },
-    hospitalizationChanged(event: Event) {
-      const target = event.target as any
-      this.disableHospitalization = !target.checked
     },
   },
 })

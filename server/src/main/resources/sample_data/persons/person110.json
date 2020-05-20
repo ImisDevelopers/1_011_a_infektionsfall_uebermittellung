@@ -1,0 +1,31 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1933-03-19",
+  "email": "m.winkler@web.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "T316320731",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "3784270103",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Eisenbahnstra\u00dfe 28",
+  "symptoms": [
+    "Schnupfen",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Husten",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66087"
+}

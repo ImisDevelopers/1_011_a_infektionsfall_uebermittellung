@@ -1,0 +1,30 @@
+{
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1941-02-10",
+  "email": "m.schulz@gmail.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Z956292577",
+  "lastName": "Schulz",
+  "nationality": "deutsch",
+  "phoneNumber": "104914766100",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Steinstra\u00dfe 20",
+  "symptoms": [
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66832"
+}

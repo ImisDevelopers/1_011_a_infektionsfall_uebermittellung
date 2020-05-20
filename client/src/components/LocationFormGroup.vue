@@ -4,26 +4,31 @@
       <!-- Straße / Hausnummer -->
       <a-row>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Straße, Hausnummer">
+          <a-form-item label="Straße, Hausnummer" :itemSelfUpdate="true">
             <a-input-group compact>
               <a-input
                 ref="street"
                 class="custom-input"
                 style="width: calc(100%);"
                 placeholder="Straße und Hausnummer"
-                v-decorator="[keys.street, {
-                  rules: [{
-                    required: $props.required!==false,
-                    message: 'Bitte Straße und Hausnummer eingeben',
-                  }],
-                  initialValue: initialData('street'),
-                }]"
+                v-decorator="[
+                  formFieldName('street'),
+                  {
+                    rules: [
+                      {
+                        required: $props.required !== false,
+                        message: 'Bitte Straße und Hausnummer eingeben',
+                      },
+                    ],
+                    initialValue: initialData('street'),
+                  },
+                ]"
               />
             </a-input-group>
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="PLZ, Ort">
+          <a-form-item label="PLZ, Ort" :itemSelfUpdate="true">
             <a-input-group compact>
               <a-auto-complete
                 ref="zip"
@@ -35,43 +40,63 @@
                 @search="handleZipSearch"
                 @select="(val) => handleZipSelection(val)"
                 :dropdownMenuStyle="{
-                  width: 'max-content'
+                  width: 'max-content',
                 }"
-                v-decorator="[keys.zip, {
-                  rules: [{
-                    required: $props.required!==false,
-                    message: 'Bitte PLZ eingeben',
-                  }],
-                  initialValue: initialData('zip'),
-                }]" />
+                v-decorator="[
+                  formFieldName('zip'),
+                  {
+                    rules: [
+                      {
+                        required: $props.required !== false,
+                        message: 'Bitte PLZ eingeben',
+                      },
+                    ],
+                    initialValue: initialData('zip'),
+                  },
+                ]"
+              />
               <a-input
                 ref="city"
                 class="custom-input"
                 style="width: calc(100% - 60pt);"
                 placeholder="Ort"
-                v-decorator="[keys.city, {
-                  rules: [{
-                    required: $props.required!==false,
-                    message: 'Bitte Ort eingeben',
-                  }],
-                  initialValue: initialData('city'),
-                }]" />
+                v-decorator="[
+                  formFieldName('city'),
+                  {
+                    rules: [
+                      {
+                        required: $props.required !== false,
+                        message: 'Bitte Ort eingeben',
+                      },
+                    ],
+                    initialValue: initialData('city'),
+                  },
+                ]"
+              />
             </a-input-group>
           </a-form-item>
         </a-col>
       </a-row>
       <a-row>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Land">
+          <a-form-item label="Land" :itemSelfUpdate="true">
             <a-select
               ref="country"
               class="custom-input"
               placeholder="Bitte wählen..."
-              v-decorator="[keys.country, { rules: [{
-                required: $props.required!==false,
-                message: 'Bitte Land auswählen',
-              }], initialValue: initialCountry()}]"
-              >
+              v-decorator="[
+                formFieldName('country'),
+                {
+                  rules: [
+                    {
+                      required: $props.required !== false,
+                      message: 'Bitte Land auswählen',
+                    },
+                  ],
+                  initialValue: initialCountry(),
+                },
+              ]"
+            >
               <a-select-option value="BE">Belgien</a-select-option>
               <a-select-option value="DK">Dänemark</a-select-option>
               <a-select-option value="DE">Deutschland</a-select-option>
@@ -99,65 +124,36 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import mixins from 'vue-typed-mixins'
+import * as typing from '@/util/typing'
 import { getPlzs, Plz } from '@/util/plz-service'
+import { FormGroupMixin } from '@/util/forms'
 
 interface Input extends Vue {
-  value: string;
-  focus: () => void;
+  value: string
+  focus: () => void
 }
 
 interface ZipEntry {
-  text: string;
-  value: string;
-  zipData: Plz;
+  text: string
+  value: string
+  zipData: Plz
 }
 
-export default Vue.extend({
+export default mixins(FormGroupMixin).extend({
   name: 'LocationFormGroup',
-  props: [
-    'form',
-    'required',
-    'data',
-    'streetInputKey',
-    'houseNumberInputKey',
-    'zipInputKey',
-    'cityInputKey',
-    'countryInputKey',
-    'inputKeyPrefix',
-    'useInputKeysForData',
-  ],
+  fieldIdentifiers: ['street', 'zip', 'city', 'country'],
+  props: ['required', 'data'],
   data() {
-    const keynames = [
-      'street',
-      'houseNumber',
-      'zip',
-      'city',
-      'country',
-    ]
-    const prefixed = (val: string) => {
-      if (this.$props.inputKeyPrefix) {
-        const capitalized = val.charAt(0).toUpperCase() + val.substring(1)
-        return this.$props.inputKeyPrefix + capitalized
-      } else {
-        return val
-      }
-    }
-
-    const keys = Object.fromEntries(Object.values(keynames).map(keyname => {
-      return [keyname, this.$props[keyname + 'InputKey'] || prefixed(keyname)]
-    }))
-    const dataKeys = Object.fromEntries(Object.values(keynames).map(keyname => {
-      return [keyname, this.$props.useInputKeysForData ? keys[keyname] : keyname]
-    }))
-
     return {
-      keys,
-      dataKeys,
       zips: [] as ZipEntry[],
       currentZipSearch: '' as string,
     }
   },
   methods: {
+    withExts() {
+      return typing.extended(this, typing.TypeArg<FormGroupMixin>())
+    },
     initialCountry() {
       const initialData = this.initialData('country')
       if (!initialData && this.required) {
@@ -166,14 +162,16 @@ export default Vue.extend({
         return initialData
       }
     },
-    initialData(keyname: string) {
-      return this.$props.data ? this.$props.data[this.keys[keyname]] : null
+    initialData(fieldId: string) {
+      return this.$props.data
+        ? this.$props.data[this.withExts().formFieldName(fieldId)]
+        : null
     },
     updateByZipData(plzData: Plz) {
-      this.$props.form.setFieldsValue({
-        [this.keys.zips]: plzData.fields.plz,
-        [this.keys.city]: plzData.fields.note,
-        [this.keys.country]: 'Deutschland',
+      this.withExts().setData({
+        zip: plzData.fields.plz,
+        city: plzData.fields.note,
+        country: 'Deutschland',
       })
     },
     async handleZipSearch(value: string) {
@@ -191,8 +189,8 @@ export default Vue.extend({
         }
         if (result.length === 1) {
           setTimeout(() => {
-            this.updateByZipData(result[0]);
-            (this.$refs.city as Input).focus()
+            this.updateByZipData(result[0])
+            ;(this.$refs.city as Input).focus()
           }, 0)
           this.zips = []
         } else {
@@ -207,7 +205,9 @@ export default Vue.extend({
             const ddRootId = document.evaluate(
               'string(./descendant-or-self::*[@aria-controls and contains(@class, "ant-select-selection")]/@aria-controls)',
               (this.$refs.zip as Vue).$el,
-              null, XPathResult.STRING_TYPE).stringValue
+              null,
+              XPathResult.STRING_TYPE
+            ).stringValue
 
             let ddRoot = document.getElementById(ddRootId)
             if (ddRoot) {
@@ -223,11 +223,13 @@ export default Vue.extend({
       }
     },
     handleZipSelection(value: string) {
-      const zipEntry = this.zips.find((entry: ZipEntry) => entry.value === value) as ZipEntry
+      const zipEntry = this.zips.find(
+        (entry: ZipEntry) => entry.value === value
+      ) as ZipEntry
       if (zipEntry) {
         setTimeout(() => {
-          this.updateByZipData(zipEntry.zipData);
-          (this.$refs.city as Input).focus()
+          this.updateByZipData(zipEntry.zipData)
+          ;(this.$refs.city as Input).focus()
         }, 0)
       }
     },
@@ -236,14 +238,15 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-  .ant-select-dropdown-menu-item {
-    overflow: unset;
-    text-overflow: unset;
-  }
+.ant-select-dropdown-menu-item {
+  overflow: unset;
+  text-overflow: unset;
+}
 
-  .location-form-group {
-    input.custom-input, .custom-input input {
-      text-align: left;
-    }
+.location-form-group {
+  input.custom-input,
+  .custom-input input {
+    text-align: left;
   }
+}
 </style>

@@ -1,0 +1,30 @@
+{
+  "city": "St. Ingbert",
+  "coronaContacts": false,
+  "dateOfBirth": "1944-10-19",
+  "email": "c.winkler@web.de",
+  "firstName": "Christopher",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y943458769",
+  "lastName": "Winkler",
+  "nationality": "deutsch",
+  "phoneNumber": "106108460810",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 18",
+  "symptoms": [
+    "Schnupfen",
+    "Halschmerzen",
+    "Husten",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "660100"
+}

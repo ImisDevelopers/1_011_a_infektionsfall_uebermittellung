@@ -30,7 +30,11 @@ function isAuthenticated() {
   return window.localStorage.token
 }
 
-const checkNotAuthenticatedBeforeEnter = (to: Route, from: Route, next: Function) => {
+const checkNotAuthenticatedBeforeEnter = (
+  to: Route,
+  from: Route,
+  next: Function
+) => {
   if (isAuthenticated()) {
     next({ name: 'app' })
   } else {
@@ -49,12 +53,12 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
 export interface AppRoute extends RouteConfig {
   meta?: {
     navigationInfo?: {
-      icon: string;
-      title: string;
-      authorities: InstitutionRole[];
-      showInSidenav: boolean;
-    };
-  };
+      icon: string
+      title: string
+      authorities: InstitutionRole[]
+      showInSidenav: boolean
+    }
+  }
 }
 
 const ALL_INSTITUTIONS: InstitutionRole[] = [
@@ -88,7 +92,12 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'user-add',
         title: 'Patient Registrieren',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_CLINIC',
+          'ROLE_DOCTORS_OFFICE',
+          'ROLE_TEST_SITE',
+        ],
         showInSidenav: true,
       },
     },
@@ -101,7 +110,12 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'deployment-unit',
         title: 'Probe Zuordnen',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_CLINIC',
+          'ROLE_DOCTORS_OFFICE',
+          'ROLE_TEST_SITE',
+        ],
         showInSidenav: true,
       },
     },
@@ -114,11 +128,16 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'experiment',
         title: 'Testresultat Zuordnen',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_LABORATORY',
+          'ROLE_TEST_SITE',
+        ],
         showInSidenav: true,
       },
     },
   },
+  /*
   {
     name: 'test-list',
     path: 'test-list',
@@ -132,6 +151,7 @@ const appRoutes: AppRoute[] = [
       },
     },
   },
+  */
   {
     name: 'patient-list',
     path: 'patient-list',
@@ -140,7 +160,12 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'team',
         title: 'Alle Patienten',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_CLINIC',
+          'ROLE_DOCTORS_OFFICE',
+          'ROLE_TEST_SITE',
+        ],
         showInSidenav: true,
       },
     },
@@ -248,8 +273,9 @@ const routes = [
   },
 ]
 
-export const navigationRoutes = appRoutes
-  .filter(r => !r.path.includes('*') && r.meta?.navigationInfo?.showInSidenav)
+export const navigationRoutes = appRoutes.filter(
+  (r) => !r.path.includes('*') && r.meta?.navigationInfo?.showInSidenav
+)
 
 const router = new VueRouter({
   mode: 'history',
@@ -258,7 +284,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!isAuthenticated()) {
       next({
         path: '/login',

@@ -1,34 +1,25 @@
 {
-  "city": "Kiel",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
-  "dateOfBirth": "1940-09-04",
-  "email": "a.winter@gmail.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
-  "gender": "female",
-  "houseNumber": 49,
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "Y271092615",
-  "lastName": "Winter",
+  "dateOfBirth": "1959-06-13",
+  "email": "h.schulz@posteo.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "I368018471",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "5371473210",
+  "phoneNumber": "90921075571",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Halschmerzen"
-  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 17",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "96325"
+  "zip": "66856"
 }

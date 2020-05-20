@@ -1,13 +1,14 @@
 <template>
   <div class="data-form">
     <div>
-
       <!-- Vorname / Nachname -->
-      <p style="text-align: center">Allgemeine Angaben:</p>
+      <p style="text-align: center;">Allgemeine Angaben:</p>
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Titel">
-            <a-input v-decorator="['title', {initialValue: patientInput.title}]" />
+            <a-input
+              v-decorator="['title', { initialValue: patientInput.title }]"
+            />
           </a-form-item>
         </a-col>
       </a-row>
@@ -15,20 +16,36 @@
         <a-col :lg="12" :sm="24">
           <a-form-item label="Vorname">
             <a-input
-              v-decorator="['firstName', { rules: [{
-                        required: true,
-                        message: 'Bitte Vornamen eingeben',
-                      }], initialValue: patientInput.firstName}]"
+              v-decorator="[
+                'firstName',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Vornamen eingeben',
+                    },
+                  ],
+                  initialValue: patientInput.firstName,
+                },
+              ]"
             />
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Nachname">
             <a-input
-              v-decorator="['lastName', { rules: [{
-                        required: true,
-                        message: 'Bitte Nachnamen eingeben'
-                      }], initialValue: patientInput.lastName}]"
+              v-decorator="[
+                'lastName',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Nachnamen eingeben',
+                    },
+                  ],
+                  initialValue: patientInput.lastName,
+                },
+              ]"
             />
           </a-form-item>
         </a-col>
@@ -41,10 +58,18 @@
             <a-radio-group
               @change="genderSelected"
               buttonStyle="solid"
-              v-decorator="['gender', { rules: [{
-                        required: true,
-                        message: 'Bitte Geschlecht eingeben',
-                      }], initialValue: patientInput.gender}]"
+              v-decorator="[
+                'gender',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Geschlecht eingeben',
+                    },
+                  ],
+                  initialValue: patientInput.gender,
+                },
+              ]"
             >
               <a-radio value="male">Männlich</a-radio>
               <a-radio value="female">Weiblich</a-radio>
@@ -54,10 +79,20 @@
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Geburtsdatum">
-            <DateInput v-decorator="['dateOfBirth', { rules: [{
-                          required: true,
-                          message: 'Bitte Geburtsdatum eingeben',
-                        }], initialValue: initialDateOfBirth}]" />
+            <DateInput
+              v-decorator="[
+                'dateOfBirth',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Geburtsdatum eingeben',
+                    },
+                  ],
+                  initialValue: initialDateOfBirth,
+                },
+              ]"
+            />
           </a-form-item>
         </a-col>
       </a-row>
@@ -67,9 +102,19 @@
         <a-col :lg="12" :sm="24">
           <a-form-item label="Staatsangehörigkeit">
             <a-input
-              v-decorator="['nationality', { rules: [
-                { required: true, message: 'Bitte Staatsangehörigkeit angeben' }
-                ], initialValue: patientInput.nationality || 'deutsch'}]"/>
+              v-decorator="[
+                'nationality',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Staatsangehörigkeit angeben',
+                    },
+                  ],
+                  initialValue: patientInput.nationality || 'deutsch',
+                },
+              ]"
+            />
           </a-form-item>
         </a-col>
       </a-row>
@@ -77,10 +122,21 @@
       <a-row v-if="showDeath">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Verstorben">
-            <a-radio-group @change="diedChanged" v-decorator="['died', { rules: [{
-                        required: true,
-                        message: 'Bitte Status angeben',
-                      }], initialValue: !!patientInput.dateOfDeath }]">
+            <a-radio-group
+              @change="diedChanged"
+              v-decorator="[
+                'died',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Status angeben',
+                    },
+                  ],
+                  initialValue: !!patientInput.dateOfDeath,
+                },
+              ]"
+            >
               <a-radio :value="true">Ja</a-radio>
               <a-radio :value="false">Nein</a-radio>
             </a-radio-group>
@@ -88,43 +144,54 @@
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Todesdatum">
-            <DateInput v-decorator="['dateOfDeath', {initialValue: initialDateOfDeath}]"
-                       :disabled="!showDateOfDeath" />
+            <DateInput
+              v-decorator="[
+                'dateOfDeath',
+                { initialValue: initialDateOfDeath },
+              ]"
+              :disabled="!showDateOfDeath"
+            />
           </a-form-item>
         </a-col>
       </a-row>
 
       <!-- Wohnsitz -->
       <a-divider />
-      <p style="text-align: center">Wohnort:</p>
-      <location-form-group
-        :form="form"
-        :data="patient"
-        :required="true" />
+      <p style="text-align: center;">Wohnort:</p>
+      <location-form-group :form="form" :data="patient" :required="true" />
 
       <!-- Aufenthaltsort -->
       <div v-if="showStay">
         <a-divider />
-        <p style="text-align: center">Aufenthaltsort, falls von Wohnort abweichend:</p>
+        <p style="text-align: center;">
+          Aufenthaltsort, falls von Wohnort abweichend:
+        </p>
         <location-form-group
-          :form="form"
           :data="patient"
           :required="false"
-          inputKeyPrefix="stay"
-          :useInputKeysForData="true"/>
+          fieldNamePrefix="stay"
+        />
       </div>
 
       <!-- Email / Telefon -->
       <a-divider />
-      <p style="text-align: center">Kommunikation und Sonstiges:</p>
+      <p style="text-align: center;">Kommunikation und Sonstiges:</p>
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="E-mail">
             <a-input
-              v-decorator="['email', { rules: [{
-                        required: true,
-                        message: 'Bitte Email eingeben',
-                      }], initialValue: patientInput.email }]"
+              v-decorator="[
+                'email',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Email eingeben',
+                    },
+                  ],
+                  initialValue: patientInput.email,
+                },
+              ]"
             />
           </a-form-item>
         </a-col>
@@ -132,12 +199,17 @@
           <a-form-item label="Telefon">
             <a-input
               v-decorator="[
-                      'phoneNumber',
-                      { rules: [{
-                        required: true,
-                        message: 'Bitte Telefonnummer eingeben',
-                      }], initialValue: patientInput.phoneNumber}
-                    ]"
+                'phoneNumber',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Telefonnummer eingeben',
+                    },
+                  ],
+                  initialValue: patientInput.phoneNumber,
+                },
+              ]"
             />
           </a-form-item>
         </a-col>
@@ -148,27 +220,54 @@
         <a-col :lg="12" :sm="24">
           <a-form-item label="Beruf">
             <div>
-              <a-select @select="riskOccupationSelected" v-decorator="['riskOccupation', { rules: [{
+              <a-select
+                @select="riskOccupationSelected"
+                v-decorator="[
+                  'riskOccupation',
+                  {
+                    rules: [
+                      {
                         required: true,
                         message: 'Bitte Beruf eingeben',
-                      }], initialValue: initialRiskOccupation}]">
-                <a-select-option :key="riskOccupation.value" v-for="riskOccupation in riskOccupations">
-                  {{riskOccupation.label}}
+                      },
+                    ],
+                    initialValue: initialRiskOccupation,
+                  },
+                ]"
+              >
+                <a-select-option
+                  :key="riskOccupation.value"
+                  v-for="riskOccupation in riskOccupations"
+                >
+                  {{ riskOccupation.label }}
                 </a-select-option>
               </a-select>
               <a-input
                 ref="occupation"
                 :disabled="disableOccupation"
-                v-decorator="['occupation', { rules: [{
+                v-decorator="[
+                  'occupation',
+                  {
+                    rules: [
+                      {
                         message: 'Bitte Beruf eingeben',
-                      }], initialValue: patientInput.occupation}]"
+                      },
+                    ],
+                    initialValue: patientInput.occupation,
+                  },
+                ]"
               />
             </div>
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Arbeitgeber (optional)">
-            <a-input v-decorator="['employer', {initialValue: patientInput.employer}]" />
+            <a-input
+              v-decorator="[
+                'employer',
+                { initialValue: patientInput.employer },
+              ]"
+            />
           </a-form-item>
         </a-col>
       </a-row>
@@ -177,13 +276,22 @@
       <a-row>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Krankenkasse (optional)">
-            <a-input v-decorator="['insuranceCompany', {initialValue: patientInput.insuranceCompany}]" />
+            <a-input
+              v-decorator="[
+                'insuranceCompany',
+                { initialValue: patientInput.insuranceCompany },
+              ]"
+            />
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
           <a-form-item label="Versichertennr. (optional)">
             <a-input
-              v-decorator="['insuranceMembershipNumber', {initialValue: patientInput.insuranceMembershipNumber}]" />
+              v-decorator="[
+                'insuranceMembershipNumber',
+                { initialValue: patientInput.insuranceMembershipNumber },
+              ]"
+            />
           </a-form-item>
         </a-col>
       </a-row>
@@ -192,10 +300,12 @@
 </template>
 
 <script lang="ts">
-
 import Vue from 'vue'
 import { RiskOccupation } from '@/models'
-import { RISK_OCCUPATIONS, RiskOccupationOption } from '@/models/risk-occupation'
+import {
+  RISK_OCCUPATIONS,
+  RiskOccupationOption,
+} from '@/models/risk-occupation'
 import DateInput from '@/components/DateInput.vue'
 import LocationFormGroup from '@/components/LocationFormGroup.vue'
 import PlzInput from '@/components/PlzInput.vue'
@@ -210,13 +320,13 @@ import moment, { Moment } from 'moment'
  */
 
 export interface State {
-  disableOccupation: boolean;
-  riskOccupations: RiskOccupationOption[];
-  showDateOfDeath: boolean;
-  patientInput: Patient;
-  initialDateOfBirth: Moment | undefined;
-  initialDateOfDeath: Moment | undefined;
-  initialRiskOccupation: string | undefined;
+  disableOccupation: boolean
+  riskOccupations: RiskOccupationOption[]
+  showDateOfDeath: boolean
+  patientInput: Patient
+  initialDateOfBirth: Moment | undefined
+  initialDateOfDeath: Moment | undefined
+  initialRiskOccupation: string | undefined
 }
 
 export default Vue.extend({
@@ -229,7 +339,8 @@ export default Vue.extend({
       if (this.patientInput.dateOfDeath) {
         this.initialDateOfBirth = moment(this.patientInput.dateOfDeath)
       }
-      this.initialRiskOccupation = this.patientInput.riskOccupation || 'NO_RISK_OCCUPATION'
+      this.initialRiskOccupation =
+        this.patientInput.riskOccupation || 'NO_RISK_OCCUPATION'
       this.disableOccupation = false
     }
   },
@@ -253,9 +364,13 @@ export default Vue.extend({
       this.disableOccupation = value !== 'NO_RISK_OCCUPATION'
       let occupation
       if (this.disableOccupation) {
-        occupation = this.riskOccupations.find(riskOccupation => riskOccupation.value === value)?.label || ''
+        occupation =
+          this.riskOccupations.find(
+            (riskOccupation) => riskOccupation.value === value
+          )?.label || ''
       } else {
-        const occupationInput = ((this.$refs.occupation as Vue).$el as HTMLElement)
+        const occupationInput = (this.$refs.occupation as Vue)
+          .$el as HTMLElement
         setTimeout(() => {
           occupationInput.focus()
         }, 0)
@@ -275,5 +390,4 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

@@ -1,31 +1,33 @@
 {
-  "city": "D\u00fcsseldorf",
-  "coronaContacts": false,
-  "dateOfBirth": "1938-06-14",
-  "email": "m.klein@web.de",
-  "firstName": "Marie",
+  "city": "Homburg",
+  "coronaContacts": true,
+  "dateOfBirth": "1930-12-27",
+  "email": "h.richter@t-online.de",
+  "firstName": "Hanna",
   "fluImmunization": true,
   "gender": "female",
-  "houseNumber": 15,
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "S916267011",
-  "lastName": "Klein",
+  "insuranceMembershipNumber": "K113585139",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "8557444313",
+  "phoneNumber": "103141091905",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Poststra\u00dfe 54",
   "symptoms": [
     "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
     "Halschmerzen",
     "Gelenkschmerzen",
-    "Schnupfen"
+    "Atemschwierigkeiten",
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "82337"
+  "weakenedImmuneSystem": true,
+  "zip": "661051"
 }

@@ -1,15 +1,16 @@
 <template>
   <a-modal
     :visible="visible"
-    title='Passwort ändern'
-    okText='Passwort ändern'
-    @cancel="() => { $emit('cancel') }"
+    title="Passwort ändern"
+    okText="Passwort ändern"
+    @cancel="
+      () => {
+        $emit('cancel')
+      }
+    "
     @ok="handleChangePassword"
   >
-    <a-form
-      :form="changePasswordForm"
-      :layout="'vertical'"
-    >
+    <a-form :form="changePasswordForm" :layout="'vertical'">
       <a-form-item label="Altes Passwort">
         <a-input
           v-decorator="['oldPassword', { rules: [{ required: true }] }]"
@@ -22,9 +23,11 @@
           v-decorator="['newPassword', { rules: [{ required: true }] }]"
         />
       </a-form-item>
-      <a-form-item label="Neues Passwort wiederholen"
-                   :help="passwordRetry.errorMsg"
-                   :validate-status="passwordRetry.validateStatus">
+      <a-form-item
+        label="Neues Passwort wiederholen"
+        :help="passwordRetry.errorMsg"
+        :validate-status="passwordRetry.validateStatus"
+      >
         <a-input
           @change="handlePasswordRetryChangeNewRetry"
           type="password"
@@ -44,7 +47,9 @@ export default Vue.extend({
   props: ['visible'],
   data() {
     return {
-      changePasswordForm: this.$form.createForm(this, { name: 'change_password' }),
+      changePasswordForm: this.$form.createForm(this, {
+        name: 'change_password',
+      }),
       passwordRetry: {},
     }
   },
@@ -60,23 +65,27 @@ export default Vue.extend({
         }
         this.changePassword({
           ...values,
-        }).then(() => {
-          this.$notification.success({
-            message: 'Passwort erfolgreich geändert',
-            description: '',
-          })
-          this.changePasswordForm.resetFields()
-          this.$emit('create')
-        }).catch((error: Error) => {
-          this.$notification.error({
-            message: 'Passwort konnte nicht geändert werden.',
-            description: error.message,
-          })
         })
+          .then(() => {
+            this.$notification.success({
+              message: 'Passwort erfolgreich geändert',
+              description: '',
+            })
+            this.changePasswordForm.resetFields()
+            this.$emit('create')
+          })
+          .catch((error: Error) => {
+            this.$notification.error({
+              message: 'Passwort konnte nicht geändert werden.',
+              description: error.message,
+            })
+          })
       })
     },
     handlePasswordRetryChangeNew(input: any) {
-      const newPasswordRetry = this.changePasswordForm.getFieldValue('newPasswordRetry')
+      const newPasswordRetry = this.changePasswordForm.getFieldValue(
+        'newPasswordRetry'
+      )
       const newPassword = input.target.value
       this.handlePasswordRetryChange(newPassword, newPasswordRetry)
     },
@@ -86,17 +95,19 @@ export default Vue.extend({
       this.handlePasswordRetryChange(newPassword, newPasswordRetry)
     },
     handlePasswordRetryChange(newPassword: string, newPasswordRetry: string) {
-      this.passwordRetry = newPassword === newPasswordRetry ? {
-        validateStatus: 'success',
-        errorMsg: null,
-      } : {
-        validateStatus: 'error',
-        errorMsg: 'Passwörter stimmen nicht überein',
-      }
+      this.passwordRetry =
+        newPassword === newPasswordRetry
+          ? {
+              validateStatus: 'success',
+              errorMsg: null,
+            }
+          : {
+              validateStatus: 'error',
+              errorMsg: 'Passwörter stimmen nicht überein',
+            }
     },
   },
 })
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

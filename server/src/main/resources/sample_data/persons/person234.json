@@ -1,0 +1,33 @@
+{
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "2000-02-11",
+  "email": "h.schroeder@web.de",
+  "firstName": "Hanna",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "V494537192",
+  "lastName": "Schr\u00f6der",
+  "nationality": "deutsch",
+  "phoneNumber": "71647941073",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Poststra\u00dfe 52",
+  "symptoms": [
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Kopfschmerzen",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66463"
+}

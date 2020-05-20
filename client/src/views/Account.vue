@@ -1,92 +1,142 @@
 <template>
-  <div style="max-width: 1020px; margin: 0 auto; padding: 1rem">
+  <div style="max-width: 1020px; margin: 0 auto; padding: 1rem;">
     <ChangePasswordForm
-      @cancel="() => { showChangePasswordForm = false }"
-      @create="() => { showChangePasswordForm = false }"
+      @cancel="
+        () => {
+          showChangePasswordForm = false
+        }
+      "
+      @create="
+        () => {
+          showChangePasswordForm = false
+        }
+      "
       :visible="showChangePasswordForm"
     />
     <AddOrChangeUserForm
       v-if="institution"
-      @cancel="() => { showAddOrChangeUserForm = false }"
-      @create="() => { showAddOrChangeUserForm = false }"
+      @cancel="
+        () => {
+          showAddOrChangeUserForm = false
+        }
+      "
+      @create="
+        () => {
+          showAddOrChangeUserForm = false
+        }
+      "
       :visible="showAddOrChangeUserForm"
       :user="addOrChangeUser"
     />
     <ChangeInstitutionForm
       v-if="institution"
-      @cancel="() => { showChangeInstitutionForm = false }"
-      @create="() => { showChangeInstitutionForm = false }"
+      @cancel="
+        () => {
+          showChangeInstitutionForm = false
+        }
+      "
+      @create="
+        () => {
+          showChangeInstitutionForm = false
+        }
+      "
       :visible="showChangeInstitutionForm"
       :institution="institution"
     />
     <!-- Allgemein & Adresse -->
     <a-row :gutter="8">
-      <a-col
-        :span="24"
-        :md="12"
-      >
+      <a-col :span="24" :md="12">
         <a-card v-if="user" title="Benutzer" :extra="user.id" align="left">
           <div>
             <table>
               <tr>
                 <td>Benutzername:</td>
-                <td>{{user.username}}</td>
+                <td>{{ user.username }}</td>
               </tr>
               <tr>
                 <td>Name:</td>
-                <td>{{user.firstName}} {{user.lastName}}</td>
+                <td>{{ user.firstName }} {{ user.lastName }}</td>
               </tr>
               <tr>
                 <td>Rollen:</td>
                 <td>
-                  <div v-for="authority in user.authorities" :key="authority.authority">
-                    {{roleMapping[authority.authority]}}
+                  <div
+                    v-for="authority in user.authorities"
+                    :key="authority.authority"
+                  >
+                    {{ roleMapping[authority.authority] }}
                   </div>
                 </td>
               </tr>
             </table>
-            <a-button type="primary" @click="showChangePasswordForm=true" icon="edit">Passwort wechseln</a-button>
+            <!--<a-button type="primary" @click="showChangePasswordForm=true" icon="edit">Passwort wechseln</a-button>-->
           </div>
         </a-card>
       </a-col>
       <a-col :span="24" :md="12">
-        <a-card v-if="institution" title="Institution" :extra="institution.id" align="left">
+        <a-card
+          v-if="institution"
+          title="Institution"
+          :extra="institution.id"
+          align="left"
+        >
           <table>
             <tr>
               <td>Name:</td>
-              <td>{{institution.name}}</td>
+              <td>{{ institution.name }}</td>
             </tr>
             <tr>
               <td>Typ:</td>
-              <td>{{typeMapping[institution.institutionType]}}</td>
+              <td>{{ typeMapping[institution.institutionType] }}</td>
             </tr>
             <tr>
               <td>Adresse:</td>
-              <td>{{institution.street}} {{institution.houseNumber}}<br>{{institution.zip}} {{institution.city}}</td>
+              <td>
+                {{ institution.street }} {{ institution.houseNumber }}<br />{{
+                  institution.zip
+                }}
+                {{ institution.city }}
+              </td>
             </tr>
             <tr>
               <td>E-Mail:</td>
-              <td>{{institution.email}}</td>
+              <td>{{ institution.email }}</td>
             </tr>
             <tr>
               <td>Telefonnummer:</td>
-              <td>{{institution.phoneNumber}}</td>
+              <td>{{ institution.phoneNumber }}</td>
             </tr>
             <tr>
               <td>Kommentar:</td>
-              <td>{{institution.comment}}</td>
+              <td>{{ institution.comment }}</td>
             </tr>
           </table>
-          <a-button v-if="isAdmin" type="primary" @click="showChangeInstitutionForm=true" icon="edit">
+          <a-button
+            v-if="isAdmin"
+            type="primary"
+            @click="showChangeInstitutionForm = true"
+            icon="edit"
+          >
             Bearbeiten
           </a-button>
         </a-card>
       </a-col>
     </a-row>
 
-    <a-card title="Benutzer der Institution" align="left" style="margin-top: 8px">
-      <div style="display: flex; justify-content: flex-end; padding-bottom: 5px">
-        <a-button v-if="isAdmin" type="primary" @click="addUser()" icon="user-add">
+    <a-card
+      title="Benutzer der Institution"
+      align="left"
+      style="margin-top: 8px;"
+    >
+      <div
+        style="display: flex; justify-content: flex-end; padding-bottom: 5px;"
+      >
+        <a-button
+          v-if="isAdmin"
+          type="primary"
+          @click="addUser()"
+          icon="user-add"
+        >
           Hinzufügen
         </a-button>
       </div>
@@ -96,21 +146,25 @@
         rowKey="email"
       >
         <div slot="authorities" slot-scope="authorities">
-          {{ roleMapping[authorities[1].authority]}}
+          {{ roleMapping[authorities[1].authority] }}
         </div>
         <div slot="operation" slot-scope="nothing, user">
-          <a-button v-if="isAdmin" type="primary" @click="() => changeUser(user)" icon="edit"
-                    style="margin-right: 10px"></a-button>
-          <a-popconfirm
+          <a-button
+            v-if="isAdmin"
+            type="primary"
+            @click="() => changeUser(user)"
+            icon="edit"
+            style="margin-right: 10px;"
+          ></a-button>
+          <!--<a-popconfirm
             title="Soll der Benutzer wirklich gelöscht werden?"
             @confirm="() => deleteUser(user)"
           >
             <a-button v-if="isAdmin" type="primary" icon="delete"></a-button>
-          </a-popconfirm>
+          </a-popconfirm>-->
         </div>
       </a-table>
     </a-card>
-
   </div>
 </template>
 
@@ -220,7 +274,9 @@ export default Vue.extend({
     }),
     setIsAdmin() {
       if (this.user && this.user.authorities) {
-        this.isAdmin = this.user.authorities.some(authority => authority.authority === 'USER_ROLE_ADMIN')
+        this.isAdmin = this.user.authorities.some(
+          (authority) => authority.authority === 'USER_ROLE_ADMIN'
+        )
       }
     },
     changeUser(user: UserDTO) {
@@ -229,17 +285,19 @@ export default Vue.extend({
     },
     deleteUser(user: UserDTO) {
       if (user.id) {
-        this.deleteUserForInstitution(user.id).then(() => {
-          this.$notification.success({
-            message: 'Benutzer erfolgreich gelöscht',
-            description: '',
+        this.deleteUserForInstitution(user.id)
+          .then(() => {
+            this.$notification.success({
+              message: 'Benutzer erfolgreich gelöscht',
+              description: '',
+            })
           })
-        }).catch((error: Error) => {
-          this.$notification.error({
-            message: 'Benutzer konnte nicht gelöscht werden',
-            description: error.message,
+          .catch((error: Error) => {
+            this.$notification.error({
+              message: 'Benutzer konnte nicht gelöscht werden',
+              description: error.message,
+            })
           })
-        })
       }
     },
     addUser() {
@@ -251,8 +309,8 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-  table {
-    border-collapse: separate;
-    border-spacing: 15px;
-  }
+table {
+  border-collapse: separate;
+  border-spacing: 15px;
+}
 </style>

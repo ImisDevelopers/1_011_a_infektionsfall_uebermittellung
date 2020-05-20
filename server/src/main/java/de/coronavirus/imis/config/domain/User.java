@@ -1,8 +1,6 @@
 package de.coronavirus.imis.config.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import de.coronavirus.imis.domain.InstitutionImpl;
 import de.coronavirus.imis.domain.InstitutionType;
 import lombok.AllArgsConstructor;
@@ -26,9 +24,6 @@ import java.util.List;
 @Accessors(fluent = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "id")
 public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,6 +43,7 @@ public class User implements UserDetails {
 	private UserRole userRole;
 
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private InstitutionImpl institution;
 
 	@Override

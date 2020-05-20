@@ -1,31 +1,28 @@
 {
-  "city": "Frankfurt",
+  "city": "Dudweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1948-05-31",
-  "email": "k.richter@posteo.de",
-  "firstName": "Karl",
+  "dateOfBirth": "1963-11-04",
+  "email": "d.peters@gmail.de",
+  "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "male",
-  "houseNumber": 15,
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Y433910025",
-  "lastName": "Richter",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "U874364174",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "54990410530",
+  "phoneNumber": "694100974109",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hohenzollerstra\u00dfe 29",
   "symptoms": [
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Gelenkschmerzen"
+    "Erk\u00e4ltung",
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "742610"
+  "zip": "66097"
 }

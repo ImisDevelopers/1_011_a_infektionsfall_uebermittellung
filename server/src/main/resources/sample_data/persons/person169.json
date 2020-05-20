@@ -1,0 +1,32 @@
+{
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "1979-08-13",
+  "email": "j.schulze@web.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "G221256011",
+  "lastName": "Schulze",
+  "nationality": "deutsch",
+  "phoneNumber": "104521008814",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Steinstra\u00dfe 81",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Husten",
+    "Fieber",
+    "Schnupfen",
+    "Halschmerzen",
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66435"
+}

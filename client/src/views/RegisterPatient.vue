@@ -66,19 +66,15 @@
 
     <!-- Patient Registration Form -->
     <div>
-      <h3>
-        Registrieren Sie hier neue Patienten in IMIS. Bitte erfassen Sie die
-        nachfolgenden Daten so vollständig wie möglich. Pflichtangaben sind mit
-        "*" markiert.
-      </h3>
+      <a-page-header
+        title="Patient Registrieren"
+        sub-title="Bitte erfassen Sie
+      die nachfolgenden Daten so vollständig wie möglich. Pflichtangaben sind
+      mit '*' markiert."
+        style="padding-left: 0; padding-right: 0;"
+      />
 
-      <a-form
-        :form="form"
-        :labelCol="{ span: 8 }"
-        :layout="'horizontal'"
-        :wrapperCol="{ span: 16 }"
-        @submit.prevent="handleSubmit"
-      >
+      <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
         <a-collapse defaultActiveKey="1">
           <!-- Stammdaten -->
           <a-collapse-panel header="Personendaten" key="1">
@@ -572,7 +568,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .register-patient-container {
   .no-double-colon-form-field {
     .ant-form-item-label {
@@ -590,12 +586,10 @@ export default Vue.extend({
     margin: 1rem 0;
   }
 }
-</style>
 
-<style scoped lang="scss">
 .wrapper {
-  text-align: left;
-  padding: 2%;
+  margin: 0 auto;
   width: 100%;
+  max-width: 1000px;
 }
 </style>

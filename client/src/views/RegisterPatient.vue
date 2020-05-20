@@ -1,71 +1,44 @@
 <template>
   <div class="wrapper register-patient-container">
     <!-- Patient successfully created info -->
-    <div
-      style="display: flex; justify-content: center; text-align: center;"
+
+    <a-page-header
+      title="Patient wurde erfolgreich registriert"
+      :ghost="false"
       v-if="createdPatient"
     >
-      <a-card style="max-width: 600px; margin-bottom: 25px;">
-        <div style="display: flex; flex-direction: column; position: relative;">
-          <a-icon
-            @click="createdPatient = null"
-            style="top: 0; right: 0; position: absolute; cursor: pointer;"
-            type="close"
-          />
-          <div style="display: flex; align-items: center; margin: 10px;">
-            <a-icon
-              :style="{ fontSize: '38px', color: '#08c' }"
-              style="margin: 0 25px 0 0;"
-              type="check-circle"
-            />
-            <h3 style="margin-bottom: 0;">
-              Patient/in wurde erfolgreich registriert.
-            </h3>
-          </div>
-          <table
-            style="
-              border-collapse: separate;
-              border-spacing: 15px 5px;
-              text-align: left;
-            "
-          >
-            <tbody>
-              <tr>
-                <td>Name:</td>
-                <td>
-                  {{ createdPatient.firstName }} {{ createdPatient.lastName }}
-                </td>
-              </tr>
-              <tr>
-                <td>Patienten-ID:</td>
-                <td>{{ createdPatient.id }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="margin-top: 15px;">
-            <router-link
-              :to="{
-                name: 'patient-detail',
-                params: { id: createdPatient.id },
-              }"
-              style="margin-right: 15px;"
-            >
-              <a-button type="primary">
-                Patienten/in einsehen
-              </a-button>
-            </router-link>
-            <router-link :to="{ name: 'register-test' }">
-              <a-button type="primary">
-                Probe zuordnen
-              </a-button>
-            </router-link>
-          </div>
-        </div>
-      </a-card>
-    </div>
+      <template slot="extra">
+        <router-link :to="{ name: 'register-test' }">
+          <a-button>
+            Probe zuordnen
+          </a-button>
+        </router-link>
+        <router-link
+          :to="{
+            name: 'patient-detail',
+            params: { id: createdPatient.id },
+          }"
+        >
+          <a-button>
+            Patienten/in einsehen
+          </a-button>
+        </router-link>
+        <a-button type="primary" @click="createdPatient = null">
+          Neuen Patienten registrieren
+        </a-button>
+      </template>
+      <a-descriptions size="small" :column="1">
+        <a-descriptions-item label="Patienten-ID">
+          {{ createdPatient.id }}
+        </a-descriptions-item>
+        <a-descriptions-item label="Name">
+          {{ createdPatient.firstName }} {{ createdPatient.lastName }}
+        </a-descriptions-item>
+      </a-descriptions>
+    </a-page-header>
 
     <!-- Patient Registration Form -->
-    <div>
+    <div v-if="!createdPatient">
       <a-page-header
         title="Patient Registrieren"
         sub-title="Bitte erfassen Sie

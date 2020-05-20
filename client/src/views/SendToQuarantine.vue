@@ -90,7 +90,7 @@
 <script lang="ts">
 import Api from '@/api'
 import Vue from 'vue'
-import { QuarantineIncident } from '@/api/SwaggerApi'
+import { QuarantineIncident, ExposureContactFromServer, ExposureContactContactView } from '@/api/SwaggerApi'
 import { Column } from 'ant-design-vue/types/table/column'
 import moment from 'moment'
 import { getPlzs } from '@/util/plz-service'
@@ -135,6 +135,7 @@ interface State {
   confirmVisible: boolean // eslint-disable-next-line
   form: any;
   today: moment.Moment
+  infectionSources: Map<string, ExposureContactFromServer[]>
 }
 
 export default Vue.extend({
@@ -166,6 +167,24 @@ export default Vue.extend({
         }
       })
     }
+    // Infections Sources for CSV download
+    let patientIDs :string[] = []
+    for (const quarantineIncidents of this.quarantinesByZip) {
+      for (const incident of quarantineIncidents.quarantines)
+      {
+        if (patientIDs.indexOf(incident.patient!.id!) < 0)
+          patientIDs.push(incident.patient!.id!)
+      }
+    }
+    const exposures = await Api.getExposureSourceContactsForPatientsUsingPost(patientIDs)
+    function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
+        return value !== null && value !== undefined;
+    }
+    for (const key in exposures)
+    {
+      const sources = exposures[key].filter( notEmpty )
+      this.infectionSources.set(key, sources)
+    }
   },
   data(): State {
     return {
@@ -174,6 +193,7 @@ export default Vue.extend({
       confirmVisible: false,
       form: this.$form.createForm(this),
       today: moment(),
+      infectionSources: new Map<string, ExposureContactFromServer[]>(),
     }
   },
   methods: {
@@ -182,23 +202,35 @@ export default Vue.extend({
       this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
     downloadAll() {
-      const header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse;Geschlecht;Geburtsdatum;Quarantäne Kommentar;Aufenthaltsort'
       let content = ''
+      let maxInfectionSources = 0; // Needed for #Cols in Header
       for (const quarantineIncidents of this.quarantinesByZip) {
         content +=
           quarantineIncidents.quarantines
             .map((quarantine) => {
               const patient = quarantine.patient
               if (patient) {
+
                 const address = `${patient.street} ${patient.houseNumber} ${patient.zip} ${patient.city}`
                 let stayaddress = `${patient.stayStreet} ${patient.stayHouseNumber} ${patient.stayZip} ${patient.stayCity}`
                 stayaddress = stayaddress === 'null null null null' ? '' : stayaddress
                 const comment = quarantine.comment ? quarantine.comment : ''
+
+                const sourcesObjects = this.infectionSources!.get(patient.id!)
+                let sources = ""
+                if (sourcesObjects)
+                {
+                  sources = sourcesObjects!.map( source => {
+                    return `${source.source!.firstName} ${source.source!.lastName};${source.dateOfContact};${source.context}`
+                  }).join(';')
+                  maxInfectionSources = maxInfectionSources<sourcesObjects!.length ? sourcesObjects!.length : maxInfectionSources
+                }
+
                 return `${quarantineIncidents.zip};${moment(
                   quarantine.until
                 ).format('DD.MM.YYYY')};${patient?.firstName};${
                   patient?.lastName
-                };${address};${patient.gender};${patient?.dateOfBirth};${comment};${stayaddress}`
+                };${address};${patient.gender};${patient?.dateOfBirth};${comment};${stayaddress};${sources}`
               } else {
                 console.warn('Quarantine without patient')
                 return ''
@@ -206,6 +238,12 @@ export default Vue.extend({
             })
             .join('\n') + '\n'
       }
+      let header = 'PLZ;Quarantäne bis;Vorname;Nachname;Adresse;Geschlecht;Geburtsdatum;Quarantäne Kommentar;Aufenthaltsort'
+      if (maxInfectionSources===1)
+        header += ';Indexpatient Name;Indexpatient Kontaktdatum;Indexpatient Kontext'
+      else
+        for (let i=1; i<maxInfectionSources+1; i++)
+          header += `;Indexpatient ${i} Name;Indexpatient ${i} Kontaktdatum;Indexpatient ${i} Kontext`
       const filename =
         moment().format('YYYY_MM_DD') + '_quarantaene_anordnung.csv'
       downloadCsv(header + '\n' + content, filename)

@@ -1,29 +1,32 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
-  "dateOfBirth": "1952-05-26",
-  "email": "j.richter@gmail.de",
+  "city": "St. Wendel",
+  "coronaContacts": true,
+  "dateOfBirth": "1945-07-22",
+  "email": "j.schulze@example.de",
   "firstName": "Jens",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "A230955221",
-  "lastName": "Richter",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "G221256011",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "7570512046",
+  "phoneNumber": "45210088147",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "New York"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg 69",
+  "street": "Kronenstra\u00dfe 38",
   "symptoms": [
+    "Kopfschmerzen",
+    "Husten",
+    "Fieber",
+    "Schnupfen",
     "Halschmerzen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung"
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66723"
+  "weakenedImmuneSystem": false,
+  "zip": "66350"
 }

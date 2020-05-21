@@ -1,32 +1,32 @@
 {
-  "city": "Kirkel",
+  "city": "Bous",
   "coronaContacts": false,
-  "dateOfBirth": "1938-03-01",
-  "email": "e.weber@posteo.de",
-  "firstName": "Emma",
+  "dateOfBirth": "1969-08-18",
+  "email": "k.weber@example.de",
+  "firstName": "Kai",
   "fluImmunization": true,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "U904137710",
+  "insuranceMembershipNumber": "H275309282",
   "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "01055778487",
+  "phoneNumber": "0774064930",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete 89",
+  "street": "Poststra\u00dfe 47",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
+    "Halschmerzen",
     "Fieber",
-    "Husten"
+    "Schnupfen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66829"
+  "weakenedImmuneSystem": true,
+  "zip": "66368"
 }

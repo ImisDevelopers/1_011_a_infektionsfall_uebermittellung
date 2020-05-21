@@ -1,27 +1,32 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "St. Wendel",
   "coronaContacts": true,
-  "dateOfBirth": "1953-07-12",
-  "email": "e.schulz@t-online.de",
-  "firstName": "Emma",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "G835898867",
-  "lastName": "Schulz",
+  "dateOfBirth": "1973-03-02",
+  "email": "j.berger@example.de",
+  "firstName": "Jan",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "A414064734",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "53559100425",
+  "phoneNumber": "43940710016",
   "preIllnesses": [
-    "Krebserkrankung"
-  ],
-  "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Eisenbahnstra\u00dfe 56",
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Bismarckstra\u00dfe 34",
   "symptoms": [
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Schnupfen",
     "Fieber"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66927"
+  "weakenedImmuneSystem": true,
+  "zip": "6610105"
 }

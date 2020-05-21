@@ -1,27 +1,28 @@
 {
-  "city": "Heusweiler",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1995-06-20",
-  "email": "o.peters@t-online.de",
-  "firstName": "Olivia",
-  "fluImmunization": false,
+  "dateOfBirth": "1951-04-05",
+  "email": "i.winter@example.de",
+  "firstName": "Isabella",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Y663993780",
-  "lastName": "Peters",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "V364512739",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "416510101623",
+  "phoneNumber": "1234764907",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Schernerweg 73",
+  "street": "Poststra\u00dfe 47",
   "symptoms": [
+    "Kopfschmerzen",
     "Erk\u00e4ltung"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66818"
+  "zip": "66158"
 }

@@ -1,34 +1,27 @@
 {
-  "city": "Kirkel",
+  "city": "St. Ingbert",
   "coronaContacts": true,
-  "dateOfBirth": "1957-08-15",
-  "email": "j.schmitt@gmail.de",
-  "firstName": "Jan",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "P808753985",
-  "lastName": "Schmitt",
+  "dateOfBirth": "1930-01-05",
+  "email": "m.mueller@example.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "H795873638",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "00281042762",
+  "phoneNumber": "55901056165",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Wintergasse 91",
+  "street": "Hauptstra\u00dfe 52",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Husten",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Halschmerzen"
+    "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66671"
+  "weakenedImmuneSystem": false,
+  "zip": "665010"
 }

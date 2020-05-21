@@ -1,30 +1,32 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1958-02-17",
-  "email": "i.schulz@web.de",
-  "firstName": "Isabella",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "dateOfBirth": "1947-09-12",
+  "email": "h.schulz@example.de",
+  "firstName": "Hanna",
   "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "L315469014",
+  "insuranceMembershipNumber": "H149372289",
   "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "10023806174",
+  "phoneNumber": "07925241910",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "B\u00fcckerheide 39",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Tulpenweg 14",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
     "Schnupfen",
-    "Atemschwierigkeiten"
+    "Fieber",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66518"
+  "weakenedImmuneSystem": false,
+  "zip": "66380"
 }

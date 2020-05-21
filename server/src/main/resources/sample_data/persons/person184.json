@@ -1,34 +1,33 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Neunkirchen",
   "coronaContacts": false,
-  "dateOfBirth": "1986-04-04",
-  "email": "p.schmitt@gmail.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
+  "dateOfBirth": "1939-02-15",
+  "email": "s.berger@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "W937332060",
-  "lastName": "Schmitt",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "J930729364",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "2209949993",
+  "phoneNumber": "7038860868",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Eisenbahnstra\u00dfe 29",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide 80",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Halschmerzen",
     "Schnupfen",
-    "Fieber",
     "Erk\u00e4ltung",
+    "Gelenkschmerzen",
     "Atemschwierigkeiten",
-    "Husten"
+    "Husten",
+    "Kopfschmerzen",
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "663100"
+  "weakenedImmuneSystem": true,
+  "zip": "66034"
 }

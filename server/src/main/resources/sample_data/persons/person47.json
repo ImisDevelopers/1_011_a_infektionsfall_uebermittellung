@@ -1,27 +1,25 @@
 {
-  "city": "Kirkel",
+  "city": "Neunkirchen",
   "coronaContacts": false,
-  "dateOfBirth": "1973-04-06",
-  "email": "f.schulze@posteo.de",
-  "firstName": "Franz",
+  "dateOfBirth": "1925-08-15",
+  "email": "c.schulz@example.de",
+  "firstName": "Christopher",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "U439451556",
-  "lastName": "Schulze",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "J955052486",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "921012107799",
+  "phoneNumber": "99710910109510",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Waldstra\u00dfe 87",
-  "symptoms": [
-    "Gelenkschmerzen"
-  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 19",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "6691010"
+  "zip": "66717"
 }

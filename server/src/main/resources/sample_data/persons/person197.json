@@ -1,28 +1,27 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": true,
-  "dateOfBirth": "1927-05-30",
-  "email": "a.klein@posteo.de",
-  "firstName": "Annika",
-  "fluImmunization": true,
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "dateOfBirth": "1937-08-13",
+  "email": "p.schulz@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "Y474322976",
-  "lastName": "Klein",
+  "insuranceMembershipNumber": "R845319806",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "56210557701",
+  "phoneNumber": "9639382761",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Steinstra\u00dfe 14",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "S\u00fcdweg 26",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung"
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66577"
+  "zip": "66966"
 }

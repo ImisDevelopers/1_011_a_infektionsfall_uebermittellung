@@ -1,34 +1,33 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": false,
-  "dateOfBirth": "2001-08-09",
-  "email": "l.klein@gmail.de",
-  "firstName": "Lisa",
-  "fluImmunization": true,
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "dateOfBirth": "1934-09-21",
+  "email": "a.richter@example.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "S476685251",
-  "lastName": "Klein",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "R409957384",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "51713395910",
+  "phoneNumber": "76107677219",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kaiserstra\u00dfe 21",
+  "street": "Aarhusweg 97",
   "symptoms": [
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
     "Fieber",
-    "Husten"
+    "Atemschwierigkeiten",
+    "Husten",
+    "Schnupfen",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66923"
+  "weakenedImmuneSystem": false,
+  "zip": "66340"
 }

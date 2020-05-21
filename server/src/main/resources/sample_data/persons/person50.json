@@ -1,31 +1,28 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "St. Ingbert",
   "coronaContacts": false,
-  "dateOfBirth": "1929-12-31",
-  "email": "e.winter@posteo.de",
-  "firstName": "Emma",
+  "dateOfBirth": "1934-07-21",
+  "email": "b.schulz@example.de",
+  "firstName": "Ben",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "L431642423",
-  "lastName": "Winter",
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y622129427",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "1486105210108",
+  "phoneNumber": "52101081101068",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "Hubei"
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg 82",
+  "street": "Hauptstra\u00dfe 2",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Fieber",
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten"
+    "Schnupfen",
+    "Husten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "661068"
+  "zip": "66542"
 }

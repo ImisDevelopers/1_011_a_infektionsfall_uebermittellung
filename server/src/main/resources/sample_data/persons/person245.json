@@ -1,33 +1,25 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1975-05-18",
-  "email": "f.mueller@t-online.de",
-  "firstName": "Fin",
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "dateOfBirth": "1951-02-27",
+  "email": "h.sommer@example.de",
+  "firstName": "Hanna",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J325900773",
-  "lastName": "M\u00fcller",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "O949350526",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "641051018376",
+  "phoneNumber": "2481569857",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Moscow"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aarhusweg 50",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Fieber",
-    "Atemschwierigkeiten"
-  ],
+  "street": "Rosenstra\u00dfe 3",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "66441"
+  "zip": "6601010"
 }

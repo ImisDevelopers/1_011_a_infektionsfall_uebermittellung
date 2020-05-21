@@ -1,34 +1,27 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": false,
-  "dateOfBirth": "1937-10-12",
-  "email": "e.winkler@t-online.de",
-  "firstName": "Emma",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "T840509085",
-  "lastName": "Winkler",
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1983-12-10",
+  "email": "c.schmitt@example.de",
+  "firstName": "Cornelius",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Y563048450",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "2028457652",
+  "phoneNumber": "0132234232",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Hubei"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg 27",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg 54",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Gelenkschmerzen"
+    "Husten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66283"
+  "zip": "66110"
 }

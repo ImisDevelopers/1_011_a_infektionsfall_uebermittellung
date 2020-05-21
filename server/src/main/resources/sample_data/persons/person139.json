@@ -1,30 +1,32 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": false,
-  "dateOfBirth": "1957-01-14",
-  "email": "h.berger@t-online.de",
-  "firstName": "Hans",
-  "fluImmunization": true,
+  "city": "Dudweiler",
+  "coronaContacts": true,
+  "dateOfBirth": "1926-08-27",
+  "email": "p.bauer@example.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y771482340",
-  "lastName": "Berger",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Q228155179",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "4842294057",
+  "phoneNumber": "310105989334",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Rosenstra\u00dfe 19",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Waldstra\u00dfe 22",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Halschmerzen",
     "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Fieber",
+    "Halschmerzen",
     "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66025"
+  "weakenedImmuneSystem": false,
+  "zip": "661012"
 }

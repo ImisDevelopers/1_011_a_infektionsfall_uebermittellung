@@ -1,30 +1,33 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
-  "dateOfBirth": "1943-06-16",
-  "email": "o.schroeder@posteo.de",
-  "firstName": "Olivia",
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1965-08-12",
+  "email": "h.richter@example.de",
+  "firstName": "Hanna",
   "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "C471904990",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "L574997731",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "58441910866",
+  "phoneNumber": "84419108665",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 44",
+  "street": "B\u00fcckerheide 18",
   "symptoms": [
-    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
     "Fieber",
-    "Halschmerzen",
-    "Atemschwierigkeiten"
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Husten",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66240"
+  "zip": "66404"
 }

@@ -1,31 +1,27 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": false,
-  "dateOfBirth": "1996-06-23",
-  "email": "c.berger@gmail.de",
-  "firstName": "Cornelius",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "1994-01-08",
+  "email": "a.schmidt@example.de",
+  "firstName": "Anna",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "R844704803",
-  "lastName": "Berger",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S856661933",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "10691545226",
+  "phoneNumber": "9308705932",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe 81",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "S\u00fcdweg 91",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Gelenkschmerzen"
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "667105"
+  "weakenedImmuneSystem": false,
+  "zip": "66250"
 }

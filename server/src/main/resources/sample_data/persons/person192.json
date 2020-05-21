@@ -1,33 +1,29 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1964-01-04",
-  "email": "p.berger@web.de",
-  "firstName": "Petra",
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "dateOfBirth": "2002-06-13",
+  "email": "l.weber@example.de",
+  "firstName": "Lisa",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "U245764637",
-  "lastName": "Berger",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "H498984826",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "10556990235",
+  "phoneNumber": "10829962914",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe 43",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Rosenstra\u00dfe 40",
   "symptoms": [
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Husten",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Fieber"
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661077"
+  "zip": "66046"
 }

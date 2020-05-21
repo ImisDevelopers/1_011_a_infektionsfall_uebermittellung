@@ -1,27 +1,28 @@
 {
-  "city": "Neunkirchen",
+  "city": "Dudweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1970-02-23",
-  "email": "l.schulze@posteo.de",
-  "firstName": "Lisa",
-  "fluImmunization": false,
+  "dateOfBirth": "1943-10-22",
+  "email": "m.lange@example.de",
+  "firstName": "Martina",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "U123066440",
-  "lastName": "Schulze",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "J589547387",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "272381004610",
+  "phoneNumber": "8877492424",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Poststra\u00dfe 16",
+  "street": "Abbendiekshof 61",
   "symptoms": [
-    "Husten"
+    "Atemschwierigkeiten",
+    "Fieber"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66756"
+  "weakenedImmuneSystem": true,
+  "zip": "66540"
 }

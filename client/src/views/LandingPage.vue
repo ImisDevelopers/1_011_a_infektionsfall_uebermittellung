@@ -102,8 +102,8 @@
           >Zur Live-Demo
         </a-button>
       </router-link>
-    <!--</div>
-    <div class="second-section">
+    </div>
+    <!--<div class="second-section">
       <h1 style="margin: 0;">
         Der IMIS-Meldeprozess - Einfach, Schnell, Zentral
       </h1>

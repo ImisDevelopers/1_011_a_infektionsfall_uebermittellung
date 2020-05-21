@@ -1,75 +1,86 @@
 <template>
   <div class="edit-exposure-contact">
-    <a-form-item style="display: none;"
-      :selfUpdate="true">
-      <a-input type="hidden"
-        v-decorator="[ formFieldName('id') ]"/>
+    <a-form-item style="display: none;" :selfUpdate="true">
+      <a-input type="hidden" v-decorator="[formFieldName('id')]" />
     </a-form-item>
     <a-row :style="`display: ${showOriginatorPatient ? 'unset' : 'none'}`">
       <!-- Originating and Contact Names -->
       <a-form-item
         :selfUpdate="true"
         label="Ursprungspatient"
-        class="patient-input">
+        class="patient-input"
+      >
         <patient-input
           v-bind="inputProps.source"
           :disabled="$props.disableOriginatorPatient"
           :filterOption="filterSources"
-          v-decorator="[ formFieldName('source'), {
+          v-decorator="[
+            formFieldName('source'),
+            {
               rules: [
                 { required: true, message: 'Bitte Ursprungspatienten angeben' },
-              ], initialValue: undefined
-          }]"/>
+              ],
+              initialValue: undefined,
+            },
+          ]"
+        />
       </a-form-item>
 
-      <a-divider/>
-
+      <a-divider />
     </a-row>
 
     <h4>Kontaktperson</h4>
 
-    <a-form-item style="display: none;"
-      :selfUpdate="true">
-      <a-input type="hidden"
-        v-decorator="[ formFieldName('contact') ]"/>
+    <a-form-item style="display: none;" :selfUpdate="true">
+      <a-input type="hidden" v-decorator="[formFieldName('contact')]" />
     </a-form-item>
 
     <transition name="fading" mode="out-in">
       <div key="manual-contact" v-if="!contact">
         <a-row :gutter="8">
-
           <a-col :md="12">
-            <a-form-item label="Nachname"
-              :selfUpdate="true">
+            <a-form-item label="Nachname" :selfUpdate="true">
               <a-input
                 v-bind="inputProps.contactLastName"
-                @keyup='fetchPropositions'
-                v-decorator="[ formFieldName('contactLastName'), {
-                  rules: [], initialValue: undefined
-                }]"/>
+                @keyup="fetchPropositions"
+                v-decorator="[
+                  formFieldName('contactLastName'),
+                  {
+                    rules: [],
+                    initialValue: undefined,
+                  },
+                ]"
+              />
             </a-form-item>
           </a-col>
           <a-col :md="12">
-            <a-form-item label="Vorname"
-              :selfUpdate="true">
+            <a-form-item label="Vorname" :selfUpdate="true">
               <a-input
                 v-bind="inputProps.contactFirstName"
-                @keyup='fetchPropositions'
-                v-decorator="[ formFieldName('contactFirstName'), {
-                  rules: [], initialValue: undefined
-                }]"/>
+                @keyup="fetchPropositions"
+                v-decorator="[
+                  formFieldName('contactFirstName'),
+                  {
+                    rules: [],
+                    initialValue: undefined,
+                  },
+                ]"
+              />
             </a-form-item>
           </a-col>
           <a-col :md="12">
-            <a-form-item label="Geburtsdatum"
-              :selfUpdate="true">
+            <a-form-item label="Geburtsdatum" :selfUpdate="true">
               <date-input
                 v-bind="inputProps.dateOfContact"
-                @change='fetchPropositions'
-                :disabledDate="date => date.isAfter(moment())"
-                v-decorator="[ formFieldName('contactDateOfBirth'), {
-                  rules: [],
-                }]"/>
+                @change="fetchPropositions"
+                :disabledDate="(date) => date.isAfter(moment())"
+                v-decorator="[
+                  formFieldName('contactDateOfBirth'),
+                  {
+                    rules: [],
+                  },
+                ]"
+              />
             </a-form-item>
           </a-col>
           <a-col :md="12">
@@ -77,10 +88,18 @@
               <a-radio-group
                 buttonStyle="solid"
                 :selfUpdate="true"
-                v-decorator="[formFieldName('contactGender'), { rules: [{
-                          required: true,
-                          message: 'Bitte Geschlecht eingeben',
-                        }], initialValue: undefined}]"
+                v-decorator="[
+                  formFieldName('contactGender'),
+                  {
+                    rules: [
+                      {
+                        required: true,
+                        message: 'Bitte Geschlecht eingeben',
+                      },
+                    ],
+                    initialValue: undefined,
+                  },
+                ]"
               >
                 <a-radio value="male">Männlich</a-radio>
                 <a-radio value="female">Weiblich</a-radio>
@@ -88,49 +107,86 @@
               </a-radio-group>
             </a-form-item>
           </a-col>
-
         </a-row>
 
         <transition name="fading">
           <div v-show="patientPropositions.length > 0">
-
             <h4>Vorschläge</h4>
 
-            <a-list :grid="{ gutter: 16, column: 1 }" :data-source="patientPropositions" itemLayout="horizontal">
-              <a-list-item slot="renderItem" slot-scope="proposedPatient" class="proposition-card">
-
-                <a-card :title="`${proposedPatient.lastName}, ${proposedPatient.firstName}`" size="small" :key="proposedPatient.id">
-                  <a-button slot="extra" ghost size="small" type="primary" @click="useProposition(proposedPatient)" block>verwenden</a-button>
-                  <a-descriptions  layout="horizontal" :column="1" size="small">
+            <a-list
+              :grid="{ gutter: 16, column: 1 }"
+              :data-source="patientPropositions"
+              itemLayout="horizontal"
+            >
+              <a-list-item
+                slot="renderItem"
+                slot-scope="proposedPatient"
+                class="proposition-card"
+              >
+                <a-card
+                  :title="`${proposedPatient.lastName}, ${proposedPatient.firstName}`"
+                  size="small"
+                  :key="proposedPatient.id"
+                >
+                  <a-button
+                    slot="extra"
+                    ghost
+                    size="small"
+                    type="primary"
+                    @click="useProposition(proposedPatient)"
+                    block
+                    >verwenden</a-button
+                  >
+                  <a-descriptions layout="horizontal" :column="1" size="small">
                     <a-descriptions-item label="Geburtsdatum">
-                      {{moment(proposedPatient.dateOfBirth).format('DD.MM.YYYY')}}
+                      {{
+                        moment(proposedPatient.dateOfBirth).format('DD.MM.YYYY')
+                      }}
                     </a-descriptions-item>
                     <a-descriptions-item label="Adresse">
-                      {{proposedPatient.street}} {{proposedPatient.houseNumber}}, {{proposedPatient.zip}} {{proposedPatient.city}}
+                      {{ proposedPatient.street }}
+                      {{ proposedPatient.houseNumber }},
+                      {{ proposedPatient.zip }} {{ proposedPatient.city }}
                     </a-descriptions-item>
                   </a-descriptions>
                 </a-card>
-
               </a-list-item>
             </a-list>
-
           </div>
         </transition>
 
-        <a-divider/>
-
+        <a-divider />
       </div>
 
       <div key="selected-contact" v-else style="margin-bottom: 20px;">
-        <a-card :title="`${contact.lastName}, ${contact.firstName}`" size="small">
-          <a-button slot="extra" ghost size="small" type="primary" @click="removeProposition()" v-if="!lockContactEditing">manuell eingeben</a-button>
-          <a-button slot="extra" size="small" type="link" @click="showPatient(contact.id)" v-if="lockContactEditing">Patient bearbeiten</a-button>
-          <a-descriptions  layout="horizontal" :column="1" size="small">
+        <a-card
+          :title="`${contact.lastName}, ${contact.firstName}`"
+          size="small"
+        >
+          <a-button
+            slot="extra"
+            ghost
+            size="small"
+            type="primary"
+            @click="removeProposition()"
+            v-if="!lockContactEditing"
+            >manuell eingeben</a-button
+          >
+          <a-button
+            slot="extra"
+            size="small"
+            type="link"
+            @click="showPatient(contact.id)"
+            v-if="lockContactEditing"
+            >Patient bearbeiten</a-button
+          >
+          <a-descriptions layout="horizontal" :column="1" size="small">
             <a-descriptions-item label="Geburtsdatum">
-              {{moment(contact.dateOfBirth).format('DD.MM.YYYY')}}
+              {{ moment(contact.dateOfBirth).format('DD.MM.YYYY') }}
             </a-descriptions-item>
             <a-descriptions-item label="Adresse">
-              {{contact.street}} {{contact.houseNumber}}, {{contact.zip}} {{contact.city}}
+              {{ contact.street }} {{ contact.houseNumber }}, {{ contact.zip }}
+              {{ contact.city }}
             </a-descriptions-item>
           </a-descriptions>
         </a-card>
@@ -142,44 +198,60 @@
     <a-row :gutter="8">
       <!-- When and How -->
       <a-col :md="11" :sm="24">
-        <a-form-item label="Datum des Kontakts"
-          :selfUpdate="true">
+        <a-form-item label="Datum des Kontakts" :selfUpdate="true">
           <date-input
             v-bind="inputProps.dateOfContact"
-            :disabledDate="date => date.isAfter(moment())"
-            v-decorator="[ formFieldName('dateOfContact'), {
-              rules: [
-                { required: true, message: 'Bitte ein gültiges Datum angeben' },
-              ], initialValue: undefined
-            }]"/>
+            :disabledDate="(date) => date.isAfter(moment())"
+            v-decorator="[
+              formFieldName('dateOfContact'),
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte ein gültiges Datum angeben',
+                  },
+                ],
+                initialValue: undefined,
+              },
+            ]"
+          />
         </a-form-item>
       </a-col>
       <a-col :md="12">
-        <a-form-item label="Umgebung / Kontext"
-          :selfUpdate="true">
+        <a-form-item label="Umgebung / Kontext" :selfUpdate="true">
           <a-auto-complete
             v-bind="inputProps.context"
             :dataSource="contexts"
             :filterOption="false"
-            v-decorator="[ formFieldName('context'), {
-              rules: [
-                { required: true, message: 'Bitte den Umstand des Kontakts angeben' }
-              ],
-              initialValue: undefined
-            }]"/>
+            v-decorator="[
+              formFieldName('context'),
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte den Umstand des Kontakts angeben',
+                  },
+                ],
+                initialValue: undefined,
+              },
+            ]"
+          />
         </a-form-item>
       </a-col>
     </a-row>
     <a-row>
       <!-- Comment Space -->
-      <a-form-item label="Sonstiges / Kommentar"
-        :selfUpdate="true">
+      <a-form-item label="Sonstiges / Kommentar" :selfUpdate="true">
         <a-textarea
           v-bind="inputProps.comment"
-          v-decorator="[ formFieldName('comment'), {
-            rules: [],
-            initialValue: undefined
-          }]"/>
+          v-decorator="[
+            formFieldName('comment'),
+            {
+              rules: [],
+              initialValue: undefined,
+            },
+          ]"
+        />
       </a-form-item>
     </a-row>
   </div>
@@ -204,10 +276,10 @@ const exposureContexts = [
 ]
 
 interface State {
-  contexts: string[];
-  patientPropositions: Patient[];
-  contact?: Patient;
-  lockContactEditing: boolean;
+  contexts: string[]
+  patientPropositions: Patient[]
+  contact?: Patient
+  lockContactEditing: boolean
 }
 
 export default mixins(FormGroupMixin).extend({
@@ -216,7 +288,18 @@ export default mixins(FormGroupMixin).extend({
     DateInput,
     PatientInput,
   },
-  fieldIdentifiers: ['id', 'source', 'contact', 'contactFirstName', 'contactLastName', 'contactDateOfBirth', 'contactGender', 'dateOfContact', 'context', 'comment'],
+  fieldIdentifiers: [
+    'id',
+    'source',
+    'contact',
+    'contactFirstName',
+    'contactLastName',
+    'contactDateOfBirth',
+    'contactGender',
+    'dateOfContact',
+    'context',
+    'comment',
+  ],
   props: {
     showOriginatorPatient: { default: true },
     disableOriginatorPatient: { default: false },
@@ -236,7 +319,7 @@ export default mixins(FormGroupMixin).extend({
         (this as any).setData({ contact: c.id })
       }
     },
-    async contactPatient(contactPatient: {id: string}) {
+    async contactPatient(contactPatient: { id: string }) {
       if (contactPatient?.id) {
         this.contact = await Api.getPatientForIdUsingGet(contactPatient.id)
         this.lockContactEditing = true
@@ -265,7 +348,13 @@ export default mixins(FormGroupMixin).extend({
       return option.key !== this.withExts().getSingleValue('contact')
     },
     async fetchPropositions() {
-      const query = [(this as any).getSingleValue('contactFirstName'), (this as any).getSingleValue('contactLastName')].filter(u => u).join(' ').trim()
+      const query = [
+        (this as any).getSingleValue('contactFirstName'),
+        (this as any).getSingleValue('contactLastName'),
+      ]
+        .filter((u) => u)
+        .join(' ')
+        .trim()
       if (!query) {
         return
       }
@@ -292,21 +381,21 @@ export default mixins(FormGroupMixin).extend({
 </script>
 
 <style lang="scss" scoped>
-  .edit-exposure-contact {
-    .patients-flex {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: center;
-      align-content: center;
-      justify-content: center;
-    }
-
-    .patients-flex > * {
-      flex: 1 1;
-    }
-
-    .patients-flex > .patient-input {
-      min-width: 47%;
-    }
+.edit-exposure-contact {
+  .patients-flex {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
   }
+
+  .patients-flex > * {
+    flex: 1 1;
+  }
+
+  .patients-flex > .patient-input {
+    min-width: 47%;
+  }
+}
 </style>

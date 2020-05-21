@@ -1,33 +1,34 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Sulzbach",
   "coronaContacts": true,
-  "dateOfBirth": "1957-07-18",
-  "email": "h.winter@gmx.de",
-  "firstName": "Hanna",
+  "dateOfBirth": "1982-07-20",
+  "email": "s.winkler@example.de",
+  "firstName": "Susanne",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "U116866122",
-  "lastName": "Winter",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P841415799",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "31027238656",
+  "phoneNumber": "0973846895",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete 36",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 4",
   "symptoms": [
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Husten",
+    "Kopfschmerzen",
     "Halschmerzen",
     "Fieber",
-    "Husten",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
     "Schnupfen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "661022"
+  "weakenedImmuneSystem": true,
+  "zip": "66975"
 }

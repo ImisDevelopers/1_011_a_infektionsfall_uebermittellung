@@ -1,28 +1,29 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": false,
-  "dateOfBirth": "1935-05-18",
-  "email": "o.richter@t-online.de",
-  "firstName": "Olivia",
+  "city": "St. Ingbert",
+  "coronaContacts": true,
+  "dateOfBirth": "1975-10-22",
+  "email": "m.berger@example.de",
+  "firstName": "Marie",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "A811545609",
-  "lastName": "Richter",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "H167496657",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "87102563942",
+  "phoneNumber": "28272299102",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Waldstra\u00dfe 64",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Tulpenweg 93",
   "symptoms": [
-    "Schnupfen",
-    "Erk\u00e4ltung"
+    "Husten",
+    "Kopfschmerzen",
+    "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66816"
+  "weakenedImmuneSystem": false,
+  "zip": "66750"
 }

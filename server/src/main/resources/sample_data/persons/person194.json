@@ -1,34 +1,31 @@
 {
-  "city": "St. Ingbert",
+  "city": "Homburg",
   "coronaContacts": false,
-  "dateOfBirth": "1941-01-26",
-  "email": "k.schulz@gmx.de",
-  "firstName": "Konrad",
+  "dateOfBirth": "1964-04-07",
+  "email": "b.schroeder@example.de",
+  "firstName": "Ben",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "B593243074",
-  "lastName": "Schulz",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "G682535775",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "7823578452",
+  "phoneNumber": "44857101422",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Madrid"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "B\u00fcckerheide 12",
+  "street": "Sonnenweg 14",
   "symptoms": [
-    "Fieber",
-    "Husten",
-    "Schnupfen",
-    "Halschmerzen",
     "Atemschwierigkeiten",
-    "Gelenkschmerzen",
+    "Fieber",
     "Kopfschmerzen",
-    "Erk\u00e4ltung"
+    "Schnupfen",
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "668102"
+  "weakenedImmuneSystem": false,
+  "zip": "66098"
 }

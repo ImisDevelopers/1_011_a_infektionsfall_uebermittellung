@@ -1,34 +1,27 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
-  "dateOfBirth": "1949-01-01",
-  "email": "b.klein@web.de",
-  "firstName": "Ben",
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "dateOfBirth": "1989-11-10",
+  "email": "j.sommer@example.de",
+  "firstName": "Jana",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "U827070406",
-  "lastName": "Klein",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Y351410032",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "5162713611",
+  "phoneNumber": "2411054151010",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg 40",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe 6",
   "symptoms": [
-    "Husten",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Schnupfen"
+    "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66542"
+  "weakenedImmuneSystem": false,
+  "zip": "666104"
 }

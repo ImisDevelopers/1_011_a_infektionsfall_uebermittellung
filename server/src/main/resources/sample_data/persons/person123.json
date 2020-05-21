@@ -1,29 +1,27 @@
 {
-  "city": "Bous",
-  "coronaContacts": false,
-  "dateOfBirth": "1986-09-25",
-  "email": "e.schroeder@posteo.de",
-  "firstName": "Emma",
-  "fluImmunization": true,
+  "city": "Kirkel",
+  "coronaContacts": true,
+  "dateOfBirth": "1973-04-15",
+  "email": "s.winkler@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "B726016935",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "J834883010",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "3096105102010",
+  "phoneNumber": "410896910810",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Steinstra\u00dfe 37",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 47",
   "symptoms": [
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
-    "Halschmerzen"
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66466"
+  "zip": "668109"
 }

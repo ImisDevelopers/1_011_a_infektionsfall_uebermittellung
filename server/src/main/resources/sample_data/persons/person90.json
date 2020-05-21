@@ -1,32 +1,29 @@
 {
-  "city": "Heusweiler",
-  "coronaContacts": true,
-  "dateOfBirth": "1930-07-13",
-  "email": "j.richter@gmx.de",
-  "firstName": "Jana",
+  "city": "Homburg",
+  "coronaContacts": false,
+  "dateOfBirth": "1945-02-15",
+  "email": "k.schmidt@example.de",
+  "firstName": "Kai",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Q786237617",
-  "lastName": "Richter",
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "K701133236",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "0334191825",
+  "phoneNumber": "75140105101",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "S\u00fcdweg 25",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Bismarckstra\u00dfe 21",
   "symptoms": [
     "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen",
-    "Gelenkschmerzen",
+    "Kopfschmerzen",
     "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66714"
+  "zip": "66382"
 }

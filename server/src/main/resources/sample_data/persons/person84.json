@@ -1,34 +1,33 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": true,
-  "dateOfBirth": "1957-12-26",
-  "email": "d.bauer@posteo.de",
-  "firstName": "Daniel",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "N581942228",
-  "lastName": "Bauer",
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
+  "dateOfBirth": "1950-03-22",
+  "email": "a.winkler@example.de",
+  "firstName": "Annika",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D198269319",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "10265511047",
+  "phoneNumber": "91061943114",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hauptstra\u00dfe 97",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 48",
   "symptoms": [
-    "Halschmerzen",
-    "Husten",
-    "Gelenkschmerzen",
     "Kopfschmerzen",
+    "Halschmerzen",
     "Schnupfen",
-    "Erk\u00e4ltung",
+    "Husten",
+    "Fieber",
     "Atemschwierigkeiten",
-    "Fieber"
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66412"
+  "weakenedImmuneSystem": true,
+  "zip": "661026"
 }

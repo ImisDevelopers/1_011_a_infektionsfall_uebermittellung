@@ -1,13 +1,13 @@
 {
-  "city": "Heusweiler",
+  "city": "St. Wendel",
   "coronaContacts": true,
   "dateOfBirth": "1978-06-04",
-  "email": "m.bauer@posteo.de",
+  "email": "m.bauer@example.de",
   "firstName": "Marie",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "L719927151",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "T488302652",
   "lastName": "Bauer",
   "nationality": "deutsch",
   "phoneNumber": "1615594078",
@@ -17,7 +17,7 @@
   "riskAreas": [
     "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
+  "speedOfSymptomsOutbreak": "Langsam",
   "street": "Schernerweg 48",
   "symptoms": [
     "Husten"

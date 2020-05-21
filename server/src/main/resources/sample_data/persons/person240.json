@@ -1,30 +1,33 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1978-05-09",
-  "email": "j.schulz@web.de",
-  "firstName": "Jens",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "G472928235",
-  "lastName": "Schulz",
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "dateOfBirth": "1935-03-29",
+  "email": "m.berger@example.de",
+  "firstName": "Martina",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "B660782698",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "0496391919",
+  "phoneNumber": "010829731074",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "S\u00fcdweg 34",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kronenstra\u00dfe 68",
   "symptoms": [
-    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Fieber",
+    "Halschmerzen",
+    "Gelenkschmerzen",
     "Erk\u00e4ltung",
     "Kopfschmerzen",
-    "Gelenkschmerzen"
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66198"
+  "weakenedImmuneSystem": true,
+  "zip": "66969"
 }

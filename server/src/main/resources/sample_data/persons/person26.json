@@ -1,29 +1,33 @@
 {
-  "city": "Heusweiler",
-  "coronaContacts": false,
-  "dateOfBirth": "1975-03-18",
-  "email": "k.schulz@posteo.de",
-  "firstName": "Karl",
-  "fluImmunization": true,
-  "gender": "male",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "1979-11-07",
+  "email": "m.mueller@example.de",
+  "firstName": "Martina",
+  "fluImmunization": false,
+  "gender": "female",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "I945923902",
-  "lastName": "Schulz",
+  "insuranceMembershipNumber": "J859088046",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "1206797403",
+  "phoneNumber": "41012328120",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Wintergasse 90",
+  "street": "Kaiserstra\u00dfe 57",
   "symptoms": [
+    "Fieber",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Schnupfen",
     "Halschmerzen",
-    "Husten",
-    "Atemschwierigkeiten"
+    "Erk\u00e4ltung",
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66471"
+  "weakenedImmuneSystem": true,
+  "zip": "66974"
 }

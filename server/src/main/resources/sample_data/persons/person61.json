@@ -2,7 +2,7 @@
   "city": "Dudweiler",
   "coronaContacts": true,
   "dateOfBirth": "1977-06-17",
-  "email": "a.wagner@gmail.de",
+  "email": "a.wagner@example.de",
   "firstName": "Anna",
   "fluImmunization": false,
   "gender": "female",

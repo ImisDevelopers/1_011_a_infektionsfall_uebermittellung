@@ -1,25 +1,30 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1959-06-13",
-  "email": "h.schulz@posteo.de",
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "dateOfBirth": "1989-02-08",
+  "email": "h.schmitt@example.de",
   "firstName": "Hans",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "I368018471",
-  "lastName": "Schulz",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L527385805",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "90921075571",
+  "phoneNumber": "105569092107",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "GrandEst"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hohenzollerstra\u00dfe 17",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 47",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Husten",
+    "Halschmerzen",
+    "Fieber"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "66856"
+  "zip": "66719"
 }

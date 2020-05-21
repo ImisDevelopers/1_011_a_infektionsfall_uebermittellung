@@ -1,27 +1,34 @@
 {
-  "city": "Saarlouis",
+  "city": "Riegelsberg",
   "coronaContacts": false,
-  "dateOfBirth": "1984-07-01",
-  "email": "d.winkler@posteo.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
+  "dateOfBirth": "1951-08-13",
+  "email": "e.sommer@example.de",
+  "firstName": "Emma",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "T152169850",
-  "lastName": "Winkler",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "J238438399",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "3323098215",
+  "phoneNumber": "0083505830",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 83",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Bismarckstra\u00dfe 0",
   "symptoms": [
-    "Husten"
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Husten",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "660610"
+  "weakenedImmuneSystem": true,
+  "zip": "661033"
 }

@@ -1,29 +1,31 @@
 {
-  "city": "Neunkirchen",
+  "city": "Riegelsberg",
   "coronaContacts": true,
-  "dateOfBirth": "1982-07-26",
-  "email": "h.richter@gmx.de",
-  "firstName": "Hanna",
+  "dateOfBirth": "1967-07-22",
+  "email": "p.bauer@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "K844128379",
-  "lastName": "Richter",
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "N252252010",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "2044397359",
+  "phoneNumber": "5280924287",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Madrid"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 82",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "S\u00fcdweg 59",
   "symptoms": [
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung"
+    "Husten",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66710"
+  "zip": "66215"
 }

@@ -1,31 +1,29 @@
 {
-  "city": "Sulzbach",
+  "city": "Dudweiler",
   "coronaContacts": false,
-  "dateOfBirth": "1943-12-15",
-  "email": "m.lange@web.de",
-  "firstName": "Marie",
+  "dateOfBirth": "1995-04-06",
+  "email": "m.klein@example.de",
+  "firstName": "Matthias",
   "fluImmunization": false,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "F468965063",
-  "lastName": "Lange",
+  "insuranceMembershipNumber": "U518594177",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "169471022105",
+  "phoneNumber": "6111780068",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kaiserstra\u00dfe 80",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide 10",
   "symptoms": [
     "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung"
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66996"
+  "zip": "66149"
 }

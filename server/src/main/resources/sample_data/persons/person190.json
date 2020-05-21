@@ -1,34 +1,31 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": true,
-  "dateOfBirth": "1958-07-27",
-  "email": "c.schroeder@gmail.de",
-  "firstName": "Christopher",
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "dateOfBirth": "2002-08-21",
+  "email": "a.peters@example.de",
+  "firstName": "Annika",
   "fluImmunization": true,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "D713500721",
-  "lastName": "Schr\u00f6der",
+  "insuranceMembershipNumber": "J422427487",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "1681472145",
+  "phoneNumber": "13966055810",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Madrid"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hafenstra\u00dfe 52",
+  "street": "Niekampsweg 1",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen",
+    "Husten",
     "Gelenkschmerzen",
-    "Halschmerzen",
-    "Husten"
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66833"
+  "zip": "661034"
 }

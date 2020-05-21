@@ -102,14 +102,14 @@
           >Zur Live-Demo
         </a-button>
       </router-link>
-    </div>
+    <!--</div>
     <div class="second-section">
       <h1 style="margin: 0;">
         Der IMIS-Meldeprozess - Einfach, Schnell, Zentral
       </h1>
       <img src="../assets/imis-workflow.png" />
     </div>
-    <div class="link-section">
+    <div class="link-section">-->
       <a-button
         block
         href="https://drive.google.com/file/d/1hoQtGvO21p7_pQ63iDLoWzXB-FFfvKQJ/view?usp=sharing"

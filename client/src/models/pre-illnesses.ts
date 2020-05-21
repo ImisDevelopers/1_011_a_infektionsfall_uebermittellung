@@ -4,7 +4,8 @@ export const ADDITIONAL_PRE_ILLNESSES: Option[] = [
   {
     label: 'Akutes schweres Atemsyndrom (ARDS)',
     value: 'ARDS',
-  }, {
+  },
+  {
     label: 'Beatmungspflichtige Atemwegserkrankung',
     value: 'RESPIRATORY_DISEASE',
   },

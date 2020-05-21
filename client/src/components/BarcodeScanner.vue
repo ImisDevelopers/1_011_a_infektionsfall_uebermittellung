@@ -3,25 +3,33 @@
     <video
       height="100%"
       id="video"
-      style="border: 1px solid gray"
+      style="border: 1px solid gray;"
       width="100%"
     ></video>
     <div class="result" v-if="result.length > 0">
-      <p>{{result}}</p>
+      <p>{{ result }}</p>
       <div class="buttons">
-        <a-button type="secondary" v-on:click="useResult">Scan new result</a-button>
+        <a-button type="secondary" v-on:click="useResult"
+          >Scan new result</a-button
+        >
         <a-button type="primary" v-on:click="useResult">Use</a-button>
       </div>
     </div>
     <div class="scanner-input">
-      <a-select :value="device" @change="handleDeviceChange" labelInValue v-if="devices.length > 0">
-        <a-select-option :key="d.deviceId" v-for="d in devices">{{d.label}}</a-select-option>
+      <a-select
+        :value="device"
+        @change="handleDeviceChange"
+        labelInValue
+        v-if="devices.length > 0"
+      >
+        <a-select-option :key="d.deviceId" v-for="d in devices">{{
+          d.label
+        }}</a-select-option>
       </a-select>
       <div class="cancel-button" v-if="result.length === 0">
         <a-button type="secondary" v-on:click="onCancel">Cancel</a-button>
       </div>
     </div>
-
   </div>
 </template>
 <script lang="ts">
@@ -68,7 +76,7 @@ export default Vue.extend({
       this.$emit('result')
     },
   },
-  created: async function() {
+  created: async function () {
     // try {
     //   if (!navigator.mediaDevices.enumerateDevices) {
     //     this.device = {
@@ -95,46 +103,46 @@ export default Vue.extend({
 })
 </script>
 <style scoped lang="scss">
-  .scanner-wrapper {
-    top: 0;
-    left: 0;
-    background: white;
-    position: fixed;
-    z-index: 20;
-    width: 100%;
-    height: 100%;
-  }
+.scanner-wrapper {
+  top: 0;
+  left: 0;
+  background: white;
+  position: fixed;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+}
 
-  .scanner-input {
-    padding: 1em;
-    position: absolute;
-    bottom: 0;
-    z-index: 22;
-  }
+.scanner-input {
+  padding: 1em;
+  position: absolute;
+  bottom: 0;
+  z-index: 22;
+}
 
-  .result {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000aa;
-    color: white;
-    font-size: 30pt;
-    margin: auto;
-  }
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000aa;
+  color: white;
+  font-size: 30pt;
+  margin: auto;
+}
 
-  .buttons {
-    display: flex;
-    justify-content: space-around;
-  }
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
 
-  .buttons button {
-    width: auto;
-    margin: 0 1em;
-  }
+.buttons button {
+  width: auto;
+  margin: 0 1em;
+}
 </style>

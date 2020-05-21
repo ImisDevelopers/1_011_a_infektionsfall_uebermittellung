@@ -1,5 +1,5 @@
 <template>
-  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px">
+  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px;">
     <a-form
       :colon="false"
       :form="form"
@@ -7,43 +7,78 @@
       :wrapper-col="{ span: 18 }"
       @submit.prevent="handleSubmit"
     >
-
       <LaboratoryInput
         :form="form"
-        :validation="['laboratoryId',{ rules: [{
-            required: true,
-            message: 'Bitte wählen Sie ein Labor aus.'
-          }]}]"
+        :validation="[
+          'laboratoryId',
+          {
+            rules: [
+              {
+                required: true,
+                message: 'Bitte wählen Sie ein Labor aus.',
+              },
+            ],
+          },
+        ]"
         label="Labor"
       />
 
       <a-form-item label="Patienten-ID">
         <PatientInput
-          v-decorator="['patientId',{ rules: [{
-            required: true,
-            message: 'Bitte geben Sie die Patienten-ID ein.'
-          }]}]"
+          v-decorator="[
+            'patientId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie die Patienten-ID ein.',
+                },
+              ],
+            },
+          ]"
         />
       </a-form-item>
 
       <!-- Test ID -->
       <a-form-item label="Test-ID">
-        <a-input placeholder="Neue Test ID" v-decorator="['testId', { rules: [{
-          required: true,
-          message: 'Bitte geben Sie die Test-ID ein.'
-        }]}]" />
+        <a-input
+          placeholder="Neue Test ID"
+          v-decorator="[
+            'testId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie die Test-ID ein.',
+                },
+              ],
+            },
+          ]"
+        />
       </a-form-item>
 
       <!-- TestType -->
       <a-form-item label="Testtyp">
         <a-radio-group
           class="imis-radio-group"
-          v-decorator="['testType', { rules: [{
-              required: true,
-              message: 'Bitte geben Sie den Typen des Tests an.'
-            }]}]">
-          <a-radio :key="testTypeItem.id" :value="testTypeItem.id" v-for="testTypeItem in testTypes">
-            {{testTypeItem.label}}
+          v-decorator="[
+            'testType',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie den Typen des Tests an.',
+                },
+              ],
+            },
+          ]"
+        >
+          <a-radio
+            :key="testTypeItem.id"
+            :value="testTypeItem.id"
+            v-for="testTypeItem in testTypes"
+          >
+            {{ testTypeItem.label }}
           </a-radio>
         </a-radio-group>
       </a-form-item>
@@ -52,23 +87,42 @@
       <a-form-item label="Proben-Material">
         <a-radio-group
           class="imis-radio-group"
-          v-decorator="['testMaterial', { rules: [{
-              required: true,
-              message: 'Bitte geben Sie das Material des Tests an.'
-            }]}]">
-          <a-radio :key="testMaterialItem.id" :value="testMaterialItem.id" v-for="testMaterialItem in testMaterials">
-            {{testMaterialItem.label}}
+          v-decorator="[
+            'testMaterial',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie das Material des Tests an.',
+                },
+              ],
+            },
+          ]"
+        >
+          <a-radio
+            :key="testMaterialItem.id"
+            :value="testMaterialItem.id"
+            v-for="testMaterialItem in testMaterials"
+          >
+            {{ testMaterialItem.label }}
           </a-radio>
         </a-radio-group>
       </a-form-item>
 
       <a-form-item label="Abnahmedatum">
         <DateInput
-          :defaultValue= today
-          v-decorator="['eventDate', { rules: [{
-            required: false,
-            message: 'Datum der Probenabnahme',
-          }]}]"
+          :defaultValue="today"
+          v-decorator="[
+            'eventDate',
+            {
+              rules: [
+                {
+                  required: false,
+                  message: 'Datum der Probenabnahme',
+                },
+              ],
+            },
+          ]"
         />
       </a-form-item>
 
@@ -105,10 +159,10 @@ import { TestMaterialItem, testMaterials } from '@/models/test-materials'
 import moment from 'moment'
 
 interface State {
-  form: any;
-  testTypes: TestTypeItem[];
-  testMaterials: TestMaterialItem[];
-  today: moment.Moment;
+  form: any
+  testTypes: TestTypeItem[]
+  testMaterials: TestMaterialItem[]
+  today: moment.Moment
 }
 
 export default Vue.extend({
@@ -136,27 +190,30 @@ export default Vue.extend({
           ...values,
         }
 
-        Api.createTestForPatientUsingPost(request).then(labTest => {
-          const createdLabTest = labTest
-          const createdLabTestStatus = testResults
-            .find(testResult => testResult.id === labTest.testStatus)
-            ?.label || ''
-          this.form.resetFields()
-          const h = this.$createElement
-          this.$success({
-            title: 'Der Test wurde erfolgreich angelegt.',
-            content: h('div', {}, [
-              h('div', `Test ID: ${createdLabTest.testId}`),
-              h('div', `Test Status: ${createdLabTestStatus}`),
-            ]),
+        Api.createTestForPatientUsingPost(request)
+          .then((labTest) => {
+            const createdLabTest = labTest
+            const createdLabTestStatus =
+              testResults.find(
+                (testResult) => testResult.id === labTest.testStatus
+              )?.label || ''
+            this.form.resetFields()
+            const h = this.$createElement
+            this.$success({
+              title: 'Der Test wurde erfolgreich angelegt.',
+              content: h('div', {}, [
+                h('div', `Test ID: ${createdLabTest.testId}`),
+                h('div', `Test Status: ${createdLabTestStatus}`),
+              ]),
+            })
           })
-        }).catch(err => {
-          const notification = {
-            message: 'Fehler beim Anlegen des Tests.',
-            description: err.message,
-          }
-          this.$notification.error(notification)
-        })
+          .catch((err) => {
+            const notification = {
+              message: 'Fehler beim Anlegen des Tests.',
+              description: err.message,
+            }
+            this.$notification.error(notification)
+          })
       })
     },
   },

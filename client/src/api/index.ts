@@ -36,7 +36,8 @@ const apiWrapper = {
   }),
 }
 
-function createApiProxy(foo: Api['api']): Api['api'] { // Proxy<Foo> is compatible with Foo
+function createApiProxy(foo: Api['api']): Api['api'] {
+  // Proxy<Foo> is compatible with Foo
   const handler = {
     get: (target: Api['api'], prop: keyof Api['api'], receiver: any) => {
       if (apiWrapper.apiInstance.api[prop] !== null) {

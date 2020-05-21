@@ -19,19 +19,22 @@ function prefixed(name: string, prefix?: string): string {
 
 interface MinimalFormContext {
   form: {
-    formItems: Record<string, {
-      itemSelfUpdate: boolean;
-    }>;
-    setFieldsValue(vals: Record<string, any>): void;
-    getFieldsValue(names?: string[]): Record<string, any>;
-  };
+    formItems: Record<
+      string,
+      {
+        itemSelfUpdate: boolean
+      }
+    >
+    setFieldsValue(vals: Record<string, any>): void
+    getFieldsValue(names?: string[]): Record<string, any>
+  }
 }
 
 // >>>>> MIXIN DEFINITIONS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
-    fieldIdentifiers?: string[];
+    fieldIdentifiers?: string[]
   }
 }
 
@@ -41,27 +44,27 @@ export interface FormGroupMixin {
      * Array of all the field identifiers used for the fields managed by
      * this form group component.
      */
-    fieldIdentifiers?: string[];
-  };
+    fieldIdentifiers?: string[]
+  }
 
   $props: {
     /**
      * Optional prefix to be applied to all field names.
      */
-    fieldNamePrefix?: string;
+    fieldNamePrefix?: string
     /**
      * Optional mapping of field identifiers to custom field names for some
      * or all fields. The names of fields not specified in this map are subject
      * to default field naming, respecting a provided field name prefix.
      */
-    fieldNames?: Record<string, string>;
+    fieldNames?: Record<string, string>
     /**
      * Optional props to apply to some or all fields. The top level key
      * is the identifier of the form field with a map of the props to apply
      * to that field as the respective value.
      */
-    controlProps?: Record<string, Record<string, any>>;
-  };
+    controlProps?: Record<string, Record<string, any>>
+  }
 
   /**
    * Generates the name to be used for the field with the given identifier,
@@ -69,27 +72,33 @@ export interface FormGroupMixin {
    * prefixing (see inputKeyPrefix prop). This function is typically called
    * to generate the appropriate field name for the v-decorator directive.
    */
-  formFieldName(fieldId: string): string;
+  formFieldName(fieldId: string): string
 
   /**
    * Sets some or all fields of this form group. The second parameter specifies
    * whether the passed key-value mapping's keys specify field identifiers or
    * the actual field names as used in the form.
    */
-  setData(data: Record<string, any>, usesFormFieldNames?: boolean): void;
+  setData(data: Record<string, any>, usesFormFieldNames?: boolean): void
   /**
    * Retrieves the values of some or all fields of this form group. The optional
    * second parameter specifies whether the given field name array specifies
    * field identifiers or the actual field names as used in the form. The result
    * mapping will map the values by the same names.
    */
-  getData(fieldNames?: string[], usesFormFieldNames?: boolean): Record<string, any>;
+  getData(
+    fieldNames?: string[],
+    usesFormFieldNames?: boolean
+  ): Record<string, any>
   /**
    * Retrieves the value of one specific field of this form group. The optional
    * second parameter specifies whether the given field name array specifies
    * field identifiers or the actual field names as used in the form.
    */
-  getSingleValue(fieldName: string, usesFormFieldNames?: boolean): any | undefined;
+  getSingleValue(
+    fieldName: string,
+    usesFormFieldNames?: boolean
+  ): any | undefined
 }
 
 /**
@@ -127,7 +136,7 @@ export const FormGroupMixin = Vue.extend({
       type: Object as PropType<Record<string, Record<string, any>>>,
       default(): Record<string, Record<string, any>> {
         return Object.fromEntries(
-          this.$options.fieldIdentifiers!.map((key: string) => [key, {}]),
+          this.$options.fieldIdentifiers!.map((key: string) => [key, {}])
         )
       },
     },
@@ -152,15 +161,18 @@ export const FormGroupMixin = Vue.extend({
       // Make sure all form items use selfUpdate; this is crucial for form items
       // in the group to be re-rendered correctly when new values are set
       this.$options.fieldIdentifiers.forEach((key: string) => {
-        if (this.getFormContext().form.formItems[
-          this.formFieldName(key)].itemSelfUpdate) {
-          console.error(`[ ${this.$options.name} ]: ` +
-            `\`itemSelfUpdate\` is not enabled for form item of \`${key}\`. ` +
-            'This may lead to contents not being re-rendered when their ' +
-            'value is modified by calling `setFieldsValue` on its ' +
-            'containing form. To fix this, add `:selfUpdate="true"` to ' +
-            `the \`a-form-item\` component containing the \`${key}\` control ` +
-            'or add `:selfUpdate="true"` to the root `a-form` element.',
+        if (
+          this.getFormContext().form.formItems[this.formFieldName(key)]
+            .itemSelfUpdate
+        ) {
+          console.error(
+            `[ ${this.$options.name} ]: ` +
+              `\`itemSelfUpdate\` is not enabled for form item of \`${key}\`. ` +
+              'This may lead to contents not being re-rendered when their ' +
+              'value is modified by calling `setFieldsValue` on its ' +
+              'containing form. To fix this, add `:selfUpdate="true"` to ' +
+              `the \`a-form-item\` component containing the \`${key}\` control ` +
+              'or add `:selfUpdate="true"` to the root `a-form` element.'
           )
         }
       })
@@ -168,9 +180,12 @@ export const FormGroupMixin = Vue.extend({
   },
   methods: {
     getFormContext() {
-      return typing.extended(this, typing.TypeArg<{
-        FormContext: MinimalFormContext;
-      }>()).FormContext
+      return typing.extended(
+        this,
+        typing.TypeArg<{
+          FormContext: MinimalFormContext
+        }>()
+      ).FormContext
     },
     formFieldName(key: string): string {
       const propKeys = this.$props.fieldNames
@@ -185,22 +200,30 @@ export const FormGroupMixin = Vue.extend({
 
       // Check if conversion of identifiers to field names is required
       if (!usesFormFieldNames) {
-        data = Object.fromEntries(Object.entries(data).map(
-          (entry: [string, any]) => [this.formFieldName(entry[0]), entry[1]],
-        ))
+        data = Object.fromEntries(
+          Object.entries(data).map((entry: [string, any]) => [
+            this.formFieldName(entry[0]),
+            entry[1],
+          ])
+        )
       }
 
       // Filter out any names that do not have a corresponding identifier
       // defined using the fieldIdentifiers option
       const fieldNames = this.$options.fieldIdentifiers.map(this.formFieldName)
-      data = Object.fromEntries(Object.entries(data).filter(
-        (value: [string, any]) => fieldNames.includes(value[0]),
-      ))
+      data = Object.fromEntries(
+        Object.entries(data).filter((value: [string, any]) =>
+          fieldNames.includes(value[0])
+        )
+      )
 
       // Set the values
       this.getFormContext().form.setFieldsValue(data)
     },
-    getData(fieldNames?: string[], usesFormFieldNames?: boolean): Record<string, any> {
+    getData(
+      fieldNames?: string[],
+      usesFormFieldNames?: boolean
+    ): Record<string, any> {
       if (!this.$options.fieldIdentifiers) {
         throw new Error(`[ ${this.$options.name} ]: \`getData\` not supported`)
       }
@@ -213,15 +236,17 @@ export const FormGroupMixin = Vue.extend({
         })
       }
 
-      const permittedFieldNames = this.$options.fieldIdentifiers.map(this.formFieldName)
+      const permittedFieldNames = this.$options.fieldIdentifiers.map(
+        this.formFieldName
+      )
       if (fieldNames === undefined) {
         // No specific field names specified is equivalent to getting them all
         fieldNames = permittedFieldNames
       } else {
         // Filter out any names that do not have a corresponding identifier
         // defined using the fieldIdentifiers option
-        fieldNames = fieldNames.filter(
-          (fieldName: string) => permittedFieldNames.includes(fieldName),
+        fieldNames = fieldNames.filter((fieldName: string) =>
+          permittedFieldNames.includes(fieldName)
         )
       }
 
@@ -229,14 +254,20 @@ export const FormGroupMixin = Vue.extend({
       // as field identifiers, the result's keys will be translated back
       let result = this.getFormContext().form.getFieldsValue(fieldNames)
       if (!usesFormFieldNames) {
-        result = Object.fromEntries(Object.entries(result).map((entry: [string, any]) =>
-          [this.formFieldNameBackTranslation[entry[0]], entry[1]],
-        ))
+        result = Object.fromEntries(
+          Object.entries(result).map((entry: [string, any]) => [
+            this.formFieldNameBackTranslation[entry[0]],
+            entry[1],
+          ])
+        )
       }
 
       return result
     },
-    getSingleValue(fieldName: string, usesFormFieldNames?: boolean): any | undefined {
+    getSingleValue(
+      fieldName: string,
+      usesFormFieldNames?: boolean
+    ): any | undefined {
       const key = usesFormFieldNames ? fieldName : this.formFieldName(fieldName)
       return this.getData([key], true)[key]
     },
@@ -245,7 +276,7 @@ export const FormGroupMixin = Vue.extend({
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
-    fieldValueConvert?(value: any): any;
+    fieldValueConvert?(value: any): any
   }
 }
 
@@ -262,27 +293,27 @@ export interface FormControlMixin {
      * like the identity function for the native value format, since failure to do
      * so may lead to infinite recursion.
      */
-    fieldValueConvert?(value: any): any;
-  };
+    fieldValueConvert?(value: any): any
+  }
 
   /**
    * The name of this form control as specified by field decorator.
    */
-  fieldName: string | null;
+  fieldName: string | null
 
   /**
    * Returns whether this form control is used in conjunction with a field decorator.
    */
-  isDecoratedFormField(): boolean;
+  isDecoratedFormField(): boolean
 
   /**
    * Sets the value of this control.
    */
-  setOwnValue(value: any): void;
+  setOwnValue(value: any): void
   /**
    * Retrieves the current value of this control.
    */
-  getOwnValue(): any;
+  getOwnValue(): any
 }
 
 /**
@@ -298,7 +329,7 @@ export const FormControlMixin = Vue.extend({
   computed: {
     fieldName(): string | null {
       if (this.getFormContext() && this.$attrs['data-__field']) {
-        return (typing.cast<{ name: string }>(this.$attrs['data-__field'])).name
+        return typing.cast<{ name: string }>(this.$attrs['data-__field']).name
       } else {
         return null
       }
@@ -311,9 +342,10 @@ export const FormControlMixin = Vue.extend({
   },
   created() {
     if (this.$options.fieldValueConvert) {
-      const valueProp = (this.$options.model && this.$options.model.prop)
-        ? this.$options.model.prop
-        : 'value'
+      const valueProp =
+        this.$options.model && this.$options.model.prop
+          ? this.$options.model.prop
+          : 'value'
 
       this.$watch(valueProp, (value: any) => {
         if (this.FormControlConvValue === value) {
@@ -331,24 +363,29 @@ export const FormControlMixin = Vue.extend({
   },
   methods: {
     getFormContext(): MinimalFormContext {
-      return typing.extended(this, typing.TypeArg<{
-        FormContext: MinimalFormContext;
-      }>()).FormContext
+      return typing.extended(
+        this,
+        typing.TypeArg<{
+          FormContext: MinimalFormContext
+        }>()
+      ).FormContext
     },
     isDecoratedFormField(): boolean {
       return !!(this.getFormContext() && this.$attrs['data-__field'])
     },
     setOwnValue(value: any) {
-      const eventType = (this.$options.model && this.$options.model.event)
-        ? this.$options.model.event
-        : 'change'
+      const eventType =
+        this.$options.model && this.$options.model.event
+          ? this.$options.model.event
+          : 'change'
 
       this.$emit(eventType, value)
     },
     getOwnValue() {
-      const valueProp = (this.$options.model && this.$options.model.prop)
-        ? this.$options.model.prop
-        : 'value'
+      const valueProp =
+        this.$options.model && this.$options.model.prop
+          ? this.$options.model.prop
+          : 'value'
       return (this as Record<string, any>)[valueProp]
     },
   },

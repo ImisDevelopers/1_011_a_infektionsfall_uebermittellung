@@ -1,13 +1,15 @@
 export declare interface MapperDefEntry {
-  transform: (x: any) => any;
+  transform: (x: any) => any
 }
-export declare type MapperDef = { [x: string]: ((x: any) => any | Partial<MapperDefEntry>) };
+export declare type MapperDef = {
+  [x: string]: (x: any) => any | Partial<MapperDefEntry>
+}
 
-export function map(object: {[x: string]: any}, mapperDef: MapperDef) {
-  return Object.fromEntries(Object.entries(object).map(
-    (entry: [any, any]) => {
-      const key = entry[0];
-      let val = entry[1];
+export function map(object: { [x: string]: any }, mapperDef: MapperDef) {
+  return Object.fromEntries(
+    Object.entries(object).map((entry: [any, any]) => {
+      const key = entry[0]
+      let val = entry[1]
 
       let mapperEntry: any = mapperDef[key]
 
@@ -24,6 +26,6 @@ export function map(object: {[x: string]: any}, mapperDef: MapperDef) {
       }
 
       return entry
-    },
-  ))
+    })
+  )
 }

@@ -9,8 +9,8 @@ module.exports = {
     'plugin:vue/essential',
     'eslint:recommended',
     '@vue/typescript/recommended',
-    //'@vue/prettier',
-    //'@vue/prettier/@typescript-eslint',
+    '@vue/prettier',
+    '@vue/prettier/@typescript-eslint',
   ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -19,6 +19,8 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-extra-semi': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
+    // Does not work with delimiter "none" even though documentation says otherwise:
+    '@typescript-eslint/member-delimiter-style': 'off',
   },
   overrides: [
     {

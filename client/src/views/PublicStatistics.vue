@@ -1,17 +1,30 @@
 <template>
   <div>
-    <a-affix style="text-align: center; font-weight: bold; font-size: 18pt; padding: 10px;">
+    <a-affix
+      style="
+        text-align: center;
+        font-weight: bold;
+        font-size: 18pt;
+        padding: 10px;
+      "
+    >
       Statische Testdaten
     </a-affix>
     <!--<a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0" />-->
     <a-card class="table-container">
-      <a-table :columns="columns" :dataSource="data" :scroll="{x: 1, y: 0}">
+      <a-table :columns="columns" :dataSource="data" :scroll="{ x: 1, y: 0 }">
       </a-table>
-      <div style="display: flex; width: 100%; justify-content: flex-end; margin-bottom: 1rem;">
+      <div
+        style="
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+          margin-bottom: 1rem;
+        "
+      >
         <a-button type="primary">CSV exportieren</a-button>
       </div>
     </a-card>
-
   </div>
 </template>
 
@@ -124,18 +137,18 @@ export default Vue.extend({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped  lang="scss">
-  h3 {
-    margin: 20px 10px;
-  }
+<style scoped lang="scss">
+h3 {
+  margin: 20px 10px;
+}
 
-  span {
-    margin: 10px;
-  }
+span {
+  margin: 10px;
+}
 
-  .table-container {
-    width: 100%;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-  }
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
 </style>

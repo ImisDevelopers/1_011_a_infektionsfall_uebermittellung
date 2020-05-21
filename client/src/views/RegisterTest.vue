@@ -208,9 +208,35 @@ export default Vue.extend({
             })
           })
           .catch((err) => {
-            const notification = {
+            let notification: any = {
               message: 'Fehler beim Anlegen des Tests.',
-              description: err.message,
+            }
+
+            if (
+              err.errorType === 'ConstraintViolation' &&
+              err.constraint === 'LAB_UNIQUE_TEST_ID'
+            ) {
+              this.form.setFields({
+                testId: {
+                  value: values['testId'],
+                  errors: [
+                    new Error(
+                      'Test-ID bereits einer anderen Probe zugeordnet!'
+                    ),
+                  ],
+                },
+              })
+
+              notification = {
+                ...notification,
+                description:
+                  'Eingegebene Test-ID wurde bereits einer anderen Probe zugeordnet!',
+              }
+            } else {
+              notification = {
+                ...notification,
+                description: err.message,
+              }
             }
             this.$notification.error(notification)
           })

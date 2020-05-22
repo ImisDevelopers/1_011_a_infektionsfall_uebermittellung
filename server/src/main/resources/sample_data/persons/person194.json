@@ -1,6 +1,7 @@
 {
   "city": "Homburg",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1964-04-07",
   "email": "b.schroeder@example.de",
   "firstName": "Ben",

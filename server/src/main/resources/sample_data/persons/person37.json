@@ -1,6 +1,7 @@
 {
   "city": "Saarbr\u00fccken",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1976-08-01",
   "email": "i.winkler@example.de",
   "firstName": "Isabella",

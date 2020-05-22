@@ -1,6 +1,7 @@
 {
   "city": "Sulzbach",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1973-08-04",
   "email": "m.wagner@example.de",
   "firstName": "Marie",

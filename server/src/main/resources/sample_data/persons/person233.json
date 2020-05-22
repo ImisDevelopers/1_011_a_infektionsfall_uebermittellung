@@ -1,6 +1,7 @@
 {
   "city": "Dudweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1991-07-10",
   "email": "d.lange@example.de",
   "firstName": "Daniel",

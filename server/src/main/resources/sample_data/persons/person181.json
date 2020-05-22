@@ -1,6 +1,7 @@
 {
   "city": "St. Ingbert",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1957-09-22",
   "email": "s.weber@example.de",
   "firstName": "Susanne",

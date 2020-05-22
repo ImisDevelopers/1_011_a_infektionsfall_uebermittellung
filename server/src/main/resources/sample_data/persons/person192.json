@@ -1,6 +1,7 @@
 {
   "city": "Sulzbach",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "2002-06-13",
   "email": "l.weber@example.de",
   "firstName": "Lisa",

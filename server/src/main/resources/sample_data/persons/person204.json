@@ -1,6 +1,7 @@
 {
   "city": "Heusweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1979-10-24",
   "email": "a.schmitt@example.de",
   "firstName": "Annika",

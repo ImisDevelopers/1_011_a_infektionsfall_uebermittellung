@@ -1,6 +1,7 @@
 {
   "city": "Bous",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1935-07-27",
   "email": "j.berger@example.de",
   "firstName": "Jana",

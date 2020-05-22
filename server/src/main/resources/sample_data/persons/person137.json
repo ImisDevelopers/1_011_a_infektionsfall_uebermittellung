@@ -1,6 +1,7 @@
 {
   "city": "Neunkirchen",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1979-10-23",
   "email": "h.richter@example.de",
   "firstName": "Hanna",

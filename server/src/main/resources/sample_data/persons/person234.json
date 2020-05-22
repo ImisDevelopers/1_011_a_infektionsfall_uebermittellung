@@ -1,6 +1,7 @@
 {
   "city": "Bous",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1962-04-20",
   "email": "d.winkler@example.de",
   "firstName": "Daniel",

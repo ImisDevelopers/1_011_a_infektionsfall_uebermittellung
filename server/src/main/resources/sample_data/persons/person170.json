@@ -1,6 +1,7 @@
 {
   "city": "Saarlouis",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1936-12-16",
   "email": "j.schmitt@example.de",
   "firstName": "Jens",

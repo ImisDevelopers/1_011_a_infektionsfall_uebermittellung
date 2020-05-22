@@ -1,6 +1,7 @@
 {
   "city": "Dudweiler",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1947-07-29",
   "email": "f.schmidt@example.de",
   "firstName": "Franz",

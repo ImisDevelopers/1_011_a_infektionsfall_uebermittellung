@@ -1,6 +1,7 @@
 {
   "city": "Kirkel",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1937-08-13",
   "email": "p.schulz@example.de",
   "firstName": "Petra",

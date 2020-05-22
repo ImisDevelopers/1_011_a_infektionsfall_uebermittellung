@@ -1,6 +1,7 @@
 {
   "city": "Neunkirchen",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1948-09-08",
   "email": "d.winkler@example.de",
   "firstName": "Daniela",

@@ -1,6 +1,7 @@
 {
   "city": "Merzig",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1932-04-28",
   "email": "j.mueller@example.de",
   "firstName": "Jan",

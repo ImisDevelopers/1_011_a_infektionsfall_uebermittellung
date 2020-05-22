@@ -1,6 +1,7 @@
 {
   "city": "St. Wendel",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1929-05-05",
   "email": "p.winter@example.de",
   "firstName": "Peter",

@@ -1,6 +1,7 @@
 {
   "city": "Sulzbach",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1982-07-20",
   "email": "s.winkler@example.de",
   "firstName": "Susanne",

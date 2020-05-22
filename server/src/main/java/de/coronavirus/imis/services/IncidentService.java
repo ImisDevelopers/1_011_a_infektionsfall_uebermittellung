@@ -34,7 +34,7 @@ public class IncidentService {
 	private final PatientMapper patientMapper;
 	private final QuarantineIncidentRepository quarantineIncidentRepo;
 	private final AdministrativeIncidentRepository adminIncidentRepo;
-	private final HospitalizationIncidentRepository hospitalizationRepo;
+	private final HospitalizationIncidentRepository hospIncidentRepo;
 	private final DoctorRepository doctorRepo;
 	private final AuditReader auditReader;
 	private final ApplicationContext ctx;
@@ -63,6 +63,7 @@ public class IncidentService {
 		result.addAll(getLog(TestIncident.class, id, byPatient));
 		result.addAll(getLog(QuarantineIncident.class, id, byPatient));
 		result.addAll(getLog(AdministrativeIncident.class, id, byPatient));
+		result.addAll(getLog(HospitalizationIncident.class, id, byPatient));
 
 		result.sort(
 				(Incident i1, Incident i2) -> i1.getVersionTimestamp().compareTo(i2.getVersionTimestamp())
@@ -93,6 +94,8 @@ public class IncidentService {
 				return quarantineIncidentRepo.findById(id).orElseThrow();
 			case administrative:
 				return adminIncidentRepo.findById(id).orElseThrow();
+			case hospitalization:
+				return hospIncidentRepo.findById(id).orElseThrow();
 		}
 
 		return null;
@@ -106,6 +109,7 @@ public class IncidentService {
 		result.addAll(testIncidentRepo.findByPatientId(patientId));
 		result.addAll(quarantineIncidentRepo.findByPatientId(patientId));
 		result.addAll(adminIncidentRepo.findByPatientId(patientId));
+		result.addAll(hospIncidentRepo.findByPatientId(patientId));
 
 		return result;
 	}
@@ -120,6 +124,8 @@ public class IncidentService {
 				return (List<Incident>) (List<?>) quarantineIncidentRepo.findByPatientId(patientId);
 			case administrative:
 				return (List<Incident>) (List<?>) adminIncidentRepo.findByPatientId(patientId);
+			case hospitalization:
+				return (List<Incident>) (List<?>) hospIncidentRepo.findByPatientId(patientId);
 		}
 
 		return null;
@@ -276,15 +282,17 @@ public class IncidentService {
 
 	// Hospitalization Incidents
 
-	public void addIncident(Patient patient, LocalDate hospitalizedOn, boolean intensiveCare) {
+	public void addIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
+
+		boolean ic = intensiveCare==null ? false : intensiveCare;
 
 		var incident = (HospitalizationIncident) new HospitalizationIncident()
-				.setIntensiveCare(intensiveCare)
+				.setIntensiveCare(ic)
 				.setEventDate(hospitalizedOn)
 				.setEventType(EventType.HOSPITALIZATION_MANDATED)
 				.setPatient(patient);
 
-		hospitalizationRepo.saveAndFlush(incident);
+		hospIncidentRepo.saveAndFlush(incident);
 
 	}
 

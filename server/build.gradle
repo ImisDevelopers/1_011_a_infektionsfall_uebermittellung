@@ -85,7 +85,7 @@ bootJar {
     archiveFileName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
 }
-tasks.processResources.dependsOn(':client:assemble')
+//tasks.processResources.dependsOn(':client:assemble')
 tasks.jib.dependsOn('processResources')
 bootJar.dependsOn('processResources')
 

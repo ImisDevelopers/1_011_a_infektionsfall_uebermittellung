@@ -30,7 +30,6 @@ public class PatientService {
 
 	private final PatientRepository patientRepository;
 	private final PatientEventService eventService;
-	private final RandomService randomService;
 	private final PatientMapper patientMapper;
 	private final IncidentService incidentService;
 	private final SearchService searchService;
@@ -67,7 +66,7 @@ public class PatientService {
 					.hashString(patient.getFirstName() + patient.getLastName()
 							+ patient.getZip()
 							+ patient.getDateOfBirth()
-							+ randomService.getRandomString(12), StandardCharsets.UTF_8)
+							+ RandomService.getRandomString(12), StandardCharsets.UTF_8)
 					.toString()
 					.substring(0, 8).toUpperCase();
 

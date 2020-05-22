@@ -168,18 +168,6 @@
                   >Bitte bestätigen</span
                 >
               </a-form-item>
-              <a-button
-                @click="save"
-                :disabled="!checked"
-                block
-                shape="round"
-                size="large"
-                style="width: 200px; margin-bottom: 25px;"
-                type="primary"
-              >
-                <a-icon type="save" />
-                Daten übermitteln
-              </a-button>
             </div>
             <div v-if="createdPatient">
               <h2>Geschafft!</h2>
@@ -234,6 +222,20 @@
         >
           Weiter
           <a-icon type="arrow-right" />
+        </a-button>
+        <a-button
+          :style="{ visibility: current === 4 ? 'visible' : 'hidden' }"
+          @click="save"
+          :disabled="!checked"
+          block
+          class="button-row-button"
+          shape="round"
+          size="large"
+          style="flex: 0 1 150px;"
+          type="primary"
+        >
+          <a-icon type="save" />
+          Absenden
         </a-button>
       </div>
     </a-card>

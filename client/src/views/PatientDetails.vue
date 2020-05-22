@@ -175,7 +175,7 @@
                       (patientStatus ? patientStatus.label : 'Unbekannt') +
                       (patient.quarantineUntil
                         ? ', Quarantäne angeordnet bis ' +
-                          patient.quarantineUntil
+                          moment(patient.quarantineUntil).format('DD.MM.YYYY')
                         : '')
                     }}
                   </div>

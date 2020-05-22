@@ -20,10 +20,10 @@
         <br>
 
         <div v-if='!hospitalizationIncidents.length'>
-            Keine Holpitalisierung.
+            Keine Hospitalisierung.
         </div>
         <div v-for="item in hospitalizationIncidents" :key="item.id">
-            Holpitalisierung
+            Hospitalisierung
             <table>
                 <tr>
                     <td>- Beginn:</td>

@@ -8,9 +8,9 @@
         >
             <!-- List all the events recorded corresponding to the patient over time -->
             <a-timeline-item
-            :color="timelineColor(allIncidents.eventType)"
-            :key="incident.id"
+            :color="timelineColor(incident.eventType)"
             v-for="incident in allIncidents"
+            :key="incident.id + incident.versionTimestamp"
             >
             {{ formatDate(incident.eventDate) }},
             {{

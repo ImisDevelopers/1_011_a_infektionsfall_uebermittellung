@@ -162,123 +162,8 @@
             </a-col>
           </a-row>
         </a-tab-pane>
-        <a-tab-pane key="incidents" tab="Vorgänge">
-          <CaseData :allIncidents='this.incidents' />
-        </a-tab-pane>
-        <a-tab-pane key="overview" tab="Falldaten">
-          <!-- Tests -->
-          <a-row :gutter="8" style="margin-top: 8px;">
-            <a-col span="24">
-              <div style="background: white; border: 1px solid #e8e8e8;">
-                <div class="card-header">
-                  <div>
-                    Fall-Status:
-                    {{
-                      (patientStatus ? patientStatus.label : 'Unbekannt') +
-                      (patient.quarantineUntil
-                        ? ', Quarantäne angeordnet bis ' +
-                          patient.quarantineUntil
-                        : '')
-                    }}
-                  </div>
-                  <div class="card-header-subtitle">
-                    Erkrankungsdatum: {{ dateOfIllness }}
-                  </div>
-                  <div class="card-header-subtitle">
-                    Meldedatum: {{ dateOfReporting }}
-                  </div>
-                </div>
-                <a-table
-                  :columns="columnsTests"
-                  :dataSource="tests"
-                  :scroll="{ x: 0, y: 0 }"
-                  class="imis-table-no-pagination"
-                  rowKey="id"
-                >
-                  <div slot="lastUpdate" slot-scope="lastUpdate">
-                    {{ getDate(lastUpdate) }}
-                  </div>
-                  <div slot="testStatus" slot-scope="testStatus">
-                    <a-icon
-                      :type="
-                        testResults.find((type) => type.id === testStatus).icon
-                      "
-                      style="margin-right: 5px;"
-                    />
-                    {{
-                      testResults.find((type) => type.id === testStatus).label
-                    }}
-                  </div>
-                  <div slot="testType" slot-scope="testType">
-                    <a-icon
-                      :type="
-                        testTypes.find((type) => type.id === testType).icon
-                      "
-                      style="margin-right: 5px;"
-                    />
-                    {{ testTypes.find((type) => type.id === testType).label }}
-                  </div>
-                </a-table>
-              </div>
-            </a-col>
-          </a-row>
-
-          <!-- Symptome und Risiken -->
-          <a-row :gutter="8" style="margin-top: 8px;">
-            <a-col :md="8" :span="24">
-              <a-card align="left" title="Infektionskette">
-                <a-descriptions layout="vertical" :column="1">
-                  <a-descriptions-item>
-                    <span slot="label"
-                      ><a-icon type="arrow-right" /><a-icon
-                        type="user"
-                        style="margin-right: 5px;"
-                      />
-                      Kontakte mit Indexpatienten</span
-                    >
-                    <span v-if="patientInfectionSources.length > 0">{{
-                      patientInfectionSources.length
-                    }}</span>
-                    <span v-else>Keine</span>
-                    bekannt
-                  </a-descriptions-item>
-                  <a-descriptions-item>
-                    <span slot="label"
-                      ><a-icon type="user" /><a-icon
-                        type="arrow-right"
-                        style="margin-right: 5px;"
-                      />
-                      Eigene Kontaktpersonen</span
-                    >
-                    <span v-if="exposureContacts.length > 0">{{
-                      exposureContacts.length
-                    }}</span>
-                    <span v-else>Keine</span>
-                    angegeben
-                  </a-descriptions-item>
-                </a-descriptions>
-              </a-card>
-            </a-col>
-
-            <a-col :md="8" :span="24">
-              <a-card align="left" title="Vorerkrankungen und Risikofaktoren">
-                <div v-bind:key="illness" v-for="illness in preIllnesses">
-                  {{ illness }}
-                </div>
-              </a-card>
-            </a-col>
-            <a-col :md="8" :span="24">
-              <a-card
-                :extra="'Stand: ' + formatTimestamp(patient.creationTimestamp)"
-                align="left"
-                title="Symptome"
-              >
-                <div v-bind:key="symptom" v-for="symptom in symptoms">
-                  {{ symptom }}
-                </div>
-              </a-card>
-            </a-col>
-          </a-row>
+        <a-tab-pane key="Cases" tab="Falldaten">
+          <CaseData :allIncidents='incidents' :preIllnesses='preIllnesses' :symptoms='symptoms' />
         </a-tab-pane>
         <a-tab-pane forceRender key="timeline" tab="Verlauf">
           
@@ -479,43 +364,6 @@ import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
 
-const columnsTests: Partial<Column>[] = [
-  {
-    title: 'Test ID',
-    dataIndex: 'testId',
-    key: 'testId',
-  },
-  {
-    title: 'Test Typ',
-    dataIndex: 'testType',
-    key: 'testType',
-    scopedSlots: {
-      customRender: 'testType',
-    },
-  },
-  {
-    title: 'Test Status',
-    dataIndex: 'testStatus',
-    key: 'testStatus',
-    scopedSlots: {
-      customRender: 'testStatus',
-    },
-  },
-  {
-    title: 'Aktualisiert',
-    dataIndex: 'lastUpdate',
-    key: 'lastUpdate',
-    scopedSlots: {
-      customRender: 'lastUpdate',
-    },
-  },
-  {
-    title: 'Kommentar',
-    dataIndex: 'comment',
-    key: 'comment',
-  },
-]
-
 const columnsExposureContacts: Partial<Column>[] = [
   {
     key: 'gotoPatient',
@@ -612,7 +460,6 @@ interface State {
   showChangePatientStammdatenForm: boolean
   gender: string
   tests: LabTest[]
-  columnsTests: Partial<Column>[]
   columnsExposureContacts: Partial<Column>[]
   columnsIndexPatients: Partial<Column>[]
   testResults: TestResultType[]
@@ -672,7 +519,6 @@ export default Vue.extend({
       dateOfBirth: '',
       gender: '',
       tests: [],
-      columnsTests,
       columnsExposureContacts,
       columnsIndexPatients,
       dateOfReporting: '',
@@ -785,28 +631,10 @@ export default Vue.extend({
       )
       this.exposureContactsLoading = false
     },
-    timelineColor(eventType: any) {
-      switch (eventType) {
-        case 'TEST_FINISHED_POSITIVE':
-          return 'red'
-        case 'TEST_FINISHED_NEGATIVE':
-          return 'green'
-        default:
-          return 'grey'
-      }
-    },
     formatTimestamp(timestamp: Timestamp): string {
       const momentTimestamp = moment(timestamp)
       if (momentTimestamp.isValid()) {
         return moment(timestamp).format('DD.MM.YYYY HH:mm')
-      } else {
-        return 'Unbekannt'
-      }
-    },
-    formatDate(date: string): string {
-      const momentTimestamp = moment(date)
-      if (momentTimestamp.isValid()) {
-        return momentTimestamp.format('DD.MM.YYYY')
       } else {
         return 'Unbekannt'
       }

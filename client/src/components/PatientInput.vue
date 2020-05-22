@@ -51,7 +51,7 @@ export default mixins(FormControlMixin).extend({
   },
   fieldValueConvert(val: any): string {
     const hasProp = (obj: Record<string, any>, prop: string): boolean =>
-        Object.prototype.hasOwnProperty.call(obj, prop)
+      Object.prototype.hasOwnProperty.call(obj, prop)
 
     if (typeof val === 'object' && hasProp(val, 'id')) {
       const patient = val as Patient

@@ -1,27 +1,29 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
-  "dateOfBirth": "1939-06-06",
-  "email": "c.schmitt@web.de",
-  "firstName": "Cornelius",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Y563048450",
-  "lastName": "Schmitt",
+  "dateOfBirth": "1997-05-22",
+  "email": "l.bauer@example.de",
+  "firstName": "Lisa",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "F637552108",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "4013223423",
+  "phoneNumber": "01193932105",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aastwiete 10",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 11",
   "symptoms": [
-    "Husten"
+    "Fieber",
+    "Husten",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66611"
+  "zip": "66249"
 }

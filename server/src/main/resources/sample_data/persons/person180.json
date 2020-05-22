@@ -1,28 +1,30 @@
 {
-  "city": "Bous",
-  "coronaContacts": false,
-  "dateOfBirth": "1966-08-16",
-  "email": "j.lange@t-online.de",
-  "firstName": "Jana",
+  "city": "St. Ingbert",
+  "coronaContacts": true,
+  "dateOfBirth": "1934-12-01",
+  "email": "f.berger@example.de",
+  "firstName": "Franz",
   "fluImmunization": false,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "V665646221",
-  "lastName": "Lange",
+  "insuranceMembershipNumber": "I971763327",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "0538338848",
+  "phoneNumber": "0384576205",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Steinstra\u00dfe 79",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Bismarckstra\u00dfe 45",
   "symptoms": [
+    "Halschmerzen",
+    "Gelenkschmerzen",
     "Husten",
-    "Schnupfen"
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "662100"
+  "weakenedImmuneSystem": false,
+  "zip": "665104"
 }

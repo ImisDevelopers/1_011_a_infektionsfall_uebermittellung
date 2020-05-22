@@ -1,31 +1,33 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": true,
-  "dateOfBirth": "1992-07-30",
-  "email": "m.mueller@posteo.de",
-  "firstName": "Matthias",
+  "city": "St. Wendel",
+  "coronaContacts": false,
+  "dateOfBirth": "1965-07-24",
+  "email": "c.schroeder@example.de",
+  "firstName": "Cornelius",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "O149362414",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "F222226183",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "97910729659",
+  "phoneNumber": "110021010255",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg 87",
+  "street": "Waldstra\u00dfe 79",
   "symptoms": [
-    "Husten",
-    "Kopfschmerzen",
-    "Halschmerzen",
     "Atemschwierigkeiten",
-    "Fieber"
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Husten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66277"
+  "zip": "66415"
 }

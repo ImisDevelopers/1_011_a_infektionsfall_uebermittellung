@@ -1,28 +1,29 @@
 {
-  "city": "Homburg",
+  "city": "V\u00f6lklingen",
   "coronaContacts": false,
-  "dateOfBirth": "1965-10-05",
-  "email": "f.schulze@t-online.de",
-  "firstName": "Franz",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "D126763237",
-  "lastName": "Schulze",
+  "dateOfBirth": "1933-12-30",
+  "email": "d.schroeder@example.de",
+  "firstName": "Daniela",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K159091919",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "74523801055",
+  "phoneNumber": "75170210814",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete 47",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 51",
   "symptoms": [
-    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
     "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66782"
+  "weakenedImmuneSystem": false,
+  "zip": "66937"
 }

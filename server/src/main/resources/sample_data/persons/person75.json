@@ -1,25 +1,25 @@
 {
-  "city": "Sulzbach",
+  "city": "Kirkel",
   "coronaContacts": false,
-  "dateOfBirth": "1951-09-13",
-  "email": "k.schmitt@web.de",
-  "firstName": "Karl",
+  "dateOfBirth": "1947-06-05",
+  "email": "i.klein@example.de",
+  "firstName": "Isabella",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "T136052248",
-  "lastName": "Schmitt",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "W152265802",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "33752431010",
+  "phoneNumber": "43101069033",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kaiserstra\u00dfe 78",
+  "street": "Haidth\u00f6heAarweg 12",
   "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "66033"
+  "zip": "66907"
 }

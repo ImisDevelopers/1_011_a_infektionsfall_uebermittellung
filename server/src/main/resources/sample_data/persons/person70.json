@@ -1,33 +1,31 @@
 {
-  "city": "Homburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1952-03-30",
-  "email": "k.mueller@posteo.de",
-  "firstName": "Kai",
-  "fluImmunization": true,
+  "city": "St. Wendel",
+  "coronaContacts": false,
+  "dateOfBirth": "1955-08-06",
+  "email": "j.wagner@example.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "P244096091",
-  "lastName": "M\u00fcller",
+  "insuranceMembershipNumber": "O392956587",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "0672400499",
+  "phoneNumber": "4004991547",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg 42",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kronenstra\u00dfe 69",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Husten",
     "Schnupfen",
-    "Halschmerzen",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
     "Gelenkschmerzen",
-    "Erk\u00e4ltung"
+    "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "664710"
+  "weakenedImmuneSystem": false,
+  "zip": "66872"
 }

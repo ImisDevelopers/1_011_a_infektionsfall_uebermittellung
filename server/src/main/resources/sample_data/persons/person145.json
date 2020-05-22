@@ -1,28 +1,32 @@
 {
-  "city": "Neunkirchen",
+  "city": "Bous",
   "coronaContacts": false,
-  "dateOfBirth": "1993-04-24",
-  "email": "k.schulz@gmail.de",
-  "firstName": "Karl",
+  "dateOfBirth": "1993-05-20",
+  "email": "m.weber@example.de",
+  "firstName": "Marie",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "T808049250",
-  "lastName": "Schulz",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "A436311814",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "975521010314",
+  "phoneNumber": "13577591049",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Eisenbahnstra\u00dfe 8",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aastwiete 72",
   "symptoms": [
+    "Atemschwierigkeiten",
+    "Halschmerzen",
+    "Schnupfen",
+    "Fieber",
     "Kopfschmerzen",
-    "Halschmerzen"
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66357"
+  "zip": "66955"
 }

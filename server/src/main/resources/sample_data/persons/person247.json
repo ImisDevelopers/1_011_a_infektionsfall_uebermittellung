@@ -1,32 +1,28 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": true,
-  "dateOfBirth": "1985-04-17",
-  "email": "m.schulz@t-online.de",
-  "firstName": "Martina",
+  "city": "St. Wendel",
+  "coronaContacts": false,
+  "dateOfBirth": "1929-05-05",
+  "email": "p.winter@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "N494707031",
-  "lastName": "Schulz",
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "J901487098",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "102910657724",
+  "phoneNumber": "15291086710",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbachstra\u00dfe 87",
+  "street": "Steinstra\u00dfe 15",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Husten",
     "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Kopfschmerzen"
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66954"
+  "zip": "66333"
 }

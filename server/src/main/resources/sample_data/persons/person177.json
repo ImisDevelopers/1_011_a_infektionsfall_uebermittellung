@@ -1,28 +1,31 @@
 {
-  "city": "Saarlouis",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1932-07-03",
-  "email": "b.schroeder@t-online.de",
-  "firstName": "Ben",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "B442863523",
-  "lastName": "Schr\u00f6der",
+  "dateOfBirth": "1955-11-19",
+  "email": "p.richter@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "L473992719",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "05566131090",
+  "phoneNumber": "3898331465",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kronenstra\u00dfe 99",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Bismarckstra\u00dfe 73",
   "symptoms": [
-    "Kopfschmerzen",
-    "Atemschwierigkeiten"
+    "Husten",
+    "Halschmerzen",
+    "Schnupfen",
+    "Fieber",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "661060"
+  "weakenedImmuneSystem": true,
+  "zip": "661110"
 }

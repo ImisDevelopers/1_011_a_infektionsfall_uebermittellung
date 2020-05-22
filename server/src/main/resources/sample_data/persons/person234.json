@@ -1,33 +1,27 @@
 {
-  "city": "Sulzbach",
+  "city": "Bous",
   "coronaContacts": false,
-  "dateOfBirth": "2000-02-11",
-  "email": "h.schroeder@web.de",
-  "firstName": "Hanna",
+  "dateOfBirth": "1962-04-20",
+  "email": "d.winkler@example.de",
+  "firstName": "Daniel",
   "fluImmunization": false,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V494537192",
-  "lastName": "Schr\u00f6der",
+  "insuranceMembershipNumber": "Q399456538",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "71647941073",
+  "phoneNumber": "61367499410",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
     "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Poststra\u00dfe 52",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 45",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Kopfschmerzen",
-    "Schnupfen"
+    "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66463"
+  "weakenedImmuneSystem": false,
+  "zip": "667109"
 }

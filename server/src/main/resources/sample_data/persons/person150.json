@@ -1,25 +1,34 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
-  "dateOfBirth": "1979-10-06",
-  "email": "e.schmidt@gmx.de",
-  "firstName": "Emma",
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "dateOfBirth": "1939-07-20",
+  "email": "h.bauer@example.de",
+  "firstName": "Hans",
   "fluImmunization": true,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "I293313837",
-  "lastName": "Schmidt",
+  "insuranceMembershipNumber": "Z725611522",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "10603029922",
+  "phoneNumber": "910010413797",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 65",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "66092"
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer 61",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Husten",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66236"
 }

@@ -1,25 +1,28 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
-  "dateOfBirth": "1968-04-21",
-  "email": "a.weber@gmail.de",
-  "firstName": "Annika",
-  "fluImmunization": true,
+  "dateOfBirth": "1951-05-23",
+  "email": "p.mueller@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "U598533805",
-  "lastName": "Weber",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "T143888484",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "10710427990",
+  "phoneNumber": "98931019508",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Waldstra\u00dfe 59",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Bismarckstra\u00dfe 46",
+  "symptoms": [
+    "Fieber",
+    "Atemschwierigkeiten"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "66262"
+  "zip": "66016"
 }

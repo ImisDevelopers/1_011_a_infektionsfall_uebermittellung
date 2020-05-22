@@ -1,27 +1,33 @@
 {
-  "city": "Bous",
-  "coronaContacts": false,
-  "dateOfBirth": "1962-04-20",
-  "email": "d.winkler@posteo.de",
-  "firstName": "Daniel",
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1997-08-22",
+  "email": "p.schulze@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Q399456538",
-  "lastName": "Winkler",
+  "insuranceMembershipNumber": "Z600387133",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "61367499410",
+  "phoneNumber": "02691052499",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Z\u00e4hringerstra\u00dfe 45",
+  "street": "Schernerweg 97",
   "symptoms": [
-    "Fieber"
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "667109"
+  "zip": "661108"
 }

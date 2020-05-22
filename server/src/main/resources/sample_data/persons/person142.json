@@ -1,33 +1,34 @@
 {
   "city": "Sulzbach",
-  "coronaContacts": true,
-  "dateOfBirth": "1937-12-29",
-  "email": "i.schulze@posteo.de",
-  "firstName": "Isabella",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "H377721135",
-  "lastName": "Schulze",
+  "coronaContacts": false,
+  "dateOfBirth": "1979-11-21",
+  "email": "c.peters@example.de",
+  "firstName": "Christopher",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "B291117627",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "610110207501",
+  "phoneNumber": "3106138610110",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg 6",
+  "street": "Aastwiete 3",
   "symptoms": [
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Husten",
+    "Fieber",
+    "Atemschwierigkeiten",
     "Gelenkschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
     "Kopfschmerzen",
-    "Atemschwierigkeiten"
+    "Halschmerzen",
+    "Husten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66248"
+  "weakenedImmuneSystem": false,
+  "zip": "66750"
 }

@@ -1,32 +1,28 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": false,
-  "dateOfBirth": "1976-02-10",
-  "email": "a.bauer@gmx.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "dateOfBirth": "1953-09-26",
+  "email": "e.winter@example.de",
+  "firstName": "Emma",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "N488984224",
-  "lastName": "Bauer",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "H579527597",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "9864300981",
+  "phoneNumber": "8725887449",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hafenstra\u00dfe 0",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 99",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Kopfschmerzen"
+    "Fieber",
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "666103"
+  "weakenedImmuneSystem": true,
+  "zip": "666210"
 }

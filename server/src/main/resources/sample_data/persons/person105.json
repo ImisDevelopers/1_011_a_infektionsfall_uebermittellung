@@ -1,27 +1,34 @@
 {
-  "city": "Sulzbach",
+  "city": "Dudweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1968-05-28",
-  "email": "j.weber@posteo.de",
-  "firstName": "Jan",
+  "dateOfBirth": "2002-04-18",
+  "email": "h.peters@example.de",
+  "firstName": "Hans",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "O600422869",
-  "lastName": "Weber",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "I199886596",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "5655743132",
+  "phoneNumber": "510050106413",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
     "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "B\u00fcckerheide 98",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hafenstra\u00dfe 30",
   "symptoms": [
-    "Kopfschmerzen"
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66912"
+  "zip": "66670"
 }

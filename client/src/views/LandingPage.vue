@@ -103,7 +103,7 @@
         </a-button>
       </router-link>
     </div>
-    <div class="second-section">
+    <!--<div class="second-section">
       <h1 style="margin: 0;">
         Der IMIS-Meldeprozess - Einfach, Schnell, Zentral
       </h1>
@@ -124,7 +124,7 @@
         >
         <span class="hidden-desktop">Zur Prozessübersicht</span>
       </a-button>
-    </div>
+    </div>-->
     <div class="solution-enabler-section">
       <h1>Gemeinsam gegen COVID-19</h1>
       <h2 style="max-width: 800px; text-align: center;">

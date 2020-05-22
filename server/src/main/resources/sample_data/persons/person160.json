@@ -1,28 +1,34 @@
 {
-  "city": "Sulzbach",
+  "city": "Dudweiler",
   "coronaContacts": false,
-  "dateOfBirth": "1936-01-17",
-  "email": "k.sommer@gmx.de",
-  "firstName": "Kai",
+  "dateOfBirth": "1948-03-19",
+  "email": "i.winter@example.de",
+  "firstName": "Isabella",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "L757965465",
-  "lastName": "Sommer",
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "P244387866",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "56102718750",
+  "phoneNumber": "29103143866",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg 86",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Niekampsweg 18",
   "symptoms": [
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Schnupfen",
     "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Husten",
     "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66369"
+  "weakenedImmuneSystem": false,
+  "zip": "66270"
 }

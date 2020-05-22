@@ -211,7 +211,7 @@
           Zurück
         </a-button>
         <a-button
-          :style="{ visibility: current === 4 ? 'hidden' : 'visible' }"
+          v-if="current !== 4"
           @click="next"
           block
           class="button-row-button"
@@ -224,7 +224,7 @@
           <a-icon type="arrow-right" />
         </a-button>
         <a-button
-          :style="{ visibility: current === 4 ? 'visible' : 'hidden' }"
+          v-if="current === 4"
           @click="save"
           :disabled="!checked"
           block

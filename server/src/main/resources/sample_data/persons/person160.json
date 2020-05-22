@@ -1,6 +1,7 @@
 {
   "city": "Dudweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1948-03-19",
   "email": "i.winter@example.de",
   "firstName": "Isabella",

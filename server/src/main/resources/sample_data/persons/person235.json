@@ -1,6 +1,7 @@
 {
   "city": "P\u00fcttlingen",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1997-08-22",
   "email": "p.schulze@example.de",
   "firstName": "Peter",

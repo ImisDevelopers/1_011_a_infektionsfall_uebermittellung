@@ -1,6 +1,7 @@
 {
   "city": "Dudweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1938-06-03",
   "email": "f.schroeder@example.de",
   "firstName": "Franz",

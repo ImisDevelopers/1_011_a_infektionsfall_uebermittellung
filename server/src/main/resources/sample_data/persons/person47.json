@@ -1,6 +1,7 @@
 {
   "city": "Neunkirchen",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1925-08-15",
   "email": "c.schulz@example.de",
   "firstName": "Christopher",

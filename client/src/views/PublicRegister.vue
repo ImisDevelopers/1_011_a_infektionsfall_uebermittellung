@@ -45,10 +45,7 @@
           />
         </a-steps>
 
-        <a-form
-          :form="form"
-          layout="vertical"
-        >
+        <a-form :form="form" layout="vertical">
           <!-- Symptome -->
           <div :style="{ display: current === 0 ? 'block' : 'none' }">
             <h2>

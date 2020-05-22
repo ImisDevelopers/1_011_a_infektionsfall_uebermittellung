@@ -126,6 +126,7 @@ def gen_person():
 #		'zip': rand_num_str(5),
 		'zip': '66{}'.format(rand_num_str(3)),
 		'city': choice(cities),
+		'country': 'DE',
 		'insuranceCompany': choice(insurance_companies),
 		'insuranceMembershipNumber': insurance_number(),
 		'fluImmunization': bool(getrandbits(1)),

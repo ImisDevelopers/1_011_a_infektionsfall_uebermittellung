@@ -1,6 +1,7 @@
 {
   "city": "Dudweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1979-11-21",
   "email": "p.richter@example.de",
   "firstName": "Petra",

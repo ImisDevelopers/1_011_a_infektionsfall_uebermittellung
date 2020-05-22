@@ -1,6 +1,7 @@
 {
   "city": "Heusweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1967-07-02",
   "email": "b.winkler@example.de",
   "firstName": "Ben",

@@ -43,7 +43,6 @@ public class User implements UserDetails {
 	private UserRole userRole;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonManagedReference
 	private InstitutionImpl institution;
 
 	@Override

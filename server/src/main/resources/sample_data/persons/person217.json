@@ -1,6 +1,7 @@
 {
   "city": "Saarbr\u00fccken",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "2004-12-14",
   "email": "i.schmitt@example.de",
   "firstName": "Isabella",

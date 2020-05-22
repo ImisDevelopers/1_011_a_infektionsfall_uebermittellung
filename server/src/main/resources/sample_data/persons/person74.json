@@ -1,6 +1,7 @@
 {
   "city": "Heusweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "2001-05-14",
   "email": "k.schulz@example.de",
   "firstName": "Konrad",

@@ -1,6 +1,7 @@
 {
   "city": "Merzig",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1995-08-28",
   "email": "f.peters@example.de",
   "firstName": "Fin",

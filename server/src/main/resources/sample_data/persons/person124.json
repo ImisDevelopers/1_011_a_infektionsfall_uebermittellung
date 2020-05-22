@@ -1,6 +1,7 @@
 {
   "city": "Bous",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1986-09-25",
   "email": "p.schroeder@example.de",
   "firstName": "Petra",

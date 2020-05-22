@@ -1,6 +1,7 @@
 {
   "city": "Heusweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1925-03-28",
   "email": "j.schroeder@example.de",
   "firstName": "Jan",

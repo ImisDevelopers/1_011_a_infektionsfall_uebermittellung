@@ -1,6 +1,7 @@
 {
   "city": "Heusweiler",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1968-12-23",
   "email": "a.winter@example.de",
   "firstName": "Anna",

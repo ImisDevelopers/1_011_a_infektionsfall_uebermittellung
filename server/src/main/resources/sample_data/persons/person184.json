@@ -1,6 +1,7 @@
 {
   "city": "Neunkirchen",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1939-02-15",
   "email": "s.berger@example.de",
   "firstName": "Susanne",

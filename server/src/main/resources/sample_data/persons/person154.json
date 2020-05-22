@@ -1,6 +1,7 @@
 {
   "city": "Homburg",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1994-03-16",
   "email": "h.winter@example.de",
   "firstName": "Hans",

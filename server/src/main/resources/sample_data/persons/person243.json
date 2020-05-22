@@ -1,6 +1,7 @@
 {
   "city": "Bous",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1951-04-05",
   "email": "i.winter@example.de",
   "firstName": "Isabella",

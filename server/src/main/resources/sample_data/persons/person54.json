@@ -1,6 +1,7 @@
 {
   "city": "Riegelsberg",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1967-02-02",
   "email": "l.schroeder@example.de",
   "firstName": "Lisa",

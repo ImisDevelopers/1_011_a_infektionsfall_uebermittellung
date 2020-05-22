@@ -1,6 +1,7 @@
 {
   "city": "St. Wendel",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1965-07-24",
   "email": "c.schroeder@example.de",
   "firstName": "Cornelius",

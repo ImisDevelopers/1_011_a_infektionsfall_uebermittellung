@@ -1,6 +1,7 @@
 {
   "city": "Bous",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1969-08-18",
   "email": "k.weber@example.de",
   "firstName": "Kai",

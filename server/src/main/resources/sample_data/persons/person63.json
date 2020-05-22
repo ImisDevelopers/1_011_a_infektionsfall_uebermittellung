@@ -1,6 +1,7 @@
 {
   "city": "Neunkirchen",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1971-08-08",
   "email": "a.schmitt@example.de",
   "firstName": "Annika",

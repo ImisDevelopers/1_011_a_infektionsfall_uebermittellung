@@ -1,6 +1,7 @@
 {
   "city": "Merzig",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1983-05-31",
   "email": "p.schulze@example.de",
   "firstName": "Petra",

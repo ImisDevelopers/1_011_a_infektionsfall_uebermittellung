@@ -1,6 +1,7 @@
 {
   "city": "Merzig",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1952-05-26",
   "email": "j.richter@example.de",
   "firstName": "Jens",

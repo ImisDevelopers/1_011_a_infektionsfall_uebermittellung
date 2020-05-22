@@ -1,6 +1,7 @@
 {
   "city": "St. Wendel",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "2000-07-03",
   "email": "c.richter@example.de",
   "firstName": "Christopher",

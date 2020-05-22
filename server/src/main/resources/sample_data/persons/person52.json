@@ -1,6 +1,7 @@
 {
   "city": "Saarlouis",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1985-04-26",
   "email": "p.berger@example.de",
   "firstName": "Petra",

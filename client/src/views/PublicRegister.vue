@@ -298,6 +298,9 @@ export default Vue.extend({
         {
           title: 'Persönliche Daten',
         },
+        {
+          title: 'Abschließen',
+        },
       ],
       checked: false,
       showCheckedError: false,

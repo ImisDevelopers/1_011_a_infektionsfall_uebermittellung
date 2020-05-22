@@ -87,6 +87,11 @@ export const eventTypes: EventTypeItem[] = [
     label: 'Arbeitsverbot aufgehoben',
     icon: 'safety',
   },
+  {
+    id: 'HOSPITALIZATION_MANDATED',
+    label: 'Hospitalisiert',
+    icon: 'safety',
+  },
 ]
 
 export interface TestResultType {

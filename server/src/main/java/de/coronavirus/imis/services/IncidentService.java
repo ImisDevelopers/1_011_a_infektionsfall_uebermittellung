@@ -34,6 +34,7 @@ public class IncidentService {
 	private final PatientMapper patientMapper;
 	private final QuarantineIncidentRepository quarantineIncidentRepo;
 	private final AdministrativeIncidentRepository adminIncidentRepo;
+	private final HospitalizationIncidentRepository hospitalizationRepo;
 	private final DoctorRepository doctorRepo;
 	private final AuditReader auditReader;
 	private final ApplicationContext ctx;
@@ -198,7 +199,16 @@ public class IncidentService {
 
 	@Transactional
 	public void updateQuarantineIncident(String patientId, EventType status, LocalDate date) {
-		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+
+		/*
+			There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+
+			Note:
+			Having only one QuarantineIncident per Person is technically incorrect. If a patient is quarantined,
+			released and quarantined again, that should be a new incident (a new incident ID).
+			This improvement can be applied once there's a agreed strategy on how the frontend handles incidents.
+		 */
+
 		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
 		if (incidentOptional.isEmpty()) {
 			throw new QuarantineNotFoundException("No Quarantine for " + patientId);
@@ -262,6 +272,20 @@ public class IncidentService {
 		adminIncidentRepo.saveAndFlush(incident);
 
 		return incident;
+	}
+
+	// Hospitalization Incidents
+
+	public void addIncident(Patient patient, LocalDate hospitalizedOn, boolean intensiveCare) {
+
+		var incident = (HospitalizationIncident) new HospitalizationIncident()
+				.setIntensiveCare(intensiveCare)
+				.setEventDate(hospitalizedOn)
+				.setEventType(EventType.HOSPITALIZATION_MANDATED)
+				.setPatient(patient);
+
+		hospitalizationRepo.saveAndFlush(incident);
+
 	}
 
 	private EventType testStatusToEvent(TestStatus input) {

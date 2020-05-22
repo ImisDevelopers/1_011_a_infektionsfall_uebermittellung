@@ -18,6 +18,10 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 @Audited
 public class AdministrativeIncident extends Incident {
 
+	/*
+		An AdministrativeIncident is essentially a case description.
+	 */
+
 	private Illness illness;
 
 	private String comment;

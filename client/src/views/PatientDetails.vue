@@ -163,7 +163,7 @@
           </a-row>
         </a-tab-pane>
         <a-tab-pane key="incidents" tab="Vorgänge">
-          <incidents :incidents='this.incidents' />
+          <incidents :allIncidents='this.incidents' />
         </a-tab-pane>
         <a-tab-pane key="overview" tab="Falldaten">
           <!-- Tests -->

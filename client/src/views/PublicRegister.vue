@@ -52,7 +52,6 @@
               Welche der folgenden Symptome hatten Sie in den letzten 24h?
             </h2>
             <div style="display: flex;">
-              <span style="flex: 1 1 auto;" />
               <div>
                 <a-form-item style="margin-bottom: 0;">
                   <a-checkbox-group
@@ -87,7 +86,6 @@
           <div :style="{ display: current === 1 ? 'block' : 'none' }">
             <h2>Welche Formen der Exposition treffen auf Sie zu?</h2>
             <div style="display: flex;">
-              <span style="flex: 1 1 auto;" />
               <div style="display: flex; flex-direction: column;">
                 <a-form-item>
                   <a-checkbox-group
@@ -116,7 +114,6 @@
               Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?
             </h2>
             <div style="display: flex;">
-              <span style="flex: 1 1 auto;" />
               <div>
                 <a-form-item style="margin-bottom: 0;">
                   <a-checkbox-group

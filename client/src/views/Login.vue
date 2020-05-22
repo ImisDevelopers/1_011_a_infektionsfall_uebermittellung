@@ -1,9 +1,12 @@
 <template>
-  <a-card style="width: 500px; margin: 4rem auto; min-height: 300px;">
+  <a-card
+    style="width: 500px; margin: 4rem auto; min-height: 300px;"
+    align="center"
+  >
     <a-form :form="form" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
       <div class="login-header">
         <img height="100" src="../assets/logo.png" />
-        <h3>Login</h3>
+        <h3 style="margin-top: 15px;">Login</h3>
       </div>
       <a-form-item label="Kennung">
         <a-input
@@ -45,7 +48,10 @@
         </a-input>
       </a-form-item>
       <a-divider />
-      <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+      <a-form-item
+        :wrapper-col="{ span: 24, offset: 0 }"
+        style="margin-bottom: 20px;"
+      >
         <a-button
           @click.prevent="handleLogin"
           html-type="submit"
@@ -103,3 +109,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style>
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

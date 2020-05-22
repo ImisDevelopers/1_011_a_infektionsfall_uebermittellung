@@ -1,25 +1,35 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1961-11-22",
-  "email": "j.klein@gmx.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1933-11-15",
+  "email": "d.sommer@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "K358655621",
-  "lastName": "Klein",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "K113271672",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "106289001028",
+  "phoneNumber": "29659010277",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordufer 60",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg 52",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Fieber",
+    "Gelenkschmerzen",
+    "Halschmerzen"
+  ],
   "weakenedImmuneSystem": true,
-  "zip": "66721"
+  "zip": "66701"
 }

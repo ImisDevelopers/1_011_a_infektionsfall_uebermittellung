@@ -13,10 +13,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import mixins from 'vue-typed-mixins'
 import { FormControlMixin } from '@/util/forms'
-import moment from 'moment'
 
 /**
  * Input that supports 1d and 2d Barcodes

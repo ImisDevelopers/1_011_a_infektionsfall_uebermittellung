@@ -1,24 +1,25 @@
 {
-  "city": "Dudweiler",
+  "city": "V\u00f6lklingen",
   "coronaContacts": false,
-  "dateOfBirth": "1945-09-21",
-  "email": "m.mueller@posteo.de",
-  "firstName": "Martina",
+  "country": "DE",
+  "dateOfBirth": "1939-11-15",
+  "email": "c.wagner@example.de",
+  "firstName": "Christopher",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "N844826434",
-  "lastName": "M\u00fcller",
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "W632005813",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "74296107175",
+  "phoneNumber": "42961071756",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
     "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kaiserstra\u00dfe 42",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 41",
   "symptoms": [
     "Husten",
     "Erk\u00e4ltung",
@@ -28,5 +29,5 @@
     "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "665101"
+  "zip": "661012"
 }

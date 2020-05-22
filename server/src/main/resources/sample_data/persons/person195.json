@@ -1,31 +1,35 @@
 {
-  "city": "Homburg",
+  "city": "Saarlouis",
   "coronaContacts": false,
-  "dateOfBirth": "1964-04-07",
-  "email": "b.schroeder@posteo.de",
-  "firstName": "Ben",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "G682535775",
-  "lastName": "Schr\u00f6der",
+  "country": "DE",
+  "dateOfBirth": "1945-11-02",
+  "email": "j.weber@example.de",
+  "firstName": "Jana",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "G865469134",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "44857101422",
+  "phoneNumber": "16016629910",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Sonnenweg 14",
+  "street": "Nordtstra\u00dfe 88",
   "symptoms": [
-    "Atemschwierigkeiten",
     "Fieber",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Husten",
     "Kopfschmerzen",
-    "Schnupfen",
-    "Halschmerzen"
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66098"
+  "weakenedImmuneSystem": true,
+  "zip": "66795"
 }

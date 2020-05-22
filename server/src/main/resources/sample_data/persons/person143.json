@@ -1,30 +1,33 @@
 {
-  "city": "Riegelsberg",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
-  "dateOfBirth": "1941-02-10",
-  "email": "m.schulz@gmail.de",
-  "firstName": "Matthias",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1931-01-23",
+  "email": "k.peters@example.de",
+  "firstName": "Kai",
+  "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Z956292577",
-  "lastName": "Schulz",
+  "insuranceMembershipNumber": "F672806655",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "104914766100",
+  "phoneNumber": "15814104914",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    ""
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Steinstra\u00dfe 20",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide 56",
   "symptoms": [
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Fieber",
     "Schnupfen",
     "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Halschmerzen"
+    "Husten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66832"
+  "zip": "666610"
 }

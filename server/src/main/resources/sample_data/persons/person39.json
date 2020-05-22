@@ -1,8 +1,9 @@
 {
   "city": "P\u00fcttlingen",
   "coronaContacts": true,
-  "dateOfBirth": "1978-04-11",
-  "email": "d.richter@web.de",
+  "country": "DE",
+  "dateOfBirth": "1976-06-25",
+  "email": "d.richter@example.de",
   "firstName": "Daniel",
   "fluImmunization": false,
   "gender": "male",

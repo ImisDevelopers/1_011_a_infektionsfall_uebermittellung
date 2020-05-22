@@ -1,13 +1,15 @@
 <template>
-  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px;">
+  <a-card
+    style="max-width: 500px; margin: 2rem auto; min-height: 300px;"
+    align="center"
+  >
     <a-form
       :form="form"
-      :label-col="{ span: 6 }"
-      :wrapper-col="{ span: 18 }"
+      :label-col="{ span: 7 }"
+      :wrapper-col="{ span: 17 }"
       @submit.prevent="handleSubmit"
     >
       <!-- :colon="false" -->
-
       <a-form-item label="Patienten-ID" v-if="this.givenPatientId">
         {{ this.$route.params.patientFirstName }}
         {{ this.$route.params.patientLastName }} ({{
@@ -27,12 +29,12 @@
               ],
             },
           ]"
+          v-on:select="onPatientSwitch"
         />
       </a-form-item>
 
       <a-form-item label="Quarantäne bis">
         <DateInput
-          :value="today"
           v-decorator="[
             'dateUntil',
             {
@@ -42,6 +44,7 @@
                   message: 'Bis wann soll der Patient in Quarantäne?',
                 },
               ],
+              initialValue: today,
             },
           ]"
         />
@@ -49,7 +52,6 @@
 
       <a-form-item label="Vorgemerkt am">
         <DateInput
-          :defaultValue="today"
           v-decorator="[
             'eventDate',
             {
@@ -60,10 +62,72 @@
                     'Datum, für welches der Vermerk erfasst werden soll.',
                 },
               ],
+              initialValue: today,
             },
           ]"
         />
       </a-form-item>
+
+      <a-checkbox
+        :disabled="contacts.length === 0"
+        :checked="sendContactsToQuarantine"
+        @change="sendContactsToQuarantineChanged"
+        style="margin-bottom: 15px;"
+      >
+        Quarantäne auch für alle Kontaktpersonen vormerken
+      </a-checkbox>
+
+      <div style="margin-bottom: 15px;">
+        <div v-if="contacts.length === 0" style="margin-bottom: 15px;">
+          Keine Kontaktpersonen hinterlegt
+        </div>
+        <div
+          v-for="contact in contacts"
+          :key="contact.id"
+          style="
+            padding: 10px;
+            display: flex;
+            text-align: left;
+            align-items: center;
+          "
+          v-bind:class="
+            sendContactsToQuarantine ? '' : 'send-to-quarantine-disabled'
+          "
+        >
+          <a-button
+            icon="user"
+            :type="sendContactsToQuarantine ? 'primary' : 'dashed'"
+            title="Patientendaten anzeigen"
+            @click="showPatient(contact.contact.id)"
+            style="margin-right: 15px;"
+          />
+          <div>
+            <div>
+              {{ contact.contact.firstName }} {{ contact.contact.lastName }}
+            </div>
+            <div>Datum Kontakt: 21.04.2020</div>
+          </div>
+          <div style="margin-left: 15px;">
+            <div>
+              <span v-if="contact.contact.infected" style="color: red;">
+                Infiziert
+              </span>
+              <span v-else>Infektionsstatus unbekannt</span>
+            </div>
+            <div>
+              <span v-if="contact.contact.inQuarantine">
+                In Quarantäne
+              </span>
+              <span
+                v-else
+                :style="`color: ${contact.contact.infected ? 'red' : 'unset'};`"
+              >
+                Keine Quarantäne
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Kommentar -->
       <a-form-item label="Kommentar">
@@ -86,7 +150,7 @@
 </template>
 
 <script lang="ts">
-import { Patient } from '@/api/SwaggerApi'
+import { ExposureContactFromServer, Patient } from '@/api/SwaggerApi'
 import Api from '@/api'
 import Vue from 'vue'
 import DateInput from '../components/DateInput.vue'
@@ -94,9 +158,11 @@ import PatientInput from '../components/PatientInput.vue'
 import moment from 'moment'
 
 interface State {
-  form: any // eslint-disable-next-line
-  patient?: Patient;
+  form: any
+  patient?: Patient
   today: moment.Moment
+  contacts: ExposureContactFromServer[]
+  sendContactsToQuarantine: boolean
 }
 
 export default Vue.extend({
@@ -105,11 +171,18 @@ export default Vue.extend({
     PatientInput,
     DateInput,
   },
+  created() {
+    if (this.givenPatientId) {
+      this.onPatientSwitch(this.givenPatientId)
+    }
+  },
   data(): State {
     return {
       form: this.$form.createForm(this),
       patient: undefined,
       today: moment(),
+      contacts: [],
+      sendContactsToQuarantine: false,
     }
   },
   computed: {
@@ -118,8 +191,18 @@ export default Vue.extend({
     },
   },
   methods: {
+    moment,
+    async onPatientSwitch(patientId: string) {
+      this.contacts = await Api.getExposureContactsForPatientUsingGet(patientId)
+    },
+    showPatient(patientId: string) {
+      this.$router.push({ name: 'patient-detail', params: { id: patientId } })
+    },
+    sendContactsToQuarantineChanged() {
+      this.sendContactsToQuarantine = !this.sendContactsToQuarantine
+    },
     handleSubmit() {
-      this.form.validateFields((err: Error, values: any) => {
+      this.form.validateFields(async (err: Error, values: any) => {
         // eslint-disable-next-line
         if (err) {
           return
@@ -135,34 +218,102 @@ export default Vue.extend({
           ? this.givenPatientId
           : values.patientId
 
-        Api.requestQuarantineUsingPost(patientId, request)
-          .then((patient) => {
+        let quarantineUntil = ''
+        try {
+          const patient = await Api.requestQuarantineUsingPost(
+            patientId,
+            request
+          )
+          quarantineUntil = moment(patient.quarantineUntil).format('DD.MM.YYYY')
+          if (!this.sendContactsToQuarantine) {
             const h = this.$createElement
             this.$success({
               title: 'Der Quarantänevermerk wurde erfasst.',
               content: h('div', {}, [
                 h('div', `Patient: ${patient.firstName} ${patient.lastName}`),
-                h(
-                  'div',
-                  `In Quarantäne bis: ${moment(patient.quarantineUntil).format(
-                    'DD.MM.YYYY'
-                  )}`
-                ),
+                h('div', `In Quarantäne bis: ${quarantineUntil}`),
               ]),
             })
-            this.form.resetFields()
-          })
-          .catch((err) => {
+            this.resetForm()
+          }
+        } catch (err) {
+          console.error(err)
+          const notification = {
+            message: 'Fehler beim hinterlegen des Quarantänevermerks',
+            description: err.message,
+          }
+          this.$notification.error(notification)
+        }
+
+        if (this.sendContactsToQuarantine) {
+          const failedPatients = []
+          for (const contactItem of this.contacts) {
+            const contact = contactItem.contact
+            if (!contact) {
+              continue
+            }
+            const patientId = contact.id
+            if (!patientId) {
+              continue
+            }
+            try {
+              await Api.requestQuarantineUsingPost(patientId, request)
+            } catch (e) {
+              console.error('Could not send ' + patientId + ' to quarantine:')
+              console.error(e)
+              const patientStr =
+                contact.firstName +
+                ' ' +
+                contact.lastName +
+                ' (ID: ' +
+                patientId +
+                ')'
+              failedPatients.push(patientStr)
+            }
+          }
+          if (failedPatients.length > 0) {
             const notification = {
               message: 'Fehler beim hinterlegen des Quarantänevermerks',
-              description: err.message,
+              description: `${failedPatients.length} von ${
+                this.contacts.length + 1
+              } Quarantänen konnten nicht vorgemerkt werden. Fehler bei: ${failedPatients}`,
             }
             this.$notification.error(notification)
-          })
+          } else {
+            const h = this.$createElement
+            this.$success({
+              title: 'Der Quarantänevermerk wurde vermerkt.',
+              content: h('div', {}, [
+                h(
+                  'div',
+                  `Quarantäne für ${
+                    this.contacts.length + 1
+                  } Patienten wurde vorgemerkt`
+                ),
+                h('div', `In Quarantäne bis: ${quarantineUntil}`),
+              ]),
+            })
+            this.resetForm()
+          }
+        }
       })
+    },
+    resetForm() {
+      this.form.resetFields()
+      this.contacts = []
+      if (this.givenPatientId) {
+        this.$router.push({
+          name: 'patient-detail',
+          params: { id: this.givenPatientId },
+        })
+      }
     },
   },
 })
 </script>
 
-<style></style>
+<style>
+.send-to-quarantine-disabled {
+  color: rgba(0, 0, 0, 0.45);
+}
+</style>

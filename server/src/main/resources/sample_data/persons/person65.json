@@ -1,31 +1,32 @@
 {
-  "city": "Dudweiler",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
-  "dateOfBirth": "1962-09-12",
-  "email": "d.winter@gmail.de",
-  "firstName": "Daniel",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Q250088694",
-  "lastName": "Winter",
+  "country": "DE",
+  "dateOfBirth": "1928-09-13",
+  "email": "o.weber@example.de",
+  "firstName": "Olivia",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "M761962359",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "2398680002",
+  "phoneNumber": "8000257872",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Moscow"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Rosenstra\u00dfe 42",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Eisenbahnstra\u00dfe 65",
   "symptoms": [
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
     "Gelenkschmerzen",
-    "Kopfschmerzen"
+    "Kopfschmerzen",
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66787"
+  "weakenedImmuneSystem": false,
+  "zip": "66259"
 }

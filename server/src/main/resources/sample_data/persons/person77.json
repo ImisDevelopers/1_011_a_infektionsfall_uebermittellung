@@ -1,31 +1,30 @@
 {
-  "city": "Homburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1952-07-05",
-  "email": "o.berger@gmail.de",
-  "firstName": "Olivia",
-  "fluImmunization": false,
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1977-05-28",
+  "email": "a.schmidt@example.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "M360767346",
-  "lastName": "Berger",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "L199282456",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "4628733427",
+  "phoneNumber": "2708668826",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "Hubei"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe 71",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof 32",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Schnupfen",
     "Husten",
-    "Gelenkschmerzen"
+    "Schnupfen",
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66668"
+  "weakenedImmuneSystem": true,
+  "zip": "663510"
 }

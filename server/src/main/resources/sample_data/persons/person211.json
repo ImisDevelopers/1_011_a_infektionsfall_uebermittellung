@@ -1,29 +1,33 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1936-11-10",
-  "email": "j.winter@t-online.de",
-  "firstName": "Jens",
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1989-01-06",
+  "email": "m.mueller@example.de",
+  "firstName": "Martina",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "R259937739",
-  "lastName": "Winter",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "N462219407",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "7870050506",
+  "phoneNumber": "10041792911",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    "Tirol"
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg 27",
+  "street": "Schernerweg 63",
   "symptoms": [
-    "Fieber",
+    "Kopfschmerzen",
     "Husten",
-    "Kopfschmerzen"
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "6610108"
+  "weakenedImmuneSystem": false,
+  "zip": "66993"
 }

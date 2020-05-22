@@ -1,32 +1,29 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Merzig",
   "coronaContacts": true,
-  "dateOfBirth": "1933-02-17",
-  "email": "i.sommer@gmail.de",
-  "firstName": "Isabella",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "G730325223",
-  "lastName": "Sommer",
+  "country": "DE",
+  "dateOfBirth": "1995-08-28",
+  "email": "f.peters@example.de",
+  "firstName": "Fin",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "R705064109",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "03397401104",
+  "phoneNumber": "61059180339",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Poststra\u00dfe 72",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Steinstra\u00dfe 34",
   "symptoms": [
-    "Fieber",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
     "Kopfschmerzen",
-    "Halschmerzen"
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "661002"
+  "weakenedImmuneSystem": true,
+  "zip": "660110"
 }

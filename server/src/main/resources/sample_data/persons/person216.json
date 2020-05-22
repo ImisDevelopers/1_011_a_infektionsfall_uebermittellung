@@ -1,33 +1,28 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": false,
-  "dateOfBirth": "1996-04-24",
-  "email": "j.berger@t-online.de",
-  "firstName": "Jens",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "H178951929",
-  "lastName": "Berger",
+  "city": "Kirkel",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1989-01-23",
+  "email": "p.richter@example.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S693516844",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "79956310531",
+  "phoneNumber": "9042177625",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "S\u00fcdweg 29",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 37",
   "symptoms": [
-    "Husten",
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten"
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66136"
+  "zip": "669210"
 }

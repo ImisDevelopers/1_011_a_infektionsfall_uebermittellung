@@ -1,32 +1,26 @@
 {
   "city": "Riegelsberg",
-  "coronaContacts": false,
-  "dateOfBirth": "1949-12-21",
-  "email": "o.winter@posteo.de",
-  "firstName": "Olivia",
-  "fluImmunization": true,
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1971-05-26",
+  "email": "m.bauer@example.de",
+  "firstName": "Martina",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "H507807998",
-  "lastName": "Winter",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "K687994511",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "23950104102",
+  "phoneNumber": "1410967103109",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Moscow"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Waldstra\u00dfe 51",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Husten"
-  ],
+  "street": "B\u00fcckerheide 24",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "66747"
+  "zip": "668510"
 }

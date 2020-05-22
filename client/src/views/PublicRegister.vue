@@ -45,12 +45,7 @@
           />
         </a-steps>
 
-        <a-form
-          :form="form"
-          :labelCol="{ sm: { span: 8 }, xs: { span: 24 } }"
-          :layout="'horizontal'"
-          :wrapperCol="{ xs: { span: 24 }, sm: { span: 16 } }"
-        >
+        <a-form :form="form" layout="vertical">
           <!-- Symptome -->
           <div :style="{ display: current === 0 ? 'block' : 'none' }">
             <h2>
@@ -458,14 +453,6 @@ export default Vue.extend({
   .button-row-button {
     box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
       0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
-  }
-
-  .ant-form-item-control-wrapper {
-    width: 100%;
-  }
-
-  .data-form .ant-form-item-control-wrapper {
-    width: 66%;
   }
 
   .checkbox-group {

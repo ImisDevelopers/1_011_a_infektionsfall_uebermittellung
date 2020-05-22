@@ -1,8 +1,9 @@
 {
   "city": "P\u00fcttlingen",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1998-07-24",
-  "email": "d.mueller@t-online.de",
+  "email": "d.mueller@example.de",
   "firstName": "Daniela",
   "fluImmunization": true,
   "gender": "female",

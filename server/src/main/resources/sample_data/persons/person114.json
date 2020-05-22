@@ -1,30 +1,29 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": false,
-  "dateOfBirth": "1994-06-20",
-  "email": "m.schulz@web.de",
-  "firstName": "Matthias",
-  "fluImmunization": true,
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1957-06-18",
+  "email": "k.sommer@example.de",
+  "firstName": "Konrad",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "X883803621",
-  "lastName": "Schulz",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "C467013765",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "97061029620",
+  "phoneNumber": "617910103271",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Schernerweg 42",
+  "street": "Nordstra\u00dfe 4",
   "symptoms": [
-    "Atemschwierigkeiten",
     "Fieber",
-    "Husten",
-    "Kopfschmerzen"
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66336"
+  "weakenedImmuneSystem": false,
+  "zip": "66405"
 }

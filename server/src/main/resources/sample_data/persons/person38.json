@@ -1,8 +1,9 @@
 {
   "city": "Heusweiler",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1978-08-15",
-  "email": "p.mueller@gmail.de",
+  "email": "p.mueller@example.de",
   "firstName": "Petra",
   "fluImmunization": true,
   "gender": "female",

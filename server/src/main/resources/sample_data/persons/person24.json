@@ -1,33 +1,28 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
-  "dateOfBirth": "1970-12-19",
-  "email": "f.richter@gmx.de",
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1930-09-20",
+  "email": "f.schmidt@example.de",
   "firstName": "Franz",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "R413679331",
-  "lastName": "Richter",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "E784907325",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "8941343524",
+  "phoneNumber": "4134352408",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aarhusweg 90",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 35",
   "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung"
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66824"
+  "zip": "66008"
 }

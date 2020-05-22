@@ -17,7 +17,13 @@
               flex-direction: column;
             "
           >
-            <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
+            <div
+              :style="{
+                padding: '20px',
+                minHeight: 'calc(100vh - 64px)',
+                width: '100%',
+              }"
+            >
               <router-view></router-view>
             </div>
             <!--

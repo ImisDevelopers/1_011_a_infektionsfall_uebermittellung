@@ -1,8 +1,9 @@
 {
   "city": "Bous",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1946-11-09",
-  "email": "m.weber@posteo.de",
+  "email": "m.weber@example.de",
   "firstName": "Martina",
   "fluImmunization": true,
   "gender": "female",

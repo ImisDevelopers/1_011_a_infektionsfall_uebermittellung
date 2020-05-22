@@ -1,30 +1,31 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1971-06-28",
-  "email": "d.sommer@web.de",
+  "city": "St. Ingbert",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1964-04-27",
+  "email": "d.sommer@example.de",
   "firstName": "Daniela",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "L956665975",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Z377403790",
   "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "31473799106",
+  "phoneNumber": "14737991065",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "S\u00fcdweg 3",
+  "street": "Aarhusweg 63",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
     "Husten",
-    "Halschmerzen"
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66752"
+  "zip": "66527"
 }

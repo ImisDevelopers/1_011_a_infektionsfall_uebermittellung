@@ -1,34 +1,34 @@
 {
-  "city": "Neunkirchen",
+  "city": "Sulzbach",
   "coronaContacts": false,
-  "dateOfBirth": "1985-06-10",
-  "email": "s.schmitt@gmail.de",
-  "firstName": "Susanne",
+  "country": "DE",
+  "dateOfBirth": "1986-03-25",
+  "email": "o.schulz@example.de",
+  "firstName": "Olivia",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "O544726404",
-  "lastName": "Schmitt",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N219066986",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "59910229010",
+  "phoneNumber": "901014710679",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
     "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg 34",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Waldstra\u00dfe 53",
   "symptoms": [
-    "Fieber",
-    "Schnupfen",
-    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
     "Husten",
+    "Fieber",
+    "Erk\u00e4ltung",
     "Halschmerzen",
-    "Kopfschmerzen",
     "Gelenkschmerzen",
-    "Atemschwierigkeiten"
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "667106"
+  "weakenedImmuneSystem": true,
+  "zip": "66438"
 }

@@ -1,34 +1,29 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
-  "dateOfBirth": "1945-11-02",
-  "email": "j.weber@t-online.de",
-  "firstName": "Jana",
-  "fluImmunization": true,
+  "city": "St. Wendel",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1927-05-30",
+  "email": "a.klein@example.de",
+  "firstName": "Annika",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "G865469134",
-  "lastName": "Weber",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J924570922",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "16016629910",
+  "phoneNumber": "56210557701",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "Hubei"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe 88",
+  "street": "Steinstra\u00dfe 14",
   "symptoms": [
     "Fieber",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Husten",
-    "Kopfschmerzen",
-    "Schnupfen"
+    "Erk\u00e4ltung"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66795"
+  "zip": "66577"
 }

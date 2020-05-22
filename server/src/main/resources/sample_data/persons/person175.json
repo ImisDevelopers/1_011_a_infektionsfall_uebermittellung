@@ -1,25 +1,26 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
-  "dateOfBirth": "1953-11-14",
-  "email": "m.lange@gmail.de",
-  "firstName": "Marie",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "A655778818",
-  "lastName": "Lange",
+  "city": "Merzig",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1996-12-11",
+  "email": "b.winter@example.de",
+  "firstName": "Ben",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "N229429404",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "5939836845",
+  "phoneNumber": "72791910409",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Waldstra\u00dfe 57",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 10",
   "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "66600"
+  "weakenedImmuneSystem": true,
+  "zip": "66055"
 }

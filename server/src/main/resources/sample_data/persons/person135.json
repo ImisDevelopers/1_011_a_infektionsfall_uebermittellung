@@ -1,28 +1,28 @@
 {
-  "city": "Bous",
+  "city": "P\u00fcttlingen",
   "coronaContacts": false,
-  "dateOfBirth": "1992-07-02",
-  "email": "j.richter@gmail.de",
-  "firstName": "Jens",
+  "country": "DE",
+  "dateOfBirth": "1984-08-05",
+  "email": "h.schulze@example.de",
+  "firstName": "Hanna",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "P645818292",
-  "lastName": "Richter",
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "B779936769",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "1010917710982",
+  "phoneNumber": "6149331637",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Steinstra\u00dfe 0",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe 100",
   "symptoms": [
-    "Schnupfen",
-    "Husten"
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66808"
+  "zip": "66351"
 }

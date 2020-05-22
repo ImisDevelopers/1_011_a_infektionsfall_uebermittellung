@@ -1,27 +1,28 @@
 {
   "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
-  "dateOfBirth": "1970-03-25",
-  "email": "t.schulz@t-online.de",
-  "firstName": "Tim",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1939-08-14",
+  "email": "f.weber@example.de",
+  "firstName": "Franz",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "C106817809",
-  "lastName": "Schulz",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "H306054135",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "6258273902",
+  "phoneNumber": "32909279110",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "New York"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg 80",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe 100",
   "symptoms": [
-    "Atemschwierigkeiten"
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66962"
+  "zip": "66456"
 }

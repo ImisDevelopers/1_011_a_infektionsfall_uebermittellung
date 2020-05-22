@@ -1,32 +1,35 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
-  "dateOfBirth": "1933-10-19",
-  "email": "j.weber@posteo.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
+  "city": "St. Wendel",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "2000-07-03",
+  "email": "c.richter@example.de",
+  "firstName": "Christopher",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "I532689999",
-  "lastName": "Weber",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Q591942526",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "1191485646",
+  "phoneNumber": "106310294511",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kronenstra\u00dfe 62",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 71",
   "symptoms": [
+    "Halschmerzen",
     "Husten",
     "Erk\u00e4ltung",
-    "Schnupfen",
     "Fieber",
+    "Atemschwierigkeiten",
+    "Schnupfen",
     "Gelenkschmerzen",
     "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66997"
+  "weakenedImmuneSystem": false,
+  "zip": "66685"
 }

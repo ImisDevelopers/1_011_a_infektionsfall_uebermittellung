@@ -1,28 +1,31 @@
 {
-  "city": "Bous",
+  "city": "Kirkel",
   "coronaContacts": false,
-  "dateOfBirth": "1979-07-23",
-  "email": "a.schmidt@gmx.de",
-  "firstName": "Anna",
+  "country": "DE",
+  "dateOfBirth": "1925-02-15",
+  "email": "c.bauer@example.de",
+  "firstName": "Cornelius",
   "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "G256598517",
-  "lastName": "Schmidt",
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "U796999048",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "55647292910",
+  "phoneNumber": "5455884506",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof 12",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg 44",
   "symptoms": [
+    "Kopfschmerzen",
+    "Schnupfen",
     "Gelenkschmerzen",
-    "Halschmerzen"
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66438"
+  "weakenedImmuneSystem": true,
+  "zip": "661093"
 }

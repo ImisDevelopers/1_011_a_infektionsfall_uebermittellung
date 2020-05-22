@@ -1,28 +1,33 @@
 {
-  "city": "Riegelsberg",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1955-06-10",
-  "email": "s.klein@gmail.de",
-  "firstName": "Susanne",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1935-07-27",
+  "email": "j.berger@example.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "V470756153",
-  "lastName": "Klein",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "W918593554",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "7226984858",
+  "phoneNumber": "97829221610",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kronenstra\u00dfe 27",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Eisenbahnstra\u00dfe 77",
   "symptoms": [
+    "Kopfschmerzen",
     "Schnupfen",
-    "Atemschwierigkeiten"
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66339"
+  "zip": "66586"
 }

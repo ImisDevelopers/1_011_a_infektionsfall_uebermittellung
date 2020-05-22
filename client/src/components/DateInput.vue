@@ -13,10 +13,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import mixins from 'vue-typed-mixins'
 import { FormControlMixin } from '@/util/forms'
-import moment from 'moment'
 
 /**
  * Input that supports 1d and 2d Barcodes
@@ -26,8 +24,8 @@ import moment from 'moment'
  */
 
 export interface State {
-  dateOfBirthPickerOpen: boolean;
-  wasJustFocused: boolean;
+  dateOfBirthPickerOpen: boolean
+  wasJustFocused: boolean
 }
 
 export default mixins(FormControlMixin).extend({
@@ -67,6 +65,4 @@ export default mixins(FormControlMixin).extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

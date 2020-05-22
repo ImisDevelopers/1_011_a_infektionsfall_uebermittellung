@@ -17,7 +17,8 @@ female_fist_names = ['Jana', 'Lisa', 'Anna', 'Annika', 'Petra', 'Marie', 'Susann
 
 genders = ['male', 'female']
 
-email_providers = ['t-online', 'posteo', 'gmail', 'gmx', 'web']
+# email_providers = ['t-online', 'posteo', 'gmail', 'gmx', 'web']
+email_providers = ['example']
 
 streets = [
 	"Aarhusweg",
@@ -53,7 +54,8 @@ streets = [
 
 # temporarily replace possible cities for simulation
 # cities = ['Berlin', 'München', 'Hamburg', 'Köln', 'Düsseldorf', 'Kiel', 'Freiburg', 'Bochum', 'Frankfurt', 'Saarbrücken']
-cities = ['Saarbrücken', 'Sulzbach', 'Dudweiler', 'St. Ingbert', 'Saarlouis', 'Völklingen', 'Bous', 'Neunkirchen', 'Homburg', 'Kirkel', 'Heusweiler', 'Riegelsberg', 'Püttlingen']
+cities = ['Saarbrücken', 'Sulzbach', 'Dudweiler', 'St. Ingbert', 'Saarlouis', 'Völklingen', 'Bous', 'Neunkirchen',
+'Homburg', 'Kirkel', 'Heusweiler', 'Riegelsberg', 'Püttlingen', 'St. Wendel', 'Merzig']
 
 insurance_companies = ['AOK', 'Barmer', 'Techniker Krankenkasse', 'IKK Nord', 'KNAPPSCHAFT', 'DAK Gesundheit']
 
@@ -100,6 +102,8 @@ def replace_umlauts(inp):
 	return inp.replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue')
 
 
+########################################################################################################################
+
 def gen_person():
 	gender = choice(genders)
 	first_name = choice(male_first_names) if gender == 'male' else choice(female_fist_names)
@@ -122,6 +126,7 @@ def gen_person():
 #		'zip': rand_num_str(5),
 		'zip': '66{}'.format(rand_num_str(3)),
 		'city': choice(cities),
+		'country': 'DE',
 		'insuranceCompany': choice(insurance_companies),
 		'insuranceMembershipNumber': insurance_number(),
 		'fluImmunization': bool(getrandbits(1)),

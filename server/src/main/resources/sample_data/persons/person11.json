@@ -1,8 +1,9 @@
 {
   "city": "Dudweiler",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1979-11-21",
-  "email": "p.richter@gmail.de",
+  "email": "p.richter@example.de",
   "firstName": "Petra",
   "fluImmunization": true,
   "gender": "female",

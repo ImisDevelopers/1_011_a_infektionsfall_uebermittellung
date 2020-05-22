@@ -1,5 +1,8 @@
 package de.coronavirus.imis.api;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import de.coronavirus.imis.api.converter.ExOrNewContactConverter;
 import de.coronavirus.imis.api.dto.ExposureContactDTO;
 import de.coronavirus.imis.mapper.ExposureContactMapper;
@@ -64,7 +67,16 @@ public class ExposureContactController {
       .collect(Collectors.toList());
   }
 
-  @DeleteMapping("/{id}")
+  @PostMapping("/by-contact/")
+	public Map<String, List<ExposureContactDTO.FromServer>> getExposureSourceContactsForPatients(@RequestBody List<String> patientIds)
+	{
+		var result = new HashMap<String, List<ExposureContactDTO.FromServer>>();
+		for (String patientId : patientIds)
+			result.put(patientId, getExposureSourceContactsForPatient(patientId));
+		return result;
+	}
+
+	@DeleteMapping("/{id}")
   public void removeExposureContact(@PathVariable("id") long id) {
     this.exposureContactRepository.deleteById(id);
   }

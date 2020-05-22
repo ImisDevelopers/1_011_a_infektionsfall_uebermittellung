@@ -1,27 +1,34 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1999-04-04",
-  "email": "o.richter@gmail.de",
-  "firstName": "Olivia",
+  "city": "St. Wendel",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1996-04-24",
+  "email": "j.berger@example.de",
+  "firstName": "Jens",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Z914334414",
-  "lastName": "Richter",
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "M336934839",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "2107722100010",
+  "phoneNumber": "79956310531",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hauptstra\u00dfe 36",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "S\u00fcdweg 29",
   "symptoms": [
-    "Husten"
+    "Husten",
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66364"
+  "zip": "66136"
 }

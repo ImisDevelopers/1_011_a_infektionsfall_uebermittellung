@@ -1,28 +1,32 @@
 {
-  "city": "Bous",
+  "city": "Neunkirchen",
   "coronaContacts": true,
-  "dateOfBirth": "2002-08-29",
-  "email": "c.sommer@web.de",
+  "country": "DE",
+  "dateOfBirth": "1942-11-18",
+  "email": "c.sommer@example.de",
   "firstName": "Christopher",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "O319068042",
+  "insuranceMembershipNumber": "G465278987",
   "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "1084104731064",
+  "phoneNumber": "410473106471",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Waldstra\u00dfe 9",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Rosenstra\u00dfe 7",
   "symptoms": [
     "Kopfschmerzen",
-    "Halschmerzen"
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66027"
+  "zip": "66276"
 }

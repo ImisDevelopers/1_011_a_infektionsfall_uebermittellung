@@ -1,34 +1,29 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Homburg",
   "coronaContacts": false,
-  "dateOfBirth": "2005-09-27",
-  "email": "a.schroeder@t-online.de",
-  "firstName": "Anna",
+  "country": "DE",
+  "dateOfBirth": "1981-02-06",
+  "email": "e.bauer@example.de",
+  "firstName": "Emma",
   "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "R501197060",
-  "lastName": "Schr\u00f6der",
+  "insuranceMembershipNumber": "F209815321",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "2547807740",
+  "phoneNumber": "24110797497",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "B\u00fcckerheide 55",
+  "street": "Niekampsweg 41",
   "symptoms": [
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Kopfschmerzen",
     "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen"
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66493"
+  "weakenedImmuneSystem": false,
+  "zip": "66020"
 }

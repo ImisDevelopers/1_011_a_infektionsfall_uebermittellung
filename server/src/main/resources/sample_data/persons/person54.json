@@ -1,28 +1,32 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Riegelsberg",
   "coronaContacts": true,
-  "dateOfBirth": "1952-11-26",
-  "email": "l.mueller@posteo.de",
+  "country": "DE",
+  "dateOfBirth": "1967-02-02",
+  "email": "l.schroeder@example.de",
   "firstName": "Lisa",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "L358303887",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J560891752",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "97117980108",
+  "phoneNumber": "36109711798",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hohenzollerstra\u00dfe 30",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 80",
   "symptoms": [
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
     "Fieber",
-    "Atemschwierigkeiten"
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66246"
+  "zip": "66893"
 }

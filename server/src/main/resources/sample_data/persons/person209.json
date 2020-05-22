@@ -1,32 +1,32 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Heusweiler",
   "coronaContacts": false,
-  "dateOfBirth": "1932-12-09",
-  "email": "p.schulz@t-online.de",
-  "firstName": "Peter",
+  "country": "DE",
+  "dateOfBirth": "1967-07-02",
+  "email": "b.winkler@example.de",
+  "firstName": "Ben",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "W927844881",
-  "lastName": "Schulz",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J847197907",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "7072101000106",
+  "phoneNumber": "1010158517410",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    ""
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Sonnenweg 19",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg 22",
   "symptoms": [
-    "Halschmerzen",
     "Gelenkschmerzen",
-    "Kopfschmerzen",
     "Husten",
-    "Fieber",
-    "Atemschwierigkeiten"
+    "Kopfschmerzen",
+    "Erk\u00e4ltung",
+    "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66569"
+  "weakenedImmuneSystem": false,
+  "zip": "66806"
 }

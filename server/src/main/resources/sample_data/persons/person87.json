@@ -1,34 +1,30 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": false,
-  "dateOfBirth": "1949-05-27",
-  "email": "m.schmitt@posteo.de",
-  "firstName": "Matthias",
+  "city": "Heusweiler",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1968-12-23",
+  "email": "a.winter@example.de",
+  "firstName": "Anna",
   "fluImmunization": false,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "P725179752",
-  "lastName": "Schmitt",
+  "insuranceMembershipNumber": "A880839406",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "1610721043410",
+  "phoneNumber": "10793564651",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "New York"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete 91",
+  "street": "Hohenzollerstra\u00dfe 25",
   "symptoms": [
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
     "Gelenkschmerzen",
-    "Fieber"
+    "Halschmerzen",
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66661"
+  "weakenedImmuneSystem": false,
+  "zip": "66982"
 }

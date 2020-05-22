@@ -1,29 +1,28 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1997-05-22",
-  "email": "l.bauer@t-online.de",
-  "firstName": "Lisa",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "F637552108",
-  "lastName": "Bauer",
+  "city": "Bous",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1993-04-30",
+  "email": "k.wagner@example.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Y437455876",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "01193932105",
+  "phoneNumber": "87592710125",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aarhusweg 11",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 54",
   "symptoms": [
-    "Fieber",
-    "Husten",
-    "Atemschwierigkeiten"
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66249"
+  "weakenedImmuneSystem": false,
+  "zip": "66383"
 }

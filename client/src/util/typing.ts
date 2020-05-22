@@ -3,7 +3,7 @@
  */
 
 /// Type representing a Type parameter to be passed to a type-inferring function.
-export type TypeArg<T> = T;
+export type TypeArg<T> = T
 
 /**
  * TypeArg generator. This function may be called for any TypeArg function
@@ -13,13 +13,15 @@ export type TypeArg<T> = T;
  * object is created.
  */
 export function TypeArg<T>(): TypeArg<T> {
-  return null as unknown as TypeArg<T>
+  return (null as unknown) as TypeArg<T>
 }
 
 /**
  * Simple cast avoiding explicit conversion to unknown.
  */
-export function cast<T>(arg: unknown, _?: TypeArg<T>) { return arg as T }
+export function cast<T>(arg: unknown, _?: TypeArg<T>) {
+  return arg as T
+}
 
 /**
  * Identity function telling the Typescript compiler that the supplied argument
@@ -30,6 +32,9 @@ export function cast<T>(arg: unknown, _?: TypeArg<T>) { return arg as T }
  * An example use case is the use of mixins or injections for Vue components,
  * which currently cannot be sufficiently inferred.
  */
-export function extended<T, ExtensionType>(obj: T, _: TypeArg<ExtensionType>): (T & ExtensionType) {
-  return obj as (T & ExtensionType)
+export function extended<T, ExtensionType>(
+  obj: T,
+  _: TypeArg<ExtensionType>
+): T & ExtensionType {
+  return obj as T & ExtensionType
 }

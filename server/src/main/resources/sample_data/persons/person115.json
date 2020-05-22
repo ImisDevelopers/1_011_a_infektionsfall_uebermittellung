@@ -1,30 +1,33 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Homburg",
   "coronaContacts": false,
-  "dateOfBirth": "1951-02-10",
-  "email": "p.winkler@t-online.de",
-  "firstName": "Peter",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1985-01-04",
+  "email": "j.wagner@example.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "P625163699",
-  "lastName": "Winkler",
+  "insuranceMembershipNumber": "E158524142",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "1010973103210",
+  "phoneNumber": "53368841044",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Wintergasse 10",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 12",
   "symptoms": [
     "Fieber",
+    "Schnupfen",
     "Kopfschmerzen",
     "Atemschwierigkeiten",
-    "Erk\u00e4ltung"
+    "Erk\u00e4ltung",
+    "Husten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66714"
+  "weakenedImmuneSystem": false,
+  "zip": "66069"
 }

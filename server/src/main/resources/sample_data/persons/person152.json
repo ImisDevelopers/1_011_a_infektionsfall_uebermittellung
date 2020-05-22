@@ -1,32 +1,33 @@
 {
-  "city": "Homburg",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1945-10-20",
-  "email": "b.schulze@posteo.de",
-  "firstName": "Ben",
+  "country": "DE",
+  "dateOfBirth": "1988-05-16",
+  "email": "m.schulze@example.de",
+  "firstName": "Martina",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "L146641502",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "G838483906",
   "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "08811710298",
+  "phoneNumber": "3149864300",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe 0",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hohenzollerstra\u00dfe 66",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Gelenkschmerzen",
     "Kopfschmerzen",
+    "Husten",
+    "Fieber",
+    "Erk\u00e4ltung",
     "Schnupfen",
-    "Atemschwierigkeiten"
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "6610106"
+  "weakenedImmuneSystem": false,
+  "zip": "66180"
 }

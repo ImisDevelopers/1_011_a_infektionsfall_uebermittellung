@@ -1,31 +1,30 @@
 {
-  "city": "Heusweiler",
+  "city": "Neunkirchen",
   "coronaContacts": false,
-  "dateOfBirth": "1967-07-02",
-  "email": "b.winkler@gmail.de",
-  "firstName": "Ben",
-  "fluImmunization": false,
+  "country": "DE",
+  "dateOfBirth": "1936-11-10",
+  "email": "j.winter@example.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J847197907",
-  "lastName": "Winkler",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "R259937739",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "1010158517410",
+  "phoneNumber": "7870050506",
   "preIllnesses": [
     ""
   ],
   "riskAreas": [
-    ""
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 22",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg 27",
   "symptoms": [
-    "Gelenkschmerzen",
+    "Fieber",
     "Husten",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber"
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66806"
+  "weakenedImmuneSystem": true,
+  "zip": "6610108"
 }

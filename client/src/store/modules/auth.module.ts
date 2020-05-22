@@ -1,15 +1,28 @@
 import Api, { removeBearerToken, setBearerToken } from '@/api'
-import { ChangePasswordDTO, Institution, InstitutionDTO, RegisterUserRequest, User, UserDTO } from '@/api/SwaggerApi'
+import {
+  ChangePasswordDTO,
+  Institution,
+  InstitutionDTO,
+  RegisterUserRequest,
+  User,
+  UserDTO,
+} from '@/api/SwaggerApi'
 import { config } from '@/config'
 import { InstitutionRole } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'
 import { parseJwt } from '@/util'
-import { Actions, createMapper, Getters, Module, Mutations } from 'vuex-smart-module'
+import {
+  Actions,
+  createMapper,
+  Getters,
+  Module,
+  Mutations,
+} from 'vuex-smart-module'
 
 interface JwtData {
-  roles: InstitutionRole[];
-  exp: number;
-  [key: string]: any;
+  roles: InstitutionRole[]
+  exp: number
+  [key: string]: any
 }
 
 class AuthState {
@@ -34,9 +47,13 @@ class AuthGetters extends Getters<AuthState> {
   }
 
   routes(): AppRoute[] {
-    return navigationRoutes
-      .filter(r => (config.showAllViews ||
-        this.getters.roles().some(a => r.meta?.navigationInfo?.authorities.includes(a))))
+    return navigationRoutes.filter(
+      (r) =>
+        config.showAllViews ||
+        this.getters
+          .roles()
+          .some((a) => r.meta?.navigationInfo?.authorities.includes(a))
+    )
   }
 
   institutionUsers() {
@@ -70,13 +87,20 @@ class AuthMutations extends Mutations<AuthState> {
   }
 }
 
-class AuthActions extends Actions<AuthState, AuthGetters, AuthMutations, AuthActions> {
+class AuthActions extends Actions<
+  AuthState,
+  AuthGetters,
+  AuthMutations,
+  AuthActions
+> {
   async login(payload: { username: string; password: string }) {
     // # TODO loading animation, encrypt jwt
-    const token: string | undefined = (await Api.signInUserUsingPost({
-      username: payload.username,
-      password: payload.password,
-    })).jwtToken
+    const token: string | undefined = (
+      await Api.signInUserUsingPost({
+        username: payload.username,
+        password: payload.password,
+      })
+    ).jwtToken
     if (token) {
       this.commit('loginSuccess', token)
       this.dispatch('getAuthenticatedInstitution')

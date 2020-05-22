@@ -1,25 +1,29 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
-  "dateOfBirth": "2004-08-15",
-  "email": "k.lange@web.de",
-  "firstName": "Konrad",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "P720774271",
-  "lastName": "Lange",
+  "city": "P\u00fcttlingen",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1973-01-24",
+  "email": "a.bauer@example.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "B468130224",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "8795654420",
+  "phoneNumber": "19292107524",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Rosenstra\u00dfe 76",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordstra\u00dfe 89",
+  "symptoms": [
+    "Schnupfen",
+    "Halschmerzen"
+  ],
   "weakenedImmuneSystem": true,
-  "zip": "66494"
+  "zip": "66372"
 }

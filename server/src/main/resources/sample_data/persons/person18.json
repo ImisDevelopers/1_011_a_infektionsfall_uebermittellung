@@ -1,8 +1,9 @@
 {
   "city": "Homburg",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1963-09-15",
-  "email": "d.sommer@gmx.de",
+  "email": "d.sommer@example.de",
   "firstName": "Daniel",
   "fluImmunization": true,
   "gender": "male",

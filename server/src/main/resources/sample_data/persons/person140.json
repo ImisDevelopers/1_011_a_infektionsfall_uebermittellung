@@ -1,31 +1,33 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1941-03-14",
-  "email": "h.berger@t-online.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
-  "gender": "male",
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1986-06-20",
+  "email": "h.weber@example.de",
+  "firstName": "Hanna",
+  "fluImmunization": true,
+  "gender": "female",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Y797180693",
-  "lastName": "Berger",
+  "insuranceMembershipNumber": "C944238354",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "88615331055",
+  "phoneNumber": "010910479851",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hauptstra\u00dfe 37",
+  "street": "Nordstra\u00dfe 90",
   "symptoms": [
-    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Husten",
+    "Schnupfen",
     "Fieber",
-    "Kopfschmerzen",
     "Atemschwierigkeiten",
-    "Halschmerzen"
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66398"
+  "weakenedImmuneSystem": false,
+  "zip": "66583"
 }

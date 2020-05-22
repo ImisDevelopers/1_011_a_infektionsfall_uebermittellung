@@ -1,27 +1,28 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
-  "dateOfBirth": "1939-08-14",
-  "email": "f.weber@gmail.de",
-  "firstName": "Franz",
+  "country": "DE",
+  "dateOfBirth": "1999-04-04",
+  "email": "o.richter@example.de",
+  "firstName": "Olivia",
   "fluImmunization": false,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "H306054135",
-  "lastName": "Weber",
+  "insuranceMembershipNumber": "Z914334414",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "32909279110",
+  "phoneNumber": "2107722100010",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe 100",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hauptstra\u00dfe 36",
   "symptoms": [
-    "Kopfschmerzen"
+    "Husten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66456"
+  "weakenedImmuneSystem": false,
+  "zip": "66364"
 }

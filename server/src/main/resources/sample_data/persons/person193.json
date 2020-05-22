@@ -1,31 +1,28 @@
 {
-  "city": "Saarlouis",
+  "city": "Riegelsberg",
   "coronaContacts": false,
-  "dateOfBirth": "1986-05-27",
-  "email": "o.winkler@t-online.de",
-  "firstName": "Olivia",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "C633708134",
-  "lastName": "Winkler",
+  "country": "DE",
+  "dateOfBirth": "1944-09-05",
+  "email": "j.berger@example.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "D104412943",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "05610829962",
+  "phoneNumber": "35784521810",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     ""
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Eisenbahnstra\u00dfe 14",
+  "street": "Aastwiete 26",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Schnupfen",
-    "Fieber",
     "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66450"
+  "zip": "66076"
 }

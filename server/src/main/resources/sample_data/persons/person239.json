@@ -1,31 +1,30 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": true,
-  "dateOfBirth": "1947-11-28",
-  "email": "p.lange@t-online.de",
-  "firstName": "Peter",
-  "fluImmunization": true,
+  "city": "Bous",
+  "coronaContacts": false,
+  "dateOfBirth": "1969-05-02",
+  "email": "j.schulz@example.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "D841809534",
-  "lastName": "Lange",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "L954324560",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "6986407905",
+  "phoneNumber": "4963919195",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Z\u00e4hringerstra\u00dfe 73",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Sonnenweg 8",
   "symptoms": [
-    "Gelenkschmerzen",
     "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
     "Kopfschmerzen",
-    "Schnupfen",
-    "Fieber"
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66659"
+  "zip": "66987"
 }

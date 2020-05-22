@@ -1,33 +1,32 @@
 {
-  "city": "Homburg",
+  "city": "Heusweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1990-04-10",
-  "email": "f.weber@gmail.de",
-  "firstName": "Fin",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "U286009450",
-  "lastName": "Weber",
+  "dateOfBirth": "1930-07-13",
+  "email": "j.richter@example.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q786237617",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "1252866929",
+  "phoneNumber": "0334191825",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Hubei"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Z\u00e4hringerstra\u00dfe 54",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 25",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Fieber",
     "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
     "Schnupfen",
-    "Erk\u00e4ltung",
     "Gelenkschmerzen",
-    "Husten"
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "662710"
+  "zip": "66714"
 }

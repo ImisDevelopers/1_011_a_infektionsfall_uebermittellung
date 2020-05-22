@@ -1,29 +1,33 @@
 {
-  "city": "Homburg",
+  "city": "Kirkel",
   "coronaContacts": false,
-  "dateOfBirth": "1949-12-23",
-  "email": "m.schmidt@t-online.de",
-  "firstName": "Marie",
+  "dateOfBirth": "1963-07-04",
+  "email": "f.mueller@example.de",
+  "firstName": "Fin",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "K701133236",
-  "lastName": "Schmidt",
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Q261861139",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "75140105101",
+  "phoneNumber": "0143888993",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "New York"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Bismarckstra\u00dfe 21",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Waldstra\u00dfe 47",
   "symptoms": [
+    "Fieber",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Atemschwierigkeiten",
     "Halschmerzen",
-    "Kopfschmerzen",
-    "Fieber"
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66382"
+  "weakenedImmuneSystem": false,
+  "zip": "666710"
 }

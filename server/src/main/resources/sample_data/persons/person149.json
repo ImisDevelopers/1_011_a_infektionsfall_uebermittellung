@@ -1,27 +1,28 @@
 {
   "city": "Dudweiler",
-  "coronaContacts": false,
-  "dateOfBirth": "1954-06-27",
-  "email": "s.klein@web.de",
-  "firstName": "Susanne",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "F488933925",
-  "lastName": "Klein",
+  "coronaContacts": true,
+  "dateOfBirth": "1978-03-06",
+  "email": "d.berger@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "N124101254",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "5779082723",
+  "phoneNumber": "25911036517",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    "Madrid"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg 65",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Bismarckstra\u00dfe 61",
   "symptoms": [
-    "Erk\u00e4ltung"
+    "Schnupfen",
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661043"
+  "zip": "66739"
 }

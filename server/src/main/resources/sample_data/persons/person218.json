@@ -1,27 +1,25 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
-  "dateOfBirth": "2004-12-14",
-  "email": "i.schmitt@gmail.de",
-  "firstName": "Isabella",
-  "fluImmunization": false,
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "dateOfBirth": "1968-04-21",
+  "email": "a.weber@example.de",
+  "firstName": "Annika",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Q523398047",
-  "lastName": "Schmitt",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "U598533805",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "3356939290",
+  "phoneNumber": "10710427990",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kaiserstra\u00dfe 5",
-  "symptoms": [
-    "Gelenkschmerzen"
-  ],
+  "street": "Waldstra\u00dfe 59",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "66078"
+  "zip": "66262"
 }

@@ -1,28 +1,33 @@
 {
-  "city": "Bous",
+  "city": "Merzig",
   "coronaContacts": true,
-  "dateOfBirth": "1951-04-05",
-  "email": "i.winter@posteo.de",
-  "firstName": "Isabella",
+  "dateOfBirth": "1975-05-18",
+  "email": "f.mueller@example.de",
+  "firstName": "Fin",
   "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V364512739",
-  "lastName": "Winter",
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J325900773",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "1234764907",
+  "phoneNumber": "641051018376",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Hubei"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Poststra\u00dfe 47",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aarhusweg 50",
   "symptoms": [
     "Kopfschmerzen",
-    "Erk\u00e4ltung"
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Fieber",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66158"
+  "zip": "66441"
 }

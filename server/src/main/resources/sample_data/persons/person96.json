@@ -1,27 +1,25 @@
 {
-  "city": "Riegelsberg",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": false,
-  "dateOfBirth": "1989-11-10",
-  "email": "j.sommer@posteo.de",
-  "firstName": "Jana",
-  "fluImmunization": false,
+  "dateOfBirth": "1937-07-07",
+  "email": "e.winkler@example.de",
+  "firstName": "Emma",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Y351410032",
-  "lastName": "Sommer",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "U941695219",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "2411054151010",
+  "phoneNumber": "6374545892",
   "preIllnesses": [
-    ""
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe 6",
-  "symptoms": [
-    "Fieber"
-  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hohenzollerstra\u00dfe 62",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "666104"
+  "zip": "665100"
 }

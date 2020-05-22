@@ -1,34 +1,27 @@
 {
-  "city": "Saarlouis",
+  "city": "Sulzbach",
   "coronaContacts": true,
-  "dateOfBirth": "1994-03-26",
-  "email": "d.bauer@t-online.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
-  "gender": "female",
+  "dateOfBirth": "1968-05-28",
+  "email": "j.weber@example.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
+  "gender": "male",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "A534212844",
-  "lastName": "Bauer",
+  "insuranceMembershipNumber": "O600422869",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "10490352135",
+  "phoneNumber": "5655743132",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Z\u00e4hringerstra\u00dfe 65",
+  "street": "B\u00fcckerheide 98",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Husten",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Schnupfen",
     "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "660104"
+  "weakenedImmuneSystem": false,
+  "zip": "66912"
 }

@@ -1,31 +1,31 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
-  "dateOfBirth": "1933-03-19",
-  "email": "m.winkler@web.de",
-  "firstName": "Matthias",
+  "city": "Merzig",
+  "coronaContacts": true,
+  "dateOfBirth": "1945-09-12",
+  "email": "k.bauer@example.de",
+  "firstName": "Konrad",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "T316320731",
-  "lastName": "Winkler",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "F353994846",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "3784270103",
+  "phoneNumber": "93213103480",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Madrid"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Eisenbahnstra\u00dfe 28",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide 28",
   "symptoms": [
-    "Schnupfen",
-    "Halschmerzen",
-    "Gelenkschmerzen",
     "Husten",
-    "Atemschwierigkeiten"
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen",
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66087"
+  "zip": "66965"
 }

@@ -1,34 +1,29 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": false,
-  "dateOfBirth": "1977-07-10",
-  "email": "d.berger@t-online.de",
-  "firstName": "Daniela",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "E918226618",
-  "lastName": "Berger",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
+  "dateOfBirth": "1980-11-12",
+  "email": "j.mueller@example.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "G894582888",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "6225179086",
+  "phoneNumber": "2110392405",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Sonnenweg 10",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Rosenstra\u00dfe 14",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Halschmerzen",
     "Atemschwierigkeiten",
-    "Fieber",
-    "Schnupfen",
-    "Husten",
-    "Kopfschmerzen"
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66686"
+  "zip": "66477"
 }

@@ -1,28 +1,32 @@
 {
-  "city": "Sulzbach",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
-  "dateOfBirth": "1964-11-10",
-  "email": "m.schulze@t-online.de",
-  "firstName": "Marie",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "U536164913",
-  "lastName": "Schulze",
+  "dateOfBirth": "1950-10-27",
+  "email": "m.sommer@example.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "B880411013",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "4796275705",
+  "phoneNumber": "28451151044",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Madrid"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Eisenbahnstra\u00dfe 55",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Waldstra\u00dfe 77",
   "symptoms": [
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
     "Husten",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
     "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "664100"
+  "zip": "66627"
 }

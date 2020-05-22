@@ -1,33 +1,27 @@
 {
-  "city": "Neunkirchen",
+  "city": "P\u00fcttlingen",
   "coronaContacts": false,
-  "dateOfBirth": "1955-09-12",
-  "email": "j.sommer@t-online.de",
-  "firstName": "Jana",
+  "dateOfBirth": "1941-06-08",
+  "email": "j.mueller@example.de",
+  "firstName": "Jan",
   "fluImmunization": true,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "E914799481",
-  "lastName": "Sommer",
+  "insuranceMembershipNumber": "P581682167",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "36153051105",
+  "phoneNumber": "61530511052",
   "preIllnesses": [
     "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe 18",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Aastwiete 4",
   "symptoms": [
-    "Husten",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Schnupfen",
-    "Fieber",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung"
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66204"
+  "weakenedImmuneSystem": true,
+  "zip": "66472"
 }

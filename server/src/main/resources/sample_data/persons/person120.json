@@ -1,25 +1,25 @@
 {
-  "city": "Neunkirchen",
+  "city": "Saarlouis",
   "coronaContacts": false,
-  "dateOfBirth": "1988-09-29",
-  "email": "h.berger@gmx.de",
+  "dateOfBirth": "1971-12-14",
+  "email": "h.schmitt@example.de",
   "firstName": "Hanna",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M782266083",
-  "lastName": "Berger",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Q533131502",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "9023303070",
+  "phoneNumber": "91013736785",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Hubei"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hauptstra\u00dfe 90",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe 7",
   "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "66345"
+  "weakenedImmuneSystem": true,
+  "zip": "66821"
 }

@@ -8,9 +8,6 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.google.common.hash.Hashing;
@@ -96,18 +93,9 @@ public class PatientService {
 	}
 
 	public List<Patient> queryPatientsSimple(PatientSimpleSearchParamsDTO query) {
-		final Sort sortBy = getSort(query.getOrder(), query.getOrderBy());
-		final Pageable pageable = getPageable(query.getOffsetPage(), query.getPageSize(), sortBy);
 		return this.searchService.queryPatientsSimple(query);
 	}
 
-	private Sort getSort(String order, String orderBy) {
-		return Sort.by(Sort.Direction.fromOptionalString(order).orElse(Sort.Direction.ASC), orderBy);
-	}
-
-	private Pageable getPageable(Long offsetPage, Long pageSize, Sort sortBy) {
-		return PageRequest.of(offsetPage.intValue(), pageSize.intValue(), sortBy);
-	}
 
 	public List<Patient> queryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
 		return searchService.queryPatientsDetail(patientSearchParamsDTO);

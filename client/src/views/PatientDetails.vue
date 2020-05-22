@@ -163,7 +163,7 @@
           </a-row>
         </a-tab-pane>
         <a-tab-pane key="incidents" tab="Vorgänge">
-          <incidents :allIncidents='this.incidents' />
+          <CaseData :allIncidents='this.incidents' />
         </a-tab-pane>
         <a-tab-pane key="overview" tab="Falldaten">
           <!-- Tests -->
@@ -281,33 +281,9 @@
           </a-row>
         </a-tab-pane>
         <a-tab-pane forceRender key="timeline" tab="Verlauf">
-          <a-card>
-            <a-timeline
-              mode="left"
-              style="text-align: left; margin-left: 40px;"
-              v-if="incidents.length"
-            >
-              <!-- List all the events recorded corresponding to the patient over time -->
-              <a-timeline-item
-                :color="timelineColor(incident.eventType)"
-                :key="incident.id"
-                v-for="incident in this.incidents"
-              >
-                {{ formatDate(incident.eventDate) }},
-                {{
-                  eventTypes.find((type) => type.id === incident.eventType)
-                    .label
-                }}
-                <div v-if="incident.versionUser">
-                  erfasst {{ formatTimestamp(incident.versionTimestamp) }} durch
-                  {{ incident.versionUser.institution.name }}
-                </div>
-                <div v-else>
-                  erfasst {{ formatTimestamp(incident.versionTimestamp) }}
-                </div>
-              </a-timeline-item>
-            </a-timeline>
-          </a-card>
+          
+          <History :allIncidents='this.incidents' />
+
         </a-tab-pane>
         <a-tab-pane forceRender key="infection-chain" tab="Infektionskette">
           <a-row :gutter="8" style="margin-top: 8px;">
@@ -497,7 +473,8 @@ import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
 import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
-import Incidents from '@/components/Incidents.vue'
+import CaseData from '@/components/CaseData.vue'
+import History from '@/components/History.vue'
 import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
@@ -651,7 +628,8 @@ export default Vue.extend({
   components: {
     ChangePatientStammdatenForm,
     EditExposureContact,
-    Incidents,
+    CaseData,
+    History,
   },
   computed: {
     ...authMapper.mapGetters({

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class QuarantineIncident extends Incident {
 
 	private LocalDate until;
-
+h
 	private String comment;
 
 	public QuarantineIncident() {

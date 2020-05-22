@@ -1,7 +1,7 @@
 <template>
     <div>
         <TestIncidentsCard :testIncidents='test' />
-        <OtherIncidentsCard />
+        <OtherIncidentsCard :quarantineIncidents='quarantine' :hospitalizationIncidents='hospitalization'/>
     </div>
 </template>
 <script lang="ts">
@@ -11,7 +11,7 @@ import TestIncidentsCard from '../components/TestIncidentsCard.vue'
 import OtherIncidentsCard from '../components/OtherIncidentsCard.vue'
 
 export default Vue.extend({
-  name: 'Incidents',
+  name: 'CaseData',
   components: {
       TestIncidentsCard,
       OtherIncidentsCard,

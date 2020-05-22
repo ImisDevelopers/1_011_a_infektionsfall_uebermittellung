@@ -162,7 +162,9 @@
             </a-col>
           </a-row>
         </a-tab-pane>
-
+        <a-tab-pane key="incidents" tab="Vorgänge">
+          <incidents />
+        </a-tab-pane>
         <a-tab-pane key="overview" tab="Falldaten">
           <!-- Tests -->
           <a-row :gutter="8" style="margin-top: 8px;">
@@ -495,6 +497,7 @@ import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
 import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
+import Incidents from '@/components/Incidents.vue'
 import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
@@ -648,6 +651,7 @@ export default Vue.extend({
   components: {
     ChangePatientStammdatenForm,
     EditExposureContact,
+    Incidents,
   },
   computed: {
     ...authMapper.mapGetters({

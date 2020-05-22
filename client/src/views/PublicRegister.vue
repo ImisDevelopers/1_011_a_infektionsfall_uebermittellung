@@ -158,7 +158,7 @@
           <!-- Finish -->
           <div :style="{ display: current === 4 ? 'block' : 'none' }">
             <div v-if="!createdPatient">
-              <h2>Sie haben es fast geschafft!</h2>
+              <h2>Abschließen</h2>
               <a-form-item>
                 <a-checkbox @change="onCheckedChange">
                   Ich erkläre mich mit der Übermittlung meiner Daten zur

@@ -17,7 +17,6 @@ class PatientServiceTest {
 	void queryPatientsNullInOrderAndOrderByProperty() {
 		final PatientService patientService = new PatientService(Mockito.mock(PatientRepository.class),
 				Mockito.mock(PatientEventService.class),
-				new RandomService(),
 				patientMapper,
 				Mockito.mock(IncidentService.class),
 				Mockito.mock(SearchService.class)

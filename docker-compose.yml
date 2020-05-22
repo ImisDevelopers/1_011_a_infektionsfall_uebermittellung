@@ -11,20 +11,20 @@ services:
       - "5432:5432"
     restart: unless-stopped
 
-#  client:
-#    build:
-#      context: client
-#      dockerfile: Dockerfile
-#    ports:
-#      - "8080:8080"
-#
-#  # to build the image locally run ./gradlew jibDockerBuild
-#  server:
-#    image: eu.gcr.io/onyx-yeti-271818/imis-server
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
-#      - SPRING_PROFILES_ACTIVE=development
-#    ports:
-#      - "80:80"
-#    depends_on:
-#      - postgres
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  # to build the image locally run ./gradlew jibDockerBuild
+  server:
+    image: eu.gcr.io/onyx-yeti-271818/imis-server
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/imis
+      - SPRING_PROFILES_ACTIVE=development
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres

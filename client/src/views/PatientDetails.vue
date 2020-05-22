@@ -59,15 +59,9 @@
         style="text-align: left;"
       >
         <a-tab-pane key="master-data" tab="Stammdaten">
-          <div
-            style="
-              display: flex;
-              justify-content: flex-end;
-              padding-bottom: 10px;
-            "
-          >
+          <div class="tool-row">
             <a-button icon="edit" @click="editPatientStammdaten">
-              Daten ändern
+              Stammdaten ändern
             </a-button>
           </div>
           <!-- Allgemein & Adresse -->
@@ -82,6 +76,10 @@
                   <tr>
                     <td>Geburtsdatum:</td>
                     <td>{{ dateOfBirth }}</td>
+                  </tr>
+                  <tr>
+                    <td>Todesdatum:</td>
+                    <td>{{ dateOfDeath }}</td>
                   </tr>
                   <tr>
                     <td>Geschlecht:</td>
@@ -164,6 +162,11 @@
         </a-tab-pane>
 
         <a-tab-pane key="overview" tab="Falldaten">
+          <div class="tool-row">
+            <a-button icon="edit" @click="editPatientFalldaten">
+              Falldaten ändern
+            </a-button>
+          </div>
           <!-- Tests -->
           <a-row :gutter="8" style="margin-top: 8px;">
             <a-col span="24">
@@ -476,11 +479,11 @@ import moment, { Moment } from 'moment'
 import Api from '@/api'
 import * as permissions from '@/util/permissions'
 import {
+  ExposureContactFromServer,
+  Incident,
   LabTest,
   Patient,
   Timestamp,
-  ExposureContactFromServer,
-  Incident,
 } from '@/api/SwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
@@ -629,7 +632,9 @@ interface State {
   symptoms: string[]
   preIllnesses: string[]
   dateOfBirth: string
+  dateOfDeath: string
   showChangePatientStammdatenForm: boolean
+  showChangePatientFalldatenForm: boolean
   gender: string
   tests: LabTest[]
   columnsTests: Partial<Column>[]
@@ -686,8 +691,10 @@ export default Vue.extend({
       testTypes: testTypes,
       symptoms: [],
       showChangePatientStammdatenForm: false,
+      showChangePatientFalldatenForm: false,
       preIllnesses: [],
       dateOfBirth: '',
+      dateOfDeath: '',
       gender: '',
       tests: [],
       columnsTests,
@@ -777,6 +784,9 @@ export default Vue.extend({
       this.dateOfBirth = moment(this.patient.dateOfBirth).format(
         this.dateFormat
       )
+      this.dateOfDeath = this.patient.dateOfDeath
+        ? moment(this.patient.dateOfDeath).format(this.dateFormat)
+        : '-'
       const patientGender = this.patient.gender || ''
       this.gender =
         patientGender === 'male'
@@ -831,6 +841,9 @@ export default Vue.extend({
     },
     editPatientStammdaten(): void {
       this.showChangePatientStammdatenForm = true
+    },
+    editPatientFalldaten(): void {
+      this.showChangePatientFalldatenForm = true
     },
     handleActionClick(e: { key: string }) {
       switch (e.key) {
@@ -992,6 +1005,12 @@ table.compact {
   font-weight: normal;
   color: rgba(0, 0, 0, 0.65);
 }
+
+.tool-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
 </style>
 
 <style lang="scss">
@@ -999,11 +1018,13 @@ table.compact {
   table {
     width: unset;
   }
+
   .ant-table-tbody > tr > td {
     border-bottom: none;
     padding: 4px;
   }
 }
+
 .ant-descriptions-item {
   vertical-align: top;
 }

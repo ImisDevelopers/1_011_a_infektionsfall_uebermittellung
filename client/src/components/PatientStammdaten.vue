@@ -310,6 +310,7 @@ import LocationFormGroup from '@/components/LocationFormGroup.vue'
 import PlzInput from '@/components/PlzInput.vue'
 import { Patient } from '@/api/SwaggerApi'
 import moment, { Moment } from 'moment'
+import { TextMatcher } from '@/util/search'
 
 /**
  * Autocomplete for Patients
@@ -328,12 +329,16 @@ export interface State {
   initialDateOfDeath: Moment | undefined
   initialRiskOccupation: string | undefined
   insuranceCompanies: string[]
+  availableInsuranceCompanies: string[]
 }
 
 export default Vue.extend({
   name: 'PatientStammdaten',
   props: ['form', 'showStay', 'showDeath', 'patient'],
   created() {
+    Api.getHealthInsuranceCompaniesUsingGet()
+      .then(companies => this.availableInsuranceCompanies = companies)
+
     if (this.patient) {
       this.patientInput = this.patient
       this.initialDateOfBirth = moment(this.patientInput.dateOfBirth)
@@ -355,6 +360,7 @@ export default Vue.extend({
       initialDateOfDeath: undefined,
       initialRiskOccupation: undefined,
       insuranceCompanies: [],
+      availableInsuranceCompanies: [],
     }
   },
   components: {
@@ -388,10 +394,13 @@ export default Vue.extend({
     diedChanged(event: Event) {
       this.showDateOfDeath = (event.target as any).value
     },
-    async searchInsuranceCompanies(search: string) {
-      this.insuranceCompanies = await Api.getHealthInsuranceCompaniesUsingGet({
-        search,
-      })
+    searchInsuranceCompanies(search: string) {
+      const matcher = new TextMatcher(search, { withScore: true })
+      this.insuranceCompanies = this.availableInsuranceCompanies
+        .map(company => [company, matcher.match(company)])
+        .filter(([company, matchResult]) => matchResult.matches)
+        .sort((o1, o2) => -1 * (o1[1].score - o2[1].score))
+        .map(([company, matchResult]) => company)
     },
   },
 })

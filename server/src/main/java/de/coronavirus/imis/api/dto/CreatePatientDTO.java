@@ -48,7 +48,7 @@ public class CreatePatientDTO {
 	private String occupation;
 
 	// Hospitalization
-	private String dateOfHospitalization;
+	private LocalDate dateOfHospitalization;
 	private String dateOfIllness;
 	private Boolean onIntensiveCareUnit;
 

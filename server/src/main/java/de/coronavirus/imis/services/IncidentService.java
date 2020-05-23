@@ -34,6 +34,7 @@ public class IncidentService {
 	private final PatientMapper patientMapper;
 	private final QuarantineIncidentRepository quarantineIncidentRepo;
 	private final AdministrativeIncidentRepository adminIncidentRepo;
+	private final HospitalizationIncidentRepository hospIncidentRepo;
 	private final DoctorRepository doctorRepo;
 	private final AuditReader auditReader;
 	private final ApplicationContext ctx;
@@ -62,6 +63,7 @@ public class IncidentService {
 		result.addAll(getLog(TestIncident.class, id, byPatient));
 		result.addAll(getLog(QuarantineIncident.class, id, byPatient));
 		result.addAll(getLog(AdministrativeIncident.class, id, byPatient));
+		result.addAll(getLog(HospitalizationIncident.class, id, byPatient));
 
 		result.sort(
 				(Incident i1, Incident i2) -> i1.getVersionTimestamp().compareTo(i2.getVersionTimestamp())
@@ -92,6 +94,8 @@ public class IncidentService {
 				return quarantineIncidentRepo.findById(id).orElseThrow();
 			case administrative:
 				return adminIncidentRepo.findById(id).orElseThrow();
+			case hospitalization:
+				return hospIncidentRepo.findById(id).orElseThrow();
 		}
 
 		return null;
@@ -105,6 +109,7 @@ public class IncidentService {
 		result.addAll(testIncidentRepo.findByPatientId(patientId));
 		result.addAll(quarantineIncidentRepo.findByPatientId(patientId));
 		result.addAll(adminIncidentRepo.findByPatientId(patientId));
+		result.addAll(hospIncidentRepo.findByPatientId(patientId));
 
 		return result;
 	}
@@ -119,6 +124,8 @@ public class IncidentService {
 				return (List<Incident>) (List<?>) quarantineIncidentRepo.findByPatientId(patientId);
 			case administrative:
 				return (List<Incident>) (List<?>) adminIncidentRepo.findByPatientId(patientId);
+			case hospitalization:
+				return (List<Incident>) (List<?>) hospIncidentRepo.findByPatientId(patientId);
 		}
 
 		return null;
@@ -198,7 +205,16 @@ public class IncidentService {
 
 	@Transactional
 	public void updateQuarantineIncident(String patientId, EventType status, LocalDate date) {
-		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+
+		/*
+			There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
+
+			Note:
+			Having only one QuarantineIncident per Person is technically incorrect. If a patient is quarantined,
+			released and quarantined again, that should be a new incident (a new incident ID).
+			This improvement can be applied once there's a agreed strategy on how the frontend handles incidents.
+		 */
+
 		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
 		if (incidentOptional.isEmpty()) {
 			throw new QuarantineNotFoundException("No Quarantine for " + patientId);
@@ -262,6 +278,22 @@ public class IncidentService {
 		adminIncidentRepo.saveAndFlush(incident);
 
 		return incident;
+	}
+
+	// Hospitalization Incidents
+
+	public void addIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
+
+		boolean ic = intensiveCare==null ? false : intensiveCare;
+
+		var incident = (HospitalizationIncident) new HospitalizationIncident()
+				.setIntensiveCare(ic)
+				.setEventDate(hospitalizedOn)
+				.setEventType(EventType.HOSPITALIZATION_MANDATED)
+				.setPatient(patient);
+
+		hospIncidentRepo.saveAndFlush(incident);
+
 	}
 
 	private EventType testStatusToEvent(TestStatus input) {

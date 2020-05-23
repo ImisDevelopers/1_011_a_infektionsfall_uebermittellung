@@ -45,8 +45,10 @@ public abstract class Incident {
 	@Enumerated(EnumType.STRING)
 	private EventType eventType;
 
+	// Date on which this Event was officially registered / mandated. Set by user.
 	private LocalDate eventDate;
 
+	// Automated Timestamp
 	@LastModifiedDate
 	private LocalDateTime versionTimestamp;
 

@@ -91,6 +91,14 @@
                     <td>{{ patient.lastName }}, {{ patient.firstName }}</td>
                   </tr>
                   <tr>
+                    <td>Staatsangehörigkeit:</td>
+                    <td>{{ patient.nationality }}</td>
+                  </tr>
+                  <tr>
+                    <td>Geschlecht:</td>
+                    <td>{{ gender }}</td>
+                  </tr>
+                  <tr>
                     <td>Geburtsdatum:</td>
                     <td>{{ dateOfBirth }}</td>
                   </tr>
@@ -98,20 +106,15 @@
                     <td>Todesdatum:</td>
                     <td>{{ dateOfDeath }}</td>
                   </tr>
-                  <tr>
-                    <td>Geschlecht:</td>
-                    <td>{{ gender }}</td>
-                  </tr>
-                  <tr>
-                    <td>Staatsangehörigkeit:</td>
-                    <td>{{ patient.nationality }}</td>
-                  </tr>
                 </table>
               </a-card>
             </a-col>
             <a-col :md="12" :span="24">
               <a-card align="left" title="Adresse">
                 <table>
+                  <tr v-if="patient.stayCity">
+                    <td colspan="2">Wohnort:</td>
+                  </tr>
                   <tr>
                     <td>Straße/Hausnr.:</td>
                     <td>{{ patient.street }} {{ patient.houseNumber }}</td>
@@ -123,6 +126,23 @@
                   <tr>
                     <td>Land:</td>
                     <td>{{ patient.country }}</td>
+                  </tr>
+                </table>
+                <table v-if="patient.stayCity" style="margin-top: 10px">
+                  <tr>
+                    <td colspan="2">Aufenthaltsort:</td>
+                  </tr>
+                  <tr>
+                    <td>Straße/Hausnr.:</td>
+                    <td>{{ patient.stayStreet }} {{ patient.stayHouseNumber }}</td>
+                  </tr>
+                  <tr>
+                    <td>PLZ/Ort:</td>
+                    <td>{{ patient.stayZip }} {{ patient.stayCity }}</td>
+                  </tr>
+                  <tr>
+                    <td>Land:</td>
+                    <td>{{ patient.stayCountry }}</td>
                   </tr>
                 </table>
               </a-card>
@@ -148,20 +168,6 @@
               </a-card>
             </a-col>
             <a-col :md="8" :span="24">
-              <a-card align="left" title="Versicherung">
-                <table>
-                  <tr>
-                    <td>Versicherung:</td>
-                    <td>{{ patient.insuranceCompany }}</td>
-                  </tr>
-                  <tr>
-                    <td>V-Nr:</td>
-                    <td>{{ patient.insuranceMembershipNumber }}</td>
-                  </tr>
-                </table>
-              </a-card>
-            </a-col>
-            <a-col :md="8" :span="24">
               <a-card align="left" title="Arbeit">
                 <table>
                   <tr>
@@ -175,11 +181,27 @@
                 </table>
               </a-card>
             </a-col>
+            <a-col :md="8" :span="24">
+              <a-card align="left" title="Versicherung">
+                <table>
+                  <tr>
+                    <td>Versicherung:</td>
+                    <td>{{ patient.insuranceCompany }}</td>
+                  </tr>
+                  <tr>
+                    <td>V-Nr:</td>
+                    <td>{{ patient.insuranceMembershipNumber }}</td>
+                  </tr>
+                </table>
+              </a-card>
+            </a-col>
           </a-row>
         </a-tab-pane>
 
         <a-tab-pane key="overview" tab="Falldaten">
           <div class="tool-row">
+            <div style="font-size: 18px; padding-left: 16px">Fall: COVID-19</div>
+            <span style="flex: 1 1 auto"></span>
             <a-button icon="edit" @click="editPatientFalldaten">
               Falldaten ändern
             </a-button>
@@ -303,6 +325,20 @@
               <a-card align="left" title="Exposition">
                 <div v-bind:key="exposure" v-for="exposure in exposures">
                   {{ exposure }}
+                </div>
+              </a-card>
+            </a-col>
+            <a-col :md="8" :span="24">
+              <a-card align="left" title="Hospitalisierung">
+                <div v-if="!dateOfHospitalization">
+                  Nicht hospitalisiert
+                </div>
+                <div v-else>
+                  <div>Hospitalisiert am {{ dateOfHospitalization }}</div>
+                  <div>
+                    Auf Intesivstation?
+                    {{ patient.onIntensiveCareUnit ? 'Ja' : 'Nein' }}
+                  </div>
                 </div>
               </a-card>
             </a-col>
@@ -505,10 +541,21 @@ import Vue from 'vue'
 import moment, { Moment } from 'moment'
 import Api from '@/api'
 import * as permissions from '@/util/permissions'
-import { ExposureContactFromServer, Incident, LabTest, Patient, Timestamp, } from '@/api/SwaggerApi'
+import {
+  ExposureContactFromServer,
+  Incident,
+  LabTest,
+  Patient,
+  Timestamp,
+} from '@/api/SwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
-import { EventTypeItem, eventTypes, testResults, TestResultType, } from '@/models/event-types'
+import {
+  EventTypeItem,
+  eventTypes,
+  testResults,
+  TestResultType,
+} from '@/models/event-types'
 import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
@@ -652,6 +699,7 @@ interface State {
   preIllnesses: string[]
   dateOfBirth: string
   dateOfDeath: string
+  dateOfHospitalization: string
   showChangePatientStammdatenForm: boolean
   showChangePatientFalldatenForm: boolean
   gender: string
@@ -716,6 +764,7 @@ export default Vue.extend({
       preIllnesses: [],
       dateOfBirth: '',
       dateOfDeath: '',
+      dateOfHospitalization: '',
       gender: '',
       tests: [],
       columnsTests,
@@ -782,6 +831,11 @@ export default Vue.extend({
         )
       } else {
         this.dateOfIllness = this.dateOfReporting
+      }
+      if (this.patient.dateOfHospitalization) {
+        this.dateOfHospitalization = moment(
+          this.patient.dateOfHospitalization
+        ).format(this.dateFormat)
       }
 
       // Map patient attributes to their display representation
@@ -1042,8 +1096,9 @@ table.compact {
 
 .tool-row {
   display: flex;
-  justify-content: flex-end;
   padding-bottom: 10px;
+  align-items: center;
+  justify-content: flex-end;
 }
 </style>
 

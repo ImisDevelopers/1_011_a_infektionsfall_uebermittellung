@@ -2,28 +2,31 @@
   "city": "Riegelsberg",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1956-07-25",
-  "email": "t.winkler@example.de",
-  "firstName": "Tim",
+  "dateOfBirth": "1967-02-02",
+  "email": "l.schroeder@example.de",
+  "firstName": "Lisa",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "T261462131",
-  "lastName": "Winkler",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J560891752",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "5109010105151",
+  "phoneNumber": "36109711798",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "LIVER_DISEASE"
   ],
   "riskAreas": [
-    "New York"
+    "MEDICAL_LABORATORY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Poststra\u00dfe 86",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 80",
   "symptoms": [
-    "Kopfschmerzen",
-    "Schnupfen"
+    "FEVER",
+    "COLD",
+    "HEADACHE",
+    "SHORTNESS_OF_BREATH",
+    "DIFFICULTY_BREATHING"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66644"
+  "zip": "66893"
 }

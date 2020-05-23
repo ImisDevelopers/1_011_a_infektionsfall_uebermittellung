@@ -1,35 +1,27 @@
 {
   "city": "St. Wendel",
-  "coronaContacts": true,
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "2004-08-20",
-  "email": "d.lange@example.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "W424825305",
-  "lastName": "Lange",
+  "dateOfBirth": "2000-01-11",
+  "email": "d.sommer@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "S693269304",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "9118384251",
+  "phoneNumber": "21042786801",
   "preIllnesses": [
-    "Krebserkrankung"
+    "DIABETES"
   ],
-  "riskAreas": [
-    ""
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof 47",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg 88",
   "symptoms": [
-    "Husten",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Halschmerzen"
+    "LOSS_OF_APPETITE",
+    "WEIGHT_LOSS"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66427"
+  "zip": "66280"
 }

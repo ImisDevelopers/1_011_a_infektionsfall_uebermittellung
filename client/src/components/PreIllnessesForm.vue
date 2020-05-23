@@ -5,7 +5,9 @@
     :labelCol="{ div: 24 }"
     :wrapperCol="{ div: 24 }"
   >
-    <a-checkbox-group v-decorator="['preIllnesses']">
+    <a-checkbox-group
+      v-decorator="['preIllnesses', { initialValue: preIllnesses }]"
+    >
       <a-row>
         <a-col
           :key="preIllness.value"
@@ -30,7 +32,10 @@
     <div style="display: flex; align-items: center; align-self: stretch;">
       <a-checkbox
         :checked="showOtherPreIllnesses"
-        v-decorator="['showOtherPreIllnesses']"
+        v-decorator="[
+          'showOtherPreIllnesses',
+          { initialValue: showOtherPreIllnesses },
+        ]"
         @change="preIllnessesChanged"
         style="flex: 0 0 auto;"
       >
@@ -39,7 +44,10 @@
       <a-form-item style="flex: 1 1 100%; margin-bottom: 0; max-width: 600px;">
         <a-input
           :disabled="!showOtherPreIllnesses"
-          v-decorator="['preIllnessesOther']"
+          v-decorator="[
+            'preIllnessesOther',
+            { initialValue: preIllnessesOther },
+          ]"
         />
       </a-form-item>
     </div>
@@ -50,6 +58,7 @@
 import Vue from 'vue'
 import { ADDITIONAL_PRE_ILLNESSES, PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Option } from '@/models'
+import { SYMPTOMS } from '@/models/symptoms'
 
 /**
  * Autocomplete for Patients
@@ -59,18 +68,35 @@ import { Option } from '@/models'
  */
 
 export interface State {
-  showOtherPreIllnesses: boolean
   PRE_ILLNESSES: Option[]
   ADDITIONAL_PRE_ILLNESSES: Option[]
+  preIllnesses: string[]
+  preIllnessesOther: string
+  showOtherPreIllnesses: boolean
 }
 
 export default Vue.extend({
   name: 'ExpositionForm',
-  props: ['form'],
+  props: ['form', 'patient'],
+  created() {
+    if (this.patient) {
+      const ALL_ILLNESSES = [...PRE_ILLNESSES, ...ADDITIONAL_PRE_ILLNESSES]
+      for (const preIllness of this.patient.preIllnesses) {
+        if (ALL_ILLNESSES.some((item) => item.value === preIllness)) {
+          this.preIllnesses.push(preIllness)
+        } else {
+          this.showOtherPreIllnesses = true
+          this.preIllnessesOther = preIllness
+        }
+      }
+    }
+  },
   data(): State {
     return {
       PRE_ILLNESSES,
       ADDITIONAL_PRE_ILLNESSES,
+      preIllnesses: [],
+      preIllnessesOther: '',
       showOtherPreIllnesses: false,
     }
   },

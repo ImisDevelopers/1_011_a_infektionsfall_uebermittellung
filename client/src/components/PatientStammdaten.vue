@@ -298,7 +298,10 @@
 <script lang="ts">
 import Vue from 'vue'
 import { RiskOccupation } from '@/models'
-import { RISK_OCCUPATIONS, RiskOccupationOption, } from '@/models/risk-occupation'
+import {
+  RISK_OCCUPATIONS,
+  RiskOccupationOption,
+} from '@/models/risk-occupation'
 import DateInput from '@/components/DateInput.vue'
 import LocationFormGroup from '@/components/LocationFormGroup.vue'
 import { Patient } from '@/api/SwaggerApi'

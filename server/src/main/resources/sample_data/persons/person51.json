@@ -1,30 +1,32 @@
 {
-  "city": "Homburg",
+  "city": "Merzig",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1929-07-05",
-  "email": "f.lange@example.de",
-  "firstName": "Fin",
-  "fluImmunization": true,
+  "dateOfBirth": "1936-08-09",
+  "email": "t.schroeder@example.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J968253265",
-  "lastName": "Lange",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "K300593456",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "22927065103",
+  "phoneNumber": "010345010541",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "CARDIOVASCULAR_DISEASE"
   ],
-  "riskAreas": [
-    "Tirol"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Waldstra\u00dfe 78",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe 47",
   "symptoms": [
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten"
+    "COUGH",
+    "BACK_PAIN",
+    "WEIGHT_LOSS",
+    "DIFFICULTY_BREATHING",
+    "HEADACHE",
+    "LOSS_OF_APPETITE",
+    "FEVER"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66473"
+  "weakenedImmuneSystem": true,
+  "zip": "66667"
 }

@@ -15,6 +15,21 @@
       :visible="showChangePatientStammdatenForm"
       :patient="patient"
     />
+    <ChangePatientFalldatenForm
+      @cancel="
+        () => {
+          showChangePatientFalldatenForm = false
+        }
+      "
+      @create="
+        () => {
+          showChangePatientFalldatenForm = false
+          this.loadData()
+        }
+      "
+      :visible="showChangePatientFalldatenForm"
+      :patient="patient"
+    />
     <div
       v-if="patient"
       style="max-width: 1020px; margin: 0 auto; padding: 0 1rem;"
@@ -280,6 +295,19 @@
               </a-card>
             </a-col>
           </a-row>
+
+          <a-row :gutter="8" style="margin-top: 8px;">
+            <a-col :md="8" :span="24">
+              <a-card
+                  align="left"
+                  title="Exposition"
+              >
+                <div v-bind:key="exposure" v-for="exposure in exposures">
+                  {{ exposure }}
+                </div>
+              </a-card>
+            </a-col>
+          </a-row>
         </a-tab-pane>
         <a-tab-pane forceRender key="timeline" tab="Verlauf">
           <a-card>
@@ -501,6 +529,8 @@ import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenFor
 import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
+import ChangePatientFalldatenForm from '@/components/ChangePatientFalldatenForm.vue'
+import { EXPOSURES_INTERNAL, EXPOSURE_LOCATIONS } from '@/models/exposures'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -630,6 +660,7 @@ interface State {
   patientStatus: EventTypeItem | undefined
   eventTypes: any[]
   symptoms: string[]
+  exposures: string[]
   preIllnesses: string[]
   dateOfBirth: string
   dateOfDeath: string
@@ -652,6 +683,7 @@ export default Vue.extend({
   name: 'PatientDetails',
   components: {
     ChangePatientStammdatenForm,
+    ChangePatientFalldatenForm,
     EditExposureContact,
   },
   computed: {
@@ -690,6 +722,7 @@ export default Vue.extend({
       testResults: testResults,
       testTypes: testTypes,
       symptoms: [],
+      exposures: [],
       showChangePatientStammdatenForm: false,
       showChangePatientFalldatenForm: false,
       preIllnesses: [],
@@ -774,6 +807,18 @@ export default Vue.extend({
           )
           return patientSymptom ? patientSymptom.label : symptom
         }) || []
+      this.exposures =
+          this.patient.riskAreas?.map((exposure) => {
+            let patientExposure = EXPOSURES_INTERNAL.find(
+                (exposureFind) => exposureFind.value === exposure
+            )
+            if (!patientExposure) {
+              patientExposure = EXPOSURE_LOCATIONS.find(
+                  (exposureFind) => 'CONTACT_WITH_CORONA_CASE_' + exposureFind.value === exposure
+              )
+            }
+            return patientExposure ? patientExposure.label : exposure
+          }) || []
       this.preIllnesses =
         this.patient.preIllnesses?.map((preIllness) => {
           const patientIllness = PRE_ILLNESSES.find(

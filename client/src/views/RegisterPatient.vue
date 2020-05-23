@@ -347,11 +347,9 @@ export default Vue.extend({
           request.riskAreas = request.riskAreas.concat(values.exposures)
         }
         if (values.showOtherSymptoms && values.symptomsOther) {
-          console.log("Has Pre Symptoms")
           request.symptoms.push(values.symptomsOther)
         }
         if (values.showOtherPreIllnesses && values.preIllnessesOther) {
-          console.log("Has Pre Illness")
           request.preIllnesses.push(values.preIllnessesOther)
         }
         if (values.exposureLocation) {

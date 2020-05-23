@@ -1,30 +1,32 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
+  "city": "Homburg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1992-03-26",
-  "email": "e.schmitt@example.de",
-  "firstName": "Emma",
+  "dateOfBirth": "1947-10-29",
+  "email": "d.peters@example.de",
+  "firstName": "Daniela",
   "fluImmunization": true,
   "gender": "female",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "N987077148",
-  "lastName": "Schmitt",
+  "insuranceMembershipNumber": "M880474837",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "28685102897",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
-    "New York"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hauptstra\u00dfe 40",
+  "phoneNumber": "37145102111",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Rosenstra\u00dfe 57",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten"
+    "SHORTNESS_OF_BREATH",
+    "HEADACHE",
+    "BACK_PAIN",
+    "NAUSEA",
+    "LOSS_OF_APPETITE",
+    "COLD",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COUGH"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66855"
+  "zip": "661051"
 }

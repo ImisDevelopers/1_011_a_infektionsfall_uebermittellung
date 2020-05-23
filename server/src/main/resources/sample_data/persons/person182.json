@@ -1,31 +1,34 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
+  "city": "Sulzbach",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1965-02-18",
-  "email": "o.weber@example.de",
-  "firstName": "Olivia",
+  "dateOfBirth": "1992-07-02",
+  "email": "p.schmidt@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "D241246317",
-  "lastName": "Weber",
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S241514106",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "8125205664",
+  "phoneNumber": "16629910795",
   "preIllnesses": [
-    ""
+    "IMMUNODEFICIENCY"
   ],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Waldstra\u00dfe 95",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Wintergasse 42",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Kopfschmerzen"
+    "DIFFICULTY_BREATHING",
+    "MUSCLE_PAIN",
+    "WEIGHT_LOSS",
+    "NAUSEA",
+    "BACK_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "661042"
+  "weakenedImmuneSystem": true,
+  "zip": "663108"
 }

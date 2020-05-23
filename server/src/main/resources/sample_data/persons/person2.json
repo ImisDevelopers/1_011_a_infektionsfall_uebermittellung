@@ -1,35 +1,37 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": false,
+  "city": "Sulzbach",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1957-05-15",
-  "email": "c.klein@example.de",
-  "firstName": "Cornelius",
+  "dateOfBirth": "1937-12-08",
+  "email": "h.schulz@example.de",
+  "firstName": "Hanna",
   "fluImmunization": false,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "F596348124",
-  "lastName": "Klein",
+  "insuranceMembershipNumber": "S870854579",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "10525531041010",
+  "phoneNumber": "276410831050",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "DIABETES"
   ],
   "riskAreas": [
-    ""
+    "COMMUNITY_FACILITY_MINORS"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg 77",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 4",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Husten",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Halschmerzen"
+    "MUSCLE_PAIN",
+    "HEADACHE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "WEIGHT_LOSS",
+    "DIFFICULTY_BREATHING",
+    "NAUSEA",
+    "COLD",
+    "BACK_PAIN",
+    "FEVER"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661028"
+  "zip": "66564"
 }

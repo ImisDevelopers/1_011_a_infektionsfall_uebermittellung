@@ -1,26 +1,22 @@
 {
-  "city": "Saarlouis",
+  "city": "Merzig",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1971-12-14",
-  "email": "h.schmitt@example.de",
-  "firstName": "Hanna",
+  "dateOfBirth": "1969-02-26",
+  "email": "j.schulze@example.de",
+  "firstName": "Jan",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Q533131502",
-  "lastName": "Schmitt",
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "W616108982",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "91013736785",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
-  "riskAreas": [
-    "GrandEst"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe 7",
+  "phoneNumber": "1739348356",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Wintergasse 20",
   "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "66821"
+  "zip": "66087"
 }

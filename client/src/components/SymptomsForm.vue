@@ -5,7 +5,7 @@
     :labelCol="{ div: 24 }"
     :wrapperCol="{ div: 24 }"
   >
-    <a-checkbox-group v-decorator="['symptoms']">
+    <a-checkbox-group v-decorator="['symptoms', { initialValue: symptoms }]">
       <a-row>
         <a-col
           :key="symptom.value"
@@ -19,13 +19,16 @@
       </a-row>
     </a-checkbox-group>
     <div style="display: flex; align-items: center; align-self: stretch;">
-      <a-checkbox v-decorator="['showOtherSymptoms']" style="flex: 0 0 auto;">
+      <a-checkbox
+        v-decorator="['showOtherSymptoms', { initialValue: showOtherSymptoms }]"
+        style="flex: 0 0 auto;"
+      >
         Andere:
       </a-checkbox>
       <a-form-item style="flex: 1 1 100%; margin-bottom: 0; max-width: 600px;">
         <a-input
           :disabled="!this.form.getFieldValue('showOtherSymptoms')"
-          v-decorator="['symptomsOther']"
+          v-decorator="['symptomsOther', { initialValue: symptomsOther }]"
         />
       </a-form-item>
     </div>
@@ -46,14 +49,32 @@ import { SYMPTOMS } from '@/models/symptoms'
 
 export interface State {
   SYMPTOMS: Option[]
+  symptoms: string[]
+  symptomsOther: string
+  showOtherSymptoms: boolean
 }
 
 export default Vue.extend({
   name: 'SymptomsForm',
-  props: ['form'],
+  props: ['form', 'patient'],
+  created() {
+    if (this.patient) {
+      for (const symptom of this.patient.symptoms) {
+        if (SYMPTOMS.some((item) => item.value === symptom)) {
+          this.symptoms.push(symptom)
+        } else {
+          this.showOtherSymptoms = true
+          this.symptomsOther = symptom
+        }
+      }
+    }
+  },
   data(): State {
     return {
       SYMPTOMS,
+      symptoms: [],
+      symptomsOther: '',
+      showOtherSymptoms: false,
     }
   },
 })

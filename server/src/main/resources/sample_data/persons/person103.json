@@ -2,32 +2,31 @@
   "city": "Saarbr\u00fccken",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1947-09-12",
-  "email": "h.schulz@example.de",
-  "firstName": "Hanna",
-  "fluImmunization": false,
+  "dateOfBirth": "1993-04-22",
+  "email": "o.klein@example.de",
+  "firstName": "Olivia",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "H149372289",
-  "lastName": "Schulz",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "W477615830",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "07925241910",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
-    "GrandEst"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Tulpenweg 14",
+  "phoneNumber": "3480396522",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof 75",
   "symptoms": [
-    "Schnupfen",
-    "Fieber",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "SHORTNESS_OF_BREATH",
+    "COLD",
+    "FEVER",
+    "MUSCLE_PAIN",
+    "WEIGHT_LOSS",
+    "DIFFICULTY_BREATHING",
+    "NAUSEA",
+    "LOSS_OF_APPETITE",
+    "BACK_PAIN"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66380"
+  "weakenedImmuneSystem": true,
+  "zip": "66559"
 }

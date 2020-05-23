@@ -1,35 +1,32 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": false,
+  "city": "Riegelsberg",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1927-04-08",
-  "email": "f.schroeder@example.de",
-  "firstName": "Fin",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Z187907572",
-  "lastName": "Schr\u00f6der",
+  "dateOfBirth": "1998-09-14",
+  "email": "i.weber@example.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "B388258432",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "2727956878",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
-  "riskAreas": [
-    "Hubei"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe 85",
+  "phoneNumber": "68826343510",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg 57",
   "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Fieber"
+    "COLD",
+    "LOSS_OF_APPETITE",
+    "DIFFICULTY_BREATHING",
+    "FEVER",
+    "BACK_PAIN",
+    "MUSCLE_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "663310"
+  "weakenedImmuneSystem": false,
+  "zip": "66518"
 }

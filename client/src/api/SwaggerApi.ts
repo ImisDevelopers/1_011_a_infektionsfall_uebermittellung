@@ -169,6 +169,11 @@ export interface GrantedAuthority {
   authority?: string;
 }
 
+export interface HealthInsuranceCompanies {
+  preDefined?: string[];
+  userDefined?: string[];
+}
+
 export interface Incident {
   caseId?: string;
   eventDate?: string;
@@ -877,7 +882,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     getHealthInsuranceCompaniesUsingGet: (query?: { count?: string; search?: string }, params?: RequestParams) =>
-      this.request<string[], any>(
+      this.request<HealthInsuranceCompanies, any>(
         `/api/enum-data/health-insurance-companies${this.addQueryParams(query)}`,
         "GET",
         params,

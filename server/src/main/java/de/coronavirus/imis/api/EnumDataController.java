@@ -1,14 +1,18 @@
 package de.coronavirus.imis.api;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -27,28 +31,25 @@ import org.springframework.scheduling.TriggerContext;
 
 @RestController
 @RequestMapping("/api/enum-data")
-@RequiredArgsConstructor
 public class EnumDataController {
-
-  private final TaskScheduler taskScheduler;
-  private final ObjectMapper jsonMapper;
-  private final ClientHttpRequestFactory requestFactory;
-
-  private static final long HI_COMPANIES_CACHE_LIFETIME_MILLIS = 60 * 60 * 1000;
+  private static final Pattern RE_TEXTFILE_ENTRY = Pattern.compile("^\\s*(?!#)(?<ENTRY>.*?)\\s*$");
   private List<String> healthInsuranceCompanies;
 
   @Autowired
-  public EnumDataController(TaskScheduler taskScheduler, ObjectMapper jsonMapper) {
-    this.taskScheduler = taskScheduler;
-    this.jsonMapper = jsonMapper;
+  public EnumDataController() {
+    try (BufferedReader hicReader = new BufferedReader(new InputStreamReader(
+      this.getClass().getClassLoader().getResourceAsStream("health_insurance_companies.txt"), "UTF-8"))) {
 
-    SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-    requestFactory.setConnectTimeout(7000);
-    requestFactory.setReadTimeout(5000);
-    this.requestFactory = requestFactory;
+      this.healthInsuranceCompanies = hicReader.lines()
+        .filter((String line) -> RE_TEXTFILE_ENTRY.matcher(line).matches())
+        .map(String::trim)
+        .sorted()
+        .collect(Collectors.toList());
 
-    FetchHealthInsuranceCompanies fhicTask = new FetchHealthInsuranceCompanies();
-    this.taskScheduler.schedule(fhicTask, fhicTask.new TaskTrigger());
+    } catch (IOException ioe) {
+      ioe.printStackTrace();
+      this.healthInsuranceCompanies = new ArrayList<>();
+    }
   }
 
   @GetMapping("/health-insurance-companies")
@@ -72,61 +73,5 @@ public class EnumDataController {
     }
 
     return result.collect(Collectors.toList());
-  }
-
-  public class FetchHealthInsuranceCompanies implements Runnable {
-    private boolean lastRunSuccessful;
-
-    public void run() {
-      try {
-        // Fetch recent data
-        ClientHttpResponse companiesResponse = EnumDataController.this.requestFactory.createRequest(
-          new URI("https://www.gesetzlichekrankenkassen.de/ajax/kassenliste.php"),
-          HttpMethod.GET
-        ).execute();
-
-        // Parse as JSON
-        Charset encoding = companiesResponse.getHeaders().getContentType().getCharset();
-        ExternalHICompanyEntry[] companyEntries =
-          jsonMapper.readValue(new InputStreamReader(companiesResponse.getBody(), encoding), ExternalHICompanyEntry[].class);
-
-        companiesResponse.close();
-
-        // Convert
-        healthInsuranceCompanies = Arrays.stream(companyEntries)
-          .map((var entry) -> entry.getLabel())
-          .collect(Collectors.toList());
-
-        this.lastRunSuccessful = true;
-        return;
-
-      } catch (URISyntaxException use) {
-        // Should never happen, since hardcoded URI used
-      } catch (IOException ioe) {
-        ioe.printStackTrace();
-      } finally {
-        this.lastRunSuccessful = false;
-      }
-    }
-
-    public class TaskTrigger implements Trigger {
-      public Date nextExecutionTime(TriggerContext triggerContext) {
-        if (triggerContext.lastCompletionTime() == null) {
-          return new Date();
-
-        } else {
-          double factor = lastRunSuccessful ? 1.0 : 0.2;
-          return new Date(Math.max(60 * 1000,
-            triggerContext.lastCompletionTime().getTime() +
-            HI_COMPANIES_CACHE_LIFETIME_MILLIS));
-        }
-      }
-    }
-  }
-
-  @Data
-  public static class ExternalHICompanyEntry {
-    private String kid;
-    private String label;
   }
 }

@@ -158,7 +158,14 @@
           <!-- Finish -->
           <div :style="{ display: current === 4 ? 'block' : 'none' }">
             <div v-if="!createdPatient">
-              <h2>Abschließen</h2>
+              <h2>
+                <a-icon
+                  :style="{ fontSize: '36px', color: 'lightgray' }"
+                  style="margin-right: 7px;"
+                  type="check-circle"
+                />
+                Abschließen
+              </h2>
               <a-form-item>
                 <a-checkbox @change="onCheckedChange">
                   Ich erkläre mich mit der Übermittlung meiner Daten zur

@@ -10,7 +10,11 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -29,26 +33,32 @@ import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.TriggerContext;
 
+import de.coronavirus.imis.repositories.PatientRepository;
+
 @RestController
 @RequestMapping("/api/enum-data")
 public class EnumDataController {
+  private final PatientRepository patientRepo;
+
   private static final Pattern RE_TEXTFILE_ENTRY = Pattern.compile("^\\s*(?!#)(?<ENTRY>.*?)\\s*$");
-  private List<String> healthInsuranceCompanies;
+  private Set<String> predefinedHealthInsuranceCompanies;
 
   @Autowired
-  public EnumDataController() {
+  public EnumDataController(PatientRepository patientRepo) {
+    this.patientRepo = patientRepo;
+
     try (BufferedReader hicReader = new BufferedReader(new InputStreamReader(
       this.getClass().getClassLoader().getResourceAsStream("health_insurance_companies.txt"), "UTF-8"))) {
 
-      this.healthInsuranceCompanies = hicReader.lines()
+      this.predefinedHealthInsuranceCompanies = hicReader.lines()
         .filter((String line) -> RE_TEXTFILE_ENTRY.matcher(line).matches())
         .map(String::trim)
         .sorted()
-        .collect(Collectors.toList());
+        .collect(Collectors.toSet());
 
     } catch (IOException ioe) {
       ioe.printStackTrace();
-      this.healthInsuranceCompanies = new ArrayList<>();
+      this.predefinedHealthInsuranceCompanies = new HashSet<>();
     }
   }
 
@@ -57,19 +67,20 @@ public class EnumDataController {
     @RequestParam(required = false) String search,
     @RequestParam(required = false) Optional<Integer> count) {
 
-    Stream<String> result;
-    if (this.healthInsuranceCompanies != null) {
-      result = this.healthInsuranceCompanies.parallelStream();
+    SortedSet<String> healthInsuranceCompanies = new TreeSet<>();
+    healthInsuranceCompanies.addAll(this.predefinedHealthInsuranceCompanies);
+    healthInsuranceCompanies.addAll(this.patientRepo.findDistinctInsuranceCompanies());
 
-      if (search != null) {
-        result = result.filter((var companyName) -> companyName.contains(search));
-      }
+    Stream<String> result = healthInsuranceCompanies.parallelStream();
 
-      if (count.isPresent()) {
-        result = result.limit(count.get());
-      }
-    } else {
-      result = Arrays.stream(new String[0]);
+    if (search != null) {
+      result = result.filter((var companyName) -> companyName.contains(search));
+    }
+
+    result = result.sorted();
+
+    if (count.isPresent()) {
+      result = result.limit(count.get());
     }
 
     return result.collect(Collectors.toList());

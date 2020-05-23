@@ -1,6 +1,7 @@
 {
   "city": "Kirkel",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1925-02-15",
   "email": "c.bauer@example.de",
   "firstName": "Cornelius",

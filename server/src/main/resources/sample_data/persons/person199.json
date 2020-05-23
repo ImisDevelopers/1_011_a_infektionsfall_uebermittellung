@@ -1,6 +1,7 @@
 {
   "city": "Riegelsberg",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1933-11-10",
   "email": "f.lange@example.de",
   "firstName": "Franz",

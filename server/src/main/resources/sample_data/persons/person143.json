@@ -1,6 +1,7 @@
 {
   "city": "Saarbr\u00fccken",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1931-01-23",
   "email": "k.peters@example.de",
   "firstName": "Kai",

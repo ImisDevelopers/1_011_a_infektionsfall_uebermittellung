@@ -1,6 +1,7 @@
 {
   "city": "Homburg",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1929-07-05",
   "email": "f.lange@example.de",
   "firstName": "Fin",

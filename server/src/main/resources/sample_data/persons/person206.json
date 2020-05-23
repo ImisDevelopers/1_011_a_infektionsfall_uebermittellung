@@ -1,6 +1,7 @@
 {
   "city": "Riegelsberg",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1961-04-24",
   "email": "k.schulze@example.de",
   "firstName": "Kai",

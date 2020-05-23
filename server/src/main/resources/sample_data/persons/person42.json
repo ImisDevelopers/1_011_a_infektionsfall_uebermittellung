@@ -1,6 +1,7 @@
 {
   "city": "Kirkel",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1934-01-19",
   "email": "m.winkler@example.de",
   "firstName": "Matthias",

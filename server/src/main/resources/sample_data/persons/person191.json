@@ -1,6 +1,7 @@
 {
   "city": "Kirkel",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1944-08-26",
   "email": "f.lange@example.de",
   "firstName": "Franz",

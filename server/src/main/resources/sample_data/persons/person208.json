@@ -1,6 +1,7 @@
 {
   "city": "Saarbr\u00fccken",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1932-12-09",
   "email": "p.schulz@example.de",
   "firstName": "Peter",

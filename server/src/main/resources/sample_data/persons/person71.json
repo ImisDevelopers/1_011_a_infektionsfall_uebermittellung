@@ -1,6 +1,7 @@
 {
   "city": "Saarlouis",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1940-06-03",
   "email": "h.winter@example.de",
   "firstName": "Hans",

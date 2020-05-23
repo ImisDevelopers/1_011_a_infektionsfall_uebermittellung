@@ -1,6 +1,7 @@
 {
   "city": "Homburg",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1983-08-04",
   "email": "k.winkler@example.de",
   "firstName": "Kai",

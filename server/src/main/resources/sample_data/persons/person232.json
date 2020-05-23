@@ -1,6 +1,7 @@
 {
   "city": "Bous",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1993-04-30",
   "email": "k.wagner@example.de",
   "firstName": "Karl",

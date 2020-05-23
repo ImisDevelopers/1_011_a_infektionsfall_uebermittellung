@@ -875,6 +875,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags exposure-contact-controller
+     * @name getExposureSourceContactsForPatientsUsingPOST
+     * @summary getExposureSourceContactsForPatients
+     * @request POST:/api/exposure-contacts/by-contact/
+     * @secure
+     */
+    getExposureSourceContactsForPatientsUsingPost: (patientIds: string[], params?: RequestParams) =>
+      this.request<Record<string, ExposureContactFromServer[]>, any>(
+        `/api/exposure-contacts/by-contact/`,
+        "POST",
+        params,
+        patientIds,
+        true,
+      ),
+
+    /**
+     * @tags exposure-contact-controller
      * @name getExposureSourceContactsForPatientUsingGET
      * @summary getExposureSourceContactsForPatient
      * @request GET:/api/exposure-contacts/by-contact/{id}
@@ -974,6 +990,20 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getLogUsingGet: (id: string, params?: RequestParams) =>
       this.request<Incident[], any>(`/api/incidents/${id}/log`, "GET", params, null, true),
+
+    /**
+     * @tags incident-controller
+     * @name getPatientsCurrentByTypeUsingPOST
+     * @summary getPatientsCurrentByType
+     * @request POST:/api/incidents/{type}/patient
+     * @secure
+     */
+    getPatientsCurrentByTypeUsingPost: (
+      type: "test" | "quarantine" | "administrative",
+      patientIds: string[],
+      params?: RequestParams,
+    ) =>
+      this.request<Record<string, Incident[]>, any>(`/api/incidents/${type}/patient`, "POST", params, patientIds, true),
 
     /**
      * @tags incident-controller

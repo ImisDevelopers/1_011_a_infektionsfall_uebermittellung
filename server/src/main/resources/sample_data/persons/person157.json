@@ -1,6 +1,7 @@
 {
   "city": "Merzig",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1972-04-10",
   "email": "m.berger@example.de",
   "firstName": "Marie",

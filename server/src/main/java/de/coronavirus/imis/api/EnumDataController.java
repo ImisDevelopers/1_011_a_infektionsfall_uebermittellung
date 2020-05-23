@@ -52,7 +52,7 @@ public class EnumDataController {
   }
 
   @GetMapping("/health-insurance-companies")
-  public Stream<String> getHealthInsuranceCompanies(
+  public List<String> getHealthInsuranceCompanies(
     @RequestParam(required = false) String search,
     @RequestParam(required = false) Optional<Integer> count) {
 
@@ -71,7 +71,7 @@ public class EnumDataController {
       result = Arrays.stream(new String[0]);
     }
 
-    return result;
+    return result.collect(Collectors.toList());
   }
 
   public class FetchHealthInsuranceCompanies implements Runnable {

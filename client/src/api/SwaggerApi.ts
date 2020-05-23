@@ -22,6 +22,10 @@ export interface AuthRequestDTO {
   username?: string;
 }
 
+export interface BulkInsertOptions {
+  allowOverride?: boolean;
+}
+
 export interface ChangePasswordDTO {
   newPassword?: string;
   oldPassword?: string;
@@ -644,6 +648,18 @@ export interface View {
   contentType?: string;
 }
 
+export interface BulkRequest_BulkInsertOptions_ExposureContactToServer_ {
+  items?: ExposureContactToServer[];
+  options?: BulkInsertOptions;
+}
+
+export interface ItemStatus_ExposureContactFromServer_string_string_ {
+  details?: "CREATE" | "OVERRIDE";
+  error?: string;
+  result?: ExposureContactFromServer;
+  success?: boolean;
+}
+
 export type Map_string_Link_ = Record<string, Link>;
 
 export type RequestParams = Omit<RequestInit, "body" | "method"> & {
@@ -854,6 +870,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, true),
 
     /**
+     * @tags enum-data-controller
+     * @name getHealthInsuranceCompaniesUsingGET
+     * @summary getHealthInsuranceCompanies
+     * @request GET:/api/enum-data/health-insurance-companies
+     * @secure
+     */
+    getHealthInsuranceCompaniesUsingGet: (query?: { count?: string; search?: string }, params?: RequestParams) =>
+      this.request<string[], any>(
+        `/api/enum-data/health-insurance-companies${this.addQueryParams(query)}`,
+        "GET",
+        params,
+        null,
+        true,
+      ),
+
+    /**
      * @tags exposure-contact-controller
      * @name createExposureContactUsingPOST
      * @summary createExposureContact
@@ -872,6 +904,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     updateExposureContactUsingPut: (contact: ExposureContactToServer, params?: RequestParams) =>
       this.request<ExposureContactFromServer, any>(`/api/exposure-contacts`, "PUT", params, contact, true),
+
+    /**
+     * @tags exposure-contact-controller
+     * @name bulkInsertUsingPOST
+     * @summary bulkInsert
+     * @request POST:/api/exposure-contacts/bulk
+     * @secure
+     */
+    bulkInsertUsingPost: (req: BulkRequest_BulkInsertOptions_ExposureContactToServer_, params?: RequestParams) =>
+      this.request<ItemStatus_ExposureContactFromServer_string_string_[], any>(
+        `/api/exposure-contacts/bulk`,
+        "POST",
+        params,
+        req,
+        true,
+      ),
 
     /**
      * @tags exposure-contact-controller
@@ -999,7 +1047,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     getPatientsCurrentByTypeUsingPost: (
-      type: "test" | "quarantine" | "administrative",
+      type: "test" | "quarantine" | "administrative" | "hospitalization",
       patientIds: string[],
       params?: RequestParams,
     ) =>

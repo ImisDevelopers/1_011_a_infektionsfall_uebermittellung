@@ -272,7 +272,9 @@
       <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Krankenkasse (optional)">
-            <a-input
+            <a-auto-complete
+              @search="searchInsuranceCompanies"
+              :dataSource="insuranceCompanies"
               v-decorator="[
                 'insuranceCompany',
                 { initialValue: patientInput.insuranceCompany },
@@ -302,6 +304,7 @@ import {
   RISK_OCCUPATIONS,
   RiskOccupationOption,
 } from '@/models/risk-occupation'
+import Api from '@/api'
 import DateInput from '@/components/DateInput.vue'
 import LocationFormGroup from '@/components/LocationFormGroup.vue'
 import PlzInput from '@/components/PlzInput.vue'
@@ -324,6 +327,7 @@ export interface State {
   initialDateOfBirth: Moment | undefined
   initialDateOfDeath: Moment | undefined
   initialRiskOccupation: string | undefined
+  insuranceCompanies: string[]
 }
 
 export default Vue.extend({
@@ -350,6 +354,7 @@ export default Vue.extend({
       initialDateOfBirth: undefined,
       initialDateOfDeath: undefined,
       initialRiskOccupation: undefined,
+      insuranceCompanies: [],
     }
   },
   components: {
@@ -382,6 +387,11 @@ export default Vue.extend({
     },
     diedChanged(event: Event) {
       this.showDateOfDeath = (event.target as any).value
+    },
+    async searchInsuranceCompanies(search: string) {
+      this.insuranceCompanies = await Api.getHealthInsuranceCompaniesUsingGet({
+        search,
+      })
     },
   },
 })

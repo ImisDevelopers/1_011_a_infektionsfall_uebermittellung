@@ -1,13 +1,20 @@
-
 const regexEscapables = /[.*+\-?^${}()|[\]\\]/g
 function escapeRegExp(val: string): string {
-  return val.replace(regexEscapables, '\\$&'); // $& means the whole matched string
+  return val.replace(regexEscapables, '\\$&') // $& means the whole matched string
 }
 
 /**
  * Options for TextMatcher.
  */
 export interface TextMatcherOptions {
+  /**
+   * Whether only a single word is required for a match. Only effective if used
+   * together with `separateWords` option.
+   */
+  anyMatches: boolean
+  /**
+   * Whether to match ignoring casing.
+   */
   caseInsensitive: boolean
   /**
    * Whether spaces and punctuation separate words that are
@@ -31,12 +38,14 @@ export interface TextMatcherResult {
  * words and a naive match score calculation.
  */
 export class TextMatcher {
-  searchRegex: RegExp
+  // All regexps in this array need to match for an overall match
+  searchRegex: RegExp[]
   options: TextMatcherOptions
 
-  constructor (search: string, options?: TextMatcherOptions) {
+  constructor(search: string, options?: Partial<TextMatcherOptions>) {
     // Retrieve option set to use
     this.options = {
+      anyMatches: false,
       caseInsensitive: true,
       separateWords: true,
       withScore: false,
@@ -46,31 +55,40 @@ export class TextMatcher {
       Object.assign(this.options, options)
     }
 
-    // Create a list of all search words to process
-    let searchParts = [] as string[]
-    if (this.options.separateWords) {
-      search.split(/\s+/g).forEach(part => {
-        if (part) {
-          part.split(/[-+,.]/g).forEach(part => {
-            if (part) searchParts.push(part)
-          })
-        }
-      })
+    let patterns = [] as string[][]
+    if (!this.options.separateWords) {
+      patterns = [[search]]
     } else {
-      searchParts = [search]
+      // Create a list of all search words to process
+      const searchParts = [] as string[]
+
+      search.split(/\s+|[-+,.]/g).forEach((part) => {
+        if (part) searchParts.push(part)
+      })
+
+      if (this.options.anyMatches) {
+        // Single regexp, matching any word
+        patterns.push(searchParts)
+      } else {
+        // One regexp for each word
+        patterns = searchParts.map((part) => [part])
+      }
     }
 
-    // Construct RegExp used for matching
-    let rawRegex = searchParts
-      .map(entry => `(${escapeRegExp(entry)})`)
-      .join('|')
+    // Construct RegExps used for matching
+    this.searchRegex = patterns.map((searchParts) => {
+      let rawRegex = searchParts
+        .map((entry) => `(${escapeRegExp(entry)})`)
+        .join('|')
 
-    // This regex structure allows repeated matches
-    rawRegex = `${rawRegex}(?:.*?(?:${rawRegex}))*`
+      // This regex structure allows repeated matches
+      rawRegex = `${rawRegex}(?:.*?(?:${rawRegex}))*`
 
-    this.searchRegex = new RegExp(rawRegex, '' +
-      (this.options.caseInsensitive ? 'i' : ''),
-    )
+      return new RegExp(
+        rawRegex,
+        '' + (this.options.caseInsensitive ? 'i' : '')
+      )
+    })
   }
 
   /**
@@ -79,18 +97,30 @@ export class TextMatcher {
    * also contain a naive score for the match. A higher score should in
    * general refer to a better match.
    */
-  match (text: string): TextMatcherResult {
-    const matchResults = this.searchRegex.exec(text)
+  match(text: string): TextMatcherResult {
+    return this.searchRegex
+      .map((re) => re.exec(text))
+      .map((matchResults) => {
+        let score = 0
+        if (matchResults && this.options.withScore) {
+          // Count the number of groups that matched for score
+          score = matchResults.reduce(
+            (score, match) => score + (match ? 1 : 0),
+            0
+          )
+        }
 
-    let score = 0
-    if (matchResults && this.options.withScore) {
-      // Count the number of groups that matched for score
-      score = matchResults.reduce((score, match) => score + (match ? 1 : 0), 0)
-    }
-
-    return {
-      matches: !!matchResults,
-      score,
-    }
+        return {
+          matches: !!matchResults,
+          score,
+        }
+      })
+      .reduce(
+        (result, matchResult) => ({
+          matches: result.matches && matchResult.matches,
+          score: result.score + matchResult.score,
+        }),
+        { matches: true, score: 0 }
+      )
   }
 }

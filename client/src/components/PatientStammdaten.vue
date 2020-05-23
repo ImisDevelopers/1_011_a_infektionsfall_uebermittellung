@@ -310,7 +310,7 @@ import LocationFormGroup from '@/components/LocationFormGroup.vue'
 import PlzInput from '@/components/PlzInput.vue'
 import { Patient } from '@/api/SwaggerApi'
 import moment, { Moment } from 'moment'
-import { TextMatcher } from '@/util/search'
+import { TextMatcher, TextMatcherResult } from '@/util/search'
 
 /**
  * Autocomplete for Patients
@@ -336,8 +336,9 @@ export default Vue.extend({
   name: 'PatientStammdaten',
   props: ['form', 'showStay', 'showDeath', 'patient'],
   created() {
-    Api.getHealthInsuranceCompaniesUsingGet()
-      .then(companies => this.availableInsuranceCompanies = companies)
+    Api.getHealthInsuranceCompaniesUsingGet().then(
+      (companies) => (this.availableInsuranceCompanies = companies)
+    )
 
     if (this.patient) {
       this.patientInput = this.patient
@@ -397,8 +398,16 @@ export default Vue.extend({
     searchInsuranceCompanies(search: string) {
       const matcher = new TextMatcher(search, { withScore: true })
       this.insuranceCompanies = this.availableInsuranceCompanies
-        .map(company => [company, matcher.match(company)])
+        .map(
+          (company) =>
+            [company, matcher.match(company)] as [string, TextMatcherResult]
+        )
         .filter(([company, matchResult]) => matchResult.matches)
+        // Modify score to match density (score per word)
+        .map(([company, matchResult]) => {
+          matchResult.score /= company.split(/\s+/g).length
+          return [company, matchResult] as [string, TextMatcherResult]
+        })
         .sort((o1, o2) => -1 * (o1[1].score - o2[1].score))
         .map(([company, matchResult]) => company)
     },

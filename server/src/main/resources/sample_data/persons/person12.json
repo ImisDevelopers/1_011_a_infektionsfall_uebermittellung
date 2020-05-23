@@ -1,13 +1,14 @@
 {
-  "city": "Riegelsberg",
+  "city": "St. Wendel",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1974-11-04",
-  "email": "k.winkler@posteo.de",
+  "email": "k.winkler@example.de",
   "firstName": "Konrad",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "I270937380",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Z366467544",
   "lastName": "Winkler",
   "nationality": "deutsch",
   "phoneNumber": "5869232260",
@@ -17,7 +18,7 @@
   "riskAreas": [
     ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
+  "speedOfSymptomsOutbreak": "Langsam",
   "street": "Abbachstra\u00dfe 94",
   "symptoms": [
     "Halschmerzen"

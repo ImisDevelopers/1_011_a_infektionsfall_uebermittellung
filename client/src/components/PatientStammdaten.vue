@@ -2,17 +2,9 @@
   <div class="data-form">
     <div>
       <!-- Vorname / Nachname -->
-      <p style="text-align: center;">Allgemeine Angaben:</p>
-      <a-row>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Titel">
-            <a-input
-              v-decorator="['title', { initialValue: patientInput.title }]"
-            />
-          </a-form-item>
-        </a-col>
-      </a-row>
-      <a-row>
+      <h4>Allgemeine Angaben</h4>
+
+      <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Vorname">
             <a-input
@@ -51,8 +43,30 @@
         </a-col>
       </a-row>
 
+      <!-- Staatsangehörigkeit -->
+      <a-row :gutter="12">
+        <a-col :lg="12" :sm="24">
+          <a-form-item label="Staatsangehörigkeit">
+            <a-input
+              v-decorator="[
+                'nationality',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Staatsangehörigkeit angeben',
+                    },
+                  ],
+                  initialValue: patientInput.nationality || 'deutsch',
+                },
+              ]"
+            />
+          </a-form-item>
+        </a-col>
+      </a-row>
+
       <!-- Geschlecht / Geburtsdatum -->
-      <a-row>
+      <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Mediz. Geschlecht">
             <a-radio-group
@@ -97,29 +111,7 @@
         </a-col>
       </a-row>
 
-      <!-- Staatsangehörigkeit -->
-      <a-row>
-        <a-col :lg="12" :sm="24">
-          <a-form-item label="Staatsangehörigkeit">
-            <a-input
-              v-decorator="[
-                'nationality',
-                {
-                  rules: [
-                    {
-                      required: true,
-                      message: 'Bitte Staatsangehörigkeit angeben',
-                    },
-                  ],
-                  initialValue: patientInput.nationality || 'deutsch',
-                },
-              ]"
-            />
-          </a-form-item>
-        </a-col>
-      </a-row>
-
-      <a-row v-if="showDeath">
+      <a-row :gutter="12" v-if="showDeath">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Verstorben">
             <a-radio-group
@@ -157,15 +149,13 @@
 
       <!-- Wohnsitz -->
       <a-divider />
-      <p style="text-align: center;">Wohnort:</p>
+      <h4>Wohnort</h4>
       <location-form-group :form="form" :data="patient" :required="true" />
 
       <!-- Aufenthaltsort -->
       <div v-if="showStay">
         <a-divider />
-        <p style="text-align: center;">
-          Aufenthaltsort, falls von Wohnort abweichend:
-        </p>
+        <h4>Aufenthaltsort, falls von Wohnort abweichend</h4>
         <location-form-group
           :data="patient"
           :required="false"
@@ -175,8 +165,8 @@
 
       <!-- Email / Telefon -->
       <a-divider />
-      <p style="text-align: center;">Kommunikation und Sonstiges:</p>
-      <a-row>
+      <h4>Kommunikation und Beruf</h4>
+      <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="E-mail">
             <a-input
@@ -216,35 +206,38 @@
       </a-row>
 
       <!-- Beruf / Arbeitgeber -->
-      <a-row>
+      <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Beruf">
-            <div>
-              <a-select
-                @select="riskOccupationSelected"
-                v-decorator="[
-                  'riskOccupation',
-                  {
-                    rules: [
-                      {
-                        required: true,
-                        message: 'Bitte Beruf eingeben',
-                      },
-                    ],
-                    initialValue: initialRiskOccupation,
-                  },
-                ]"
+            <a-select
+              @select="riskOccupationSelected"
+              v-decorator="[
+                'riskOccupation',
+                {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Bitte Beruf eingeben',
+                    },
+                  ],
+                  initialValue: initialRiskOccupation,
+                },
+              ]"
+            >
+              <a-select-option
+                :key="riskOccupation.value"
+                v-for="riskOccupation in riskOccupations"
               >
-                <a-select-option
-                  :key="riskOccupation.value"
-                  v-for="riskOccupation in riskOccupations"
-                >
-                  {{ riskOccupation.label }}
-                </a-select-option>
-              </a-select>
+                {{ riskOccupation.label }}
+              </a-select-option>
+            </a-select>
+            <transition name="fading">
               <a-input
                 ref="occupation"
+                style="margin-top: 12px;"
                 :disabled="disableOccupation"
+                v-show="!disableOccupation"
+                placeholder="Berufsbezeichnung"
                 v-decorator="[
                   'occupation',
                   {
@@ -257,7 +250,7 @@
                   },
                 ]"
               />
-            </div>
+            </transition>
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
@@ -272,8 +265,11 @@
         </a-col>
       </a-row>
 
+      <a-divider />
+
       <!-- Krankenkasse / Versichertennr -->
-      <a-row>
+      <h4>Krankenkasse</h4>
+      <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Krankenkasse (optional)">
             <a-input
@@ -320,6 +316,7 @@ import moment, { Moment } from 'moment'
  */
 
 export interface State {
+  // TODO disableOccupation should be a computed property and not be set on change
   disableOccupation: boolean
   riskOccupations: RiskOccupationOption[]
   showDateOfDeath: boolean

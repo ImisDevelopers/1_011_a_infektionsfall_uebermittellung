@@ -102,14 +102,14 @@
           >Zur Live-Demo
         </a-button>
       </router-link>
-      <!--</div>
-    <div class="second-section">
+    </div>
+    <!--<div class="second-section">
       <h1 style="margin: 0;">
         Der IMIS-Meldeprozess - Einfach, Schnell, Zentral
       </h1>
       <img src="../assets/imis-workflow.png" />
     </div>
-    <div class="link-section">-->
+    <div class="link-section">
       <a-button
         block
         href="https://drive.google.com/file/d/1hoQtGvO21p7_pQ63iDLoWzXB-FFfvKQJ/view?usp=sharing"
@@ -124,7 +124,7 @@
         >
         <span class="hidden-desktop">Zur Prozessübersicht</span>
       </a-button>
-    </div>
+    </div>-->
     <div class="solution-enabler-section">
       <h1>Gemeinsam gegen COVID-19</h1>
       <h2 style="max-width: 800px; text-align: center;">

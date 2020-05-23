@@ -2,7 +2,7 @@
   <div class="location-form-group">
     <slot>
       <!-- Straße / Hausnummer -->
-      <a-row>
+      <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Straße, Hausnummer" :itemSelfUpdate="true">
             <a-input-group compact>
@@ -33,7 +33,7 @@
               <a-auto-complete
                 ref="zip"
                 class="custom-input"
-                style="width: 50pt;"
+                style="width: 60pt;"
                 placeholder="PLZ"
                 :dataSource="zips"
                 optionLabelProp="value"
@@ -77,7 +77,7 @@
           </a-form-item>
         </a-col>
       </a-row>
-      <a-row>
+      <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Land" :itemSelfUpdate="true">
             <a-select

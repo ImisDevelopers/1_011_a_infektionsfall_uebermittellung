@@ -1,29 +1,31 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": false,
-  "dateOfBirth": "1925-05-08",
-  "email": "e.winkler@gmail.de",
-  "firstName": "Emma",
-  "fluImmunization": true,
+  "city": "P\u00fcttlingen",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1965-02-18",
+  "email": "o.weber@example.de",
+  "firstName": "Olivia",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "M659116527",
-  "lastName": "Winkler",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "D241246317",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "84010460843",
+  "phoneNumber": "8125205664",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    ""
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete 43",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Waldstra\u00dfe 95",
   "symptoms": [
-    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
     "Fieber",
-    "Atemschwierigkeiten"
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "666102"
+  "weakenedImmuneSystem": false,
+  "zip": "661042"
 }

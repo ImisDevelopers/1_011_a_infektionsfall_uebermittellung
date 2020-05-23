@@ -1,27 +1,26 @@
 {
-  "city": "Bous",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
-  "dateOfBirth": "1951-12-13",
-  "email": "e.berger@gmx.de",
-  "firstName": "Emma",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1942-11-20",
+  "email": "s.schulze@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "U919505668",
-  "lastName": "Berger",
+  "insuranceMembershipNumber": "C114810579",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "11088924141",
+  "phoneNumber": "1805526965",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hafenstra\u00dfe 26",
-  "symptoms": [
-    "Atemschwierigkeiten"
-  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Poststra\u00dfe 87",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "66285"
+  "zip": "66271"
 }

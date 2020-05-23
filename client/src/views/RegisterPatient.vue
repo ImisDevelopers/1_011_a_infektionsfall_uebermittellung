@@ -1,84 +1,53 @@
 <template>
   <div class="wrapper register-patient-container">
     <!-- Patient successfully created info -->
-    <div
-      style="display: flex; justify-content: center; text-align: center;"
+
+    <a-page-header
+      title="Patient wurde erfolgreich registriert"
+      :ghost="false"
       v-if="createdPatient"
     >
-      <a-card style="max-width: 600px; margin-bottom: 25px;">
-        <div style="display: flex; flex-direction: column; position: relative;">
-          <a-icon
-            @click="createdPatient = null"
-            style="top: 0; right: 0; position: absolute; cursor: pointer;"
-            type="close"
-          />
-          <div style="display: flex; align-items: center; margin: 10px;">
-            <a-icon
-              :style="{ fontSize: '38px', color: '#08c' }"
-              style="margin: 0 25px 0 0;"
-              type="check-circle"
-            />
-            <h3 style="margin-bottom: 0;">
-              Patient/in wurde erfolgreich registriert.
-            </h3>
-          </div>
-          <table
-            style="
-              border-collapse: separate;
-              border-spacing: 15px 5px;
-              text-align: left;
-            "
-          >
-            <tbody>
-              <tr>
-                <td>Name:</td>
-                <td>
-                  {{ createdPatient.firstName }} {{ createdPatient.lastName }}
-                </td>
-              </tr>
-              <tr>
-                <td>Patienten-ID:</td>
-                <td>{{ createdPatient.id }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div style="margin-top: 15px;">
-            <router-link
-              :to="{
-                name: 'patient-detail',
-                params: { id: createdPatient.id },
-              }"
-              style="margin-right: 15px;"
-            >
-              <a-button type="primary">
-                Patienten/in einsehen
-              </a-button>
-            </router-link>
-            <router-link :to="{ name: 'register-test' }">
-              <a-button type="primary">
-                Probe zuordnen
-              </a-button>
-            </router-link>
-          </div>
-        </div>
-      </a-card>
-    </div>
+      <template slot="extra">
+        <router-link :to="{ name: 'register-test' }">
+          <a-button>
+            Probe zuordnen
+          </a-button>
+        </router-link>
+        <router-link
+          :to="{
+            name: 'patient-detail',
+            params: { id: createdPatient.id },
+          }"
+        >
+          <a-button>
+            Patienten/in einsehen
+          </a-button>
+        </router-link>
+        <a-button type="primary" @click="createdPatient = null">
+          Neuen Patienten registrieren
+        </a-button>
+      </template>
+      <a-descriptions size="small" :column="1">
+        <a-descriptions-item label="Patienten-ID">
+          {{ createdPatient.id }}
+        </a-descriptions-item>
+        <a-descriptions-item label="Name">
+          {{ createdPatient.firstName }} {{ createdPatient.lastName }}
+        </a-descriptions-item>
+      </a-descriptions>
+    </a-page-header>
 
     <!-- Patient Registration Form -->
-    <div>
-      <h3>
-        Registrieren Sie hier neue Patienten in IMIS. Bitte erfassen Sie die
-        nachfolgenden Daten so vollständig wie möglich. Pflichtangaben sind mit
-        "*" markiert.
-      </h3>
+    <div v-if="!createdPatient">
+      <a-page-header
+        title="Patient Registrieren"
+        sub-title="Bitte erfassen Sie
+      die nachfolgenden Daten so vollständig wie möglich. Pflichtangaben sind
+      mit '*' markiert."
+        style="padding-left: 0; padding-right: 0;"
+      />
 
-      <a-form
-        :form="form"
-        :labelCol="{ span: 8 }"
-        :layout="'horizontal'"
-        :wrapperCol="{ span: 16 }"
-        @submit.prevent="handleSubmit"
-      >
+      <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
         <a-collapse defaultActiveKey="1">
           <!-- Stammdaten -->
           <a-collapse-panel header="Personendaten" key="1">
@@ -259,9 +228,9 @@
 
           <!-- Krankheitsdetails -->
           <a-collapse-panel header="Krankheit und Zustand" key="5">
-            <a-row>
-              <a-col :span="1"></a-col>
-              <a-col :span="8">
+            <h4>Erkrankung</h4>
+            <a-row :gutter="12">
+              <a-col :md="12">
                 <a-form-item label="Art der Erkrankung">
                   <a-select
                     placeholder="Bitte wählen..."
@@ -282,7 +251,7 @@
                   </a-select>
                 </a-form-item>
               </a-col>
-              <a-col :span="8">
+              <a-col :md="12">
                 <a-form-item label="Fallstatus">
                   <a-select
                     placeholder="Status"
@@ -314,9 +283,8 @@
                 </a-form-item>
               </a-col>
             </a-row>
-            <a-row>
-              <a-col :span="1"></a-col>
-              <a-col :span="8">
+            <a-row :gutter="12">
+              <a-col :md="12">
                 <a-form-item label="Erkrankungsdatum">
                   <DateInput
                     v-decorator="[
@@ -334,7 +302,7 @@
                   />
                 </a-form-item>
               </a-col>
-              <a-col :span="8">
+              <a-col :md="12">
                 <a-form-item label="Meldedatum">
                   <DateInput
                     v-decorator="[
@@ -353,36 +321,46 @@
                 </a-form-item>
               </a-col>
             </a-row>
-            <a-row>
-              <a-col :span="2" />
-              <a-col :span="16">
-                <div style="display: flex; align-items: center;">
-                  <a-form-item :wrapperCol="{ span: 24 }">
-                    <a-checkbox
-                      :checked="!disableHospitalization"
-                      @change="hospitalizationChanged"
-                    >
-                      Patient/in ist hospitalisiert
-                    </a-checkbox>
-                  </a-form-item>
+
+            <a-divider />
+
+            <h4>Hospitalisierung</h4>
+            <a-row :gutter="12">
+              <a-col :md="12">
+                <a-form-item>
+                  <a-checkbox v-model="patientHospitalized">
+                    Patient/in ist hospitalisiert
+                  </a-checkbox>
+                </a-form-item>
+              </a-col>
+              <a-col :md="12">
+                <a-form-item label="Datum der Hospitalisierung">
                   <DateInput
-                    :decorator="['dateOfHospitalization']"
-                    :disabled="disableHospitalization"
+                    v-decorator="[
+                      'dateOfHospitalization',
+                      {
+                        rules: [
+                          {
+                            required: patientHospitalized,
+                            message: 'Bitte Datum wählen',
+                          },
+                        ],
+                        initialValue: today,
+                      },
+                    ]"
+                    :disabled="!patientHospitalized"
                     label="Seit"
                     style="flex: 0 1 400px;"
                   />
-                  <a-form-item
-                    :wrapperCol="{ span: 24 }"
-                    style="padding-left: 15px;"
+                </a-form-item>
+                <a-form-item>
+                  <a-checkbox
+                    v-decorator="['onIntensiveCareUnit']"
+                    :disabled="!patientHospitalized"
                   >
-                    <a-checkbox
-                      :decorator="['onIntensiveCareUnit']"
-                      :disabled="disableHospitalization"
-                    >
-                      Auf der Intensivstation
-                    </a-checkbox>
-                  </a-form-item>
-                </div>
+                    Auf der Intensivstation
+                  </a-checkbox>
+                </a-form-item>
               </a-col>
             </a-row>
           </a-collapse-panel>
@@ -432,7 +410,7 @@ interface State {
   showOtherSymptoms: boolean
   showOtherPreIllnesses: boolean
   disableExposureLocation: boolean
-  disableHospitalization: boolean
+  patientHospitalized: boolean
   today: Moment
 }
 
@@ -455,7 +433,7 @@ export default Vue.extend({
       disableExposureLocation: true,
       showOtherSymptoms: false,
       showOtherPreIllnesses: false,
-      disableHospitalization: true,
+      patientHospitalized: false,
       today: moment(),
     }
   },
@@ -494,7 +472,7 @@ export default Vue.extend({
           request.dateOfDeath = request.dateOfDeath.format('YYYY-MM-DD')
         }
 
-        if (!this.disableHospitalization) {
+        if (this.patientHospitalized) {
           request.dateOfHospitalization = values.dateOfHospitalization.format(
             'YYYY-MM-DD'
           )
@@ -525,8 +503,7 @@ export default Vue.extend({
           .then((patient: Patient) => {
             this.form.resetFields()
             this.createdPatient = patient as any
-            this.disableExposureLocation = true
-            this.disableHospitalization = true
+            this.patientHospitalized = false
             this.showOtherSymptoms = false
             this.form.setFieldsValue({
               symptomsOther: undefined,
@@ -564,15 +541,11 @@ export default Vue.extend({
         'CONTACT_WITH_CORONA_CASE'
       )
     },
-    hospitalizationChanged(event: Event) {
-      const target = event.target as any
-      this.disableHospitalization = !target.checked
-    },
   },
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .register-patient-container {
   .no-double-colon-form-field {
     .ant-form-item-label {
@@ -590,12 +563,10 @@ export default Vue.extend({
     margin: 1rem 0;
   }
 }
-</style>
 
-<style scoped lang="scss">
 .wrapper {
-  text-align: left;
-  padding: 2%;
+  margin: 0 auto;
   width: 100%;
+  max-width: 1000px;
 }
 </style>

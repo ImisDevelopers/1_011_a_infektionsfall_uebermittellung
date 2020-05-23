@@ -1,27 +1,32 @@
 {
-  "city": "St. Ingbert",
+  "city": "Sulzbach",
   "coronaContacts": true,
-  "dateOfBirth": "1930-01-05",
-  "email": "m.mueller@t-online.de",
-  "firstName": "Marie",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "H795873638",
-  "lastName": "M\u00fcller",
+  "country": "DE",
+  "dateOfBirth": "1947-11-28",
+  "email": "p.lange@example.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "D841809534",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "55901056165",
+  "phoneNumber": "6986407905",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
     "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hauptstra\u00dfe 52",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 73",
   "symptoms": [
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Schnupfen",
     "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "665010"
+  "zip": "66659"
 }

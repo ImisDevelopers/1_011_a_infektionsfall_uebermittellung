@@ -39,7 +39,7 @@ export default mixins(FormControlMixin).extend({
     value: { default: undefined },
     open: { default: false },
     placeholder: { default: 'z.B. 28.02.1986' },
-    format: { default: 'DD.MM.YYYY' },
+    format: { default: 'D.M.YYYY' },
     defaultValue: { default: undefined },
   },
   data(): State {

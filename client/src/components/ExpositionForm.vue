@@ -4,7 +4,10 @@
     :labelCol="{ div: 24 }"
     :wrapperCol="{ div: 24 }"
   >
-    <a-checkbox-group @change="exposuresChanged" v-decorator="['exposures']">
+    <a-checkbox-group
+      @change="exposuresChanged"
+      v-decorator="['exposures', { initialValue: exposures }]"
+    >
       <a-row>
         <a-col
           :key="exposure.value"
@@ -20,7 +23,7 @@
     <a-checkbox-group
       :disabled="disableExposureLocation"
       style="padding-left: 30px;"
-      v-decorator="['exposureLocation']"
+      v-decorator="['exposureLocation', { initialValue: exposureLocations }]"
     >
       <a-row>
         <a-col
@@ -54,16 +57,42 @@ export interface State {
   EXPOSURES_INTERNAL: Option[]
   EXPOSURE_LOCATIONS: Option[]
   disableExposureLocation: boolean
+  exposures: string[]
+  exposureLocations: string[]
 }
 
 export default Vue.extend({
   name: 'ExpositionForm',
-  props: ['form'],
+  props: ['form', 'patient'],
+  created() {
+    if (this.patient) {
+      const prefix = 'CONTACT_WITH_CORONA'
+      this.patient.riskAreas.forEach((exposure: string) => {
+        let item = EXPOSURES_INTERNAL.find(
+          (exposureInternal) => exposureInternal.value === exposure
+        )
+        if (item) {
+          this.exposures.push(item.value)
+        } else if (exposure.startsWith(prefix)) {
+          item = EXPOSURE_LOCATIONS.find(
+            (exposureLocation) =>
+              prefix + '_' + exposureLocation.value === exposure
+          )
+          if (item) {
+            this.disableExposureLocation = false
+            this.exposureLocations.push(item.value)
+          }
+        }
+      })
+    }
+  },
   data(): State {
     return {
       EXPOSURES_INTERNAL,
       EXPOSURE_LOCATIONS,
       disableExposureLocation: true,
+      exposures: [],
+      exposureLocations: [],
     }
   },
   methods: {

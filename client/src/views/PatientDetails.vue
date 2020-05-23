@@ -12,6 +12,7 @@
           this.loadData()
         }
       "
+      v-if="showChangePatientStammdatenForm"
       :visible="showChangePatientStammdatenForm"
       :patient="patient"
     />
@@ -27,6 +28,7 @@
           this.loadData()
         }
       "
+      v-if="showChangePatientFalldatenForm"
       :visible="showChangePatientFalldatenForm"
       :patient="patient"
     />
@@ -298,10 +300,7 @@
 
           <a-row :gutter="8" style="margin-top: 8px;">
             <a-col :md="8" :span="24">
-              <a-card
-                  align="left"
-                  title="Exposition"
-              >
+              <a-card align="left" title="Exposition">
                 <div v-bind:key="exposure" v-for="exposure in exposures">
                   {{ exposure }}
                 </div>
@@ -506,21 +505,10 @@ import Vue from 'vue'
 import moment, { Moment } from 'moment'
 import Api from '@/api'
 import * as permissions from '@/util/permissions'
-import {
-  ExposureContactFromServer,
-  Incident,
-  LabTest,
-  Patient,
-  Timestamp,
-} from '@/api/SwaggerApi'
+import { ExposureContactFromServer, Incident, LabTest, Patient, Timestamp, } from '@/api/SwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
-import {
-  EventTypeItem,
-  eventTypes,
-  testResults,
-  TestResultType,
-} from '@/models/event-types'
+import { EventTypeItem, eventTypes, testResults, TestResultType, } from '@/models/event-types'
 import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
@@ -530,7 +518,7 @@ import EditExposureContact from '@/components/EditExposureContact.vue'
 import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
 import ChangePatientFalldatenForm from '@/components/ChangePatientFalldatenForm.vue'
-import { EXPOSURES_INTERNAL, EXPOSURE_LOCATIONS } from '@/models/exposures'
+import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -808,17 +796,18 @@ export default Vue.extend({
           return patientSymptom ? patientSymptom.label : symptom
         }) || []
       this.exposures =
-          this.patient.riskAreas?.map((exposure) => {
-            let patientExposure = EXPOSURES_INTERNAL.find(
-                (exposureFind) => exposureFind.value === exposure
+        this.patient.riskAreas?.map((exposure) => {
+          let patientExposure = EXPOSURES_INTERNAL.find(
+            (exposureFind) => exposureFind.value === exposure
+          )
+          if (!patientExposure) {
+            patientExposure = EXPOSURE_LOCATIONS.find(
+              (exposureFind) =>
+                'CONTACT_WITH_CORONA_' + exposureFind.value === exposure
             )
-            if (!patientExposure) {
-              patientExposure = EXPOSURE_LOCATIONS.find(
-                  (exposureFind) => 'CONTACT_WITH_CORONA_CASE_' + exposureFind.value === exposure
-              )
-            }
-            return patientExposure ? patientExposure.label : exposure
-          }) || []
+          }
+          return patientExposure ? patientExposure.label : exposure
+        }) || []
       this.preIllnesses =
         this.patient.preIllnesses?.map((preIllness) => {
           const patientIllness = PRE_ILLNESSES.find(

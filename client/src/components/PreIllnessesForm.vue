@@ -31,11 +31,11 @@
     </a-checkbox-group>
     <div style="display: flex; align-items: center; align-self: stretch;">
       <a-checkbox
-        :checked="showOtherPreIllnesses"
         v-decorator="[
           'showOtherPreIllnesses',
           { initialValue: showOtherPreIllnesses },
         ]"
+        :checked="showOtherPreIllnesses"
         @change="preIllnessesChanged"
         style="flex: 0 0 auto;"
       >
@@ -58,14 +58,6 @@
 import Vue from 'vue'
 import { ADDITIONAL_PRE_ILLNESSES, PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Option } from '@/models'
-import { SYMPTOMS } from '@/models/symptoms'
-
-/**
- * Autocomplete for Patients
- *
- * props:
- * - validation: put in v-decorator object
- */
 
 export interface State {
   PRE_ILLNESSES: Option[]
@@ -82,11 +74,13 @@ export default Vue.extend({
     if (this.patient) {
       const ALL_ILLNESSES = [...PRE_ILLNESSES, ...ADDITIONAL_PRE_ILLNESSES]
       for (const preIllness of this.patient.preIllnesses) {
-        if (ALL_ILLNESSES.some((item) => item.value === preIllness)) {
-          this.preIllnesses.push(preIllness)
-        } else {
-          this.showOtherPreIllnesses = true
-          this.preIllnessesOther = preIllness
+        if (preIllness) {
+          if (ALL_ILLNESSES.some((item) => item.value === preIllness)) {
+            this.preIllnesses.push(preIllness)
+          } else {
+            this.showOtherPreIllnesses = true
+            this.preIllnessesOther = preIllness
+          }
         }
       }
     }

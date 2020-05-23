@@ -13,6 +13,8 @@
     width="1000px"
   >
     <a-form :form="form" :layout="'vertical'" :wrapperCol="{ span: 24 }">
+      <IllnessStatusForm :form="form" :patient="patient" />
+      <a-divider />
       <h4>Symptome</h4>
       <SymptomsForm :form="form" :patient="patient" />
       <a-divider />
@@ -20,7 +22,7 @@
       <PreIllnessesForm :form="form" :patient="patient" />
       <a-divider />
       <h4>Exposition</h4>
-      <ExpositionForm :form="form" />
+      <ExpositionForm :form="form" :patient="patient" />
     </a-form>
   </a-modal>
 </template>
@@ -32,6 +34,8 @@ import { patientMapper } from '@/store/modules/patients.module'
 import SymptomsForm from '@/components/SymptomsForm.vue'
 import PreIllnessesForm from '@/components/PreIllnessesForm.vue'
 import ExpositionForm from '@/components/ExpositionForm.vue'
+import IllnessStatusForm from '@/components/IllnessStatusForm.vue'
+import moment from 'moment'
 
 export default Vue.extend({
   name: 'ChangePatientFalldatenForm',
@@ -40,6 +44,7 @@ export default Vue.extend({
     SymptomsForm,
     PreIllnessesForm,
     ExpositionForm,
+    IllnessStatusForm,
   },
   data() {
     return {
@@ -57,6 +62,57 @@ export default Vue.extend({
           return
         }
         values = { ...this.patient, ...values }
+
+        // Illness and Status
+        if (values.dateOfIllness) {
+          values.dateOfIllness = values.dateOfIllness.format('YYYY-MM-DD')
+        } else {
+          values.dateOfIllness = moment().format('YYYY-MM-DD')
+        }
+        if (values.dateOfReporting) {
+          values.dateOfReporting = values.dateOfReporting.format('YYYY-MM-DD')
+        } else {
+          values.dateOfReporting = moment().format('YYYY-MM-DD')
+        }
+        if (values.patientHospitalized) {
+          values.dateOfHospitalization = values.dateOfHospitalization.format(
+            'YYYY-MM-DD'
+          )
+        } else {
+          values.dateOfHospitalization = null
+          values.onIntensiveCareUnit = null
+        }
+
+        // Symptoms
+        if (!values.symptoms) {
+          values.symptoms = []
+        }
+        if (values.showOtherSymptoms && values.symptomsOther) {
+          values.symptoms.push(values.symptomsOther)
+        }
+
+        // Illnesses
+        if (!values.preIllnesses) {
+          values.preIllnesses = []
+        }
+        if (values.showOtherPreIllnesses && values.preIllnessesOther) {
+          values.preIllnesses.push(values.preIllnessesOther)
+        }
+
+        // Exposures
+        if (values.exposures) {
+          values.riskAreas = values.exposures
+        } else {
+          values.riskAreas = []
+        }
+        if (values.exposureLocation) {
+          values.riskAreas = values.riskAreas.concat(
+            values.exposureLocation.map(
+              (location: string) => 'CONTACT_WITH_CORONA_' + location
+            )
+          )
+        }
+
         Api.updatePatientUsingPut(values)
           .then((updatedPatient) => {
             this.setPatient(updatedPatient)

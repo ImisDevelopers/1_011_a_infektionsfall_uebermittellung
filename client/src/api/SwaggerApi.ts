@@ -94,7 +94,8 @@ export interface CreatePatientDTO {
     | "QUARANTINE_SELECTED"
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -183,7 +184,8 @@ export interface Incident {
     | "QUARANTINE_SELECTED"
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED";
   id?: string;
   patient?: Patient;
   versionTimestamp?: string;
@@ -387,7 +389,8 @@ export interface Patient {
     | "QUARANTINE_SELECTED"
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -433,7 +436,8 @@ export interface PatientEvent {
     | "QUARANTINE_SELECTED"
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED";
   id?: string;
   illness?: "CORONA";
   labTest?: LabTest;
@@ -474,7 +478,8 @@ export interface PatientSearchParamsDTO {
     | "QUARANTINE_SELECTED"
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED";
   phoneNumber?: string;
   quarantineStatus?: Array<
     | "REGISTERED"
@@ -493,6 +498,7 @@ export interface PatientSearchParamsDTO {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED"
   >;
   street?: string;
   zip?: string;
@@ -526,7 +532,8 @@ export interface QuarantineIncident {
     | "QUARANTINE_SELECTED"
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED";
   id?: string;
   patient?: Patient;
   until?: string;
@@ -568,7 +575,8 @@ export interface RequestQuarantineDTO {
     | "QUARANTINE_SELECTED"
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED";
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED";
 }
 
 export interface SendToQuarantineDTO {
@@ -1006,7 +1014,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     getPatientCurrentByTypeUsingGet: (
       id: string,
-      type: "test" | "quarantine" | "administrative",
+      type: "test" | "quarantine" | "administrative" | "hospitalization",
       params?: RequestParams,
     ) => this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}`, "GET", params, null, true),
 
@@ -1017,8 +1025,11 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @request GET:/api/incidents/{type}/patient/{id}/log
      * @secure
      */
-    getPatientLogByTypeUsingGet: (id: string, type: "test" | "quarantine" | "administrative", params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}/log`, "GET", params, null, true),
+    getPatientLogByTypeUsingGet: (
+      id: string,
+      type: "test" | "quarantine" | "administrative" | "hospitalization",
+      params?: RequestParams,
+    ) => this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}/log`, "GET", params, null, true),
 
     /**
      * @tags institution-controller

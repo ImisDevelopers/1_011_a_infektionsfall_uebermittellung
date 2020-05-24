@@ -51,7 +51,7 @@ spring:
     gcp:
       project-id: onyx-yeti-271818
       sql:
-        database-name: staging
+        database-name: pull_requests
         instance-connection-name: onyx-yeti-271818:europe-west3:challenge-11
 management:
   endpoints:

@@ -31,7 +31,13 @@ jobs:
         service_account_key: ${{ secrets.GKE_KEY }}
         project_id: ${{ secrets.GKE_PROJECT_ID }}
     - name: Stop
-      run: gcloud run services delete imis-pr-${PR_NUMBER}
+      run: |
+        gcloud components install beta
+
+        gcloud run services delete imis-pr-${PR_NUMBER}
+
+        gcloud beta run domain-mappings delete --domain=pr${PR_NUMBER}.prs.imis-prototyp.de \
+          --region=europe-west1 --platform=managed
 
   deploy-pr:
     if: github.event.pull_request.closed != true
@@ -97,9 +103,13 @@ jobs:
           --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
           --region=europe-west1
 
+        gcloud beta run services add-iam-policy-binding --region=europe-west1 \
+            -member=allUsers --role=roles/run.invoker imis-pr-417
+
         gcloud beta run domain-mappings create --service=imis-pr-${PR_NUMBER} \
             --domain=pr${PR_NUMBER}.prs.imis-prototyp.de \
             --region=europe-west1 --platform=managed
+
     - name: comment PR
       uses: unsplash/comment-on-pr@master
       env:

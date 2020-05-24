@@ -42,7 +42,6 @@ public class Patient {
 	@OrderBy("eventTimestamp asc")
 	List<PatientEvent> events;
 	@Id
-	@SortableField
 	private String id;
 	@SortableField
 	@Field
@@ -65,7 +64,6 @@ public class Patient {
 	@SortableField
 	@Field
 	private String zip;
-	@SortableField
 	@Field
 	private String city;
 	private String country;

@@ -39,6 +39,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
+    url: jdbc:postgresql:///staging?cloudSqlInstance=onyx-yeti-271818:europe-west3:challenge-11&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres
     initialization-mode: always
   jpa:
     hibernate:
@@ -48,8 +49,7 @@ spring:
       indexBase: /data
   cloud:
     gcp:
-      credentials:
-        location: file:/usr/local/cloud-store/credentials.json
+      project-id: onyx-yeti-271818
       sql:
         database-name: staging
         instance-connection-name: onyx-yeti-271818:europe-west3:challenge-11

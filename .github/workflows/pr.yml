@@ -24,7 +24,7 @@ env:
 jobs:
   stop-pr:
     if: github.event.pull_request.closed == true
-    name: Deploy PR
+    name: Stop PR
     runs-on: ubuntu-latest
     steps:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
@@ -38,7 +38,7 @@ jobs:
 
 
   deploy-pr:
-    if: github.event.pull_request.opened == true
+    if: github.event.pull_request.opened == true || github.event.pull_request.synchronize
     name: Deploy PR
     runs-on: ubuntu-latest
     steps:

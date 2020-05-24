@@ -32,7 +32,7 @@ spring:
             directory_provider: filesystem
             indexBase: build/data/search
 server:
-  port: 8080
+  port: 80
 ---
 spring:
   profiles: production
@@ -58,8 +58,6 @@ management:
     web:
       exposure:
         include: health,info,prometheus
-  server:
-    port: 8080
 ---
 spring:
   profiles: test

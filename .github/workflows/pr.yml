@@ -86,15 +86,13 @@ jobs:
 
         gcloud components install beta
 
-        gcloud run deploy imis-pr-${PR_NUMBER} --image "$IMAGE" \
-          --port=8080 \
+        gcloud beta run deploy imis-pr-${PR_NUMBER} --image "$IMAGE" \
           --platform managed \
           --allow-unauthenticated \
           --max-instances=3 \
-          --memory=350Mi --cpu=1000m \
+          --memory=512Mi --cpu=1000m \
           --concurrency=80 \
-          --port=8080 \
-          --set-env-vars="SPRING_PROFILES_ACTIVE=production,SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD},SPRING_DATASOURCE_USERNAME=postgres,CLOUD_SQL_INSTANCE=challenge-11" \
+          --set-env-vars="SPRING_PROFILES_ACTIVE=production,SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD},CLOUD_SQL_INSTANCE=challenge-11" \
           --set-cloudsql-instances=onyx-yeti-271818:europe-west3:challenge-11 \
           --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
           --region=europe-west1

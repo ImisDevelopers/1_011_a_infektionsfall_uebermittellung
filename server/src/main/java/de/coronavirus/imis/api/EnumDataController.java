@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpMethod;
@@ -41,7 +41,7 @@ public class EnumDataController {
   private final PatientRepository patientRepo;
 
   private static final Pattern RE_TEXTFILE_ENTRY = Pattern.compile("^\\s*(?!#)(?<ENTRY>.*?)\\s*$");
-  private Set<String> predefinedHealthInsuranceCompanies;
+  private SortedSet<String> predefinedHealthInsuranceCompanies;
 
   @Autowired
   public EnumDataController(PatientRepository patientRepo) {
@@ -54,35 +54,48 @@ public class EnumDataController {
         .filter((String line) -> RE_TEXTFILE_ENTRY.matcher(line).matches())
         .map(String::trim)
         .sorted()
-        .collect(Collectors.toSet());
+        .collect(Collectors.toCollection(() -> new TreeSet<>()));
 
     } catch (IOException ioe) {
       ioe.printStackTrace();
-      this.predefinedHealthInsuranceCompanies = new HashSet<>();
+      this.predefinedHealthInsuranceCompanies = new TreeSet<>();
     }
   }
 
   @GetMapping("/health-insurance-companies")
-  public List<String> getHealthInsuranceCompanies(
+  public HealthInsuranceCompanies getHealthInsuranceCompanies(
     @RequestParam(required = false) String search,
     @RequestParam(required = false) Optional<Integer> count) {
 
-    SortedSet<String> healthInsuranceCompanies = new TreeSet<>();
-    healthInsuranceCompanies.addAll(this.predefinedHealthInsuranceCompanies);
-    healthInsuranceCompanies.addAll(this.patientRepo.findDistinctInsuranceCompanies());
+    SortedSet<String> userDefined = this.patientRepo.findDistinctInsuranceCompanies();
+    userDefined.removeAll(this.predefinedHealthInsuranceCompanies);
 
-    Stream<String> result = healthInsuranceCompanies.parallelStream();
+    List<List<String>> sets = Arrays.stream(new SortedSet[] {
+      this.predefinedHealthInsuranceCompanies,
+      userDefined
+    }).map((SortedSet healthInsuranceCompanies) -> {
+      Stream<String> result = ((SortedSet<String>) healthInsuranceCompanies).parallelStream();
 
-    if (search != null) {
-      result = result.filter((var companyName) -> companyName.contains(search));
-    }
+      if (search != null) {
+        result = result.filter((var companyName) -> companyName.contains(search));
+      }
 
-    result = result.sorted();
+      result = result.sorted();
 
-    if (count.isPresent()) {
-      result = result.limit(count.get());
-    }
+      if (count.isPresent()) {
+        result = result.limit(count.get());
+      }
 
-    return result.collect(Collectors.toList());
+      return (List<String>) result.collect(Collectors.toList());
+    }).collect(Collectors.toList());
+
+    return new HealthInsuranceCompanies(sets.get(0), sets.get(1));
+  }
+
+  @Data
+  @AllArgsConstructor
+  public static class HealthInsuranceCompanies {
+    private List<String> preDefined;
+    private List<String> userDefined;
   }
 }

@@ -70,9 +70,7 @@ public class LabTestService {
 				.findFirstByTestIdAndLaboratoryId(dto.getTestId(), laboratoryId)
 				.orElseThrow();
 
-		labTest.setTestStatus(dto.getStatus());
-		labTest.setReport(dto.getFile());
-		labTest.setLastUpdate(OffsetDateTime.now());
+		this.labTestMapper.updateLabTest(labTest, dto);
 
 		final List<PatientEvent> event = eventService.getForLabTest(labTest);
 		var eventType = testStatusToEvent(dto.getStatus());

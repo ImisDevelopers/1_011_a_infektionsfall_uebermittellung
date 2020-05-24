@@ -3,7 +3,7 @@ name: Deploy
 on:
   pull_request:
     branches:
-    - test-cloud-run
+    - dev
     types:
     - opened
     - closed

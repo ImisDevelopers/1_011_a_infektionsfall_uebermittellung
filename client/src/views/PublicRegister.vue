@@ -52,7 +52,6 @@
               Welche der folgenden Symptome hatten Sie in den letzten 24h?
             </h2>
             <div style="display: flex;">
-              <span style="flex: 1 1 auto;" />
               <div>
                 <a-form-item style="margin-bottom: 0;">
                   <a-checkbox-group
@@ -87,7 +86,6 @@
           <div :style="{ display: current === 1 ? 'block' : 'none' }">
             <h2>Welche Formen der Exposition treffen auf Sie zu?</h2>
             <div style="display: flex;">
-              <span style="flex: 1 1 auto;" />
               <div style="display: flex; flex-direction: column;">
                 <a-form-item>
                   <a-checkbox-group
@@ -116,7 +114,6 @@
               Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?
             </h2>
             <div style="display: flex;">
-              <span style="flex: 1 1 auto;" />
               <div>
                 <a-form-item style="margin-bottom: 0;">
                   <a-checkbox-group
@@ -161,7 +158,23 @@
           <!-- Finish -->
           <div :style="{ display: current === 4 ? 'block' : 'none' }">
             <div v-if="!createdPatient">
-              <h2>Sie haben es fast geschafft!</h2>
+              <h2>
+                <a-icon
+                  :style="{ fontSize: '36px', color: 'lightgray' }"
+                  style="margin-right: 7px;"
+                  type="check-circle"
+                />
+                Abschließen und Daten übermitteln
+              </h2>
+              <div
+                style="
+                  margin-bottom: 34px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+              </div>
               <a-form-item>
                 <a-checkbox @change="onCheckedChange">
                   Ich erkläre mich mit der Übermittlung meiner Daten zur
@@ -171,18 +184,6 @@
                   >Bitte bestätigen</span
                 >
               </a-form-item>
-              <a-button
-                @click="save"
-                :disabled="!checked"
-                block
-                shape="round"
-                size="large"
-                style="width: 200px; margin-bottom: 25px;"
-                type="primary"
-              >
-                <a-icon type="save" />
-                Daten übermitteln
-              </a-button>
             </div>
             <div v-if="createdPatient">
               <h2>Geschafft!</h2>
@@ -226,7 +227,7 @@
           Zurück
         </a-button>
         <a-button
-          :style="{ visibility: current === 4 ? 'hidden' : 'visible' }"
+          v-if="current !== 4"
           @click="next"
           block
           class="button-row-button"
@@ -237,6 +238,27 @@
         >
           Weiter
           <a-icon type="arrow-right" />
+        </a-button>
+        <a-button
+          v-if="current === 4"
+          @click="save"
+          :disabled="!checked"
+          block
+          class="button-row-button"
+          shape="round"
+          size="large"
+          style="flex: 0 1 150px;"
+          type="primary"
+        >
+          <a-icon>
+            <svg viewBox="64 64 896 896" focusable="false" class="" data-icon="send" width="1em" height="1em"
+	          fill="currentColor" aria-hidden="true">
+	          <path
+		        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+	          />
+            </svg>
+          </a-icon>
+          Absenden
         </a-button>
       </div>
     </a-card>
@@ -298,6 +320,9 @@ export default Vue.extend({
         },
         {
           title: 'Persönliche Daten',
+        },
+        {
+          title: 'Abschließen',
         },
       ],
       checked: false,

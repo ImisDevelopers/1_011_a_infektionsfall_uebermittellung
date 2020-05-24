@@ -17,7 +17,6 @@ env:
   GITHUB_SHA: ${{ github.sha }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
   REGISTRY_HOSTNAME: eu.gcr.io
-  GCLOUD_VERSION: '290.0.1'
 
 jobs:
   stop-pr:
@@ -27,7 +26,7 @@ jobs:
     steps:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        version: ${{ GCLOUD_VERSION }}
+        version: '290.0.1'
         service_account_email: ${{ secrets.GKE_EMAIL }}
         service_account_key: ${{ secrets.GKE_KEY }}
         project_id: ${{ secrets.GKE_PROJECT_ID }}
@@ -61,7 +60,7 @@ jobs:
     # Setup gcloud CLI
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        version: ${{ GCLOUD_VERSION }}
+        version: '290.0.1'
         service_account_email: ${{ secrets.GKE_EMAIL }}
         service_account_key: ${{ secrets.GKE_KEY }}
         project_id: ${{ secrets.GKE_PROJECT_ID }}

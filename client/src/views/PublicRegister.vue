@@ -266,16 +266,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
-import { Option } from '@/models'
-import { SYMPTOMS } from '@/models/symptoms'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
-import PatientStammdaten from '@/components/PatientStammdaten.vue'
-import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
+    import Vue from 'vue'
+    import Api from '@/api'
+    import {Patient} from '@/api/SwaggerApi'
+    import {Option} from '@/models'
+    import {SYMPTOMS} from '@/models/symptoms'
+    import {PRE_ILLNESSES} from '@/models/pre-illnesses'
+    import PatientStammdaten from '@/components/PatientStammdaten.vue'
+    import {EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC} from '@/models/exposures'
 
-interface State {
+    interface State {
   form: any
   current: number
   maxCurrent: number

@@ -23,7 +23,7 @@ env:
 
 jobs:
   stop-pr:
-    if: github.event.pull_request.closed == true ||
+    if: github.event.pull_request.closed == true
     name: Deploy PR
     runs-on: ubuntu-latest
     steps:

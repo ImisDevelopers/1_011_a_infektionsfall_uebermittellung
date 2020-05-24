@@ -34,6 +34,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
+	implementation 'com.google.cloud.sql:postgres-socket-factory:1.0.16'
 	//swagger
 	implementation "io.springfox:springfox-swagger-ui:${springfoxVersion}"
 	implementation "io.springfox:springfox-swagger2:${springfoxVersion}"

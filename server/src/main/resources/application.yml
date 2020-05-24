@@ -8,6 +8,8 @@ spring:
     gcp:
       storage:
         enabled: false
+      sql:
+        enabled: false
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/imis
@@ -30,14 +32,13 @@ spring:
             directory_provider: filesystem
             indexBase: build/data/search
 server:
-  port: 80
+  port: 8080
 ---
 spring:
   profiles: production
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
-    url: jdbc:postgresql:localhost:5432
     initialization-mode: always
   jpa:
     hibernate:
@@ -49,13 +50,16 @@ spring:
     gcp:
       credentials:
         location: file:/usr/local/cloud-store/credentials.json
+      sql:
+        database-name: staging
+        instance-connection-name: onyx-yeti-271818:europe-west3:challenge-11
 management:
   endpoints:
     web:
       exposure:
         include: health,info,prometheus
   server:
-    port: 8081
+    port: 8080
 ---
 spring:
   profiles: test
@@ -68,4 +72,6 @@ spring:
   cloud:
     gcp:
       storage:
+        enabled: false
+      sql:
         enabled: false

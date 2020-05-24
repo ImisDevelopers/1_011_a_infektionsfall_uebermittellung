@@ -32,6 +32,10 @@ spec:
           value: jdbc:postgresql://localhost:5432/{{- .Values.database }}
         - name: SPRING_DATASOURCE_USERNAME
           value: postgres
+        - name: SPRING_CLOUD_GCP_SQL_ENABLED
+          value: "false"
+        - name: SPRING_MANAGEMENT_SERVER_PORT
+          value: '8081'
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -48,7 +52,7 @@ spec:
           httpGet:
             path: /actuator/health
             port: 8081
-          initialDelaySeconds: 40
+          initialDelaySeconds: 120
           timeoutSeconds: 2
           periodSeconds: 3
           failureThreshold: 1

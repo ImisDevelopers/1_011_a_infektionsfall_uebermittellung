@@ -1,4 +1,4 @@
-name: Deploy
+name: Pull Request
 
 on:
   pull_request:
@@ -36,9 +36,6 @@ jobs:
         gcloud components install beta
 
         gcloud run services delete imis-pr-${PR_NUMBER}
-
-        gcloud beta run domain-mappings delete --domain=pr${PR_NUMBER}.prs.imis-prototyp.de \
-          --region=europe-west1 --platform=managed
 
   deploy-pr:
     if: github.event.pull_request.closed != true

@@ -76,10 +76,17 @@ spec:
         - name: cloudsql-instance-credentials
           mountPath: /secrets/cloudsql
           readOnly: true
-      volumes:
+        - name: lucene-index-volume
+          mountPath: /data
+          readOnly: false
+     volumes:
       - name: cloudsql-instance-credentials
         secret:
           secretName: "{{ include "imis.fullname" . -}}-cloudsql"
       - name: cloudstore-service-account
         secret:
           secretName: "{{ include "imis.fullname" . -}}-cloudstore"
+      - name: lucene-index-volume
+        persistentVolumeClaim:
+          claimName: "{{include "imis.fullname" . -}}-volumeclaim"
+

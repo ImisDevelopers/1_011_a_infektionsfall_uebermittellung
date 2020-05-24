@@ -17,6 +17,7 @@ env:
   GITHUB_SHA: ${{ github.sha }}
   PR_NUMBER: ${{ github.event.pull_request.number }}
   REGISTRY_HOSTNAME: eu.gcr.io
+  GCLOUD_VERSION: '290.0.1'
 
 jobs:
   stop-pr:
@@ -26,7 +27,7 @@ jobs:
     steps:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        version: '270.0.0'
+        version: ${{ GCLOUD_VERSION }}
         service_account_email: ${{ secrets.GKE_EMAIL }}
         service_account_key: ${{ secrets.GKE_KEY }}
         project_id: ${{ secrets.GKE_PROJECT_ID }}
@@ -60,7 +61,7 @@ jobs:
     # Setup gcloud CLI
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        version: '270.0.0'
+        version: ${{ GCLOUD_VERSION }}
         service_account_email: ${{ secrets.GKE_EMAIL }}
         service_account_key: ${{ secrets.GKE_KEY }}
         project_id: ${{ secrets.GKE_PROJECT_ID }}
@@ -96,3 +97,7 @@ jobs:
           --set-cloudsql-instances=onyx-yeti-271818:europe-west3:challenge-11 \
           --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
           --region=europe-west1
+
+        gcloud beta run domain-mappings create --service=imis-pr-${PR_NUMBER} \
+            --domain=pr${PR_NUMBER}.prs.imis-prototyp.de \
+            --region=europe-west1

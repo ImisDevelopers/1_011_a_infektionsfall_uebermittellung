@@ -1,9 +1,6 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-    - test-cloud-run
   pull_request:
     branches:
     - test-cloud-run
@@ -37,7 +34,7 @@ jobs:
       run: gcloud run services delete imis-pr-${PR_NUMBER}
 
   deploy-pr:
-    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/pull') == true) || github.event.pull_request.opened == true || github.event.pull_request.action == 'synchronize'
+    if: github.event.pull_request.closed != true
     name: Deploy PR
     runs-on: ubuntu-latest
     steps:

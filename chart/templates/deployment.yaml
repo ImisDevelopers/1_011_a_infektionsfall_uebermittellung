@@ -79,7 +79,7 @@ spec:
         - name: cloudsql-instance-credentials
           mountPath: /secrets/cloudsql
           readOnly: true
-     volumes:
+      volumes:
       - name: cloudsql-instance-credentials
         secret:
           secretName: "{{ include "imis.fullname" . -}}-cloudsql"

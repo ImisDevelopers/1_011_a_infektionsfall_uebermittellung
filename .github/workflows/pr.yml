@@ -104,7 +104,7 @@ jobs:
           --region=europe-west1
 
         gcloud beta run services add-iam-policy-binding --region=europe-west1 \
-            -member=allUsers --role=roles/run.invoker imis-pr-417
+            --member=allUsers --role=roles/run.invoker imis-pr-${PR_NUMBER}
 
         gcloud beta run domain-mappings create --service=imis-pr-${PR_NUMBER} \
             --domain=pr${PR_NUMBER}.prs.imis-prototyp.de \

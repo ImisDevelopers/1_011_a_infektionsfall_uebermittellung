@@ -27,7 +27,7 @@ jobs:
         java-version: 1.11
     - uses: actions/checkout@v2
     - if: ${{ github.event_name == 'push' || && github.event.pull_request.head.repo.full_name == github.repository }}
-      uses: MichaelSp/eslint-action@master
+      uses: hallee/eslint-action@1.0.2
       with:
         repo-token: "${{secrets.GITHUB_TOKEN}}"
         source-root: "client"

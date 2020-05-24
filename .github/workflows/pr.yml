@@ -38,7 +38,7 @@ jobs:
 
 
   deploy-pr:
-    if: github.event.pull_request.opened == true || github.event.pull_request.action == "synchronize"
+    if: github.event.pull_request.opened == true || github.event.pull_request.action == 'synchronize'
     name: Deploy PR
     runs-on: ubuntu-latest
     steps:

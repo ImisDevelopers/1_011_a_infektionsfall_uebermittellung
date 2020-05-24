@@ -1,12 +1,11 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: "{{- include "imis.fullname" . -}}"
   labels:
     {{- include "imis.labels" . | nindent 4 }}
 spec:
   replicas: 1
-  serviceName: "{{- include "imis.fullname" . -}}"
   selector:
     matchLabels:
       {{- include "imis.selectorLabels" . | nindent 6 }}
@@ -42,7 +41,7 @@ spec:
         - name: cloudstore-service-account
           mountPath: /usr/local/cloud-store
           readOnly: true
-        - name: "{{ include "imis.fullname" . -}}-volumeclaim"
+        - name: lucene-index-volume
           mountPath: /data
           readOnly: false
         readinessProbe:
@@ -87,12 +86,7 @@ spec:
       - name: cloudstore-service-account
         secret:
           secretName: "{{ include "imis.fullname" . -}}-cloudstore"
-  volumeClaimTemplates:
-  - metadata:
-      name: "{{ include "imis.fullname" . -}}-volumeclaim"
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 500Mi
+      - name: lucene-index-volume
+        persistentVolumeClaim:
+          claimName: "{{ include "imis.fullname" . -}}-volumeclaim"
+

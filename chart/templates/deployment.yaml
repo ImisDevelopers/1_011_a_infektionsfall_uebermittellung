@@ -41,6 +41,9 @@ spec:
         - name: cloudstore-service-account
           mountPath: /usr/local/cloud-store
           readOnly: true
+        - name: lucene-index-volume
+          mountPath: /data
+          readOnly: false
         readinessProbe:
           httpGet:
             path: /actuator/health
@@ -83,3 +86,7 @@ spec:
       - name: cloudstore-service-account
         secret:
           secretName: "{{ include "imis.fullname" . -}}-cloudstore"
+      - name: lucene-index-volume
+        persistentVolumeClaim:
+          claimName: "{{ include "imis.fullname" . -}}-volumeclaim"
+

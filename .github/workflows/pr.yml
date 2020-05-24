@@ -84,6 +84,8 @@ jobs:
       run: |
         export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
+        gcloud components install beta
+
         gcloud run deploy imis-pr-${PR_NUMBER} --image "$IMAGE" \
           --port=8080 \
           --platform managed \

@@ -36,9 +36,8 @@ jobs:
     - name: Stop
       run: gcloud run services delete imis-pr-${PR_NUMBER}
 
-
   deploy-pr:
-    if: github.event.pull_request.opened == true || github.event.pull_request.action == 'synchronize'
+    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/pr-') == true) || github.event.pull_request.opened == true || github.event.pull_request.action == 'synchronize'
     name: Deploy PR
     runs-on: ubuntu-latest
     steps:

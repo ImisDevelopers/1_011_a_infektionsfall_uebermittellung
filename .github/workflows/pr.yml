@@ -90,7 +90,6 @@ jobs:
     - name: Deploy
       run: |
         export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
-        gcloud info
 
         gcloud components install beta
 
@@ -105,17 +104,13 @@ jobs:
           --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
           --region=europe-west1
 
-        gcloud beta run services add-iam-policy-binding --region=europe-west1 --platform=managed \
-            --member=allUsers --role=roles/run.invoker imis-pr-${PR_NUMBER}
-
-        gcloud beta run domain-mappings create --service=imis-pr-${PR_NUMBER} \
-            --domain=pr${PR_NUMBER}.prs.imis-prototyp.de \
-            --region=europe-west1 --platform=managed
+        PR_URL="$(gcloud beta run services describe imis-pr-417 --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
+        echo "::set-env name=PR_COMMENT_MESSAGE::${PR_URL}"
 
     - name: comment PR
       uses: unsplash/comment-on-pr@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        msg: "Live preview at https://${{ github.event.pull_request.number }}.prs.imis-prototyp.de/"
+        msg: "Live preview at ${{ env.PR_COMMENT_MESSAGE }}"
         check_for_duplicate_msg: true

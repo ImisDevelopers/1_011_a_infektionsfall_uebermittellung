@@ -87,6 +87,5 @@ spec:
         secret:
           secretName: "{{ include "imis.fullname" . -}}-cloudstore"
       - name: lucene-index-volume
-        persistentVolumeClaim:
-          claimName: "{{ include "imis.fullname" . -}}-volumeclaim"
+        emptyDir: {}
 

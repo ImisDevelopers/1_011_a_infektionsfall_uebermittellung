@@ -4,7 +4,7 @@ metadata:
   name: "{{include "imis.fullname" . -}}-volumeclaim"
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 500Mi

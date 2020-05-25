@@ -175,7 +175,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Email eingeben',
                     },
                   ],
@@ -193,7 +193,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Telefonnummer eingeben',
                     },
                   ],
@@ -216,7 +216,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Beruf eingeben',
                     },
                   ],

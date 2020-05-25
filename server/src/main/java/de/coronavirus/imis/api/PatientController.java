@@ -37,7 +37,8 @@ public class PatientController {
 			return ResponseEntity.status(500).build();
 		}
 
-		incidentService.addIncident(patient, dto.getDateOfHospitalization(), dto.getOnIntensiveCareUnit());
+		if (dto.getDateOfHospitalization() != null)
+			incidentService.addIncident(patient, dto.getDateOfHospitalization(), dto.getOnIntensiveCareUnit());
 
 		return ResponseEntity.ok(patient);
 	}

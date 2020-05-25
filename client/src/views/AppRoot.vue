@@ -2,18 +2,28 @@
   <div>
     <a-layout class="app-container">
       <a-layout>
-        <Header
-          @menu-toggle="sideNavCollapsed = !sideNavCollapsed"
-        />
+        <Header @menu-toggle="sideNavCollapsed = !sideNavCollapsed" />
         <a-layout>
           <Navigation
             :sideNavCollapsed="sideNavCollapsed"
             @route-clicked="handleRouteClicked"
           />
           <a-layout-content
-            style="box-sizing: border-box; width: 100%; display: flex; justify-content: space-between; flex-direction: column;"
+            style="
+              box-sizing: border-box;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              flex-direction: column;
+            "
           >
-            <div :style="{ padding: '0px', minHeight: '360px', width: '100%' }">
+            <div
+              :style="{
+                padding: '20px',
+                minHeight: 'calc(100vh - 64px)',
+                width: '100%',
+              }"
+            >
               <router-view></router-view>
             </div>
             <!--
@@ -38,7 +48,6 @@
   </div>
 </template>
 <script lang="ts">
-
 import Vue from 'vue'
 import Header from '@/components/Header.vue'
 import Navigation from '@/components/Navigation.vue'
@@ -69,7 +78,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-  .app-container {
-    min-height: 100vh;
-  }
+.app-container {
+  min-height: 100vh;
+}
 </style>

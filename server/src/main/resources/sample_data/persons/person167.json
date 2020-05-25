@@ -1,28 +1,30 @@
 {
-  "city": "Homburg",
+  "city": "Merzig",
   "coronaContacts": false,
-  "dateOfBirth": "1981-02-06",
-  "email": "p.bauer@gmx.de",
-  "firstName": "Petra",
+  "country": "DE",
+  "dateOfBirth": "1952-05-26",
+  "email": "j.richter@example.de",
+  "firstName": "Jens",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "F209815321",
-  "lastName": "Bauer",
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "M989328868",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "24110797497",
+  "phoneNumber": "7570512046",
   "preIllnesses": [
-    "Krebserkrankung"
+    ""
   ],
   "riskAreas": [
-    "GrandEst"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Niekampsweg 41",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg 69",
   "symptoms": [
+    "Halschmerzen",
     "Gelenkschmerzen",
-    "Kopfschmerzen"
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66020"
+  "weakenedImmuneSystem": true,
+  "zip": "66723"
 }

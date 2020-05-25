@@ -1,33 +1,32 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Homburg",
   "coronaContacts": false,
-  "dateOfBirth": "1934-10-20",
-  "email": "c.schmitt@gmail.de",
-  "firstName": "Cornelius",
+  "country": "DE",
+  "dateOfBirth": "1994-10-31",
+  "email": "s.mueller@example.de",
+  "firstName": "Susanne",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "D149153870",
-  "lastName": "Schmitt",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "T608023421",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "710571110305",
+  "phoneNumber": "9104883101075",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hauptstra\u00dfe 81",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 6",
   "symptoms": [
-    "Schnupfen",
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
     "Husten",
+    "Halschmerzen",
     "Fieber",
-    "Atemschwierigkeiten"
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66488"
+  "zip": "66375"
 }

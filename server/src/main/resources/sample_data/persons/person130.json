@@ -1,30 +1,31 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1965-07-24",
-  "email": "c.schroeder@gmail.de",
-  "firstName": "Cornelius",
-  "fluImmunization": false,
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1985-01-18",
+  "email": "t.sommer@example.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "D530331581",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C876920515",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "110021010255",
+  "phoneNumber": "73753001011",
   "preIllnesses": [
-    ""
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Moscow"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Waldstra\u00dfe 79",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe 73",
   "symptoms": [
-    "Halschmerzen",
-    "Kopfschmerzen",
     "Erk\u00e4ltung",
-    "Gelenkschmerzen"
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66415"
+  "zip": "661072"
 }

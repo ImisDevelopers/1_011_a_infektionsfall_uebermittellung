@@ -1,8 +1,9 @@
 {
   "city": "Saarlouis",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1942-12-10",
-  "email": "j.schulze@posteo.de",
+  "email": "j.schulze@example.de",
   "firstName": "Jens",
   "fluImmunization": true,
   "gender": "male",

@@ -1,8 +1,9 @@
 {
   "city": "St. Ingbert",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1977-03-24",
-  "email": "p.bauer@posteo.de",
+  "email": "p.bauer@example.de",
   "firstName": "Peter",
   "fluImmunization": true,
   "gender": "male",

@@ -1,8 +1,9 @@
 {
   "city": "St. Ingbert",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1935-08-29",
-  "email": "m.berger@gmx.de",
+  "email": "m.berger@example.de",
   "firstName": "Martina",
   "fluImmunization": true,
   "gender": "female",

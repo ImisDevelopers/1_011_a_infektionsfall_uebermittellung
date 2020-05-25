@@ -1,25 +1,30 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Bous",
   "coronaContacts": true,
-  "dateOfBirth": "1938-10-23",
-  "email": "b.winter@gmx.de",
-  "firstName": "Ben",
+  "country": "DE",
+  "dateOfBirth": "1992-03-26",
+  "email": "e.schmitt@example.de",
+  "firstName": "Emma",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "X546626348",
-  "lastName": "Winter",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "N987077148",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "94053910310",
+  "phoneNumber": "28685102897",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Madrid"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Steinstra\u00dfe 10",
-  "symptoms": [],
+  "street": "Hauptstra\u00dfe 40",
+  "symptoms": [
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "667100"
+  "zip": "66855"
 }

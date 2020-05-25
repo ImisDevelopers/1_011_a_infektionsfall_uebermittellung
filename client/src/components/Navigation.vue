@@ -12,10 +12,7 @@
       theme="dark"
       :defaultSelectedKeys="[defaultPath]"
     >
-      <a-menu-item
-        v-for="route in routes()"
-        :key="route.path"
-      >
+      <a-menu-item v-for="route in routes()" :key="route.path">
         <router-link
           :to="{ name: route.name }"
           @click.native="$emit('route-clicked')"
@@ -29,7 +26,6 @@
 </template>
 
 <script lang="ts">
-
 import Vue from 'vue'
 import { authMapper } from '@/store/modules/auth.module'
 
@@ -56,5 +52,4 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

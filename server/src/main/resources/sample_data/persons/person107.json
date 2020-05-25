@@ -1,32 +1,35 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
-  "dateOfBirth": "1925-11-03",
-  "email": "f.winter@gmail.de",
-  "firstName": "Franz",
+  "city": "Saarlouis",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1994-03-26",
+  "email": "d.bauer@example.de",
+  "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "S565098113",
-  "lastName": "Winter",
+  "insuranceMembershipNumber": "A534212844",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "99410131072",
+  "phoneNumber": "10490352135",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "GrandEst"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg 42",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 65",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Husten",
     "Erk\u00e4ltung",
-    "Kopfschmerzen",
+    "Husten",
+    "Gelenkschmerzen",
+    "Halschmerzen",
     "Fieber",
-    "Atemschwierigkeiten"
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66107"
+  "weakenedImmuneSystem": true,
+  "zip": "660104"
 }

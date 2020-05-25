@@ -4,16 +4,21 @@
     title="Patientenstammdaten ändern"
     okText="Speichern"
     cancelText="Abbrechen"
-    @cancel="() => { $emit('cancel') }"
+    @cancel="
+      () => {
+        $emit('cancel')
+      }
+    "
     @ok="save"
     width="650px"
   >
-    <a-form
-      :form="form"
-      :layout="'vertical'"
-      :wrapperCol="{ span: 23 }"
-    >
-      <PatientStammdaten :patient="patient" :form="form" show-death="true" show-stay="true" />
+    <a-form :form="form" :layout="'vertical'" :wrapperCol="{ span: 23 }">
+      <PatientStammdaten
+        :patient="patient"
+        :form="form"
+        show-death="true"
+        show-stay="true"
+      />
     </a-form>
   </a-modal>
 </template>
@@ -50,25 +55,26 @@ export default Vue.extend({
           values.dateOfDeath = values.dateOfDeath.format('YYYY-MM-DD')
         }
         values = { ...this.patient, ...values }
-        Api.updatePatientUsingPut(values).then((updatedPatient) => {
-          this.setPatient(updatedPatient)
-          this.$notification.success({
-            message: 'Patient erfolgreich aktualisiert',
-            description: '',
+        Api.updatePatientUsingPut(values)
+          .then((updatedPatient) => {
+            this.setPatient(updatedPatient)
+            this.$notification.success({
+              message: 'Patient erfolgreich aktualisiert',
+              description: '',
+            })
+            this.form.resetFields()
+            this.$emit('create')
           })
-          this.form.resetFields()
-          this.$emit('create')
-        }).catch((error: Error) => {
-          this.$notification.error({
-            message: 'Patient konnte nicht aktualisiert werden.',
-            description: error.message,
+          .catch((error: Error) => {
+            this.$notification.error({
+              message: 'Patient konnte nicht aktualisiert werden.',
+              description: error.message,
+            })
           })
-        })
       })
     },
   },
 })
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

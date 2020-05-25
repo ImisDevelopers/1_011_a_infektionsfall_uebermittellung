@@ -6,7 +6,8 @@ public enum IncidentType {
 
 	test(TestIncident.class),
 	quarantine(QuarantineIncident.class),
-	administrative(AdministrativeIncident.class);
+	administrative(AdministrativeIncident.class),
+	hospitalization(HospitalizationIncident.class);
 
 	public final Class IMPLEMENTATION;
 

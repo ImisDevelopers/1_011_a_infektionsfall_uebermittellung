@@ -17,5 +17,5 @@ authModule.context(store).actions.init()
 new Vue({
   router,
   store,
-  render: h => h(Root),
+  render: (h) => h(Root),
 }).$mount('#app')

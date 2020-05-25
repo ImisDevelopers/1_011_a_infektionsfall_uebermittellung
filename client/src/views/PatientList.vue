@@ -296,20 +296,20 @@ const columnsSchema: Partial<Column>[] = [
 ]
 
 interface SimpleForm {
-  query: string;
-  order: string;
-  orderBy: string;
-  offsetPage: number;
-  pageSize: number;
+  query: string
+  order: string
+  orderBy: string
+  offsetPage: number
+  pageSize: number
 }
 
 interface State {
-  form: SimpleForm;
-  advancedForm: Partial<PatientSearchParamsDTO>;
-  quarantineSelection: string;
-  currentPatients: Patient[];
+  form: SimpleForm
+  advancedForm: Partial<PatientSearchParamsDTO>
+  quarantineSelection: string
+  currentPatients: Patient[]
 
-  [key: string]: any;
+  [key: string]: any
 }
 
 export default Vue.extend({
@@ -451,14 +451,16 @@ export default Vue.extend({
         queryPromise
           .then((result) => {
             const header =
-              'ID;Vorname;Nachname;Geschlecht;Status;Geburtsdatum;Stadt;E-Mail;Telefonnummer;' +
-              'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer'
+              'ID;Vorname;Nachname;Geschlecht;Status;Geburtsdatum;E-Mail;Telefonnummer;' +
+              'Straße;Hausnummer;PLZ;Stadt;Versicherung;Versichertennummer'
             const patients = result
               .map(
                 (patient: Patient) =>
-                  `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};${patient.patientStatus};` +
-                  `${patient.dateOfBirth};${patient.city};${patient.email};${patient.phoneNumber};${patient.street};` +
-                  `${patient.houseNumber};${patient.city};${patient.insuranceCompany};${patient.insuranceMembershipNumber}`
+                  `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};` +
+                  `${patient.patientStatus};${patient.dateOfBirth};${patient.email};` +
+                  `${patient.phoneNumber};${patient.street};${patient.houseNumber};` +
+                  `${patient.zip};${patient.city};${patient.insuranceCompany};` +
+                  `${patient.insuranceMembershipNumber}`
               )
               .join('\n')
             const filename =

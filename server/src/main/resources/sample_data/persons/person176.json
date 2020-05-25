@@ -1,27 +1,34 @@
 {
-  "city": "Sulzbach",
+  "city": "Saarlouis",
   "coronaContacts": true,
-  "dateOfBirth": "1940-09-19",
-  "email": "c.bauer@web.de",
-  "firstName": "Christopher",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1965-09-19",
+  "email": "k.berger@example.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "M711028819",
-  "lastName": "Bauer",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "E241936908",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "9210752245",
+  "phoneNumber": "25832010679",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hohenzollerstra\u00dfe 31",
+  "street": "Hohenzollerstra\u00dfe 64",
   "symptoms": [
-    "Kopfschmerzen"
+    "Husten",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66344"
+  "zip": "66136"
 }

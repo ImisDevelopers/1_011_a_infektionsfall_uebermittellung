@@ -2,99 +2,155 @@
   <div class="public-register-outer-container">
     <a-card class="card">
       <div style="position: relative;">
-        <div style="position: absolute; left: 5pt; display: flex; align-items: center; height: 100%">
-          <a-button type="primary" icon="home" :ghost="true" @click="gotoHome">Zur Startseite</a-button>
+        <div
+          style="
+            position: absolute;
+            left: 5pt;
+            display: flex;
+            align-items: center;
+            height: 100%;
+          "
+        >
+          <a-button type="primary" icon="home" :ghost="true" @click="gotoHome"
+            >Zur Startseite</a-button
+          >
         </div>
-        <div style="display: flex; align-items: center; justify-content: center">
+        <div
+          style="display: flex; align-items: center; justify-content: center;"
+        >
           <img
             aspect-ratio="1.7"
             src="../assets/logo.png"
-            style="vertical-align: middle; height: 100px; margin-right: 25px"
+            style="vertical-align: middle; height: 100px; margin-right: 25px;"
           />
-          <h1 style="margin: 0">Selbstregistrierung</h1>
+          <h1 style="margin: 0;">Selbstregistrierung</h1>
         </div>
       </div>
-      <div style="margin-top: 35px">
-        <a-steps id="scroll-anchor" style="margin-bottom: 20px"
-                 class="steps"
-                 @change="(current) => this.current = current"
-                 :current="current"
-                 :direction="stepsDirection">
-
-          <a-step :key="item.title" :title="item.title"
-                  :disabled="maxCurrent < steps.findIndex((elem) => elem.title === item.title)"
-                  v-for="item in steps" />
+      <div style="margin-top: 35px;">
+        <a-steps
+          id="scroll-anchor"
+          style="margin-bottom: 20px;"
+          class="steps"
+          @change="(current) => (this.current = current)"
+          :current="current"
+          :direction="stepsDirection"
+        >
+          <a-step
+            :key="item.title"
+            :title="item.title"
+            :disabled="
+              maxCurrent < steps.findIndex((elem) => elem.title === item.title)
+            "
+            v-for="item in steps"
+          />
         </a-steps>
 
-        <a-form :form="form" :labelCol="{ sm: { span: 8 },  xs: { span: 24 }  }"
-                :layout="'horizontal'"
-                :wrapperCol="{xs: { span: 24 }, sm: { span: 16 }}">
-
+        <a-form :form="form" layout="vertical">
           <!-- Symptome -->
           <div :style="{ display: current === 0 ? 'block' : 'none' }">
-            <h2>Welche der folgenden Symptome hatten Sie in den letzten 24h?</h2>
-            <div style="display: flex">
-              <span style="flex: 1 1 auto" />
+            <h2>
+              Welche der folgenden Symptome hatten Sie in den letzten 24h?
+            </h2>
+            <div style="display: flex;">
               <div>
-                <a-form-item style="margin-bottom: 0">
-                  <a-checkbox-group :options="symptoms" class="checkbox-group" v-decorator="['symptoms']" />
+                <a-form-item style="margin-bottom: 0;">
+                  <a-checkbox-group
+                    :options="symptoms"
+                    class="checkbox-group"
+                    v-decorator="['symptoms']"
+                  />
                 </a-form-item>
                 <div class="checkbox-group">
-                  <div style="display: flex; align-items: center; align-self: stretch">
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      align-self: stretch;
+                    "
+                  >
                     <a-checkbox @change="symptomsChanged">Andere:</a-checkbox>
                     <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
-                      <a-input :disabled="!showOtherSymptoms" v-decorator="['symptomsOther']" />
+                      <a-input
+                        :disabled="!showOtherSymptoms"
+                        v-decorator="['symptomsOther']"
+                      />
                     </a-form-item>
                   </div>
                 </div>
               </div>
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto;" />
             </div>
           </div>
 
           <!-- Exposition -->
           <div :style="{ display: current === 1 ? 'block' : 'none' }">
             <h2>Welche Formen der Exposition treffen auf Sie zu?</h2>
-            <div style="display: flex">
-              <span style="flex: 1 1 auto" />
-              <div style="display: flex; flex-direction: column">
+            <div style="display: flex;">
+              <div style="display: flex; flex-direction: column;">
                 <a-form-item>
-                  <a-checkbox-group :options="exposures" @change="exposuresChanged" class="checkbox-group"
-                                    v-decorator="['exposures']" />
+                  <a-checkbox-group
+                    :options="exposures"
+                    @change="exposuresChanged"
+                    class="checkbox-group"
+                    v-decorator="['exposures']"
+                  />
                 </a-form-item>
-                <a-form-item style="padding-left: 35px">
-                  <a-checkbox-group :disabled="disableExposureLocation" :options="exposureLocation"
-                                    class="checkbox-group" v-decorator="['exposureLocation']" />
+                <a-form-item style="padding-left: 35px;">
+                  <a-checkbox-group
+                    :disabled="disableExposureLocation"
+                    :options="exposureLocation"
+                    class="checkbox-group"
+                    v-decorator="['exposureLocation']"
+                  />
                 </a-form-item>
               </div>
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto;" />
             </div>
           </div>
 
           <!-- Risiken -->
           <div :style="{ display: current === 2 ? 'block' : 'none' }">
-            <h2>Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?</h2>
-            <div style="display: flex">
-              <span style="flex: 1 1 auto" />
+            <h2>
+              Welche Vorerkrankungen und Risikofaktoren treffen auf Sie zu?
+            </h2>
+            <div style="display: flex;">
               <div>
-                <a-form-item style="margin-bottom: 0">
-                  <a-checkbox-group :options="preIllnesses" class="checkbox-group" v-decorator="['preIllnesses']" />
+                <a-form-item style="margin-bottom: 0;">
+                  <a-checkbox-group
+                    :options="preIllnesses"
+                    class="checkbox-group"
+                    v-decorator="['preIllnesses']"
+                  />
                 </a-form-item>
                 <div class="checkbox-group">
-                  <div style="display: flex; align-items: center; align-self: stretch">
-                    <a-checkbox @change="preIllnessesChanged">Andere:</a-checkbox>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      align-self: stretch;
+                    "
+                  >
+                    <a-checkbox @change="preIllnessesChanged"
+                      >Andere:</a-checkbox
+                    >
                     <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
-                      <a-input :disabled="!showOtherPreIllnesses" v-decorator="['preIllnessesOther']" />
+                      <a-input
+                        :disabled="!showOtherPreIllnesses"
+                        v-decorator="['preIllnessesOther']"
+                      />
                     </a-form-item>
                   </div>
                 </div>
               </div>
-              <span style="flex: 1 1 auto" />
+              <span style="flex: 1 1 auto;" />
             </div>
           </div>
 
           <!-- Persönliche Daten -->
-          <div :style="{ display: current === 3 ? 'block' : 'none' }" class="data-form">
+          <div
+            :style="{ display: current === 3 ? 'block' : 'none' }"
+            class="data-form"
+          >
             <h2>Bitte erfassen Sie nun Ihre persönlichen Daten.</h2>
             <PatientStammdaten :form="form" />
           </div>
@@ -102,45 +158,63 @@
           <!-- Finish -->
           <div :style="{ display: current === 4 ? 'block' : 'none' }">
             <div v-if="!createdPatient">
-              <h2>Sie haben es fast geschafft!</h2>
+              <h2>
+                <a-icon
+                  :style="{ fontSize: '36px', color: 'lightgray' }"
+                  style="margin-right: 7px;"
+                  type="check-circle"
+                />
+                Abschließen und Daten übermitteln
+              </h2>
+              <div
+                style="
+                  margin-bottom: 34px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+              </div>
               <a-form-item>
                 <a-checkbox @change="onCheckedChange">
-                  Ich erkläre mich mit der Übermittlung meiner Daten zur weiteren
-                  Verarbeitung einverstanden.
+                  Ich erkläre mich mit der Übermittlung meiner Daten zur
+                  weiteren Verarbeitung einverstanden.
                 </a-checkbox>
-                <span style="color: red" v-if="showCheckedError">Bitte bestätigen</span>
+                <span style="color: red;" v-if="showCheckedError"
+                  >Bitte bestätigen</span
+                >
               </a-form-item>
-              <a-button
-                @click="save"
-                :disabled="!checked"
-                block
-                shape="round"
-                size="large"
-                style="width: 200px; margin-bottom: 25px;"
-                type="primary"
-              >
-                <a-icon type="save" />
-                Daten übermitteln
-              </a-button>
             </div>
             <div v-if="createdPatient">
               <h2>Geschafft!</h2>
-              <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center">
-                <a-icon :style="{ fontSize: '38px', color: '#08c' }" style="margin-right: 25px"
-                        type="check-circle" />
+              <div
+                style="
+                  margin-bottom: 20px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <a-icon
+                  :style="{ fontSize: '38px', color: '#08c' }"
+                  style="margin-right: 25px;"
+                  type="check-circle"
+                />
                 <span>Sie erhalten in Kürze eine Email zur Bestätigung.</span>
               </div>
-              <a-button type="primary" @click="gotoHome"><a-icon type="home"/> Zur Startseite</a-button>
+              <a-button type="primary" @click="gotoHome"
+                ><a-icon type="home" /> Zur Startseite</a-button
+              >
             </div>
           </div>
-
         </a-form>
-
       </div>
 
       <div class="button-row">
         <a-button
-          :style="{ visibility: current === 0 || createdPatient ? 'hidden' : 'visible' }"
+          :style="{
+            visibility: current === 0 || createdPatient ? 'hidden' : 'visible',
+          }"
           @click="prev"
           block
           class="button-row-button"
@@ -153,7 +227,7 @@
           Zurück
         </a-button>
         <a-button
-          :style="{ visibility: current === 4 ? 'hidden' : 'visible' }"
+          v-if="current !== 4"
           @click="next"
           block
           class="button-row-button"
@@ -165,37 +239,57 @@
           Weiter
           <a-icon type="arrow-right" />
         </a-button>
+        <a-button
+          v-if="current === 4"
+          @click="save"
+          :disabled="!checked"
+          block
+          class="button-row-button"
+          shape="round"
+          size="large"
+          style="flex: 0 1 150px;"
+          type="primary"
+        >
+          <a-icon>
+            <svg viewBox="64 64 896 896" focusable="false" class="" data-icon="send" width="1em" height="1em"
+	          fill="currentColor" aria-hidden="true">
+	          <path
+		        d="M931.4 498.9L94.9 79.5c-3.4-1.7-7.3-2.1-11-1.2a15.99 15.99 0 00-11.7 19.3l86.2 352.2c1.3 5.3 5.2 9.6 10.4 11.3l147.7 50.7-147.6 50.7c-5.2 1.8-9.1 6-10.3 11.3L72.2 926.5c-.9 3.7-.5 7.6 1.2 10.9 3.9 7.9 13.5 11.1 21.5 7.2l836.5-417c3.1-1.5 5.6-4.1 7.2-7.1 3.9-8 .7-17.6-7.2-21.6zM170.8 826.3l50.3-205.6 295.2-101.3c2.3-.8 4.2-2.6 5-5 1.4-4.2-.8-8.7-5-10.2L221.1 403 171 198.2l628 314.9-628.2 313.2z"
+	          />
+            </svg>
+          </a-icon>
+          Absenden
+        </a-button>
       </div>
     </a-card>
-
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
-import { Option } from '@/models'
-import { SYMPTOMS } from '@/models/symptoms'
-import { PRE_ILLNESSES } from '@/models/pre-illnesses'
-import PatientStammdaten from '@/components/PatientStammdaten.vue'
-import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
+    import Vue from 'vue'
+    import Api from '@/api'
+    import {Patient} from '@/api/SwaggerApi'
+    import {Option} from '@/models'
+    import {SYMPTOMS} from '@/models/symptoms'
+    import {PRE_ILLNESSES} from '@/models/pre-illnesses'
+    import PatientStammdaten from '@/components/PatientStammdaten.vue'
+    import {EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC} from '@/models/exposures'
 
-interface State {
-  form: any;
-  current: number;
-  maxCurrent: number;
-  createdPatient: Patient | null;
-  symptoms: Option[];
-  exposures: Option[];
-  exposureLocation: Option[];
-  preIllnesses: Option[];
-  steps: any[];
-  checked: boolean;
-  showCheckedError: boolean;
-  disableExposureLocation: boolean;
-  showOtherSymptoms: boolean;
-  showOtherPreIllnesses: boolean;
+    interface State {
+  form: any
+  current: number
+  maxCurrent: number
+  createdPatient: Patient | null
+  symptoms: Option[]
+  exposures: Option[]
+  exposureLocation: Option[]
+  preIllnesses: Option[]
+  steps: any[]
+  checked: boolean
+  showCheckedError: boolean
+  disableExposureLocation: boolean
+  showOtherSymptoms: boolean
+  showOtherPreIllnesses: boolean
 }
 
 export default Vue.extend({
@@ -226,6 +320,9 @@ export default Vue.extend({
         },
         {
           title: 'Persönliche Daten',
+        },
+        {
+          title: 'Abschließen',
         },
       ],
       checked: false,
@@ -314,15 +411,18 @@ export default Vue.extend({
         }
         if (values.exposureLocation) {
           request.riskAreas = request.riskAreas.concat(
-            values.exposureLocation
-              .map((location: string) => 'CONTACT_WITH_CORONA_' + location),
+            values.exposureLocation.map(
+              (location: string) => 'CONTACT_WITH_CORONA_' + location
+            )
           )
         }
         request.weakenedImmuneSystem = !!request.preIllnesses // TODO: Do we need this field?
           .find((illness: string) => illness === 'IMMUNODEFICIENCY')
         request.coronaContacts = !!request.riskAreas // TODO: DO we need this field?
-          .find((riskArea: string) => riskArea.startsWith('CONTACT_WITH_CORONA'))
-        Api.addPatientUsingPost(request).then(patient => {
+          .find((riskArea: string) =>
+            riskArea.startsWith('CONTACT_WITH_CORONA')
+          )
+        Api.addPatientUsingPost(request).then((patient) => {
           this.createdPatient = patient
         })
       })
@@ -345,7 +445,9 @@ export default Vue.extend({
       this.showOtherPreIllnesses = target.checked
     },
     exposuresChanged(checkedValues: string[]) {
-      this.disableExposureLocation = !checkedValues.includes('CONTACT_WITH_CORONA_CASE')
+      this.disableExposureLocation = !checkedValues.includes(
+        'CONTACT_WITH_CORONA_CASE'
+      )
     },
     gotoHome() {
       this.$router.push({ path: '/' })
@@ -361,114 +463,104 @@ export default Vue.extend({
 <!-- sind, indem wir die Eingriffe nur unterhalb der -->
 <!-- Klasse public-register-outer-container gelten lassen. -->
 <style lang="scss">
+.public-register-outer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('../assets/wave-bg.svg');
+  background-size: cover;
+  color: rgba(255, 255, 255, 0.87);
 
-  .public-register-outer-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-    ), url("../assets/wave-bg.svg");
-    background-size: cover;
-    color: rgba(255, 255, 255, 0.87);
+  .button-row-button {
+    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
+      0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+  }
 
-    .button-row-button {
-      box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .ant-checkbox-inner {
+      width: 30px;
+      height: 30px;
     }
 
-    .ant-form-item-control-wrapper {
-      width: 100%;
+    .ant-checkbox-inner::after {
+      width: 8px;
+      height: 15px;
+      top: 48%;
     }
 
-    .data-form .ant-form-item-control-wrapper {
-      width: 66%;
-    }
-
-    .checkbox-group {
+    .ant-checkbox-wrapper {
+      margin: 5px;
+      font-size: 18px;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      .ant-checkbox-inner {
-        width: 30px;
-        height: 30px;
-      }
-
-      .ant-checkbox-inner::after {
-        width: 8px;
-        height: 15px;
-        top: 48%;
-      }
-
-      .ant-checkbox-wrapper {
-        margin: 5px;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        text-align: left;
-      }
-    }
-
-    .ant-btn:focus {
-      background: #1890ff
-    }
-
-    .card {
-      max-width: 80%;
-      margin: 4rem auto 0 auto;
-      border-radius: 10px;
-      box-shadow: 0 8px 9px -5px rgba(0, 0, 0, .2), 0 15px 22px 2px rgba(0, 0, 0, .14), 0 6px 28px 5px rgba(0, 0, 0, .12);
-      border: none;
-    }
-
-    .steps {
-      text-align: start;
-      padding-left: 10pt;
-      padding-right: 10pt;
-    }
-
-    h1 {
-      font-weight: bold;
-      color: rgba(0, 0, 0, 0.78);
-    }
-
-    h2 {
-      color: rgba(0, 0, 0, 0.7);
-      margin: 35px 0 25px 0;
-    }
-
-    .button-row {
-      background: rgb(211, 211, 211);
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      margin: 15px -24px -24px -24px;
-      border-radius: 0 0 10px 10px;
-    }
-
-    @media (max-width: 750px) {
-      h1 {
-        display: none;
-      }
-      .card {
-        max-width: 95%;
-        margin: 3rem auto 3rem auto;
-      }
-      .data-form .ant-form-item-control-wrapper {
-        width: 100%;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .card {
-        max-width: 1000px;
-        margin: 3rem auto 3rem auto;
-      }
+      align-items: center;
+      text-align: left;
     }
   }
 
+  .ant-btn:focus {
+    background: #1890ff;
+  }
+
+  .card {
+    max-width: 80%;
+    margin: 4rem auto 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 9px -5px rgba(0, 0, 0, 0.2),
+      0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12);
+    border: none;
+  }
+
+  .steps {
+    text-align: start;
+    padding-left: 10pt;
+    padding-right: 10pt;
+  }
+
+  h1 {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.78);
+  }
+
+  h2 {
+    color: rgba(0, 0, 0, 0.7);
+    margin: 35px 0 25px 0;
+  }
+
+  .button-row {
+    background: rgb(211, 211, 211);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin: 15px -24px -24px -24px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  @media (max-width: 750px) {
+    h1 {
+      display: none;
+    }
+    .card {
+      max-width: 95%;
+      margin: 3rem auto 3rem auto;
+    }
+    .data-form .ant-form-item-control-wrapper {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .card {
+      max-width: 1000px;
+      margin: 3rem auto 3rem auto;
+    }
+  }
+}
 </style>

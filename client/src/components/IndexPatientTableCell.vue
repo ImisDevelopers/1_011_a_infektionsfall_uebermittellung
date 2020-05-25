@@ -1,7 +1,10 @@
 <template>
   <div>
-    <router-link :to="{ name: 'patient-detail', params: { id: indexPatient.id } }" v-if="indexPatient">
-      {{indexPatient.lastName}}, {{indexPatient.firstName}}
+    <router-link
+      :to="{ name: 'patient-detail', params: { id: indexPatient.id } }"
+      v-if="indexPatient"
+    >
+      {{ indexPatient.lastName }}, {{ indexPatient.firstName }}
     </router-link>
     <div v-else>-</div>
   </div>
@@ -12,7 +15,7 @@ import { ExposureContactContactView } from '@/api/SwaggerApi'
 import Api from '@/api'
 
 interface State {
-  indexPatient: ExposureContactContactView | undefined;
+  indexPatient: ExposureContactContactView | undefined
 }
 
 export default Vue.extend({
@@ -24,18 +27,19 @@ export default Vue.extend({
     }
   },
   created() {
-    Api.getExposureSourceContactsForPatientUsingGet(this.patientId).then(infectionSources => {
-      if (infectionSources.length > 0) {
-        const contact = infectionSources[0].source
-        if (contact) {
-          this.indexPatient = contact
-          console.log('Has source: ' + this.patientId)
+    Api.getExposureSourceContactsForPatientUsingGet(this.patientId).then(
+      (infectionSources) => {
+        if (infectionSources.length > 0) {
+          const contact = infectionSources[0].source
+          if (contact) {
+            this.indexPatient = contact
+            console.log('Has source: ' + this.patientId)
+          }
         }
       }
-    })
+    )
   },
   methods: {},
 })
 </script>
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

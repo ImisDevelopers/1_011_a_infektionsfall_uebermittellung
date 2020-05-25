@@ -101,7 +101,7 @@ jobs:
           --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
           --region=europe-west1
 
-        PR_URL="$(gcloud beta run services describe imis-pr-417 --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
+        PR_URL="$(gcloud beta run services describe imis-pr-${PR_NUMBER} --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
         echo "::set-env name=PR_COMMENT_MESSAGE::${PR_URL}"
 
     - name: comment PR

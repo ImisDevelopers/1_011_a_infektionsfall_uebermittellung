@@ -153,7 +153,6 @@ interface State {
   today: moment.Moment
   patientInfectionSources: Map<string, ExposureContactFromServer[]> // Patient-ID - ExposureContactFromServer list
   patientTestResults: Map<string, string[]> // Patient-ID - Test result list
-  emptyImage: any
 }
 
 export default Vue.extend({

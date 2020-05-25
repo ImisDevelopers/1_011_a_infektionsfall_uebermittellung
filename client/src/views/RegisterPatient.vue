@@ -169,17 +169,12 @@ export default Vue.extend({
           riskAreas: [],
         }
 
-        if (values.dateofIllness) {
-          request.dateOfIllness = values.dateOfIllness.format('YYYY-MM-DD')
-        } else {
-          request.dateOfIllness = moment().format('YYYY-MM-DD')
-        }
-
-        if (values.dateOfReporting) {
-          request.dateOfReporting = values.dateOfReporting.format('YYYY-MM-DD')
-        } else {
-          request.dateOfReporting = moment().format('YYYY-MM-DD')
-        }
+        values.dateOfIllness = (values.dateOfIllness || moment()).format(
+          'YYYY-MM-DD'
+        )
+        values.dateOfReporting = (values.dateOfReporting || moment()).format(
+          'YYYY-MM-DD'
+        )
 
         if (!request.symptoms) {
           request.symptoms = []

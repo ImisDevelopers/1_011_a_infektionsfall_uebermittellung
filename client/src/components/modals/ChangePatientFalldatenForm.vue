@@ -64,16 +64,12 @@ export default Vue.extend({
         values = { ...this.patient, ...values }
 
         // Illness and Status
-        if (values.dateOfIllness) {
-          values.dateOfIllness = values.dateOfIllness.format('YYYY-MM-DD')
-        } else {
-          values.dateOfIllness = moment().format('YYYY-MM-DD')
-        }
-        if (values.dateOfReporting) {
-          values.dateOfReporting = values.dateOfReporting.format('YYYY-MM-DD')
-        } else {
-          values.dateOfReporting = moment().format('YYYY-MM-DD')
-        }
+        values.dateOfIllness = (values.dateOfIllness || moment()).format(
+          'YYYY-MM-DD'
+        )
+        values.dateOfReporting = (values.dateOfReporting || moment()).format(
+          'YYYY-MM-DD'
+        )
         if (values.patientHospitalized) {
           values.dateOfHospitalization = values.dateOfHospitalization.format(
             'YYYY-MM-DD'

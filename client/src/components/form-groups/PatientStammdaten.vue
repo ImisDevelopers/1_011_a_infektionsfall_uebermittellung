@@ -302,8 +302,8 @@ import {
   RISK_OCCUPATIONS,
   RiskOccupationOption,
 } from '@/models/risk-occupation'
-import DateInput from '@/components/DateInput.vue'
-import LocationFormGroup from '@/components/LocationFormGroup.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
+import LocationFormGroup from '@/components/form-groups/LocationFormGroup.vue'
 import { Patient } from '@/api/SwaggerApi'
 import moment, { Moment } from 'moment'
 

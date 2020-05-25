@@ -130,12 +130,12 @@
 import Vue from 'vue'
 import Api from '@/api'
 import { Patient } from '@/api/SwaggerApi'
-import PatientStammdaten from '@/components/PatientStammdaten.vue'
+import PatientStammdaten from '@/components/form-groups/PatientStammdaten.vue'
 import moment from 'moment'
-import SymptomsForm from '@/components/SymptomsForm.vue'
-import ExposureForm from '@/components/ExposureForm.vue'
-import PreIllnessesForm from '@/components/PreIllnessesForm.vue'
-import IllnessStatusForm from '@/components/IllnessStatusForm.vue'
+import SymptomsForm from '@/components/form-groups/SymptomsForm.vue'
+import ExposureForm from '@/components/form-groups/ExposureForm.vue'
+import PreIllnessesForm from '@/components/form-groups/PreIllnessesForm.vue'
+import IllnessStatusForm from '@/components/form-groups/IllnessStatusForm.vue'
 
 interface State {
   form: any

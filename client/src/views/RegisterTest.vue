@@ -149,10 +149,10 @@
 <script lang="ts">
 import { CreateLabTestDTO } from '@/api/SwaggerApi'
 import Vue from 'vue'
-import DateInput from '../components/DateInput.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
 import Api from '@/api'
-import PatientInput from '../components/PatientInput.vue'
-import LaboratoryInput from '../components/LaboratoryInput.vue'
+import PatientInput from '@/components/inputs/PatientInput.vue'
+import LaboratoryInput from '@/components/inputs/LaboratoryInput.vue'
 import { TestTypeItem, testTypes } from '@/models/test-types'
 import { testResults } from '@/models/event-types'
 import { TestMaterialItem, testMaterials } from '@/models/test-materials'

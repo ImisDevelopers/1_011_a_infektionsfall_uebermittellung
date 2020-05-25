@@ -142,7 +142,7 @@
 import Vue from 'vue'
 import moment, { Moment } from 'moment'
 import { EventTypeItem, eventTypes } from '@/models/event-types'
-import DateInput from '@/components/DateInput.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
 
 /**
  * Autocomplete for Patients

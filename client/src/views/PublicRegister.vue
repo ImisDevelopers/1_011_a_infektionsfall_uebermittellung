@@ -248,7 +248,7 @@ import { Patient } from '@/api/SwaggerApi'
 import { Option } from '@/models'
 import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
-import PatientStammdaten from '@/components/PatientStammdaten.vue'
+import PatientStammdaten from '@/components/form-groups/PatientStammdaten.vue'
 import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
 
 interface State {

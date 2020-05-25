@@ -31,10 +31,10 @@
 import Vue from 'vue'
 import Api from '@/api'
 import { patientMapper } from '@/store/modules/patients.module'
-import SymptomsForm from '@/components/SymptomsForm.vue'
-import PreIllnessesForm from '@/components/PreIllnessesForm.vue'
-import ExposureForm from '@/components/ExposureForm.vue'
-import IllnessStatusForm from '@/components/IllnessStatusForm.vue'
+import SymptomsForm from '@/components/form-groups/SymptomsForm.vue'
+import PreIllnessesForm from '@/components/form-groups/PreIllnessesForm.vue'
+import ExposureForm from '@/components/form-groups/ExposureForm.vue'
+import IllnessStatusForm from '@/components/form-groups/IllnessStatusForm.vue'
 import moment from 'moment'
 
 export default Vue.extend({

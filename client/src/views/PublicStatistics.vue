@@ -1,15 +1,11 @@
 <template>
   <div>
-    <a-affix
-      style="
-        text-align: center;
-        font-weight: bold;
-        font-size: 18pt;
-        padding: 10px;
-      "
-    >
-      Statische Testdaten
-    </a-affix>
+    <a-page-header
+      style="padding-left: 0; padding-right: 0;"
+      title="Statistiken"
+      sub-title="(Statische Daten zu Präsentationszwecken)"
+    />
+    
     <!--<a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0" />-->
     <a-card class="table-container">
       <a-table :columns="columns" :dataSource="data" :scroll="{ x: 1, y: 0 }">

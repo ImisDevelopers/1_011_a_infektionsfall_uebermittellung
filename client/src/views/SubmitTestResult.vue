@@ -1,12 +1,13 @@
 <template>
-  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px;">
-    <div>
-      <a-form
-        :form="form"
-        :label-col="{ span: 6 }"
-        :wrapper-col="{ span: 18 }"
-        @submit.prevent="handleSubmit"
-      >
+  <div style="max-width: 500px; margin: 0 auto;">
+    <a-page-header
+      title="Testresultat zuordnen"
+      sub-title=""
+      style="padding-left: 0; padding-right: 0;"
+    />
+
+    <a-card>
+      <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
         <!-- Labor -->
         <LaboratoryInput
           :form="form"
@@ -112,8 +113,8 @@
           </a-button>
         </a-form-item>
       </a-form>
-    </div>
-  </a-card>
+    </a-card>
+  </div>
 </template>
 
 <script lang="ts">

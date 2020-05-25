@@ -1,25 +1,30 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Merzig",
   "coronaContacts": false,
-  "dateOfBirth": "1992-09-03",
-  "email": "a.sommer@web.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1972-04-10",
+  "email": "m.berger@example.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V594694805",
-  "lastName": "Sommer",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "P891468251",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "8451848947",
+  "phoneNumber": "16105182755",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    ""
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Z\u00e4hringerstra\u00dfe 72",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Niekampsweg 73",
+  "symptoms": [
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Halschmerzen"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "66735"
+  "zip": "664210"
 }

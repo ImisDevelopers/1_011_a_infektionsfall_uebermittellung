@@ -1,27 +1,29 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": true,
-  "dateOfBirth": "1990-11-22",
-  "email": "k.schroeder@gmx.de",
-  "firstName": "Karl",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "I774305616",
-  "lastName": "Schr\u00f6der",
+  "city": "Homburg",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1965-08-29",
+  "email": "a.mueller@example.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Y774342024",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "46271030147",
+  "phoneNumber": "25204561050",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg 76",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Wintergasse 37",
   "symptoms": [
-    "Kopfschmerzen"
+    "Kopfschmerzen",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66597"
+  "zip": "668101"
 }

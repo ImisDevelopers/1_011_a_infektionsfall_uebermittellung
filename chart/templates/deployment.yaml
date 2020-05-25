@@ -6,6 +6,7 @@ metadata:
     {{- include "imis.labels" . | nindent 4 }}
 spec:
   replicas: 1
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       {{- include "imis.selectorLabels" . | nindent 6 }}
@@ -32,6 +33,10 @@ spec:
           value: jdbc:postgresql://localhost:5432/{{- .Values.database }}
         - name: SPRING_DATASOURCE_USERNAME
           value: postgres
+        - name: SPRING_CLOUD_GCP_SQL_ENABLED
+          value: "false"
+        - name: MANAGEMENT_SERVER_PORT
+          value: '8081'
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -41,6 +46,9 @@ spec:
         - name: cloudstore-service-account
           mountPath: /usr/local/cloud-store
           readOnly: true
+        - name: lucene-index-volume
+          mountPath: /data
+          readOnly: false
         readinessProbe:
           httpGet:
             path: /actuator/health
@@ -83,3 +91,6 @@ spec:
       - name: cloudstore-service-account
         secret:
           secretName: "{{ include "imis.fullname" . -}}-cloudstore"
+      - name: lucene-index-volume
+        emptyDir: {}
+

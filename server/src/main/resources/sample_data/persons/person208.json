@@ -1,33 +1,33 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": true,
-  "dateOfBirth": "1951-12-29",
-  "email": "f.schmitt@gmail.de",
-  "firstName": "Fin",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1932-12-09",
+  "email": "p.schulz@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "G755306663",
-  "lastName": "Schmitt",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "W927844881",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "10542140665",
+  "phoneNumber": "7072101000106",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "Tirol"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe 33",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Sonnenweg 19",
   "symptoms": [
-    "Fieber",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
     "Halschmerzen",
-    "Schnupfen",
-    "Husten"
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Husten",
+    "Fieber",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66427"
+  "zip": "66569"
 }

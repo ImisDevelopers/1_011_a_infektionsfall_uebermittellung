@@ -1,31 +1,26 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Riegelsberg",
   "coronaContacts": true,
-  "dateOfBirth": "1955-10-02",
-  "email": "h.peters@web.de",
-  "firstName": "Hans",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1988-03-24",
+  "email": "t.schroeder@example.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "U195268824",
-  "lastName": "Peters",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "J236739271",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "29593109172",
+  "phoneNumber": "610710528953",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "S\u00fcdweg 95",
-  "symptoms": [
-    "Gelenkschmerzen",
-    "Husten",
-    "Schnupfen",
-    "Fieber",
-    "Atemschwierigkeiten"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "66135"
+  "street": "Bismarckstra\u00dfe 75",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66264"
 }

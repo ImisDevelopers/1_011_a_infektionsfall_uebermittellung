@@ -1,8 +1,9 @@
 {
   "city": "Riegelsberg",
   "coronaContacts": false,
+  "country": "DE",
   "dateOfBirth": "1957-05-15",
-  "email": "c.klein@t-online.de",
+  "email": "c.klein@example.de",
   "firstName": "Cornelius",
   "fluImmunization": false,
   "gender": "male",

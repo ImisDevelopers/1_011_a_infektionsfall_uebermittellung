@@ -52,6 +52,7 @@ public interface PatientRepository extends JpaRepository<Patient, String>, JpaSp
 	@Query("select count(distinct pat) from Patient pat " +
 			"left join PatientEvent pe " +
 			"on pe.patient = pat.id " +
+			"left join QuarantineIncident qi on qi.patient = pat " +
 			"where lower(pat.firstName) like lower(?1) " +
 			"AND lower(pat.lastName) like lower(?2) " +
 			"AND lower(pat.id) like lower(?3) " +
@@ -66,7 +67,8 @@ public interface PatientRepository extends JpaRepository<Patient, String>, JpaSp
 			"AND lower(pat.insuranceMembershipNumber) like lower(?12) " +
 			"AND lower(coalesce(pe.responsibleDoctor, '0')) like lower(?13) " +
 			"AND lower(coalesce(pe.labTest, '0')) like lower(?14) " +
-			"AND lower(pat.patientStatus) like lower(?15) ")
+			"AND lower(pat.patientStatus) like lower(?15) " +
+			"AND lower(coalesce(qi.eventType, '')) like lower(?16)")
 	Long countPatientSearchParams(String firstName,
 								  String lastName,
 								  String id,
@@ -81,7 +83,8 @@ public interface PatientRepository extends JpaRepository<Patient, String>, JpaSp
 								  String insuranceMembershipNumber,
 								  String doctorId,
 								  String laboratoryId,
-								  String patientStatus);
+								  String patientStatus,
+								  String quarantineStatus);
 
 
 }

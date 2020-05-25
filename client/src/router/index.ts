@@ -11,6 +11,7 @@ import PublicStatistics from '@/views/PublicStatistics.vue'
 import RegisterInstitution from '@/views/RegisterInstitution.vue'
 import RegisterPatient from '@/views/RegisterPatient.vue'
 import RegisterTest from '@/views/RegisterTest.vue'
+import RequestQuarantine from '@/views/RequestQuarantine.vue'
 import SendToQuarantine from '@/views/SendToQuarantine.vue'
 import SubmitTestResult from '@/views/SubmitTestResult.vue'
 import TestList from '@/views/TestList.vue'
@@ -29,7 +30,11 @@ function isAuthenticated() {
   return window.localStorage.token
 }
 
-const checkNotAuthenticatedBeforeEnter = (to: Route, from: Route, next: Function) => {
+const checkNotAuthenticatedBeforeEnter = (
+  to: Route,
+  from: Route,
+  next: Function
+) => {
   if (isAuthenticated()) {
     next({ name: 'app' })
   } else {
@@ -48,12 +53,12 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
 export interface AppRoute extends RouteConfig {
   meta?: {
     navigationInfo?: {
-      icon: string;
-      title: string;
-      authorities: InstitutionRole[];
-      showInSidenav: boolean;
-    };
-  };
+      icon: string
+      title: string
+      authorities: InstitutionRole[]
+      showInSidenav: boolean
+    }
+  }
 }
 
 const ALL_INSTITUTIONS: InstitutionRole[] = [
@@ -87,7 +92,12 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'user-add',
         title: 'Patient Registrieren',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_CLINIC',
+          'ROLE_DOCTORS_OFFICE',
+          'ROLE_TEST_SITE',
+        ],
         showInSidenav: true,
       },
     },
@@ -99,8 +109,13 @@ const appRoutes: AppRoute[] = [
     meta: {
       navigationInfo: {
         icon: 'deployment-unit',
-        title: 'Probe Zuordnen',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        title: 'Probe zuordnen',
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_CLINIC',
+          'ROLE_DOCTORS_OFFICE',
+          'ROLE_TEST_SITE',
+        ],
         showInSidenav: true,
       },
     },
@@ -112,12 +127,17 @@ const appRoutes: AppRoute[] = [
     meta: {
       navigationInfo: {
         icon: 'experiment',
-        title: 'Testresultat Zuordnen',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        title: 'Testresultat zuordnen',
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_LABORATORY',
+          'ROLE_TEST_SITE',
+        ],
         showInSidenav: true,
       },
     },
   },
+  /*
   {
     name: 'test-list',
     path: 'test-list',
@@ -131,6 +151,7 @@ const appRoutes: AppRoute[] = [
       },
     },
   },
+  */
   {
     name: 'patient-list',
     path: 'patient-list',
@@ -139,7 +160,25 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'team',
         title: 'Alle Patienten',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_CLINIC', 'ROLE_DOCTORS_OFFICE', 'ROLE_TEST_SITE'],
+        authorities: [
+          'ROLE_DEPARTMENT_OF_HEALTH',
+          'ROLE_CLINIC',
+          'ROLE_DOCTORS_OFFICE',
+          'ROLE_TEST_SITE',
+        ],
+        showInSidenav: true,
+      },
+    },
+  },
+  {
+    name: 'request-quarantine',
+    path: 'request-quarantine',
+    component: RequestQuarantine,
+    meta: {
+      navigationInfo: {
+        icon: 'safety',
+        title: 'Quarantäne vormerken',
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'],
         showInSidenav: true,
       },
     },
@@ -234,8 +273,9 @@ const routes = [
   },
 ]
 
-export const navigationRoutes = appRoutes
-  .filter(r => !r.path.includes('*') && r.meta?.navigationInfo?.showInSidenav)
+export const navigationRoutes = appRoutes.filter(
+  (r) => !r.path.includes('*') && r.meta?.navigationInfo?.showInSidenav
+)
 
 const router = new VueRouter({
   mode: 'history',
@@ -244,7 +284,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!isAuthenticated()) {
       next({
         path: '/login',

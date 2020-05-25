@@ -1,8 +1,9 @@
 {
   "city": "Saarlouis",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1978-07-29",
-  "email": "j.schmidt@gmx.de",
+  "email": "j.schmidt@example.de",
   "firstName": "Jan",
   "fluImmunization": true,
   "gender": "male",

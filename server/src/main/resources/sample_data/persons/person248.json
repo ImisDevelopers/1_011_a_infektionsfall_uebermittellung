@@ -1,30 +1,33 @@
 {
   "city": "Riegelsberg",
-  "coronaContacts": true,
-  "dateOfBirth": "1951-10-09",
-  "email": "p.winter@web.de",
-  "firstName": "Peter",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1987-01-10",
+  "email": "j.wagner@example.de",
+  "firstName": "Jan",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "G973394943",
-  "lastName": "Winter",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "V327866978",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "2152910867",
+  "phoneNumber": "439735910107",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 86",
+  "street": "Haidth\u00f6heAarweg 1",
   "symptoms": [
+    "Atemschwierigkeiten",
+    "Husten",
+    "Halschmerzen",
     "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Halschmerzen"
+    "Kopfschmerzen",
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66713"
+  "weakenedImmuneSystem": false,
+  "zip": "66725"
 }

@@ -1,18 +1,24 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete :disabled="disabled" @search="handleSearch" placeholder="Suche über ID, Name, Stadt"
-                     v-decorator="validation">
-      <template slot="dataSource">
-        <a-select-option :key="laboratory.id" v-for="laboratory in result">
-          {{laboratory.name}} ({{laboratory.city}})
-        </a-select-option>
-      </template>
-    </a-auto-complete>
+    <a-select
+      ref="input"
+      :disabled="disabled"
+      @search="handleSearch"
+      placeholder="Suche über ID, Name, Stadt"
+      v-decorator="validation"
+      defaultActiveFirstOption="false"
+      :showSearch="true"
+      :showArrow="false"
+      filterOption="false"
+    >
+      <a-select-option :key="laboratory.id" v-for="laboratory in result">
+        {{ laboratory.name }} ({{ laboratory.city }})
+      </a-select-option>
+    </a-select>
   </a-form-item>
 </template>
 
 <script lang="ts">
-
 import Api from '@/api'
 import Vue from 'vue'
 import { Laboratory } from '@/api/SwaggerApi'
@@ -25,7 +31,7 @@ import { Laboratory } from '@/api/SwaggerApi'
  */
 
 export interface State {
-  result: Laboratory[];
+  result: Laboratory[]
 }
 
 export default Vue.extend({
@@ -37,7 +43,7 @@ export default Vue.extend({
     }
   },
   watch: {
-    initialLabs: function(labs) {
+    initialLabs: function (labs) {
       if (labs && labs.length > 0) {
         this.result = labs
       }
@@ -57,6 +63,4 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

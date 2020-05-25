@@ -1,31 +1,29 @@
 {
   "city": "Riegelsberg",
-  "coronaContacts": true,
-  "dateOfBirth": "1937-11-12",
-  "email": "p.mueller@t-online.de",
-  "firstName": "Petra",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1961-04-24",
+  "email": "k.schulze@example.de",
+  "firstName": "Kai",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "S927315167",
-  "lastName": "M\u00fcller",
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "C749276419",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "691045441410",
+  "phoneNumber": "44300910910",
   "preIllnesses": [
     "Herz-Kreislauf"
   ],
   "riskAreas": [
-    ""
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hohenzollerstra\u00dfe 50",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 27",
   "symptoms": [
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
+    "Fieber",
     "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "667103"
+  "zip": "669101"
 }

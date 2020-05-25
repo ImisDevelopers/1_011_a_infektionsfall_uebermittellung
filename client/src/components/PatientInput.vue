@@ -1,14 +1,17 @@
 <template>
-  <a-select ref="input" v-bind="$attrs" v-on="externListeners"
-                   :defaultActiveFirstOption="false"
-                   :placeholder="placeholder"
-                   :showSearch="true"
-                   :showArrow="false"
-                   :filterOption="filterOption"
-                   :value="value"
-                   @search="handleSearch">
-    <a-select-option v-for="entry in result"
-      :key="entry.value">
+  <a-select
+    ref="input"
+    v-bind="$attrs"
+    v-on="externListeners"
+    :defaultActiveFirstOption="false"
+    :placeholder="placeholder"
+    :showSearch="true"
+    :showArrow="false"
+    :filterOption="filterOption"
+    :value="value"
+    @search="handleSearch"
+  >
+    <a-select-option v-for="entry in result" :key="entry.value">
       {{ entry.label }}
     </a-select-option>
   </a-select>
@@ -16,17 +19,15 @@
 
 <script lang="ts">
 import Api from '@/api'
-import Vue from 'vue'
 import mixins from 'vue-typed-mixins'
-import { Select } from 'ant-design-vue'
 import { Patient } from '@/api/SwaggerApi'
 import { FormControlMixin } from '@/util/forms'
 
 declare interface State {
   result: {
-    label?: string;
-    value?: string;
-  }[];
+    label?: string
+    value?: string
+  }[]
 }
 
 /**
@@ -54,10 +55,12 @@ export default mixins(FormControlMixin).extend({
 
     if (typeof val === 'object' && hasProp(val, 'id')) {
       const patient = val as Patient
-      this.result = [{
-        label: this.getPatientLabel(patient),
-        value: patient.id,
-      }]
+      this.result = [
+        {
+          label: this.getPatientLabel(patient),
+          value: patient.id,
+        },
+      ]
       return patient.id || ''
     } else {
       return val
@@ -103,6 +106,4 @@ export default mixins(FormControlMixin).extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

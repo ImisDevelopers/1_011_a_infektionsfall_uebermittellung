@@ -3,6 +3,7 @@
     v-bind="$attrs"
     v-on="$listeners"
     :value="value"
+    :defaultValue="defaultValue"
     :format="format"
     :open="open || dateOfBirthPickerOpen"
     @focus="datePickerFocused"
@@ -12,7 +13,6 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import mixins from 'vue-typed-mixins'
 import { FormControlMixin } from '@/util/forms'
 
@@ -24,8 +24,8 @@ import { FormControlMixin } from '@/util/forms'
  */
 
 export interface State {
-  dateOfBirthPickerOpen: boolean;
-  wasJustFocused: boolean;
+  dateOfBirthPickerOpen: boolean
+  wasJustFocused: boolean
 }
 
 export default mixins(FormControlMixin).extend({
@@ -38,8 +38,9 @@ export default mixins(FormControlMixin).extend({
   props: {
     value: { default: undefined },
     open: { default: false },
-    placeholder: { default: 'TT.MM.JJJJ (z.B. 28.02.1986)' },
-    format: { default: 'DD.MM.YYYY' },
+    placeholder: { default: 'z.B. 28.02.1986' },
+    format: { default: () => ['DD.MM.YYYY', 'D.M.YYYY'] },
+    defaultValue: { default: undefined },
   },
   data(): State {
     return {
@@ -64,6 +65,4 @@ export default mixins(FormControlMixin).extend({
 })
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

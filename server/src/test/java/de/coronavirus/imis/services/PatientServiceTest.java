@@ -1,12 +1,12 @@
 package de.coronavirus.imis.services;
 
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import de.coronavirus.imis.mapper.PatientMapper;
-import de.coronavirus.imis.repositories.PatientRepository;
-import de.coronavirus.imis.services.util.LikeOperatorService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.mapper.PatientMapper;
+import de.coronavirus.imis.repositories.PatientRepository;
 
 class PatientServiceTest {
 
@@ -17,10 +17,10 @@ class PatientServiceTest {
 	void queryPatientsNullInOrderAndOrderByProperty() {
 		final PatientService patientService = new PatientService(Mockito.mock(PatientRepository.class),
 				Mockito.mock(PatientEventService.class),
-				new LikeOperatorService(),
-				new RandomService(),
 				patientMapper,
-				Mockito.mock(IncidentService.class));
+				Mockito.mock(IncidentService.class),
+				Mockito.mock(SearchService.class)
+		);
 		final PatientSearchParamsDTO patientSearchParamsDTO = new PatientSearchParamsDTO();
 		patientSearchParamsDTO.setOrder(null);
 		patientSearchParamsDTO.setOrderBy(null);

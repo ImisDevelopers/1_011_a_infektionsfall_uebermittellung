@@ -1,0 +1,113 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+    - dev
+    - pilot
+    types:
+    - opened
+    - closed
+    - synchronize
+
+# Environment variables available to all jobs and steps in this workflow
+env:
+  GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
+  GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  GITHUB_SHA: ${{ github.sha }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  REGISTRY_HOSTNAME: eu.gcr.io
+
+jobs:
+  stop-pr:
+    if: github.event.pull_request.closed == true
+    name: Stop PR
+    runs-on: ubuntu-latest
+    steps:
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_email: ${{ secrets.GKE_EMAIL }}
+        service_account_key: ${{ secrets.GKE_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT_ID }}
+    - name: Stop
+      run: |
+        gcloud components install beta
+
+        gcloud run services delete imis-pr-${PR_NUMBER}
+
+  deploy-pr:
+    if: github.event.pull_request.closed != true
+    name: Deploy PR
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+    - uses: actions/cache@v1
+      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+
+    # Setup gcloud CLI
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_email: ${{ secrets.GKE_EMAIL }}
+        service_account_key: ${{ secrets.GKE_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT_ID }}
+    - uses: actions/setup-java@v1.3.0
+      with:
+        java-version: 1.11
+    # Configure docker to use the gcloud command-line tool as a credential helper
+    - run: |
+        # Set up docker to authenticate
+        # via gcloud command-line tool.
+        gcloud auth configure-docker
+
+    # Build and push image to Google Container Registry
+    - name: Build
+      run: |-
+        gradle server:test --tests "*GenerateSwagger" -x processResources
+        gradle client:generateClient
+        gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
+
+    - name: Deploy
+      run: |
+        export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
+
+        gcloud components install beta
+
+        gcloud beta run deploy imis-pr-${PR_NUMBER} --image "$IMAGE" \
+          --platform managed \
+          --allow-unauthenticated \
+          --max-instances=3 \
+          --memory=512Mi --cpu=1000m \
+          --concurrency=80 \
+          --set-env-vars="SPRING_PROFILES_ACTIVE=production,SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD},CLOUD_SQL_INSTANCE=challenge-11" \
+          --set-cloudsql-instances=onyx-yeti-271818:europe-west3:challenge-11 \
+          --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
+          --region=europe-west1
+
+        PR_URL="$(gcloud beta run services describe imis-pr-${PR_NUMBER} --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
+        echo "::set-env name=PR_COMMENT_MESSAGE::${PR_URL}"
+
+    - name: comment PR
+      uses: unsplash/comment-on-pr@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        msg: "Live preview at ${{ env.PR_COMMENT_MESSAGE }}"
+        check_for_duplicate_msg: true

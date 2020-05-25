@@ -1,8 +1,9 @@
 {
   "city": "Dudweiler",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1991-05-14",
-  "email": "f.bauer@gmail.de",
+  "email": "f.bauer@example.de",
   "firstName": "Fin",
   "fluImmunization": true,
   "gender": "male",

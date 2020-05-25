@@ -1,34 +1,28 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": true,
-  "dateOfBirth": "1953-04-24",
-  "email": "j.peters@gmail.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1982-10-31",
+  "email": "m.berger@example.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "X435971123",
-  "lastName": "Peters",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U863934819",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "10331279757",
+  "phoneNumber": "8266570279",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
     "New York"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof 54",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Rosenstra\u00dfe 25",
   "symptoms": [
-    "Husten",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Schnupfen",
     "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66609"
+  "zip": "66714"
 }

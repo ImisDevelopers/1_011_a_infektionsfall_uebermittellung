@@ -1,29 +1,29 @@
 {
-  "city": "Saarlouis",
+  "city": "Dudweiler",
   "coronaContacts": false,
-  "dateOfBirth": "1974-10-17",
-  "email": "s.schulz@web.de",
-  "firstName": "Susanne",
+  "country": "DE",
+  "dateOfBirth": "1935-02-20",
+  "email": "p.schulz@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Z182593686",
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "I423337234",
   "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "21062244472",
+  "phoneNumber": "9560466183",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Tirol"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg 21",
+  "street": "Hohenzollerstra\u00dfe 66",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Halschmerzen"
+    "Fieber",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66646"
+  "zip": "662106"
 }

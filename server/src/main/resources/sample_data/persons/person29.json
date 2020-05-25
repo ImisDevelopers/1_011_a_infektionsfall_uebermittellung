@@ -1,8 +1,9 @@
 {
   "city": "Kirkel",
   "coronaContacts": true,
+  "country": "DE",
   "dateOfBirth": "1939-06-20",
-  "email": "s.mueller@posteo.de",
+  "email": "s.mueller@example.de",
   "firstName": "Susanne",
   "fluImmunization": false,
   "gender": "female",

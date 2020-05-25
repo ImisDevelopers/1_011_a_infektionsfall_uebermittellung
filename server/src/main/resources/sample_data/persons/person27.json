@@ -1,27 +1,31 @@
 {
-  "city": "Bous",
+  "city": "Kirkel",
   "coronaContacts": true,
-  "dateOfBirth": "1966-10-24",
-  "email": "d.mueller@posteo.de",
-  "firstName": "Daniel",
+  "country": "DE",
+  "dateOfBirth": "1998-03-26",
+  "email": "i.weber@example.de",
+  "firstName": "Isabella",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "K748232591",
-  "lastName": "M\u00fcller",
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "N888699799",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "9471746488",
+  "phoneNumber": "4994717464",
   "preIllnesses": [
-    ""
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "New York"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Steinstra\u00dfe 56",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hafenstra\u00dfe 69",
   "symptoms": [
-    "Erk\u00e4ltung"
+    "Husten",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66190"
+  "zip": "66771"
 }

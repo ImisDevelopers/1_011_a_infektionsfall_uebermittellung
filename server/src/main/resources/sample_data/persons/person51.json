@@ -1,29 +1,30 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Homburg",
   "coronaContacts": true,
-  "dateOfBirth": "1989-10-13",
-  "email": "f.lange@web.de",
+  "country": "DE",
+  "dateOfBirth": "1929-07-05",
+  "email": "f.lange@example.de",
   "firstName": "Fin",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Z582032731",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J968253265",
   "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "22292706510",
+  "phoneNumber": "22927065103",
   "preIllnesses": [
     "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "Moscow"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Tulpenweg 30",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Waldstra\u00dfe 78",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Erk\u00e4ltung"
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66794"
+  "zip": "66473"
 }

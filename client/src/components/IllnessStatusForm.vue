@@ -97,7 +97,10 @@
     <a-row :gutter="12">
       <a-col :md="12">
         <a-form-item>
-          <a-checkbox v-model="patientHospitalized" v-decorator="['patientHospitalized']">
+          <a-checkbox
+            v-model="patientHospitalized"
+            v-decorator="['patientHospitalized']"
+          >
             Patient/in ist hospitalisiert
           </a-checkbox>
         </a-form-item>
@@ -124,8 +127,8 @@
         </a-form-item>
         <a-form-item>
           <a-checkbox
+            v-model="onIntensiveCareUnit"
             v-decorator="['onIntensiveCareUnit']"
-            :disabled="!patientHospitalized"
           >
             Auf der Intensivstation
           </a-checkbox>
@@ -149,12 +152,10 @@ import DateInput from '@/components/DateInput.vue'
  */
 
 export interface State {
-  patientHospitalized: boolean
   today: Moment
   EVENT_TYPES: EventTypeItem[]
-  initialDateOfIllness: Moment | undefined
-  initialDateOfReporting: Moment | undefined
-  initialDateOfHospitalization: Moment | undefined
+  patientHospitalized: boolean
+  onIntensiveCareUnit: boolean
 }
 
 export default Vue.extend({
@@ -164,37 +165,34 @@ export default Vue.extend({
     DateInput,
   },
   created() {
-    if (this.patient) {
-      if (this.patient.dateOfHospitalization) {
-        this.patientHospitalized = true
-        this.initialDateOfHospitalization = moment(this.patient.dateOfHospitalization)
-      } else {
-        this.initialDateOfHospitalization = this.today
-      }
-      if (this.patient.dateOfReporting) {
-        this.initialDateOfReporting = moment(this.patient.dateOfReporting)
-      } else {
-        this.initialDateOfReporting = this.today
-      }
-      if (this.patient.dateOfIllness) {
-        this.initialDateOfIllness = moment(this.patient.dateOfIllness)
-      } else {
-        this.initialDateOfIllness = this.today
-      }
-    } else {
-      this.initialDateOfHospitalization = this.today
-      this.initialDateOfIllness = this.today
-      this.initialDateOfReporting = this.today
-    }
+    this.patientHospitalized = !!(
+      this.patient && this.patient.dateOfHospitalization
+    )
+    this.onIntensiveCareUnit = this.patient && this.patient.onIntensiveCareUnit
+  },
+  computed: {
+    initialDateOfHospitalization(): moment.Moment {
+      return this.patient && this.patient.dateOfHospitalization
+        ? moment(this.patient.dateOfHospitalization)
+        : moment()
+    },
+    initialDateOfIllness(): moment.Moment {
+      return this.patient && this.patient.dateOfIllness
+        ? moment(this.patient.dateOfIllness)
+        : moment()
+    },
+    initialDateOfReporting(): moment.Moment {
+      return this.patient && this.patient.dateOfReporting
+        ? moment(this.patient.dateOfReporting)
+        : moment()
+    },
   },
   data(): State {
     return {
-      patientHospitalized: false,
       today: moment(),
       EVENT_TYPES: eventTypes,
-      initialDateOfIllness: undefined,
-      initialDateOfReporting: undefined,
-      initialDateOfHospitalization: undefined,
+      patientHospitalized: false,
+      onIntensiveCareUnit: false,
     }
   },
   methods: {},

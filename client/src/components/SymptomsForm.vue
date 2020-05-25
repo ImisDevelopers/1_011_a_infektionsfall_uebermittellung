@@ -1,16 +1,16 @@
 <template>
   <a-form-item
-      class="no-double-colon-form-field"
-      :label="'Welche Symptome weist der Patient/die Patientin auf?'"
-      :labelCol="{ div: 24 }"
-      :wrapperCol="{ div: 24 }"
+    class="no-double-colon-form-field"
+    :label="'Welche Symptome weist der Patient/die Patientin auf?'"
+    :labelCol="{ div: 24 }"
+    :wrapperCol="{ div: 24 }"
   >
     <a-checkbox-group v-decorator="['symptoms', { initialValue: symptoms }]">
       <a-row>
         <a-col
-            :key="symptom.value"
-            :span="symptom.value === 'LOSS_OF_SENSE_OF_SMELL_TASTE' ? 12 : 6"
-            v-for="symptom in SYMPTOMS"
+          :key="symptom.value"
+          :span="symptom.value === 'LOSS_OF_SENSE_OF_SMELL_TASTE' ? 12 : 6"
+          v-for="symptom in SYMPTOMS"
         >
           <a-checkbox :value="symptom.value">
             {{ symptom.label }}
@@ -20,17 +20,16 @@
     </a-checkbox-group>
     <div style="display: flex; align-items: center; align-self: stretch;">
       <a-checkbox
-          :checked="showOtherSymptoms"
-          @change="showOtherSymptomsChanged"
-          v-decorator="['showOtherSymptoms', { initialValue: showOtherSymptoms }]"
-          style="flex: 0 0 auto;"
+        v-model="showOtherSymptoms"
+        v-decorator="['showOtherSymptoms', { initialValue: showOtherSymptoms }]"
+        style="flex: 0 0 auto;"
       >
         Andere:
       </a-checkbox>
       <a-form-item style="flex: 1 1 100%; margin-bottom: 0; max-width: 600px;">
         <a-input
-            :disabled="!showOtherSymptoms"
-            v-decorator="['symptomsOther', { initialValue: symptomsOther }]"
+          :disabled="!showOtherSymptoms"
+          v-decorator="['symptomsOther', { initialValue: symptomsOther }]"
         />
       </a-form-item>
     </div>
@@ -73,12 +72,6 @@ export default Vue.extend({
       symptomsOther: '',
       showOtherSymptoms: false,
     }
-  },
-  methods: {
-    showOtherSymptomsChanged(event: Event) {
-      const target = event.target as any
-      this.showOtherSymptoms = target.checked
-    },
   },
 })
 </script>

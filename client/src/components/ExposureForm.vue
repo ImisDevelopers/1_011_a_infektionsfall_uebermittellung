@@ -5,7 +5,7 @@
     :wrapperCol="{ div: 24 }"
   >
     <a-checkbox-group
-      @change="exposuresChanged"
+      v-model="exposures"
       v-decorator="['exposures', { initialValue: exposures }]"
     >
       <a-row>
@@ -43,8 +43,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Option } from '@/models'
-import { EXPOSURES_INTERNAL } from '@/models/exposures'
-import { EXPOSURE_LOCATIONS } from '@/models/exposures'
+import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 
 /**
  * Autocomplete for Patients
@@ -56,13 +55,12 @@ import { EXPOSURE_LOCATIONS } from '@/models/exposures'
 export interface State {
   EXPOSURES_INTERNAL: Option[]
   EXPOSURE_LOCATIONS: Option[]
-  disableExposureLocation: boolean
   exposures: string[]
   exposureLocations: string[]
 }
 
 export default Vue.extend({
-  name: 'ExpositionForm',
+  name: 'ExposureForm',
   props: ['form', 'patient'],
   created() {
     if (this.patient) {
@@ -79,28 +77,24 @@ export default Vue.extend({
               prefix + '_' + exposureLocation.value === exposure
           )
           if (item) {
-            this.disableExposureLocation = false
             this.exposureLocations.push(item.value)
           }
         }
       })
     }
   },
+  computed: {
+    disableExposureLocation(): boolean {
+      return !this.exposures.includes('CONTACT_WITH_CORONA_CASE')
+    },
+  },
   data(): State {
     return {
       EXPOSURES_INTERNAL,
       EXPOSURE_LOCATIONS,
-      disableExposureLocation: true,
       exposures: [],
       exposureLocations: [],
     }
-  },
-  methods: {
-    exposuresChanged(checkedValues: string[]) {
-      this.disableExposureLocation = !checkedValues.includes(
-        'CONTACT_WITH_CORONA_CASE'
-      )
-    },
   },
 })
 </script>

@@ -22,7 +22,7 @@
       <PreIllnessesForm :form="form" :patient="patient" />
       <a-divider />
       <h4>Exposition</h4>
-      <ExpositionForm :form="form" :patient="patient" />
+      <ExposureForm :form="form" :patient="patient" />
     </a-form>
   </a-modal>
 </template>
@@ -33,7 +33,7 @@ import Api from '@/api'
 import { patientMapper } from '@/store/modules/patients.module'
 import SymptomsForm from '@/components/SymptomsForm.vue'
 import PreIllnessesForm from '@/components/PreIllnessesForm.vue'
-import ExpositionForm from '@/components/ExpositionForm.vue'
+import ExposureForm from '@/components/ExposureForm.vue'
 import IllnessStatusForm from '@/components/IllnessStatusForm.vue'
 import moment from 'moment'
 
@@ -43,7 +43,7 @@ export default Vue.extend({
   components: {
     SymptomsForm,
     PreIllnessesForm,
-    ExpositionForm,
+    ExposureForm,
     IllnessStatusForm,
   },
   data() {

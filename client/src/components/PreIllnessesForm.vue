@@ -35,8 +35,7 @@
           'showOtherPreIllnesses',
           { initialValue: showOtherPreIllnesses },
         ]"
-        :checked="showOtherPreIllnesses"
-        @change="preIllnessesChanged"
+        v-model="showOtherPreIllnesses"
         style="flex: 0 0 auto;"
       >
         Andere:
@@ -68,7 +67,7 @@ export interface State {
 }
 
 export default Vue.extend({
-  name: 'ExpositionForm',
+  name: 'PreIllnessesForm',
   props: ['form', 'patient'],
   created() {
     if (this.patient) {
@@ -93,12 +92,6 @@ export default Vue.extend({
       preIllnessesOther: '',
       showOtherPreIllnesses: false,
     }
-  },
-  methods: {
-    preIllnessesChanged(event: Event) {
-      const target = event.target as any
-      this.showOtherPreIllnesses = target.checked
-    },
   },
 })
 </script>

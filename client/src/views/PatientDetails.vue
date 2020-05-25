@@ -336,7 +336,7 @@
                 <div v-else>
                   <div>Hospitalisiert am {{ dateOfHospitalization }}</div>
                   <div>
-                    Auf Intesivstation?
+                    Auf Intensivstation?
                     {{ patient.onIntensiveCareUnit ? 'Ja' : 'Nein' }}
                   </div>
                 </div>

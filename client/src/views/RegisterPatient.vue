@@ -60,7 +60,7 @@
 
           <!-- Infektionskette / Exposure -->
           <a-collapse-panel header="Exposition" key="2">
-            <ExpositionForm :form="form" />
+            <ExposureForm :form="form" />
           </a-collapse-panel>
 
           <!-- Symptoms -->
@@ -133,7 +133,7 @@ import { Patient } from '@/api/SwaggerApi'
 import PatientStammdaten from '@/components/PatientStammdaten.vue'
 import moment from 'moment'
 import SymptomsForm from '@/components/SymptomsForm.vue'
-import ExpositionForm from '@/components/ExpositionForm.vue'
+import ExposureForm from '@/components/ExposureForm.vue'
 import PreIllnessesForm from '@/components/PreIllnessesForm.vue'
 import IllnessStatusForm from '@/components/IllnessStatusForm.vue'
 
@@ -146,7 +146,7 @@ export default Vue.extend({
   components: {
     PatientStammdaten,
     SymptomsForm,
-    ExpositionForm,
+    ExposureForm,
     PreIllnessesForm,
     IllnessStatusForm,
   },

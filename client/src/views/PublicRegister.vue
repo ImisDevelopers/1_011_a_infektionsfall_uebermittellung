@@ -69,7 +69,7 @@
                       align-self: stretch;
                     "
                   >
-                    <a-checkbox @change="symptomsChanged">Andere:</a-checkbox>
+                    <a-checkbox v-model="showOtherSymptoms">Andere:</a-checkbox>
                     <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
                       <a-input
                         :disabled="!showOtherSymptoms"
@@ -92,8 +92,8 @@
                 <a-form-item>
                   <a-checkbox-group
                     :options="exposures"
-                    @change="exposuresChanged"
                     class="checkbox-group"
+                    v-model="selectedExposures"
                     v-decorator="['exposures']"
                   />
                 </a-form-item>
@@ -133,9 +133,7 @@
                       align-self: stretch;
                     "
                   >
-                    <a-checkbox @change="preIllnessesChanged"
-                      >Andere:</a-checkbox
-                    >
+                    <a-checkbox v-model="showOtherPreIllnesses">Andere:</a-checkbox>
                     <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
                       <a-input
                         :disabled="!showOtherPreIllnesses"
@@ -260,12 +258,12 @@ interface State {
   createdPatient: Patient | null
   symptoms: Option[]
   exposures: Option[]
+  selectedExposures: string[]
   exposureLocation: Option[]
   preIllnesses: Option[]
   steps: any[]
   checked: boolean
   showCheckedError: boolean
-  disableExposureLocation: boolean
   showOtherSymptoms: boolean
   showOtherPreIllnesses: boolean
 }
@@ -284,6 +282,7 @@ export default Vue.extend({
       symptoms: SYMPTOMS,
       preIllnesses: PRE_ILLNESSES,
       exposures: EXPOSURES_PUBLIC,
+      selectedExposures: [],
       exposureLocation: EXPOSURE_LOCATIONS,
       steps: [
         {
@@ -302,7 +301,6 @@ export default Vue.extend({
       ],
       checked: false,
       showCheckedError: false,
-      disableExposureLocation: true,
       showOtherSymptoms: false,
       showOtherPreIllnesses: false,
     }
@@ -310,6 +308,9 @@ export default Vue.extend({
   computed: {
     stepsDirection() {
       return window.innerWidth >= 700 ? 'horizontal' : 'vertical'
+    },
+    disableExposureLocation(): boolean {
+      return !this.selectedExposures.includes('CONTACT_WITH_CORONA_CASE')
     },
   },
   methods: {
@@ -410,19 +411,6 @@ export default Vue.extend({
       if (this.checked) {
         this.showCheckedError = false
       }
-    },
-    symptomsChanged(event: Event) {
-      const target = event.target as any
-      this.showOtherSymptoms = target.checked
-    },
-    preIllnessesChanged(event: Event) {
-      const target = event.target as any
-      this.showOtherPreIllnesses = target.checked
-    },
-    exposuresChanged(checkedValues: string[]) {
-      this.disableExposureLocation = !checkedValues.includes(
-        'CONTACT_WITH_CORONA_CASE'
-      )
     },
     gotoHome() {
       this.$router.push({ path: '/' })

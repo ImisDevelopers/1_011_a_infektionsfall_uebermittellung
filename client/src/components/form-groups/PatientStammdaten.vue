@@ -175,7 +175,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Email eingeben',
                     },
                   ],
@@ -193,7 +193,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Telefonnummer eingeben',
                     },
                   ],
@@ -216,7 +216,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Beruf eingeben',
                     },
                   ],
@@ -254,7 +254,7 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Arbeitgeber (optional)">
+          <a-form-item label="Arbeitgeber">
             <a-input
               v-decorator="[
                 'employer',
@@ -271,7 +271,7 @@
       <h4>Krankenkasse</h4>
       <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Krankenkasse (optional)">
+          <a-form-item label="Krankenkasse">
             <a-input
               v-decorator="[
                 'insuranceCompany',
@@ -281,7 +281,7 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Versichertennr. (optional)">
+          <a-form-item label="Versichertennr.">
             <a-input
               v-decorator="[
                 'insuranceMembershipNumber',

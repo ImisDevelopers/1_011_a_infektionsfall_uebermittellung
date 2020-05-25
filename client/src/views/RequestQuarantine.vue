@@ -1,152 +1,154 @@
 <template>
-  <a-card
-    style="max-width: 500px; margin: 2rem auto; min-height: 300px;"
-    align="center"
-  >
-    <a-form
-      :form="form"
-      :label-col="{ span: 7 }"
-      :wrapper-col="{ span: 17 }"
-      @submit.prevent="handleSubmit"
-    >
-      <!-- :colon="false" -->
-      <a-form-item label="Patienten-ID" v-if="this.givenPatientId">
-        {{ this.$route.params.patientFirstName }}
-        {{ this.$route.params.patientLastName }} ({{
-          this.$route.params.patientId
-        }})
-      </a-form-item>
-      <a-form-item label="Patienten-ID" v-else>
-        <PatientInput
-          v-decorator="[
-            'patientId',
-            {
-              rules: [
-                {
-                  required: true,
-                  message: 'Bitte geben Sie die Patienten-ID ein.',
-                },
-              ],
-            },
-          ]"
-          v-on:select="onPatientSwitch"
-        />
-      </a-form-item>
+  <div style="max-width: 500px; margin: 0 auto;">
+    <a-page-header
+      title="Quarantäne vormerken"
+      sub-title=""
+      style="padding-left: 0; padding-right: 0;"
+    />
 
-      <a-form-item label="Quarantäne bis">
-        <DateInput
-          v-decorator="[
-            'dateUntil',
-            {
-              rules: [
-                {
-                  required: true,
-                  message: 'Bis wann soll der Patient in Quarantäne?',
-                },
-              ],
-              initialValue: today,
-            },
-          ]"
-        />
-      </a-form-item>
-
-      <a-form-item label="Vorgemerkt am">
-        <DateInput
-          v-decorator="[
-            'eventDate',
-            {
-              rules: [
-                {
-                  required: false,
-                  message:
-                    'Datum, für welches der Vermerk erfasst werden soll.',
-                },
-              ],
-              initialValue: today,
-            },
-          ]"
-        />
-      </a-form-item>
-
-      <a-checkbox
-        :disabled="contacts.length === 0"
-        :checked="sendContactsToQuarantine"
-        @change="sendContactsToQuarantineChanged"
-        style="margin-bottom: 15px;"
-      >
-        Quarantäne auch für alle Kontaktpersonen vormerken
-      </a-checkbox>
-
-      <div style="margin-bottom: 15px;">
-        <div v-if="contacts.length === 0" style="margin-bottom: 15px;">
-          Keine Kontaktpersonen hinterlegt
-        </div>
-        <div
-          v-for="contact in contacts"
-          :key="contact.id"
-          style="
-            padding: 10px;
-            display: flex;
-            text-align: left;
-            align-items: center;
-          "
-          v-bind:class="
-            sendContactsToQuarantine ? '' : 'send-to-quarantine-disabled'
-          "
-        >
-          <a-button
-            icon="user"
-            :type="sendContactsToQuarantine ? 'primary' : 'dashed'"
-            title="Patientendaten anzeigen"
-            @click="showPatient(contact.contact.id)"
-            style="margin-right: 15px;"
+    <a-card>
+      <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
+        <!-- :colon="false" -->
+        <a-form-item label="Patienten-ID" v-if="this.givenPatientId">
+          {{ this.$route.params.patientFirstName }}
+          {{ this.$route.params.patientLastName }} ({{
+            this.$route.params.patientId
+          }})
+        </a-form-item>
+        <a-form-item label="Patienten-ID" v-else>
+          <PatientInput
+            v-decorator="[
+              'patientId',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte geben Sie die Patienten-ID ein.',
+                  },
+                ],
+              },
+            ]"
+            v-on:select="onPatientSwitch"
           />
-          <div>
-            <div>
-              {{ contact.contact.firstName }} {{ contact.contact.lastName }}
-            </div>
-            <div>Datum Kontakt: 21.04.2020</div>
+        </a-form-item>
+
+        <a-form-item label="Quarantäne bis">
+          <DateInput
+            v-decorator="[
+              'dateUntil',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bis wann soll der Patient in Quarantäne?',
+                  },
+                ],
+                initialValue: today,
+              },
+            ]"
+          />
+        </a-form-item>
+
+        <a-form-item label="Vorgemerkt am">
+          <DateInput
+            v-decorator="[
+              'eventDate',
+              {
+                rules: [
+                  {
+                    required: false,
+                    message:
+                      'Datum, für welches der Vermerk erfasst werden soll.',
+                  },
+                ],
+                initialValue: today,
+              },
+            ]"
+          />
+        </a-form-item>
+
+        <a-checkbox
+          :disabled="contacts.length === 0"
+          :checked="sendContactsToQuarantine"
+          @change="sendContactsToQuarantineChanged"
+          style="margin-bottom: 15px;"
+        >
+          Quarantäne auch für alle Kontaktpersonen vormerken
+        </a-checkbox>
+
+        <div style="margin-bottom: 15px;">
+          <div v-if="contacts.length === 0" style="margin-bottom: 15px;">
+            Keine Kontaktpersonen hinterlegt
           </div>
-          <div style="margin-left: 15px;">
+          <div
+            v-for="contact in contacts"
+            :key="contact.id"
+            style="
+              padding: 10px;
+              display: flex;
+              text-align: left;
+              align-items: center;
+            "
+            v-bind:class="
+              sendContactsToQuarantine ? '' : 'send-to-quarantine-disabled'
+            "
+          >
+            <a-button
+              icon="user"
+              :type="sendContactsToQuarantine ? 'primary' : 'dashed'"
+              title="Patientendaten anzeigen"
+              @click="showPatient(contact.contact.id)"
+              style="margin-right: 15px;"
+            />
             <div>
-              <span v-if="contact.contact.infected" style="color: red;">
-                Infiziert
-              </span>
-              <span v-else>Infektionsstatus unbekannt</span>
+              <div>
+                {{ contact.contact.firstName }} {{ contact.contact.lastName }}
+              </div>
+              <div>Datum Kontakt: 21.04.2020</div>
             </div>
-            <div>
-              <span v-if="contact.contact.inQuarantine">
-                In Quarantäne
-              </span>
-              <span
-                v-else
-                :style="`color: ${contact.contact.infected ? 'red' : 'unset'};`"
-              >
-                Keine Quarantäne
-              </span>
+            <div style="margin-left: 15px;">
+              <div>
+                <span v-if="contact.contact.infected" style="color: red;">
+                  Infiziert
+                </span>
+                <span v-else>Infektionsstatus unbekannt</span>
+              </div>
+              <div>
+                <span v-if="contact.contact.inQuarantine">
+                  In Quarantäne
+                </span>
+                <span
+                  v-else
+                  :style="`color: ${
+                    contact.contact.infected ? 'red' : 'unset'
+                  };`"
+                >
+                  Keine Quarantäne
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Kommentar -->
-      <a-form-item label="Kommentar">
-        <a-textarea
-          :autoSize="{ minRows: 3, maxRows: 5 }"
-          placeholder="Kommentar hinzufügen"
-          v-decorator="['comment']"
-        />
-      </a-form-item>
+        <!-- Kommentar -->
+        <a-form-item label="Kommentar">
+          <a-textarea
+            :autoSize="{ minRows: 3, maxRows: 5 }"
+            placeholder="Kommentar hinzufügen"
+            v-decorator="['comment']"
+          />
+        </a-form-item>
 
-      <!-- Submit -->
-      <a-divider />
-      <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
-        <a-button html-type="submit" type="primary">
-          Speichern
-        </a-button>
-      </a-form-item>
-    </a-form>
-  </a-card>
+        <!-- Submit -->
+        <a-divider />
+        <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+          <a-button html-type="submit" type="primary">
+            Speichern
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </a-card>
+  </div>
 </template>
 
 <script lang="ts">

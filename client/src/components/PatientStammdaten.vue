@@ -419,9 +419,7 @@ export default Vue.extend({
       const [preDefined, userDefined] = [
         this.availableInsuranceCompanies.preDefined as string[],
         this.availableInsuranceCompanies.userDefined as string[],
-      ].map((companies) => {
-        return (
-          companies
+      ].map((companies) => companies
             .map(
               (company) =>
                 [company, matcher.match(company)] as [string, TextMatcherResult]
@@ -432,10 +430,10 @@ export default Vue.extend({
               matchResult.score /= company.split(/\s+/g).length
               return [company, matchResult] as [string, TextMatcherResult]
             })
+            // Sort by score, descending
             .sort((o1, o2) => -1 * (o1[1].score - o2[1].score))
             .map(([company, matchResult]) => company)
-        )
-      })
+      )
 
       this.insuranceCompanies = {
         preDefined,

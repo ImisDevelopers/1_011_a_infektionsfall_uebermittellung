@@ -519,7 +519,7 @@ export default Vue.extend({
         },
       }
     },
-    getQuarantineSelection(): (PatientStatus | null)[] {
+    getQuarantineSelection(): (PatientStatus)[] {
       if (!this.quarantineSelection) {
         return []
       }
@@ -527,7 +527,6 @@ export default Vue.extend({
         return [
           'QUARANTINE_RELEASED',
           'QUARANTINE_PROFESSIONBAN_RELEASED',
-          null,
         ]
       } else {
         return [this.quarantineSelection as PatientStatus]

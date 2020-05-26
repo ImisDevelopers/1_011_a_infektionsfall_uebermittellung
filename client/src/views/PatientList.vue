@@ -352,7 +352,7 @@ export default Vue.extend({
         insuranceCompany: '',
         firstName: '',
         lastName: '',
-        quarantineStatus: [],
+        quarantineStatus: undefined,
         id: '',
       },
       quarantineSelection: '',

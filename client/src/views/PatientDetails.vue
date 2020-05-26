@@ -12,7 +12,24 @@
           this.loadData()
         }
       "
+      v-if="showChangePatientStammdatenForm"
       :visible="showChangePatientStammdatenForm"
+      :patient="patient"
+    />
+    <ChangePatientFalldatenForm
+      @cancel="
+        () => {
+          showChangePatientFalldatenForm = false
+        }
+      "
+      @create="
+        () => {
+          showChangePatientFalldatenForm = false
+          this.loadData()
+        }
+      "
+      v-if="showChangePatientFalldatenForm"
+      :visible="showChangePatientFalldatenForm"
       :patient="patient"
     />
     <div
@@ -59,15 +76,9 @@
         style="text-align: left;"
       >
         <a-tab-pane key="master-data" tab="Stammdaten">
-          <div
-            style="
-              display: flex;
-              justify-content: flex-end;
-              padding-bottom: 10px;
-            "
-          >
+          <div class="tool-row">
             <a-button icon="edit" @click="editPatientStammdaten">
-              Daten ändern
+              Stammdaten ändern
             </a-button>
           </div>
           <!-- Allgemein & Adresse -->
@@ -80,16 +91,20 @@
                     <td>{{ patient.lastName }}, {{ patient.firstName }}</td>
                   </tr>
                   <tr>
-                    <td>Geburtsdatum:</td>
-                    <td>{{ dateOfBirth }}</td>
+                    <td>Staatsangehörigkeit:</td>
+                    <td>{{ patient.nationality }}</td>
                   </tr>
                   <tr>
                     <td>Geschlecht:</td>
                     <td>{{ gender }}</td>
                   </tr>
                   <tr>
-                    <td>Staatsangehörigkeit:</td>
-                    <td>{{ patient.nationality }}</td>
+                    <td>Geburtsdatum:</td>
+                    <td>{{ dateOfBirth }}</td>
+                  </tr>
+                  <tr>
+                    <td>Todesdatum:</td>
+                    <td>{{ dateOfDeath }}</td>
                   </tr>
                 </table>
               </a-card>
@@ -97,6 +112,9 @@
             <a-col :md="12" :span="24">
               <a-card align="left" title="Adresse">
                 <table>
+                  <tr v-if="patient.stayCity">
+                    <td colspan="2">Wohnort:</td>
+                  </tr>
                   <tr>
                     <td>Straße/Hausnr.:</td>
                     <td>{{ patient.street }} {{ patient.houseNumber }}</td>
@@ -108,6 +126,23 @@
                   <tr>
                     <td>Land:</td>
                     <td>{{ patient.country }}</td>
+                  </tr>
+                </table>
+                <table v-if="patient.stayCity" style="margin-top: 10px">
+                  <tr>
+                    <td colspan="2">Aufenthaltsort:</td>
+                  </tr>
+                  <tr>
+                    <td>Straße/Hausnr.:</td>
+                    <td>{{ patient.stayStreet }} {{ patient.stayHouseNumber }}</td>
+                  </tr>
+                  <tr>
+                    <td>PLZ/Ort:</td>
+                    <td>{{ patient.stayZip }} {{ patient.stayCity }}</td>
+                  </tr>
+                  <tr>
+                    <td>Land:</td>
+                    <td>{{ patient.stayCountry }}</td>
                   </tr>
                 </table>
               </a-card>
@@ -133,20 +168,6 @@
               </a-card>
             </a-col>
             <a-col :md="8" :span="24">
-              <a-card align="left" title="Versicherung">
-                <table>
-                  <tr>
-                    <td>Versicherung:</td>
-                    <td>{{ patient.insuranceCompany }}</td>
-                  </tr>
-                  <tr>
-                    <td>V-Nr:</td>
-                    <td>{{ patient.insuranceMembershipNumber }}</td>
-                  </tr>
-                </table>
-              </a-card>
-            </a-col>
-            <a-col :md="8" :span="24">
               <a-card align="left" title="Arbeit">
                 <table>
                   <tr>
@@ -160,10 +181,31 @@
                 </table>
               </a-card>
             </a-col>
+            <a-col :md="8" :span="24">
+              <a-card align="left" title="Versicherung">
+                <table>
+                  <tr>
+                    <td>Versicherung:</td>
+                    <td>{{ patient.insuranceCompany }}</td>
+                  </tr>
+                  <tr>
+                    <td>V-Nr:</td>
+                    <td>{{ patient.insuranceMembershipNumber }}</td>
+                  </tr>
+                </table>
+              </a-card>
+            </a-col>
           </a-row>
         </a-tab-pane>
 
         <a-tab-pane key="overview" tab="Falldaten">
+          <div class="tool-row">
+            <div style="font-size: 18px; padding-left: 16px">Fall: COVID-19</div>
+            <span style="flex: 1 1 auto"></span>
+            <a-button icon="edit" @click="editPatientFalldaten">
+              Falldaten ändern
+            </a-button>
+          </div>
           <!-- Tests -->
           <a-row :gutter="8" style="margin-top: 8px;">
             <a-col span="24">
@@ -273,6 +315,30 @@
               >
                 <div v-bind:key="symptom" v-for="symptom in symptoms">
                   {{ symptom }}
+                </div>
+              </a-card>
+            </a-col>
+          </a-row>
+
+          <a-row :gutter="8" style="margin-top: 8px;">
+            <a-col :md="8" :span="24">
+              <a-card align="left" title="Exposition">
+                <div v-bind:key="exposure" v-for="exposure in exposures">
+                  {{ exposure }}
+                </div>
+              </a-card>
+            </a-col>
+            <a-col :md="8" :span="24">
+              <a-card align="left" title="Hospitalisierung">
+                <div v-if="!dateOfHospitalization">
+                  Nicht hospitalisiert
+                </div>
+                <div v-else>
+                  <div>Hospitalisiert am {{ dateOfHospitalization }}</div>
+                  <div>
+                    Auf Intensivstation?
+                    {{ patient.onIntensiveCareUnit ? 'Ja' : 'Nein' }}
+                  </div>
                 </div>
               </a-card>
             </a-col>
@@ -476,11 +542,11 @@ import moment, { Moment } from 'moment'
 import Api from '@/api'
 import * as permissions from '@/util/permissions'
 import {
+  ExposureContactFromServer,
+  Incident,
   LabTest,
   Patient,
   Timestamp,
-  ExposureContactFromServer,
-  Incident,
 } from '@/api/SwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
@@ -494,10 +560,12 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
-import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
-import EditExposureContact from '@/components/EditExposureContact.vue'
+import ChangePatientStammdatenForm from '@/components/modals/ChangePatientStammdatenForm.vue'
+import EditExposureContact from '@/components/form-groups/EditExposureContact.vue'
 import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
+import ChangePatientFalldatenForm from '@/components/modals/ChangePatientFalldatenForm.vue'
+import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -627,9 +695,13 @@ interface State {
   patientStatus: EventTypeItem | undefined
   eventTypes: any[]
   symptoms: string[]
+  exposures: string[]
   preIllnesses: string[]
   dateOfBirth: string
+  dateOfDeath: string
+  dateOfHospitalization: string
   showChangePatientStammdatenForm: boolean
+  showChangePatientFalldatenForm: boolean
   gender: string
   tests: LabTest[]
   columnsTests: Partial<Column>[]
@@ -647,6 +719,7 @@ export default Vue.extend({
   name: 'PatientDetails',
   components: {
     ChangePatientStammdatenForm,
+    ChangePatientFalldatenForm,
     EditExposureContact,
   },
   computed: {
@@ -685,9 +758,13 @@ export default Vue.extend({
       testResults: testResults,
       testTypes: testTypes,
       symptoms: [],
+      exposures: [],
       showChangePatientStammdatenForm: false,
+      showChangePatientFalldatenForm: false,
       preIllnesses: [],
       dateOfBirth: '',
+      dateOfDeath: '',
+      dateOfHospitalization: '',
       gender: '',
       tests: [],
       columnsTests,
@@ -755,6 +832,11 @@ export default Vue.extend({
       } else {
         this.dateOfIllness = this.dateOfReporting
       }
+      if (this.patient.dateOfHospitalization) {
+        this.dateOfHospitalization = moment(
+          this.patient.dateOfHospitalization
+        ).format(this.dateFormat)
+      }
 
       // Map patient attributes to their display representation
       this.patientStatus = eventTypes.find(
@@ -767,6 +849,19 @@ export default Vue.extend({
           )
           return patientSymptom ? patientSymptom.label : symptom
         }) || []
+      this.exposures =
+        this.patient.riskAreas?.map((exposure) => {
+          let patientExposure = EXPOSURES_INTERNAL.find(
+            (exposureFind) => exposureFind.value === exposure
+          )
+          if (!patientExposure) {
+            patientExposure = EXPOSURE_LOCATIONS.find(
+              (exposureFind) =>
+                'CONTACT_WITH_CORONA_' + exposureFind.value === exposure
+            )
+          }
+          return patientExposure ? patientExposure.label : exposure
+        }) || []
       this.preIllnesses =
         this.patient.preIllnesses?.map((preIllness) => {
           const patientIllness = PRE_ILLNESSES.find(
@@ -777,6 +872,9 @@ export default Vue.extend({
       this.dateOfBirth = moment(this.patient.dateOfBirth).format(
         this.dateFormat
       )
+      this.dateOfDeath = this.patient.dateOfDeath
+        ? moment(this.patient.dateOfDeath).format(this.dateFormat)
+        : '-'
       const patientGender = this.patient.gender || ''
       this.gender =
         patientGender === 'male'
@@ -831,6 +929,9 @@ export default Vue.extend({
     },
     editPatientStammdaten(): void {
       this.showChangePatientStammdatenForm = true
+    },
+    editPatientFalldaten(): void {
+      this.showChangePatientFalldatenForm = true
     },
     handleActionClick(e: { key: string }) {
       switch (e.key) {
@@ -992,6 +1093,13 @@ table.compact {
   font-weight: normal;
   color: rgba(0, 0, 0, 0.65);
 }
+
+.tool-row {
+  display: flex;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
 </style>
 
 <style lang="scss">
@@ -999,11 +1107,13 @@ table.compact {
   table {
     width: unset;
   }
+
   .ant-table-tbody > tr > td {
     border-bottom: none;
     padding: 4px;
   }
 }
+
 .ant-descriptions-item {
   vertical-align: top;
 }

@@ -407,13 +407,15 @@ export default Vue.extend({
         const formValues = {
           ...this.form,
           ...this.advancedForm,
-        } as PatientSearchParamsDTO & PatientSimpleSearchParamsDTO
+        }
 
         if (!formValues.patientStatus) {
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
-        formValues.quarantineStatus = this.getQuarantineSelection() as Array<PatientStatus>
+        formValues.quarantineStatus = this.getQuarantineSelection() as Array<
+          PatientStatus
+        >
 
         countPromise = Api.countQueryPatientsUsingPost(formValues)
         queryPromise = Api.queryPatientsUsingPost(formValues)
@@ -526,7 +528,7 @@ export default Vue.extend({
         },
       }
     },
-    getQuarantineSelection(): Array<PatientStatus | null>[] {
+    getQuarantineSelection(): Array<PatientStatus | null> {
       if (!this.quarantineSelection) {
         return []
       }

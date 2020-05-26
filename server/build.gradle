@@ -99,6 +99,7 @@ task generateTestData(type: Exec) {
 		workingDir 'src/main/resources/sample_data'
 }
 tasks.bootRun.dependsOn('generateTestData')
+tasks.test.dependsOn('generateTestData')
 
 test {
     useJUnitPlatform()

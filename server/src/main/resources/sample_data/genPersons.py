@@ -1,6 +1,5 @@
 import argparse
 import json
-import hashlib
 import os
 import pathlib
 import string

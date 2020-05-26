@@ -1,33 +1,33 @@
 {
   "city": "V\u00f6lklingen",
-  "coronaContacts": true,
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1950-10-27",
-  "email": "m.sommer@example.de",
-  "firstName": "Matthias",
+  "dateOfBirth": "1944-04-26",
+  "email": "j.schroeder@example.de",
+  "firstName": "Jens",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "B880411013",
-  "lastName": "Sommer",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "K888340979",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "28451151044",
+  "phoneNumber": "10647102767",
   "preIllnesses": [
-    "Krebserkrankung"
+    "DIABETES"
   ],
   "riskAreas": [
-    "Moscow"
+    "MEDICAL_LABORATORY"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Waldstra\u00dfe 77",
+  "street": "Waldstra\u00dfe 26",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Husten",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber"
+    "SHORTNESS_OF_BREATH",
+    "COUGH",
+    "BACK_PAIN",
+    "COLD",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66627"
+  "weakenedImmuneSystem": false,
+  "zip": "66592"
 }

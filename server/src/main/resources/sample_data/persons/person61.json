@@ -1,32 +1,32 @@
 {
-  "city": "Dudweiler",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1977-06-17",
-  "email": "a.wagner@example.de",
-  "firstName": "Anna",
+  "dateOfBirth": "1972-11-26",
+  "email": "o.peters@example.de",
+  "firstName": "Olivia",
   "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "S265564833",
-  "lastName": "Wagner",
+  "insuranceMembershipNumber": "W217999418",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "414310842104",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "99309728109",
+  "preIllnesses": [],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Eisenbahnstra\u00dfe 68",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide 48",
   "symptoms": [
-    "Husten",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten"
+    "COUGH",
+    "HEADACHE",
+    "SHORTNESS_OF_BREATH",
+    "NAUSEA",
+    "FEVER",
+    "MUSCLE_PAIN",
+    "WEIGHT_LOSS"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "661810"
+  "zip": "662103"
 }

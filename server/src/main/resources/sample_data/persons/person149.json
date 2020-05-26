@@ -1,29 +1,37 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": true,
+  "city": "Saarlouis",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1978-03-06",
-  "email": "d.berger@example.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1935-05-08",
+  "email": "m.bauer@example.de",
+  "firstName": "Marie",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "N124101254",
-  "lastName": "Berger",
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "F713546516",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "25911036517",
+  "phoneNumber": "4795527636",
   "preIllnesses": [
-    "Krebserkrankung"
+    "CANCER"
   ],
   "riskAreas": [
-    "Madrid"
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Bismarckstra\u00dfe 61",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Rosenstra\u00dfe 96",
   "symptoms": [
-    "Schnupfen",
-    "Fieber"
+    "FEVER",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "MUSCLE_PAIN",
+    "BACK_PAIN",
+    "NAUSEA",
+    "COLD",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66739"
+  "zip": "66556"
 }

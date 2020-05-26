@@ -1,35 +1,29 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "2004-01-23",
-  "email": "b.klein@example.de",
-  "firstName": "Ben",
+  "dateOfBirth": "2000-04-29",
+  "email": "m.bauer@example.de",
+  "firstName": "Matthias",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "U827070406",
-  "lastName": "Klein",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "V240346956",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "5162713611",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "86571918210",
+  "preIllnesses": [],
   "riskAreas": [
-    "Tirol"
+    "CONTACT_WITH_CORONA_CASE"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Schernerweg 40",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 50",
   "symptoms": [
-    "Husten",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Schnupfen"
+    "COUGH",
+    "HEADACHE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COLD"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66542"
+  "weakenedImmuneSystem": false,
+  "zip": "66199"
 }

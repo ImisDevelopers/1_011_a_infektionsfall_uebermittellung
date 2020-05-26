@@ -1,33 +1,34 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
+  "city": "Homburg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1931-01-23",
-  "email": "k.peters@example.de",
-  "firstName": "Kai",
-  "fluImmunization": false,
+  "dateOfBirth": "1958-09-18",
+  "email": "j.schmidt@example.de",
+  "firstName": "Jan",
+  "fluImmunization": true,
   "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "F672806655",
-  "lastName": "Peters",
+  "insuranceMembershipNumber": "Z463394867",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "15814104914",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
+  "phoneNumber": "74495621013",
+  "preIllnesses": [],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "B\u00fcckerheide 56",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Waldstra\u00dfe 100",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Fieber",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Husten"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "NAUSEA",
+    "LOSS_OF_APPETITE",
+    "SHORTNESS_OF_BREATH",
+    "HEADACHE",
+    "COUGH",
+    "COLD",
+    "MUSCLE_PAIN",
+    "DIFFICULTY_BREATHING"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "666610"
+  "weakenedImmuneSystem": false,
+  "zip": "66213"
 }

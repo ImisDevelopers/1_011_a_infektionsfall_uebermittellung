@@ -1,35 +1,33 @@
 {
-  "city": "Sulzbach",
+  "city": "Riegelsberg",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1979-11-21",
-  "email": "c.peters@example.de",
-  "firstName": "Christopher",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "B291117627",
-  "lastName": "Peters",
+  "dateOfBirth": "1976-02-10",
+  "email": "a.bauer@example.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N488984224",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "3106138610110",
+  "phoneNumber": "9864300981",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "PREGNANCY"
   ],
   "riskAreas": [
-    "Hubei"
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete 3",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hafenstra\u00dfe 0",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Husten"
+    "NAUSEA",
+    "COLD",
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "BACK_PAIN"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66750"
+  "weakenedImmuneSystem": true,
+  "zip": "666103"
 }

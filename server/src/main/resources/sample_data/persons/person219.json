@@ -1,29 +1,34 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "P\u00fcttlingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1951-05-23",
-  "email": "p.mueller@example.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
-  "gender": "female",
+  "dateOfBirth": "1942-11-01",
+  "email": "d.mueller@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
+  "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "T143888484",
+  "insuranceMembershipNumber": "G415210792",
   "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "98931019508",
+  "phoneNumber": "26910524991",
   "preIllnesses": [
-    "Krebserkrankung"
+    "CARDIOVASCULAR_DISEASE"
   ],
   "riskAreas": [
-    "Moscow"
+    "MEDICAL_LABORATORY"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Bismarckstra\u00dfe 46",
+  "street": "B\u00fcckerheide 9",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten"
+    "BACK_PAIN",
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COUGH",
+    "LOSS_OF_APPETITE",
+    "HEADACHE",
+    "MUSCLE_PAIN"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66016"
+  "zip": "661087"
 }

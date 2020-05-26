@@ -1,26 +1,33 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
+  "city": "Heusweiler",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1966-04-08",
-  "email": "f.schmitt@example.de",
-  "firstName": "Franz",
+  "dateOfBirth": "1926-06-22",
+  "email": "s.schulz@example.de",
+  "firstName": "Susanne",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "I291735734",
-  "lastName": "Schmitt",
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "F760904107",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "010365414510",
+  "phoneNumber": "14841065648",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "CANCER"
   ],
   "riskAreas": [
-    "Madrid"
+    "COMMUNITY_FACILITY_MINORS"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hafenstra\u00dfe 51",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "661085"
+  "street": "Aastwiete 24",
+  "symptoms": [
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE",
+    "WEIGHT_LOSS",
+    "COLD",
+    "FEVER",
+    "MUSCLE_PAIN"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "666106"
 }

@@ -1,34 +1,39 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": true,
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1934-09-21",
-  "email": "a.richter@example.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "R409957384",
-  "lastName": "Richter",
+  "dateOfBirth": "1999-04-16",
+  "email": "m.winter@example.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "V285510711",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "76107677219",
+  "phoneNumber": "61371091805",
   "preIllnesses": [
-    "Krebserkrankung"
+    "LIVER_DISEASE"
   ],
   "riskAreas": [
-    "New York"
+    "MEDICAL_LABORATORY"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg 97",
+  "street": "S\u00fcdweg 16",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen"
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_APPETITE",
+    "COLD",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "NAUSEA",
+    "SHORTNESS_OF_BREATH",
+    "BACK_PAIN",
+    "MUSCLE_PAIN",
+    "WEIGHT_LOSS",
+    "COUGH",
+    "HEADACHE",
+    "FEVER"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66340"
+  "weakenedImmuneSystem": true,
+  "zip": "66696"
 }

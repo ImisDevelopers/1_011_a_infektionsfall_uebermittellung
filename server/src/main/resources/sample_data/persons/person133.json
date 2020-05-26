@@ -1,34 +1,24 @@
 {
-  "city": "Bous",
+  "city": "Riegelsberg",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1985-09-28",
-  "email": "c.mueller@example.de",
-  "firstName": "Cornelius",
-  "fluImmunization": false,
+  "dateOfBirth": "1932-04-30",
+  "email": "h.bauer@example.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "C592949064",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C911706504",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "7721753540",
+  "phoneNumber": "46671066506",
   "preIllnesses": [
-    ""
+    "RESPIRATORY_DISEASE"
   ],
-  "riskAreas": [
-    "New York"
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hafenstra\u00dfe 28",
-  "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Husten",
-    "Gelenkschmerzen"
-  ],
+  "street": "Bismarckstra\u00dfe 15",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "668106"
+  "zip": "668010"
 }

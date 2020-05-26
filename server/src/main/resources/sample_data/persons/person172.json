@@ -1,30 +1,36 @@
 {
-  "city": "Homburg",
-  "coronaContacts": true,
+  "city": "P\u00fcttlingen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1934-12-31",
-  "email": "o.mueller@example.de",
-  "firstName": "Olivia",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "G307360430",
-  "lastName": "M\u00fcller",
+  "dateOfBirth": "1947-01-29",
+  "email": "k.schulze@example.de",
+  "firstName": "Kai",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "O278763625",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "6509480141",
+  "phoneNumber": "38860868100",
   "preIllnesses": [
-    ""
+    "IMMUNODEFICIENCY"
   ],
   "riskAreas": [
-    "Tirol"
+    "COMMUNITY_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Niekampsweg 66",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg 37",
   "symptoms": [
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen"
+    "LOSS_OF_APPETITE",
+    "BACK_PAIN",
+    "SHORTNESS_OF_BREATH",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COUGH",
+    "WEIGHT_LOSS",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66113"
+  "weakenedImmuneSystem": false,
+  "zip": "66764"
 }

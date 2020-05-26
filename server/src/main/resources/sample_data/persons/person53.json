@@ -1,28 +1,34 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": false,
+  "city": "Saarlouis",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1941-06-08",
-  "email": "j.mueller@example.de",
-  "firstName": "Jan",
+  "dateOfBirth": "1956-10-02",
+  "email": "f.winkler@example.de",
+  "firstName": "Franz",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "P581682167",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "D127824235",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "61530511052",
+  "phoneNumber": "92107557192",
   "preIllnesses": [
-    "Krebserkrankung"
+    "ADIPOSITAS"
   ],
   "riskAreas": [
-    "GrandEst"
+    "CONTACT_WITH_CORONA_CASE"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aastwiete 4",
+  "street": "Hafenstra\u00dfe 46",
   "symptoms": [
-    "Husten"
+    "BACK_PAIN",
+    "HEADACHE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "NAUSEA",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66472"
+  "zip": "666510"
 }

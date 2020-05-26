@@ -1,31 +1,31 @@
 {
-  "city": "Kirkel",
+  "city": "Riegelsberg",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2002-04-07",
-  "email": "a.schulz@example.de",
+  "dateOfBirth": "1962-05-29",
+  "email": "a.winkler@example.de",
   "firstName": "Annika",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "X871330207",
-  "lastName": "Schulz",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "O951405188",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "09232710193",
+  "phoneNumber": "9480831367",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "LIVER_DISEASE"
   ],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Waldstra\u00dfe 89",
+  "street": "Poststra\u00dfe 97",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen"
+    "FEVER",
+    "HEADACHE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66452"
+  "weakenedImmuneSystem": false,
+  "zip": "663710"
 }

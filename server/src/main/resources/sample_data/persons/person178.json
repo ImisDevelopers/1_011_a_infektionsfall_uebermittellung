@@ -1,30 +1,26 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
+  "city": "Kirkel",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1980-11-12",
-  "email": "j.mueller@example.de",
-  "firstName": "Jens",
+  "dateOfBirth": "1944-08-26",
+  "email": "f.lange@example.de",
+  "firstName": "Franz",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "G894582888",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "V438768594",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "2110392405",
+  "phoneNumber": "010272107857",
   "preIllnesses": [
-    "Krebserkrankung"
+    "RESPIRATORY_DISEASE"
   ],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 14",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung"
-  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe 52",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "66477"
+  "zip": "66084"
 }

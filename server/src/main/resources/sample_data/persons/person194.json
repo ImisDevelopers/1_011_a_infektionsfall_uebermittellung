@@ -1,32 +1,33 @@
 {
-  "city": "Homburg",
+  "city": "Bous",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1964-04-07",
-  "email": "b.schroeder@example.de",
-  "firstName": "Ben",
-  "fluImmunization": false,
+  "dateOfBirth": "2003-08-05",
+  "email": "d.bauer@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "G682535775",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "X938524752",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "44857101422",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "1010001064256",
+  "preIllnesses": [],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Sonnenweg 14",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 0",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Halschmerzen"
+    "FEVER",
+    "LOSS_OF_APPETITE",
+    "HEADACHE",
+    "MUSCLE_PAIN",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "COLD",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66098"
+  "zip": "66877"
 }

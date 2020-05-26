@@ -74,10 +74,15 @@ public class TestDataLoader implements ApplicationRunner {
 
 			ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());
 
-			log.info("Inserting patients");
-			for (Resource patientTestDataResource : resourceResolver.getResources("sample_data/persons/person*.json")) {
-				var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
-				patientService.addPatient(createPersonDTO, true);
+			try {
+				log.info("Inserting patients");
+				for (Resource patientTestDataResource : resourceResolver.getResources("sample_data/persons/person*.json")) {
+					var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
+					patientService.addPatient(createPersonDTO, true);
+				}
+			} catch (Exception e) {
+				log.error("Exception occured during population with test patients:");
+				e.printStackTrace();
 			}
 
 			// SETUP OUR WORLD

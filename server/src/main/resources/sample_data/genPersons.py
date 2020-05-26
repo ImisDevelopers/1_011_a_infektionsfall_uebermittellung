@@ -1,4 +1,7 @@
+import argparse
 import json
+import hashlib
+import os
 import pathlib
 import string
 from random import randint, randrange, choice, sample, getrandbits, seed
@@ -141,16 +144,49 @@ def gen_person():
 
 
 def main():
-	import sys
+	argparser = argparse.ArgumentParser(description='Generate test patients for IMIS.')
+	argparser.add_argument('-u', '--update', action='store_true',
+		help='Only overwrite files if this script changed since last generation')
+	argparser.add_argument('amount', nargs='?', type=int, default=250,
+		help='Amount of patients to generate')
+
+	args = argparser.parse_args()
 	pathlib.Path('persons').mkdir(parents=True, exist_ok=True)
 
-	amount = 250  # default
-	if len(sys.argv) >= 1:
-		amount = int(sys.argv[1])
+	# Check time of last update of this script
+	script_last_modified = os.stat(__file__).st_mtime
 
-	for i in range(amount):
-		with open(f'persons/person{i}.json', 'w+') as f:
-			f.write(json.dumps(gen_person(), sort_keys=True, indent=2))
+	skipped_count = 0
+	for i in range(args.amount):
+		filename = f'persons/person{i}.json'
+
+		# Check whether the file needs to be created / overwritten
+		write_file = not args.update
+		try:
+			write_file = write_file or os.stat(filename).st_mtime < script_last_modified
+		except FileNotFoundError as e:
+			write_file = True
+
+		# Always generate patient so that determinism is preserved
+		patient = gen_person()
+
+		if write_file:
+			print(f'Writing patient data to file `{filename}`')
+			with open(filename, 'w+') as f:
+				f.write(json.dumps(patient, sort_keys=True, indent=2))
+		else:
+			skipped_count += 1
+
+	print()
+	print('=================================================')
+	print()
+
+	if skipped_count == 0:
+		print(f'{args.amount} patient files written, none skipped')
+	elif skipped_count == args.amount:
+		print(f'All patient files already up-to-date')
+	else:
+		print(f'{args.amount - skipped_count} patient files written, {skipped_count} skipped')
 
 
 if __name__ == '__main__':

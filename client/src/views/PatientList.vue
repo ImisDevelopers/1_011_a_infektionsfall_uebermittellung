@@ -352,7 +352,7 @@ export default Vue.extend({
         insuranceCompany: '',
         firstName: '',
         lastName: '',
-        quarantineStatus: undefined,
+        quarantineStatus: [],
         id: '',
       },
       quarantineSelection: '',
@@ -519,15 +519,12 @@ export default Vue.extend({
         },
       }
     },
-    getQuarantineSelection(): (PatientStatus)[] {
+    getQuarantineSelection(): PatientStatus[] {
       if (!this.quarantineSelection) {
         return []
       }
       if (this.quarantineSelection === 'NO_SELECTION') {
-        return [
-          'QUARANTINE_RELEASED',
-          'QUARANTINE_PROFESSIONBAN_RELEASED',
-        ]
+        return ['QUARANTINE_RELEASED', 'QUARANTINE_PROFESSIONBAN_RELEASED']
       } else {
         return [this.quarantineSelection as PatientStatus]
       }

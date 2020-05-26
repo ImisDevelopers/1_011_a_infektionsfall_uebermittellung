@@ -5,7 +5,7 @@
       title="Statistiken"
       sub-title="(Statische Daten zu Präsentationszwecken)"
     />
-    
+
     <!--<a-input-search placeholder="Suchen" style="width: 100%; margin: 10px 0" />-->
     <a-card class="table-container">
       <a-table :columns="columns" :dataSource="data" :scroll="{ x: 1, y: 0 }">

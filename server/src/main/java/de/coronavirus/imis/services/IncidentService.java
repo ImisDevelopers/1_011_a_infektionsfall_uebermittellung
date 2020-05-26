@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +58,7 @@ public class IncidentService {
 
 	@Transactional
 	public List<Incident> getLog(String id, boolean byPatient) {
-		List<Incident> result = new ArrayList<>();
+		List<Incident> result = new ArrayList<Incident>();
 
 		result.addAll(getLog(TestIncident.class, id, byPatient));
 		result.addAll(getLog(QuarantineIncident.class, id, byPatient));
@@ -67,7 +66,7 @@ public class IncidentService {
 		result.addAll(getLog(HospitalizationIncident.class, id, byPatient));
 
 		result.sort(
-				Comparator.comparing(Incident::getVersionTimestamp)
+				(Incident i1, Incident i2) -> i1.getVersionTimestamp().compareTo(i2.getVersionTimestamp())
 		);
 
 		return result;

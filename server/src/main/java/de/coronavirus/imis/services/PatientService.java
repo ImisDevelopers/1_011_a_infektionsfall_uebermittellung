@@ -88,11 +88,11 @@ public class PatientService {
 	}
 
 	public Long queryPatientsSimpleCount(String query) {
-		return searchService.getResultSizePatientsSimple(query);
+		return this.searchService.getResultSizePatientsSimple(query);
 	}
 
 	public List<Patient> queryPatientsSimple(PatientSimpleSearchParamsDTO query) {
-		return searchService.queryPatientsSimple(query);
+		return this.searchService.queryPatientsSimple(query);
 	}
 
 
@@ -101,7 +101,7 @@ public class PatientService {
 	}
 
 	public Long countQueryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
-		return searchService.getResultSizePatientsDetail(patientSearchParamsDTO);
+		return this.searchService.getResultSizePatientsDetail(patientSearchParamsDTO);
 	}
 
 	@Transactional

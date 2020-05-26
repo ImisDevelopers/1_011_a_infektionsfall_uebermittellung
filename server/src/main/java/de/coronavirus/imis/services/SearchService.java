@@ -34,18 +34,18 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class SearchService {
-	
-	@Autowired
-	EntityManagerFactory emf;
 
-	@PostConstruct
-	public void triggerIndexing() {
+	private final EntityManagerFactory emf;
+
+	public SearchService (EntityManagerFactory emf) {
+		this.emf = emf;
 		try {
 			getFullTextEntityManager().createIndexer().startAndWait();
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
 	}
+
 
 	/**
 	 * Method for searching with multiple selections all the parameters are used with 'and'
@@ -91,6 +91,7 @@ public class SearchService {
 					.matching(queryString)
 					.createQuery();
 		}
+
 		final FullTextQuery fulltextQuery = getFullTextEntityManager().createFullTextQuery(query);
 		if (!Strings.isNullOrEmpty(orderBy)) {
 			var sort = queryBuilder.sort().byField(orderBy).createSort();

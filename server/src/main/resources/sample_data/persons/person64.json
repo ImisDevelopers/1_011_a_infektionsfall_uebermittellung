@@ -1,27 +1,31 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": true,
+  "city": "Saarlouis",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1988-01-31",
-  "email": "m.schmidt@example.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
+  "dateOfBirth": "1937-01-28",
+  "email": "d.schmidt@example.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "R893158610",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "M641440255",
   "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "826107710345",
+  "phoneNumber": "1624565060",
   "preIllnesses": [
-    "PREGNANCY"
+    "Imunsystemschw\u00e4che"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Wintergasse 82",
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hohenzollerstra\u00dfe 71",
   "symptoms": [
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH"
+    "Fieber",
+    "Gelenkschmerzen",
+    "Husten",
+    "Erk\u00e4ltung"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "660110"
+  "zip": "66358"
 }

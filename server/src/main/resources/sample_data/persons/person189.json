@@ -1,22 +1,32 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": true,
+  "city": "Kirkel",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1925-08-19",
-  "email": "h.bauer@example.de",
-  "firstName": "Hanna",
+  "dateOfBirth": "1963-09-14",
+  "email": "a.schulze@example.de",
+  "firstName": "Anna",
   "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "I395512122",
-  "lastName": "Bauer",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "I664134530",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "29010490471",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete 64",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "66144"
+  "phoneNumber": "83390191081",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Steinstra\u00dfe 92",
+  "symptoms": [
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66946"
 }

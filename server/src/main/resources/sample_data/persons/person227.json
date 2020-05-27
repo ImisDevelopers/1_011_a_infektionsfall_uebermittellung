@@ -1,29 +1,28 @@
 {
-  "city": "Homburg",
-  "coronaContacts": false,
+  "city": "Kirkel",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1966-01-21",
-  "email": "t.schmidt@example.de",
-  "firstName": "Tim",
-  "fluImmunization": false,
+  "dateOfBirth": "1990-11-22",
+  "email": "k.schroeder@example.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "O517117581",
-  "lastName": "Schmidt",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "I774305616",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "901001034864",
+  "phoneNumber": "46271030147",
   "preIllnesses": [
-    "KIDNEY_DISEASE"
+    ""
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "New York"
+  ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 89",
+  "street": "Haidth\u00f6heAarweg 76",
   "symptoms": [
-    "WEIGHT_LOSS",
-    "DIFFICULTY_BREATHING",
-    "FEVER",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "665101"
+  "zip": "66597"
 }

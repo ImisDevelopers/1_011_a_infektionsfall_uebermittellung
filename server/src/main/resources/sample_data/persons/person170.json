@@ -1,30 +1,35 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": false,
+  "city": "Saarlouis",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2002-06-29",
-  "email": "h.lange@example.de",
-  "firstName": "Hans",
-  "fluImmunization": true,
+  "dateOfBirth": "1936-12-16",
+  "email": "j.schmitt@example.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "T347939168",
-  "lastName": "Lange",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "R494184264",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "66471042312",
+  "phoneNumber": "3928557498",
   "preIllnesses": [
-    "CANCER"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "STAY_IN_MEDICAL_FACILITY"
+    ""
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbachstra\u00dfe 3",
+  "street": "Abbachstra\u00dfe 8",
   "symptoms": [
-    "NAUSEA",
-    "LOSS_OF_APPETITE",
-    "COUGH"
+    "Halschmerzen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Husten",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66994"
+  "zip": "66827"
 }

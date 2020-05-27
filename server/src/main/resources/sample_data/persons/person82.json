@@ -1,35 +1,29 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": false,
+  "city": "Merzig",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1957-02-15",
-  "email": "e.weber@example.de",
-  "firstName": "Emma",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "V813709631",
-  "lastName": "Weber",
+  "dateOfBirth": "1995-08-28",
+  "email": "f.peters@example.de",
+  "firstName": "Fin",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "R705064109",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "9796886805",
+  "phoneNumber": "61059180339",
   "preIllnesses": [
-    "LIVER_DISEASE"
+    "Krebserkrankung"
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "GrandEst"
+  ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 68",
+  "street": "Steinstra\u00dfe 34",
   "symptoms": [
-    "COLD",
-    "LOSS_OF_APPETITE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "HEADACHE",
-    "COUGH",
-    "BACK_PAIN",
-    "FEVER",
-    "NAUSEA",
-    "WEIGHT_LOSS",
-    "MUSCLE_PAIN"
+    "Kopfschmerzen",
+    "Husten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "669101"
+  "zip": "660110"
 }

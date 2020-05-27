@@ -1,32 +1,33 @@
 {
-  "city": "Merzig",
+  "city": "Bous",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1933-10-12",
-  "email": "m.schroeder@example.de",
-  "firstName": "Martina",
+  "dateOfBirth": "1935-07-27",
+  "email": "j.berger@example.de",
+  "firstName": "Jana",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "O578199481",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "W918593554",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "56205331064",
-  "preIllnesses": [],
+  "phoneNumber": "97829221610",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 46",
+  "street": "Eisenbahnstra\u00dfe 77",
   "symptoms": [
-    "BACK_PAIN",
-    "DIFFICULTY_BREATHING",
-    "SHORTNESS_OF_BREATH",
-    "NAUSEA",
-    "WEIGHT_LOSS",
-    "HEADACHE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "662105"
+  "weakenedImmuneSystem": true,
+  "zip": "66586"
 }

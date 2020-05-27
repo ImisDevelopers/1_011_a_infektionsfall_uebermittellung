@@ -1,36 +1,33 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": false,
+  "city": "Dudweiler",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1944-10-01",
-  "email": "m.winkler@example.de",
-  "firstName": "Marie",
+  "dateOfBirth": "1926-08-27",
+  "email": "p.bauer@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "V347332488",
-  "lastName": "Winkler",
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Q228155179",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "82723181043",
-  "preIllnesses": [],
-  "riskAreas": [
-    "COMMUNITY_FACILITY_MINORS"
+  "phoneNumber": "310105989334",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete 23",
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Waldstra\u00dfe 22",
   "symptoms": [
-    "DIFFICULTY_BREATHING",
-    "MUSCLE_PAIN",
-    "NAUSEA",
-    "COLD",
-    "FEVER",
-    "WEIGHT_LOSS",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "BACK_PAIN",
-    "LOSS_OF_APPETITE",
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH"
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Fieber",
+    "Halschmerzen",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66259"
+  "zip": "661012"
 }

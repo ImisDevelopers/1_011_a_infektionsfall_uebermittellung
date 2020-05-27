@@ -1,33 +1,26 @@
 {
-  "city": "Sulzbach",
+  "city": "Heusweiler",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1999-05-20",
-  "email": "j.winkler@example.de",
-  "firstName": "Jan",
+  "dateOfBirth": "1978-08-15",
+  "email": "p.mueller@example.de",
+  "firstName": "Petra",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "S342836476",
-  "lastName": "Winkler",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "U786650291",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "45198321073",
-  "preIllnesses": [],
+  "phoneNumber": "351105810506",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_PRIVATE"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordufer 13",
-  "symptoms": [
-    "COLD",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "BACK_PAIN",
-    "LOSS_OF_APPETITE",
-    "WEIGHT_LOSS",
-    "NAUSEA",
-    "DIFFICULTY_BREATHING",
-    "SHORTNESS_OF_BREATH"
-  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Sonnenweg 24",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "66585"
+  "zip": "66171"
 }

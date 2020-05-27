@@ -1,36 +1,28 @@
 {
-  "city": "Heusweiler",
+  "city": "Kirkel",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1938-12-19",
-  "email": "e.lange@example.de",
-  "firstName": "Emma",
-  "fluImmunization": true,
+  "dateOfBirth": "1973-04-15",
+  "email": "s.winkler@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "M259616499",
-  "lastName": "Lange",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "J834883010",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "931058891610",
+  "phoneNumber": "410896910810",
   "preIllnesses": [
-    "ADIPOSITAS"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_PRIVATE"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Tulpenweg 31",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 47",
   "symptoms": [
-    "LOSS_OF_APPETITE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "SHORTNESS_OF_BREATH",
-    "BACK_PAIN",
-    "MUSCLE_PAIN",
-    "HEADACHE",
-    "FEVER",
-    "DIFFICULTY_BREATHING",
-    "NAUSEA"
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "667510"
+  "weakenedImmuneSystem": true,
+  "zip": "668109"
 }

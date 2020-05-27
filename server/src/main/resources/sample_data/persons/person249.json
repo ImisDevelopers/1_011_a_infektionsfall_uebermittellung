@@ -1,29 +1,32 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Riegelsberg",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1966-05-07",
-  "email": "h.sommer@example.de",
-  "firstName": "Hans",
-  "fluImmunization": true,
+  "dateOfBirth": "1967-07-22",
+  "email": "p.bauer@example.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "P995994586",
-  "lastName": "Sommer",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "N252252010",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "2701851067",
+  "phoneNumber": "5280924287",
   "preIllnesses": [
-    "CHRONIC_LUNG_DISEASE"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_OTHER"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hohenzollerstra\u00dfe 39",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "S\u00fcdweg 59",
   "symptoms": [
-    "SHORTNESS_OF_BREATH",
-    "BACK_PAIN"
+    "Husten",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66975"
+  "weakenedImmuneSystem": false,
+  "zip": "66215"
 }

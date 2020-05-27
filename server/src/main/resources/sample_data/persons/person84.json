@@ -1,30 +1,34 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
+  "city": "V\u00f6lklingen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1984-12-08",
-  "email": "c.lange@example.de",
-  "firstName": "Cornelius",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "A891764728",
-  "lastName": "Lange",
+  "dateOfBirth": "1950-03-22",
+  "email": "a.winkler@example.de",
+  "firstName": "Annika",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D198269319",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "8282586736",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Kronenstra\u00dfe 23",
+  "phoneNumber": "91061943114",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 48",
   "symptoms": [
-    "COLD",
-    "HEADACHE",
-    "NAUSEA",
-    "LOSS_OF_APPETITE",
-    "FEVER",
-    "DIFFICULTY_BREATHING",
-    "SHORTNESS_OF_BREATH"
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen",
+    "Husten",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "6621010"
+  "zip": "661026"
 }

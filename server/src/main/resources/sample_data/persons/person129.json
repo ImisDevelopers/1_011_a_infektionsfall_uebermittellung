@@ -1,32 +1,31 @@
 {
-  "city": "Homburg",
+  "city": "St. Wendel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1927-11-24",
-  "email": "i.schmitt@example.de",
-  "firstName": "Isabella",
-  "fluImmunization": false,
+  "dateOfBirth": "1945-12-05",
+  "email": "s.schulze@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": true,
   "gender": "female",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "A898509546",
-  "lastName": "Schmitt",
+  "insuranceMembershipNumber": "Q871769353",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "831086384100",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Z\u00e4hringerstra\u00dfe 49",
-  "symptoms": [
-    "MUSCLE_PAIN",
-    "FEVER",
-    "COUGH",
-    "BACK_PAIN",
-    "NAUSEA",
-    "HEADACHE",
-    "COLD",
-    "DIFFICULTY_BREATHING",
-    "SHORTNESS_OF_BREATH"
+  "phoneNumber": "31010046101108",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "666105"
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Sonnenweg 79",
+  "symptoms": [
+    "Fieber",
+    "Halschmerzen",
+    "Husten",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66926"
 }

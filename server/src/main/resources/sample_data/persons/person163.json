@@ -1,27 +1,30 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": true,
+  "city": "Dudweiler",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1993-01-15",
-  "email": "p.berger@example.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
-  "gender": "female",
+  "dateOfBirth": "1995-04-06",
+  "email": "m.klein@example.de",
+  "firstName": "Matthias",
+  "fluImmunization": false,
+  "gender": "male",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "X448635435",
-  "lastName": "Berger",
+  "insuranceMembershipNumber": "U518594177",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "5224593344",
+  "phoneNumber": "6111780068",
   "preIllnesses": [
-    "ARDS"
+    "Krebserkrankung"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg 73",
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide 10",
   "symptoms": [
-    "MUSCLE_PAIN",
-    "COLD"
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66693"
+  "zip": "66149"
 }

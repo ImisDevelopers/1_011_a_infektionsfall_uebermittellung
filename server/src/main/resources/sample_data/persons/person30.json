@@ -1,34 +1,26 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": true,
+  "city": "Saarlouis",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "2000-06-26",
-  "email": "a.schroeder@example.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
-  "gender": "female",
+  "dateOfBirth": "1942-12-10",
+  "email": "j.schulze@example.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "T833510170",
-  "lastName": "Schr\u00f6der",
+  "insuranceMembershipNumber": "K945805127",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "0455623869",
-  "preIllnesses": [],
+  "phoneNumber": "8467737826",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
   "riskAreas": [
-    "COMMUNITY_FACILITY"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Bismarckstra\u00dfe 23",
-  "symptoms": [
-    "SHORTNESS_OF_BREATH",
-    "FEVER",
-    "MUSCLE_PAIN",
-    "WEIGHT_LOSS",
-    "COLD",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "COUGH",
-    "LOSS_OF_APPETITE",
-    "NAUSEA"
-  ],
+  "street": "Niekampsweg 76",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "66221"
+  "zip": "66821"
 }

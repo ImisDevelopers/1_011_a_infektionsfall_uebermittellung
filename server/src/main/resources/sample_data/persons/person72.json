@@ -1,32 +1,35 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": true,
+  "city": "P\u00fcttlingen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1998-09-14",
-  "email": "i.weber@example.de",
-  "firstName": "Isabella",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "B388258432",
-  "lastName": "Weber",
+  "dateOfBirth": "1927-04-08",
+  "email": "f.schroeder@example.de",
+  "firstName": "Fin",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Z187907572",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "68826343510",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg 57",
-  "symptoms": [
-    "COLD",
-    "LOSS_OF_APPETITE",
-    "DIFFICULTY_BREATHING",
-    "FEVER",
-    "BACK_PAIN",
-    "MUSCLE_PAIN",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "SHORTNESS_OF_BREATH",
-    "WEIGHT_LOSS"
+  "phoneNumber": "2727956878",
+  "preIllnesses": [
+    "Herz-Kreislauf"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66518"
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordstra\u00dfe 85",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Fieber"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "663310"
 }

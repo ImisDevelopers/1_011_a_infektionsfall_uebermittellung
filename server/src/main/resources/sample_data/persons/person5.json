@@ -1,36 +1,30 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
+  "city": "Bous",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1962-01-19",
-  "email": "f.klein@example.de",
-  "firstName": "Franz",
+  "dateOfBirth": "1975-01-08",
+  "email": "k.winkler@example.de",
+  "firstName": "Konrad",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "P330035022",
-  "lastName": "Klein",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "R910959828",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "83930110031",
-  "preIllnesses": [],
-  "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_WORK"
+  "phoneNumber": "91171822107",
+  "preIllnesses": [
+    "Herz-Kreislauf"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe 42",
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Poststra\u00dfe 21",
   "symptoms": [
-    "COLD",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "MUSCLE_PAIN",
-    "FEVER",
-    "NAUSEA",
-    "HEADACHE",
-    "BACK_PAIN",
-    "DIFFICULTY_BREATHING",
-    "LOSS_OF_APPETITE",
-    "COUGH",
-    "WEIGHT_LOSS"
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66183"
+  "zip": "66489"
 }

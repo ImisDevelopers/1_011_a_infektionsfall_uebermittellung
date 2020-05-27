@@ -1,26 +1,34 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": false,
+  "city": "Neunkirchen",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1961-03-10",
-  "email": "b.winter@example.de",
-  "firstName": "Ben",
+  "dateOfBirth": "1971-08-08",
+  "email": "a.schmitt@example.de",
+  "firstName": "Annika",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "T895525625",
-  "lastName": "Winter",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "O635539154",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "04157104733",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordtstra\u00dfe 68",
+  "phoneNumber": "2104696325",
+  "preIllnesses": [
+    ""
+  ],
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hohenzollerstra\u00dfe 92",
   "symptoms": [
-    "LOSS_OF_APPETITE",
-    "NAUSEA",
-    "BACK_PAIN"
+    "Husten",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66484"
+  "zip": "66532"
 }

@@ -1,37 +1,26 @@
 {
-  "city": "Homburg",
+  "city": "Kirkel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1958-01-20",
-  "email": "f.berger@example.de",
-  "firstName": "Franz",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "A639250352",
-  "lastName": "Berger",
+  "dateOfBirth": "1947-06-05",
+  "email": "i.klein@example.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "W152265802",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "1010971070088",
+  "phoneNumber": "43101069033",
   "preIllnesses": [
-    "CANCER"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "MEDICAL_LABORATORY"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kaiserstra\u00dfe 1",
-  "symptoms": [
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH",
-    "DIFFICULTY_BREATHING",
-    "COLD",
-    "NAUSEA",
-    "BACK_PAIN",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "WEIGHT_LOSS",
-    "MUSCLE_PAIN",
-    "COUGH"
-  ],
+  "street": "Haidth\u00f6heAarweg 12",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "66084"
+  "zip": "66907"
 }

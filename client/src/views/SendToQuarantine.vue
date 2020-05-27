@@ -110,8 +110,8 @@ import { Column } from 'ant-design-vue/types/table/column'
 import moment from 'moment'
 import { getPlzs } from '@/util/plz-service'
 import { downloadCsv } from '@/util/export-service'
-import DateInput from '@/components/inputs/DateInput.vue'
-import { testResults } from '@/models/event-types'
+import DateInput from '../components/DateInput.vue'
+import { testResults, TestResultType } from '@/models/event-types'
 
 const columnsQuarantines = [
   {

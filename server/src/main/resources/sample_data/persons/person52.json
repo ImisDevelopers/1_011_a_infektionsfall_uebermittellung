@@ -1,27 +1,28 @@
 {
-  "city": "Bous",
+  "city": "Saarlouis",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1966-08-20",
-  "email": "d.lange@example.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1985-04-26",
+  "email": "p.berger@example.de",
+  "firstName": "Petra",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "Q960170255",
-  "lastName": "Lange",
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q258214411",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "6275705964",
-  "preIllnesses": [],
+  "phoneNumber": "92401075818",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_OTHER"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kronenstra\u00dfe 7",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordufer 15",
   "symptoms": [
-    "LOSS_OF_APPETITE",
-    "SHORTNESS_OF_BREATH"
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "6611010"
+  "weakenedImmuneSystem": true,
+  "zip": "66412"
 }

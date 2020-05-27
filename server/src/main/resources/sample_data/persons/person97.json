@@ -1,26 +1,28 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
+  "city": "Riegelsberg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1980-12-29",
-  "email": "j.winkler@example.de",
-  "firstName": "Jens",
-  "fluImmunization": true,
-  "gender": "male",
+  "dateOfBirth": "1989-11-10",
+  "email": "j.sommer@example.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "female",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "M892510222",
-  "lastName": "Winkler",
+  "insuranceMembershipNumber": "Y351410032",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "83206038510",
+  "phoneNumber": "2411054151010",
   "preIllnesses": [
-    "ARDS"
+    ""
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 88",
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbachstra\u00dfe 6",
   "symptoms": [
-    "FEVER"
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66050"
+  "zip": "666104"
 }

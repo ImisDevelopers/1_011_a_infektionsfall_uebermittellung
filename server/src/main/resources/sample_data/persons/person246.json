@@ -1,34 +1,33 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": false,
+  "city": "St. Ingbert",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2002-09-19",
-  "email": "o.wagner@example.de",
-  "firstName": "Olivia",
-  "fluImmunization": true,
+  "dateOfBirth": "1985-04-17",
+  "email": "m.schulz@example.de",
+  "firstName": "Martina",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "J714647698",
-  "lastName": "Wagner",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "N494707031",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "43468105410",
+  "phoneNumber": "102910657724",
   "preIllnesses": [
-    "LIVER_DISEASE"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "STAY_IN_MEDICAL_FACILITY"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hafenstra\u00dfe 45",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbachstra\u00dfe 87",
   "symptoms": [
-    "COUGH",
-    "FEVER",
-    "COLD",
-    "BACK_PAIN",
-    "NAUSEA",
-    "SHORTNESS_OF_BREATH",
-    "HEADACHE"
+    "Erk\u00e4ltung",
+    "Husten",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Fieber",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "661010"
+  "weakenedImmuneSystem": false,
+  "zip": "66954"
 }

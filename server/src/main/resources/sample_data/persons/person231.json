@@ -1,34 +1,30 @@
 {
-  "city": "Neunkirchen",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2004-08-05",
-  "email": "t.schmitt@example.de",
-  "firstName": "Tim",
+  "dateOfBirth": "1997-05-22",
+  "email": "l.bauer@example.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "T820256933",
-  "lastName": "Schmitt",
+  "insuranceMembershipNumber": "F637552108",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "56103669411",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Poststra\u00dfe 7",
-  "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "LOSS_OF_APPETITE",
-    "NAUSEA",
-    "WEIGHT_LOSS",
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH",
-    "FEVER",
-    "MUSCLE_PAIN",
-    "DIFFICULTY_BREATHING",
-    "BACK_PAIN",
-    "COLD"
+  "phoneNumber": "01193932105",
+  "preIllnesses": [
+    "Krebserkrankung"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66053"
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 11",
+  "symptoms": [
+    "Fieber",
+    "Husten",
+    "Atemschwierigkeiten"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66249"
 }

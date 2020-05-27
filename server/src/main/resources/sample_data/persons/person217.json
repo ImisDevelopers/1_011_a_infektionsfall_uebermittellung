@@ -1,31 +1,28 @@
 {
-  "city": "Dudweiler",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1991-07-10",
-  "email": "d.lange@example.de",
-  "firstName": "Daniel",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "V627903421",
-  "lastName": "Lange",
+  "dateOfBirth": "2004-12-14",
+  "email": "i.schmitt@example.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q523398047",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "79410738646",
-  "preIllnesses": [],
+  "phoneNumber": "3356939290",
+  "preIllnesses": [
+    ""
+  ],
   "riskAreas": [
-    "MEDICAL_LABORATORY"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 8",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Kaiserstra\u00dfe 5",
   "symptoms": [
-    "MUSCLE_PAIN",
-    "BACK_PAIN",
-    "DIFFICULTY_BREATHING",
-    "COLD",
-    "SHORTNESS_OF_BREATH",
-    "FEVER"
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "667105"
+  "weakenedImmuneSystem": false,
+  "zip": "66078"
 }

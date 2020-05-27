@@ -155,8 +155,8 @@
 import { ExposureContactFromServer, Patient } from '@/api/SwaggerApi'
 import Api from '@/api'
 import Vue from 'vue'
-import DateInput from '@/components/inputs/DateInput.vue'
-import PatientInput from '@/components/inputs/PatientInput.vue'
+import DateInput from '../components/DateInput.vue'
+import PatientInput from '../components/PatientInput.vue'
 import moment from 'moment'
 
 interface State {

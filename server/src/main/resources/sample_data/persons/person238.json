@@ -1,38 +1,32 @@
 {
-  "city": "Dudweiler",
+  "city": "Sulzbach",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1984-11-16",
-  "email": "j.schulze@example.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
+  "dateOfBirth": "1947-11-28",
+  "email": "p.lange@example.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "A304872179",
-  "lastName": "Schulze",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "D841809534",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "761097499510",
+  "phoneNumber": "6986407905",
   "preIllnesses": [
-    "ARDS"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "STAY_IN_MEDICAL_FACILITY"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 86",
+  "street": "Z\u00e4hringerstra\u00dfe 73",
   "symptoms": [
-    "FEVER",
-    "LOSS_OF_APPETITE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "MUSCLE_PAIN",
-    "SHORTNESS_OF_BREATH",
-    "COUGH",
-    "DIFFICULTY_BREATHING",
-    "COLD",
-    "HEADACHE",
-    "NAUSEA",
-    "WEIGHT_LOSS"
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66641"
+  "zip": "66659"
 }

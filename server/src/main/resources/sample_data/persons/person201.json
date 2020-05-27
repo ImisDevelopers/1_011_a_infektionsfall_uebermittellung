@@ -1,29 +1,35 @@
 {
-  "city": "Saarlouis",
+  "city": "Sulzbach",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1978-10-15",
-  "email": "j.sommer@example.de",
-  "firstName": "Jana",
+  "dateOfBirth": "1982-07-20",
+  "email": "s.winkler@example.de",
+  "firstName": "Susanne",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "D599863643",
-  "lastName": "Sommer",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "P841415799",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "26527310543",
+  "phoneNumber": "0973846895",
   "preIllnesses": [
-    "CHRONIC_LUNG_DISEASE"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "COMMUNITY_FACILITY_MINORS"
+    "New York"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "S\u00fcdweg 16",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 4",
   "symptoms": [
-    "COUGH",
-    "FEVER"
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Husten",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Fieber",
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66090"
+  "weakenedImmuneSystem": true,
+  "zip": "66975"
 }

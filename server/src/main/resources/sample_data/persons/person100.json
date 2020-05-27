@@ -1,24 +1,26 @@
 {
-  "city": "Heusweiler",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1934-12-18",
-  "email": "p.winter@example.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1942-11-20",
+  "email": "s.schulze@example.de",
+  "firstName": "Susanne",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "S729340221",
-  "lastName": "Winter",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C114810579",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "3171210032",
+  "phoneNumber": "1805526965",
   "preIllnesses": [
-    "PREGNANCY"
+    "Herz-Kreislauf"
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    ""
+  ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 51",
+  "street": "Poststra\u00dfe 87",
   "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "6651010"
+  "weakenedImmuneSystem": true,
+  "zip": "66271"
 }

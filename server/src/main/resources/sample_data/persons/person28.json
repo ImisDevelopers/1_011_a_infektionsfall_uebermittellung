@@ -1,35 +1,33 @@
 {
-  "city": "Riegelsberg",
+  "city": "V\u00f6lklingen",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1937-08-12",
-  "email": "i.weber@example.de",
-  "firstName": "Isabella",
+  "dateOfBirth": "1939-11-15",
+  "email": "c.wagner@example.de",
+  "firstName": "Christopher",
   "fluImmunization": false,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "W971243675",
-  "lastName": "Weber",
+  "insuranceMembershipNumber": "W632005813",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "5886753396",
-  "preIllnesses": [],
-  "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_OTHER"
+  "phoneNumber": "42961071756",
+  "preIllnesses": [
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbendiekshof 99",
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 41",
   "symptoms": [
-    "NAUSEA",
-    "SHORTNESS_OF_BREATH",
-    "MUSCLE_PAIN",
-    "LOSS_OF_APPETITE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "WEIGHT_LOSS",
-    "HEADACHE",
-    "COLD",
-    "BACK_PAIN",
-    "DIFFICULTY_BREATHING"
+    "Husten",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Atemschwierigkeiten",
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66605"
+  "zip": "661012"
 }

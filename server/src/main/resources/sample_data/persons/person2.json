@@ -1,37 +1,35 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": true,
+  "city": "Riegelsberg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1937-12-08",
-  "email": "h.schulz@example.de",
-  "firstName": "Hanna",
+  "dateOfBirth": "1957-05-15",
+  "email": "c.klein@example.de",
+  "firstName": "Cornelius",
   "fluImmunization": false,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "S870854579",
-  "lastName": "Schulz",
+  "insuranceMembershipNumber": "F596348124",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "276410831050",
+  "phoneNumber": "10525531041010",
   "preIllnesses": [
-    "DIABETES"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "COMMUNITY_FACILITY_MINORS"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof 4",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg 77",
   "symptoms": [
-    "MUSCLE_PAIN",
-    "HEADACHE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "SHORTNESS_OF_BREATH",
-    "WEIGHT_LOSS",
-    "DIFFICULTY_BREATHING",
-    "NAUSEA",
-    "COLD",
-    "BACK_PAIN",
-    "FEVER"
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Husten",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Gelenkschmerzen",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66564"
+  "zip": "661028"
 }

@@ -1,26 +1,31 @@
 {
-  "city": "Saarlouis",
+  "city": "P\u00fcttlingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1980-11-29",
-  "email": "s.weber@example.de",
-  "firstName": "Susanne",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "A442392183",
-  "lastName": "Weber",
+  "dateOfBirth": "1991-08-20",
+  "email": "f.schulz@example.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "I279275105",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "83108065787",
+  "phoneNumber": "904101021020",
   "preIllnesses": [
-    "LIVER_DISEASE"
+    ""
   ],
   "riskAreas": [
-    "MEDICAL_HEALTH_PROFESSION"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hauptstra\u00dfe 72",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "66856"
+  "street": "Abbachstra\u00dfe 63",
+  "symptoms": [
+    "Fieber",
+    "Halschmerzen",
+    "Husten",
+    "Schnupfen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66588"
 }

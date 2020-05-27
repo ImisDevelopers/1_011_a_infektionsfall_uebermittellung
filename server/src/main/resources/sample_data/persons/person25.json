@@ -1,33 +1,30 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
+  "city": "Sulzbach",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1994-04-22",
-  "email": "m.bauer@example.de",
-  "firstName": "Martina",
-  "fluImmunization": false,
+  "dateOfBirth": "1973-08-04",
+  "email": "m.wagner@example.de",
+  "firstName": "Marie",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "P197970787",
-  "lastName": "Bauer",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Y546863451",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "99010490278",
+  "phoneNumber": "167191010022",
   "preIllnesses": [
-    "Alzheimer"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 56",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe 72",
   "symptoms": [
-    "COUGH",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "DIFFICULTY_BREATHING",
-    "SHORTNESS_OF_BREATH",
-    "NAUSEA",
-    "FEVER"
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66429"
+  "zip": "66413"
 }

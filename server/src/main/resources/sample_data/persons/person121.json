@@ -1,27 +1,29 @@
 {
-  "city": "Sulzbach",
+  "city": "Dudweiler",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1993-05-21",
-  "email": "a.schulz@example.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "A248599901",
-  "lastName": "Schulz",
+  "dateOfBirth": "1999-06-23",
+  "email": "f.mueller@example.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S691990078",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "3744701204",
-  "preIllnesses": [],
-  "riskAreas": [
-    "COMMUNITY_FACILITY_MINORS"
+  "phoneNumber": "345786101100",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hauptstra\u00dfe 86",
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbendiekshof 47",
   "symptoms": [
-    "COUGH",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Atemschwierigkeiten",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66561"
+  "zip": "66797"
 }

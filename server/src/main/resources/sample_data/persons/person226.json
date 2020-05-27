@@ -1,30 +1,31 @@
 {
-  "city": "Bous",
+  "city": "Dudweiler",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1942-02-08",
-  "email": "k.berger@example.de",
-  "firstName": "Kai",
+  "dateOfBirth": "1938-06-03",
+  "email": "f.schroeder@example.de",
+  "firstName": "Franz",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "S160049440",
-  "lastName": "Berger",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "J694710082",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "9155963632",
+  "phoneNumber": "96106104628",
   "preIllnesses": [
-    "PREGNANCY"
+    ""
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg 22",
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Waldstra\u00dfe 90",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "DIFFICULTY_BREATHING",
-    "COUGH",
-    "BACK_PAIN",
-    "HEADACHE"
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66347"
+  "zip": "66923"
 }

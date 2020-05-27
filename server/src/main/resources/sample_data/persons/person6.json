@@ -1,27 +1,34 @@
 {
-  "city": "Homburg",
-  "coronaContacts": false,
+  "city": "Saarlouis",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1992-04-07",
-  "email": "p.winter@example.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1962-01-19",
+  "email": "f.klein@example.de",
+  "firstName": "Franz",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "C909134796",
-  "lastName": "Winter",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "P330035022",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "3872624731",
+  "phoneNumber": "83930110031",
   "preIllnesses": [
-    "ARDS"
+    "Herz-Kreislauf"
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "Tirol"
+  ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Waldstra\u00dfe 70",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 42",
   "symptoms": [
-    "HEADACHE",
-    "MUSCLE_PAIN"
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Husten",
+    "Schnupfen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "661010"
+  "weakenedImmuneSystem": false,
+  "zip": "66183"
 }

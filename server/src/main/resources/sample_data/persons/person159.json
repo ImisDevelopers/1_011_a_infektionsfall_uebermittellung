@@ -1,29 +1,32 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": true,
+  "city": "Homburg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "2005-11-17",
-  "email": "p.winkler@example.de",
-  "firstName": "Petra",
+  "dateOfBirth": "1983-08-04",
+  "email": "k.winkler@example.de",
+  "firstName": "Kai",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "E758245879",
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "H389274886",
   "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "62095935110",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Poststra\u00dfe 49",
-  "symptoms": [
-    "NAUSEA",
-    "COUGH",
-    "DIFFICULTY_BREATHING",
-    "COLD",
-    "BACK_PAIN",
-    "LOSS_OF_APPETITE"
+  "phoneNumber": "87500103691",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "663810"
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 46",
+  "symptoms": [
+    "Kopfschmerzen",
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Halschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66942"
 }

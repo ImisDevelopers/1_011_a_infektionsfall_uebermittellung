@@ -1,28 +1,28 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": true,
+  "city": "St. Wendel",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1932-04-11",
-  "email": "m.schroeder@example.de",
-  "firstName": "Marie",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "O956508307",
-  "lastName": "Schr\u00f6der",
+  "dateOfBirth": "1975-04-20",
+  "email": "d.schulze@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "U797818850",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "6465193982",
+  "phoneNumber": "8454615679",
   "preIllnesses": [
-    "DIABETES"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "STAY_IN_MEDICAL_FACILITY"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 98",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 89",
   "symptoms": [
-    "HEADACHE"
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66807"
+  "zip": "663410"
 }

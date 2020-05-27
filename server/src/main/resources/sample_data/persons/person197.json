@@ -1,33 +1,28 @@
 {
-  "city": "Sulzbach",
+  "city": "Kirkel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1989-01-06",
-  "email": "m.mueller@example.de",
-  "firstName": "Martina",
-  "fluImmunization": true,
+  "dateOfBirth": "1937-08-13",
+  "email": "p.schulz@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "N462219407",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "R845319806",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "10041792911",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg 63",
-  "symptoms": [
-    "HEADACHE",
-    "COUGH",
-    "DIFFICULTY_BREATHING",
-    "BACK_PAIN",
-    "SHORTNESS_OF_BREATH",
-    "MUSCLE_PAIN",
-    "COLD",
-    "LOSS_OF_APPETITE",
-    "NAUSEA",
-    "FEVER"
+  "phoneNumber": "9639382761",
+  "preIllnesses": [
+    "Herz-Kreislauf"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66993"
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "S\u00fcdweg 26",
+  "symptoms": [
+    "Gelenkschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66966"
 }

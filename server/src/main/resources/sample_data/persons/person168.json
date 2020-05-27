@@ -1,29 +1,33 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": false,
+  "city": "St. Wendel",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1934-12-01",
-  "email": "h.richter@example.de",
-  "firstName": "Hans",
+  "dateOfBirth": "1945-07-22",
+  "email": "j.schulze@example.de",
+  "firstName": "Jens",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "I971763327",
-  "lastName": "Richter",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "G221256011",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "0384576205",
+  "phoneNumber": "45210088147",
   "preIllnesses": [
-    "KIDNEY_DISEASE"
+    ""
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "GrandEst"
+  ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 45",
+  "street": "Kronenstra\u00dfe 38",
   "symptoms": [
-    "HEADACHE",
-    "LOSS_OF_APPETITE",
-    "BACK_PAIN",
-    "WEIGHT_LOSS"
+    "Kopfschmerzen",
+    "Husten",
+    "Fieber",
+    "Schnupfen",
+    "Halschmerzen",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "665104"
+  "zip": "66350"
 }

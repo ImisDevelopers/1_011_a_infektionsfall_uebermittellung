@@ -1,30 +1,34 @@
 {
-  "city": "Sulzbach",
+  "city": "St. Wendel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1945-02-09",
-  "email": "p.berger@example.de",
-  "firstName": "Peter",
-  "fluImmunization": true,
+  "dateOfBirth": "1996-04-24",
+  "email": "j.berger@example.de",
+  "firstName": "Jens",
+  "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "X397829845",
+  "insuranceMembershipNumber": "M336934839",
   "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "01410011939",
-  "preIllnesses": [],
+  "phoneNumber": "79956310531",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
   "riskAreas": [
-    "MEDICAL_HEALTH_PROFESSION"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Niekampsweg 23",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "S\u00fcdweg 29",
   "symptoms": [
-    "COUGH",
-    "SHORTNESS_OF_BREATH",
-    "BACK_PAIN",
-    "FEVER",
-    "DIFFICULTY_BREATHING"
+    "Husten",
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "661050"
+  "weakenedImmuneSystem": false,
+  "zip": "66136"
 }

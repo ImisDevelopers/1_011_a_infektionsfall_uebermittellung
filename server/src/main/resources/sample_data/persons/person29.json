@@ -2,25 +2,25 @@
   "city": "Kirkel",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1945-05-11",
-  "email": "i.weber@example.de",
-  "firstName": "Isabella",
-  "fluImmunization": true,
+  "dateOfBirth": "1939-06-20",
+  "email": "s.mueller@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "H777703980",
-  "lastName": "Weber",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "W270057261",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "9610151086510",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Rosenstra\u00dfe 97",
-  "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "DIFFICULTY_BREATHING",
-    "HEADACHE"
+  "phoneNumber": "71070348247",
+  "preIllnesses": [
+    "Krebserkrankung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66780"
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Rosenstra\u00dfe 62",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "661010"
 }

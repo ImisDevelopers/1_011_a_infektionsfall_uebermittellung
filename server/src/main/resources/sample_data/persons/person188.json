@@ -1,32 +1,28 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
+  "city": "Sulzbach",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1946-09-03",
-  "email": "h.berger@example.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
+  "dateOfBirth": "1994-01-04",
+  "email": "f.schroeder@example.de",
+  "firstName": "Fin",
+  "fluImmunization": true,
   "gender": "male",
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "R935937148",
-  "lastName": "Berger",
+  "insuranceMembershipNumber": "K495748400",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "89137101010110",
+  "phoneNumber": "622104910998",
   "preIllnesses": [
-    "SMOKING"
+    "Imunsystemschw\u00e4che"
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "Madrid"
+  ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 69",
+  "street": "Abbachstra\u00dfe 58",
   "symptoms": [
-    "BACK_PAIN",
-    "MUSCLE_PAIN",
-    "COLD",
-    "COUGH",
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH",
-    "NAUSEA"
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66949"
+  "zip": "66950"
 }

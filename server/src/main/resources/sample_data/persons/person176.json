@@ -1,29 +1,34 @@
 {
-  "city": "Neunkirchen",
+  "city": "Saarlouis",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1990-12-28",
-  "email": "k.schmidt@example.de",
+  "dateOfBirth": "1965-09-19",
+  "email": "k.berger@example.de",
   "firstName": "Karl",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "W749375452",
-  "lastName": "Schmidt",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "E241936908",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "4586833901",
-  "preIllnesses": [],
-  "riskAreas": [
-    "COMMUNITY_FACILITY_MINORS"
+  "phoneNumber": "25832010679",
+  "preIllnesses": [
+    "Krebserkrankung"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hohenzollerstra\u00dfe 93",
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 64",
   "symptoms": [
-    "HEADACHE",
-    "COLD",
-    "COUGH",
-    "WEIGHT_LOSS"
+    "Husten",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661081"
+  "zip": "66136"
 }

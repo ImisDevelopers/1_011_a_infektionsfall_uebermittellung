@@ -1,4 +1,4 @@
-import Header from '@/components/structural/Header.vue'
+import Header from '@/components/Header.vue'
 import { shallowMount } from '@vue/test-utils'
 import { expect } from 'chai'
 

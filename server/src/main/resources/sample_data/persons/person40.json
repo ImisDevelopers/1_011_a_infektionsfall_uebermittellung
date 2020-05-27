@@ -1,28 +1,32 @@
 {
-  "city": "Bous",
+  "city": "Neunkirchen",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1971-04-25",
-  "email": "d.schmitt@example.de",
+  "dateOfBirth": "1948-09-08",
+  "email": "d.winkler@example.de",
   "firstName": "Daniela",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "B108253947",
-  "lastName": "Schmitt",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "O178910051",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "815614101097",
+  "phoneNumber": "901084710007",
   "preIllnesses": [
-    "SMOKING"
+    "Imunsystemschw\u00e4che"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hafenstra\u00dfe 85",
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer 51",
   "symptoms": [
-    "SHORTNESS_OF_BREATH",
-    "WEIGHT_LOSS",
-    "NAUSEA"
+    "Schnupfen",
+    "Husten",
+    "Fieber",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66403"
+  "weakenedImmuneSystem": true,
+  "zip": "666101"
 }

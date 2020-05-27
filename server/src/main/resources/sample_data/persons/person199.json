@@ -1,29 +1,26 @@
 {
-  "city": "Sulzbach",
+  "city": "Riegelsberg",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1934-04-07",
-  "email": "m.sommer@example.de",
-  "firstName": "Marie",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "V609396906",
-  "lastName": "Sommer",
+  "dateOfBirth": "1933-11-10",
+  "email": "f.lange@example.de",
+  "firstName": "Franz",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L217787669",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "18195883710",
+  "phoneNumber": "6519098624",
   "preIllnesses": [
-    "ADIPOSITAS"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
+    "Tirol"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Bismarckstra\u00dfe 26",
-  "symptoms": [
-    "NAUSEA",
-    "LOSS_OF_APPETITE"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "66403"
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 47",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66800"
 }

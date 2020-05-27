@@ -1,29 +1,29 @@
 {
-  "city": "Kirkel",
+  "city": "Sulzbach",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1938-03-01",
-  "email": "d.weber@example.de",
-  "firstName": "Daniela",
+  "dateOfBirth": "1953-09-26",
+  "email": "e.winter@example.de",
+  "firstName": "Emma",
   "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "U904137710",
-  "lastName": "Weber",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "H579527597",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "01055778487",
-  "preIllnesses": [],
-  "riskAreas": [],
+  "phoneNumber": "8725887449",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete 89",
+  "street": "Hauptstra\u00dfe 99",
   "symptoms": [
-    "BACK_PAIN",
-    "NAUSEA",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "WEIGHT_LOSS",
-    "COUGH",
-    "FEVER"
+    "Fieber",
+    "Gelenkschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66829"
+  "zip": "666210"
 }

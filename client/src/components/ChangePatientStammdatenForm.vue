@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import PatientStammdaten from '../form-groups/PatientStammdaten.vue'
+import PatientStammdaten from './PatientStammdaten.vue'
 import Api from '@/api'
 import { patientMapper } from '@/store/modules/patients.module'
 

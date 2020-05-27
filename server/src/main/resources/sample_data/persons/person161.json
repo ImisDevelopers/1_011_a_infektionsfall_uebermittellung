@@ -1,39 +1,31 @@
 {
-  "city": "Homburg",
-  "coronaContacts": true,
+  "city": "Kirkel",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1996-05-03",
+  "dateOfBirth": "1925-02-15",
   "email": "c.bauer@example.de",
   "firstName": "Cornelius",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "R545801065",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "U796999048",
   "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "3811386338",
+  "phoneNumber": "5455884506",
   "preIllnesses": [
-    "CARDIOVASCULAR_DISEASE"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_OTHER"
+    "Moscow"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Bismarckstra\u00dfe 31",
+  "street": "Schernerweg 44",
   "symptoms": [
-    "NAUSEA",
-    "COLD",
-    "COUGH",
-    "MUSCLE_PAIN",
-    "HEADACHE",
-    "LOSS_OF_APPETITE",
-    "DIFFICULTY_BREATHING",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "FEVER",
-    "SHORTNESS_OF_BREATH",
-    "WEIGHT_LOSS",
-    "BACK_PAIN"
+    "Kopfschmerzen",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "669102"
+  "zip": "661093"
 }

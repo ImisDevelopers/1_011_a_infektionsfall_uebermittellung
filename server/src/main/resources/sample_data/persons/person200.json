@@ -1,30 +1,34 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": false,
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1992-12-02",
-  "email": "m.schmitt@example.de",
-  "firstName": "Martina",
-  "fluImmunization": true,
+  "dateOfBirth": "1957-07-18",
+  "email": "h.winter@example.de",
+  "firstName": "Hanna",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "K347028515",
-  "lastName": "Schmitt",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "U116866122",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "8220781137",
+  "phoneNumber": "31027238656",
   "preIllnesses": [
-    "NEUROLOGICAL_DISEASE"
+    "Herz-Kreislauf"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hohenzollerstra\u00dfe 74",
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete 36",
   "symptoms": [
-    "FEVER",
-    "DIFFICULTY_BREATHING",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "HEADACHE",
-    "COLD"
+    "Halschmerzen",
+    "Fieber",
+    "Husten",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Atemschwierigkeiten",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66563"
+  "zip": "661022"
 }

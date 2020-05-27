@@ -1,35 +1,26 @@
 {
-  "city": "St. Wendel",
-  "coronaContacts": false,
+  "city": "Riegelsberg",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1960-05-17",
-  "email": "c.klein@example.de",
-  "firstName": "Christopher",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "J585308092",
-  "lastName": "Klein",
+  "dateOfBirth": "1971-05-26",
+  "email": "m.bauer@example.de",
+  "firstName": "Martina",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "K687994511",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "10640155778",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hafenstra\u00dfe 15",
-  "symptoms": [
-    "NAUSEA",
-    "DIFFICULTY_BREATHING",
-    "FEVER",
-    "MUSCLE_PAIN",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "LOSS_OF_APPETITE",
-    "COLD",
-    "BACK_PAIN",
-    "SHORTNESS_OF_BREATH",
-    "HEADACHE",
-    "COUGH",
-    "WEIGHT_LOSS"
+  "phoneNumber": "1410967103109",
+  "preIllnesses": [
+    "Herz-Kreislauf"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "667810"
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "B\u00fcckerheide 24",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "668510"
 }

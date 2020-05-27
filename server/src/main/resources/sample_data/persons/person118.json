@@ -1,33 +1,35 @@
 {
-  "city": "Riegelsberg",
+  "city": "St. Wendel",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1977-12-29",
-  "email": "p.peters@example.de",
-  "firstName": "Peter",
-  "fluImmunization": false,
+  "dateOfBirth": "2000-07-03",
+  "email": "c.richter@example.de",
+  "firstName": "Christopher",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "T662767039",
-  "lastName": "Peters",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Q591942526",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "5421689421",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 5",
+  "phoneNumber": "106310294511",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 71",
   "symptoms": [
-    "SHORTNESS_OF_BREATH",
-    "COUGH",
-    "MUSCLE_PAIN",
-    "NAUSEA",
-    "FEVER",
-    "DIFFICULTY_BREATHING",
-    "COLD",
-    "LOSS_OF_APPETITE",
-    "HEADACHE",
-    "WEIGHT_LOSS"
+    "Halschmerzen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Fieber",
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66447"
+  "zip": "66685"
 }

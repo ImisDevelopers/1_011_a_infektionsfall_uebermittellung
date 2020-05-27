@@ -1,32 +1,34 @@
 {
-  "city": "Homburg",
+  "city": "St. Wendel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1952-09-18",
-  "email": "c.berger@example.de",
-  "firstName": "Christopher",
-  "fluImmunization": true,
+  "dateOfBirth": "1965-07-24",
+  "email": "c.schroeder@example.de",
+  "firstName": "Cornelius",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "A223181755",
-  "lastName": "Berger",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "F222226183",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "61533105554",
+  "phoneNumber": "110021010255",
   "preIllnesses": [
-    "LIVER_DISEASE"
+    ""
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "GrandEst"
+  ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Niekampsweg 96",
+  "street": "Waldstra\u00dfe 79",
   "symptoms": [
-    "FEVER",
-    "NAUSEA",
-    "COLD",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "LOSS_OF_APPETITE",
-    "COUGH",
-    "SHORTNESS_OF_BREATH"
+    "Atemschwierigkeiten",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Husten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66987"
+  "weakenedImmuneSystem": true,
+  "zip": "66415"
 }

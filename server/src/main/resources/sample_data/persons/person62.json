@@ -1,31 +1,32 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": false,
+  "city": "Neunkirchen",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1944-09-13",
-  "email": "k.richter@example.de",
-  "firstName": "Kai",
-  "fluImmunization": false,
+  "dateOfBirth": "1942-11-18",
+  "email": "c.sommer@example.de",
+  "firstName": "Christopher",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "I699240979",
-  "lastName": "Richter",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "G465278987",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "5278585101010",
+  "phoneNumber": "410473106471",
   "preIllnesses": [
-    "ADIPOSITAS"
+    ""
   ],
   "riskAreas": [
-    "COMMUNITY_FACILITY"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe 88",
+  "street": "Rosenstra\u00dfe 7",
   "symptoms": [
-    "WEIGHT_LOSS",
-    "FEVER",
-    "MUSCLE_PAIN",
-    "COUGH"
+    "Kopfschmerzen",
+    "Gelenkschmerzen",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66497"
+  "zip": "66276"
 }

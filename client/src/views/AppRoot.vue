@@ -49,8 +49,8 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import Header from '@/components/structural/Header.vue'
-import Navigation from '@/components/structural/Navigation.vue'
+import Header from '@/components/Header.vue'
+import Navigation from '@/components/Navigation.vue'
 
 // used for the navigation bar
 const mobileWidth = 700

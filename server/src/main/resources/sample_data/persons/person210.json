@@ -1,29 +1,30 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": true,
+  "city": "Neunkirchen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1949-12-14",
-  "email": "d.schulz@example.de",
-  "firstName": "Daniela",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Y503482553",
-  "lastName": "Schulz",
+  "dateOfBirth": "1936-11-10",
+  "email": "j.winter@example.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "R259937739",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "7426629912",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 38",
-  "symptoms": [
-    "NAUSEA",
-    "WEIGHT_LOSS",
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH",
-    "MUSCLE_PAIN",
-    "COUGH"
+  "phoneNumber": "7870050506",
+  "preIllnesses": [
+    ""
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66785"
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg 27",
+  "symptoms": [
+    "Fieber",
+    "Husten",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "6610108"
 }

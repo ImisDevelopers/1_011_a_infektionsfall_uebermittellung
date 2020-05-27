@@ -1,39 +1,29 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": true,
+  "city": "Kirkel",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1953-10-29",
-  "email": "h.richter@example.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
+  "dateOfBirth": "1930-04-18",
+  "email": "f.winkler@example.de",
+  "firstName": "Fin",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "S920858166",
-  "lastName": "Richter",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Z713627778",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "72521751025",
+  "phoneNumber": "06868107937",
   "preIllnesses": [
-    "PREGNANCY"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "MEDICAL_HEALTH_PROFESSION"
+    "GrandEst"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 7",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Wintergasse 10",
   "symptoms": [
-    "DIFFICULTY_BREATHING",
-    "SHORTNESS_OF_BREATH",
-    "COLD",
-    "HEADACHE",
-    "BACK_PAIN",
-    "FEVER",
-    "MUSCLE_PAIN",
-    "COUGH",
-    "WEIGHT_LOSS",
-    "LOSS_OF_APPETITE",
-    "NAUSEA",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Fieber",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66074"
+  "zip": "66608"
 }

@@ -1,33 +1,29 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
+  "city": "Neunkirchen",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1982-08-21",
-  "email": "b.winter@example.de",
-  "firstName": "Ben",
+  "dateOfBirth": "1973-04-24",
+  "email": "o.schulz@example.de",
+  "firstName": "Olivia",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "E309517616",
-  "lastName": "Winter",
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N975610118",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "81028274225",
+  "phoneNumber": "10799371240",
   "preIllnesses": [
-    "ARDS"
+    "Herz-Kreislauf"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 57",
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Z\u00e4hringerstra\u00dfe 42",
   "symptoms": [
-    "BACK_PAIN",
-    "NAUSEA",
-    "MUSCLE_PAIN",
-    "HEADACHE",
-    "COLD",
-    "FEVER",
-    "COUGH",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Atemschwierigkeiten",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66905"
+  "zip": "66965"
 }

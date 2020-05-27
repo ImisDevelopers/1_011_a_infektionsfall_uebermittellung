@@ -2,31 +2,32 @@
   "city": "Saarbr\u00fccken",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1993-04-22",
-  "email": "o.klein@example.de",
-  "firstName": "Olivia",
-  "fluImmunization": true,
+  "dateOfBirth": "1947-09-12",
+  "email": "h.schulz@example.de",
+  "firstName": "Hanna",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "W477615830",
-  "lastName": "Klein",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "H149372289",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "3480396522",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof 75",
-  "symptoms": [
-    "SHORTNESS_OF_BREATH",
-    "COLD",
-    "FEVER",
-    "MUSCLE_PAIN",
-    "WEIGHT_LOSS",
-    "DIFFICULTY_BREATHING",
-    "NAUSEA",
-    "LOSS_OF_APPETITE",
-    "BACK_PAIN"
+  "phoneNumber": "07925241910",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66559"
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Tulpenweg 14",
+  "symptoms": [
+    "Schnupfen",
+    "Fieber",
+    "Husten",
+    "Atemschwierigkeiten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66380"
 }

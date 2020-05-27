@@ -247,7 +247,7 @@ import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
-import IndexPatientTableCell from '@/components/other/IndexPatientTableCell.vue'
+import IndexPatientTableCell from '@/components/IndexPatientTableCell.vue'
 
 const columnsSchema: Partial<Column>[] = [
   {

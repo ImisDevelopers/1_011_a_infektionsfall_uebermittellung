@@ -1,34 +1,26 @@
 {
-  "city": "Saarlouis",
+  "city": "Neunkirchen",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1993-08-05",
-  "email": "c.wagner@example.de",
-  "firstName": "Cornelius",
+  "dateOfBirth": "1966-07-16",
+  "email": "l.schmidt@example.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "J597959181",
-  "lastName": "Wagner",
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "I342925794",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "482105101353",
+  "phoneNumber": "710411086256",
   "preIllnesses": [
-    "ARDS"
+    ""
   ],
   "riskAreas": [
-    "COMMUNITY_FACILITY"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Tulpenweg 39",
-  "symptoms": [
-    "LOSS_OF_APPETITE",
-    "NAUSEA",
-    "COLD",
-    "DIFFICULTY_BREATHING",
-    "MUSCLE_PAIN",
-    "BACK_PAIN",
-    "WEIGHT_LOSS"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "66655"
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hauptstra\u00dfe 23",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66704"
 }

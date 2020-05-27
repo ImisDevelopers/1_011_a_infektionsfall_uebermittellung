@@ -1,30 +1,31 @@
 {
-  "city": "Bous",
+  "city": "Dudweiler",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1956-10-14",
-  "email": "d.mueller@example.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1989-02-08",
+  "email": "h.schmitt@example.de",
+  "firstName": "Hans",
   "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "O358480413",
-  "lastName": "M\u00fcller",
+  "insuranceMembershipNumber": "L527385805",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "3259532787",
-  "preIllnesses": [],
+  "phoneNumber": "105569092107",
+  "preIllnesses": [
+    ""
+  ],
   "riskAreas": [
-    "MEDICAL_HEALTH_PROFESSION"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Steinstra\u00dfe 39",
+  "street": "Hauptstra\u00dfe 47",
   "symptoms": [
-    "LOSS_OF_APPETITE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "WEIGHT_LOSS",
-    "MUSCLE_PAIN",
-    "BACK_PAIN"
+    "Erk\u00e4ltung",
+    "Husten",
+    "Halschmerzen",
+    "Fieber"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66701"
+  "weakenedImmuneSystem": false,
+  "zip": "66719"
 }

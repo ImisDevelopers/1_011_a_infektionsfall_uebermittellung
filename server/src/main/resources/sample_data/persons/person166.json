@@ -1,37 +1,29 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Homburg",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1953-07-12",
-  "email": "m.schulz@example.de",
-  "firstName": "Marie",
+  "dateOfBirth": "1981-02-06",
+  "email": "e.bauer@example.de",
+  "firstName": "Emma",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "G835898867",
-  "lastName": "Schulz",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "F209815321",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "53559100425",
-  "preIllnesses": [],
-  "riskAreas": [
-    "MEDICAL_HEALTH_PROFESSION"
+  "phoneNumber": "24110797497",
+  "preIllnesses": [
+    "Krebserkrankung"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Eisenbahnstra\u00dfe 56",
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Niekampsweg 41",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "DIFFICULTY_BREATHING",
-    "NAUSEA",
-    "LOSS_OF_APPETITE",
-    "FEVER",
-    "WEIGHT_LOSS",
-    "COLD",
-    "SHORTNESS_OF_BREATH",
-    "BACK_PAIN",
-    "COUGH",
-    "MUSCLE_PAIN",
-    "HEADACHE"
+    "Gelenkschmerzen",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66927"
+  "zip": "66020"
 }

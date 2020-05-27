@@ -1,32 +1,30 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Bous",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1993-08-20",
+  "dateOfBirth": "1946-11-09",
   "email": "m.weber@example.de",
   "firstName": "Martina",
   "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "I303805386",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "I590523712",
   "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "6405377351",
+  "phoneNumber": "741007410821",
   "preIllnesses": [
-    "DIABETES"
+    "Imunsystemschw\u00e4che"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Bismarckstra\u00dfe 47",
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Waldstra\u00dfe 44",
   "symptoms": [
-    "DIFFICULTY_BREATHING",
-    "NAUSEA",
-    "FEVER",
-    "LOSS_OF_APPETITE",
-    "BACK_PAIN",
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH"
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "668105"
+  "weakenedImmuneSystem": false,
+  "zip": "669410"
 }

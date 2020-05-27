@@ -1,26 +1,28 @@
 {
-  "city": "Dudweiler",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1988-08-29",
-  "email": "m.schroeder@example.de",
-  "firstName": "Marie",
-  "fluImmunization": true,
+  "dateOfBirth": "1999-04-04",
+  "email": "o.richter@example.de",
+  "firstName": "Olivia",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "N841760327",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Z914334414",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "9852401322",
-  "preIllnesses": [],
+  "phoneNumber": "2107722100010",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_WORK"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 29",
+  "street": "Hauptstra\u00dfe 36",
   "symptoms": [
-    "LOSS_OF_APPETITE"
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66423"
+  "zip": "66364"
 }

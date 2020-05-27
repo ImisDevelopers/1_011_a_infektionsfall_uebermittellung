@@ -1,29 +1,29 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
+  "city": "St. Wendel",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1959-08-04",
-  "email": "d.lange@example.de",
-  "firstName": "Daniel",
-  "fluImmunization": true,
+  "dateOfBirth": "1929-05-05",
+  "email": "p.winter@example.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "R657212948",
-  "lastName": "Lange",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "J901487098",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "2661106273",
-  "preIllnesses": [],
+  "phoneNumber": "15291086710",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_WORK"
+    "Madrid"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Waldstra\u00dfe 9",
+  "street": "Steinstra\u00dfe 15",
   "symptoms": [
-    "COLD",
-    "MUSCLE_PAIN",
-    "HEADACHE",
-    "NAUSEA"
+    "Halschmerzen",
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "665108"
+  "weakenedImmuneSystem": false,
+  "zip": "66333"
 }

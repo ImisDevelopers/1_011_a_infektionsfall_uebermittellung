@@ -10,10 +10,10 @@ last_names = ['Peters', 'Müller', 'Schulz', 'Schulze', 'Weber', 'Wagner', 'Rich
 			  'Lange', 'Winkler', 'Winter', 'Sommer', 'Schmitt', 'Schmidt', 'Berger']
 
 male_first_names = ['Peter', 'Daniel', 'Hans', 'Franz', 'Karl', 'Tim', 'Jan', 'Jens', 'Kai', 'Ben', 'Fin', 'Matthias',
-					'Christopher', 'Cornelius', 'Konrad']
+              'Christopher', 'Cornelius', 'Konrad']
 
 female_fist_names = ['Jana', 'Lisa', 'Anna', 'Annika', 'Petra', 'Marie', 'Susanne', 'Daniela', 'Petra', 'Martina',
-					 'Emma', 'Hanna', 'Olivia', 'Isabella']
+              'Emma', 'Hanna', 'Olivia', 'Isabella']
 
 genders = ['male', 'female']
 
@@ -33,20 +33,20 @@ streets = [
 	"Abbendiekshof",
 	"Sonnenweg",
 	"Wintergasse",
-	"Südweg",
+    "Südweg",
 	"Hauptstraße",
-	"Zähringerstraße",
-	"Kaiserstraße",
-	"Waldstraße",
-	"Steinstraße",
-	"Hafenstraße",
-	"Poststraße",
-	"Hohenzollerstraße",
-	"Eisenbahnstraße",
-	"Kronenstraße",
-	"Bismarckstraße",
-	"Rosenstraße",
-	"Tulpenweg",
+    "Zähringerstraße",
+    "Kaiserstraße",
+    "Waldstraße",
+    "Steinstraße",
+    "Hafenstraße",
+    "Poststraße",
+    "Hohenzollerstraße",
+    "Eisenbahnstraße",
+    "Kronenstraße",
+    "Bismarckstraße",
+    "Rosenstraße",
+    "Tulpenweg",
 	"Bückerheide",
 	"Nordstraße",
 	"Nordtstraße",
@@ -55,24 +55,12 @@ streets = [
 # temporarily replace possible cities for simulation
 # cities = ['Berlin', 'München', 'Hamburg', 'Köln', 'Düsseldorf', 'Kiel', 'Freiburg', 'Bochum', 'Frankfurt', 'Saarbrücken']
 cities = ['Saarbrücken', 'Sulzbach', 'Dudweiler', 'St. Ingbert', 'Saarlouis', 'Völklingen', 'Bous', 'Neunkirchen',
-		  'Homburg', 'Kirkel', 'Heusweiler', 'Riegelsberg', 'Püttlingen', 'St. Wendel', 'Merzig']
+'Homburg', 'Kirkel', 'Heusweiler', 'Riegelsberg', 'Püttlingen', 'St. Wendel', 'Merzig']
 
 insurance_companies = ['AOK', 'Barmer', 'Techniker Krankenkasse', 'IKK Nord', 'KNAPPSCHAFT', 'DAK Gesundheit']
 
-symptoms = [
-	'LOSS_OF_APPETITE',
-	'DIFFICULTY_BREATHING',
-	'SHORTNESS_OF_BREATH',
-	'FEVER',
-	'WEIGHT_LOSS',
-	'COUGH',
-	'HEADACHE',
-	'MUSCLE_PAIN',
-	'BACK_PAIN',
-	'COLD',
-	'NAUSEA',
-	'LOSS_OF_SENSE_OF_SMELL_TASTE'
-]
+symptoms = ['Husten', 'Fieber', 'Schnupfen', 'Erkältung', 'Atemschwierigkeiten', 'Kopfschmerzen', 'Halschmerzen',
+			'Gelenkschmerzen']
 
 days_in_month = {
 	"01": 31, "02": 28,
@@ -98,35 +86,9 @@ def rand_num_str(len=10):
 	return ''.join([str(randint(0, 10)) for _ in range(len)])
 
 
-exposures = [
-	'MEDICAL_HEALTH_PROFESSION',
-	'MEDICAL_LABORATORY',
-	'STAY_IN_MEDICAL_FACILITY',
-	'CONTACT_WITH_CORONA_CASE',
-	'CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY',
-	'CONTACT_WITH_CORONA_CASE_PRIVATE',
-	'CONTACT_WITH_CORONA_CASE_WORK',
-	'CONTACT_WITH_CORONA_CASE_OTHER',
-	'COMMUNITY_FACILITY',
-	'COMMUNITY_FACILITY_MINORS',
-]
+riscAreas = ['', 'GrandEst', 'Hubei', 'Tirol', 'Madrid', 'New York', 'Moscow']
 
-preIllnesses = [
-	'ARDS',
-	'RESPIRATORY_DISEASE',
-	'CHRONIC_LUNG_DISEASE',
-	'DIABETES',
-	'ADIPOSITAS',
-	'CARDIOVASCULAR_DISEASE',
-	'IMMUNODEFICIENCY',
-	'CANCER',
-	'LIVER_DISEASE',
-	'NEUROLOGICAL_DISEASE',
-	'KIDNEY_DISEASE',
-	'SMOKING',
-	'PREGNANCY',
-	'Alzheimer',  # Custom pre illness
-]
+preIllnesses = ['', 'Krebserkrankung', 'Imunsystemschwäche', 'Herz-Kreislauf']
 
 
 def insurance_number():
@@ -157,11 +119,11 @@ def gen_person():
 		'dateOfBirth': gen_date_of_birth(),
 		'email': email,
 		'phoneNumber': rand_num_str(),
-		# include house number within street field
+# include house number within street field
 		'street': '{} {}'.format(choice(streets), randint(0, 100)),
-		#		'houseNumber': randint(0, 100),
-		# temporarily filter zip codes to saarland region (approximately)
-		#		'zip': rand_num_str(5),
+#		'houseNumber': randint(0, 100),
+# temporarily filter zip codes to saarland region (approximately)
+#		'zip': rand_num_str(5),
 		'zip': '66{}'.format(rand_num_str(3)),
 		'city': choice(cities),
 		'country': 'DE',
@@ -171,9 +133,9 @@ def gen_person():
 		'speedOfSymptomsOutbreak': choice(['Langsam', 'Mittel', 'Schnell']),
 		'symptoms': sample(symptoms, randint(0, len(symptoms))),
 		'coronaContacts': bool(getrandbits(1)),
-		'riskAreas': [choice(exposures)] if randint(0, 4) > 1 else [],
+		'riskAreas': [choice(riscAreas)],
 		'weakenedImmuneSystem': bool(getrandbits(1)),
-		'preIllnesses': [choice(preIllnesses)] if randint(0, 4) > 1 else [],
+		'preIllnesses': [choice(preIllnesses)],
 		'nationality': 'deutsch'
 	}
 
@@ -183,7 +145,7 @@ def main():
 	pathlib.Path('persons').mkdir(parents=True, exist_ok=True)
 
 	amount = 250  # default
-	if len(sys.argv) > 1:
+	if len(sys.argv) >= 1:
 		amount = int(sys.argv[1])
 
 	for i in range(amount):

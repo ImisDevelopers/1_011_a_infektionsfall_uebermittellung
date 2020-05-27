@@ -1,28 +1,35 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": true,
+  "city": "Homburg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1935-07-14",
-  "email": "d.klein@example.de",
-  "firstName": "Daniela",
+  "dateOfBirth": "1979-06-10",
+  "email": "f.richter@example.de",
+  "firstName": "Franz",
   "fluImmunization": false,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "M440030663",
-  "lastName": "Klein",
+  "insuranceMembershipNumber": "L431165907",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "210910619431",
+  "phoneNumber": "0331739363",
   "preIllnesses": [
-    "RESPIRATORY_DISEASE"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_OTHER"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg 34",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Poststra\u00dfe 41",
   "symptoms": [
-    "LOSS_OF_APPETITE"
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung",
+    "Husten",
+    "Halschmerzen",
+    "Schnupfen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "662610"
+  "weakenedImmuneSystem": true,
+  "zip": "66467"
 }

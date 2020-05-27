@@ -263,10 +263,11 @@ import moment from 'moment'
 
 import * as typing from '@/util/typing'
 import Api from '@/api'
-import DateInput from '@/components/inputs/DateInput.vue'
-import PatientInput from '@/components/inputs/PatientInput.vue'
+import DateInput from '@/components/DateInput.vue'
+import PatientInput from '@/components/PatientInput.vue'
 import { FormGroupMixin } from '@/util/forms.ts'
 import { Patient } from '@/api/SwaggerApi'
+import { Modal } from 'ant-design-vue'
 
 const exposureContexts = [
   'Haushaltskontakt',

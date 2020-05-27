@@ -1,24 +1,33 @@
 {
-  "city": "St. Wendel",
-  "coronaContacts": true,
+  "city": "Homburg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1995-11-28",
-  "email": "m.klein@example.de",
-  "firstName": "Matthias",
-  "fluImmunization": false,
+  "dateOfBirth": "1976-12-19",
+  "email": "h.berger@example.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "U942217648",
-  "lastName": "Klein",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "X288047830",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "100166687010",
-  "preIllnesses": [],
-  "riskAreas": [],
+  "phoneNumber": "599105342108",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
+  "riskAreas": [
+    "Tirol"
+  ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aarhusweg 89",
+  "street": "Abbendiekshof 52",
   "symptoms": [
-    "BACK_PAIN"
+    "Gelenkschmerzen",
+    "Husten",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66217"
+  "zip": "66440"
 }

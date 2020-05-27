@@ -1,29 +1,33 @@
 {
-  "city": "Saarlouis",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "2005-07-03",
-  "email": "a.mueller@example.de",
-  "firstName": "Anna",
+  "dateOfBirth": "1925-11-03",
+  "email": "f.winter@example.de",
+  "firstName": "Franz",
   "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "P625163699",
-  "lastName": "M\u00fcller",
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S565098113",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "410109731032",
-  "preIllnesses": [],
+  "phoneNumber": "99410131072",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_WORK"
+    "GrandEst"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kronenstra\u00dfe 37",
+  "street": "Haidth\u00f6heAarweg 42",
   "symptoms": [
-    "DIFFICULTY_BREATHING",
-    "NAUSEA",
-    "BACK_PAIN",
-    "HEADACHE"
+    "Gelenkschmerzen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Fieber",
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66171"
+  "zip": "66107"
 }

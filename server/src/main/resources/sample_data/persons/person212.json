@@ -1,27 +1,28 @@
 {
-  "city": "Homburg",
-  "coronaContacts": true,
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1985-10-02",
-  "email": "p.peters@example.de",
-  "firstName": "Petra",
+  "dateOfBirth": "1970-03-25",
+  "email": "t.schulz@example.de",
+  "firstName": "Tim",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "C651759949",
-  "lastName": "Peters",
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "C106817809",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "2572520456",
+  "phoneNumber": "6258273902",
   "preIllnesses": [
-    "Alzheimer"
+    "Herz-Kreislauf"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kronenstra\u00dfe 45",
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg 80",
   "symptoms": [
-    "DIFFICULTY_BREATHING",
-    "COLD"
+    "Atemschwierigkeiten"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66044"
+  "zip": "66962"
 }

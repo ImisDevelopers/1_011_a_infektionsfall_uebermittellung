@@ -1,37 +1,32 @@
 {
-  "city": "St. Wendel",
+  "city": "Merzig",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2000-07-03",
-  "email": "c.richter@example.de",
-  "firstName": "Christopher",
+  "dateOfBirth": "1945-09-12",
+  "email": "k.bauer@example.de",
+  "firstName": "Konrad",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "Q591942526",
-  "lastName": "Richter",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "F353994846",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "106310294511",
+  "phoneNumber": "93213103480",
   "preIllnesses": [
-    "Alzheimer"
+    "Herz-Kreislauf"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Z\u00e4hringerstra\u00dfe 71",
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide 28",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "COLD",
-    "NAUSEA",
-    "BACK_PAIN",
-    "HEADACHE",
-    "LOSS_OF_APPETITE",
-    "FEVER",
-    "DIFFICULTY_BREATHING",
-    "WEIGHT_LOSS",
-    "SHORTNESS_OF_BREATH",
-    "MUSCLE_PAIN",
-    "COUGH"
+    "Husten",
+    "Kopfschmerzen",
+    "Halschmerzen",
+    "Schnupfen",
+    "Fieber"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66685"
+  "zip": "66965"
 }

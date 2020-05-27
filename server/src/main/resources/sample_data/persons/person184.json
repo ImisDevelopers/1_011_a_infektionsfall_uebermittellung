@@ -1,32 +1,34 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": true,
+  "city": "Neunkirchen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1936-12-08",
-  "email": "o.sommer@example.de",
-  "firstName": "Olivia",
-  "fluImmunization": false,
+  "dateOfBirth": "1939-02-15",
+  "email": "s.berger@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": true,
   "gender": "female",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "C742375910",
-  "lastName": "Sommer",
+  "insuranceMembershipNumber": "J930729364",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "210101971997",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "S\u00fcdweg 71",
+  "phoneNumber": "7038860868",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "B\u00fcckerheide 80",
   "symptoms": [
-    "HEADACHE",
-    "COUGH",
-    "MUSCLE_PAIN",
-    "LOSS_OF_APPETITE",
-    "DIFFICULTY_BREATHING",
-    "COLD",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "WEIGHT_LOSS",
-    "BACK_PAIN"
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Kopfschmerzen",
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66172"
+  "zip": "66034"
 }

@@ -1,30 +1,26 @@
 {
-  "city": "Bous",
+  "city": "Saarlouis",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1931-10-02",
-  "email": "j.schulze@example.de",
+  "dateOfBirth": "1978-07-29",
+  "email": "j.schmidt@example.de",
   "firstName": "Jan",
-  "fluImmunization": false,
+  "fluImmunization": true,
   "gender": "male",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "V793101194",
-  "lastName": "Schulze",
+  "insuranceMembershipNumber": "B721890096",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "91610998543",
+  "phoneNumber": "0260647468",
   "preIllnesses": [
-    "CHRONIC_LUNG_DISEASE"
+    ""
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
   "street": "Bismarckstra\u00dfe 91",
-  "symptoms": [
-    "DIFFICULTY_BREATHING",
-    "LOSS_OF_APPETITE",
-    "MUSCLE_PAIN",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "BACK_PAIN"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "66534"
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66723"
 }

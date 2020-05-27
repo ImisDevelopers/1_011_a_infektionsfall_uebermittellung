@@ -1,32 +1,29 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
+  "city": "St. Ingbert",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1941-09-27",
-  "email": "d.schroeder@example.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1974-07-19",
+  "email": "l.sommer@example.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "L826239153",
-  "lastName": "Schr\u00f6der",
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "L881017363",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "80105929622",
+  "phoneNumber": "6816453521",
   "preIllnesses": [
-    "CANCER"
+    "Krebserkrankung"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbachstra\u00dfe 88",
+  "riskAreas": [
+    "Hubei"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hafenstra\u00dfe 81",
   "symptoms": [
-    "COLD",
-    "WEIGHT_LOSS",
-    "MUSCLE_PAIN",
-    "FEVER",
-    "BACK_PAIN",
-    "SHORTNESS_OF_BREATH",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Erk\u00e4ltung",
+    "Husten"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66927"
+  "zip": "66188"
 }

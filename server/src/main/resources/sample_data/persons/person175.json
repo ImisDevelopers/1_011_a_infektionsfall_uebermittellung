@@ -1,32 +1,26 @@
 {
-  "city": "Kirkel",
+  "city": "Merzig",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1987-01-22",
-  "email": "p.winkler@example.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1996-12-11",
+  "email": "b.winter@example.de",
+  "firstName": "Ben",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "F588915267",
-  "lastName": "Winkler",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "N229429404",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "9945101622",
+  "phoneNumber": "72791910409",
   "preIllnesses": [
-    "Alzheimer"
+    "Herz-Kreislauf"
   ],
   "riskAreas": [
-    "MEDICAL_LABORATORY"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 36",
-  "symptoms": [
-    "LOSS_OF_APPETITE",
-    "DIFFICULTY_BREATHING",
-    "WEIGHT_LOSS",
-    "COUGH",
-    "BACK_PAIN"
-  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Z\u00e4hringerstra\u00dfe 10",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "669109"
+  "zip": "66055"
 }

@@ -1,32 +1,28 @@
 {
-  "city": "Homburg",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1959-02-18",
-  "email": "i.schroeder@example.de",
-  "firstName": "Isabella",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "G953739357",
-  "lastName": "Schr\u00f6der",
+  "dateOfBirth": "1939-08-14",
+  "email": "f.weber@example.de",
+  "firstName": "Franz",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "H306054135",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "9520284576",
-  "preIllnesses": [],
-  "riskAreas": [],
+  "phoneNumber": "32909279110",
+  "preIllnesses": [
+    "Krebserkrankung"
+  ],
+  "riskAreas": [
+    "Moscow"
+  ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "S\u00fcdweg 20",
+  "street": "Nordtstra\u00dfe 100",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "BACK_PAIN",
-    "NAUSEA",
-    "COLD",
-    "DIFFICULTY_BREATHING",
-    "FEVER",
-    "HEADACHE",
-    "LOSS_OF_APPETITE",
-    "WEIGHT_LOSS"
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66132"
+  "zip": "66456"
 }

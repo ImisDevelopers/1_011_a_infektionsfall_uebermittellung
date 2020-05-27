@@ -1,33 +1,28 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": false,
+  "city": "St. Wendel",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1970-06-21",
-  "email": "m.bauer@example.de",
-  "firstName": "Marie",
+  "dateOfBirth": "1974-11-04",
+  "email": "k.winkler@example.de",
+  "firstName": "Konrad",
   "fluImmunization": false,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Z436808455",
-  "lastName": "Bauer",
+  "insuranceMembershipNumber": "Z366467544",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "86108501429",
-  "preIllnesses": [],
-  "riskAreas": [
-    "COMMUNITY_FACILITY"
+  "phoneNumber": "5869232260",
+  "preIllnesses": [
+    "Herz-Kreislauf"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Sonnenweg 4",
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbachstra\u00dfe 94",
   "symptoms": [
-    "DIFFICULTY_BREATHING",
-    "HEADACHE",
-    "COLD",
-    "FEVER",
-    "WEIGHT_LOSS",
-    "LOSS_OF_APPETITE",
-    "COUGH",
-    "BACK_PAIN"
+    "Halschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66196"
+  "zip": "665610"
 }

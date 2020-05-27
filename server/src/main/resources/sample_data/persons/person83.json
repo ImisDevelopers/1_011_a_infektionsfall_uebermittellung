@@ -1,30 +1,26 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": false,
+  "city": "Kirkel",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1946-11-19",
-  "email": "j.winkler@example.de",
-  "firstName": "Jens",
+  "dateOfBirth": "1933-04-19",
+  "email": "l.schroeder@example.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Z322122096",
-  "lastName": "Winkler",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "T525956648",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "8250714611",
-  "preIllnesses": [],
+  "phoneNumber": "61085621850",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
   "riskAreas": [
-    "MEDICAL_HEALTH_PROFESSION"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 93",
-  "symptoms": [
-    "MUSCLE_PAIN",
-    "DIFFICULTY_BREATHING",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "COLD",
-    "COUGH"
-  ],
+  "street": "Schernerweg 55",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "66254"
+  "zip": "66315"
 }

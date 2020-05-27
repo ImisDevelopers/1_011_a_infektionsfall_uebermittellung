@@ -2,34 +2,25 @@
   "city": "Dudweiler",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1929-06-16",
-  "email": "t.wagner@example.de",
-  "firstName": "Tim",
-  "fluImmunization": false,
+  "dateOfBirth": "1991-05-14",
+  "email": "f.bauer@example.de",
+  "firstName": "Fin",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "P690347116",
-  "lastName": "Wagner",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Y273461957",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "0154303911",
+  "phoneNumber": "27048281104",
   "preIllnesses": [
-    "CANCER"
+    ""
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_OTHER"
+    "Hubei"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Tulpenweg 62",
-  "symptoms": [
-    "COLD",
-    "HEADACHE",
-    "FEVER",
-    "BACK_PAIN",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "COUGH",
-    "SHORTNESS_OF_BREATH",
-    "MUSCLE_PAIN"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "66182"
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordtstra\u00dfe 81",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66893"
 }

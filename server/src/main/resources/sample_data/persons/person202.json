@@ -1,24 +1,31 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Heusweiler",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1978-10-16",
-  "email": "d.sommer@example.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1945-08-17",
+  "email": "k.lange@example.de",
+  "firstName": "Konrad",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "P887564180",
-  "lastName": "Sommer",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S281547449",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "7406335693",
-  "preIllnesses": [],
-  "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_WORK"
+  "phoneNumber": "7956544209",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hohenzollerstra\u00dfe 19",
-  "symptoms": [],
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Tulpenweg 38",
+  "symptoms": [
+    "Husten",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Gelenkschmerzen"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "66906"
+  "zip": "66940"
 }

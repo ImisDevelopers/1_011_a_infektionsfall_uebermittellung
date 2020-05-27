@@ -1,27 +1,32 @@
 {
-  "city": "St. Wendel",
-  "coronaContacts": true,
+  "city": "Neunkirchen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1952-04-19",
-  "email": "d.winter@example.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1994-04-06",
+  "email": "h.weber@example.de",
+  "firstName": "Hanna",
   "fluImmunization": true,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J839305702",
-  "lastName": "Winter",
+  "insuranceMembershipNumber": "K699524216",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "26495782310",
-  "preIllnesses": [],
+  "phoneNumber": "7110951000510",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
+  ],
   "riskAreas": [
-    "STAY_IN_MEDICAL_FACILITY"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete 74",
+  "street": "Aastwiete 89",
   "symptoms": [
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH"
+    "Gelenkschmerzen",
+    "Kopfschmerzen",
+    "Fieber",
+    "Husten",
+    "Erk\u00e4ltung"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "668103"
+  "zip": "66812"
 }

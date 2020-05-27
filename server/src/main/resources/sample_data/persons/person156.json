@@ -1,39 +1,31 @@
 {
-  "city": "Merzig",
-  "coronaContacts": false,
+  "city": "Heusweiler",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1962-07-10",
-  "email": "p.schmidt@example.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1934-02-17",
+  "email": "a.sommer@example.de",
+  "firstName": "Anna",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "M989328868",
-  "lastName": "Schmidt",
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S129367590",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "7570512046",
+  "phoneNumber": "4518489476",
   "preIllnesses": [
-    "CHRONIC_LUNG_DISEASE"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
+    "New York"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg 69",
+  "street": "Hohenzollerstra\u00dfe 61",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "FEVER",
-    "HEADACHE",
-    "MUSCLE_PAIN",
-    "NAUSEA",
-    "COUGH",
-    "LOSS_OF_APPETITE",
-    "DIFFICULTY_BREATHING",
-    "BACK_PAIN",
-    "SHORTNESS_OF_BREATH",
-    "COLD",
-    "WEIGHT_LOSS"
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen",
+    "Gelenkschmerzen"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66723"
+  "weakenedImmuneSystem": false,
+  "zip": "66357"
 }

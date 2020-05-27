@@ -1,36 +1,31 @@
 {
-  "city": "Merzig",
+  "city": "Bous",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2000-04-25",
-  "email": "m.schmidt@example.de",
-  "firstName": "Matthias",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "B796348146",
-  "lastName": "Schmidt",
+  "dateOfBirth": "1973-03-27",
+  "email": "o.wagner@example.de",
+  "firstName": "Olivia",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Q942143413",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "73145301038",
-  "preIllnesses": [],
-  "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_WORK"
+  "phoneNumber": "04380571910",
+  "preIllnesses": [
+    "Imunsystemschw\u00e4che"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordstra\u00dfe 46",
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Tulpenweg 71",
   "symptoms": [
-    "BACK_PAIN",
-    "NAUSEA",
-    "WEIGHT_LOSS",
-    "COLD",
-    "SHORTNESS_OF_BREATH",
-    "FEVER",
-    "COUGH",
-    "HEADACHE",
-    "MUSCLE_PAIN",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "LOSS_OF_APPETITE"
+    "Husten",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66677"
+  "zip": "663108"
 }

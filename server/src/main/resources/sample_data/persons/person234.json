@@ -1,36 +1,28 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Bous",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1958-10-30",
-  "email": "e.schulze@example.de",
-  "firstName": "Emma",
+  "dateOfBirth": "1962-04-20",
+  "email": "d.winkler@example.de",
+  "firstName": "Daniel",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "T586514567",
-  "lastName": "Schulze",
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q399456538",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "152017107710",
+  "phoneNumber": "61367499410",
   "preIllnesses": [
-    "RESPIRATORY_DISEASE"
+    "Krebserkrankung"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Sonnenweg 76",
+  "riskAreas": [
+    "Tirol"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 45",
   "symptoms": [
-    "COLD",
-    "SHORTNESS_OF_BREATH",
-    "FEVER",
-    "LOSS_OF_APPETITE",
-    "WEIGHT_LOSS",
-    "NAUSEA",
-    "BACK_PAIN",
-    "COUGH",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "MUSCLE_PAIN",
-    "DIFFICULTY_BREATHING"
+    "Fieber"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661005"
+  "zip": "667109"
 }

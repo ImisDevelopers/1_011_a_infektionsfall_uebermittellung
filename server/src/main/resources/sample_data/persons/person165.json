@@ -1,28 +1,33 @@
 {
-  "city": "Homburg",
+  "city": "Bous",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1955-03-05",
-  "email": "f.sommer@example.de",
-  "firstName": "Franz",
+  "dateOfBirth": "1969-08-18",
+  "email": "k.weber@example.de",
+  "firstName": "Kai",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "P524470332",
-  "lastName": "Sommer",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "H275309282",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "5179086416",
+  "phoneNumber": "0774064930",
   "preIllnesses": [
-    "PREGNANCY"
+    "Imunsystemschw\u00e4che"
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "Madrid"
+  ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hafenstra\u00dfe 55",
+  "street": "Poststra\u00dfe 47",
   "symptoms": [
-    "BACK_PAIN",
-    "COLD",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Halschmerzen",
+    "Fieber",
+    "Schnupfen",
+    "Husten",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66227"
+  "weakenedImmuneSystem": true,
+  "zip": "66368"
 }

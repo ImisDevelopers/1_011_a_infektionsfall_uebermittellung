@@ -1,36 +1,32 @@
 {
-  "city": "Homburg",
-  "coronaContacts": false,
+  "city": "Bous",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1982-10-08",
-  "email": "p.schmidt@example.de",
+  "dateOfBirth": "1955-11-19",
+  "email": "p.richter@example.de",
   "firstName": "Petra",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "G112130346",
-  "lastName": "Schmidt",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "L473992719",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "43010710139",
-  "preIllnesses": [],
-  "riskAreas": [
-    "COMMUNITY_FACILITY_MINORS"
+  "phoneNumber": "3898331465",
+  "preIllnesses": [
+    "Herz-Kreislauf"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Kaiserstra\u00dfe 52",
+  "riskAreas": [
+    "Moscow"
+  ],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Bismarckstra\u00dfe 73",
   "symptoms": [
-    "WEIGHT_LOSS",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "DIFFICULTY_BREATHING",
-    "NAUSEA",
-    "BACK_PAIN",
-    "MUSCLE_PAIN",
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH",
-    "LOSS_OF_APPETITE",
-    "FEVER",
-    "COLD"
+    "Husten",
+    "Halschmerzen",
+    "Schnupfen",
+    "Fieber",
+    "Kopfschmerzen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66055"
+  "zip": "661110"
 }

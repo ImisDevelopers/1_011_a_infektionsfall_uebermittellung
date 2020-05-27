@@ -1,36 +1,29 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": true,
+  "city": "P\u00fcttlingen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1934-01-23",
-  "email": "d.klein@example.de",
-  "firstName": "Daniela",
-  "fluImmunization": false,
+  "dateOfBirth": "1973-01-24",
+  "email": "a.bauer@example.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
   "gender": "female",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "A588381587",
-  "lastName": "Klein",
+  "insuranceMembershipNumber": "B468130224",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "63254310107",
+  "phoneNumber": "19292107524",
   "preIllnesses": [
-    "PREGNANCY"
+    "Herz-Kreislauf"
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "Moscow"
+  ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Bismarckstra\u00dfe 39",
+  "street": "Nordstra\u00dfe 89",
   "symptoms": [
-    "HEADACHE",
-    "SHORTNESS_OF_BREATH",
-    "COUGH",
-    "MUSCLE_PAIN",
-    "LOSS_OF_APPETITE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "COLD",
-    "BACK_PAIN",
-    "FEVER",
-    "NAUSEA",
-    "DIFFICULTY_BREATHING"
+    "Schnupfen",
+    "Halschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66279"
+  "weakenedImmuneSystem": true,
+  "zip": "66372"
 }

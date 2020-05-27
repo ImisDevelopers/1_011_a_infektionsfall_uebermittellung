@@ -1,31 +1,33 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
+  "city": "Heusweiler",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1955-11-10",
-  "email": "t.wagner@example.de",
-  "firstName": "Tim",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "W468909933",
-  "lastName": "Wagner",
+  "dateOfBirth": "1930-07-13",
+  "email": "j.richter@example.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q786237617",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "36101103712",
+  "phoneNumber": "0334191825",
   "preIllnesses": [
-    "CARDIOVASCULAR_DISEASE"
+    "Imunsystemschw\u00e4che"
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hohenzollerstra\u00dfe 28",
+  "riskAreas": [
+    "GrandEst"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 25",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "SHORTNESS_OF_BREATH",
-    "MUSCLE_PAIN",
-    "DIFFICULTY_BREATHING",
-    "FEVER",
-    "COLD"
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Husten",
+    "Schnupfen",
+    "Gelenkschmerzen",
+    "Fieber"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "668107"
+  "weakenedImmuneSystem": true,
+  "zip": "66714"
 }

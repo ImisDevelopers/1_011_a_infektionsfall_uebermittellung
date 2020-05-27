@@ -1,24 +1,30 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Heusweiler",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1977-09-10",
-  "email": "k.mueller@example.de",
-  "firstName": "Karl",
+  "dateOfBirth": "1968-12-23",
+  "email": "a.winter@example.de",
+  "firstName": "Anna",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "O686642360",
-  "lastName": "M\u00fcller",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "A880839406",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "2797881914",
-  "preIllnesses": [],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "B\u00fcckerheide 69",
+  "phoneNumber": "10793564651",
+  "preIllnesses": [
+    "Herz-Kreislauf"
+  ],
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hohenzollerstra\u00dfe 25",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Gelenkschmerzen",
+    "Halschmerzen",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66580"
+  "zip": "66982"
 }

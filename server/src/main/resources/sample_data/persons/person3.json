@@ -1,37 +1,33 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": true,
+  "city": "P\u00fcttlingen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1999-02-05",
-  "email": "k.schmidt@example.de",
-  "firstName": "Kai",
+  "dateOfBirth": "1947-03-09",
+  "email": "f.schmidt@example.de",
+  "firstName": "Fin",
   "fluImmunization": true,
   "gender": "male",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "V676567501",
+  "insuranceMembershipNumber": "D264112119",
   "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "102106916697",
-  "preIllnesses": [],
-  "riskAreas": [
-    "COMMUNITY_FACILITY"
+  "phoneNumber": "2388496965",
+  "preIllnesses": [
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hafenstra\u00dfe 32",
+  "riskAreas": [
+    "Madrid"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Abbendiekshof 17",
   "symptoms": [
-    "NAUSEA",
-    "COUGH",
-    "DIFFICULTY_BREATHING",
-    "WEIGHT_LOSS",
-    "HEADACHE",
-    "COLD",
-    "FEVER",
-    "LOSS_OF_APPETITE",
-    "SHORTNESS_OF_BREATH",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "BACK_PAIN",
-    "MUSCLE_PAIN"
+    "Fieber",
+    "Erk\u00e4ltung",
+    "Halschmerzen",
+    "Atemschwierigkeiten",
+    "Kopfschmerzen",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "668010"
+  "zip": "66871"
 }

@@ -1,39 +1,29 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": true,
+  "city": "Homburg",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1932-07-26",
-  "email": "p.mueller@example.de",
-  "firstName": "Petra",
+  "dateOfBirth": "1965-10-05",
+  "email": "f.schulze@example.de",
+  "firstName": "Franz",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "U984482965",
-  "lastName": "M\u00fcller",
+  "gender": "male",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D126763237",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "3919195419",
+  "phoneNumber": "74523801055",
   "preIllnesses": [
-    "DIABETES"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "STAY_IN_MEDICAL_FACILITY"
+    ""
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe 67",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 47",
   "symptoms": [
-    "WEIGHT_LOSS",
-    "HEADACHE",
-    "BACK_PAIN",
-    "COUGH",
-    "FEVER",
-    "MUSCLE_PAIN",
-    "NAUSEA",
-    "SHORTNESS_OF_BREATH",
-    "COLD",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "LOSS_OF_APPETITE",
-    "DIFFICULTY_BREATHING"
+    "Gelenkschmerzen",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66763"
+  "zip": "66782"
 }

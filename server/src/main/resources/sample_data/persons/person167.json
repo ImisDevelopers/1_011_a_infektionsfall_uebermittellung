@@ -1,35 +1,30 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
+  "city": "Merzig",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1935-08-20",
-  "email": "f.berger@example.de",
-  "firstName": "Franz",
+  "dateOfBirth": "1952-05-26",
+  "email": "j.richter@example.de",
+  "firstName": "Jens",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "U108948759",
-  "lastName": "Berger",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "M989328868",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "210069108042",
+  "phoneNumber": "7570512046",
   "preIllnesses": [
-    "CANCER"
+    ""
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Im KramersfeldAar\u00f6stra\u00dfe 36",
+  "riskAreas": [
+    "New York"
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg 69",
   "symptoms": [
-    "WEIGHT_LOSS",
-    "NAUSEA",
-    "COUGH",
-    "DIFFICULTY_BREATHING",
-    "LOSS_OF_APPETITE",
-    "SHORTNESS_OF_BREATH",
-    "COLD",
-    "FEVER",
-    "BACK_PAIN",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE"
+    "Halschmerzen",
+    "Gelenkschmerzen",
+    "Erk\u00e4ltung"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66394"
+  "zip": "66723"
 }

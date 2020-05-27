@@ -1,30 +1,34 @@
 {
-  "city": "St. Wendel",
+  "city": "St. Ingbert",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1945-03-06",
-  "email": "a.winter@example.de",
-  "firstName": "Anna",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "P838586956",
-  "lastName": "Winter",
+  "dateOfBirth": "1927-05-11",
+  "email": "k.schmidt@example.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "B713119661",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "33060463103",
+  "phoneNumber": "610511810102",
   "preIllnesses": [
-    "SMOKING"
+    ""
   ],
   "riskAreas": [
-    "CONTACT_WITH_CORONA_CASE_PRIVATE"
+    "Tirol"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "B\u00fcckerheide 26",
+  "street": "Abbachstra\u00dfe 4",
   "symptoms": [
-    "HEADACHE",
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "LOSS_OF_APPETITE"
+    "Atemschwierigkeiten",
+    "Husten",
+    "Schnupfen",
+    "Fieber",
+    "Halschmerzen",
+    "Erk\u00e4ltung",
+    "Kopfschmerzen"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66127"
+  "weakenedImmuneSystem": true,
+  "zip": "66317"
 }

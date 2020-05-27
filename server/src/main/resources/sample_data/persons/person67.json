@@ -1,28 +1,31 @@
 {
-  "city": "Homburg",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1947-12-20",
-  "email": "h.schmidt@example.de",
-  "firstName": "Hans",
+  "dateOfBirth": "1941-10-30",
+  "email": "h.richter@example.de",
+  "firstName": "Hanna",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "L183862154",
-  "lastName": "Schmidt",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "L825708356",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "568781033109",
+  "phoneNumber": "70283851078",
   "preIllnesses": [
-    "LIVER_DISEASE"
+    "Imunsystemschw\u00e4che"
   ],
   "riskAreas": [
-    "COMMUNITY_FACILITY"
+    "Hubei"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordufer 100",
+  "street": "Z\u00e4hringerstra\u00dfe 40",
   "symptoms": [
-    "LOSS_OF_APPETITE"
+    "Gelenkschmerzen",
+    "Fieber",
+    "Halschmerzen",
+    "Schnupfen"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66187"
+  "zip": "66278"
 }

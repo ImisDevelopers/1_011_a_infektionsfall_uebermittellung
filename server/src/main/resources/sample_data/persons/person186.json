@@ -1,26 +1,26 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": false,
+  "city": "Heusweiler",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1925-06-23",
-  "email": "f.sommer@example.de",
-  "firstName": "Franz",
-  "fluImmunization": false,
+  "dateOfBirth": "1957-09-13",
+  "email": "k.winter@example.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "V234807378",
-  "lastName": "Sommer",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "D241273318",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "66668310272",
+  "phoneNumber": "02591022220",
   "preIllnesses": [
-    "KIDNEY_DISEASE"
+    ""
   ],
-  "riskAreas": [],
+  "riskAreas": [
+    "Moscow"
+  ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 71",
-  "symptoms": [
-    "NAUSEA"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "66656"
+  "street": "Kaiserstra\u00dfe 39",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66474"
 }

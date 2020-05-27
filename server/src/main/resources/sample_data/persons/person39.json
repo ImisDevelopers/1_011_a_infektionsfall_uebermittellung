@@ -1,24 +1,31 @@
 {
-  "city": "Sulzbach",
+  "city": "P\u00fcttlingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1997-03-24",
-  "email": "c.weber@example.de",
-  "firstName": "Cornelius",
-  "fluImmunization": true,
+  "dateOfBirth": "1976-06-25",
+  "email": "d.richter@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "E269017588",
-  "lastName": "Weber",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S447646966",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "10018366752",
+  "phoneNumber": "2904228421",
   "preIllnesses": [
-    "KIDNEY_DISEASE"
+    ""
   ],
-  "riskAreas": [],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hauptstra\u00dfe 39",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "66599"
+  "riskAreas": [
+    ""
+  ],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Bismarckstra\u00dfe 3",
+  "symptoms": [
+    "Husten",
+    "Fieber",
+    "Kopfschmerzen",
+    "Erk\u00e4ltung"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66205"
 }

@@ -1,30 +1,31 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": false,
+  "city": "Riegelsberg",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1957-11-09",
-  "email": "d.winkler@example.de",
-  "firstName": "Daniel",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "I609379184",
-  "lastName": "Winkler",
+  "dateOfBirth": "1943-10-20",
+  "email": "s.bauer@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "I499905152",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "890901011000",
+  "phoneNumber": "70246299106",
   "preIllnesses": [
-    "ADIPOSITAS"
+    "Krebserkrankung"
   ],
   "riskAreas": [
-    "MEDICAL_LABORATORY"
+    "Moscow"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 14",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 50",
   "symptoms": [
-    "LOSS_OF_SENSE_OF_SMELL_TASTE",
-    "NAUSEA",
-    "LOSS_OF_APPETITE"
+    "Atemschwierigkeiten",
+    "Schnupfen",
+    "Erk\u00e4ltung",
+    "Husten"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66676"
+  "weakenedImmuneSystem": false,
+  "zip": "66530"
 }

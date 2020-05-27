@@ -128,13 +128,15 @@
                     <td>{{ patient.country }}</td>
                   </tr>
                 </table>
-                <table v-if="patient.stayCity" style="margin-top: 10px">
+                <table v-if="patient.stayCity" style="margin-top: 10px;">
                   <tr>
                     <td colspan="2">Aufenthaltsort:</td>
                   </tr>
                   <tr>
                     <td>Straße/Hausnr.:</td>
-                    <td>{{ patient.stayStreet }} {{ patient.stayHouseNumber }}</td>
+                    <td>
+                      {{ patient.stayStreet }} {{ patient.stayHouseNumber }}
+                    </td>
                   </tr>
                   <tr>
                     <td>PLZ/Ort:</td>
@@ -200,8 +202,10 @@
 
         <a-tab-pane key="overview" tab="Falldaten">
           <div class="tool-row">
-            <div style="font-size: 18px; padding-left: 16px">Fall: COVID-19</div>
-            <span style="flex: 1 1 auto"></span>
+            <div style="font-size: 18px; padding-left: 16px;">
+              Fall: COVID-19
+            </div>
+            <span style="flex: 1 1 auto;"></span>
             <a-button icon="edit" @click="editPatientFalldaten">
               Falldaten ändern
             </a-button>

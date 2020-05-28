@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { getDate } from '../util/helper-functions'
+import { getDate } from '../../util/helper-functions'
 
 export default {
   name: 'QuarantineHospitalizationCard',

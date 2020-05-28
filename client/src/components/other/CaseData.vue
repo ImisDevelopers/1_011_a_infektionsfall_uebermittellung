@@ -1,17 +1,18 @@
 <template>
   <div>
-
     <!-- Test Table -->
     <a-row :gutter="8">
       <TestIncidentsCard :testIncidents="test" style="margin-top: 8px;" />
     </a-row>
 
     <a-row :gutter="8">
-
       <!-- Basisinformationen -->
       <a-col :md="8" :span="24">
-
-        <a-card align="left" title="Basisinformationen" style="margin-top: 8px;">
+        <a-card
+          align="left"
+          title="Basisinformationen"
+          style="margin-top: 8px;"
+        >
           <table>
             <tr>
               <td>Krankheit:</td>
@@ -65,19 +66,25 @@
             </a-descriptions-item>
           </a-descriptions>
         </a-card>
-
       </a-col>
 
       <!-- Symptoms, Prädisposition -->
       <a-col :md="8" :span="24">
-
-        <a-card align="left" title="Symptome, Prädisposition" style="margin-top: 8px;">
-
-          <div v-if="administrative.symptoms[0] === ''">Keine Symptome erfasst.</div>
+        <a-card
+          align="left"
+          title="Symptome, Prädisposition"
+          style="margin-top: 8px;"
+        >
+          <div v-if="administrative.symptoms[0] === ''">
+            Keine Symptome erfasst.
+          </div>
           <div v-else>
             Symptome:
             <ul>
-              <li v-bind:key="symptom" v-for="symptom in administrative.symptoms">
+              <li
+                v-bind:key="symptom"
+                v-for="symptom in administrative.symptoms"
+              >
                 {{ symptom }}
               </li>
             </ul>
@@ -96,29 +103,26 @@
               </li>
             </ul>
           </div>
-
         </a-card>
-
       </a-col>
-      
+
       <!-- Quarantine & Hospital -->
       <a-col :md="8" :span="24">
-        <QuarantineHospitalizationCard  style="margin-top: 8px;"
+        <QuarantineHospitalizationCard
+          style="margin-top: 8px;"
           :quarantineIncidents="quarantine"
           :hospitalizationIncidents="hospitalization"
         />
       </a-col>
-
     </a-row>
-
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { Incident } from '../api/SwaggerApi'
-import TestIncidentsCard from '../components/TestIncidentsCard.vue'
-import QuarantineHospitalizationCard from '../components/QuarantineHospitalizationCard.vue'
-import { getDate } from '../util/helper-functions'
+import { Incident } from '../../api/SwaggerApi'
+import TestIncidentsCard from '../../components/other/TestIncidentsCard.vue'
+import QuarantineHospitalizationCard from '../../components/other/QuarantineHospitalizationCard.vue'
+import { getDate } from '../../util/helper-functions'
 
 interface State {
   administrative: any // There's only one.
@@ -164,7 +168,12 @@ export default Vue.extend({
       incident.id.startsWith('hospitalization')
     )
   },
-  props: ['allIncidents', 'preIllnesses', 'patientInfectionSources', 'exposureContacts'],
+  props: [
+    'allIncidents',
+    'preIllnesses',
+    'patientInfectionSources',
+    'exposureContacts',
+  ],
   data(): State {
     return {
       administrative: undefined,
@@ -199,4 +208,3 @@ table.compact {
   border-spacing: 15px 3px;
 }
 </style>
-

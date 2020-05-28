@@ -58,6 +58,16 @@ public class PatientService {
 	}
 
 	public Patient updatePatient(Patient patient) {
+
+		var old = patientRepository.findById(patient.getId()).orElseThrow();
+
+		// ToDo: Date of Reporting is part of the update form, but the information is not passed.
+
+		if (!old.getDateOfIllness().equals(patient.getDateOfIllness()))
+		{
+			
+		}
+
 		return this.patientRepository.saveAndFlush(patient);
 	}
 

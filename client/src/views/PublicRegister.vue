@@ -130,7 +130,9 @@
                       align-self: stretch;
                     "
                   >
-                    <a-checkbox v-model="showOtherPreIllnesses">Andere:</a-checkbox>
+                    <a-checkbox v-model="showOtherPreIllnesses"
+                      >Andere:</a-checkbox
+                    >
                     <a-form-item style="flex: 1 1 100%; margin-bottom: 0;">
                       <a-input
                         :disabled="!showOtherPreIllnesses"

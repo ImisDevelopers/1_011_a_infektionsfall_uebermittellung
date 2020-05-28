@@ -128,13 +128,15 @@
                     <td>{{ patient.country }}</td>
                   </tr>
                 </table>
-                <table v-if="patient.stayCity" style="margin-top: 10px">
+                <table v-if="patient.stayCity" style="margin-top: 10px;">
                   <tr>
                     <td colspan="2">Aufenthaltsort:</td>
                   </tr>
                   <tr>
                     <td>Straße/Hausnr.:</td>
-                    <td>{{ patient.stayStreet }} {{ patient.stayHouseNumber }}</td>
+                    <td>
+                      {{ patient.stayStreet }} {{ patient.stayHouseNumber }}
+                    </td>
                   </tr>
                   <tr>
                     <td>PLZ/Ort:</td>
@@ -199,7 +201,7 @@
         </a-tab-pane>
         <a-tab-pane key="Cases" tab="Falldaten">
           <div class="tool-row">
-            <span style="flex: 1 1 auto"></span>
+            <span style="flex: 1 1 auto;"></span>
             <a-button icon="edit" @click="editPatientFalldaten">
               Falldaten ändern
             </a-button>
@@ -401,8 +403,8 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
-import CaseData from '@/components/CaseData.vue'
-import History from '@/components/History.vue'
+import CaseData from '@/components/other/CaseData.vue'
+import History from '@/components/other/History.vue'
 import ChangePatientStammdatenForm from '@/components/modals/ChangePatientStammdatenForm.vue'
 import EditExposureContact from '@/components/form-groups/EditExposureContact.vue'
 import { map } from '@/util/mapping'

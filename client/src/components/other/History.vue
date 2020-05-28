@@ -26,9 +26,9 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { Incident, Timestamp } from '../api/SwaggerApi'
+import { Incident, Timestamp } from '../../api/SwaggerApi'
 import moment from 'moment'
-import { eventTypes } from '@/models/event-types'
+import { eventTypes } from '../../models/event-types'
 
 function formatTimestamp(timestamp: Timestamp): string {
   const momentTimestamp = moment(timestamp)

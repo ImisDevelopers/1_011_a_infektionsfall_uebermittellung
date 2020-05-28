@@ -1,35 +1,35 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
+  "city": "Sulzbach",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1933-11-15",
-  "email": "d.sommer@example.de",
-  "firstName": "Daniel",
+  "dateOfBirth": "1940-09-15",
+  "email": "j.berger@example.de",
+  "firstName": "Jana",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "K113271672",
-  "lastName": "Sommer",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "V775936026",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "29659010277",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "70410358112",
+  "preIllnesses": [],
   "riskAreas": [
-    "New York"
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg 52",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide 68",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Fieber",
-    "Gelenkschmerzen",
-    "Halschmerzen"
+    "HEADACHE",
+    "DIFFICULTY_BREATHING",
+    "FEVER",
+    "BACK_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COUGH",
+    "LOSS_OF_APPETITE",
+    "NAUSEA",
+    "MUSCLE_PAIN",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66701"
+  "weakenedImmuneSystem": false,
+  "zip": "668010"
 }

@@ -302,9 +302,8 @@ import {
   RISK_OCCUPATIONS,
   RiskOccupationOption,
 } from '@/models/risk-occupation'
-import DateInput from '@/components/DateInput.vue'
-import LocationFormGroup from '@/components/LocationFormGroup.vue'
-import PlzInput from '@/components/PlzInput.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
+import LocationFormGroup from '@/components/form-groups/LocationFormGroup.vue'
 import { Patient } from '@/api/SwaggerApi'
 import moment, { Moment } from 'moment'
 
@@ -334,7 +333,7 @@ export default Vue.extend({
       this.patientInput = this.patient
       this.initialDateOfBirth = moment(this.patientInput.dateOfBirth)
       if (this.patientInput.dateOfDeath) {
-        this.initialDateOfBirth = moment(this.patientInput.dateOfDeath)
+        this.initialDateOfDeath = moment(this.patientInput.dateOfDeath)
       }
       this.initialRiskOccupation =
         this.patientInput.riskOccupation || 'NO_RISK_OCCUPATION'

@@ -1,30 +1,27 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": false,
+  "city": "Heusweiler",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2002-06-13",
-  "email": "l.weber@example.de",
-  "firstName": "Lisa",
+  "dateOfBirth": "1938-02-22",
+  "email": "p.sommer@example.de",
+  "firstName": "Peter",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "H498984826",
-  "lastName": "Weber",
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "W228824444",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "10829962914",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
+  "phoneNumber": "7534430091",
+  "preIllnesses": [],
   "riskAreas": [
-    "Moscow"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Rosenstra\u00dfe 40",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 76",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Husten"
+    "HEADACHE",
+    "NAUSEA"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66046"
+  "weakenedImmuneSystem": true,
+  "zip": "661039"
 }

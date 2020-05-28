@@ -1,33 +1,24 @@
 {
-  "city": "Heusweiler",
+  "city": "Kirkel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1925-03-28",
-  "email": "j.schroeder@example.de",
-  "firstName": "Jan",
+  "dateOfBirth": "1950-12-11",
+  "email": "i.winkler@example.de",
+  "firstName": "Isabella",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "W387196293",
-  "lastName": "Schr\u00f6der",
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Q245047170",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "210561099611",
+  "phoneNumber": "9398368457",
   "preIllnesses": [
-    ""
+    "ARDS"
   ],
-  "riskAreas": [
-    "GrandEst"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbachstra\u00dfe 43",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Fieber"
-  ],
-  "weakenedImmuneSystem": true,
-  "zip": "66355"
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Waldstra\u00dfe 50",
+  "symptoms": [],
+  "weakenedImmuneSystem": false,
+  "zip": "66004"
 }

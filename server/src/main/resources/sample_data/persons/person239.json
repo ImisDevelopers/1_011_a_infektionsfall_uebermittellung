@@ -1,31 +1,26 @@
 {
-  "city": "Bous",
+  "city": "Riegelsberg",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1969-05-02",
-  "email": "j.schulz@example.de",
-  "firstName": "Jens",
-  "fluImmunization": false,
+  "dateOfBirth": "1943-08-01",
+  "email": "h.weber@example.de",
+  "firstName": "Hans",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "L954324560",
-  "lastName": "Schulz",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "T884989615",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "4963919195",
+  "phoneNumber": "7933496050",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "SMOKING"
   ],
   "riskAreas": [
-    "GrandEst"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Sonnenweg 8",
-  "symptoms": [
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "66987"
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Schernerweg 80",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66667"
 }

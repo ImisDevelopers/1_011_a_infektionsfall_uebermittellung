@@ -1,30 +1,37 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": true,
+  "city": "Bous",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1947-07-29",
-  "email": "f.schmidt@example.de",
-  "firstName": "Franz",
+  "dateOfBirth": "1975-05-11",
+  "email": "d.schulz@example.de",
+  "firstName": "Daniela",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Q598806645",
-  "lastName": "Schmidt",
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "G994310083",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "109367632100",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "5812236231",
+  "preIllnesses": [],
   "riskAreas": [
-    "Tirol"
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "B\u00fcckerheide 98",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kaiserstra\u00dfe 52",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen"
+    "COLD",
+    "LOSS_OF_APPETITE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "SHORTNESS_OF_BREATH",
+    "COUGH",
+    "FEVER",
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66163"
+  "weakenedImmuneSystem": false,
+  "zip": "66587"
 }

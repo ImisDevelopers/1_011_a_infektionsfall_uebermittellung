@@ -1,35 +1,32 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": false,
+  "city": "Saarlouis",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1939-07-20",
-  "email": "h.bauer@example.de",
-  "firstName": "Hans",
+  "dateOfBirth": "1943-05-09",
+  "email": "k.berger@example.de",
+  "firstName": "Konrad",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "Z725611522",
-  "lastName": "Bauer",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "L701671267",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "910010413797",
+  "phoneNumber": "8906120347",
   "preIllnesses": [
-    ""
+    "CARDIOVASCULAR_DISEASE"
   ],
   "riskAreas": [
-    "Tirol"
+    "COMMUNITY_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer 61",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 80",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Husten",
-    "Halschmerzen"
+    "LOSS_OF_APPETITE",
+    "HEADACHE",
+    "DIFFICULTY_BREATHING",
+    "COUGH",
+    "FEVER"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66236"
+  "zip": "66175"
 }

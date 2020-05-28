@@ -1,29 +1,33 @@
 {
-  "city": "Homburg",
+  "city": "Neunkirchen",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1965-08-29",
-  "email": "a.mueller@example.de",
-  "firstName": "Anna",
+  "dateOfBirth": "1970-02-27",
+  "email": "o.sommer@example.de",
+  "firstName": "Olivia",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "Y774342024",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "A918164904",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "25204561050",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
-    "Moscow"
-  ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Wintergasse 37",
+  "phoneNumber": "7765612481",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 53",
   "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen"
+    "SHORTNESS_OF_BREATH",
+    "NAUSEA",
+    "MUSCLE_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "LOSS_OF_APPETITE",
+    "FEVER",
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "WEIGHT_LOSS",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "668101"
+  "weakenedImmuneSystem": false,
+  "zip": "66985"
 }

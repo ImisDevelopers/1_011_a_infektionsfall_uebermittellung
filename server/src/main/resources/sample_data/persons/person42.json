@@ -1,30 +1,36 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": false,
+  "city": "St. Ingbert",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1934-01-19",
-  "email": "m.winkler@example.de",
-  "firstName": "Matthias",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "G266140258",
-  "lastName": "Winkler",
+  "dateOfBirth": "1966-12-11",
+  "email": "p.schulz@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "E374843786",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "885101651060",
+  "phoneNumber": "35218101883",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "CHRONIC_LUNG_DISEASE"
   ],
   "riskAreas": [
-    ""
+    "COMMUNITY_FACILITY_MINORS"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Wintergasse 76",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide 44",
   "symptoms": [
-    "Fieber",
-    "Schnupfen",
-    "Atemschwierigkeiten"
+    "SHORTNESS_OF_BREATH",
+    "NAUSEA",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "FEVER",
+    "WEIGHT_LOSS",
+    "COUGH",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66451"
+  "weakenedImmuneSystem": false,
+  "zip": "665102"
 }

@@ -1,34 +1,29 @@
 {
-  "city": "Merzig",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1975-05-18",
-  "email": "f.mueller@example.de",
-  "firstName": "Fin",
+  "dateOfBirth": "1953-08-31",
+  "email": "c.sommer@example.de",
+  "firstName": "Christopher",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J325900773",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Y139829091",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "641051018376",
+  "phoneNumber": "81050720811",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "KIDNEY_DISEASE"
   ],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aarhusweg 50",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "S\u00fcdweg 40",
   "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Fieber",
-    "Atemschwierigkeiten"
+    "COLD",
+    "LOSS_OF_APPETITE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66441"
+  "weakenedImmuneSystem": false,
+  "zip": "66626"
 }

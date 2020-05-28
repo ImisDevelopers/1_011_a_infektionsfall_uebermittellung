@@ -1,28 +1,31 @@
 {
-  "city": "Heusweiler",
-  "coronaContacts": true,
+  "city": "Bous",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1991-11-21",
-  "email": "p.sommer@example.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "dateOfBirth": "1937-12-08",
+  "email": "a.weber@example.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "L263894795",
-  "lastName": "Sommer",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U548495473",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "8367365766",
+  "phoneNumber": "88105160607",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "NEUROLOGICAL_DISEASE"
   ],
-  "riskAreas": [
-    ""
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Tulpenweg 12",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Haidth\u00f6heAarweg 40",
   "symptoms": [
-    "Fieber"
+    "LOSS_OF_APPETITE",
+    "COUGH",
+    "SHORTNESS_OF_BREATH",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66565"
+  "zip": "66969"
 }

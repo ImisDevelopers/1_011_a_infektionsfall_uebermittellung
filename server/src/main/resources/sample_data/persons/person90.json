@@ -1,30 +1,30 @@
 {
-  "city": "Homburg",
+  "city": "Sulzbach",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1945-02-15",
-  "email": "k.schmidt@example.de",
-  "firstName": "Kai",
+  "dateOfBirth": "1971-06-27",
+  "email": "j.richter@example.de",
+  "firstName": "Jan",
   "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "K701133236",
-  "lastName": "Schmidt",
+  "insuranceMembershipNumber": "O590182620",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "75140105101",
+  "phoneNumber": "45892975100",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "ADIPOSITAS"
   ],
   "riskAreas": [
-    "New York"
+    "MEDICAL_LABORATORY"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Bismarckstra\u00dfe 21",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 12",
   "symptoms": [
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Fieber"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "WEIGHT_LOSS"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66382"
+  "zip": "661070"
 }

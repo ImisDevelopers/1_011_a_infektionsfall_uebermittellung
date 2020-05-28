@@ -55,5 +55,8 @@
     "swagger-typescript-api": "^1.7.2",
     "typescript": "~3.7.5",
     "vue-template-compiler": "^2.6.11"
+  },
+  "engines": {
+    "node": ">=14.3.0"
   }
 }

@@ -1,36 +1,28 @@
-name: Build and Test
+# name: Build and Test
 
-on:
-  push:
-    branches:
-    - feature/*
-    - master
-    - dev
-    - pilot
-  pull_request:
-    branches:
-    - master
-    - dev
-    - pilot
+# on:
+#   pull_request:
+#     branches:
+#     - *
 
-# Environment variables available to all jobs and steps in this workflow
-env:
-  GITHUB_SHA: ${{ github.sha }}
+# # Environment variables available to all jobs and steps in this workflow
+# env:
+#   GITHUB_SHA: ${{ github.sha }}
 
-jobs:
-  setup-build-publish-deploy:
-    name: Build and Test
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/setup-java@v1.3.0
-      with:
-        java-version: 1.11
-    - uses: actions/checkout@v2
-    - if: ${{ github.event_name == 'push' || ( github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository ) }}
-      uses: hallee/eslint-action@1.0.3
-      with:
-        repo-token: "${{secrets.GITHUB_TOKEN}}"
-        source-root: "client"
-    - run: |
-        git fetch --unshallow
-        gradle build lint test
+# jobs:
+#   setup-build-publish-deploy:
+#     name: Build and Test
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/setup-java@v1.3.0
+#       with:
+#         java-version: 1.11
+#     - uses: actions/checkout@v2
+#     - if: ${{ github.event_name == 'push' || ( github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository ) }}
+#       uses: hallee/eslint-action@1.0.3
+#       with:
+#         repo-token: "${{secrets.GITHUB_TOKEN}}"
+#         source-root: "client"
+#     - run: |
+#         git fetch --unshallow
+#         gradle build lint test

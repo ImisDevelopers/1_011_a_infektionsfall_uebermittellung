@@ -21,7 +21,7 @@ env:
 
 jobs:
   stop-pr:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    if: github.event.pull_request.closed == true
     name: Stop PR
     runs-on: ubuntu-latest
     steps:
@@ -80,9 +80,9 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        gradle server:test --tests "*GenerateSwagger" -x processResources
-        gradle client:generateClient
-        gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
+        gradle server:test --tests "*GenerateSwagger" -x processResources \
+          client:generateClient \
+          jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
     - name: Deploy
       run: |
@@ -100,6 +100,7 @@ jobs:
           --set-cloudsql-instances=onyx-yeti-271818:europe-west3:challenge-11 \
           --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
           --region=europe-west1
+          --verbosity=debug
 
         PR_URL="$(gcloud beta run services describe imis-pr-${PR_NUMBER} --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
         echo "::set-env name=PR_COMMENT_MESSAGE::${PR_URL}"

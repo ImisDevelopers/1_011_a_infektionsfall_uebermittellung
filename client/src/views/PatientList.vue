@@ -406,7 +406,7 @@ export default Vue.extend({
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
-        formValues.quarantineStatus = this.getQuarantineSelection() as PatientStatus[]
+        formValues.quarantineStatus = this.getQuarantineSelection() as Array<PatientStatus>
 
         countPromise = Api.countQueryPatientsUsingPost(formValues)
         queryPromise = Api.queryPatientsUsingPost(formValues)

@@ -527,7 +527,25 @@ export default Vue.extend({
         },
       }
     },
-    getQuarantineSelection(): Array<PatientStatus> {
+    getQuarantineSelection(): Array<
+      | 'REGISTERED'
+      | 'SUSPECTED'
+      | 'ORDER_TEST'
+      | 'SCHEDULED_FOR_TESTING'
+      | 'TEST_SUBMITTED_IN_PROGRESS'
+      | 'TEST_FINISHED_POSITIVE'
+      | 'TEST_FINISHED_NEGATIVE'
+      | 'TEST_FINISHED_INVALID'
+      | 'TEST_FINISHED_RECOVERED'
+      | 'TEST_FINISHED_NOT_RECOVERED'
+      | 'PATIENT_DEAD'
+      | 'DOCTORS_VISIT'
+      | 'QUARANTINE_SELECTED'
+      | 'QUARANTINE_MANDATED'
+      | 'QUARANTINE_RELEASED'
+      | 'QUARANTINE_PROFESSIONBAN_RELEASED'
+      | 'HOSPITALIZATION_MANDATED'
+    > {
       if (this.quarantineSelection === 'NO_SELECTION') {
         return ['QUARANTINE_RELEASED', 'QUARANTINE_PROFESSIONBAN_RELEASED']
       }

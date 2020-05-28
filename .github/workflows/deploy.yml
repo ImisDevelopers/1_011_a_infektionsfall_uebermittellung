@@ -68,7 +68,6 @@ jobs:
     - name: Build
       run: |-
         gradle server:test --tests "*GenerateSwagger" -x processResources
-#        gradle client:generateClient # THIS PRODUCES A FAULTY TS FILE IN THE PIPELINE
         gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
 

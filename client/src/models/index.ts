@@ -30,7 +30,6 @@ export type PatientStatus =
   | 'QUARANTINE_RELEASED'
   | 'QUARANTINE_PROFESSIONBAN_RELEASED'
   | 'HOSPITALIZATION_MANDATED'
-  | undefined
 export type RiskOccupation =
   | 'NO_RISK_OCCUPATION'
   | 'FIRE_FIGHTER_POLICE'

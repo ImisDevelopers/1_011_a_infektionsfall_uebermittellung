@@ -449,7 +449,7 @@ export default Vue.extend({
           riskAreas: [],
         }
 
-        if (values.dateofIllness) {
+        if (values.dateOfIllness) {
           request.dateOfIllness = values.dateOfIllness.format('YYYY-MM-DD')
         } else {
           request.dateOfIllness = moment().format('YYYY-MM-DD')

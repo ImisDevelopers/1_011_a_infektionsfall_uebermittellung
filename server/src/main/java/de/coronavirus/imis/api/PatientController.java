@@ -37,7 +37,7 @@ public class PatientController {
 			return ResponseEntity.status(500).build();
 		}
 
-		incidentService.addIncident(patient, dto.getDateOfHospitalization(), dto.getOnIntensiveCareUnit());
+		incidentService.addHospitalizationIncident(patient, dto.getDateOfHospitalization(), dto.getOnIntensiveCareUnit());
 
 		return ResponseEntity.ok(patient);
 	}
@@ -85,7 +85,7 @@ public class PatientController {
 	@PostMapping("/quarantine/{id}")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
 	public ResponseEntity<Patient> requestQuarantine(@PathVariable("id") String patientId, @RequestBody RequestQuarantineDTO statusDTO) {
-		incidentService.addOrUpdateIncident(patientId, statusDTO);
+		incidentService.addOrUpdateQuarantineIncident(patientId, statusDTO);
 		return ResponseEntity.ok(patientService.sendToQuarantine(patientId, statusDTO));
 	}
 
@@ -100,7 +100,7 @@ public class PatientController {
 	public ResponseEntity<PatientEvent> createOrderTestEvent(OrderTestEventDTO eventDTO) {
 		var patient = patientService.findPatientById(eventDTO.getPatientId()).get();
 		var event = eventService.createOrderTestEvent(patient);
-		incidentService.addIncident(patient, Optional.empty(), EventType.ORDER_TEST, LocalDate.now());
+		incidentService.addOrUpdateAdministrativeIncident(patient, Optional.empty(), EventType.ORDER_TEST, LocalDate.now(), null);
 		return ResponseEntity.ok(event);
 	}
 }

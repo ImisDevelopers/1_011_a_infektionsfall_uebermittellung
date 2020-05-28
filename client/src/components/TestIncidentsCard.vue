@@ -1,48 +1,36 @@
 <template>
-    <a-row :gutter="8" style="margin-top: 8px;">
-        <a-col span="24">
-            <div style="background: white; border: 1px solid #e8e8e8;">
-            <div class="card-header">
-                Tests
-            </div>
-            <a-table
-                :columns="columnsTests"
-                :dataSource="testIncidents"
-                :scroll="{ x: 0, y: 0 }"
-                class="imis-table-no-pagination"
-                rowKey="id"
-            >
-              
-              <div slot="eventDate" slot-scope="eventDate">
-                {{ getDate(eventDate) }}
-              </div>
+  <div style="background: white; border: 1px solid #e8e8e8;">
+    <div class="card-header">
+      Tests
+    </div>
+    <a-table
+      :columns="columnsTests"
+      :dataSource="testIncidents"
+      :scroll="{ x: 0, y: 0 }"
+      class="imis-table-no-pagination"
+      rowKey="id"
+    >
+      <div slot="eventDate" slot-scope="eventDate">
+        {{ getDate(eventDate) }}
+      </div>
 
-              <div slot="status" slot-scope="status">
-                <a-icon
-                    :type="
-                    testResults.find((type) => type.id === status).icon
-                    "
-                    style="margin-right: 5px;"
-                />
-                {{
-                    testResults.find((type) => type.id === status).label
-                }}
-              </div>
+      <div slot="status" slot-scope="status">
+        <a-icon
+          :type="testResults.find((type) => type.id === status).icon"
+          style="margin-right: 5px;"
+        />
+        {{ testResults.find((type) => type.id === status).label }}
+      </div>
 
-              <div slot="type" slot-scope="type">
-                <a-icon
-                    :type="
-                    testTypes.find((testTypes) => testTypes.id === type).icon
-                    "
-                    style="margin-right: 5px;"
-                />
-                {{ testTypes.find((testTypes) => testTypes.id === type).label }}
-              </div>
-
-            </a-table>
-            </div>
-        </a-col>
-    </a-row>
+      <div slot="type" slot-scope="type">
+        <a-icon
+          :type="testTypes.find((testTypes) => testTypes.id === type).icon"
+          style="margin-right: 5px;"
+        />
+        {{ testTypes.find((testTypes) => testTypes.id === type).label }}
+      </div>
+    </a-table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -89,22 +77,22 @@ const columnsTests: Partial<Column>[] = [
 ]
 
 function getDate(date: string) {
-    return moment(date).format('DD.MM.YYYY')
+  return moment(date).format('DD.MM.YYYY')
 }
 
 export default {
-    name: 'TestIncidentsCard',
-    props: ['testIncidents'],
-    data () {
-        return {
-          columnsTests,
-          testResults,
-          testTypes,
-        }
-    },
-    methods: {
-        getDate,
+  name: 'TestIncidentsCard',
+  props: ['testIncidents'],
+  data() {
+    return {
+      columnsTests,
+      testResults,
+      testTypes,
     }
+  },
+  methods: {
+    getDate,
+  },
 }
 </script>
 

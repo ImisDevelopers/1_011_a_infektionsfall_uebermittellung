@@ -163,12 +163,13 @@
           </a-row>
         </a-tab-pane>
         <a-tab-pane key="Cases" tab="Falldaten">
-          <CaseData :allIncidents='incidents' :preIllnesses='preIllnesses' :symptoms='symptoms' />
+          <CaseData
+            :allIncidents="incidents"
+            :preIllnesses="preIllnesses"
+          />
         </a-tab-pane>
         <a-tab-pane forceRender key="timeline" tab="Verlauf">
-          
-          <History :allIncidents='this.incidents' />
-
+          <History :allIncidents="this.incidents" />
         </a-tab-pane>
         <a-tab-pane forceRender key="infection-chain" tab="Infektionskette">
           <a-row :gutter="8" style="margin-top: 8px;">

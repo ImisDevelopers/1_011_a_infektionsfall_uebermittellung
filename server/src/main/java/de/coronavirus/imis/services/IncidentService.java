@@ -134,7 +134,7 @@ public class IncidentService {
 	// Writing
 
 	@Transactional
-	public TestIncident addIncident(CreateLabTestDTO info) {
+	public TestIncident addTestIncident(CreateLabTestDTO info) {
 
 		if(info.getEventDate()==null)
 			info.setEventDate(LocalDate.now());
@@ -155,7 +155,7 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public TestIncident updateIncident(String laboratoryId, UpdateTestStatusDTO update) {
+	public TestIncident updateTestIncident(String laboratoryId, UpdateTestStatusDTO update) {
 
 		if(update.getEventDate()==null)
 			update.setEventDate(LocalDate.now());
@@ -177,7 +177,7 @@ public class IncidentService {
 
 	// Quarantine Incidents
 	@Transactional
-	public QuarantineIncident addOrUpdateIncident(String patientId, RequestQuarantineDTO info) {
+	public QuarantineIncident addOrUpdateQuarantineIncident(String patientId, RequestQuarantineDTO info) {
 		// Patient & Date
 		var patient = patientRepo.findById(patientId).orElseThrow();
 		var until = patientMapper.parseDate(info.getDateUntil());
@@ -231,20 +231,37 @@ public class IncidentService {
 
 	// Administrative Incidents
 
-	// Presumtion Event (Former Initial Event)
+	// Todo: Pass in DTOs
 	@Transactional
-	public AdministrativeIncident addIncident(Patient patient,
-											  Optional<Illness> illness,
-											  EventType eventType,
-											  LocalDate dateOfReporting) {
+	public AdministrativeIncident addOrUpdateAdministrativeIncident(Patient patient,
+																	Optional<Illness> illness,
+																	EventType eventType,
+																	LocalDate dateOfReporting,
+																	LocalDate dateofIllness) {
+
+		// There's only one AdministrativeIncident per Person
+		// Once case support is enabled, it will be one Administrative Incident per Case
+
 		var concreteIllness = illness.orElse(Illness.CORONA);
 
 		dateOfReporting = dateOfReporting == null ? LocalDate.now() : dateOfReporting;
+		dateofIllness = dateofIllness == null ? patient.getDateOfIllness() : dateofIllness;
 
-		var incident = (AdministrativeIncident) new AdministrativeIncident()
+		var incidentOptional = adminIncidentRepo.findByPatientId(patient.getId());
+		AdministrativeIncident incident;
+		if (incidentOptional.isEmpty()) {
+			incident = new AdministrativeIncident();
+		}
+		else
+			incident = incidentOptional.get(0);
+
+		incident
 				.setIllness(concreteIllness)
+				.setSymptoms(patient.getSymptoms())
+				.setDateOfIllness(dateofIllness)
+				.setDateOfReporting(dateOfReporting)
 				.setEventType(eventType)
-				.setEventDate(dateOfReporting)
+				.setEventDate(LocalDate.now())
 				.setPatient(patient);
 
 		adminIncidentRepo.saveAndFlush(incident);
@@ -253,7 +270,7 @@ public class IncidentService {
 
 	//SCHEDULED_FOR_TESTING
 	@Transactional
-	public AdministrativeIncident addIncident(Patient patient, String labId, String doctorId) {
+	public AdministrativeIncident addOrUpdateAdministrativeIncident(Patient patient, String labId, String doctorId) {
 
 		// Todo: Is this necessary? Why? Move it?
 		final Laboratory laboratory = laboratoryRepo.findById(labId).orElseGet(() -> {
@@ -269,12 +286,20 @@ public class IncidentService {
 				}
 		);
 
-		var incident = (AdministrativeIncident) new AdministrativeIncident()
-				.setIllness(Illness.CORONA)
-				.setResponsibleDoctor(doctor)
-				.setEventType(EventType.SCHEDULED_FOR_TESTING)
-				.setEventDate(LocalDate.now())
-				.setPatient(patient);
+		var incidentOptional = adminIncidentRepo.findByPatientId(patient.getId());
+		AdministrativeIncident incident;
+		if (incidentOptional.isEmpty()) {
+			incident = new AdministrativeIncident();
+		}
+		else
+			incident = incidentOptional.get(0);
+
+		incident
+			.setResponsibleDoctor(doctor)
+			.setEventType(EventType.SCHEDULED_FOR_TESTING)
+			.setEventDate(LocalDate.now())
+			.setPatient(patient);
+
 		adminIncidentRepo.saveAndFlush(incident);
 
 		return incident;
@@ -282,7 +307,7 @@ public class IncidentService {
 
 	// Hospitalization Incidents
 
-	public void addIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
+	public void addHospitalizationIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
 
 		boolean ic = intensiveCare==null ? false : intensiveCare;
 

@@ -60,14 +60,15 @@ public class PatientService {
 		}
 		return this.addPatient(
 				patient,
-				patientMapper.parseDate(dto.getDateOfReporting()));
+				patientMapper.parseDate(dto.getDateOfReporting()),
+				patientMapper.parseDate(dto.getDateOfIllness()));
 	}
 
 	public Patient updatePatient(Patient patient) {
 		return this.patientRepository.saveAndFlush(patient);
 	}
 
-	public Patient addPatient(Patient patient, final LocalDate dateOfReporting) {
+	public Patient addPatient(Patient patient, final LocalDate dateOfReporting, LocalDate dateOfIllness) {
 		if (patient.getId() == null) {
 			var id = Hashing.sha256()
 					.hashString(patient.getFirstName() + patient.getLastName()
@@ -87,10 +88,12 @@ public class PatientService {
 				patient.getPatientStatus(),
 				dateOfReporting);
 		log.info("inserted event for patient {}", patient);
-		incidentService.addIncident(
+		incidentService.addOrUpdateAdministrativeIncident(
 				patient, Optional.empty(),
 				patient.getPatientStatus(),
-				dateOfReporting);
+				dateOfReporting,
+				dateOfIllness
+				);
 		return patient;
 	}
 

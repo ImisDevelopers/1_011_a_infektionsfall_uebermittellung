@@ -139,7 +139,7 @@
             style="width: 250px;"
             v-model="quarantineSelection"
           >
-            <a-select-option value="">Alle</a-select-option>
+            <a-select-option value="ALL">Alle</a-select-option>
             <a-select-option key="QUARANTINE_MANDATED"
               >Quarantäne angeordnet
             </a-select-option>
@@ -323,7 +323,11 @@ interface SimpleForm {
 interface State {
   form: SimpleForm
   advancedForm: Partial<PatientSearchParamsDTO>
-  quarantineSelection: string
+  quarantineSelection:
+    | 'ALL'
+    | 'QUARANTINE_MANDATED'
+    | 'QUARANTINE_SELECTED'
+    | 'NO_SELECTION'
   currentPatients: Patient[]
 
   [key: string]: any
@@ -355,7 +359,7 @@ export default Vue.extend({
         quarantineStatus: undefined,
         id: '',
       },
-      quarantineSelection: '',
+      quarantineSelection: 'ALL',
       content: '',
       count: 10,
       currentPage: 1, // Starts at 1
@@ -400,13 +404,17 @@ export default Vue.extend({
       let countPromise
       let queryPromise
       if (this.showAdvancedSearch) {
-        const formValues = { ...this.form, ...this.advancedForm }
+        const formValues: PatientSearchParamsDTO = {
+          ...this.form,
+          ...this.advancedForm,
+        }
 
         if (!formValues.patientStatus) {
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
-        formValues.quarantineStatus = this.getQuarantineSelection() as PatientStatus[]
+
+        formValues.quarantineStatus = this.getQuarantineSelection()
 
         countPromise = Api.countQueryPatientsUsingPost(formValues)
         queryPromise = Api.queryPatientsUsingPost(formValues)
@@ -519,15 +527,20 @@ export default Vue.extend({
         },
       }
     },
-    getQuarantineSelection(): PatientStatus[] {
-      if (!this.quarantineSelection) {
-        return []
-      }
+    getQuarantineSelection(): Array<PatientStatus> {
       if (this.quarantineSelection === 'NO_SELECTION') {
         return ['QUARANTINE_RELEASED', 'QUARANTINE_PROFESSIONBAN_RELEASED']
-      } else {
-        return [this.quarantineSelection as PatientStatus]
       }
+
+      if (this.quarantineSelection === 'QUARANTINE_SELECTED') {
+        return ['QUARANTINE_SELECTED']
+      }
+
+      if (this.quarantineSelection === 'QUARANTINE_MANDATED') {
+        return ['QUARANTINE_MANDATED']
+      }
+
+      return []
     },
     moment,
   },

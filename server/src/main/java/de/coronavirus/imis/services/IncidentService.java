@@ -16,12 +16,6 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.*;
 
-/*
-TODO
-This class is called deprectaed because it enables the frontend to work with  LabTestDTOs and QuarantineDTOs
-instead of natively using IncidentDTOs.
-Next steps: Build an Incident API and migrate the Frontend.
- */
 @RequiredArgsConstructor
 @Service
 public class IncidentService {
@@ -362,7 +356,7 @@ public class IncidentService {
 	}
 
 	// Hospitalization Incidents
-
+	@Transactional
 	public void addHospitalizationIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
 
 		boolean ic = intensiveCare==null ? false : intensiveCare;

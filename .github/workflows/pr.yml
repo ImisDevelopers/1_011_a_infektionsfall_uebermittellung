@@ -86,6 +86,9 @@ jobs:
 
     - name: Deploy
       run: |
+        
+        exit 0
+        
         export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
         gcloud components install beta

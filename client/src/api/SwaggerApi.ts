@@ -22,6 +22,10 @@ export interface AuthRequestDTO {
   username?: string;
 }
 
+export interface BulkInsertOptions {
+  allowOverride?: boolean;
+}
+
 export interface ChangePasswordDTO {
   newPassword?: string;
   oldPassword?: string;
@@ -95,7 +99,9 @@ export interface CreatePatientDTO {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -185,7 +191,9 @@ export interface Incident {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   id?: string;
   patient?: Patient;
   versionTimestamp?: string;
@@ -396,7 +404,9 @@ export interface Patient {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -443,7 +453,9 @@ export interface PatientEvent {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   id?: string;
   illness?: "CORONA";
   labTest?: LabTest;
@@ -485,7 +497,9 @@ export interface PatientSearchParamsDTO {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   phoneNumber?: string;
   quarantineStatus?: Array<
     | "REGISTERED"
@@ -505,6 +519,8 @@ export interface PatientSearchParamsDTO {
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
     | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED"
   >;
   street?: string;
   zip?: string;
@@ -539,7 +555,9 @@ export interface QuarantineIncident {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   id?: string;
   patient?: Patient;
   until?: string;
@@ -582,7 +600,9 @@ export interface RequestQuarantineDTO {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
 }
 
 export interface SendToQuarantineDTO {
@@ -648,6 +668,18 @@ export interface UserDTO {
 
 export interface View {
   contentType?: string;
+}
+
+export interface BulkRequest_BulkInsertOptions_ExposureContactToServer_ {
+  items?: ExposureContactToServer[];
+  options?: BulkInsertOptions;
+}
+
+export interface ItemStatus_ExposureContactFromServer_string_string_ {
+  details?: "CREATE" | "OVERRIDE";
+  error?: string;
+  result?: ExposureContactFromServer;
+  success?: boolean;
 }
 
 export type Map_string_Link_ = Record<string, Link>;
@@ -881,6 +913,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags exposure-contact-controller
+     * @name bulkInsertUsingPOST
+     * @summary bulkInsert
+     * @request POST:/api/exposure-contacts/bulk
+     * @secure
+     */
+    bulkInsertUsingPost: (req: BulkRequest_BulkInsertOptions_ExposureContactToServer_, params?: RequestParams) =>
+      this.request<ItemStatus_ExposureContactFromServer_string_string_[], any>(
+        `/api/exposure-contacts/bulk`,
+        "POST",
+        params,
+        req,
+        true,
+      ),
+
+    /**
+     * @tags exposure-contact-controller
      * @name getExposureSourceContactsForPatientsUsingPOST
      * @summary getExposureSourceContactsForPatients
      * @request POST:/api/exposure-contacts/by-contact/
@@ -1005,7 +1053,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     getPatientsCurrentByTypeUsingPost: (
-      type: "test" | "quarantine" | "administrative",
+      type: "test" | "quarantine" | "administrative" | "hospitalization",
       patientIds: string[],
       params?: RequestParams,
     ) =>
@@ -1317,72 +1365,70 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorUsingGET
-     * @summary error
+     * @name errorHtmlUsingGET
+     * @summary errorHtml
      * @request GET:/error
      * @secure
      */
-    errorUsingGet: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "GET", params, null, true),
+    errorHtmlUsingGet: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "GET", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingHEAD
-     * @summary error
+     * @name errorHtmlUsingHEAD
+     * @summary errorHtml
      * @request HEAD:/error
      * @secure
      */
-    errorUsingHead: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, true),
+    errorHtmlUsingHead: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPOST
-     * @summary error
+     * @name errorHtmlUsingPOST
+     * @summary errorHtml
      * @request POST:/error
      * @secure
      */
-    errorUsingPost: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "POST", params, null, true),
+    errorHtmlUsingPost: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "POST", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPUT
-     * @summary error
+     * @name errorHtmlUsingPUT
+     * @summary errorHtml
      * @request PUT:/error
      * @secure
      */
-    errorUsingPut: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, true),
+    errorHtmlUsingPut: (params?: RequestParams) => this.request<ModelAndView, any>(`/error`, "PUT", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingDELETE
-     * @summary error
+     * @name errorHtmlUsingDELETE
+     * @summary errorHtml
      * @request DELETE:/error
      * @secure
      */
-    errorUsingDelete: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, true),
+    errorHtmlUsingDelete: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingOPTIONS
-     * @summary error
+     * @name errorHtmlUsingOPTIONS
+     * @summary errorHtml
      * @request OPTIONS:/error
      * @secure
      */
-    errorUsingOptions: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, true),
+    errorHtmlUsingOptions: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPATCH
-     * @summary error
+     * @name errorHtmlUsingPATCH
+     * @summary errorHtml
      * @request PATCH:/error
      * @secure
      */
-    errorUsingPatch: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, true),
+    errorHtmlUsingPatch: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, true),
   };
 }

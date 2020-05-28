@@ -511,7 +511,6 @@ interface State {
   showChangePatientStammdatenForm: boolean
   showChangePatientFalldatenForm: boolean
   gender: string
-  tests: LabTest[]
   columnsExposureContacts: Partial<Column>[]
   columnsIndexPatients: Partial<Column>[]
   testResults: TestResultType[]
@@ -575,7 +574,6 @@ export default Vue.extend({
       dateOfDeath: '',
       dateOfHospitalization: '',
       gender: '',
-      tests: [],
       columnsExposureContacts,
       columnsIndexPatients,
       dateOfReporting: '',
@@ -699,9 +697,6 @@ export default Vue.extend({
       } catch (e) {
         this.patientInfectionSources = []
       }
-
-      // Tests
-      this.tests = await Api.getLabTestForPatientUsingGet(patientId)
 
       // Retrieve exposure contacts data
       this.exposureContacts = await Api.getExposureContactsForPatientUsingGet(

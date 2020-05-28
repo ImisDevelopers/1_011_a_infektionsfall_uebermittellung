@@ -85,7 +85,10 @@
                 v-bind:key="symptom"
                 v-for="symptom in administrative.symptoms"
               >
-                {{ symptom }}
+                {{
+                  SYMPTOMS.find((symptomFind) => symptomFind.value === symptom)
+                    .label || symptom
+                }}
               </li>
             </ul>
           </div>
@@ -123,12 +126,14 @@ import { Incident } from '../../api/SwaggerApi'
 import TestIncidentsCard from '../../components/other/TestIncidentsCard.vue'
 import QuarantineHospitalizationCard from '../../components/other/QuarantineHospitalizationCard.vue'
 import { getDate } from '../../util/helper-functions'
+import { SYMPTOMS } from '../../models/symptoms'
 
 interface State {
   administrative: any // There's only one.
   test: any[]
   quarantine: any[]
   hospitalization: any[]
+  SYMPTOMS: any[]
 }
 
 export default Vue.extend({
@@ -137,36 +142,42 @@ export default Vue.extend({
     TestIncidentsCard,
     QuarantineHospitalizationCard,
   },
-  created() {
-    let incidents: any[] = [...this.allIncidents]
+  watch: {
+    allIncidents: {
+        immediate: true,
+        handler (newI, oldI) {
 
-    // Sort by ID and Version
-    incidents.sort((a: Incident, b: Incident) => {
-      return (
-        a.id!.localeCompare(b.id!) ||
-        a.versionTimestamp!.localeCompare(b.versionTimestamp!)
-      )
-    })
+        let incidents: any[] = [...newI]
 
-    // Remove historic entries (keep latest version only)
-    for (let i = 0; i < incidents.length - 1; i++) {
-      if (incidents[i].id === incidents[i + 1].id) incidents[i] = undefined
+        // Sort by ID and Version
+        incidents.sort((a: Incident, b: Incident) => {
+          return (
+            a.id!.localeCompare(b.id!) ||
+            a.versionTimestamp!.localeCompare(b.versionTimestamp!)
+          )
+        })
+
+        // Remove historic entries (keep latest version only)
+        for (let i = 0; i < incidents.length - 1; i++) {
+          if (incidents[i].id === incidents[i + 1].id) incidents[i] = undefined
+        }
+        incidents = incidents.filter((c: any) => c !== undefined)
+        console.log(incidents)
+        // Categorize Incidents
+        this.administrative = incidents.filter((incident: any) =>
+          incident.id.startsWith('administrative')
+        )[0] // There's only one (exactly one) per Case. This needs to be adapted once case support is enabled.
+        this.test = incidents.filter((incident: any) =>
+          incident.id.startsWith('test')
+        )
+        this.quarantine = incidents.filter((incident: any) =>
+          incident.id.startsWith('quarantine')
+        )
+        this.hospitalization = incidents.filter((incident: any) =>
+          incident.id.startsWith('hospitalization')
+        )
+      }
     }
-    incidents = incidents.filter((c: any) => c !== undefined)
-    console.log(incidents)
-    // Categorize Incidents
-    this.administrative = incidents.filter((incident: any) =>
-      incident.id.startsWith('administrative')
-    )[0] // There's only one (exactly one) per Case. This needs to be adapted once case support is enabled.
-    this.test = incidents.filter((incident: any) =>
-      incident.id.startsWith('test')
-    )
-    this.quarantine = incidents.filter((incident: any) =>
-      incident.id.startsWith('quarantine')
-    )
-    this.hospitalization = incidents.filter((incident: any) =>
-      incident.id.startsWith('hospitalization')
-    )
   },
   props: [
     'allIncidents',
@@ -180,6 +191,7 @@ export default Vue.extend({
       test: [],
       quarantine: [],
       hospitalization: [],
+      SYMPTOMS,
     }
   },
   methods: {

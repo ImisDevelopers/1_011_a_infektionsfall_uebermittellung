@@ -73,6 +73,7 @@ export default Vue.extend({
           */
           'YYYY-MM-DD'
         )
+        console.log(values.patientHospitalized) // ToDo When patientHospitalized is initially true, this is undefined and evaluated to false if the user does not actively un-tick and tick again.
         if (values.patientHospitalized) {
           values.dateOfHospitalization = values.dateOfHospitalization.format(
             'YYYY-MM-DD'
@@ -121,6 +122,7 @@ export default Vue.extend({
             })
             this.form.resetFields()
             this.$emit('create')
+            this.$forceUpdate()
           })
           .catch((error: Error) => {
             this.$notification.error({

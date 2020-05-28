@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /*
 TODO
@@ -267,6 +264,64 @@ public class IncidentService {
 
 		adminIncidentRepo.saveAndFlush(incident);
 		return incident;
+	}
+
+	// Update by Falldaten Form
+	@Transactional
+	public void deductIncidentUpdates(Patient newValues)
+	{
+		// Deduct Admin Incident Changes
+		var adminOpt = adminIncidentRepo.findByPatientId(newValues.getId());
+		if (!adminOpt.isEmpty())
+		{
+			AdministrativeIncident adminInc = adminOpt.get(0);
+			if ( ! (adminInc.getDateOfIllness() == newValues.getDateOfIllness())
+					|| !new HashSet<>(adminInc.getSymptoms()).equals(new HashSet<>(newValues.getSymptoms()))) {
+				adminInc
+						.setSymptoms(newValues.getSymptoms())
+						.setDateOfIllness(newValues.getDateOfIllness())
+						.setEventType(EventType.CASE_DATA_UPDATED);
+				adminIncidentRepo.saveAndFlush(adminInc);
+			}
+		}
+
+		// Deduct Hospitalization Changes
+		/*
+			Analog to Quarantine: Currently there is only one Hospitalization Incident per Person,
+			which is technically incorrect.
+			We need an agreed (frontend) strategy for handling hospitalization.
+		 */
+		boolean ic = newValues.getOnIntensiveCareUnit()==null ? false : newValues.getOnIntensiveCareUnit();
+		var hospOpt = hospIncidentRepo.findByPatientId(newValues.getId());
+		HospitalizationIncident hospInc;
+		if (!hospOpt.isEmpty())
+		{
+			hospInc = hospOpt.get(0);
+			if (newValues.getDateOfHospitalization() == null
+					&& ic==hospInc.isIntensiveCare())
+			{
+				if (hospInc.getEventDate() != null)
+				{
+					hospInc.setReleasedOn(LocalDate.now());
+					hospInc.setEventType(EventType.HOSPITALIZATION_RELEASED);
+				}
+			}
+			else
+			{
+				if (hospInc.getReleasedOn() != null)
+				{
+					hospInc.setReleasedOn(null); // Re-Use the incident.
+					hospInc.setEventType(EventType.HOSPITALIZATION_MANDATED);
+				}
+				hospInc.setEventDate(newValues.getDateOfHospitalization());
+				hospInc.setIntensiveCare(ic);
+			}
+			hospIncidentRepo.saveAndFlush(hospInc);
+		}
+		else
+		{
+			addHospitalizationIncident(newValues, newValues.getDateOfHospitalization(), ic);
+		}
 	}
 
 	//SCHEDULED_FOR_TESTING

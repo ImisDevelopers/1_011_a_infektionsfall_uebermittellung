@@ -1,34 +1,35 @@
 {
-  "city": "Kirkel",
+  "city": "Dudweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1957-08-15",
-  "email": "j.schmitt@example.de",
-  "firstName": "Jan",
+  "country": "DE",
+  "dateOfBirth": "1946-11-08",
+  "email": "l.mueller@example.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "P808753985",
-  "lastName": "Schmitt",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "V422561333",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "00281042762",
+  "phoneNumber": "10102781010814",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "KIDNEY_DISEASE"
   ],
   "riskAreas": [
-    "Tirol"
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Wintergasse 91",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Waldstra\u00dfe 55",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Husten",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Halschmerzen"
+    "HEADACHE",
+    "WEIGHT_LOSS",
+    "COLD",
+    "LOSS_OF_APPETITE",
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "NAUSEA",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66671"
+  "weakenedImmuneSystem": false,
+  "zip": "66174"
 }

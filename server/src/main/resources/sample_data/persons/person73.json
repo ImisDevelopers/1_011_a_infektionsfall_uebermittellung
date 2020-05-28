@@ -1,25 +1,28 @@
 {
-  "city": "St. Wendel",
+  "city": "Neunkirchen",
   "coronaContacts": false,
-  "dateOfBirth": "1994-09-15",
-  "email": "f.richter@example.de",
-  "firstName": "Fin",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1928-12-07",
+  "email": "m.schmidt@example.de",
+  "firstName": "Matthias",
+  "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "X333969748",
-  "lastName": "Richter",
+  "insuranceMembershipNumber": "Z875685667",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "0728679087",
-  "preIllnesses": [
-    ""
-  ],
+  "phoneNumber": "63854678105",
+  "preIllnesses": [],
   "riskAreas": [
-    "Hubei"
+    "CONTACT_WITH_CORONA_CASE"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Bismarckstra\u00dfe 39",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Wintergasse 33",
+  "symptoms": [
+    "COUGH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE"
+  ],
   "weakenedImmuneSystem": true,
-  "zip": "66064"
+  "zip": "66587"
 }

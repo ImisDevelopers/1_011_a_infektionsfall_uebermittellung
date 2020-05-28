@@ -1,27 +1,28 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
-  "dateOfBirth": "1951-12-13",
-  "email": "e.berger@example.de",
-  "firstName": "Emma",
+  "city": "Neunkirchen",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "2000-08-02",
+  "email": "d.lange@example.de",
+  "firstName": "Daniel",
   "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "U919505668",
-  "lastName": "Berger",
+  "gender": "male",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "B759391912",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "11088924141",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
+  "phoneNumber": "29667061062",
+  "preIllnesses": [],
   "riskAreas": [
-    "Tirol"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hafenstra\u00dfe 26",
+  "street": "Hauptstra\u00dfe 27",
   "symptoms": [
-    "Atemschwierigkeiten"
+    "NAUSEA",
+    "WEIGHT_LOSS",
+    "MUSCLE_PAIN"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66285"
+  "weakenedImmuneSystem": false,
+  "zip": "66244"
 }

@@ -1,32 +1,31 @@
 {
-  "city": "Heusweiler",
-  "coronaContacts": true,
-  "dateOfBirth": "1930-07-13",
-  "email": "j.richter@example.de",
-  "firstName": "Jana",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Q786237617",
-  "lastName": "Richter",
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1955-11-10",
+  "email": "t.wagner@example.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "W468909933",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "0334191825",
+  "phoneNumber": "36101103712",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "CARDIOVASCULAR_DISEASE"
   ],
-  "riskAreas": [
-    "GrandEst"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "S\u00fcdweg 25",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 28",
   "symptoms": [
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen",
-    "Gelenkschmerzen",
-    "Fieber"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "MUSCLE_PAIN",
+    "DIFFICULTY_BREATHING",
+    "FEVER",
+    "COLD"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66714"
+  "weakenedImmuneSystem": false,
+  "zip": "668107"
 }

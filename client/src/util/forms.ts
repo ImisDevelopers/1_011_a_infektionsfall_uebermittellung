@@ -162,7 +162,7 @@ export const FormGroupMixin = Vue.extend({
       // in the group to be re-rendered correctly when new values are set
       this.$options.fieldIdentifiers.forEach((key: string) => {
         if (
-          this.getFormContext().form.formItems[this.formFieldName(key)]
+          !this.getFormContext().form.formItems[this.formFieldName(key)]
             .itemSelfUpdate
         ) {
           console.error(

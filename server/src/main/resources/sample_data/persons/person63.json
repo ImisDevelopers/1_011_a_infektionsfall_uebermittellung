@@ -1,33 +1,26 @@
 {
-  "city": "Neunkirchen",
-  "coronaContacts": true,
-  "dateOfBirth": "1971-08-08",
-  "email": "a.schmitt@example.de",
-  "firstName": "Annika",
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1961-03-10",
+  "email": "b.winter@example.de",
+  "firstName": "Ben",
   "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "O635539154",
-  "lastName": "Schmitt",
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "T895525625",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "2104696325",
-  "preIllnesses": [
-    ""
-  ],
-  "riskAreas": [
-    "Hubei"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hohenzollerstra\u00dfe 92",
+  "phoneNumber": "04157104733",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordtstra\u00dfe 68",
   "symptoms": [
-    "Husten",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Schnupfen"
+    "LOSS_OF_APPETITE",
+    "NAUSEA",
+    "BACK_PAIN"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66532"
+  "zip": "66484"
 }

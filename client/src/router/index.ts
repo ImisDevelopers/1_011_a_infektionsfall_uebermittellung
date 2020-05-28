@@ -109,7 +109,7 @@ const appRoutes: AppRoute[] = [
     meta: {
       navigationInfo: {
         icon: 'deployment-unit',
-        title: 'Probe Zuordnen',
+        title: 'Probe zuordnen',
         authorities: [
           'ROLE_DEPARTMENT_OF_HEALTH',
           'ROLE_CLINIC',
@@ -127,7 +127,7 @@ const appRoutes: AppRoute[] = [
     meta: {
       navigationInfo: {
         icon: 'experiment',
-        title: 'Testresultat Zuordnen',
+        title: 'Testresultat zuordnen',
         authorities: [
           'ROLE_DEPARTMENT_OF_HEALTH',
           'ROLE_LABORATORY',

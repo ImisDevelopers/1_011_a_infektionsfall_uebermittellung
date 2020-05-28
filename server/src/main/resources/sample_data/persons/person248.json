@@ -1,32 +1,28 @@
 {
-  "city": "Riegelsberg",
+  "city": "V\u00f6lklingen",
   "coronaContacts": false,
-  "dateOfBirth": "1987-01-10",
-  "email": "j.wagner@example.de",
-  "firstName": "Jan",
+  "country": "DE",
+  "dateOfBirth": "1947-03-31",
+  "email": "k.weber@example.de",
+  "firstName": "Kai",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "V327866978",
-  "lastName": "Wagner",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "J143252622",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "439735910107",
+  "phoneNumber": "8813770285",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "ARDS"
   ],
   "riskAreas": [
-    "GrandEst"
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Haidth\u00f6heAarweg 1",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg 77",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Husten",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung"
+    "COUGH"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66725"
+  "zip": "66611"
 }

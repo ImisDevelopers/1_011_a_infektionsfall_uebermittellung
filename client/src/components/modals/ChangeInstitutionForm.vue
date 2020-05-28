@@ -123,7 +123,7 @@
 import Vue from 'vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { Plz } from '@/util/plz-service'
-import PlzInput from '@/components/PlzInput.vue'
+import PlzInput from '@/components/inputs/PlzInput.vue'
 
 export default Vue.extend({
   name: 'Account',

@@ -1,34 +1,35 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Riegelsberg",
   "coronaContacts": false,
-  "dateOfBirth": "1928-02-27",
-  "email": "p.schulze@example.de",
+  "country": "DE",
+  "dateOfBirth": "1957-10-16",
+  "email": "p.bauer@example.de",
   "firstName": "Petra",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "G139359410",
-  "lastName": "Schulze",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Z439013248",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "42834101108",
+  "phoneNumber": "35710790714",
   "preIllnesses": [
-    ""
+    "CARDIOVASCULAR_DISEASE"
   ],
   "riskAreas": [
-    "Madrid"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 3",
+  "street": "Haidth\u00f6heAarweg 48",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Fieber",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Halschmerzen",
-    "Atemschwierigkeiten"
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE",
+    "WEIGHT_LOSS",
+    "FEVER",
+    "COLD",
+    "NAUSEA",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66996"
+  "weakenedImmuneSystem": false,
+  "zip": "6610310"
 }

@@ -1,33 +1,29 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Dudweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1934-03-10",
-  "email": "p.schroeder@example.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1991-02-25",
+  "email": "h.winkler@example.de",
+  "firstName": "Hanna",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "L379773344",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "X874768179",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "172482105101",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "103055104885",
+  "preIllnesses": [],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Abbendiekshof 45",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Rosenstra\u00dfe 13",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
-    "Halschmerzen"
+    "COLD",
+    "FEVER",
+    "NAUSEA",
+    "DIFFICULTY_BREATHING"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66346"
+  "weakenedImmuneSystem": false,
+  "zip": "66027"
 }

@@ -2,15 +2,16 @@
   <div>
 
     <!-- Test Table -->
-    <a-row :gutter="8" style="margin-top: 8px;">
-      <TestIncidentsCard :testIncidents="test" />
+    <a-row :gutter="8">
+      <TestIncidentsCard :testIncidents="test" style="margin-top: 8px;" />
     </a-row>
 
-    <a-row :gutter="8" style="margin-top: 8px;">
+    <a-row :gutter="8">
 
       <!-- Basisinformationen -->
       <a-col :md="8" :span="24">
-        <a-card align="left" title="Basisinformationen">
+
+        <a-card align="left" title="Basisinformationen" style="margin-top: 8px;">
           <table>
             <tr>
               <td>Krankheit:</td>
@@ -30,12 +31,47 @@
             </tr>
           </table>
         </a-card>
+
+        <!-- Infektionskette -->
+        <a-card align="left" title="Infektionskette" style="margin-top: 8px;">
+          <a-descriptions layout="vertical" :column="1">
+            <a-descriptions-item>
+              <span slot="label"
+                ><a-icon type="arrow-right" /><a-icon
+                  type="user"
+                  style="margin-right: 5px;"
+                />
+                Kontakte mit Indexpatienten</span
+              >
+              <span v-if="patientInfectionSources.length > 0">{{
+                patientInfectionSources.length
+              }}</span>
+              <span v-else>Keine</span>
+              bekannt
+            </a-descriptions-item>
+            <a-descriptions-item>
+              <span slot="label"
+                ><a-icon type="user" /><a-icon
+                  type="arrow-right"
+                  style="margin-right: 5px;"
+                />
+                Eigene Kontaktpersonen</span
+              >
+              <span v-if="exposureContacts.length > 0">{{
+                exposureContacts.length
+              }}</span>
+              <span v-else>Keine</span>
+              angegeben
+            </a-descriptions-item>
+          </a-descriptions>
+        </a-card>
+
       </a-col>
 
       <!-- Symptoms, Prädisposition -->
       <a-col :md="8" :span="24">
 
-        <a-card align="left" title="Symptome, Prädisposition">
+        <a-card align="left" title="Symptome, Prädisposition" style="margin-top: 8px;">
 
           <div v-if="administrative.symptoms[0] === ''">Keine Symptome erfasst.</div>
           <div v-else>
@@ -67,7 +103,7 @@
       
       <!-- Quarantine & Hospital -->
       <a-col :md="8" :span="24">
-        <QuarantineHospitalizationCard
+        <QuarantineHospitalizationCard  style="margin-top: 8px;"
           :quarantineIncidents="quarantine"
           :hospitalizationIncidents="hospitalization"
         />
@@ -128,7 +164,7 @@ export default Vue.extend({
       incident.id.startsWith('hospitalization')
     )
   },
-  props: ['allIncidents', 'preIllnesses'],
+  props: ['allIncidents', 'preIllnesses', 'patientInfectionSources', 'exposureContacts'],
   data(): State {
     return {
       administrative: undefined,

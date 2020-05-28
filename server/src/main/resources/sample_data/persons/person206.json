@@ -1,28 +1,39 @@
 {
-  "city": "Riegelsberg",
+  "city": "V\u00f6lklingen",
   "coronaContacts": false,
-  "dateOfBirth": "1961-04-24",
-  "email": "k.schulze@example.de",
-  "firstName": "Kai",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "C749276419",
-  "lastName": "Schulze",
+  "country": "DE",
+  "dateOfBirth": "1968-07-22",
+  "email": "a.richter@example.de",
+  "firstName": "Anna",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "S468070623",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "44300910910",
+  "phoneNumber": "82756710043",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "PREGNANCY"
   ],
   "riskAreas": [
-    "Hubei"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordtstra\u00dfe 27",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg 2",
   "symptoms": [
-    "Fieber",
-    "Kopfschmerzen"
+    "COUGH",
+    "MUSCLE_PAIN",
+    "COLD",
+    "BACK_PAIN",
+    "NAUSEA",
+    "FEVER",
+    "SHORTNESS_OF_BREATH",
+    "WEIGHT_LOSS",
+    "DIFFICULTY_BREATHING",
+    "HEADACHE",
+    "LOSS_OF_APPETITE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "669101"
+  "weakenedImmuneSystem": true,
+  "zip": "663810"
 }

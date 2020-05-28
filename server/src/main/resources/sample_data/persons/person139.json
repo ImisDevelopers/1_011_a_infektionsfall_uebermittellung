@@ -1,32 +1,36 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": true,
-  "dateOfBirth": "1926-08-27",
-  "email": "p.bauer@example.de",
-  "firstName": "Peter",
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1944-10-01",
+  "email": "m.winkler@example.de",
+  "firstName": "Marie",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Q228155179",
-  "lastName": "Bauer",
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "V347332488",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "310105989334",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "82723181043",
+  "preIllnesses": [],
   "riskAreas": [
-    "Hubei"
+    "COMMUNITY_FACILITY_MINORS"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Waldstra\u00dfe 22",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 23",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Fieber",
-    "Halschmerzen",
-    "Kopfschmerzen"
+    "DIFFICULTY_BREATHING",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "COLD",
+    "FEVER",
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE",
+    "HEADACHE",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661012"
+  "zip": "66259"
 }

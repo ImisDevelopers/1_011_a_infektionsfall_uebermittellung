@@ -1,31 +1,36 @@
 {
-  "city": "Heusweiler",
+  "city": "Sulzbach",
   "coronaContacts": false,
-  "dateOfBirth": "1967-07-02",
-  "email": "b.winkler@example.de",
-  "firstName": "Ben",
+  "country": "DE",
+  "dateOfBirth": "1960-02-11",
+  "email": "m.klein@example.de",
+  "firstName": "Martina",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J847197907",
-  "lastName": "Winkler",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "M308789137",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "1010158517410",
+  "phoneNumber": "09103983430",
   "preIllnesses": [
-    ""
+    "CARDIOVASCULAR_DISEASE"
   ],
   "riskAreas": [
-    ""
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 22",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Haidth\u00f6heAarweg 68",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Husten",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber"
+    "COLD",
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE",
+    "COUGH",
+    "HEADACHE",
+    "DIFFICULTY_BREATHING",
+    "NAUSEA",
+    "FEVER",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66806"
+  "zip": "6671010"
 }

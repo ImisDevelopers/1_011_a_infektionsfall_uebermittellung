@@ -1,31 +1,32 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
-  "dateOfBirth": "1934-11-01",
-  "email": "c.berger@example.de",
-  "firstName": "Christopher",
-  "fluImmunization": false,
+  "city": "Merzig",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1986-10-04",
+  "email": "k.berger@example.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "X403685324",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "U563316186",
   "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "110573109930",
+  "phoneNumber": "2799088117",
   "preIllnesses": [
-    ""
+    "RESPIRATORY_DISEASE"
   ],
   "riskAreas": [
-    "Madrid"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 41",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Bismarckstra\u00dfe 16",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Schnupfen",
-    "Fieber"
+    "LOSS_OF_APPETITE",
+    "BACK_PAIN",
+    "HEADACHE",
+    "FEVER",
+    "MUSCLE_PAIN"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66616"
+  "weakenedImmuneSystem": true,
+  "zip": "66980"
 }

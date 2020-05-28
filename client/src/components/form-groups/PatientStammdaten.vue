@@ -175,7 +175,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Email eingeben',
                     },
                   ],
@@ -193,7 +193,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Telefonnummer eingeben',
                     },
                   ],
@@ -216,7 +216,7 @@
                 {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: 'Bitte Beruf eingeben',
                     },
                   ],
@@ -254,7 +254,7 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Arbeitgeber (optional)">
+          <a-form-item label="Arbeitgeber">
             <a-input
               v-decorator="[
                 'employer',
@@ -271,7 +271,7 @@
       <h4>Krankenkasse</h4>
       <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Krankenkasse (optional)">
+          <a-form-item label="Krankenkasse">
             <a-input
               v-decorator="[
                 'insuranceCompany',
@@ -281,7 +281,7 @@
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Versichertennr. (optional)">
+          <a-form-item label="Versichertennr.">
             <a-input
               v-decorator="[
                 'insuranceMembershipNumber',
@@ -302,9 +302,8 @@ import {
   RISK_OCCUPATIONS,
   RiskOccupationOption,
 } from '@/models/risk-occupation'
-import DateInput from '@/components/DateInput.vue'
-import LocationFormGroup from '@/components/LocationFormGroup.vue'
-import PlzInput from '@/components/PlzInput.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
+import LocationFormGroup from '@/components/form-groups/LocationFormGroup.vue'
 import { Patient } from '@/api/SwaggerApi'
 import moment, { Moment } from 'moment'
 
@@ -334,7 +333,7 @@ export default Vue.extend({
       this.patientInput = this.patient
       this.initialDateOfBirth = moment(this.patientInput.dateOfBirth)
       if (this.patientInput.dateOfDeath) {
-        this.initialDateOfBirth = moment(this.patientInput.dateOfDeath)
+        this.initialDateOfDeath = moment(this.patientInput.dateOfDeath)
       }
       this.initialRiskOccupation =
         this.patientInput.riskOccupation || 'NO_RISK_OCCUPATION'

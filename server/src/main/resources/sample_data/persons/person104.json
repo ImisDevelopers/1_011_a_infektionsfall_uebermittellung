@@ -1,29 +1,31 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Riegelsberg",
   "coronaContacts": true,
-  "dateOfBirth": "1990-09-22",
-  "email": "i.schulz@example.de",
-  "firstName": "Isabella",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J705382875",
-  "lastName": "Schulz",
+  "country": "DE",
+  "dateOfBirth": "1963-10-07",
+  "email": "k.schmidt@example.de",
+  "firstName": "Kai",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "M729230605",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "0238061744",
+  "phoneNumber": "2525002921",
   "preIllnesses": [
-    "Krebserkrankung"
+    "SMOKING"
   ],
   "riskAreas": [
-    "Tirol"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "S\u00fcdweg 11",
+  "street": "Nordufer 67",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten"
+    "COUGH",
+    "SHORTNESS_OF_BREATH",
+    "NAUSEA",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66870"
+  "weakenedImmuneSystem": false,
+  "zip": "66515"
 }

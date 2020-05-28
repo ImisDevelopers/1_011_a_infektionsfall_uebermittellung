@@ -1,28 +1,28 @@
 {
-  "city": "Bous",
-  "coronaContacts": true,
-  "dateOfBirth": "1993-11-23",
-  "email": "m.schulz@example.de",
-  "firstName": "Matthias",
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1992-11-08",
+  "email": "m.winter@example.de",
+  "firstName": "Martina",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "V950961305",
-  "lastName": "Schulz",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "B139956218",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "1724005045",
+  "phoneNumber": "709859310110",
   "preIllnesses": [
-    "Krebserkrankung"
+    "CARDIOVASCULAR_DISEASE"
   ],
   "riskAreas": [
-    "Tirol"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hauptstra\u00dfe 55",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordtstra\u00dfe 59",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten"
+    "DIFFICULTY_BREATHING"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66238"
+  "weakenedImmuneSystem": false,
+  "zip": "664106"
 }

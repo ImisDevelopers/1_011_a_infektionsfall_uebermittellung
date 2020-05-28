@@ -1,33 +1,34 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": false,
-  "dateOfBirth": "1963-07-04",
-  "email": "f.mueller@example.de",
-  "firstName": "Fin",
-  "fluImmunization": false,
+  "city": "Bous",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1987-12-11",
+  "email": "m.weber@example.de",
+  "firstName": "Matthias",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Q261861139",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "X398742558",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "0143888993",
+  "phoneNumber": "3106729104106",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "IMMUNODEFICIENCY"
   ],
   "riskAreas": [
-    "Hubei"
+    "MEDICAL_LABORATORY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Waldstra\u00dfe 47",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 57",
   "symptoms": [
-    "Fieber",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Kopfschmerzen"
+    "MUSCLE_PAIN",
+    "COUGH",
+    "COLD",
+    "LOSS_OF_APPETITE",
+    "DIFFICULTY_BREATHING",
+    "NAUSEA",
+    "FEVER"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "666710"
+  "weakenedImmuneSystem": true,
+  "zip": "661101"
 }

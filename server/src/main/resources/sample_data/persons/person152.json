@@ -1,32 +1,26 @@
 {
-  "city": "Bous",
+  "city": "Homburg",
   "coronaContacts": true,
-  "dateOfBirth": "1988-05-16",
-  "email": "m.schulze@example.de",
-  "firstName": "Martina",
+  "country": "DE",
+  "dateOfBirth": "2003-03-24",
+  "email": "s.wagner@example.de",
+  "firstName": "Susanne",
   "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "G838483906",
-  "lastName": "Schulze",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "D381805975",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "3149864300",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "31041326111",
+  "preIllnesses": [],
   "riskAreas": [
-    "Madrid"
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hohenzollerstra\u00dfe 66",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Steinstra\u00dfe 70",
   "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Gelenkschmerzen"
+    "NAUSEA"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66180"
+  "zip": "66006"
 }

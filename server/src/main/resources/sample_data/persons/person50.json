@@ -1,28 +1,32 @@
 {
-  "city": "St. Ingbert",
+  "city": "St. Wendel",
   "coronaContacts": false,
-  "dateOfBirth": "1934-07-21",
-  "email": "b.schulz@example.de",
-  "firstName": "Ben",
-  "fluImmunization": false,
+  "country": "DE",
+  "dateOfBirth": "1956-06-09",
+  "email": "j.schmidt@example.de",
+  "firstName": "Jan",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "Y622129427",
-  "lastName": "Schulz",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "F991617660",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "52101081101068",
-  "preIllnesses": [
-    ""
-  ],
+  "phoneNumber": "051531010195",
+  "preIllnesses": [],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hauptstra\u00dfe 2",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete 5",
   "symptoms": [
-    "Schnupfen",
-    "Husten"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "SHORTNESS_OF_BREATH",
+    "COLD",
+    "DIFFICULTY_BREATHING",
+    "COUGH",
+    "FEVER"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66542"
+  "weakenedImmuneSystem": false,
+  "zip": "66585"
 }

@@ -1,32 +1,35 @@
 {
-  "city": "Sulzbach",
-  "coronaContacts": true,
-  "dateOfBirth": "1989-01-06",
-  "email": "m.mueller@example.de",
-  "firstName": "Martina",
-  "fluImmunization": true,
+  "city": "Heusweiler",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1967-10-10",
+  "email": "p.schmidt@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "N462219407",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "N292599550",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "10041792911",
-  "preIllnesses": [
-    ""
-  ],
+  "phoneNumber": "78730024410",
+  "preIllnesses": [],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Schernerweg 63",
+  "street": "Nordtstra\u00dfe 81",
   "symptoms": [
-    "Kopfschmerzen",
-    "Husten",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Erk\u00e4ltung"
+    "FEVER",
+    "LOSS_OF_APPETITE",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "BACK_PAIN",
+    "SHORTNESS_OF_BREATH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COUGH"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66993"
+  "weakenedImmuneSystem": true,
+  "zip": "667110"
 }

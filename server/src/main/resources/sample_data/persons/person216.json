@@ -1,27 +1,28 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": true,
-  "dateOfBirth": "1989-01-23",
-  "email": "p.richter@example.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "S693516844",
-  "lastName": "Richter",
+  "city": "Bous",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1993-04-30",
+  "email": "k.wagner@example.de",
+  "firstName": "Karl",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "Y437455876",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "9042177625",
+  "phoneNumber": "87592710125",
   "preIllnesses": [
-    "Krebserkrankung"
+    "LIVER_DISEASE"
   ],
   "riskAreas": [
-    "Madrid"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof 37",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 54",
   "symptoms": [
-    "Halschmerzen"
+    "BACK_PAIN"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "669210"
+  "weakenedImmuneSystem": true,
+  "zip": "66383"
 }

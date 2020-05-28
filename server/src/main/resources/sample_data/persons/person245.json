@@ -1,25 +1,30 @@
 {
-  "city": "Dudweiler",
+  "city": "P\u00fcttlingen",
   "coronaContacts": false,
-  "dateOfBirth": "1951-02-27",
-  "email": "h.sommer@example.de",
+  "country": "DE",
+  "dateOfBirth": "2004-05-29",
+  "email": "h.lange@example.de",
   "firstName": "Hanna",
-  "fluImmunization": true,
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "O949350526",
-  "lastName": "Sommer",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J190495952",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "2481569857",
+  "phoneNumber": "89267103899",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "ADIPOSITAS"
   ],
-  "riskAreas": [
-    "GrandEst"
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Kronenstra\u00dfe 56",
+  "symptoms": [
+    "HEADACHE",
+    "SHORTNESS_OF_BREATH",
+    "BACK_PAIN",
+    "COLD",
+    "WEIGHT_LOSS"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 3",
-  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "6601010"
+  "zip": "665106"
 }

@@ -1,27 +1,29 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1983-12-10",
-  "email": "c.schmitt@example.de",
-  "firstName": "Cornelius",
+  "city": "St. Ingbert",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1938-07-25",
+  "email": "a.schulze@example.de",
+  "firstName": "Anna",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Y563048450",
-  "lastName": "Schmitt",
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "X827125778",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "0132234232",
+  "phoneNumber": "71071333447",
   "preIllnesses": [
-    ""
+    "CANCER"
   ],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Haidth\u00f6heAarweg 54",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 16",
   "symptoms": [
-    "Husten"
+    "HEADACHE",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66110"
+  "weakenedImmuneSystem": false,
+  "zip": "66639"
 }

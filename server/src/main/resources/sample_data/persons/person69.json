@@ -1,27 +1,28 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Sulzbach",
   "coronaContacts": true,
-  "dateOfBirth": "1976-01-04",
-  "email": "p.berger@example.de",
-  "firstName": "Peter",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1936-01-30",
+  "email": "j.winkler@example.de",
+  "firstName": "Jan",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "K406462391",
-  "lastName": "Berger",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "V679069250",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "65711020826",
-  "preIllnesses": [
-    ""
-  ],
-  "riskAreas": [
-    "New York"
-  ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Kronenstra\u00dfe 60",
+  "phoneNumber": "170462210106",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 48",
   "symptoms": [
-    "Erk\u00e4ltung"
+    "DIFFICULTY_BREATHING",
+    "SHORTNESS_OF_BREATH",
+    "BACK_PAIN",
+    "HEADACHE",
+    "NAUSEA"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "667103"
+  "zip": "66766"
 }

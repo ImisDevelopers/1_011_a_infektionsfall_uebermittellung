@@ -250,6 +250,12 @@ export interface LabTest {
   testType?: "PCR" | "ANTIBODY";
 }
 
+export interface LabTestConstraintViolation {
+  constraint?: "LAB_UNIQUE_TEST_ID";
+  errorType?: string;
+  message?: string;
+}
+
 export interface Laboratory {
   assignedLabTest?: LabTest[];
   city?: string;
@@ -875,6 +881,22 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags exposure-contact-controller
+     * @name getExposureSourceContactsForPatientsUsingPOST
+     * @summary getExposureSourceContactsForPatients
+     * @request POST:/api/exposure-contacts/by-contact/
+     * @secure
+     */
+    getExposureSourceContactsForPatientsUsingPost: (patientIds: string[], params?: RequestParams) =>
+      this.request<Record<string, ExposureContactFromServer[]>, any>(
+        `/api/exposure-contacts/by-contact/`,
+        "POST",
+        params,
+        patientIds,
+        true,
+      ),
+
+    /**
+     * @tags exposure-contact-controller
      * @name getExposureSourceContactsForPatientUsingGET
      * @summary getExposureSourceContactsForPatient
      * @request GET:/api/exposure-contacts/by-contact/{id}
@@ -977,6 +999,20 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags incident-controller
+     * @name getPatientsCurrentByTypeUsingPOST
+     * @summary getPatientsCurrentByType
+     * @request POST:/api/incidents/{type}/patient
+     * @secure
+     */
+    getPatientsCurrentByTypeUsingPost: (
+      type: "test" | "quarantine" | "administrative",
+      patientIds: string[],
+      params?: RequestParams,
+    ) =>
+      this.request<Record<string, Incident[]>, any>(`/api/incidents/${type}/patient`, "POST", params, patientIds, true),
+
+    /**
+     * @tags incident-controller
      * @name getPatientCurrentByTypeUsingGET
      * @summary getPatientCurrentByType
      * @request GET:/api/incidents/{type}/patient/{id}
@@ -1065,7 +1101,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     createTestForPatientUsingPost: (createLabTestRequest: CreateLabTestDTO, params?: RequestParams) =>
-      this.request<LabTest, any>(`/api/labtests`, "POST", params, createLabTestRequest, true),
+      this.request<LabTest, LabTestConstraintViolation>(`/api/labtests`, "POST", params, createLabTestRequest, true),
 
     /**
      * @tags lab-test-controller

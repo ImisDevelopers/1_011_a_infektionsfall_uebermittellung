@@ -1,34 +1,29 @@
 {
-  "city": "Dudweiler",
+  "city": "St. Wendel",
   "coronaContacts": true,
-  "dateOfBirth": "1959-09-19",
-  "email": "f.schmidt@example.de",
-  "firstName": "Franz",
-  "fluImmunization": false,
+  "country": "DE",
+  "dateOfBirth": "1945-09-15",
+  "email": "p.weber@example.de",
+  "firstName": "Peter",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "U179634081",
-  "lastName": "Schmidt",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "R625968839",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "5782911467",
+  "phoneNumber": "2982595269",
   "preIllnesses": [
-    "Krebserkrankung"
+    "NEUROLOGICAL_DISEASE"
   ],
-  "riskAreas": [
-    ""
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hafenstra\u00dfe 52",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Tulpenweg 38",
   "symptoms": [
-    "Kopfschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Schnupfen"
+    "MUSCLE_PAIN",
+    "LOSS_OF_APPETITE",
+    "COUGH",
+    "COLD"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66691"
+  "zip": "66958"
 }

@@ -1,29 +1,34 @@
 {
-  "city": "Merzig",
+  "city": "Sulzbach",
   "coronaContacts": false,
-  "dateOfBirth": "1972-04-10",
+  "country": "DE",
+  "dateOfBirth": "1973-08-21",
   "email": "m.berger@example.de",
-  "firstName": "Marie",
+  "firstName": "Matthias",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "P891468251",
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Z361015184",
   "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "16105182755",
+  "phoneNumber": "435010313106",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "CARDIOVASCULAR_DISEASE"
   ],
-  "riskAreas": [
-    "Moscow"
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 73",
+  "street": "S\u00fcdweg 1",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Halschmerzen"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "COLD",
+    "SHORTNESS_OF_BREATH",
+    "COUGH",
+    "HEADACHE",
+    "LOSS_OF_APPETITE",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "664210"
+  "weakenedImmuneSystem": true,
+  "zip": "66249"
 }

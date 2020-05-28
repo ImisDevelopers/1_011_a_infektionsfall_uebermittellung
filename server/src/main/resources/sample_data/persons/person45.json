@@ -1,32 +1,31 @@
 {
-  "city": "Neunkirchen",
+  "city": "Merzig",
   "coronaContacts": false,
-  "dateOfBirth": "2005-08-24",
-  "email": "p.lange@example.de",
-  "firstName": "Petra",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "K718216692",
-  "lastName": "Lange",
+  "country": "DE",
+  "dateOfBirth": "1961-05-31",
+  "email": "t.schulz@example.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "C793663866",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "62268388105",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
-  "riskAreas": [
-    "Moscow"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Haidth\u00f6heAarweg 50",
+  "phoneNumber": "1010629148610",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Nordstra\u00dfe 42",
   "symptoms": [
-    "Halschmerzen",
-    "Schnupfen",
-    "Husten",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Fieber"
+    "COUGH",
+    "LOSS_OF_APPETITE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "WEIGHT_LOSS",
+    "SHORTNESS_OF_BREATH",
+    "DIFFICULTY_BREATHING",
+    "MUSCLE_PAIN",
+    "FEVER"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66060"
+  "zip": "6621010"
 }

@@ -1,30 +1,33 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": false,
-  "dateOfBirth": "1933-02-16",
-  "email": "h.lange@example.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
+  "city": "St. Ingbert",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1983-08-19",
+  "email": "t.schmidt@example.de",
+  "firstName": "Tim",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "H844292151",
-  "lastName": "Lange",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "G388926290",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "251355210110",
+  "phoneNumber": "8552414060",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "NEUROLOGICAL_DISEASE"
   ],
-  "riskAreas": [
-    "Tirol"
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 93",
+  "street": "Abbachstra\u00dfe 73",
   "symptoms": [
-    "Fieber",
-    "Kopfschmerzen",
-    "Husten",
-    "Halschmerzen"
+    "LOSS_OF_APPETITE",
+    "NAUSEA",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "SHORTNESS_OF_BREATH",
+    "COUGH",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66570"
+  "weakenedImmuneSystem": false,
+  "zip": "663310"
 }

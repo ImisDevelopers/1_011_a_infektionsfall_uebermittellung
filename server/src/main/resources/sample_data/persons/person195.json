@@ -1,34 +1,24 @@
 {
-  "city": "Saarlouis",
+  "city": "Merzig",
   "coronaContacts": false,
-  "dateOfBirth": "1945-11-02",
-  "email": "j.weber@example.de",
-  "firstName": "Jana",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1947-05-21",
+  "email": "p.lange@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "G865469134",
-  "lastName": "Weber",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "O889548331",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "16016629910",
+  "phoneNumber": "32806103461",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "DIABETES"
   ],
-  "riskAreas": [
-    "Hubei"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordtstra\u00dfe 88",
-  "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Husten",
-    "Kopfschmerzen",
-    "Schnupfen"
-  ],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kronenstra\u00dfe 88",
+  "symptoms": [],
   "weakenedImmuneSystem": true,
-  "zip": "66795"
+  "zip": "66571"
 }

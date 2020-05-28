@@ -1,31 +1,32 @@
 {
-  "city": "Heusweiler",
-  "coronaContacts": true,
-  "dateOfBirth": "1935-01-10",
-  "email": "b.schroeder@example.de",
-  "firstName": "Ben",
+  "city": "St. Wendel",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1983-12-17",
+  "email": "c.sommer@example.de",
+  "firstName": "Christopher",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "J653462378",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Q558209399",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "43699105777",
-  "preIllnesses": [
-    ""
-  ],
+  "phoneNumber": "70831727108",
+  "preIllnesses": [],
   "riskAreas": [
-    "GrandEst"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 27",
+  "street": "Poststra\u00dfe 76",
   "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Kopfschmerzen"
+    "SHORTNESS_OF_BREATH",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "WEIGHT_LOSS",
+    "FEVER",
+    "HEADACHE",
+    "COUGH"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66872"
+  "weakenedImmuneSystem": true,
+  "zip": "66579"
 }

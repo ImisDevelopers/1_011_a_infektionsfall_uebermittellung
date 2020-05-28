@@ -1,30 +1,32 @@
 {
-  "city": "St. Wendel",
+  "city": "Homburg",
   "coronaContacts": false,
-  "dateOfBirth": "1945-12-05",
-  "email": "s.schulze@example.de",
-  "firstName": "Susanne",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1927-11-24",
+  "email": "i.schmitt@example.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Q871769353",
-  "lastName": "Schulze",
+  "insuranceMembershipNumber": "A898509546",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "31010046101108",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
-    "Madrid"
-  ],
+  "phoneNumber": "831086384100",
+  "preIllnesses": [],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Sonnenweg 79",
+  "street": "Z\u00e4hringerstra\u00dfe 49",
   "symptoms": [
-    "Fieber",
-    "Halschmerzen",
-    "Husten",
-    "Erk\u00e4ltung"
+    "MUSCLE_PAIN",
+    "FEVER",
+    "COUGH",
+    "BACK_PAIN",
+    "NAUSEA",
+    "HEADACHE",
+    "COLD",
+    "DIFFICULTY_BREATHING",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66926"
+  "weakenedImmuneSystem": true,
+  "zip": "666105"
 }

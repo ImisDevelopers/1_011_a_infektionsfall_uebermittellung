@@ -1,30 +1,27 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": false,
-  "dateOfBirth": "1964-04-27",
-  "email": "d.sommer@example.de",
-  "firstName": "Daniela",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "Z377403790",
-  "lastName": "Sommer",
+  "city": "Neunkirchen",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1943-02-28",
+  "email": "k.schroeder@example.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "S775862179",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "14737991065",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "0947775204",
+  "preIllnesses": [],
   "riskAreas": [
-    "New York"
+    "MEDICAL_LABORATORY"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg 63",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer 61",
   "symptoms": [
-    "Husten",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Gelenkschmerzen"
+    "SHORTNESS_OF_BREATH",
+    "COLD"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66527"
+  "weakenedImmuneSystem": true,
+  "zip": "66116"
 }

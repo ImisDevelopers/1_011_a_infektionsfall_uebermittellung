@@ -1,27 +1,39 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": true,
-  "dateOfBirth": "1930-09-20",
-  "email": "f.schmidt@example.de",
-  "firstName": "Franz",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "E784907325",
-  "lastName": "Schmidt",
+  "city": "Merzig",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1969-12-28",
+  "email": "j.klein@example.de",
+  "firstName": "Jana",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "E176675731",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "4134352408",
+  "phoneNumber": "7110341091036",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "SMOKING"
   ],
   "riskAreas": [
-    "Hubei"
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete 35",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Schernerweg 69",
   "symptoms": [
-    "Husten"
+    "WEIGHT_LOSS",
+    "COLD",
+    "NAUSEA",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "LOSS_OF_APPETITE",
+    "FEVER",
+    "SHORTNESS_OF_BREATH",
+    "COUGH",
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66008"
+  "weakenedImmuneSystem": true,
+  "zip": "663102"
 }

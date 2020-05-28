@@ -1,29 +1,26 @@
 {
-  "city": "St. Ingbert",
+  "city": "Heusweiler",
   "coronaContacts": true,
-  "dateOfBirth": "1975-10-22",
-  "email": "m.berger@example.de",
-  "firstName": "Marie",
+  "country": "DE",
+  "dateOfBirth": "1981-08-24",
+  "email": "k.bauer@example.de",
+  "firstName": "Konrad",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "H167496657",
-  "lastName": "Berger",
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "P759091699",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "28272299102",
+  "phoneNumber": "3334333395",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "CANCER"
   ],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Tulpenweg 93",
-  "symptoms": [
-    "Husten",
-    "Kopfschmerzen",
-    "Fieber"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "66750"
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aastwiete 99",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66111"
 }

@@ -1,34 +1,29 @@
 {
-  "city": "Homburg",
+  "city": "Heusweiler",
   "coronaContacts": false,
-  "dateOfBirth": "1931-12-07",
-  "email": "a.schulze@example.de",
-  "firstName": "Annika",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "2001-03-18",
+  "email": "d.schmitt@example.de",
+  "firstName": "Daniela",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "P862169097",
-  "lastName": "Schulze",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "S604463645",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "35548106401",
+  "phoneNumber": "10427624671",
   "preIllnesses": [
-    "Krebserkrankung"
+    "NEUROLOGICAL_DISEASE"
   ],
   "riskAreas": [
-    "Tirol"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hauptstra\u00dfe 44",
+  "street": "Hohenzollerstra\u00dfe 86",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Husten",
-    "Halschmerzen",
-    "Fieber",
-    "Kopfschmerzen"
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66778"
+  "zip": "667108"
 }

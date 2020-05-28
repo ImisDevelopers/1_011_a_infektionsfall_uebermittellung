@@ -1,34 +1,33 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": false,
-  "dateOfBirth": "1937-09-03",
-  "email": "p.peters@example.de",
-  "firstName": "Peter",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "Z709125837",
-  "lastName": "Peters",
+  "city": "Merzig",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1928-01-24",
+  "email": "a.winkler@example.de",
+  "firstName": "Annika",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "J309107461",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "43536108222",
+  "phoneNumber": "669108490210",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "PREGNANCY"
   ],
-  "riskAreas": [
-    "GrandEst"
-  ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof 78",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Steinstra\u00dfe 56",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Fieber"
+    "BACK_PAIN",
+    "FEVER",
+    "COLD",
+    "SHORTNESS_OF_BREATH",
+    "LOSS_OF_APPETITE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "DIFFICULTY_BREATHING",
+    "MUSCLE_PAIN"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66431"
+  "weakenedImmuneSystem": false,
+  "zip": "660310"
 }

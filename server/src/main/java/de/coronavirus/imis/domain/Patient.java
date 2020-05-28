@@ -1,27 +1,31 @@
 package de.coronavirus.imis.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import io.swagger.annotations.ApiModel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.Accessors;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.util.Collections;
 import java.util.List;
 
-import de.coronavirus.imis.domain.ExposureContact;
-import de.coronavirus.imis.repositories.ExposureContactRepository;
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.SortableField;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import io.swagger.annotations.ApiModel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
 
 @Entity
@@ -32,24 +36,35 @@ import de.coronavirus.imis.repositories.ExposureContactRepository;
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "id")
+@Indexed
 public class Patient {
 	@OneToMany(mappedBy = "patient")
 	@OrderBy("eventTimestamp asc")
 	List<PatientEvent> events;
 	@Id
 	private String id;
+	@SortableField
+	@Field
 	private String lastName;
+	@Field
 	private String firstName;
 	private String gender;
 	private String nationality;
 	private LocalDate dateOfBirth;
 	private LocalDate dateOfDeath;
+	@Field
 	private String email;
+	@Field
 	private String phoneNumber;
 	// Address
+	@Field
 	private String street;
+	@Field
 	private String houseNumber;
+	@SortableField
+	@Field
 	private String zip;
+	@Field
 	private String city;
 	private String country;
 	// Current Stay (If different from address)
@@ -58,6 +73,7 @@ public class Patient {
 	private String stayZip;
 	private String stayCity;
 	private String stayCountry;
+	@Field
 	private String insuranceCompany;
 	private String insuranceMembershipNumber;
 	private boolean confirmed;

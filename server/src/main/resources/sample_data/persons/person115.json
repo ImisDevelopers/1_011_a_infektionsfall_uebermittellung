@@ -1,32 +1,30 @@
 {
-  "city": "Homburg",
-  "coronaContacts": false,
-  "dateOfBirth": "1985-01-04",
-  "email": "j.wagner@example.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "E158524142",
-  "lastName": "Wagner",
+  "city": "Bous",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1986-09-25",
+  "email": "p.schroeder@example.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "B726016935",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "53368841044",
+  "phoneNumber": "3096105102010",
   "preIllnesses": [
-    "Krebserkrankung"
+    "Alzheimer"
   ],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof 12",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Steinstra\u00dfe 37",
   "symptoms": [
-    "Fieber",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Husten"
+    "COUGH",
+    "FEVER",
+    "BACK_PAIN"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66069"
+  "weakenedImmuneSystem": true,
+  "zip": "66466"
 }

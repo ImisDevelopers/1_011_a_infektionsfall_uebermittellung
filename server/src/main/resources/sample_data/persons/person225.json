@@ -1,33 +1,24 @@
 {
-  "city": "Saarlouis",
+  "city": "St. Wendel",
   "coronaContacts": true,
-  "dateOfBirth": "1943-06-20",
-  "email": "k.winter@example.de",
-  "firstName": "Kai",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "R194058316",
-  "lastName": "Winter",
+  "country": "DE",
+  "dateOfBirth": "1985-05-05",
+  "email": "e.mueller@example.de",
+  "firstName": "Emma",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "N490234548",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "98010562656",
-  "preIllnesses": [
-    ""
-  ],
-  "riskAreas": [
-    "Tirol"
-  ],
+  "phoneNumber": "044108210070",
+  "preIllnesses": [],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hauptstra\u00dfe 1",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 10",
   "symptoms": [
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen"
+    "HEADACHE"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66455"
+  "zip": "66594"
 }

@@ -1,33 +1,30 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
-  "dateOfBirth": "1957-07-18",
-  "email": "h.winter@example.de",
-  "firstName": "Hanna",
-  "fluImmunization": false,
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1992-12-02",
+  "email": "m.schmitt@example.de",
+  "firstName": "Martina",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "U116866122",
-  "lastName": "Winter",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "K347028515",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "31027238656",
+  "phoneNumber": "8220781137",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "NEUROLOGICAL_DISEASE"
   ],
-  "riskAreas": [
-    "GrandEst"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aastwiete 36",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 74",
   "symptoms": [
-    "Halschmerzen",
-    "Fieber",
-    "Husten",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Schnupfen"
+    "FEVER",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "COLD"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661022"
+  "zip": "66563"
 }

@@ -1,32 +1,35 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Riegelsberg",
   "coronaContacts": false,
-  "dateOfBirth": "1939-11-15",
-  "email": "c.wagner@example.de",
-  "firstName": "Christopher",
+  "country": "DE",
+  "dateOfBirth": "1937-08-12",
+  "email": "i.weber@example.de",
+  "firstName": "Isabella",
   "fluImmunization": false,
-  "gender": "male",
+  "gender": "female",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "W632005813",
-  "lastName": "Wagner",
+  "insuranceMembershipNumber": "W971243675",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "42961071756",
-  "preIllnesses": [
-    ""
-  ],
+  "phoneNumber": "5886753396",
+  "preIllnesses": [],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "S\u00fcdweg 41",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Abbendiekshof 99",
   "symptoms": [
-    "Husten",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Fieber"
+    "NAUSEA",
+    "SHORTNESS_OF_BREATH",
+    "MUSCLE_PAIN",
+    "LOSS_OF_APPETITE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "WEIGHT_LOSS",
+    "HEADACHE",
+    "COLD",
+    "BACK_PAIN",
+    "DIFFICULTY_BREATHING"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661012"
+  "zip": "66605"
 }

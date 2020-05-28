@@ -1,27 +1,35 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": false,
-  "dateOfBirth": "1935-08-29",
-  "email": "m.berger@example.de",
-  "firstName": "Martina",
-  "fluImmunization": true,
+  "city": "Bous",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1946-03-20",
+  "email": "m.winter@example.de",
+  "firstName": "Marie",
+  "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "K443285529",
-  "lastName": "Berger",
+  "insuranceMembershipNumber": "G588229686",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "277431048710",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
-  "riskAreas": [
-    "GrandEst"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof 35",
+  "phoneNumber": "806991001106",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Aastwiete 59",
   "symptoms": [
-    "Schnupfen"
+    "HEADACHE",
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "NAUSEA",
+    "DIFFICULTY_BREATHING",
+    "FEVER",
+    "LOSS_OF_APPETITE",
+    "BACK_PAIN",
+    "COUGH",
+    "MUSCLE_PAIN",
+    "COLD",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66714"
+  "weakenedImmuneSystem": true,
+  "zip": "66204"
 }

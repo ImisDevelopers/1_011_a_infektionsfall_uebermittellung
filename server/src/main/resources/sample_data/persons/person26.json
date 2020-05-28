@@ -1,33 +1,29 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "P\u00fcttlingen",
   "coronaContacts": true,
-  "dateOfBirth": "1979-11-07",
-  "email": "m.mueller@example.de",
-  "firstName": "Martina",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J859088046",
-  "lastName": "M\u00fcller",
+  "country": "DE",
+  "dateOfBirth": "1973-06-04",
+  "email": "j.schulz@example.de",
+  "firstName": "Jens",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "G386749454",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "41012328120",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
+  "phoneNumber": "68010876038",
+  "preIllnesses": [],
   "riskAreas": [
-    "GrandEst"
+    "CONTACT_WITH_CORONA_CASE"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Kaiserstra\u00dfe 57",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hauptstra\u00dfe 79",
   "symptoms": [
-    "Fieber",
-    "Kopfschmerzen",
-    "Gelenkschmerzen",
-    "Schnupfen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Husten"
+    "MUSCLE_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_APPETITE"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66974"
+  "zip": "667107"
 }

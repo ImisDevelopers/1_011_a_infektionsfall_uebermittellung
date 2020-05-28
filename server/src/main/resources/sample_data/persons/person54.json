@@ -1,31 +1,30 @@
 {
-  "city": "Riegelsberg",
+  "city": "Homburg",
   "coronaContacts": true,
-  "dateOfBirth": "1967-02-02",
-  "email": "l.schroeder@example.de",
-  "firstName": "Lisa",
-  "fluImmunization": false,
+  "country": "DE",
+  "dateOfBirth": "1996-08-06",
+  "email": "a.schulze@example.de",
+  "firstName": "Annika",
+  "fluImmunization": true,
   "gender": "female",
   "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "J560891752",
-  "lastName": "Schr\u00f6der",
+  "insuranceMembershipNumber": "D315801027",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "36109711798",
+  "phoneNumber": "711051051884",
   "preIllnesses": [
-    ""
+    "CHRONIC_LUNG_DISEASE"
   ],
   "riskAreas": [
-    "Hubei"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Aarhusweg 80",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Wintergasse 20",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Fieber",
-    "Husten"
+    "MUSCLE_PAIN",
+    "LOSS_OF_APPETITE",
+    "COUGH"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66893"
+  "zip": "661025"
 }

@@ -1,25 +1,39 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": true,
-  "dateOfBirth": "1987-07-28",
+  "city": "Merzig",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1931-06-24",
   "email": "k.schmitt@example.de",
-  "firstName": "Kai",
-  "fluImmunization": false,
+  "firstName": "Karl",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "W915401487",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Z416905717",
   "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "102174596101",
+  "phoneNumber": "2145623285",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "KIDNEY_DISEASE"
   ],
   "riskAreas": [
-    ""
+    "MEDICAL_LABORATORY"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordufer 42",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hafenstra\u00dfe 64",
+  "symptoms": [
+    "DIFFICULTY_BREATHING",
+    "MUSCLE_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "FEVER",
+    "HEADACHE",
+    "COUGH",
+    "NAUSEA",
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE",
+    "COLD",
+    "WEIGHT_LOSS"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "661086"
+  "zip": "66424"
 }

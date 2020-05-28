@@ -1,27 +1,34 @@
 {
-  "city": "Riegelsberg",
-  "coronaContacts": false,
-  "dateOfBirth": "1944-09-05",
-  "email": "j.berger@example.de",
-  "firstName": "Jens",
-  "fluImmunization": false,
+  "city": "Dudweiler",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1996-11-15",
+  "email": "k.schroeder@example.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "D104412943",
-  "lastName": "Berger",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "C627982241",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "35784521810",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "46105421406",
+  "preIllnesses": [],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aastwiete 26",
+  "street": "Z\u00e4hringerstra\u00dfe 42",
   "symptoms": [
-    "Kopfschmerzen"
+    "HEADACHE",
+    "SHORTNESS_OF_BREATH",
+    "MUSCLE_PAIN",
+    "DIFFICULTY_BREATHING",
+    "NAUSEA",
+    "WEIGHT_LOSS",
+    "FEVER",
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66076"
+  "zip": "66044"
 }

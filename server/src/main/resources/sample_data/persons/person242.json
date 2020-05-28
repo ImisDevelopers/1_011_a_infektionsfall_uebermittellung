@@ -1,27 +1,34 @@
 {
-  "city": "Heusweiler",
+  "city": "St. Wendel",
   "coronaContacts": true,
-  "dateOfBirth": "1995-06-20",
-  "email": "o.peters@example.de",
-  "firstName": "Olivia",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Y663993780",
-  "lastName": "Peters",
+  "country": "DE",
+  "dateOfBirth": "1997-06-14",
+  "email": "c.berger@example.de",
+  "firstName": "Cornelius",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Q748850893",
+  "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "416510101623",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
-    ""
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Schernerweg 73",
+  "phoneNumber": "1931837455",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "B\u00fcckerheide 5",
   "symptoms": [
-    "Erk\u00e4ltung"
+    "LOSS_OF_APPETITE",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "HEADACHE",
+    "WEIGHT_LOSS",
+    "COUGH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "FEVER"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66818"
+  "weakenedImmuneSystem": false,
+  "zip": "66842"
 }

@@ -1,28 +1,39 @@
 {
-  "city": "Kirkel",
-  "coronaContacts": false,
-  "dateOfBirth": "1930-04-18",
-  "email": "f.winkler@example.de",
-  "firstName": "Fin",
-  "fluImmunization": true,
+  "city": "St. Ingbert",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1953-10-29",
+  "email": "h.richter@example.de",
+  "firstName": "Hans",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Z713627778",
-  "lastName": "Winkler",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "S920858166",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "06868107937",
+  "phoneNumber": "72521751025",
   "preIllnesses": [
-    "Krebserkrankung"
+    "PREGNANCY"
   ],
   "riskAreas": [
-    "GrandEst"
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Wintergasse 10",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Kronenstra\u00dfe 7",
   "symptoms": [
-    "Fieber",
-    "Halschmerzen"
+    "DIFFICULTY_BREATHING",
+    "SHORTNESS_OF_BREATH",
+    "COLD",
+    "HEADACHE",
+    "BACK_PAIN",
+    "FEVER",
+    "MUSCLE_PAIN",
+    "COUGH",
+    "WEIGHT_LOSS",
+    "LOSS_OF_APPETITE",
+    "NAUSEA",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66608"
+  "zip": "66074"
 }

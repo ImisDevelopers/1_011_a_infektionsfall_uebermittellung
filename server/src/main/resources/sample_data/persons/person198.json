@@ -1,28 +1,37 @@
 {
-  "city": "Merzig",
+  "city": "Riegelsberg",
   "coronaContacts": true,
-  "dateOfBirth": "1983-05-31",
-  "email": "p.schulze@example.de",
-  "firstName": "Petra",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1949-04-30",
+  "email": "a.winkler@example.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "Y783042414",
-  "lastName": "Schulze",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "S404654428",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "619110965710",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "90211096207",
+  "preIllnesses": [],
   "riskAreas": [
-    "Hubei"
+    "COMMUNITY_FACILITY_MINORS"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Bismarckstra\u00dfe 7",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg 0",
   "symptoms": [
-    "Schnupfen",
-    "Erk\u00e4ltung"
+    "MUSCLE_PAIN",
+    "SHORTNESS_OF_BREATH",
+    "FEVER",
+    "NAUSEA",
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COLD",
+    "COUGH",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_APPETITE",
+    "BACK_PAIN",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66132"
+  "weakenedImmuneSystem": true,
+  "zip": "66021"
 }

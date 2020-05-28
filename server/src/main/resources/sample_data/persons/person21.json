@@ -1,33 +1,28 @@
 {
-  "city": "Homburg",
-  "coronaContacts": true,
-  "dateOfBirth": "1930-12-27",
-  "email": "h.richter@example.de",
-  "firstName": "Hanna",
-  "fluImmunization": true,
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1947-05-10",
+  "email": "s.lange@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "K113585139",
-  "lastName": "Richter",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "D994027897",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "103141091905",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "4313518233",
+  "preIllnesses": [],
   "riskAreas": [
-    "Madrid"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Poststra\u00dfe 54",
+  "street": "Tulpenweg 61",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Husten"
+    "COUGH",
+    "SHORTNESS_OF_BREATH",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "661051"
+  "weakenedImmuneSystem": false,
+  "zip": "66498"
 }

@@ -1,32 +1,36 @@
 {
-  "city": "Bous",
+  "city": "Kirkel",
   "coronaContacts": false,
-  "dateOfBirth": "1946-03-20",
-  "email": "e.winter@example.de",
-  "firstName": "Emma",
+  "country": "DE",
+  "dateOfBirth": "1997-09-21",
+  "email": "t.sommer@example.de",
+  "firstName": "Tim",
   "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "G588229686",
-  "lastName": "Winter",
+  "gender": "male",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "Y619151495",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "806991001106",
+  "phoneNumber": "50671651072",
   "preIllnesses": [
-    ""
+    "CHRONIC_LUNG_DISEASE"
   ],
-  "riskAreas": [
-    "New York"
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete 59",
+  "street": "Kaiserstra\u00dfe 22",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Husten",
-    "Fieber"
+    "COLD",
+    "WEIGHT_LOSS",
+    "COUGH",
+    "FEVER",
+    "DIFFICULTY_BREATHING",
+    "SHORTNESS_OF_BREATH",
+    "BACK_PAIN",
+    "MUSCLE_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "NAUSEA"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66204"
+  "weakenedImmuneSystem": false,
+  "zip": "668104"
 }

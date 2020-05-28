@@ -1,33 +1,34 @@
 {
-  "city": "P\u00fcttlingen",
+  "city": "Homburg",
   "coronaContacts": true,
-  "dateOfBirth": "1997-08-22",
-  "email": "p.schulze@example.de",
-  "firstName": "Peter",
-  "fluImmunization": false,
+  "country": "DE",
+  "dateOfBirth": "1956-07-10",
+  "email": "c.richter@example.de",
+  "firstName": "Cornelius",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "Z600387133",
-  "lastName": "Schulze",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "P578290147",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "02691052499",
+  "phoneNumber": "1010214764109",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "KIDNEY_DISEASE"
   ],
   "riskAreas": [
-    "Moscow"
+    "COMMUNITY_FACILITY_MINORS"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Schernerweg 97",
+  "street": "Aastwiete 45",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Husten"
+    "WEIGHT_LOSS",
+    "COLD",
+    "NAUSEA",
+    "HEADACHE",
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "FEVER"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "661108"
+  "zip": "661015"
 }

@@ -1,27 +1,37 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": true,
-  "dateOfBirth": "1994-01-08",
-  "email": "a.schmidt@example.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
+  "city": "Riegelsberg",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1943-10-20",
+  "email": "s.bauer@example.de",
+  "firstName": "Susanne",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "S856661933",
-  "lastName": "Schmidt",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "I499905152",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "9308705932",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "70246299106",
+  "preIllnesses": [],
   "riskAreas": [
-    ""
+    "COMMUNITY_FACILITY_MINORS"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "S\u00fcdweg 91",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 50",
   "symptoms": [
-    "Kopfschmerzen"
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "NAUSEA",
+    "MUSCLE_PAIN",
+    "DIFFICULTY_BREATHING",
+    "HEADACHE",
+    "BACK_PAIN",
+    "COUGH",
+    "SHORTNESS_OF_BREATH",
+    "FEVER",
+    "COLD",
+    "LOSS_OF_APPETITE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66250"
+  "weakenedImmuneSystem": true,
+  "zip": "66530"
 }

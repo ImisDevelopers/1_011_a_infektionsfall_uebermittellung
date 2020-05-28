@@ -1,32 +1,26 @@
 {
-  "city": "Bous",
+  "city": "Kirkel",
   "coronaContacts": false,
-  "dateOfBirth": "1993-05-20",
-  "email": "m.weber@example.de",
+  "country": "DE",
+  "dateOfBirth": "1930-04-17",
+  "email": "m.winter@example.de",
   "firstName": "Marie",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "A436311814",
-  "lastName": "Weber",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "I287942172",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "13577591049",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "0118489554",
+  "preIllnesses": [],
   "riskAreas": [
-    "Tirol"
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aastwiete 72",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Abbendiekshof 77",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Halschmerzen",
-    "Schnupfen",
-    "Fieber",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
+    "BACK_PAIN"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66955"
+  "zip": "66376"
 }

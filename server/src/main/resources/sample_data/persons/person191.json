@@ -1,25 +1,37 @@
 {
   "city": "Kirkel",
   "coronaContacts": false,
-  "dateOfBirth": "1944-08-26",
-  "email": "f.lange@example.de",
-  "firstName": "Franz",
-  "fluImmunization": true,
-  "gender": "male",
+  "country": "DE",
+  "dateOfBirth": "1972-03-17",
+  "email": "e.winter@example.de",
+  "firstName": "Emma",
+  "fluImmunization": false,
+  "gender": "female",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "V438768594",
-  "lastName": "Lange",
+  "insuranceMembershipNumber": "I459668515",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "010272107857",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "604761058100",
+  "preIllnesses": [],
   "riskAreas": [
-    "Madrid"
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Nordstra\u00dfe 52",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Schernerweg 68",
+  "symptoms": [
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "COLD",
+    "HEADACHE",
+    "MUSCLE_PAIN",
+    "BACK_PAIN",
+    "COUGH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "NAUSEA",
+    "SHORTNESS_OF_BREATH",
+    "FEVER",
+    "LOSS_OF_APPETITE"
+  ],
   "weakenedImmuneSystem": true,
-  "zip": "66084"
+  "zip": "661056"
 }

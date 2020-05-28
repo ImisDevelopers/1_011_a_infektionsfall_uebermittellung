@@ -1,5 +1,22 @@
 <template>
   <div>
+    <a-page-header
+      title="Alle Patienten"
+      style="padding-left: 0; padding-right: 0;"
+    >
+      <template slot="extra">
+        <a-button
+          @click="
+            $router.push({
+              name: 'register-patient',
+            })
+          "
+        >
+          Patient registrieren
+        </a-button>
+      </template>
+    </a-page-header>
+
     <a-card class="table-container">
       <!-- TODO refactor search in own component -->
       <a-form :model="form" class="search-container">
@@ -230,7 +247,7 @@ import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
-import IndexPatientTableCell from '@/components/IndexPatientTableCell.vue'
+import IndexPatientTableCell from '@/components/other/IndexPatientTableCell.vue'
 
 const columnsSchema: Partial<Column>[] = [
   {
@@ -451,14 +468,16 @@ export default Vue.extend({
         queryPromise
           .then((result) => {
             const header =
-              'ID;Vorname;Nachname;Geschlecht;Status;Geburtsdatum;Stadt;E-Mail;Telefonnummer;' +
-              'Straße;Hausnummer;Stadt;Versicherung;Versichertennummer'
+              'ID;Vorname;Nachname;Geschlecht;Status;Geburtsdatum;E-Mail;Telefonnummer;' +
+              'Straße;Hausnummer;PLZ;Stadt;Versicherung;Versichertennummer'
             const patients = result
               .map(
                 (patient: Patient) =>
-                  `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};${patient.patientStatus};` +
-                  `${patient.dateOfBirth};${patient.city};${patient.email};${patient.phoneNumber};${patient.street};` +
-                  `${patient.houseNumber};${patient.city};${patient.insuranceCompany};${patient.insuranceMembershipNumber}`
+                  `${patient.id};${patient.firstName};${patient.lastName};${patient.gender};` +
+                  `${patient.patientStatus};${patient.dateOfBirth};${patient.email};` +
+                  `${patient.phoneNumber};${patient.street};${patient.houseNumber};` +
+                  `${patient.zip};${patient.city};${patient.insuranceCompany};` +
+                  `${patient.insuranceMembershipNumber}`
               )
               .join('\n')
             const filename =

@@ -1,31 +1,31 @@
 {
-  "city": "Merzig",
-  "coronaContacts": true,
-  "dateOfBirth": "1986-10-04",
-  "email": "f.berger@example.de",
-  "firstName": "Franz",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "U563316186",
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1948-02-13",
+  "email": "e.berger@example.de",
+  "firstName": "Emma",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "H436598800",
   "lastName": "Berger",
   "nationality": "deutsch",
-  "phoneNumber": "2799088117",
+  "phoneNumber": "9471022105610",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "LIVER_DISEASE"
   ],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Bismarckstra\u00dfe 16",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 73",
   "symptoms": [
-    "Husten",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Fieber"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "WEIGHT_LOSS",
+    "COLD",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66980"
+  "weakenedImmuneSystem": true,
+  "zip": "66611"
 }

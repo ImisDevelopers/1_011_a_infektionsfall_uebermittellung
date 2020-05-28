@@ -1,29 +1,39 @@
 {
-  "city": "Sulzbach",
+  "city": "St. Wendel",
   "coronaContacts": true,
-  "dateOfBirth": "1977-05-28",
-  "email": "a.schmidt@example.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
+  "country": "DE",
+  "dateOfBirth": "1970-09-19",
+  "email": "p.mueller@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "L199282456",
-  "lastName": "Schmidt",
+  "insuranceMembershipNumber": "V680424495",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "2708668826",
+  "phoneNumber": "10025039261",
   "preIllnesses": [
-    ""
+    "PREGNANCY"
   ],
   "riskAreas": [
-    "Madrid"
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Abbendiekshof 32",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Wintergasse 20",
   "symptoms": [
-    "Husten",
-    "Schnupfen",
-    "Erk\u00e4ltung"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "COUGH",
+    "LOSS_OF_APPETITE",
+    "HEADACHE",
+    "FEVER",
+    "COLD",
+    "MUSCLE_PAIN",
+    "WEIGHT_LOSS",
+    "NAUSEA"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "663510"
+  "zip": "66939"
 }

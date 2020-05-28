@@ -1,33 +1,35 @@
 {
-  "city": "Homburg",
+  "city": "P\u00fcttlingen",
   "coronaContacts": true,
-  "dateOfBirth": "1994-03-16",
-  "email": "h.winter@example.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
-  "gender": "male",
+  "country": "DE",
+  "dateOfBirth": "1972-03-10",
+  "email": "p.winkler@example.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
+  "gender": "female",
   "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "W741531280",
-  "lastName": "Winter",
+  "insuranceMembershipNumber": "T348265637",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "9611435190",
+  "phoneNumber": "0082547807",
   "preIllnesses": [
-    "Krebserkrankung"
+    "RESPIRATORY_DISEASE"
   ],
   "riskAreas": [
-    "Madrid"
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Tulpenweg 49",
+  "street": "B\u00fcckerheide 61",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Husten",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Halschmerzen",
-    "Erk\u00e4ltung"
+    "COUGH",
+    "FEVER",
+    "HEADACHE",
+    "BACK_PAIN",
+    "COLD",
+    "NAUSEA",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "666910"
+  "weakenedImmuneSystem": false,
+  "zip": "66406"
 }

@@ -1,27 +1,27 @@
 {
-  "city": "St. Ingbert",
-  "coronaContacts": true,
-  "dateOfBirth": "1930-01-05",
-  "email": "m.mueller@example.de",
+  "city": "Kirkel",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1941-01-04",
+  "email": "m.bauer@example.de",
   "firstName": "Marie",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "H795873638",
-  "lastName": "M\u00fcller",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "K969737332",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "55901056165",
+  "phoneNumber": "10722601645",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "ARDS"
   ],
-  "riskAreas": [
-    "Hubei"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hauptstra\u00dfe 52",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 92",
   "symptoms": [
-    "Fieber"
+    "DIFFICULTY_BREATHING",
+    "COLD"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "665010"
+  "zip": "667107"
 }

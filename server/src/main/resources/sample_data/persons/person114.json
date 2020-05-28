@@ -1,28 +1,28 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": true,
-  "dateOfBirth": "1957-06-18",
-  "email": "k.sommer@example.de",
-  "firstName": "Konrad",
+  "city": "Heusweiler",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1957-06-15",
+  "email": "h.bauer@example.de",
+  "firstName": "Hanna",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "C467013765",
-  "lastName": "Sommer",
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "T403521991",
+  "lastName": "Bauer",
   "nationality": "deutsch",
-  "phoneNumber": "617910103271",
+  "phoneNumber": "43741089691",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Alzheimer"
   ],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Nordstra\u00dfe 4",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Aarhusweg 65",
   "symptoms": [
-    "Fieber",
-    "Atemschwierigkeiten"
+    "MUSCLE_PAIN"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66405"
+  "weakenedImmuneSystem": true,
+  "zip": "661058"
 }

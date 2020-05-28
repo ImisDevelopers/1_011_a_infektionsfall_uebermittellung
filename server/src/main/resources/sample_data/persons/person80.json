@@ -1,32 +1,33 @@
 {
-  "city": "Heusweiler",
-  "coronaContacts": true,
-  "dateOfBirth": "2005-07-05",
-  "email": "c.schulz@example.de",
-  "firstName": "Cornelius",
+  "city": "Saarlouis",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1984-07-09",
+  "email": "d.weber@example.de",
+  "firstName": "Daniela",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "A107099962",
-  "lastName": "Schulz",
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "M456715514",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "10312038750",
+  "phoneNumber": "64715431079",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "CHRONIC_LUNG_DISEASE"
   ],
   "riskAreas": [
-    "Moscow"
+    "CONTACT_WITH_CORONA_CASE"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Eisenbahnstra\u00dfe 81",
+  "street": "Eisenbahnstra\u00dfe 25",
   "symptoms": [
-    "Husten",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Halschmerzen"
+    "COUGH",
+    "MUSCLE_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "SHORTNESS_OF_BREATH",
+    "NAUSEA"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "661097"
+  "weakenedImmuneSystem": false,
+  "zip": "66712"
 }

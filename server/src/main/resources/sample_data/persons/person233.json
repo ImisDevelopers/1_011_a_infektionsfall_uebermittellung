@@ -1,32 +1,38 @@
 {
-  "city": "Dudweiler",
-  "coronaContacts": false,
-  "dateOfBirth": "1991-07-10",
-  "email": "d.lange@example.de",
-  "firstName": "Daniel",
+  "city": "Sulzbach",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1972-03-23",
+  "email": "h.mueller@example.de",
+  "firstName": "Hans",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "V627903421",
-  "lastName": "Lange",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J293976787",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "79410738646",
+  "phoneNumber": "7617075877",
   "preIllnesses": [
-    ""
+    "ARDS"
   ],
   "riskAreas": [
-    "Tirol"
+    "MEDICAL_LABORATORY"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Niekampsweg 8",
+  "street": "Steinstra\u00dfe 14",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Husten",
-    "Halschmerzen",
-    "Erk\u00e4ltung"
+    "BACK_PAIN",
+    "WEIGHT_LOSS",
+    "COLD",
+    "FEVER",
+    "LOSS_OF_APPETITE",
+    "NAUSEA",
+    "HEADACHE",
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "667105"
+  "zip": "66215"
 }

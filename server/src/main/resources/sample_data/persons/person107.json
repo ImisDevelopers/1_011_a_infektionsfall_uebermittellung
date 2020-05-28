@@ -1,34 +1,31 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": true,
-  "dateOfBirth": "1994-03-26",
-  "email": "d.bauer@example.de",
-  "firstName": "Daniela",
-  "fluImmunization": true,
+  "city": "Dudweiler",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1962-03-29",
+  "email": "p.schulze@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "A534212844",
-  "lastName": "Bauer",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "D455510103",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "10490352135",
+  "phoneNumber": "6218159970",
   "preIllnesses": [
-    "Krebserkrankung"
+    "NEUROLOGICAL_DISEASE"
   ],
-  "riskAreas": [
-    "Moscow"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Z\u00e4hringerstra\u00dfe 65",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kaiserstra\u00dfe 83",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Husten",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Kopfschmerzen"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "BACK_PAIN",
+    "NAUSEA",
+    "WEIGHT_LOSS",
+    "COLD",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "660104"
+  "weakenedImmuneSystem": false,
+  "zip": "66296"
 }

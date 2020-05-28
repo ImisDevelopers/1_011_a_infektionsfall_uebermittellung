@@ -1,25 +1,35 @@
 {
-  "city": "Heusweiler",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": true,
-  "dateOfBirth": "1928-08-08",
-  "email": "d.schmidt@example.de",
-  "firstName": "Daniela",
+  "country": "DE",
+  "dateOfBirth": "1952-08-29",
+  "email": "a.schulz@example.de",
+  "firstName": "Anna",
   "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "G152526165",
-  "lastName": "Schmidt",
+  "insuranceMembershipNumber": "P884812266",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "39107767199",
+  "phoneNumber": "9692786876",
   "preIllnesses": [
-    "Krebserkrankung"
+    "SMOKING"
   ],
   "riskAreas": [
-    "Hubei"
+    "MEDICAL_LABORATORY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Aarhusweg 31",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "66849"
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 28",
+  "symptoms": [
+    "WEIGHT_LOSS",
+    "HEADACHE",
+    "BACK_PAIN",
+    "COUGH",
+    "LOSS_OF_APPETITE",
+    "MUSCLE_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "FEVER"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66269"
 }

@@ -1,33 +1,36 @@
 {
-  "city": "Homburg",
+  "city": "Sulzbach",
   "coronaContacts": true,
-  "dateOfBirth": "1990-04-10",
-  "email": "f.weber@example.de",
-  "firstName": "Fin",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "U286009450",
-  "lastName": "Weber",
+  "country": "DE",
+  "dateOfBirth": "1987-02-17",
+  "email": "a.winter@example.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "E907932366",
+  "lastName": "Winter",
   "nationality": "deutsch",
-  "phoneNumber": "1252866929",
+  "phoneNumber": "909102753102",
   "preIllnesses": [
-    ""
+    "DIABETES"
   ],
-  "riskAreas": [
-    "Hubei"
-  ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Z\u00e4hringerstra\u00dfe 54",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Kaiserstra\u00dfe 78",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Halschmerzen",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Husten"
+    "HEADACHE",
+    "COUGH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "NAUSEA",
+    "SHORTNESS_OF_BREATH",
+    "DIFFICULTY_BREATHING",
+    "MUSCLE_PAIN",
+    "LOSS_OF_APPETITE",
+    "COLD",
+    "BACK_PAIN",
+    "FEVER"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "662710"
+  "zip": "661073"
 }

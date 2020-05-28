@@ -1,32 +1,37 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": false,
-  "dateOfBirth": "1947-03-09",
-  "email": "f.schmidt@example.de",
-  "firstName": "Fin",
+  "city": "Riegelsberg",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1999-02-05",
+  "email": "k.schmidt@example.de",
+  "firstName": "Kai",
   "fluImmunization": true,
   "gender": "male",
   "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "D264112119",
+  "insuranceMembershipNumber": "V676567501",
   "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "2388496965",
-  "preIllnesses": [
-    ""
-  ],
+  "phoneNumber": "102106916697",
+  "preIllnesses": [],
   "riskAreas": [
-    "Madrid"
+    "COMMUNITY_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Abbendiekshof 17",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Hafenstra\u00dfe 32",
   "symptoms": [
-    "Fieber",
-    "Erk\u00e4ltung",
-    "Halschmerzen",
-    "Atemschwierigkeiten",
-    "Kopfschmerzen",
-    "Schnupfen"
+    "NAUSEA",
+    "COUGH",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "HEADACHE",
+    "COLD",
+    "FEVER",
+    "LOSS_OF_APPETITE",
+    "SHORTNESS_OF_BREATH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "BACK_PAIN",
+    "MUSCLE_PAIN"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66871"
+  "zip": "668010"
 }

@@ -1,30 +1,31 @@
 {
-  "city": "Saarlouis",
+  "city": "Neunkirchen",
   "coronaContacts": true,
-  "dateOfBirth": "1975-11-01",
-  "email": "f.mueller@example.de",
-  "firstName": "Fin",
+  "country": "DE",
+  "dateOfBirth": "1969-11-24",
+  "email": "e.klein@example.de",
+  "firstName": "Emma",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "R725918919",
-  "lastName": "M\u00fcller",
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "K120825650",
+  "lastName": "Klein",
   "nationality": "deutsch",
-  "phoneNumber": "21465106693",
-  "preIllnesses": [
-    ""
-  ],
-  "riskAreas": [
-    "Tirol"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hafenstra\u00dfe 1",
+  "phoneNumber": "84631224110",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Waldstra\u00dfe 79",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Atemschwierigkeiten",
-    "Fieber",
-    "Gelenkschmerzen"
+    "LOSS_OF_APPETITE",
+    "SHORTNESS_OF_BREATH",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "BACK_PAIN",
+    "COLD",
+    "COUGH",
+    "FEVER"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66118"
+  "weakenedImmuneSystem": false,
+  "zip": "66749"
 }

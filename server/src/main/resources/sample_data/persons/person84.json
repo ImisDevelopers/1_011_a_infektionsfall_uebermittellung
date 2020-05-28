@@ -1,33 +1,30 @@
 {
-  "city": "V\u00f6lklingen",
-  "coronaContacts": false,
-  "dateOfBirth": "1950-03-22",
-  "email": "a.winkler@example.de",
-  "firstName": "Annika",
-  "fluImmunization": false,
-  "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "D198269319",
-  "lastName": "Winkler",
+  "city": "Bous",
+  "coronaContacts": true,
+  "country": "DE",
+  "dateOfBirth": "1984-12-08",
+  "email": "c.lange@example.de",
+  "firstName": "Cornelius",
+  "fluImmunization": true,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "A891764728",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "91061943114",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
-  "riskAreas": [
-    "Tirol"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aastwiete 48",
+  "phoneNumber": "8282586736",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Kronenstra\u00dfe 23",
   "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Schnupfen",
-    "Husten",
-    "Fieber",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen"
+    "COLD",
+    "HEADACHE",
+    "NAUSEA",
+    "LOSS_OF_APPETITE",
+    "FEVER",
+    "DIFFICULTY_BREATHING",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "661026"
+  "zip": "6621010"
 }

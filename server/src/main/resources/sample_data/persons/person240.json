@@ -1,33 +1,30 @@
 {
-  "city": "Riegelsberg",
+  "city": "Saarlouis",
   "coronaContacts": true,
-  "dateOfBirth": "1935-03-29",
-  "email": "m.berger@example.de",
-  "firstName": "Martina",
+  "country": "DE",
+  "dateOfBirth": "1951-10-11",
+  "email": "a.mueller@example.de",
+  "firstName": "Annika",
   "fluImmunization": false,
   "gender": "female",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "B660782698",
-  "lastName": "Berger",
+  "insuranceMembershipNumber": "G603843081",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "010829731074",
+  "phoneNumber": "814106717910",
   "preIllnesses": [
-    ""
+    "CHRONIC_LUNG_DISEASE"
   ],
   "riskAreas": [
-    "Moscow"
+    "COMMUNITY_FACILITY_MINORS"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Kronenstra\u00dfe 68",
+  "street": "Hauptstra\u00dfe 57",
   "symptoms": [
-    "Schnupfen",
-    "Fieber",
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten"
+    "BACK_PAIN",
+    "FEVER",
+    "COLD"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66969"
+  "zip": "66602"
 }

@@ -1,28 +1,35 @@
 {
-  "city": "Merzig",
-  "coronaContacts": true,
-  "dateOfBirth": "1995-08-28",
-  "email": "f.peters@example.de",
-  "firstName": "Fin",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "R705064109",
-  "lastName": "Peters",
+  "city": "Sulzbach",
+  "coronaContacts": false,
+  "country": "DE",
+  "dateOfBirth": "1957-02-15",
+  "email": "e.weber@example.de",
+  "firstName": "Emma",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "V813709631",
+  "lastName": "Weber",
   "nationality": "deutsch",
-  "phoneNumber": "61059180339",
+  "phoneNumber": "9796886805",
   "preIllnesses": [
-    "Krebserkrankung"
+    "LIVER_DISEASE"
   ],
-  "riskAreas": [
-    "GrandEst"
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Steinstra\u00dfe 34",
+  "street": "Rosenstra\u00dfe 68",
   "symptoms": [
-    "Kopfschmerzen",
-    "Husten"
+    "COLD",
+    "LOSS_OF_APPETITE",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "COUGH",
+    "BACK_PAIN",
+    "FEVER",
+    "NAUSEA",
+    "WEIGHT_LOSS",
+    "MUSCLE_PAIN"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "660110"
+  "zip": "669101"
 }

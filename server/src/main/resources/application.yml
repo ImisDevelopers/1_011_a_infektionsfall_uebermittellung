@@ -39,7 +39,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
-    url: jdbc:postgresql:///staging?cloudSqlInstance=onyx-yeti-271818:europe-west3:challenge-11&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres
+    url: jdbc:postgresql:///staging/pull_requests?cloudSqlInstance=onyx-yeti-271818:europe-west3:challenge-11&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres
     initialization-mode: always
   jpa:
     hibernate:

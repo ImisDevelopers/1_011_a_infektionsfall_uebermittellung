@@ -5,7 +5,10 @@
     :labelCol="{ div: 24 }"
     :wrapperCol="{ div: 24 }"
   >
-    <a-checkbox-group v-decorator="['symptoms', { initialValue: symptoms }]">
+    <a-checkbox-group
+      v-decorator="['symptoms', { initialValue: symptoms }]"
+      @change="symptomsChanged"
+    >
       <a-row>
         <a-col
           :key="symptom.value"
@@ -20,6 +23,7 @@
     </a-checkbox-group>
     <div style="display: flex; align-items: center; align-self: stretch;">
       <a-checkbox
+        @change="showOtherSymptomsChanged"
         v-model="showOtherSymptoms"
         v-decorator="['showOtherSymptoms', { initialValue: showOtherSymptoms }]"
         style="flex: 0 0 auto;"
@@ -72,6 +76,14 @@ export default Vue.extend({
       symptomsOther: '',
       showOtherSymptoms: false,
     }
+  },
+  methods: {
+    symptomsChanged(symptoms: string[]) {
+      this.$emit('symptomsChanged', symptoms)
+    },
+    showOtherSymptomsChanged() {
+      this.$emit('showOtherSymptomsChanged', this.showOtherSymptoms)
+    },
   },
 })
 </script>

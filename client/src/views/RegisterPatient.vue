@@ -65,7 +65,11 @@
 
           <!-- Symptoms -->
           <a-collapse-panel header="Symptome" key="3">
-            <SymptomsForm :form="form" />
+            <SymptomsForm
+              :form="form"
+              @symptomsChanged="symptomsChanged"
+              @showOtherSymptomsChanged="showOtherSymptomsChanged"
+            />
 
             <a-form-item
               :labelCol="{ div: 24 }"
@@ -73,12 +77,18 @@
               class="no-double-colon-form-field"
               label="Wie schnell sind die Beschwerden aufgetreten?"
             >
-              <a-radio-group v-decorator="['speedOfSymptomsOutbreak']">
+              <a-radio-group
+                v-decorator="['speedOfSymptomsOutbreak']"
+                :disabled="!showSpeedOfSymptoms"
+              >
                 <a-radio value="suddenly">
                   Plötzlich, innerhalb von einem Tag
                 </a-radio>
                 <a-radio value="slow">
                   Langsam, innerhalb von mehreren Tagen
+                </a-radio>
+                <a-radio value="unknown">
+                  Nicht bekannt
                 </a-radio>
               </a-radio-group>
             </a-form-item>
@@ -92,6 +102,7 @@
               <a-radio-group v-decorator="['fluImmunization']">
                 <a-radio value="true">Ja</a-radio>
                 <a-radio value="false">Nein</a-radio>
+                <a-radio value="">Nicht bekannt</a-radio>
               </a-radio-group>
             </a-form-item>
           </a-collapse-panel>
@@ -140,6 +151,7 @@ import IllnessStatusForm from '@/components/form-groups/IllnessStatusForm.vue'
 interface State {
   form: any
   createdPatient: Patient | null
+  showSpeedOfSymptoms: boolean
 }
 
 export default Vue.extend({
@@ -155,6 +167,7 @@ export default Vue.extend({
     return {
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdPatient: null,
+      showSpeedOfSymptoms: false,
     }
   },
   methods: {
@@ -240,6 +253,28 @@ export default Vue.extend({
             this.$notification.error(notification)
           })
       })
+    },
+    symptomsChanged(symptoms: string[]) {
+      this.updateSymptomsForm(
+        symptoms,
+        this.form.getFieldValue('showOtherSymptoms')
+      )
+    },
+    showOtherSymptomsChanged(hasOtherSymptoms: boolean) {
+      this.updateSymptomsForm(
+        this.form.getFieldValue('symptoms'),
+        hasOtherSymptoms
+      )
+    },
+    updateSymptomsForm(symptoms: string[], hasOtherSymptoms: boolean) {
+      if ((symptoms && symptoms.length > 0) || hasOtherSymptoms) {
+        this.showSpeedOfSymptoms = true
+      } else {
+        this.showSpeedOfSymptoms = false
+        this.form.setFieldsValue({
+          speedOfSymptomsOutbreak: undefined,
+        })
+      }
     },
   },
 })

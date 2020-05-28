@@ -1,29 +1,30 @@
 {
-  "city": "Neunkirchen",
+  "city": "Bous",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1968-03-07",
-  "email": "p.bauer@example.de",
-  "firstName": "Peter",
-  "fluImmunization": false,
+  "dateOfBirth": "1948-09-18",
+  "email": "d.wagner@example.de",
+  "firstName": "Daniel",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "X953598460",
-  "lastName": "Bauer",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Y190945411",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "536937810105",
+  "phoneNumber": "8610158199",
   "preIllnesses": [
-    ""
+    "ADIPOSITAS"
   ],
   "riskAreas": [
-    "Madrid"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Sonnenweg 97",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordstra\u00dfe 41",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Fieber"
+    "COLD",
+    "BACK_PAIN",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "667107"
+  "weakenedImmuneSystem": false,
+  "zip": "66604"
 }

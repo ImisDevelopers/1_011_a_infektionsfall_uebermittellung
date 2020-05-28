@@ -1,32 +1,37 @@
 {
-  "city": "St. Wendel",
+  "city": "Sulzbach",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1955-08-06",
-  "email": "j.wagner@example.de",
-  "firstName": "Jan",
+  "dateOfBirth": "1937-07-27",
+  "email": "k.schmitt@example.de",
+  "firstName": "Karl",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "O392956587",
-  "lastName": "Wagner",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "T136052248",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "4004991547",
+  "phoneNumber": "33752431010",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "CARDIOVASCULAR_DISEASE"
   ],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Kronenstra\u00dfe 69",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Kaiserstra\u00dfe 78",
   "symptoms": [
-    "Schnupfen",
-    "Kopfschmerzen",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Fieber"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "LOSS_OF_APPETITE",
+    "FEVER",
+    "NAUSEA",
+    "HEADACHE",
+    "COLD",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "COUGH",
+    "BACK_PAIN"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66872"
+  "zip": "66033"
 }

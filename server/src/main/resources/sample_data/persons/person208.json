@@ -1,33 +1,30 @@
 {
-  "city": "Saarbr\u00fccken",
-  "coronaContacts": false,
+  "city": "Heusweiler",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1932-12-09",
-  "email": "p.schulz@example.de",
-  "firstName": "Peter",
-  "fluImmunization": false,
+  "dateOfBirth": "2002-07-30",
+  "email": "k.schroeder@example.de",
+  "firstName": "Kai",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "W927844881",
-  "lastName": "Schulz",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "Z706912715",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "7072101000106",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "72752088510",
+  "preIllnesses": [],
   "riskAreas": [
-    "New York"
+    "MEDICAL_LABORATORY"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Sonnenweg 19",
+  "street": "Rosenstra\u00dfe 37",
   "symptoms": [
-    "Halschmerzen",
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Husten",
-    "Fieber",
-    "Atemschwierigkeiten"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "DIFFICULTY_BREATHING",
+    "MUSCLE_PAIN",
+    "LOSS_OF_APPETITE",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66569"
+  "weakenedImmuneSystem": false,
+  "zip": "66749"
 }

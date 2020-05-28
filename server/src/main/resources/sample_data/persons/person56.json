@@ -1,32 +1,34 @@
 {
-  "city": "Merzig",
+  "city": "Dudweiler",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1966-09-13",
-  "email": "k.mueller@example.de",
-  "firstName": "Konrad",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "X572163615",
-  "lastName": "M\u00fcller",
+  "dateOfBirth": "1977-06-17",
+  "email": "a.wagner@example.de",
+  "firstName": "Anna",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "S265564833",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "874010345010",
+  "phoneNumber": "414310842104",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "IMMUNODEFICIENCY"
   ],
-  "riskAreas": [
-    "Moscow"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "S\u00fcdweg 34",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Eisenbahnstra\u00dfe 68",
   "symptoms": [
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Gelenkschmerzen"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COLD",
+    "COUGH",
+    "LOSS_OF_APPETITE",
+    "BACK_PAIN",
+    "MUSCLE_PAIN",
+    "HEADACHE",
+    "WEIGHT_LOSS",
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66156"
+  "zip": "661810"
 }

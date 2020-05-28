@@ -1,12 +1,13 @@
 <template>
-  <a-card style="max-width: 500px; margin: 2rem auto; min-height: 300px;">
-    <div>
-      <a-form
-        :form="form"
-        :label-col="{ span: 6 }"
-        :wrapper-col="{ span: 18 }"
-        @submit.prevent="handleSubmit"
-      >
+  <div style="max-width: 500px; margin: 0 auto;">
+    <a-page-header
+      title="Testresultat zuordnen"
+      sub-title=""
+      style="padding-left: 0; padding-right: 0;"
+    />
+
+    <a-card>
+      <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
         <!-- Labor -->
         <LaboratoryInput
           :form="form"
@@ -112,17 +113,17 @@
           </a-button>
         </a-form-item>
       </a-form>
-    </div>
-  </a-card>
+    </a-card>
+  </div>
 </template>
 
 <script lang="ts">
 import { Institution, LabTest } from '@/api/SwaggerApi'
 import Vue from 'vue'
 import Api from '@/api'
-import TestInput from '@/components/TestInput.vue'
-import LaboratoryInput from '@/components/LaboratoryInput.vue'
-import DateInput from '@/components/DateInput.vue'
+import TestInput from '@/components/inputs/TestInput.vue'
+import LaboratoryInput from '@/components/inputs/LaboratoryInput.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
 import moment from 'moment'

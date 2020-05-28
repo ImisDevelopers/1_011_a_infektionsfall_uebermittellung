@@ -1,26 +1,30 @@
 {
-  "city": "Riegelsberg",
+  "city": "St. Wendel",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1988-03-24",
-  "email": "t.schroeder@example.de",
-  "firstName": "Tim",
+  "dateOfBirth": "1943-09-28",
+  "email": "j.richter@example.de",
+  "firstName": "Jens",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "J236739271",
-  "lastName": "Schr\u00f6der",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "H135509761",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "610710528953",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "5082148628",
+  "preIllnesses": [],
   "riskAreas": [
-    "New York"
+    "MEDICAL_LABORATORY"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 75",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hohenzollerstra\u00dfe 3",
+  "symptoms": [
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "FEVER",
+    "WEIGHT_LOSS",
+    "COUGH",
+    "MUSCLE_PAIN"
+  ],
   "weakenedImmuneSystem": true,
-  "zip": "66264"
+  "zip": "66233"
 }

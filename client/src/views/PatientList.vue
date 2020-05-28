@@ -1,5 +1,22 @@
 <template>
   <div>
+    <a-page-header
+      title="Alle Patienten"
+      style="padding-left: 0; padding-right: 0;"
+    >
+      <template slot="extra">
+        <a-button
+          @click="
+            $router.push({
+              name: 'register-patient',
+            })
+          "
+        >
+          Patient registrieren
+        </a-button>
+      </template>
+    </a-page-header>
+
     <a-card class="table-container">
       <!-- TODO refactor search in own component -->
       <a-form :model="form" class="search-container">
@@ -230,7 +247,7 @@ import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
-import IndexPatientTableCell from '@/components/IndexPatientTableCell.vue'
+import IndexPatientTableCell from '@/components/other/IndexPatientTableCell.vue'
 
 const columnsSchema: Partial<Column>[] = [
   {

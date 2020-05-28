@@ -1,35 +1,30 @@
 {
-  "city": "Dudweiler",
+  "city": "P\u00fcttlingen",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1979-11-21",
-  "email": "p.richter@example.de",
-  "firstName": "Petra",
+  "dateOfBirth": "1934-07-20",
+  "email": "f.schulze@example.de",
+  "firstName": "Fin",
   "fluImmunization": true,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "O692362342",
-  "lastName": "Richter",
+  "insuranceMembershipNumber": "D510751046",
+  "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "48740110640",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
-    ""
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Aarhusweg 42",
+  "phoneNumber": "23226025610",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Nordufer 94",
   "symptoms": [
-    "Husten",
-    "Gelenkschmerzen",
-    "Halschmerzen",
-    "Fieber",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Erk\u00e4ltung",
-    "Schnupfen"
+    "FEVER",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "COUGH",
+    "WEIGHT_LOSS",
+    "HEADACHE",
+    "DIFFICULTY_BREATHING"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "662104"
+  "weakenedImmuneSystem": true,
+  "zip": "66342"
 }

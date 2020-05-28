@@ -1,14 +1,14 @@
 name: Pull Request
 
 on:
-  pull_request:
-    branches:
-    - dev
-    - pilot
-    types:
-    - opened
-    - closed
-    - synchronize
+#  pull_request:
+#    branches:
+#    - dev
+#    - pilot
+#    types:
+#    - opened
+#    - closed
+#    - synchronize
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -21,7 +21,7 @@ env:
 
 jobs:
   stop-pr:
-    if: github.event.pull_request.closed == true
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
     name: Stop PR
     runs-on: ubuntu-latest
     steps:
@@ -101,7 +101,7 @@ jobs:
           --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
           --region=europe-west1
 
-        PR_URL="$(gcloud beta run services describe imis-pr-417 --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
+        PR_URL="$(gcloud beta run services describe imis-pr-${PR_NUMBER} --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
         echo "::set-env name=PR_COMMENT_MESSAGE::${PR_URL}"
 
     - name: comment PR

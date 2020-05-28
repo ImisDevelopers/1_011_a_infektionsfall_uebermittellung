@@ -2,28 +2,33 @@
   "city": "Dudweiler",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1935-02-20",
-  "email": "p.schulz@example.de",
-  "firstName": "Peter",
+  "dateOfBirth": "1947-02-09",
+  "email": "t.lange@example.de",
+  "firstName": "Tim",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "I423337234",
-  "lastName": "Schulz",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "W959652076",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "9560466183",
+  "phoneNumber": "107810596969",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "IMMUNODEFICIENCY"
   ],
-  "riskAreas": [
-    "Hubei"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hohenzollerstra\u00dfe 66",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Schernerweg 44",
   "symptoms": [
-    "Fieber",
-    "Gelenkschmerzen"
+    "DIFFICULTY_BREATHING",
+    "NAUSEA",
+    "SHORTNESS_OF_BREATH",
+    "COUGH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "COLD",
+    "LOSS_OF_APPETITE",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "662106"
+  "weakenedImmuneSystem": true,
+  "zip": "66579"
 }

@@ -1,26 +1,32 @@
 {
-  "city": "Saarbr\u00fccken",
+  "city": "Sulzbach",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1937-07-07",
-  "email": "e.winkler@example.de",
-  "firstName": "Emma",
+  "dateOfBirth": "1977-06-08",
+  "email": "k.mueller@example.de",
+  "firstName": "Konrad",
   "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "U941695219",
-  "lastName": "Winkler",
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "J930568802",
+  "lastName": "M\u00fcller",
   "nationality": "deutsch",
-  "phoneNumber": "6374545892",
+  "phoneNumber": "65419518100",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "SMOKING"
   ],
   "riskAreas": [
-    "Moscow"
+    "COMMUNITY_FACILITY_MINORS"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hohenzollerstra\u00dfe 62",
-  "symptoms": [],
-  "weakenedImmuneSystem": false,
-  "zip": "665100"
+  "street": "Abbachstra\u00dfe 28",
+  "symptoms": [
+    "DIFFICULTY_BREATHING",
+    "BACK_PAIN",
+    "MUSCLE_PAIN",
+    "LOSS_OF_APPETITE",
+    "COUGH"
+  ],
+  "weakenedImmuneSystem": true,
+  "zip": "66806"
 }

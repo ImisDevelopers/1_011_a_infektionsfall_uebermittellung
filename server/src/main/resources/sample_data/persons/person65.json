@@ -1,32 +1,37 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "P\u00fcttlingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1928-09-13",
-  "email": "o.weber@example.de",
-  "firstName": "Olivia",
+  "dateOfBirth": "2004-05-19",
+  "email": "a.schroeder@example.de",
+  "firstName": "Anna",
   "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "M761962359",
-  "lastName": "Weber",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "K274476883",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "8000257872",
+  "phoneNumber": "91547108872",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "RESPIRATORY_DISEASE"
   ],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
   "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Eisenbahnstra\u00dfe 65",
+  "street": "Nordufer 64",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Kopfschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen",
-    "Erk\u00e4ltung"
+    "WEIGHT_LOSS",
+    "SHORTNESS_OF_BREATH",
+    "LOSS_OF_APPETITE",
+    "COUGH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "BACK_PAIN",
+    "DIFFICULTY_BREATHING",
+    "HEADACHE",
+    "NAUSEA"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66259"
+  "weakenedImmuneSystem": true,
+  "zip": "66743"
 }

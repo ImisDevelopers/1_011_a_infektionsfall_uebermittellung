@@ -1,33 +1,25 @@
 {
-  "city": "St. Wendel",
+  "city": "V\u00f6lklingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1973-03-02",
-  "email": "j.berger@example.de",
-  "firstName": "Jan",
+  "dateOfBirth": "1957-11-18",
+  "email": "k.peters@example.de",
+  "firstName": "Karl",
   "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "A414064734",
-  "lastName": "Berger",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "J332078427",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "43940710016",
-  "preIllnesses": [
-    ""
-  ],
-  "riskAreas": [
-    "Madrid"
-  ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Bismarckstra\u00dfe 34",
+  "phoneNumber": "2996291450",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Sonnenweg 52",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Husten",
-    "Schnupfen",
-    "Fieber"
+    "DIFFICULTY_BREATHING",
+    "COUGH"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "6610105"
+  "zip": "66173"
 }

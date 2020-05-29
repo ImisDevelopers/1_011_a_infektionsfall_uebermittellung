@@ -4,7 +4,7 @@
   "country": "DE",
   "dateOfBirth": "1977-03-24",
   "email": "p.bauer@example.de",
-  "firstName": "Peter",
+  "firstName": "Peter2",
   "fluImmunization": true,
   "gender": "male",
   "insuranceCompany": "DAK Gesundheit",
@@ -12,19 +12,15 @@
   "lastName": "Bauer",
   "nationality": "deutsch",
   "phoneNumber": "11081960013",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
-  "riskAreas": [
-    "Moscow"
-  ],
+  "preIllnesses": [],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Mittel",
   "street": "Abbendiekshof 64",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Schnupfen"
+    "MUSCLE_PAIN",
+    "COLD",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": false,
+  "weakenedImmuneSystem": true,
   "zip": "66908"
 }

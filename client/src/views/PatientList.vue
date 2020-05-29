@@ -247,7 +247,7 @@ import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
 import Api from '@/api'
 import moment from 'moment'
-import IndexPatientTableCell from '@/components/IndexPatientTableCell.vue'
+import IndexPatientTableCell from '@/components/other/IndexPatientTableCell.vue'
 
 const columnsSchema: Partial<Column>[] = [
   {
@@ -519,16 +519,12 @@ export default Vue.extend({
         },
       }
     },
-    getQuarantineSelection(): (PatientStatus | null)[] {
+    getQuarantineSelection(): PatientStatus[] {
       if (!this.quarantineSelection) {
         return []
       }
       if (this.quarantineSelection === 'NO_SELECTION') {
-        return [
-          'QUARANTINE_RELEASED',
-          'QUARANTINE_PROFESSIONBAN_RELEASED',
-          null,
-        ]
+        return ['QUARANTINE_RELEASED', 'QUARANTINE_PROFESSIONBAN_RELEASED']
       } else {
         return [this.quarantineSelection as PatientStatus]
       }

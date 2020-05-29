@@ -1,26 +1,38 @@
 {
-  "city": "Saarlouis",
-  "coronaContacts": true,
+  "city": "Neunkirchen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1995-11-22",
-  "email": "c.schulze@example.de",
-  "firstName": "Christopher",
-  "fluImmunization": true,
+  "dateOfBirth": "1937-02-05",
+  "email": "p.winkler@example.de",
+  "firstName": "Peter",
+  "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "H905488247",
-  "lastName": "Schulze",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "O700248296",
+  "lastName": "Winkler",
   "nationality": "deutsch",
-  "phoneNumber": "7908075957",
+  "phoneNumber": "73581057306",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "Alzheimer"
   ],
   "riskAreas": [
-    "Moscow"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hohenzollerstra\u00dfe 35",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hauptstra\u00dfe 92",
+  "symptoms": [
+    "MUSCLE_PAIN",
+    "FEVER",
+    "COLD",
+    "SHORTNESS_OF_BREATH",
+    "COUGH",
+    "BACK_PAIN",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "NAUSEA",
+    "HEADACHE",
+    "WEIGHT_LOSS",
+    "LOSS_OF_APPETITE"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "66728"
+  "zip": "66240"
 }

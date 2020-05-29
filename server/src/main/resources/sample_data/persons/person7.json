@@ -1,26 +1,27 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
+  "city": "Saarbr\u00fccken",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1998-07-24",
-  "email": "d.mueller@example.de",
-  "firstName": "Daniela",
+  "dateOfBirth": "1972-08-10",
+  "email": "j.peters@example.de",
+  "firstName": "Jan",
   "fluImmunization": true,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "KNAPPSCHAFT",
-  "insuranceMembershipNumber": "D154318806",
-  "lastName": "M\u00fcller",
+  "insuranceMembershipNumber": "P639931481",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "5133387262",
+  "phoneNumber": "68107234309",
   "preIllnesses": [
-    "Krebserkrankung"
+    "RESPIRATORY_DISEASE"
   ],
-  "riskAreas": [
-    ""
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Sonnenweg 59",
-  "symptoms": [],
-  "weakenedImmuneSystem": true,
-  "zip": "66317"
+  "street": "Tulpenweg 69",
+  "symptoms": [
+    "LOSS_OF_APPETITE",
+    "BACK_PAIN"
+  ],
+  "weakenedImmuneSystem": false,
+  "zip": "66050"
 }

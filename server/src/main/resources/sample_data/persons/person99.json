@@ -1,30 +1,30 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": false,
+  "city": "Saarlouis",
+  "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1990-10-24",
-  "email": "d.schulze@example.de",
-  "firstName": "Daniel",
-  "fluImmunization": true,
+  "dateOfBirth": "1992-03-15",
+  "email": "c.schulze@example.de",
+  "firstName": "Christopher",
+  "fluImmunization": false,
   "gender": "male",
   "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "A806957378",
+  "insuranceMembershipNumber": "W747791119",
   "lastName": "Schulze",
   "nationality": "deutsch",
-  "phoneNumber": "65652341013",
+  "phoneNumber": "7561853747",
   "preIllnesses": [
-    "Krebserkrankung"
+    "ADIPOSITAS"
   ],
-  "riskAreas": [
-    "New York"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Poststra\u00dfe 76",
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Sonnenweg 15",
   "symptoms": [
-    "Erk\u00e4ltung",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
+    "SHORTNESS_OF_BREATH",
+    "DIFFICULTY_BREATHING",
+    "FEVER",
+    "COUGH",
+    "HEADACHE"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66994"
+  "weakenedImmuneSystem": true,
+  "zip": "661210"
 }

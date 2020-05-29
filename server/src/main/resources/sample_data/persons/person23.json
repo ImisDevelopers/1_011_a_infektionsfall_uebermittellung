@@ -1,30 +1,28 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Heusweiler",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1948-01-03",
-  "email": "m.schmidt@example.de",
-  "firstName": "Matthias",
+  "dateOfBirth": "1939-07-15",
+  "email": "k.sommer@example.de",
+  "firstName": "Kai",
   "fluImmunization": false,
   "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "O390894296",
-  "lastName": "Schmidt",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "F357553274",
+  "lastName": "Sommer",
   "nationality": "deutsch",
-  "phoneNumber": "43634109578",
+  "phoneNumber": "7496499091",
   "preIllnesses": [
-    "Krebserkrankung"
+    "CANCER"
   ],
   "riskAreas": [
-    ""
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Hafenstra\u00dfe 44",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "B\u00fcckerheide 26",
   "symptoms": [
-    "Fieber",
-    "Kopfschmerzen",
-    "Gelenkschmerzen"
+    "SHORTNESS_OF_BREATH"
   ],
   "weakenedImmuneSystem": true,
-  "zip": "66685"
+  "zip": "661034"
 }

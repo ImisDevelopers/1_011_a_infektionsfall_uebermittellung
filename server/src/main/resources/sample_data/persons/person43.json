@@ -1,30 +1,32 @@
 {
-  "city": "Riegelsberg",
+  "city": "St. Wendel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1928-11-27",
-  "email": "c.sommer@example.de",
-  "firstName": "Christopher",
+  "dateOfBirth": "1925-05-26",
+  "email": "l.schmidt@example.de",
+  "firstName": "Lisa",
   "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "A198524063",
-  "lastName": "Sommer",
+  "gender": "female",
+  "insuranceCompany": "AOK",
+  "insuranceMembershipNumber": "T737888347",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "4024455022",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "4905814770",
+  "preIllnesses": [],
   "riskAreas": [
-    "GrandEst"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hohenzollerstra\u00dfe 84",
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Im KramersfeldAar\u00f6stra\u00dfe 47",
   "symptoms": [
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Gelenkschmerzen"
+    "COLD",
+    "BACK_PAIN",
+    "LOSS_OF_APPETITE",
+    "MUSCLE_PAIN",
+    "FEVER",
+    "SHORTNESS_OF_BREATH",
+    "WEIGHT_LOSS"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66612"
+  "weakenedImmuneSystem": true,
+  "zip": "664110"
 }

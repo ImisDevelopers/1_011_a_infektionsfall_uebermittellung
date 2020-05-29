@@ -1,35 +1,28 @@
 {
-  "city": "Dudweiler",
+  "city": "Sulzbach",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "2002-04-18",
-  "email": "h.peters@example.de",
-  "firstName": "Hans",
-  "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "I199886596",
-  "lastName": "Peters",
+  "dateOfBirth": "1966-12-23",
+  "email": "a.wagner@example.de",
+  "firstName": "Annika",
+  "fluImmunization": true,
+  "gender": "female",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "E455589390",
+  "lastName": "Wagner",
   "nationality": "deutsch",
-  "phoneNumber": "510050106413",
+  "phoneNumber": "4220969029",
   "preIllnesses": [
-    ""
+    "CANCER"
   ],
-  "riskAreas": [
-    "Moscow"
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Hafenstra\u00dfe 30",
+  "street": "S\u00fcdweg 78",
   "symptoms": [
-    "Halschmerzen",
-    "Kopfschmerzen",
-    "Schnupfen",
-    "Erk\u00e4ltung",
-    "Husten",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Fieber"
+    "COUGH",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": false,
-  "zip": "66670"
+  "weakenedImmuneSystem": true,
+  "zip": "663109"
 }

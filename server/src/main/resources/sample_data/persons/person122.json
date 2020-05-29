@@ -1,30 +1,31 @@
 {
-  "city": "Merzig",
-  "coronaContacts": true,
+  "city": "Neunkirchen",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1932-04-28",
-  "email": "j.mueller@example.de",
-  "firstName": "Jan",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "U285972787",
-  "lastName": "M\u00fcller",
+  "dateOfBirth": "1991-07-13",
+  "email": "i.lange@example.de",
+  "firstName": "Isabella",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "V570473733",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "3103103410680",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
+  "phoneNumber": "74676102120",
+  "preIllnesses": [],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Nordufer 99",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Nordufer 20",
   "symptoms": [
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Schnupfen"
+    "COUGH",
+    "COLD",
+    "LOSS_OF_APPETITE",
+    "SHORTNESS_OF_BREATH",
+    "MUSCLE_PAIN",
+    "FEVER"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "661007"
+  "weakenedImmuneSystem": false,
+  "zip": "66169"
 }

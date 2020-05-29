@@ -1,28 +1,25 @@
 {
-  "city": "Sulzbach",
+  "city": "P\u00fcttlingen",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1968-05-28",
-  "email": "j.weber@example.de",
-  "firstName": "Jan",
-  "fluImmunization": false,
+  "dateOfBirth": "1997-06-09",
+  "email": "k.richter@example.de",
+  "firstName": "Karl",
+  "fluImmunization": true,
   "gender": "male",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "O600422869",
-  "lastName": "Weber",
+  "insuranceCompany": "KNAPPSCHAFT",
+  "insuranceMembershipNumber": "U914157804",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "5655743132",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
-  "riskAreas": [
-    "Moscow"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "B\u00fcckerheide 98",
+  "phoneNumber": "1006762676",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Hauptstra\u00dfe 69",
   "symptoms": [
-    "Kopfschmerzen"
+    "MUSCLE_PAIN",
+    "DIFFICULTY_BREATHING"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66912"
+  "zip": "66617"
 }

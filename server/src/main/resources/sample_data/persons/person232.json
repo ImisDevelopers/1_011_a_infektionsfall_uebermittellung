@@ -1,28 +1,28 @@
 {
-  "city": "Bous",
+  "city": "Kirkel",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1993-04-30",
-  "email": "k.wagner@example.de",
-  "firstName": "Karl",
+  "dateOfBirth": "1994-06-23",
+  "email": "m.schmitt@example.de",
+  "firstName": "Marie",
   "fluImmunization": false,
-  "gender": "male",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "Y437455876",
-  "lastName": "Wagner",
+  "gender": "female",
+  "insuranceCompany": "Techniker Krankenkasse",
+  "insuranceMembershipNumber": "Q436092271",
+  "lastName": "Schmitt",
   "nationality": "deutsch",
-  "phoneNumber": "87592710125",
-  "preIllnesses": [
-    "Imunsystemschw\u00e4che"
-  ],
-  "riskAreas": [
-    "Moscow"
-  ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Z\u00e4hringerstra\u00dfe 54",
+  "phoneNumber": "8624150274",
+  "preIllnesses": [],
+  "riskAreas": [],
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Tulpenweg 46",
   "symptoms": [
-    "Schnupfen"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "MUSCLE_PAIN",
+    "SHORTNESS_OF_BREATH",
+    "BACK_PAIN",
+    "NAUSEA"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66383"
+  "zip": "66644"
 }

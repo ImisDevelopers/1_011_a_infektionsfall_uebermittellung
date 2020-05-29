@@ -13,16 +13,26 @@
   "nationality": "deutsch",
   "phoneNumber": "1615594078",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "DIABETES"
   ],
   "riskAreas": [
-    "GrandEst"
+    "STAY_IN_MEDICAL_FACILITY"
   ],
   "speedOfSymptomsOutbreak": "Langsam",
   "street": "Schernerweg 48",
   "symptoms": [
-    "Husten"
+    "DIFFICULTY_BREATHING",
+    "LOSS_OF_APPETITE",
+    "FEVER",
+    "WEIGHT_LOSS",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "HEADACHE",
+    "MUSCLE_PAIN",
+    "NAUSEA",
+    "COLD",
+    "COUGH",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": true,
+  "weakenedImmuneSystem": false,
   "zip": "66184"
 }

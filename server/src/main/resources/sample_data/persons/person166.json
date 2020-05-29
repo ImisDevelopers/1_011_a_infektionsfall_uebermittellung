@@ -1,29 +1,37 @@
 {
-  "city": "Homburg",
+  "city": "Saarbr\u00fccken",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1981-02-06",
-  "email": "e.bauer@example.de",
-  "firstName": "Emma",
+  "dateOfBirth": "1953-07-12",
+  "email": "m.schulz@example.de",
+  "firstName": "Marie",
   "fluImmunization": false,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "F209815321",
-  "lastName": "Bauer",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "G835898867",
+  "lastName": "Schulz",
   "nationality": "deutsch",
-  "phoneNumber": "24110797497",
-  "preIllnesses": [
-    "Krebserkrankung"
-  ],
+  "phoneNumber": "53559100425",
+  "preIllnesses": [],
   "riskAreas": [
-    "GrandEst"
+    "MEDICAL_HEALTH_PROFESSION"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Niekampsweg 41",
+  "speedOfSymptomsOutbreak": "Langsam",
+  "street": "Eisenbahnstra\u00dfe 56",
   "symptoms": [
-    "Gelenkschmerzen",
-    "Kopfschmerzen"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "DIFFICULTY_BREATHING",
+    "NAUSEA",
+    "LOSS_OF_APPETITE",
+    "FEVER",
+    "WEIGHT_LOSS",
+    "COLD",
+    "SHORTNESS_OF_BREATH",
+    "BACK_PAIN",
+    "COUGH",
+    "MUSCLE_PAIN",
+    "HEADACHE"
   ],
   "weakenedImmuneSystem": false,
-  "zip": "66020"
+  "zip": "66927"
 }

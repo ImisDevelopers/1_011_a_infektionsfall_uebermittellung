@@ -1,28 +1,26 @@
 {
-  "city": "V\u00f6lklingen",
+  "city": "Bous",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1982-10-31",
-  "email": "m.berger@example.de",
-  "firstName": "Matthias",
-  "fluImmunization": true,
-  "gender": "male",
-  "insuranceCompany": "DAK Gesundheit",
-  "insuranceMembershipNumber": "U863934819",
-  "lastName": "Berger",
+  "dateOfBirth": "1927-10-15",
+  "email": "p.schroeder@example.de",
+  "firstName": "Petra",
+  "fluImmunization": false,
+  "gender": "female",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "J167012825",
+  "lastName": "Schr\u00f6der",
   "nationality": "deutsch",
-  "phoneNumber": "8266570279",
+  "phoneNumber": "331054910465",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Alzheimer"
   ],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_PRIVATE"
   ],
-  "speedOfSymptomsOutbreak": "Langsam",
-  "street": "Rosenstra\u00dfe 25",
-  "symptoms": [
-    "Fieber"
-  ],
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Haidth\u00f6heAarweg 74",
+  "symptoms": [],
   "weakenedImmuneSystem": false,
-  "zip": "66714"
+  "zip": "66098"
 }

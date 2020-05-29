@@ -155,10 +155,10 @@
 <script lang="ts">
 import { CreateLabTestDTO } from '@/api/SwaggerApi'
 import Vue from 'vue'
-import DateInput from '../components/DateInput.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
 import Api from '@/api'
-import PatientInput from '../components/PatientInput.vue'
-import LaboratoryInput from '../components/LaboratoryInput.vue'
+import PatientInput from '@/components/inputs/PatientInput.vue'
+import LaboratoryInput from '@/components/inputs/LaboratoryInput.vue'
 import { TestTypeItem, testTypes } from '@/models/test-types'
 import { testResults } from '@/models/event-types'
 import { TestMaterialItem, testMaterials } from '@/models/test-materials'
@@ -214,9 +214,35 @@ export default Vue.extend({
             })
           })
           .catch((err) => {
-            const notification = {
+            let notification: any = {
               message: 'Fehler beim Anlegen des Tests.',
-              description: err.message,
+            }
+
+            if (
+              err.errorType === 'ConstraintViolation' &&
+              err.constraint === 'LAB_UNIQUE_TEST_ID'
+            ) {
+              this.form.setFields({
+                testId: {
+                  value: values['testId'],
+                  errors: [
+                    new Error(
+                      'Test-ID bereits einer anderen Probe zugeordnet!'
+                    ),
+                  ],
+                },
+              })
+
+              notification = {
+                ...notification,
+                description:
+                  'Eingegebene Test-ID wurde bereits einer anderen Probe zugeordnet!',
+              }
+            } else {
+              notification = {
+                ...notification,
+                description: err.message,
+              }
             }
             this.$notification.error(notification)
           })

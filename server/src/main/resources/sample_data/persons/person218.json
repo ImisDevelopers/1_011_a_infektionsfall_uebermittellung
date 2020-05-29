@@ -1,26 +1,26 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
+  "city": "Bous",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1968-04-21",
-  "email": "a.weber@example.de",
-  "firstName": "Annika",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Techniker Krankenkasse",
-  "insuranceMembershipNumber": "U598533805",
-  "lastName": "Weber",
+  "dateOfBirth": "1980-10-28",
+  "email": "t.richter@example.de",
+  "firstName": "Tim",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "IKK Nord",
+  "insuranceMembershipNumber": "Q399456538",
+  "lastName": "Richter",
   "nationality": "deutsch",
-  "phoneNumber": "10710427990",
-  "preIllnesses": [
-    "Herz-Kreislauf"
-  ],
+  "phoneNumber": "61367499410",
+  "preIllnesses": [],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_OTHER"
   ],
-  "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Waldstra\u00dfe 59",
-  "symptoms": [],
+  "speedOfSymptomsOutbreak": "Mittel",
+  "street": "Z\u00e4hringerstra\u00dfe 45",
+  "symptoms": [
+    "DIFFICULTY_BREATHING"
+  ],
   "weakenedImmuneSystem": false,
-  "zip": "66262"
+  "zip": "667109"
 }

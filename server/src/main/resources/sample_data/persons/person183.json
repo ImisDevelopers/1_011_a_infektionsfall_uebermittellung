@@ -1,34 +1,37 @@
 {
-  "city": "P\u00fcttlingen",
-  "coronaContacts": true,
+  "city": "St. Wendel",
+  "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1958-03-28",
-  "email": "a.berger@example.de",
-  "firstName": "Anna",
-  "fluImmunization": true,
-  "gender": "female",
-  "insuranceCompany": "Barmer",
-  "insuranceMembershipNumber": "C290136266",
-  "lastName": "Berger",
+  "dateOfBirth": "1947-08-01",
+  "email": "m.lange@example.de",
+  "firstName": "Matthias",
+  "fluImmunization": false,
+  "gender": "male",
+  "insuranceCompany": "DAK Gesundheit",
+  "insuranceMembershipNumber": "Z214870295",
+  "lastName": "Lange",
   "nationality": "deutsch",
-  "phoneNumber": "6772233060",
+  "phoneNumber": "1715772459",
   "preIllnesses": [
-    "Herz-Kreislauf"
+    "DIABETES"
   ],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
-  "speedOfSymptomsOutbreak": "Mittel",
-  "street": "Sonnenweg 52",
+  "speedOfSymptomsOutbreak": "Schnell",
+  "street": "Hohenzollerstra\u00dfe 16",
   "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Fieber",
-    "Gelenkschmerzen",
-    "Atemschwierigkeiten",
-    "Husten"
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "BACK_PAIN",
+    "MUSCLE_PAIN",
+    "HEADACHE",
+    "NAUSEA",
+    "FEVER",
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "COLD",
+    "SHORTNESS_OF_BREATH"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "663103"
+  "weakenedImmuneSystem": false,
+  "zip": "66816"
 }

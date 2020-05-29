@@ -1,35 +1,26 @@
 {
-  "city": "Dudweiler",
+  "city": "Heusweiler",
   "coronaContacts": false,
   "country": "DE",
-  "dateOfBirth": "1948-03-19",
-  "email": "i.winter@example.de",
-  "firstName": "Isabella",
+  "dateOfBirth": "1993-01-19",
+  "email": "d.schmidt@example.de",
+  "firstName": "Daniel",
   "fluImmunization": true,
-  "gender": "female",
+  "gender": "male",
   "insuranceCompany": "IKK Nord",
-  "insuranceMembershipNumber": "P244387866",
-  "lastName": "Winter",
+  "insuranceMembershipNumber": "C602574675",
+  "lastName": "Schmidt",
   "nationality": "deutsch",
-  "phoneNumber": "29103143866",
+  "phoneNumber": "106107899405",
   "preIllnesses": [
-    ""
+    "PREGNANCY"
   ],
   "riskAreas": [
-    "New York"
+    "CONTACT_WITH_CORONA_CASE_WORK"
   ],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Niekampsweg 18",
-  "symptoms": [
-    "Kopfschmerzen",
-    "Halschmerzen",
-    "Erk\u00e4ltung",
-    "Schnupfen",
-    "Atemschwierigkeiten",
-    "Gelenkschmerzen",
-    "Husten",
-    "Fieber"
-  ],
-  "weakenedImmuneSystem": false,
-  "zip": "66270"
+  "street": "Abbendiekshof 77",
+  "symptoms": [],
+  "weakenedImmuneSystem": true,
+  "zip": "66103"
 }

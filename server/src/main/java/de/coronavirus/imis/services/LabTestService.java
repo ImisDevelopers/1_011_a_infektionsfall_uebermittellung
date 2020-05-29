@@ -9,6 +9,8 @@ import de.coronavirus.imis.repositories.LaboratoryRepository;
 import de.coronavirus.imis.repositories.PatientEventRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -36,9 +38,19 @@ public class LabTestService {
 
 	@Transactional
 	public LabTest createLabTest(Patient patient, LabTest labTest) {
-		labTestRepository.save(labTest);
-		eventService.createLabTestEvent(patient, labTest, Optional.empty());
-		return labTest;
+		try {
+			labTestRepository.save(labTest);
+			eventService.createLabTestEvent(patient, labTest, Optional.empty());
+			return labTest;
+		} catch (DataIntegrityViolationException dive) {
+			if (dive.getCause() != null && dive.getCause() instanceof ConstraintViolationException) {
+				throw new LabTest.ConstraintViolationException(
+					((ConstraintViolationException) dive.getCause()).getConstraintName().toUpperCase()
+				);
+			} else {
+				throw dive;
+			}
+		}
 	}
 
 	@Transactional

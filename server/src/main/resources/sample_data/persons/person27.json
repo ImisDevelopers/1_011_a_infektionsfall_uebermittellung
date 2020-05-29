@@ -1,31 +1,33 @@
 {
-  "city": "Kirkel",
+  "city": "Homburg",
   "coronaContacts": true,
   "country": "DE",
-  "dateOfBirth": "1998-03-26",
-  "email": "i.weber@example.de",
-  "firstName": "Isabella",
-  "fluImmunization": false,
+  "dateOfBirth": "1994-04-27",
+  "email": "p.peters@example.de",
+  "firstName": "Petra",
+  "fluImmunization": true,
   "gender": "female",
-  "insuranceCompany": "AOK",
-  "insuranceMembershipNumber": "N888699799",
-  "lastName": "Weber",
+  "insuranceCompany": "Barmer",
+  "insuranceMembershipNumber": "M304666325",
+  "lastName": "Peters",
   "nationality": "deutsch",
-  "phoneNumber": "4994717464",
+  "phoneNumber": "17110274846",
   "preIllnesses": [
-    "Imunsystemschw\u00e4che"
+    "Alzheimer"
   ],
-  "riskAreas": [
-    ""
-  ],
+  "riskAreas": [],
   "speedOfSymptomsOutbreak": "Schnell",
-  "street": "Hafenstra\u00dfe 69",
+  "street": "Nordtstra\u00dfe 61",
   "symptoms": [
-    "Husten",
-    "Gelenkschmerzen",
-    "Fieber",
-    "Atemschwierigkeiten"
+    "LOSS_OF_SENSE_OF_SMELL_TASTE",
+    "SHORTNESS_OF_BREATH",
+    "DIFFICULTY_BREATHING",
+    "WEIGHT_LOSS",
+    "HEADACHE",
+    "NAUSEA",
+    "BACK_PAIN",
+    "MUSCLE_PAIN"
   ],
-  "weakenedImmuneSystem": true,
-  "zip": "66771"
+  "weakenedImmuneSystem": false,
+  "zip": "66737"
 }

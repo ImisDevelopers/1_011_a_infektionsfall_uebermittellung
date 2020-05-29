@@ -264,7 +264,7 @@ public class IncidentService {
 		if (!adminOpt.isEmpty())
 		{
 			AdministrativeIncident adminInc = adminOpt.get(0);
-			if ( ! (adminInc.getDateOfIllness() == newValues.getDateOfIllness())
+			if ( ! Objects.equals(adminInc.getDateOfIllness(), newValues.getDateOfIllness())
 					|| !new HashSet<>(adminInc.getSymptoms()).equals(new HashSet<>(newValues.getSymptoms()))) {
 				adminInc
 						.setSymptoms(newValues.getSymptoms())
@@ -332,12 +332,7 @@ public class IncidentService {
 		);
 
 		var incidentOptional = adminIncidentRepo.findByPatientId(patient.getId());
-		AdministrativeIncident incident;
-		if (incidentOptional.isEmpty()) {
-			incident = new AdministrativeIncident();
-		}
-		else
-			incident = incidentOptional.get(0);
+		AdministrativeIncident incident = incidentOptional.isEmpty() ? new AdministrativeIncident() : incidentOptional.get(0);
 
 		incident
 			.setResponsibleDoctor(doctor)

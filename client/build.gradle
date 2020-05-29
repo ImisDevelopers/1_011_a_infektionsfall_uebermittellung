@@ -6,7 +6,7 @@ apply plugin: 'base'
 version '0.0.1'
 
 node {
-  version = '13.7.0'
+  version = '14.3.0'
   download = true
 }
 

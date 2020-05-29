@@ -2,7 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    id 'com.google.cloud.tools.jib' version '2.1.0'
+	id 'jacoco'
+	id 'com.google.cloud.tools.jib' version '2.3.0'
 }
 
 group = 'de.coronavirus'
@@ -22,10 +23,6 @@ configurations {
 
 repositories {
     mavenCentral()
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -55,7 +52,6 @@ dependencies {
 	implementation 'org.hibernate:hibernate-envers:5.4.14.Final'
 	implementation 'org.postgresql:postgresql:42.2.11'
 
-
     compileOnly 'org.projectlombok:lombok'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -72,12 +68,12 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 jib {
-    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
+    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server:${System.env.GITHUB_SHA}"
 }
 
 processResources {
@@ -90,6 +86,12 @@ bootJar {
     archiveFileName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
 }
+
+//  gradle server:test --tests "*GenerateSwagger" -x processResources  client:generateClient
+task runSwaggerGenerator(type: Test) {
+	include("*GenerateSwagger")
+}
+
 tasks.processResources.dependsOn(':client:assemble')
 tasks.jib.dependsOn('processResources')
 bootJar.dependsOn('processResources')
@@ -102,8 +104,19 @@ tasks.bootRun.dependsOn('generateTestData')
 tasks.test.dependsOn('generateTestData')
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
+
+jacocoTestReport {
+	dependsOn test // tests are required to run before generating the report
+	reports {
+		xml.enabled true
+		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
+
 
 compileJava {
     options.compilerArgs = [

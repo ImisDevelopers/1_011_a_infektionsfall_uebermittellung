@@ -144,9 +144,8 @@ export default Vue.extend({
   },
   watch: {
     allIncidents: {
-        immediate: true,
-        handler (newI, oldI) {
-
+      immediate: true,
+      handler(newI, oldI) {
         let incidents: any[] = [...newI]
 
         // Sort by ID and Version
@@ -176,8 +175,8 @@ export default Vue.extend({
         this.hospitalization = incidents.filter((incident: any) =>
           incident.id.startsWith('hospitalization')
         )
-      }
-    }
+      },
+    },
   },
   props: [
     'allIncidents',

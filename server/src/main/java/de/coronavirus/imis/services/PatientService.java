@@ -115,7 +115,7 @@ public class PatientService {
 
 		patient.setQuarantineUntil(patientMapper.parseDate(dto.getDateUntil()));
 
-		updatePatient(patient);
+		patientRepository.saveAndFlush(patient);
 
 		eventService.createQuarantineEvent(patient, dto.getDateUntil(), dto.getComment());
 

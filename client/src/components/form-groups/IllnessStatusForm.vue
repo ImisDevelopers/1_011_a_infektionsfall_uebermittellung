@@ -167,13 +167,11 @@ export default Vue.extend({
   watch: {
     patient: {
       immediate: true,
-      handler (newP, oldP) {
-        this.patientHospitalized = !!(
-          newP && newP.dateOfHospitalization
-        )
+      handler(newP, oldP) {
+        this.patientHospitalized = !!(newP && newP.dateOfHospitalization)
         this.onIntensiveCareUnit = newP && newP.onIntensiveCareUnit
       },
-    }
+    },
   },
   computed: {
     initialDateOfHospitalization(): moment.Moment {

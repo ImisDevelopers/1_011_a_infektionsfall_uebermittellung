@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    id 'com.google.cloud.tools.jib' version '2.1.0'
+    id 'com.google.cloud.tools.jib' version '2.3.0'
 }
 
 group = 'de.coronavirus'
@@ -55,7 +55,6 @@ dependencies {
 	implementation 'org.hibernate:hibernate-envers:5.4.14.Final'
 	implementation 'org.postgresql:postgresql:42.2.11'
 
-
     compileOnly 'org.projectlombok:lombok'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -72,12 +71,12 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 jib {
-    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
+    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server:${System.env.GITHUB_SHA}"
 }
 
 processResources {

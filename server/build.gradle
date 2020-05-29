@@ -2,7 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    id 'com.google.cloud.tools.jib' version '2.3.0'
+	id 'jacoco'
+	id 'com.google.cloud.tools.jib' version '2.3.0'
 }
 
 group = 'de.coronavirus'
@@ -22,10 +23,6 @@ configurations {
 
 repositories {
     mavenCentral()
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -89,6 +86,12 @@ bootJar {
     archiveFileName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
 }
+
+//  gradle server:test --tests "*GenerateSwagger" -x processResources  client:generateClient
+task runSwaggerGenerator(type: Test) {
+	include("*GenerateSwagger")
+}
+
 tasks.processResources.dependsOn(':client:assemble')
 tasks.jib.dependsOn('processResources')
 bootJar.dependsOn('processResources')
@@ -101,8 +104,19 @@ tasks.bootRun.dependsOn('generateTestData')
 tasks.test.dependsOn('generateTestData')
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
+
+jacocoTestReport {
+	dependsOn test // tests are required to run before generating the report
+	reports {
+		xml.enabled true
+		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
+
 
 compileJava {
     options.compilerArgs = [

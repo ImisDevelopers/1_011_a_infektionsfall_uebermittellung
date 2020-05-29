@@ -81,7 +81,6 @@ jobs:
     - name: Build
       run: |-
         gradle server:test --tests "*GenerateSwagger" -x processResources  client:generateClient
-
         gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
     - name: Deploy
@@ -111,6 +110,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         msg: |
-          :arrow_right: Live preview at ${{ env.PR_COMMENT_MESSAGE }}" :up:
-          :warning: First access might be very slow. Database is shared. :eyes:
+          :arrow_right: Live preview at ${{ env.PR_COMMENT_MESSAGE }} :up:
+          :warning: First access might be very slow, database is shared. :eyes:
         check_for_duplicate_msg: true

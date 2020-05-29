@@ -92,6 +92,16 @@ export const eventTypes: EventTypeItem[] = [
     label: 'Hospitalisiert',
     icon: 'safety',
   },
+  {
+    id: 'HOSPITALIZATION_RELEASED',
+    label: 'Hospitalisierung aufgehoben',
+    icon: 'safety',
+  },
+  {
+    id: 'CASE_DATA_UPDATED',
+    label: 'Symptome oder Erkrankungsdatum aktualisiert',
+    icon: 'safety',
+  },
 ]
 
 export interface TestResultType {

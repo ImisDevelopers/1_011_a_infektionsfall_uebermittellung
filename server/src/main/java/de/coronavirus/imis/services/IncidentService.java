@@ -14,16 +14,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
-/*
-TODO
-This class is called deprectaed because it enables the frontend to work with  LabTestDTOs and QuarantineDTOs
-instead of natively using IncidentDTOs.
-Next steps: Build an Incident API and migrate the Frontend.
- */
 @RequiredArgsConstructor
 @Service
 public class IncidentService {
@@ -38,8 +30,6 @@ public class IncidentService {
 	private final DoctorRepository doctorRepo;
 	private final AuditReader auditReader;
 	private final ApplicationContext ctx;
-
-	// Reading
 
 	@Transactional
 	public List<QuarantineIncident> getPatientsSelectedForQuarantine() {
@@ -58,7 +48,7 @@ public class IncidentService {
 
 	@Transactional
 	public List<Incident> getLog(String id, boolean byPatient) {
-		List<Incident> result = new ArrayList<Incident>();
+		List<Incident> result = new ArrayList<>();
 
 		result.addAll(getLog(TestIncident.class, id, byPatient));
 		result.addAll(getLog(QuarantineIncident.class, id, byPatient));
@@ -66,7 +56,7 @@ public class IncidentService {
 		result.addAll(getLog(HospitalizationIncident.class, id, byPatient));
 
 		result.sort(
-				(Incident i1, Incident i2) -> i1.getVersionTimestamp().compareTo(i2.getVersionTimestamp())
+				Comparator.comparing(Incident::getVersionTimestamp)
 		);
 
 		return result;
@@ -114,6 +104,7 @@ public class IncidentService {
 		return result;
 	}
 
+	// TODO find strategy to prevent type casting here
 	@Transactional
 	public List<Incident> getCurrentByPatient(String patientId, IncidentType type) {
 
@@ -131,10 +122,8 @@ public class IncidentService {
 		return null;
 	}
 
-	// Writing
-
 	@Transactional
-	public TestIncident addIncident(CreateLabTestDTO info) {
+	public TestIncident addTestIncident(CreateLabTestDTO info) {
 
 		if(info.getEventDate()==null)
 			info.setEventDate(LocalDate.now());
@@ -155,7 +144,7 @@ public class IncidentService {
 	}
 
 	@Transactional
-	public TestIncident updateIncident(String laboratoryId, UpdateTestStatusDTO update) {
+	public TestIncident updateTestIncident(String laboratoryId, UpdateTestStatusDTO update) {
 
 		if(update.getEventDate()==null)
 			update.setEventDate(LocalDate.now());
@@ -177,7 +166,7 @@ public class IncidentService {
 
 	// Quarantine Incidents
 	@Transactional
-	public QuarantineIncident addOrUpdateIncident(String patientId, RequestQuarantineDTO info) {
+	public QuarantineIncident addOrUpdateQuarantineIncident(String patientId, RequestQuarantineDTO info) {
 		// Patient & Date
 		var patient = patientRepo.findById(patientId).orElseThrow();
 		var until = patientMapper.parseDate(info.getDateUntil());
@@ -231,29 +220,99 @@ public class IncidentService {
 
 	// Administrative Incidents
 
-	// Presumtion Event (Former Initial Event)
+	// Todo: Pass in DTOs
 	@Transactional
-	public AdministrativeIncident addIncident(Patient patient,
-											  Optional<Illness> illness,
-											  EventType eventType,
-											  LocalDate dateOfReporting) {
+	public AdministrativeIncident addOrUpdateAdministrativeIncident(Patient patient,
+																	Optional<Illness> illness,
+																	EventType eventType,
+																	LocalDate dateOfReporting,
+																	LocalDate dateofIllness) {
+
+		// There's only one AdministrativeIncident per Person
+		// Once case support is enabled, it will be one Administrative Incident per Case
+
 		var concreteIllness = illness.orElse(Illness.CORONA);
 
 		dateOfReporting = dateOfReporting == null ? LocalDate.now() : dateOfReporting;
+		dateofIllness = dateofIllness == null ? patient.getDateOfIllness() : dateofIllness;
 
-		var incident = (AdministrativeIncident) new AdministrativeIncident()
+		var incidentOptional = adminIncidentRepo.findByPatientId(patient.getId());
+		AdministrativeIncident incident = incidentOptional.isEmpty() ? new AdministrativeIncident() : incidentOptional.get(0);
+
+		incident
 				.setIllness(concreteIllness)
+				.setSymptoms(patient.getSymptoms())
+				.setDateOfIllness(dateofIllness)
+				.setDateOfReporting(dateOfReporting)
 				.setEventType(eventType)
-				.setEventDate(dateOfReporting)
+				.setEventDate(LocalDate.now())
 				.setPatient(patient);
 
 		adminIncidentRepo.saveAndFlush(incident);
 		return incident;
 	}
 
+	// Update by Falldaten Form
+	@Transactional
+	public void deductIncidentUpdates(Patient newValues)
+	{
+		// Deduct Admin Incident Changes
+		var adminOpt = adminIncidentRepo.findByPatientId(newValues.getId());
+		if (!adminOpt.isEmpty())
+		{
+			AdministrativeIncident adminInc = adminOpt.get(0);
+			if ( ! Objects.equals(adminInc.getDateOfIllness(), newValues.getDateOfIllness())
+					|| !new HashSet<>(adminInc.getSymptoms()).equals(new HashSet<>(newValues.getSymptoms()))) {
+				adminInc
+						.setSymptoms(newValues.getSymptoms())
+						.setDateOfIllness(newValues.getDateOfIllness())
+						.setEventType(EventType.CASE_DATA_UPDATED);
+				adminIncidentRepo.saveAndFlush(adminInc);
+			}
+		}
+
+		// Deduct Hospitalization Changes
+		/*
+			Analog to Quarantine: Currently there is only one Hospitalization Incident per Person,
+			which is technically incorrect.
+			We need an agreed (frontend) strategy for handling hospitalization.
+		 */
+		boolean isIntensiveCare = Boolean.TRUE.equals(newValues.getOnIntensiveCareUnit());
+		var hospitalizationOptional = hospIncidentRepo.findByPatientId(newValues.getId());
+		HospitalizationIncident hospitalizationIncident;
+		if (!hospitalizationOptional.isEmpty())
+		{
+			hospitalizationIncident = hospitalizationOptional.get(0);
+			if (newValues.getDateOfHospitalization() == null
+					&& isIntensiveCare == hospitalizationIncident.isIntensiveCare())
+			{
+				if (hospitalizationIncident.getEventDate() != null)
+				{
+					hospitalizationIncident.setReleasedOn(LocalDate.now());
+					hospitalizationIncident.setEventType(EventType.HOSPITALIZATION_RELEASED);
+				}
+			}
+			else
+			{
+				if (hospitalizationIncident.getReleasedOn() != null)
+				{
+					hospitalizationIncident.setReleasedOn(null); // Re-Use the incident.
+					hospitalizationIncident.setEventType(EventType.HOSPITALIZATION_MANDATED);
+				}
+				hospitalizationIncident.setEventDate(newValues.getDateOfHospitalization());
+				hospitalizationIncident.setIntensiveCare(isIntensiveCare);
+			}
+			hospIncidentRepo.saveAndFlush(hospitalizationIncident);
+		}
+		else
+		{
+			addHospitalizationIncident(newValues, newValues.getDateOfHospitalization(), isIntensiveCare);
+		}
+	}
+
 	//SCHEDULED_FOR_TESTING
 	@Transactional
-	public AdministrativeIncident addIncident(Patient patient, String labId, String doctorId) {
+	public AdministrativeIncident addOrUpdateAdministrativeIncident(Patient patient, String labId, String doctorId) {
 
 		// Todo: Is this necessary? Why? Move it?
 		final Laboratory laboratory = laboratoryRepo.findById(labId).orElseGet(() -> {
@@ -269,25 +328,28 @@ public class IncidentService {
 				}
 		);
 
-		var incident = (AdministrativeIncident) new AdministrativeIncident()
-				.setIllness(Illness.CORONA)
-				.setResponsibleDoctor(doctor)
-				.setEventType(EventType.SCHEDULED_FOR_TESTING)
-				.setEventDate(LocalDate.now())
-				.setPatient(patient);
+		var incidentOptional = adminIncidentRepo.findByPatientId(patient.getId());
+		AdministrativeIncident incident = incidentOptional.isEmpty() ? new AdministrativeIncident() : incidentOptional.get(0);
+
+		incident
+			.setResponsibleDoctor(doctor)
+			.setEventType(EventType.SCHEDULED_FOR_TESTING)
+			.setEventDate(LocalDate.now())
+			.setPatient(patient);
+
 		adminIncidentRepo.saveAndFlush(incident);
 
 		return incident;
 	}
 
-	// Hospitalization Incidents
 
-	public void addIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
+	@Transactional
+	public void addHospitalizationIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
 
-		boolean ic = intensiveCare==null ? false : intensiveCare;
+		boolean isIntensiveCare = Boolean.TRUE.equals(intensiveCare);
 
 		var incident = (HospitalizationIncident) new HospitalizationIncident()
-				.setIntensiveCare(ic)
+				.setIntensiveCare(isIntensiveCare)
 				.setEventDate(hospitalizedOn)
 				.setEventType(EventType.HOSPITALIZATION_MANDATED)
 				.setPatient(patient);

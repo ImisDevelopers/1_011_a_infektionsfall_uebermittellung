@@ -1,4 +1,4 @@
-import moment, { Moment } from 'moment'
+import moment from 'moment'
 
 export function getDate(date: string) {
   if (date !== undefined && date !== null && date !== 'null')

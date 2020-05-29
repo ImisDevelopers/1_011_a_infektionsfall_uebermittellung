@@ -214,7 +214,7 @@
           />
         </a-tab-pane>
         <a-tab-pane forceRender key="timeline" tab="Verlauf">
-          <History :allIncidents="this.incidents" />
+          <History :allIncidents="incidents" />
         </a-tab-pane>
         <a-tab-pane forceRender key="infection-chain" tab="Infektionskette">
           <a-row :gutter="8" style="margin-top: 8px;">

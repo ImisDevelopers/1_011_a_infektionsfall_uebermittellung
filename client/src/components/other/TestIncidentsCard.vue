@@ -36,8 +36,9 @@
 <script lang="ts">
 import { Column } from 'ant-design-vue/types/table/column'
 import moment, { Moment } from 'moment'
-import { testResults } from '@/models/event-types'
-import { TestTypeItem, testTypes } from '@/models/test-types'
+import { testResults } from '../../models/event-types'
+import { testTypes } from '../../models/test-types'
+import { getDate } from '../../util/helper-functions'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -76,13 +77,9 @@ const columnsTests: Partial<Column>[] = [
   },
 ]
 
-function getDate(date: string) {
-  return moment(date).format('DD.MM.YYYY')
-}
-
 export default {
   name: 'TestIncidentsCard',
-  props: ['testIncidents'],
+  props: { testIncidents: Array },
   data() {
     return {
       columnsTests,

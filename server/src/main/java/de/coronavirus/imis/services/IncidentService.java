@@ -240,12 +240,7 @@ public class IncidentService {
 		dateofIllness = dateofIllness == null ? patient.getDateOfIllness() : dateofIllness;
 
 		var incidentOptional = adminIncidentRepo.findByPatientId(patient.getId());
-		AdministrativeIncident incident;
-		if (incidentOptional.isEmpty()) {
-			incident = new AdministrativeIncident();
-		}
-		else
-			incident = incidentOptional.get(0);
+		AdministrativeIncident incident = incidentOptional.isEmpty() ? new AdministrativeIncident() : incidentOptional.get(0);
 
 		incident
 				.setIllness(concreteIllness)
@@ -285,32 +280,32 @@ public class IncidentService {
 			which is technically incorrect.
 			We need an agreed (frontend) strategy for handling hospitalization.
 		 */
-		boolean ic = newValues.getOnIntensiveCareUnit()==null ? false : newValues.getOnIntensiveCareUnit();
-		var hospOpt = hospIncidentRepo.findByPatientId(newValues.getId());
-		HospitalizationIncident hospInc;
-		if (!hospOpt.isEmpty())
+		boolean ic = Boolean.TRUE.equals(newValues.getOnIntensiveCareUnit());
+		var hospitalizationOptional = hospIncidentRepo.findByPatientId(newValues.getId());
+		HospitalizationIncident hospitalizationIncident;
+		if (!hospitalizationOptional.isEmpty())
 		{
-			hospInc = hospOpt.get(0);
+			hospitalizationIncident = hospitalizationOptional.get(0);
 			if (newValues.getDateOfHospitalization() == null
-					&& ic==hospInc.isIntensiveCare())
+					&& ic==hospitalizationIncident.isIntensiveCare())
 			{
-				if (hospInc.getEventDate() != null)
+				if (hospitalizationIncident.getEventDate() != null)
 				{
-					hospInc.setReleasedOn(LocalDate.now());
-					hospInc.setEventType(EventType.HOSPITALIZATION_RELEASED);
+					hospitalizationIncident.setReleasedOn(LocalDate.now());
+					hospitalizationIncident.setEventType(EventType.HOSPITALIZATION_RELEASED);
 				}
 			}
 			else
 			{
-				if (hospInc.getReleasedOn() != null)
+				if (hospitalizationIncident.getReleasedOn() != null)
 				{
-					hospInc.setReleasedOn(null); // Re-Use the incident.
-					hospInc.setEventType(EventType.HOSPITALIZATION_MANDATED);
+					hospitalizationIncident.setReleasedOn(null); // Re-Use the incident.
+					hospitalizationIncident.setEventType(EventType.HOSPITALIZATION_MANDATED);
 				}
-				hospInc.setEventDate(newValues.getDateOfHospitalization());
-				hospInc.setIntensiveCare(ic);
+				hospitalizationIncident.setEventDate(newValues.getDateOfHospitalization());
+				hospitalizationIncident.setIntensiveCare(ic);
 			}
-			hospIncidentRepo.saveAndFlush(hospInc);
+			hospIncidentRepo.saveAndFlush(hospitalizationIncident);
 		}
 		else
 		{
@@ -359,7 +354,7 @@ public class IncidentService {
 	@Transactional
 	public void addHospitalizationIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
 
-		boolean ic = intensiveCare==null ? false : intensiveCare;
+		boolean ic = Boolean.TRUE.equals(intensiveCare);
 
 		var incident = (HospitalizationIncident) new HospitalizationIncident()
 				.setIntensiveCare(ic)

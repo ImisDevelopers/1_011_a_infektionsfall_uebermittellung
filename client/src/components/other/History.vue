@@ -29,33 +29,7 @@ import Vue from 'vue'
 import { Incident, Timestamp } from '../../api/SwaggerApi'
 import moment from 'moment'
 import { eventTypes } from '../../models/event-types'
-
-function formatTimestamp(timestamp: Timestamp): string {
-  const momentTimestamp = moment(timestamp)
-  if (momentTimestamp.isValid()) {
-    return moment(timestamp).format('DD.MM.YYYY HH:mm')
-  } else {
-    return 'Unbekannt'
-  }
-}
-function formatDate(date: string): string {
-  const momentTimestamp = moment(date)
-  if (momentTimestamp.isValid()) {
-    return momentTimestamp.format('DD.MM.YYYY')
-  } else {
-    return 'Unbekannt'
-  }
-}
-function timelineColor(eventType: any) {
-  switch (eventType) {
-    case 'TEST_FINISHED_POSITIVE':
-      return 'red'
-    case 'TEST_FINISHED_NEGATIVE':
-      return 'green'
-    default:
-      return 'grey'
-  }
-}
+import { PatientStatus } from '../../models/index'
 
 export default Vue.extend({
   name: 'History',
@@ -67,9 +41,30 @@ export default Vue.extend({
     }
   },
   methods: {
-    formatDate,
-    formatTimestamp,
-    timelineColor,
+    formatDate: (date: string) => {
+      const momentTimestamp = moment(date)
+      if (!momentTimestamp.isValid()) {
+        return 'Unbekannt'
+      }
+      return momentTimestamp.format('DD.MM.YYYY')
+    },
+    formatTimestamp: (timestamp: Timestamp) => {
+      const momentTimestamp = moment(timestamp)
+      if (!momentTimestamp.isValid()) {
+        return 'Unbekannt'
+      }
+      return moment(timestamp).format('DD.MM.YYYY HH:mm')
+    },
+    timelineColor: (eventType: PatientStatus) => {
+      switch (eventType) {
+        case 'TEST_FINISHED_POSITIVE':
+          return 'red'
+        case 'TEST_FINISHED_NEGATIVE':
+          return 'green'
+        default:
+          return 'grey'
+      }
+    },
   },
 })
 </script>

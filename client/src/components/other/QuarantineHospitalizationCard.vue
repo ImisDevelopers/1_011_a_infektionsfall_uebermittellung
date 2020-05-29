@@ -48,9 +48,6 @@ import { getDate } from '../../util/helper-functions'
 export default {
   name: 'QuarantineHospitalizationCard',
   props: ['quarantineIncidents', 'hospitalizationIncidents'],
-  data() {
-    return {}
-  },
   methods: {
     getDate,
   },

@@ -146,44 +146,45 @@ export default Vue.extend({
     allIncidents: {
       immediate: true,
       handler(newI, oldI) {
-        let incidents: any[] = [...newI]
+        let incidents: Incident[] = [...newI]
 
         // Sort by ID and Version
         incidents.sort((a: Incident, b: Incident) => {
           return (
-            a.id!.localeCompare(b.id!) ||
-            a.versionTimestamp!.localeCompare(b.versionTimestamp!)
+            b.id!.localeCompare(a.id!) ||
+            b.versionTimestamp!.localeCompare(a.versionTimestamp!)
           )
         })
 
         // Remove historic entries (keep latest version only)
-        for (let i = 0; i < incidents.length - 1; i++) {
-          if (incidents[i].id === incidents[i + 1].id) incidents[i] = undefined
-        }
-        incidents = incidents.filter((c: any) => c !== undefined)
-        console.log(incidents)
+        incidents = incidents.filter(
+          (cA, i) => incidents.findIndex((cB) => cB.id === cA.id) === i
+        )
+
+        incidents.filter((elem, i) => incidents.indexOf(elem) === i)
+
         // Categorize Incidents
-        this.administrative = incidents.filter((incident: any) =>
-          incident.id.startsWith('administrative')
+        this.administrative = incidents.filter((incident: Incident) =>
+          incident.id!.startsWith('administrative')
         )[0] // There's only one (exactly one) per Case. This needs to be adapted once case support is enabled.
-        this.test = incidents.filter((incident: any) =>
-          incident.id.startsWith('test')
+        this.test = incidents.filter((incident: Incident) =>
+          incident.id!.startsWith('test')
         )
-        this.quarantine = incidents.filter((incident: any) =>
-          incident.id.startsWith('quarantine')
+        this.quarantine = incidents.filter((incident: Incident) =>
+          incident.id!.startsWith('quarantine')
         )
-        this.hospitalization = incidents.filter((incident: any) =>
-          incident.id.startsWith('hospitalization')
+        this.hospitalization = incidents.filter((incident: Incident) =>
+          incident.id!.startsWith('hospitalization')
         )
       },
     },
   },
-  props: [
-    'allIncidents',
-    'preIllnesses',
-    'patientInfectionSources',
-    'exposureContacts',
-  ],
+  props: {
+    allIncidents: Array, // Array<Incident> not supported
+    preIllnesses: Array, // Array<String> not supported
+    patientInfectionSources: Array, // Api returns any
+    exposureContacts: Array,
+  },
   data(): State {
     return {
       administrative: undefined,

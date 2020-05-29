@@ -52,7 +52,7 @@
     "node-sass": "^4.12.0",
     "prettier": "^2.0.5",
     "sass-loader": "^8.0.2",
-    "swagger-typescript-api": "1.7.2",
+    "swagger-typescript-api": "1.8.2",
     "typescript": "~3.7.5",
     "vue-template-compiler": "^2.6.11"
   },

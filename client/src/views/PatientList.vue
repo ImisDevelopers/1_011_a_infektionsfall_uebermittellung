@@ -528,16 +528,12 @@ export default Vue.extend({
         },
       }
     },
-    getQuarantineSelection(): Array<PatientStatus | null> {
+    getQuarantineSelection(): PatientStatus[] {
       if (!this.quarantineSelection) {
         return []
       }
       if (this.quarantineSelection === 'NO_SELECTION') {
-        return [
-          'QUARANTINE_RELEASED',
-          'QUARANTINE_PROFESSIONBAN_RELEASED',
-          null,
-        ]
+        return ['QUARANTINE_RELEASED', 'QUARANTINE_PROFESSIONBAN_RELEASED']
       } else {
         return [this.quarantineSelection as PatientStatus]
       }

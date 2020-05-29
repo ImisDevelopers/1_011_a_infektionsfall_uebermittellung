@@ -3,25 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "echo // Test gibts aktuell nicht - bitte fixen und dann wieder setzen:  \"test:unit\": \"vue-cli-service test:unit\",",
-    "lint": "vue-cli-service lint --fix",
-    "generate:api-client": "npx swagger-typescript-api -p ../server/build/resources/swagger.json -o ./src/api -n SwaggerApi.ts",
-    "generate:api-client-live": "npx swagger-typescript-api -p http://localhost:8642/v2/api-docs -o ./src/api -n SwaggerApi.ts",
-    "generate:api-client-local:80": "npx swagger-typescript-api -p http://localhost/v2/api-docs -o ./src/api -n SwaggerApi.ts"
+	"serve": "vue-cli-service serve",
+	"build": "vue-cli-service build",
+	"test:unit": "echo // Test gibts aktuell nicht - bitte fixen und dann wieder setzen:  \"test:unit\": \"vue-cli-service test:unit\",",
+	"lint": "vue-cli-service lint --fix",
+	"generate:api-client": "npx swagger-typescript-api -p ../server/build/resources/swagger.json -o ./src/api -n SwaggerApi.ts",
+	"generate:api-client-live": "npx swagger-typescript-api -p http://localhost:8642/v2/api-docs -o ./src/api -n SwaggerApi.ts",
+	"generate:api-client-local:80": "npx swagger-typescript-api -p http://localhost/v2/api-docs -o ./src/api -n SwaggerApi.ts"
   },
   "dependencies": {
-    "@zxing/library": "^0.16.0",
-    "ant-design-vue": "^1.5.0",
-    "core-js": "^3.6.4",
-    "moment": "^2.24.0",
-    "register-service-worker": "^1.6.2",
-    "vue": "^2.6.11",
-    "vue-router": "^3.1.5",
-    "vue-typed-mixins": "^0.2.0",
-    "vuex": "^3.1.2",
-    "vuex-smart-module": "^0.3.4"
+	"@zxing/library": "^0.16.0",
+	"ant-design-vue": "^1.5.0",
+	"core-js": "^3.6.4",
+	"moment": "^2.24.0",
+	"register-service-worker": "^1.6.2",
+	"vue": "^2.6.11",
+	"vue-router": "^3.1.5",
+	"vue-typed-mixins": "^0.2.0",
+	"vuex": "^3.1.2",
+	"vuex-smart-module": "^0.3.4"
   },
   "devDependencies": {
     "@types/chai": "^4.2.8",
@@ -52,8 +52,11 @@
     "node-sass": "^4.12.0",
     "prettier": "^2.0.5",
     "sass-loader": "^8.0.2",
-    "swagger-typescript-api": "^1.7.2",
+    "swagger-typescript-api": "1.8.2",
     "typescript": "~3.7.5",
     "vue-template-compiler": "^2.6.11"
+  },
+  "engines": {
+	"node": ">=14.3.0"
   }
 }

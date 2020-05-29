@@ -258,12 +258,6 @@ export interface LabTest {
   testType?: "PCR" | "ANTIBODY";
 }
 
-export interface LabTestConstraintViolation {
-  constraint?: "LAB_UNIQUE_TEST_ID";
-  errorType?: string;
-  message?: string;
-}
-
 export interface Laboratory {
   assignedLabTest?: LabTest[];
   city?: string;
@@ -1149,7 +1143,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     createTestForPatientUsingPost: (createLabTestRequest: CreateLabTestDTO, params?: RequestParams) =>
-      this.request<LabTest, LabTestConstraintViolation>(`/api/labtests`, "POST", params, createLabTestRequest, true),
+      this.request<LabTest, any>(`/api/labtests`, "POST", params, createLabTestRequest, true),
 
     /**
      * @tags lab-test-controller

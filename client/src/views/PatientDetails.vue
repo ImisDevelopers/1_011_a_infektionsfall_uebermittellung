@@ -201,6 +201,9 @@
         </a-tab-pane>
         <a-tab-pane key="Cases" tab="Falldaten">
           <div class="tool-row">
+            <div style="font-size: 18px; padding-left: 16px;">
+              Fall: COVID-19
+            </div>
             <span style="flex: 1 1 auto;"></span>
             <a-button icon="edit" @click="editPatientFalldaten">
               Falldaten ändern

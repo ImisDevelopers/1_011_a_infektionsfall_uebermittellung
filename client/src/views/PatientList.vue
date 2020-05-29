@@ -241,7 +241,11 @@
 <script lang="ts">
 import { Column } from 'ant-design-vue/types/table/column'
 import Vue from 'vue'
-import { Patient, PatientSearchParamsDTO } from '@/api/SwaggerApi'
+import {
+  Patient,
+  PatientSimpleSearchParamsDTO,
+  PatientSearchParamsDTO,
+} from '@/api/SwaggerApi'
 import { eventTypes } from '@/models/event-types'
 import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'
@@ -400,13 +404,18 @@ export default Vue.extend({
       let countPromise
       let queryPromise
       if (this.showAdvancedSearch) {
-        const formValues = { ...this.form, ...this.advancedForm }
+        const formValues = {
+          ...this.form,
+          ...this.advancedForm,
+        }
 
         if (!formValues.patientStatus) {
           // Backend fails on empty string
           formValues.patientStatus = undefined
         }
-        formValues.quarantineStatus = this.getQuarantineSelection() as Array<PatientStatus>
+        formValues.quarantineStatus = this.getQuarantineSelection() as Array<
+          PatientStatus
+        >
 
         countPromise = Api.countQueryPatientsUsingPost(formValues)
         queryPromise = Api.queryPatientsUsingPost(formValues)

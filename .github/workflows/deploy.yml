@@ -67,7 +67,7 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        gradle server:test --tests "*GenerateSwagger" -x processResources  client:generateClient
+        gradle server:test --tests "*GenerateSwagger" -x processResources client:generateClient
         gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
     # Deploy the Docker image to the GKE cluster

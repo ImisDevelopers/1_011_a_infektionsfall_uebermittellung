@@ -31,8 +31,6 @@ public class IncidentService {
 	private final AuditReader auditReader;
 	private final ApplicationContext ctx;
 
-	// Reading
-
 	@Transactional
 	public List<QuarantineIncident> getPatientsSelectedForQuarantine() {
 		return this.quarantineIncidentRepo.findByEventType(EventType.QUARANTINE_SELECTED);
@@ -106,6 +104,7 @@ public class IncidentService {
 		return result;
 	}
 
+	// TODO find strategy to prevent type casting here
 	@Transactional
 	public List<Incident> getCurrentByPatient(String patientId, IncidentType type) {
 
@@ -122,8 +121,6 @@ public class IncidentService {
 
 		return null;
 	}
-
-	// Writing
 
 	@Transactional
 	public TestIncident addTestIncident(CreateLabTestDTO info) {
@@ -280,14 +277,14 @@ public class IncidentService {
 			which is technically incorrect.
 			We need an agreed (frontend) strategy for handling hospitalization.
 		 */
-		boolean ic = Boolean.TRUE.equals(newValues.getOnIntensiveCareUnit());
+		boolean isIntensiveCare = Boolean.TRUE.equals(newValues.getOnIntensiveCareUnit());
 		var hospitalizationOptional = hospIncidentRepo.findByPatientId(newValues.getId());
 		HospitalizationIncident hospitalizationIncident;
 		if (!hospitalizationOptional.isEmpty())
 		{
 			hospitalizationIncident = hospitalizationOptional.get(0);
 			if (newValues.getDateOfHospitalization() == null
-					&& ic==hospitalizationIncident.isIntensiveCare())
+					&& isIntensiveCare == hospitalizationIncident.isIntensiveCare())
 			{
 				if (hospitalizationIncident.getEventDate() != null)
 				{
@@ -303,13 +300,13 @@ public class IncidentService {
 					hospitalizationIncident.setEventType(EventType.HOSPITALIZATION_MANDATED);
 				}
 				hospitalizationIncident.setEventDate(newValues.getDateOfHospitalization());
-				hospitalizationIncident.setIntensiveCare(ic);
+				hospitalizationIncident.setIntensiveCare(isIntensiveCare);
 			}
 			hospIncidentRepo.saveAndFlush(hospitalizationIncident);
 		}
 		else
 		{
-			addHospitalizationIncident(newValues, newValues.getDateOfHospitalization(), ic);
+			addHospitalizationIncident(newValues, newValues.getDateOfHospitalization(), isIntensiveCare);
 		}
 	}
 
@@ -345,14 +342,14 @@ public class IncidentService {
 		return incident;
 	}
 
-	// Hospitalization Incidents
+
 	@Transactional
 	public void addHospitalizationIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
 
-		boolean ic = Boolean.TRUE.equals(intensiveCare);
+		boolean isIntensiveCare = Boolean.TRUE.equals(intensiveCare);
 
 		var incident = (HospitalizationIncident) new HospitalizationIncident()
-				.setIntensiveCare(ic)
+				.setIntensiveCare(isIntensiveCare)
 				.setEventDate(hospitalizedOn)
 				.setEventType(EventType.HOSPITALIZATION_MANDATED)
 				.setPatient(patient);

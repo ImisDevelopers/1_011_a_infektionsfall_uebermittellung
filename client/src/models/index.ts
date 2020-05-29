@@ -15,8 +15,8 @@ export type UserRole = Exclude<RegisterUserRequest['userRole'], undefined>
 export type PatientStatus =
   | 'REGISTERED'
   | 'SUSPECTED'
-  | 'SCHEDULED_FOR_TESTING'
   | 'ORDER_TEST'
+  | 'SCHEDULED_FOR_TESTING'
   | 'TEST_SUBMITTED_IN_PROGRESS'
   | 'TEST_FINISHED_POSITIVE'
   | 'TEST_FINISHED_NEGATIVE'
@@ -25,7 +25,7 @@ export type PatientStatus =
   | 'TEST_FINISHED_NOT_RECOVERED'
   | 'PATIENT_DEAD'
   | 'DOCTORS_VISIT'
-  | 'QUARANTINE_SELECTED' /* Vorgemerkt */
+  | 'QUARANTINE_SELECTED'
   | 'QUARANTINE_MANDATED'
   | 'QUARANTINE_RELEASED'
   | 'QUARANTINE_PROFESSIONBAN_RELEASED'

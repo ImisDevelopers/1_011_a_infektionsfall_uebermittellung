@@ -30,71 +30,71 @@ Development happens in `dev` using feature branches and PR. `dev` branch is depl
  - Frontend: Vue.js
  - Persistence: PostgreSQL
  - Deployment: Google Kubernetes Engine (GKE)
- 
-## Benötigte Tools
-1. Docker
-  - Linux: https://docs.docker.com/install/
-  - Mac : https://docs.docker.com/docker-for-mac/install/
-  - Windows:
-    - Pro/Enterprise: https://docs.docker.com/docker-for-windows/install/
-    - Home: https://docs.docker.com/toolbox/toolbox_install_windows/
-2. JDK 11 (Java)
-  - https://adoptopenjdk.net/ 
-3. YARN
-  - https://classic.yarnpkg.com/en/docs/install#mac-stable 
+
 
 ## How to run this server?
-Install Docker and run: `docker-compose up`
-
-## Quickstart for frontend development
-```docker-compose up -d postgres server```
-## Quickstart for server development
-```docker-compose up -d postgres client``` 
+1. Install Docker
+   - Linux: https://docs.docker.com/install/
+       - Docker Compose has to be installed as well; see https://docs.docker.com/compose/install/
+   - Mac : https://docs.docker.com/docker-for-mac/install/
+   - Windows:
+       - Pro/Enterprise: https://docs.docker.com/docker-for-windows/install/
+       - Home: https://docs.docker.com/toolbox/toolbox_install_windows/
+1. Run `docker-compose up`
 
 ## Local development setup
 
+<!--
+### Quickstart for frontend development
+```docker-compose up -d postgres server```
+### Quickstart for server development
+```docker-compose up -d postgres client``` 
+-->
+
+### Requirements
+1. JDK 11 (Java)
+   - https://adoptopenjdk.net/
+   - **Make sure your `$JAVA_PATH` environment variable is set correctly!**
+1. Gradle
+   - https://gradle.org/install/
+1. Python 3
+   - https://www.python.org/downloads/
+   - **Make sure `python3` can be found on `$PATH`!**
+1. YARN (Frontend-only)
+   - https://classic.yarnpkg.com/en/docs/install
+
+### Preconditions
+- Start PostgreSQL:
+    - Using docker container: ```docker-compose up -d postgres```
+    - Alternatively: Manually start `postgres` and add a user as specified
+  in `server/src/main/resources/application.yml`
+
+
 ### Run full application
-Run application (including frontend) 
-```./gradlew bootRun```
-### Server
-1. Shell öffnen 
-1. Make sure your $JAVA_PATH is set correctly (java11)
-#### Postgres
-- Start PostgreSQL in docker container (before starting application): 
-```docker-compose up -d postgres```
-- When you are not using docker you have to setup postgres manually and add a user as specified in `server/src/main/resources/application.yml`
+1. Make sure all [preconditions](#preconditions) have been met
+1. Run `./gradlew run`
+
 
 #### Spring Boot Server
+Make sure all [preconditions](#preconditions) have been met
 - Using Gradle 
     - Download Gradle wrapper
 ```gradle wrapper```
     - Build application
-```./gradlew clean build```
+```./gradlew build```
     - Test application
-```./gradlew test lint```
+```./gradlew test```
     - Run server application
-```./gradlew bootRun```
-    - Start local development server for vue.js development
-```./gradlew serve```
+```./gradlew run```
 - Using Intellij: 
     - Import Project by opening the `build.gradle` file. Intellij resolves all dependencies and you can run the application by pressing the run button.
 
-But you have to run Postgres in docker or install it and run it locally manually
-
 ### Frontend ([more](client/README.md))
-- Start local development server for vue.js development
-```./gradlew serve```
-- Alternatively you can also us `yarn serve` within the client folder, make sure you installed all dependencies using `yarn install`
-- Update TypeScript API client for frontend using `generate:api-client`, make sure the server is running on `localhost:80`. Do not manually change the `SwaggerApi.ts` file.
-
-## API communication
-
-An API developed by the backend is served via swagger on the server: http://localhost/swagger-ui.html
-We are using the swagger docs to autogenerate the typescript api client.
-```yarn generate:api-client```
-Make sure the server is running locally, the command updates the ts api client
-
-When you make changes to the backend, make sure to generate a new client. 
+1. Make sure all [preconditions](#preconditions) have been met
+1. Start local development server for vue.js development: 
+```./gradlew runFrontendDev```
+    - The local development server still needs the server application to be running for REST API
+     calls!
 
 ## CI system
 All commits to `dev`, `master`, `feature/*` and all PRs will be CI checked.

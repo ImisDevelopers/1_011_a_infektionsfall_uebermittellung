@@ -97,3 +97,15 @@ spring:
     properties.hibernate.search.default:
       directory_provider: filesystem
       indexBase: build/data/search
+---
+spring:
+  profiles: swagger-export
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+  main:
+    banner-mode: off
+management:
+  health:
+    db:
+      enabled: false

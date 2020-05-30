@@ -115,7 +115,6 @@ jacocoTestReport {
 	}
 }
 
-
 compileJava {
     options.compilerArgs = [
         '-Amapstruct.defaultComponentModel=spring'
@@ -126,12 +125,12 @@ task buildSwaggerConfig(type: BootRun) {
 	inputs.files sourceSets.main.allSource.srcDirs
 	outputs.file 'build/resources/swagger.json'
 
-	setClasspath sourceSets.main.runtimeClasspath
-	conventionMapping 'main', new MainClassConvention(project, { -> sourceSets.main
-			.runtimeClasspath })
-	args '--swagger-only', '--swagger-export=build/resources/swagger.json'
+	setClasspath sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
+	conventionMapping 'main', new MainClassConvention(project, {
+		-> sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
+	})
+	args "--spring.profiles.active=swagger-export", '--swagger-only', '--swagger-export=build/resources/swagger.json'
 }
-
 
 // >>>>> DEPENDENCY MAPPINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 tasks.bootJar.dependsOn('processResources')

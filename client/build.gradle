@@ -1,12 +1,12 @@
 plugins {
-  id "com.github.node-gradle.node" version "2.2.2"
+  id "com.github.node-gradle.node" version "2.2.4"
 }
 
 apply plugin: 'base'
 version '0.0.1'
 
 node {
-  version = '13.7.0'
+  version = '14.3.0'
   download = true
 }
 

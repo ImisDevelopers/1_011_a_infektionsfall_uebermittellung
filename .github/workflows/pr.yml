@@ -1,14 +1,14 @@
 name: Pull Request
 
 on:
-#  pull_request:
-#    branches:
-#    - dev
-#    - pilot
-#    types:
-#    - opened
-#    - closed
-#    - synchronize
+  pull_request:
+    branches:
+    - dev
+    - pilot
+    types:
+    - opened
+    - closed
+    - synchronize
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -21,7 +21,7 @@ env:
 
 jobs:
   stop-pr:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    if: github.event.pull_request.closed == true
     name: Stop PR
     runs-on: ubuntu-latest
     steps:
@@ -80,8 +80,7 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        gradle server:test --tests "*GenerateSwagger" -x processResources
-        gradle client:generateClient
+        gradle server:test --tests "*GenerateSwagger" -x processResources  client:generateClient
         gradle jib --image "$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
     - name: Deploy
@@ -91,15 +90,16 @@ jobs:
         gcloud components install beta
 
         gcloud beta run deploy imis-pr-${PR_NUMBER} --image "$IMAGE" \
-          --platform managed \
-          --allow-unauthenticated \
-          --max-instances=3 \
-          --memory=512Mi --cpu=1000m \
-          --concurrency=80 \
-          --set-env-vars="SPRING_PROFILES_ACTIVE=production,SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD},CLOUD_SQL_INSTANCE=challenge-11" \
-          --set-cloudsql-instances=onyx-yeti-271818:europe-west3:challenge-11 \
-          --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
-          --region=europe-west1
+                  --platform managed \
+                  --allow-unauthenticated \
+                  --max-instances=3 \
+                  --memory=512Mi --cpu=1000m \
+                  --concurrency=80 \
+                  --set-env-vars="SPRING_PROFILES_ACTIVE=pull-request,SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}" \
+                  --set-cloudsql-instances=onyx-yeti-271818:europe-west3:challenge-11 \
+                  --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
+                  --region=europe-west1 \
+                  --verbosity=debug
 
         PR_URL="$(gcloud beta run services describe imis-pr-${PR_NUMBER} --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
         echo "::set-env name=PR_COMMENT_MESSAGE::${PR_URL}"
@@ -109,5 +109,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        msg: "Live preview at ${{ env.PR_COMMENT_MESSAGE }}"
+        msg: |
+          :arrow_right: Live preview at ${{ env.PR_COMMENT_MESSAGE }} :up:
+          :warning: First access might be very slow, database is shared. :eyes:
         check_for_duplicate_msg: true

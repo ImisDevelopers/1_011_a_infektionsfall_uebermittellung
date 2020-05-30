@@ -28,7 +28,7 @@ public class LabTestController {
 	})
 	public LabTest createTestForPatient(@RequestBody CreateLabTestDTO createLabTestRequest)
 	 	throws LabTest.ConstraintViolationException {
-		incidentService.addIncident(createLabTestRequest);
+		incidentService.addTestIncident(createLabTestRequest);
 		return service.createLabTest(createLabTestRequest);
 	}
 
@@ -44,7 +44,7 @@ public class LabTestController {
 
 	@PutMapping("/{laboratoryId}")
 	public ResponseEntity<LabTest> updateTestStatus(@PathVariable("laboratoryId") String laboratoryId, @RequestBody UpdateTestStatusDTO statusDTO) {
-		incidentService.updateIncident(laboratoryId, statusDTO);
+		incidentService.updateTestIncident(laboratoryId, statusDTO);
 		return ResponseEntity.ok(service.updateTestStatus(
 				laboratoryId, statusDTO
 		));

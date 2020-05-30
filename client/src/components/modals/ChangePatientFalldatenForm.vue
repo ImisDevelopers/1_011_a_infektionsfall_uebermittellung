@@ -68,6 +68,9 @@ export default Vue.extend({
           'YYYY-MM-DD'
         )
         values.dateOfReporting = (values.dateOfReporting || moment()).format(
+          /*
+            ToDo: dateOfReporting is part of the createPatientDTO but not of Patient. Hence it works when creating a patient, but not on update.
+          */
           'YYYY-MM-DD'
         )
         if (values.patientHospitalized) {
@@ -118,6 +121,7 @@ export default Vue.extend({
             })
             this.form.resetFields()
             this.$emit('create')
+            this.$forceUpdate()
           })
           .catch((error: Error) => {
             this.$notification.error({

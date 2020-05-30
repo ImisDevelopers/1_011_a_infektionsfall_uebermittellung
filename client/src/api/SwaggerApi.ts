@@ -99,7 +99,9 @@ export interface CreatePatientDTO {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -189,7 +191,9 @@ export interface Incident {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   id?: string;
   patient?: Patient;
   versionTimestamp?: string;
@@ -252,12 +256,6 @@ export interface LabTest {
   testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
   testType?: "PCR" | "ANTIBODY";
-}
-
-export interface LabTestConstraintViolation {
-  constraint?: "LAB_UNIQUE_TEST_ID";
-  errorType?: string;
-  message?: string;
 }
 
 export interface Laboratory {
@@ -400,7 +398,9 @@ export interface Patient {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
   quarantineUntil?: string;
@@ -447,7 +447,9 @@ export interface PatientEvent {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   id?: string;
   illness?: "CORONA";
   labTest?: LabTest;
@@ -489,7 +491,9 @@ export interface PatientSearchParamsDTO {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   phoneNumber?: string;
   quarantineStatus?: Array<
     | "REGISTERED"
@@ -509,6 +513,8 @@ export interface PatientSearchParamsDTO {
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
     | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED"
   >;
   street?: string;
   zip?: string;
@@ -543,7 +549,9 @@ export interface QuarantineIncident {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
   id?: string;
   patient?: Patient;
   until?: string;
@@ -586,7 +594,9 @@ export interface RequestQuarantineDTO {
     | "QUARANTINE_MANDATED"
     | "QUARANTINE_RELEASED"
     | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED";
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
 }
 
 export interface SendToQuarantineDTO {
@@ -1133,7 +1143,7 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      * @secure
      */
     createTestForPatientUsingPost: (createLabTestRequest: CreateLabTestDTO, params?: RequestParams) =>
-      this.request<LabTest, LabTestConstraintViolation>(`/api/labtests`, "POST", params, createLabTestRequest, true),
+      this.request<LabTest, any>(`/api/labtests`, "POST", params, createLabTestRequest, true),
 
     /**
      * @tags lab-test-controller

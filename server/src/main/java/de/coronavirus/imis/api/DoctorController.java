@@ -24,7 +24,7 @@ public class DoctorController {
 	@PostMapping("/create_appointment")
 	public PatientEvent addScheduledEvent(@RequestBody RequestLabTestDTO dto) {
 		var patient = patientService.findPatientById(dto.getPatientId()).orElseThrow();
-		incidentService.addIncident(patient, dto.getLaboratoryId(), dto.getDoctorId());
+		incidentService.addOrUpdateAdministrativeIncident(patient, dto.getLaboratoryId(), dto.getDoctorId());
 		return eventService.createScheduledEvent(patient, dto.getLaboratoryId(), dto.getDoctorId());
 	}
 }

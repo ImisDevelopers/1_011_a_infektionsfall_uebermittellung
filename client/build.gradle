@@ -50,7 +50,7 @@ task generateClient(type: NpxTask) {
 
 tasks.assemble.dependsOn('buildFrontend')
 tasks.test.dependsOn('assemble')
-tasks.serve.dependsOn('generateClient')
+tasks.serve.dependsOn('buildFrontend')
 tasks.lint.dependsOn('yarn_install', 'generateClient')
 tasks.buildFrontend.dependsOn('lint')
 tasks.buildFrontend.dependsOn('yarn_install')

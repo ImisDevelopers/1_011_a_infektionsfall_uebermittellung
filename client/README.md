@@ -3,7 +3,7 @@
 ## Project setup
 ***Note:** The specified commands assume the `client` directory as the working directory.*
 ```
-./gradlew yarnInstall
+./gradlew yarn_install
 ```
 
 ### Compiles and hot-reloads for development

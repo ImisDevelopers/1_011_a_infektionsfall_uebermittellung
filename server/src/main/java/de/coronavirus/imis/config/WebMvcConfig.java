@@ -14,7 +14,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 						"https://staging.imis-prototyp.de",
 						"https://pilot.imis-prototyp.de",
 						"http://imis-prototyp.de",
-						"http://localhost:8080")
+						"http://localhost:8080",
+						"https://imis-pr-*.a.run.app")
 				.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 				.allowCredentials(true);
 	}

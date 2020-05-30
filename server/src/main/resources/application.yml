@@ -1,3 +1,5 @@
+feature:
+  testdata: true
 spring:
   profiles:
     active: development
@@ -8,6 +10,8 @@ spring:
       sql:
         enabled: false
 ---
+feature:
+  testdata: true
 spring:
   profiles: development
   datasource:

@@ -64,5 +64,5 @@ project(':client') {
 project(':server') {
 	tasks.bootRun.mustRunAfter(':assemble')
 	tasks.bootJar.mustRunAfter(':assemble')
-	tasks.jib.dependsOn(':assemble')
+	tasks.jib.dependsOn(':jar')
 }

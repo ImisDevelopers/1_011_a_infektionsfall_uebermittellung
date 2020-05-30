@@ -34,8 +34,6 @@ spring:
 server:
   port: 80
 ---
-feature:
-  testdata: true
 spring:
   profiles: production
   datasource:
@@ -61,16 +59,12 @@ management:
       exposure:
         include: health,info,prometheus
 ---
-feature:
-  testdata: true
 spring:
   profiles: staging
   datasource:
     initialization-mode: always
     url: jdbc:postgresql:///staging?cloudSqlInstance=onyx-yeti-271818:europe-west3:challenge-11&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres
 ---
-feature:
-  testdata: true
 spring:
   profiles: pull-request
   datasource:
@@ -92,8 +86,6 @@ spring:
         instance-connection-name: onyx-yeti-271818:europe-west3:challenge-11
         enabled: true
 ---
-feature:
-  testdata: true
 spring:
   profiles: test
   datasource:

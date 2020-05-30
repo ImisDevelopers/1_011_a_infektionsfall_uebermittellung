@@ -31,7 +31,7 @@ import java.util.Arrays;
 
 
 @Component
-@ConditionalOnProperty("feature.testdata")
+@Profile({"pull-request", "staging", "test", "production"})
 @Slf4j
 @RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {

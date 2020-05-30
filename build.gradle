@@ -21,7 +21,7 @@ task processClientResources(type: ProcessResources) {
 	setDescription "Update static server resources with recent frontend distribution."
 
 	from 'client/dist'
-	into 'server/build/static'
+	into 'server/build/resources/main/static'
 }
 
 // Run the backend (replaces :server:bootRun)
@@ -64,5 +64,5 @@ project(':client') {
 project(':server') {
 	tasks.bootRun.mustRunAfter(':assemble')
 	tasks.bootJar.mustRunAfter(':assemble')
-	tasks.jib.dependsOn(':jar')
+	tasks.jib.dependsOn(':assemble')
 }

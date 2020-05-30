@@ -87,6 +87,8 @@ bootJar {
 }
 
 task generateTestData(type: Exec) {
+	setDescription "Generate test data to be loaded by the IMIS backend."
+
 	inputs.files fileTree(
 			dir: 'src/main/resources/sample_data',
 			includes: ['genPersons.py', 'persons/*'])
@@ -122,6 +124,9 @@ compileJava {
 }
 
 task buildSwaggerConfig(type: BootRun) {
+	def swaggerOutPath = "build/resources/swagger.json"
+	setDescription "Generate a Swagger documentation file in JSON format (`${swaggerOutPath}`)."
+
 	inputs.files sourceSets.main.allSource.srcDirs
 	outputs.file 'build/resources/swagger.json'
 
@@ -129,7 +134,8 @@ task buildSwaggerConfig(type: BootRun) {
 	conventionMapping 'main', new MainClassConvention(project, {
 		-> sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
 	})
-	args "--spring.profiles.active=swagger-export", '--swagger-only', '--swagger-export=build/resources/swagger.json'
+	args "--spring.profiles.active=swagger-export", '--swagger-only',
+			"--swagger-export=${swaggerOutPath}"
 }
 
 // >>>>> DEPENDENCY MAPPINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

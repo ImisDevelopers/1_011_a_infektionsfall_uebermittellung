@@ -78,7 +78,7 @@ dependencyManagement {
 }
 
 jib {
-    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server:${System.env.GITHUB_SHA}"
+    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis:${System.env.GITHUB_SHA}"
 }
 
 bootJar {

@@ -11,7 +11,7 @@ node {
 }
 
 def sourceSet = fileTree(dir: '.', includes: [
-		'src',
+		'src/**',
 		'package.json',
 		'babel.config.js',
 		'tsconfig.json',

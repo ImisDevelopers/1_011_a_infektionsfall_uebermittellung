@@ -681,7 +681,7 @@ type ApiConfig<SecurityDataType> = {
 };
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "/v2/api-docs";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -759,7 +759,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl /v2/api-docs
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {

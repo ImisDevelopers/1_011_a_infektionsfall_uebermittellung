@@ -1,3 +1,8 @@
+import org.springframework.boot.gradle.plugin.MainClassConvention
+import org.springframework.boot.gradle.tasks.run.BootRun
+
+import java.util.function.Supplier;
+
 plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
@@ -80,29 +85,28 @@ jib {
     jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
 }
 
-processResources {
-    from('../client/dist') {
-        into 'static'
-    }
-}
-
 bootJar {
     archiveFileName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
 }
-tasks.processResources.dependsOn(':client:assemble')
-tasks.jib.dependsOn('processResources')
-bootJar.dependsOn('processResources')
 
 task generateTestData(type: Exec) {
-		commandLine 'python3', 'genPersons.py', '-u'
-		workingDir 'src/main/resources/sample_data'
+	inputs.files fileTree(
+			dir: 'src/main/resources/sample_data',
+			includes: ['genPersons.py', 'persons/*'])
+	outputs.dir 'src/main/resources/sample_data/persons'
+
+	commandLine 'python3', 'genPersons.py', '-u'
+	workingDir 'src/main/resources/sample_data'
 }
-tasks.bootRun.dependsOn('generateTestData')
-tasks.test.dependsOn('generateTestData')
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
+	systemProperty 'feature.testdata', true
+}
+
+bootRun {
+	systemProperty 'feature.testdata', true
 }
 
 compileJava {
@@ -110,3 +114,21 @@ compileJava {
         '-Amapstruct.defaultComponentModel=spring'
     ]
 }
+
+task buildSwaggerConfig(type: BootRun) {
+	inputs.files sourceSets.main.allSource.srcDirs
+	outputs.file 'build/resources/swagger.json'
+
+	setClasspath sourceSets.main.runtimeClasspath
+	conventionMapping 'main', new MainClassConvention(project, { -> sourceSets.main
+			.runtimeClasspath })
+	args '--swagger-only', '--swagger-export=build/resources/swagger.json'
+}
+
+
+// >>>>> DEPENDENCY MAPPINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+tasks.bootJar.dependsOn('processResources')
+tasks.buildSwaggerConfig.dependsOn(tasks.bootRun.getDependsOn())
+tasks.bootRun.dependsOn('generateTestData')
+tasks.help.dependsOn('generateTestData')
+tasks.jib.dependsOn('processResources')

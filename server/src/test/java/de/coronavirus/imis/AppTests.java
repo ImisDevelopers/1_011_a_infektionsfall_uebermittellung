@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Import;
 
 import static org.mockito.Mockito.mock;
 
-@SpringBootTest
+@SpringBootTest(args = "--testdata")
 class AppTests {
 
 	@Test

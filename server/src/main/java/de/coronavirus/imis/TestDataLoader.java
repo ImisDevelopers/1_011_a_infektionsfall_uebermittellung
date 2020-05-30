@@ -16,6 +16,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -23,13 +27,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.util.Arrays;
 
 
 @Component
+@ConditionalOnProperty("feature.testdata")
 @Slf4j
 @RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {
-
+	private final Environment env;
 
 	private final PatientService patientService;
 	private final InstitutionService institutionService;
@@ -66,7 +72,6 @@ public class TestDataLoader implements ApplicationRunner {
 			return new BufferedInputStream(rStream);
 		}
 	}
-
 
 	public void run(ApplicationArguments args) {
 		log.info("Creating test data");

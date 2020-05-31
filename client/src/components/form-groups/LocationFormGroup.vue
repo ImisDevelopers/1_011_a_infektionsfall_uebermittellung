@@ -106,23 +106,25 @@
                 },
               ]"
             >
-              <a-select-option value="BE">Belgien</a-select-option>
-              <a-select-option value="DK">Dänemark</a-select-option>
-              <a-select-option value="DE">Deutschland</a-select-option>
-              <a-select-option value="FR">Frankreich</a-select-option>
-              <a-select-option value="GR">Griechenland</a-select-option>
-              <a-select-option value="UK">Großbritannien</a-select-option>
-              <a-select-option value="IT">Italien</a-select-option>
-              <a-select-option value="LU">Luxemburg</a-select-option>
-              <a-select-option value="NL">Niederlande</a-select-option>
-              <a-select-option value="AT">Österreich</a-select-option>
-              <a-select-option value="PL">Polen</a-select-option>
-              <a-select-option value="PT">Portugal</a-select-option>
-              <a-select-option value="RU">Russland</a-select-option>
-              <a-select-option value="CH">Schweiz</a-select-option>
-              <a-select-option value="ES">Spanien</a-select-option>
-              <a-select-option value="CZ">Tschechien</a-select-option>
-              <a-select-option value="TR">Türkei</a-select-option>
+              <a-select-opt-group>
+                <span slot="label">Schnellzugriff</span>
+                <a-select-option value="unknown">
+                  Unbekannt
+                </a-select-option>
+                <a-select-option value="DE">
+                  Deutschland
+                </a-select-option>
+              </a-select-opt-group>
+              <a-select-opt-group>
+                <span slot="label">Alle ({{ countries.length }})</span>
+                <a-select-option
+                  v-for="country of countries"
+                  :value="country.code"
+                  :key="country.code"
+                >
+                  {{ country.name }}
+                </a-select-option>
+              </a-select-opt-group>
             </a-select>
           </a-form-item>
         </a-col>
@@ -137,6 +139,8 @@ import mixins from 'vue-typed-mixins'
 import * as typing from '@/util/typing'
 import { getPlzs, Plz } from '@/util/plz-service'
 import { FormGroupMixin } from '@/util/forms'
+import { CountryDto } from '@/api/SwaggerApi'
+import { getCountries } from '@/util/country-service'
 
 interface Input extends Vue {
   value: string
@@ -153,10 +157,16 @@ export default mixins(FormGroupMixin).extend({
   name: 'LocationFormGroup',
   fieldIdentifiers: ['street', 'zip', 'city', 'country'],
   props: ['required', 'data'],
+  created() {
+    getCountries().then((countries) => {
+      this.countries = countries
+    })
+  },
   data() {
     return {
       zips: [] as ZipEntry[],
       currentZipSearch: '' as string,
+      countries: [] as CountryDto[],
     }
   },
   methods: {
@@ -166,7 +176,7 @@ export default mixins(FormGroupMixin).extend({
     initialCountry() {
       const initialData = this.initialData('country')
       if (!initialData && this.required) {
-        return 'Deutschland'
+        return 'DE'
       } else {
         return initialData
       }
@@ -180,7 +190,7 @@ export default mixins(FormGroupMixin).extend({
       this.withExts().setData({
         zip: plzData.fields.plz,
         city: plzData.fields.note,
-        country: 'Deutschland',
+        country: 'DE',
       })
     },
     async handleZipSearch(value: string) {

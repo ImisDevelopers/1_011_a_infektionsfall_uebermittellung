@@ -125,7 +125,7 @@
                   </tr>
                   <tr>
                     <td>Land:</td>
-                    <td>{{ patient.country }}</td>
+                    <td>{{ country }}</td>
                   </tr>
                 </table>
                 <table v-if="patient.stayCity" style="margin-top: 10px;">
@@ -144,7 +144,7 @@
                   </tr>
                   <tr>
                     <td>Land:</td>
-                    <td>{{ patient.stayCountry }}</td>
+                    <td>{{ stayCountry }}</td>
                   </tr>
                 </table>
               </a-card>
@@ -390,7 +390,6 @@ import * as permissions from '@/util/permissions'
 import {
   ExposureContactFromServer,
   Incident,
-  LabTest,
   Patient,
   Timestamp,
 } from '@/api/SwaggerApi'
@@ -414,6 +413,7 @@ import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
 import ChangePatientFalldatenForm from '@/components/modals/ChangePatientFalldatenForm.vue'
 import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
+import { getCountries } from '@/util/country-service'
 
 const columnsExposureContacts: Partial<Column>[] = [
   {
@@ -521,6 +521,8 @@ interface State {
   dateOfReporting: string
   dateOfIllness: string
   dateFormat: string
+  country: string
+  stayCountry: string
   incidents: any[]
 }
 
@@ -577,6 +579,8 @@ export default Vue.extend({
       dateOfDeath: '',
       dateOfHospitalization: '',
       gender: '',
+      country: '',
+      stayCountry: '',
       columnsExposureContacts,
       columnsIndexPatients,
       dateOfReporting: '',
@@ -612,6 +616,17 @@ export default Vue.extend({
         const patient = await Api.getPatientForIdUsingGet(patientId)
         this.setPatient(patient)
         this.patient = patient
+      }
+
+      const patient = this.patient
+      if (patient) {
+        const countries = await getCountries()
+        this.country =
+          countries.find((country) => country.code === patient.country)?.name ||
+          'Unbekannt'
+        this.stayCountry =
+          countries.find((country) => country.code === patient.stayCountry)
+            ?.name || 'Unbekannt'
       }
 
       this.incidents = await Api.getPatientLogUsingGet(patientId)

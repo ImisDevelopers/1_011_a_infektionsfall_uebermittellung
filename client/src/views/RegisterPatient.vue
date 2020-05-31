@@ -65,33 +65,7 @@
 
           <!-- Symptoms -->
           <a-collapse-panel header="Symptome" key="3">
-            <SymptomsForm
-              :form="form"
-              @symptomsChanged="symptomsChanged"
-              @showOtherSymptomsChanged="showOtherSymptomsChanged"
-            />
-
-            <a-form-item
-              :labelCol="{ div: 24 }"
-              :wrapperCol="{ div: 24 }"
-              class="no-double-colon-form-field"
-              label="Wie schnell sind die Beschwerden aufgetreten?"
-            >
-              <a-radio-group
-                v-decorator="['speedOfSymptomsOutbreak']"
-                :disabled="!showSpeedOfSymptoms"
-              >
-                <a-radio value="suddenly">
-                  Plötzlich, innerhalb von einem Tag
-                </a-radio>
-                <a-radio value="slow">
-                  Langsam, innerhalb von mehreren Tagen
-                </a-radio>
-                <a-radio value="unknown">
-                  Nicht bekannt
-                </a-radio>
-              </a-radio-group>
-            </a-form-item>
+            <SymptomsForm :form="form" />
 
             <a-form-item
               class="no-double-colon-form-field"
@@ -253,28 +227,6 @@ export default Vue.extend({
             this.$notification.error(notification)
           })
       })
-    },
-    symptomsChanged(symptoms: string[]) {
-      this.updateSymptomsForm(
-        symptoms,
-        this.form.getFieldValue('showOtherSymptoms')
-      )
-    },
-    showOtherSymptomsChanged(hasOtherSymptoms: boolean) {
-      this.updateSymptomsForm(
-        this.form.getFieldValue('symptoms'),
-        hasOtherSymptoms
-      )
-    },
-    updateSymptomsForm(symptoms: string[], hasOtherSymptoms: boolean) {
-      if ((symptoms && symptoms.length > 0) || hasOtherSymptoms) {
-        this.showSpeedOfSymptoms = true
-      } else {
-        this.showSpeedOfSymptoms = false
-        this.form.setFieldsValue({
-          speedOfSymptomsOutbreak: undefined,
-        })
-      }
     },
   },
 })

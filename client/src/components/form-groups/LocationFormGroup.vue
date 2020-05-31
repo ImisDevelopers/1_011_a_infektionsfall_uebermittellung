@@ -108,7 +108,7 @@
             >
               <a-select-opt-group>
                 <span slot="label">Schnellzugriff</span>
-                <a-select-option value="unknown">
+                <a-select-option value="" v-if="!required">
                   Unbekannt
                 </a-select-option>
                 <a-select-option value="DE">

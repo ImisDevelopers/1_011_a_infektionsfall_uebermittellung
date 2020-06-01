@@ -138,5 +138,4 @@ task buildSwaggerConfig(type: BootRun) {
 // >>>>> DEPENDENCY MAPPINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 tasks.bootJar.dependsOn('processResources')
 tasks.buildSwaggerConfig.dependsOn(tasks.bootRun.getDependsOn())
-tasks.bootRun.dependsOn('generateTestData')
-tasks.help.dependsOn('generateTestData')
+tasks.processResources.dependsOn('generateTestData')

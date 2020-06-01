@@ -81,8 +81,9 @@ public class TestDataLoader implements ApplicationRunner {
 
 			try {
 				log.info("Inserting patients");
-				for (Resource patientTestDataResource : resourceResolver.getResources("classpath:sample_data/persons/person*.json")) {
-					var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
+				//for (Resource patientTestDataResource : resourceResolver.getResources("classpath:sample_data/persons/person*.json")) {
+				for (int i = 0; i < 250; i++) {
+					var createPersonDTO = makeDTO("persons/person" + i + ".json", CreatePatientDTO.class);
 					patientService.addPatient(createPersonDTO, true);
 				}
 			} catch (Exception e) {

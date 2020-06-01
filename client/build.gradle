@@ -17,7 +17,7 @@ def sourceSet = fileTree(dir: '.', includes: [
 		'tsconfig.json',
 		'vue.config.js',
 		'yarn.lock',
-		'node_modules'
+		'node_modules/**'
 ])
 
 task buildFrontend(type: YarnTask) {

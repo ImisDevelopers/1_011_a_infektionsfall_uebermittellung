@@ -100,13 +100,10 @@ task generateTestData(type: Exec) {
 
 test {
 	useJUnitPlatform()
-	systemProperty 'feature.testdata', true
 	finalizedBy jacocoTestReport
 }
 
-bootRun {
-	systemProperty 'feature.testdata', true
-}
+bootRun {}
 
 jacocoTestReport {
 	dependsOn test // tests are required to run before generating the report

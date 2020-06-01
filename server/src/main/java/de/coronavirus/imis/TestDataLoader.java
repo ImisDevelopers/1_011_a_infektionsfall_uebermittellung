@@ -31,7 +31,7 @@ import java.util.Arrays;
 
 
 @Component
-@Profile({"pull-request", "staging", "test", "production"})
+@Profile("!swagger-export")
 @Slf4j
 @RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {

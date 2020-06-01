@@ -73,22 +73,24 @@ public class TestDataLoader implements ApplicationRunner {
 		}
 	}
 
+	public void loadPatientTestData(ResourcePatternResolver resourceResolver) {
+		try {
+			log.info("Inserting patients");
+			for (Resource patientTestDataResource : resourceResolver.getResources("classpath:sample_data/persons/person*.json")) {
+				var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
+				patientService.addPatient(createPersonDTO, true);
+			}
+		} catch (Exception e) {
+			log.error("Exception occured during population with test patients:");
+			e.printStackTrace();
+		}
+	}
+
 	public void run(ApplicationArguments args) {
 		log.info("Creating test data");
 		try {
 
 			ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());
-
-			try {
-				log.info("Inserting patients");
-				for (Resource patientTestDataResource : resourceResolver.getResources("classpath:sample_data/persons/person*.json")) {
-					var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
-					patientService.addPatient(createPersonDTO, true);
-				}
-			} catch (Exception e) {
-				log.error("Exception occured during population with test patients:");
-				e.printStackTrace();
-			}
 
 			// SETUP OUR WORLD
 			log.info("Inserting laboratory");
@@ -111,6 +113,8 @@ public class TestDataLoader implements ApplicationRunner {
 			var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createDepartmentOfHealth.json", CreateInstitutionDTO.class);
 			var departmentOfHealth = institutionService.addInstitution(createDepartmentOfHealthDTO);
 
+
+			loadPatientTestData(resourceResolver);
 
 			var user = User.builder()
 					.userRole(UserRole.USER_ROLE_ADMIN)

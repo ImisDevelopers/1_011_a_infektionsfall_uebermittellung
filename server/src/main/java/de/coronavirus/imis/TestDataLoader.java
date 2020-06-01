@@ -113,9 +113,6 @@ public class TestDataLoader implements ApplicationRunner {
 			var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createDepartmentOfHealth.json", CreateInstitutionDTO.class);
 			var departmentOfHealth = institutionService.addInstitution(createDepartmentOfHealthDTO);
 
-
-			loadPatientTestData(resourceResolver);
-
 			var user = User.builder()
 					.userRole(UserRole.USER_ROLE_ADMIN)
 					.username("test_lab")
@@ -153,6 +150,10 @@ public class TestDataLoader implements ApplicationRunner {
 					.userRole(UserRole.USER_ROLE_ADMIN)
 					.build();
 			userRepository.saveAndFlush(departmentOfHealthUser);
+
+			// PATIENT TEST DATA
+			loadPatientTestData(resourceResolver);
+
 			// PERSON GETS SICK AND GOES TO THE DOCTOR
 			// PERSON GETS REGISTERED
 			var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);

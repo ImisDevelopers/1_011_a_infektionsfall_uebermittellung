@@ -16,10 +16,6 @@ import java.time.LocalDate;
 public class HospitalizationIncident extends Incident {
 
 	/*
-		Currently not in use:
-		In the frontend, a patient can be marked as hospitalized during registration, but there is no option
-		to change this later. Assuming that this function will come, this field is dedicated to record the release date.
-
 		The hopsitalization date is captured on Incident level (EventDate), because:
 		 - in the timeline, we want hospitalization to appear when it happened, not when it was entered into the system.
 		 - this is consistent with quarantine

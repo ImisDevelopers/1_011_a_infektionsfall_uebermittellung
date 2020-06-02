@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommonIncidentService {
 
-  private AuditReader auditReader;
+  private final AuditReader auditReader;
 
   public <T extends Incident> List<T> getIncidentLogByPatientId(Class<T> T, String patientId) {
     var query = auditReader.createQuery().forRevisionsOfEntity(T, true, false);

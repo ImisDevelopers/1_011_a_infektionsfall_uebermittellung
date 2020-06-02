@@ -3,12 +3,12 @@
     <a-timeline
       mode="left"
       style="text-align: left; margin-left: 40px;"
-      v-if="allIncidents.length"
+      v-if="incidents.length"
     >
       <!-- List all the events recorded corresponding to the patient over time -->
       <a-timeline-item
         :color="timelineColor(incident.eventType)"
-        v-for="incident in allIncidents"
+        v-for="incident in incidents"
         :key="incident.id + incident.versionTimestamp"
       >
         {{ formatDate(incident.eventDate) }},
@@ -56,11 +56,13 @@ export default Vue.extend({
       handler(newI: PatientLogDto) {
         this.incidents = Object.values(newI)
           .flat()
-          .sort(
-            (a: Incident, b: Incident) =>
+          .sort((a: Incident, b: Incident) => {
+            console.log(a, b)
+            return (
               a.eventDate!.localeCompare(b.eventDate!) ||
               a.versionTimestamp!.localeCompare(b.versionTimestamp!)
-          )
+            )
+          })
       },
     },
   },

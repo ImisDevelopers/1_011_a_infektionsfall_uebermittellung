@@ -48,48 +48,41 @@ public class PatientService {
 	}
 
 	public Patient addPatient(CreatePatientDTO dto, boolean registeredByInstitution) {
+
 		var patient = patientMapper.toPatient(dto);
+
 		if (registeredByInstitution) {
 			patient.setPatientStatus(EventType.SUSPECTED);
 		}
-		return this.addPatient(
-				patient,
-				patientMapper.parseDate(dto.getDateOfReporting()),
-				patientMapper.parseDate(dto.getDateOfIllness()));
+
+		LocalDate dateOfReporting = dto.getDateOfReporting() != null ? PatientMapper.parseDate(dto.getDateOfReporting()) : LocalDate.now();
+		LocalDate dateOfIllness = dto.getDateOfIllness() != null ? PatientMapper.parseDate(dto.getDateOfIllness()) : LocalDate.now();
+
+		if (patient.getId() == null) {
+			patient.setId(makePatientId(patient));
+		}
+
+		log.info("inserting patient with id {}", patient.getId());
+		patient = patientRepository.save(patient);
+
+		eventService.createInitialPatientEvent(
+			patient, Optional.empty(),
+			patient.getPatientStatus(),
+			dateOfReporting);
+
+		incidentService.addOrUpdateAdministrativeIncident(
+			patient, Optional.empty(),
+			patient.getPatientStatus(),
+			dateOfReporting,
+			dateOfIllness
+		);
+
+		return patient;
 	}
 
 	public Patient updatePatient(Patient patient) {
 		incidentService.deductIncidentUpdates(patient);
-		return this.patientRepository.saveAndFlush(patient);
-	}
-
-	public Patient addPatient(Patient patient, final LocalDate dateOfReporting, LocalDate dateOfIllness) {
-		if (patient.getId() == null) {
-			var id = Hashing.sha256()
-					.hashString(patient.getFirstName() + patient.getLastName()
-							+ patient.getZip()
-							+ patient.getDateOfBirth()
-							+ RandomService.getRandomString(12), StandardCharsets.UTF_8)
-					.toString()
-					.substring(0, 8).toUpperCase();
-
-			patient.setId(id);
-		}
-
-		patient = patientRepository.save(patient);
-		log.info("inserting patient with id {}", patient.getId());
-		eventService.createInitialPatientEvent(
-				patient, Optional.empty(),
-				patient.getPatientStatus(),
-				dateOfReporting);
-		log.info("inserted event for patient {}", patient);
-		incidentService.addOrUpdateAdministrativeIncident(
-				patient, Optional.empty(),
-				patient.getPatientStatus(),
-				dateOfReporting,
-				dateOfIllness
-				);
-		return patient;
+		return patientRepository.saveAndFlush(patient);
 	}
 
 	public Long queryPatientsSimpleCount(String query) {
@@ -114,7 +107,7 @@ public class PatientService {
 
 		var patient = findPatientById(patientID).orElseThrow();
 
-		patient.setQuarantineUntil(patientMapper.parseDate(dto.getDateUntil()));
+		patient.setQuarantineUntil(PatientMapper.parseDate(dto.getDateUntil()));
 
 		patientRepository.saveAndFlush(patient);
 
@@ -122,4 +115,16 @@ public class PatientService {
 
 		return patient;
 	}
+
+	@SuppressWarnings("UnstableApiUsage")
+	private String makePatientId(Patient patient) {
+		return Hashing.sha256()
+			.hashString(patient.getFirstName() + patient.getLastName()
+				+ patient.getZip()
+				+ patient.getDateOfBirth()
+				+ RandomService.getRandomString(12), StandardCharsets.UTF_8)
+			.toString()
+			.substring(0, 8).toUpperCase();
+	}
+
 }

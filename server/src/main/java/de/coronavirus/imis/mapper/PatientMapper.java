@@ -37,7 +37,7 @@ public abstract class PatientMapper {
 
 	public abstract Patient.IdentityView toIdentityView(Patient patient);
 
-	public LocalDate parseDate(String localDateString) {
+	public static LocalDate parseDate(String localDateString) {
 		LocalDate localDate = null;
 		if (localDateString != null && !localDateString.isBlank()) {
 			localDate = LocalDate.parse(localDateString, DATE_FORMATTER);

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
@@ -211,7 +212,7 @@ public class WriteIncidentService {
 			}
 			hospIncidentRepo.saveAndFlush(hospitalizationIncident);
 		}
-		else
+		else if(newValues.getDateOfHospitalization() != null)
 		{
 			addHospitalizationIncident(newValues, newValues.getDateOfHospitalization(), isIntensiveCare);
 		}
@@ -251,7 +252,7 @@ public class WriteIncidentService {
 
 
 	@Transactional
-	public void addHospitalizationIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
+	public void addHospitalizationIncident(Patient patient, @NotNull LocalDate hospitalizedOn, Boolean intensiveCare) {
 
 		boolean isIntensiveCare = Boolean.TRUE.equals(intensiveCare);
 

@@ -25,6 +25,10 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import java.io.*;
 import java.util.Arrays;
@@ -35,7 +39,7 @@ import java.util.Arrays;
 @Slf4j
 @RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {
-	private final Environment env;
+	private final PlatformTransactionManager transactionManager;
 
 	private final PatientService patientService;
 	private final InstitutionService institutionService;
@@ -74,6 +78,9 @@ public class TestDataLoader implements ApplicationRunner {
 	}
 
 	public void loadPatientTestData(ResourcePatternResolver resourceResolver) {
+		new TransactionTemplate(this.transactionManager)
+				.executeWithoutResult((TransactionStatus tStatus) -> {
+
 		try {
 			log.info("Inserting patients");
 			for (Resource patientTestDataResource : resourceResolver.getResources("classpath:sample_data/persons/person*.json")) {
@@ -84,6 +91,8 @@ public class TestDataLoader implements ApplicationRunner {
 			log.error("Exception occured during population with test patients:");
 			e.printStackTrace();
 		}
+
+		});
 	}
 
 	public void run(ApplicationArguments args) {

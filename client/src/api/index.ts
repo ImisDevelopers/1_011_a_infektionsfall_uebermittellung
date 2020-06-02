@@ -6,7 +6,7 @@ if (
   location.host.includes('localhost') ||
   location.host.includes('127.0.0.1')
 ) {
-  baseUrl = 'http://localhost:80'
+  baseUrl = 'http://localhost:8081'
   // Alternative config to run the app locally without root; see proxy conf
   // baseUrl = 'http://localhost:8080/api'
 }

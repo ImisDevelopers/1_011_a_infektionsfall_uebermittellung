@@ -408,7 +408,6 @@ export default Vue.extend({
       let countPromise
       let queryPromise
       if (this.showAdvancedSearch) {
-
         const formValues: PatientSearchParamsDTO = {
           ...this.form,
           ...this.advancedForm,
@@ -419,7 +418,9 @@ export default Vue.extend({
           formValues.patientStatus = undefined
         }
 
-        formValues.quarantineStatus = this.getQuarantineSelection() as Array<PatientStatus>
+        formValues.quarantineStatus = this.getQuarantineSelection() as Array<
+          PatientStatus
+        >
 
         countPromise = Api.countQueryPatientsUsingPost(formValues)
         queryPromise = Api.queryPatientsUsingPost(formValues)

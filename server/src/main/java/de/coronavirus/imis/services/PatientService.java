@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import org.springframework.stereotype.Service;
 
 import com.google.common.hash.Hashing;
@@ -31,7 +32,7 @@ public class PatientService {
 	private final PatientRepository patientRepository;
 	private final PatientEventService eventService;
 	private final PatientMapper patientMapper;
-	private final IncidentService incidentService;
+	private final WriteIncidentService incidentService;
 	private final SearchService searchService;
 
 	public List<Patient> getAllPatients() {

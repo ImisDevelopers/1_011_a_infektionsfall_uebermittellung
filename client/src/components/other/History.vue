@@ -26,19 +26,43 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { Incident, Timestamp } from '../../api/SwaggerApi'
+import { Timestamp, PatientLogDto } from '../../api/SwaggerApi'
 import moment from 'moment'
-import { eventTypes } from '../../models/event-types'
-import { PatientStatus } from '../../models/index'
+import { eventTypes, EventTypeItem } from '../../models/event-types'
+import { PatientStatus, Incident } from '../../models/index'
+
+interface State {
+  eventTypes: EventTypeItem[]
+  incidents: Incident[]
+}
 
 export default Vue.extend({
   name: 'History',
   components: {},
-  props: ['allIncidents'],
-  data() {
+  props: {
+    allIncidents: {
+      type: Object as () => PatientLogDto,
+    },
+  },
+  data(): State {
     return {
       eventTypes,
+      incidents: [],
     }
+  },
+  watch: {
+    allIncidents: {
+      immediate: true,
+      handler(newI: PatientLogDto) {
+        this.incidents = Object.values(newI)
+          .flat()
+          .sort(
+            (a: Incident, b: Incident) =>
+              a.eventDate!.localeCompare(b.eventDate!) ||
+              a.versionTimestamp!.localeCompare(b.versionTimestamp!)
+          )
+      },
+    },
   },
   methods: {
     formatDate: (date: string) => {

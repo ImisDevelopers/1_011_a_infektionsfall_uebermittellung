@@ -4,7 +4,7 @@ import de.coronavirus.imis.api.dto.*;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.domain.PatientEvent;
-import de.coronavirus.imis.services.IncidentService;
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import de.coronavirus.imis.services.PatientEventService;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.Optional;
 public class PatientController {
 
 	private final PatientService patientService;
-	private final IncidentService incidentService;
+	private final WriteIncidentService incidentService;
 	private final PatientEventService eventService;
 
 	@PostMapping

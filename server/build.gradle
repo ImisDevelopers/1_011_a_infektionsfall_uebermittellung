@@ -103,8 +103,6 @@ test {
 	finalizedBy jacocoTestReport
 }
 
-bootRun {}
-
 jacocoTestReport {
 	dependsOn test // tests are required to run before generating the report
 	reports {
@@ -119,6 +117,8 @@ compileJava {
         '-Amapstruct.defaultComponentModel=spring'
     ]
 }
+
+bootRun {}
 
 task buildSwaggerConfig(type: BootRun) {
 	def swaggerOutPath = "build/resources/swagger.json"

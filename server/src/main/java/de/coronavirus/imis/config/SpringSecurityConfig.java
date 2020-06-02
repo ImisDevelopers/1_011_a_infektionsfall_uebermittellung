@@ -34,7 +34,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final String GOVERNMENT_AGENCY = InstitutionType.GOVERNMENT_AGENCY.name();
 	private final String LABORATORY = InstitutionType.LABORATORY.name();
 	private final String TEST_SITE = InstitutionType.TEST_SITE.name();
-	private static final String API_PREFIX = "/api";
+	public static final String API_PREFIX = "/api";
 
 
 	@Bean

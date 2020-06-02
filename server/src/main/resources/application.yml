@@ -32,6 +32,9 @@ spring:
             directory_provider: filesystem
             indexBase: build/data/search
 server:
+  http.cors.allowed-origins:
+    - http://localhost:8080
+    - http://127.0.0.1:8080
   port: 80
 ---
 spring:
@@ -109,3 +112,5 @@ management:
   health:
     db:
       enabled: false
+server:
+  port: 8079

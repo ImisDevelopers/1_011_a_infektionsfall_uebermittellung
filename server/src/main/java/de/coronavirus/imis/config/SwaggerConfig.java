@@ -18,7 +18,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-public class SawggerConfig {
+public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {

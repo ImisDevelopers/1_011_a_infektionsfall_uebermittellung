@@ -86,8 +86,9 @@
                 v-for="symptom in administrative.symptoms"
               >
                 {{
-                  SYMPTOMS.find((symptomFind) => symptomFind.value === symptom)
-                    .label || symptom
+                  SYMPTOMS.find((symptomFind) => symptomFind.value === symptom) ?
+                    SYMPTOMS.find((symptomFind) => symptomFind.value === symptom).label
+                    : symptom
                 }}
               </li>
             </ul>
@@ -135,10 +136,10 @@ import { getDate } from '../../util/helper-functions'
 import { SYMPTOMS } from '../../models/symptoms'
 
 interface State {
-  administrative: any // There's only one.
-  test: any[]
-  quarantine: any[]
-  hospitalization: any[]
+  administrative: AdministrativeIncident | undefined // There's only one.
+  test: TestIncident[]
+  quarantine: QuarantineIncident[]
+  hospitalization: HospitalizationIncident[]
   SYMPTOMS: any[]
 }
 
@@ -173,7 +174,6 @@ export default Vue.extend({
         const quarantineIncidents = [...newI.quarantineIncidents!]
         const hospitalizationIncidents = [...newI.hospitalizationIncidents!]
         const testIncidents = [...newI.testIncidents!]
-
         this.administrative = removeHistoric(administrativeIncidents)[0]
         this.quarantine = removeHistoric(quarantineIncidents)
         this.hospitalization = removeHistoric(hospitalizationIncidents)

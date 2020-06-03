@@ -36,6 +36,8 @@ public class PatientSearchParamsDTO {
 	private boolean includePatientEvents;
 
 	private EventType patientStatus;
+
+	// TODO Setting this field has no effect on search results (see SearchService.beanProperties)
 	private List<EventType> quarantineStatus;
 
 	public Long getPageSize() {

@@ -133,7 +133,9 @@
             <a-icon slot="prefix" type="hdd" />
           </a-input>
         </a-form-item>
-        <a-form-item label="Quarantänestatus">
+        <!-- 
+          Currently there is no filtering for quarantine status supported by the backend
+          <a-form-item label="Quarantänestatus">
           <a-select
             placeholder="Quarantänestatus"
             style="width: 250px;"
@@ -150,7 +152,7 @@
               >Keine Anordnung
             </a-select-option>
           </a-select>
-        </a-form-item>
+        </a-form-item> -->
         <!-- Invisible Button so user can use enter to search -->
         <a-button
           @click="handleSearch"

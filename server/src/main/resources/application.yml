@@ -32,6 +32,9 @@ spring:
             directory_provider: filesystem
             indexBase: build/data/search
 server:
+  http.cors.allowed-origins:
+    - http://localhost:8080
+    - http://127.0.0.1:8080
   port: 80
 ---
 spring:
@@ -97,3 +100,17 @@ spring:
     properties.hibernate.search.default:
       directory_provider: filesystem
       indexBase: build/data/search
+---
+spring:
+  profiles: swagger-export
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+  main:
+    banner-mode: off
+management:
+  health:
+    db:
+      enabled: false
+server:
+  port: 8079

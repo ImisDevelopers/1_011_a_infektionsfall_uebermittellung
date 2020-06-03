@@ -785,7 +785,7 @@ const enum BodyType {
 }
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8081/";
+  public baseUrl: string = "/v2/api-docs";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -874,7 +874,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8081/
+ * @baseUrl /v2/api-docs
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {

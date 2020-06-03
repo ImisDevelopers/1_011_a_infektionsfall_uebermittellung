@@ -27,4 +27,9 @@ public class TestIncidentController {
     return result;
   }
 
+  @PostMapping("/test")
+  public TestIncident writeTest(@RequestBody TestIncident test) {
+	return testIncidentService.writeIncident(test);
+  }
+
 }

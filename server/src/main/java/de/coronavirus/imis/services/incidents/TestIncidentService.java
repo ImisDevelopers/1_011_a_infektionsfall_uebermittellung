@@ -6,6 +6,7 @@ import de.coronavirus.imis.repositories.TestIncidentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
@@ -22,4 +23,11 @@ public class TestIncidentService {
   public List<TestIncident> getCurrentByPatientId(String patientId) {
     return testIncidentRepository.findByPatientId(patientId);
   }
+
+  @Transactional
+  public TestIncident writeIncident(TestIncident test)
+  {
+  	return testIncidentRepository.save(test);
+  }
+
 }

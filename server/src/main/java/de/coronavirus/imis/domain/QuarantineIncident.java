@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @Audited
 public class QuarantineIncident extends Incident {
 
+	@NotNull
 	private LocalDate until;
 
 	private String comment;

@@ -496,7 +496,7 @@ interface State {
   permissions: {
     sendToQuarantine: boolean
   }
-  patient: undefined | Patient
+  patient: Patient | undefined
   patientInfectionSources: ExposureContactFromServer[]
   exposureContacts: ExposureContactFromServer[]
   exposureContactsLoading: boolean
@@ -520,7 +520,7 @@ interface State {
   dateOfReporting: string
   dateOfIllness: string
   dateFormat: string
-  incidents: PatientLogDto
+  incidents: PatientLogDto | undefined
 }
 
 export default Vue.extend({
@@ -580,7 +580,7 @@ export default Vue.extend({
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
-      incidents: {},
+      incidents: undefined,
     }
   },
 
@@ -823,7 +823,8 @@ export default Vue.extend({
       )
     },
     showPatient(patientId: string) {
-      (this.$refs.exposureContactModal as Modal).$emit('cancel')
+      const exposureContactModal = this.$refs.exposureContactModal as Modal
+      exposureContactModal.$emit('cancel')
       this.$router.push({ name: 'patient-detail', params: { id: patientId } })
     },
     moment,

@@ -9,7 +9,7 @@
     <a-card>
       <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
         <!-- :colon="false" -->
-        <a-form-item label="Patienten-ID" v-if="this.givenPatientId">
+        <a-form-item label="Patienten-ID" v-if="this.$route.params.patientId">
           {{ this.$route.params.patientFirstName }}
           {{ this.$route.params.patientLastName }} ({{
             this.$route.params.patientId
@@ -28,7 +28,8 @@
                 ],
               },
             ]"
-            v-on:select="onPatientSwitch"
+            v-on:select="getExposureContacts"
+            @selectPatient="(selectedPatient) => (patient = selectedPatient)"
           />
         </a-form-item>
 
@@ -152,7 +153,11 @@
 </template>
 
 <script lang="ts">
-import { ExposureContactFromServer, Patient } from '@/api/SwaggerApi'
+import {
+  ExposureContactFromServer,
+  Patient,
+  QuarantineIncident,
+} from '@/api/SwaggerApi'
 import Api from '@/api'
 import Vue from 'vue'
 import DateInput from '@/components/inputs/DateInput.vue'
@@ -173,28 +178,29 @@ export default Vue.extend({
     PatientInput,
     DateInput,
   },
-  created() {
-    if (this.givenPatientId) {
-      this.onPatientSwitch(this.givenPatientId)
+  async mounted() {
+    if (this.$route.params.patientId) {
+      this.patient = await Api.getPatientForIdUsingGet(
+        this.$route.params.patientId
+      )
     }
+  },
+  watch: {
+    patient(newPatient: Patient) {
+      this.getExposureContacts(newPatient.id!)
+    },
   },
   data(): State {
     return {
       form: this.$form.createForm(this),
-      patient: undefined,
       today: moment(),
       contacts: [],
       sendContactsToQuarantine: false,
     }
   },
-  computed: {
-    givenPatientId(): string | undefined {
-      return this.$route.params.patientId
-    },
-  },
   methods: {
     moment,
-    async onPatientSwitch(patientId: string) {
+    async getExposureContacts(patientId: string) {
       this.contacts = await Api.getExposureContactsForPatientUsingGet(patientId)
     },
     showPatient(patientId: string) {
@@ -216,23 +222,37 @@ export default Vue.extend({
             : undefined,
           comment: values.comment,
         }
-        const patientId = this.givenPatientId
-          ? this.givenPatientId
-          : values.patientId
+
+        const patientId = this.patient?.id || values.patientId
+
+        const quarantineIncident: QuarantineIncident = {
+          until: values.dateUntil.format('YYYY-MM-DD'),
+          eventDate: values.eventDate
+            ? values.eventDate.format('YYYY-MM-DD')
+            : undefined,
+          eventType: 'QUARANTINE_SELECTED',
+          comment: values.comment,
+          patient: { id: patientId } as any,
+        }
 
         let quarantineUntil = ''
         try {
-          const patient = await Api.requestQuarantineUsingPost(
-            patientId,
-            request
+          const incident = await Api.addOrUpdateQuarantineIncidentUsingPost(
+            quarantineIncident
           )
-          quarantineUntil = moment(patient.quarantineUntil).format('DD.MM.YYYY')
+
+          console.log(incident)
+
+          quarantineUntil = moment(quarantineIncident.until).format(
+            'DD.MM.YYYY'
+          )
           if (!this.sendContactsToQuarantine) {
             const h = this.$createElement
+            const { firstName, lastName } = this.patient!
             this.$success({
               title: 'Der Quarantänevermerk wurde erfasst.',
               content: h('div', {}, [
-                h('div', `Patient: ${patient.firstName} ${patient.lastName}`),
+                h('div', `Patient: ${firstName} ${lastName}`),
                 h('div', `In Quarantäne bis: ${quarantineUntil}`),
               ]),
             })
@@ -303,10 +323,10 @@ export default Vue.extend({
     resetForm() {
       this.form.resetFields()
       this.contacts = []
-      if (this.givenPatientId) {
+      if (this.$route.params.patientId) {
         this.$router.push({
           name: 'patient-detail',
-          params: { id: this.givenPatientId },
+          params: { id: this.patient.id },
         })
       }
     },

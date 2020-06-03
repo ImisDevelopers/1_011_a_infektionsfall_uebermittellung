@@ -79,7 +79,6 @@ public class Patient {
 	private boolean confirmed;
 	private String employer;
 	@Enumerated(EnumType.STRING)
-	@NotNull
 	private EventType patientStatus;
 	private Boolean fluImmunization;
 	private String speedOfSymptomsOutbreak;

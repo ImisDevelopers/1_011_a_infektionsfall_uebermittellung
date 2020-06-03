@@ -3,9 +3,7 @@ package de.coronavirus.imis.api.incidents;
 import de.coronavirus.imis.domain.QuarantineIncident;
 import de.coronavirus.imis.services.incidents.QuarantineIncidentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,11 @@ public class QuarantineIncidentController {
   @GetMapping("/selected-for-quarantine")
   public List<QuarantineIncident> getSelectedForQuarantine() {
     return quarantineIncidentService.getPatientsSelectedForQuarantine();
+  }
+
+  @PostMapping("/quarantine")
+  public QuarantineIncident addOrUpdateQuarantineIncident(@RequestBody QuarantineIncident quarantineIncident) {
+    return quarantineIncidentService.save(quarantineIncident);
   }
 
 }

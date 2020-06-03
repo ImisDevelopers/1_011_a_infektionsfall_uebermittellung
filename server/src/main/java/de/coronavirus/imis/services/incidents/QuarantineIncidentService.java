@@ -25,4 +25,8 @@ public class QuarantineIncidentService {
     return this.quarantineIncidentRepo.findByEventType(EventType.QUARANTINE_SELECTED);
   }
 
+  public QuarantineIncident save(QuarantineIncident quarantineIncident) {
+    return quarantineIncidentRepo.save(quarantineIncident);
+  }
+
 }

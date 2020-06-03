@@ -9,10 +9,11 @@
     :showArrow="false"
     :filterOption="filterOption"
     :value="value"
+    @select="emitPatient"
     @search="handleSearch"
   >
-    <a-select-option v-for="entry in result" :key="entry.value">
-      {{ entry.label }}
+    <a-select-option v-for="patient in patients" :key="patient.id">
+      {{ patient.firstName }} {{ patient.lastName }} ({{ patient.id }})
     </a-select-option>
   </a-select>
 </template>
@@ -24,10 +25,7 @@ import { Patient } from '@/api/SwaggerApi'
 import { FormControlMixin } from '@/util/forms'
 
 declare interface State {
-  result: {
-    label?: string
-    value?: string
-  }[]
+  patients: Patient[]
 }
 
 /**
@@ -49,29 +47,12 @@ export default mixins(FormControlMixin).extend({
     prop: 'value',
     event: 'change',
   },
-  fieldValueConvert(val: any): string {
-    const hasProp = (obj: Record<string, any>, prop: string): boolean =>
-      Object.prototype.hasOwnProperty.call(obj, prop)
-
-    if (typeof val === 'object' && hasProp(val, 'id')) {
-      const patient = val as Patient
-      this.result = [
-        {
-          label: this.getPatientLabel(patient),
-          value: patient.id,
-        },
-      ]
-      return patient.id || ''
-    } else {
-      return val
-    }
-  },
   inject: {
     FormContext: { default: () => ({}) },
   },
   data(): State {
     return {
-      result: [],
+      patients: [],
     }
   },
   computed: {
@@ -84,12 +65,17 @@ export default mixins(FormControlMixin).extend({
     getPatientLabel(patientData: Patient) {
       return `${patientData.firstName} ${patientData.lastName} (${patientData.id})`
     },
+    emitPatient(patientId: string) {
+      this.$emit(
+        'selectPatient',
+        this.patients.filter((p) => p.id === patientId)[0]
+      )
+    },
     async handleSearch(value: string) {
-      let result: Patient[]
       if (!value || value.length < 2) {
-        result = []
+        this.patients = []
       } else {
-        result = await Api.queryPatientsSimpleUsingPost({
+        this.patients = await Api.queryPatientsSimpleUsingPost({
           query: value,
           offsetPage: 0,
           pageSize: 10,
@@ -97,10 +83,6 @@ export default mixins(FormControlMixin).extend({
           orderBy: 'lastName',
         })
       }
-      this.result = result.map((patient: Patient) => ({
-        label: this.getPatientLabel(patient),
-        value: patient.id,
-      }))
     },
   },
 })

@@ -5,7 +5,9 @@ import {
   HospitalizationIncident,
   QuarantineIncident,
   AdministrativeIncident,
+  Patient,
 } from '@/api/SwaggerApi'
+import { EventTypeItem } from './event-types'
 
 export type InstitutionType = Exclude<
   CreateInstitutionDTO['institutionType'],
@@ -49,11 +51,13 @@ export type RiskOccupation =
   | 'CAREGIVER'
   | 'NURSE'
 
-export type Incident =
-  | TestIncident
-  | HospitalizationIncident
-  | QuarantineIncident
-  | AdministrativeIncident
+export type Incident = {
+  id?: string
+  patient?: Patient
+  eventType: PatientStatus
+  eventDate: string
+  versionTimestamp?: string
+}
 
 export interface Option {
   label: string

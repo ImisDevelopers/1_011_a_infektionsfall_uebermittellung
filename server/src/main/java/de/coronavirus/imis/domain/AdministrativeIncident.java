@@ -5,9 +5,11 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.envers.Audited;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
@@ -18,7 +20,16 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 @Audited
 public class AdministrativeIncident extends Incident {
 
+	/*
+		Gathering all Case-Level Data.
+		There is only one AdministrativeIncident per Case
+	 */
+
 	private Illness illness;
+
+	private LocalDate dateOfIllness;
+
+	private LocalDate dateOfReporting;
 
 	private String comment;
 
@@ -26,7 +37,7 @@ public class AdministrativeIncident extends Incident {
 	@ManyToOne
 	private Doctor responsibleDoctor;
 
-	public AdministrativeIncident() {
-		super(IncidentType.administrative);
-	}
+	@Convert(converter = StringListConverter.class)
+	private List<String> symptoms;
+
 }

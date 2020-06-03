@@ -4,7 +4,7 @@ import de.coronavirus.imis.api.dto.*;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.domain.PatientEvent;
-import de.coronavirus.imis.services.IncidentService;
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import de.coronavirus.imis.services.PatientEventService;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import java.util.Optional;
 public class PatientController {
 
 	private final PatientService patientService;
-	private final IncidentService incidentService;
+	private final WriteIncidentService incidentService;
 	private final PatientEventService eventService;
 
 	@PostMapping
@@ -37,7 +37,8 @@ public class PatientController {
 			return ResponseEntity.status(500).build();
 		}
 
-		incidentService.addIncident(patient, dto.getDateOfHospitalization(), dto.getOnIntensiveCareUnit());
+		if (dto.getDateOfHospitalization() != null)
+			incidentService.addHospitalizationIncident(patient, dto.getDateOfHospitalization(), dto.getOnIntensiveCareUnit());
 
 		return ResponseEntity.ok(patient);
 	}
@@ -85,7 +86,7 @@ public class PatientController {
 	@PostMapping("/quarantine/{id}")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
 	public ResponseEntity<Patient> requestQuarantine(@PathVariable("id") String patientId, @RequestBody RequestQuarantineDTO statusDTO) {
-		incidentService.addOrUpdateIncident(patientId, statusDTO);
+		incidentService.addOrUpdateQuarantineIncident(patientId, statusDTO);
 		return ResponseEntity.ok(patientService.sendToQuarantine(patientId, statusDTO));
 	}
 
@@ -100,7 +101,7 @@ public class PatientController {
 	public ResponseEntity<PatientEvent> createOrderTestEvent(OrderTestEventDTO eventDTO) {
 		var patient = patientService.findPatientById(eventDTO.getPatientId()).get();
 		var event = eventService.createOrderTestEvent(patient);
-		incidentService.addIncident(patient, Optional.empty(), EventType.ORDER_TEST, LocalDate.now());
+		incidentService.addOrUpdateAdministrativeIncident(patient, Optional.empty(), EventType.ORDER_TEST, LocalDate.now(), null);
 		return ResponseEntity.ok(event);
 	}
 }

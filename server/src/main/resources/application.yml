@@ -1,13 +1,15 @@
 spring:
   profiles:
     active: development
----
-spring:
-  profiles: development
   cloud:
     gcp:
       storage:
         enabled: false
+      sql:
+        enabled: false
+---
+spring:
+  profiles: development
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/imis
@@ -25,6 +27,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        search:
+          default:
+            directory_provider: filesystem
+            indexBase: build/data/search
 server:
   port: 80
 ---
@@ -33,22 +39,52 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
-    url: jdbc:postgresql:localhost:5432
+    url: jdbc:postgresql:///postgres?cloudSqlInstance=onyx-yeti-271818:europe-west3:challenge-11&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres
     initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: create
+    properties.hibernate.search.default:
+      directory_provider: filesystem
+      indexBase: /data
   cloud:
     gcp:
-      credentials:
-        location: file:/usr/local/cloud-store/credentials.json
+      project-id: onyx-yeti-271818
+      sql:
+        database-name: postgres
+        instance-connection-name: onyx-yeti-271818:europe-west3:challenge-11
 management:
   endpoints:
     web:
       exposure:
         include: health,info,prometheus
-  server:
-    port: 8081
+---
+spring:
+  profiles: staging
+  datasource:
+    initialization-mode: always
+    url: jdbc:postgresql:///staging?cloudSqlInstance=onyx-yeti-271818:europe-west3:challenge-11&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres
+---
+spring:
+  profiles: pull-request
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    username: postgres
+    url: jdbc:postgresql:///pr?cloudSqlInstance=onyx-yeti-271818:europe-west3:challenge-11&socketFactory=com.google.cloud.sql.postgres.SocketFactory&user=postgres
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties.hibernate.search.default:
+      directory_provider: filesystem
+      indexBase: /data
+  cloud:
+    gcp:
+      project-id: onyx-yeti-271818
+      sql:
+        database-name: pr
+        instance-connection-name: onyx-yeti-271818:europe-west3:challenge-11
+        enabled: true
 ---
 spring:
   profiles: test
@@ -58,7 +94,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-  cloud:
-    gcp:
-      storage:
-        enabled: false
+    properties.hibernate.search.default:
+      directory_provider: filesystem
+      indexBase: build/data/search

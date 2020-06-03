@@ -12,7 +12,24 @@
           this.loadData()
         }
       "
+      v-if="showChangePatientStammdatenForm"
       :visible="showChangePatientStammdatenForm"
+      :patient="patient"
+    />
+    <ChangePatientFalldatenForm
+      @cancel="
+        () => {
+          showChangePatientFalldatenForm = false
+        }
+      "
+      @create="
+        () => {
+          showChangePatientFalldatenForm = false
+          this.loadData()
+        }
+      "
+      v-if="showChangePatientFalldatenForm"
+      :visible="showChangePatientFalldatenForm"
       :patient="patient"
     />
     <div
@@ -59,15 +76,9 @@
         style="text-align: left;"
       >
         <a-tab-pane key="master-data" tab="Stammdaten">
-          <div
-            style="
-              display: flex;
-              justify-content: flex-end;
-              padding-bottom: 10px;
-            "
-          >
+          <div class="tool-row">
             <a-button icon="edit" @click="editPatientStammdaten">
-              Daten ändern
+              Stammdaten ändern
             </a-button>
           </div>
           <!-- Allgemein & Adresse -->
@@ -80,16 +91,20 @@
                     <td>{{ patient.lastName }}, {{ patient.firstName }}</td>
                   </tr>
                   <tr>
-                    <td>Geburtsdatum:</td>
-                    <td>{{ dateOfBirth }}</td>
+                    <td>Staatsangehörigkeit:</td>
+                    <td>{{ patient.nationality }}</td>
                   </tr>
                   <tr>
                     <td>Geschlecht:</td>
                     <td>{{ gender }}</td>
                   </tr>
                   <tr>
-                    <td>Staatsangehörigkeit:</td>
-                    <td>{{ patient.nationality }}</td>
+                    <td>Geburtsdatum:</td>
+                    <td>{{ dateOfBirth }}</td>
+                  </tr>
+                  <tr>
+                    <td>Todesdatum:</td>
+                    <td>{{ dateOfDeath }}</td>
                   </tr>
                 </table>
               </a-card>
@@ -97,6 +112,9 @@
             <a-col :md="12" :span="24">
               <a-card align="left" title="Adresse">
                 <table>
+                  <tr v-if="patient.stayCity">
+                    <td colspan="2">Wohnort:</td>
+                  </tr>
                   <tr>
                     <td>Straße/Hausnr.:</td>
                     <td>{{ patient.street }} {{ patient.houseNumber }}</td>
@@ -108,6 +126,25 @@
                   <tr>
                     <td>Land:</td>
                     <td>{{ patient.country }}</td>
+                  </tr>
+                </table>
+                <table v-if="patient.stayCity" style="margin-top: 10px;">
+                  <tr>
+                    <td colspan="2">Aufenthaltsort:</td>
+                  </tr>
+                  <tr>
+                    <td>Straße/Hausnr.:</td>
+                    <td>
+                      {{ patient.stayStreet }} {{ patient.stayHouseNumber }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>PLZ/Ort:</td>
+                    <td>{{ patient.stayZip }} {{ patient.stayCity }}</td>
+                  </tr>
+                  <tr>
+                    <td>Land:</td>
+                    <td>{{ patient.stayCountry }}</td>
                   </tr>
                 </table>
               </a-card>
@@ -133,20 +170,6 @@
               </a-card>
             </a-col>
             <a-col :md="8" :span="24">
-              <a-card align="left" title="Versicherung">
-                <table>
-                  <tr>
-                    <td>Versicherung:</td>
-                    <td>{{ patient.insuranceCompany }}</td>
-                  </tr>
-                  <tr>
-                    <td>V-Nr:</td>
-                    <td>{{ patient.insuranceMembershipNumber }}</td>
-                  </tr>
-                </table>
-              </a-card>
-            </a-col>
-            <a-col :md="8" :span="24">
               <a-card align="left" title="Arbeit">
                 <table>
                   <tr>
@@ -160,152 +183,41 @@
                 </table>
               </a-card>
             </a-col>
+            <a-col :md="8" :span="24">
+              <a-card align="left" title="Versicherung">
+                <table>
+                  <tr>
+                    <td>Versicherung:</td>
+                    <td>{{ patient.insuranceCompany }}</td>
+                  </tr>
+                  <tr>
+                    <td>V-Nr:</td>
+                    <td>{{ patient.insuranceMembershipNumber }}</td>
+                  </tr>
+                </table>
+              </a-card>
+            </a-col>
           </a-row>
         </a-tab-pane>
-
-        <a-tab-pane key="overview" tab="Falldaten">
-          <!-- Tests -->
-          <a-row :gutter="8" style="margin-top: 8px;">
-            <a-col span="24">
-              <div style="background: white; border: 1px solid #e8e8e8;">
-                <div class="card-header">
-                  <div>
-                    Fall-Status:
-                    {{
-                      (patientStatus ? patientStatus.label : 'Unbekannt') +
-                      (patient.quarantineUntil
-                        ? ', Quarantäne angeordnet bis ' +
-                          moment(patient.quarantineUntil).format('DD.MM.YYYY')
-                        : '')
-                    }}
-                  </div>
-                  <div class="card-header-subtitle">
-                    Erkrankungsdatum: {{ dateOfIllness }}
-                  </div>
-                  <div class="card-header-subtitle">
-                    Meldedatum: {{ dateOfReporting }}
-                  </div>
-                </div>
-                <a-table
-                  :columns="columnsTests"
-                  :dataSource="tests"
-                  :scroll="{ x: 0, y: 0 }"
-                  class="imis-table-no-pagination"
-                  rowKey="id"
-                >
-                  <div slot="lastUpdate" slot-scope="lastUpdate">
-                    {{ getDate(lastUpdate) }}
-                  </div>
-                  <div slot="testStatus" slot-scope="testStatus">
-                    <a-icon
-                      :type="
-                        testResults.find((type) => type.id === testStatus).icon
-                      "
-                      style="margin-right: 5px;"
-                    />
-                    {{
-                      testResults.find((type) => type.id === testStatus).label
-                    }}
-                  </div>
-                  <div slot="testType" slot-scope="testType">
-                    <a-icon
-                      :type="
-                        testTypes.find((type) => type.id === testType).icon
-                      "
-                      style="margin-right: 5px;"
-                    />
-                    {{ testTypes.find((type) => type.id === testType).label }}
-                  </div>
-                </a-table>
-              </div>
-            </a-col>
-          </a-row>
-
-          <!-- Symptome und Risiken -->
-          <a-row :gutter="8" style="margin-top: 8px;">
-            <a-col :md="8" :span="24">
-              <a-card align="left" title="Infektionskette">
-                <a-descriptions layout="vertical" :column="1">
-                  <a-descriptions-item>
-                    <span slot="label"
-                      ><a-icon type="arrow-right" /><a-icon
-                        type="user"
-                        style="margin-right: 5px;"
-                      />
-                      Kontakte mit Indexpatienten</span
-                    >
-                    <span v-if="patientInfectionSources.length > 0">{{
-                      patientInfectionSources.length
-                    }}</span>
-                    <span v-else>Keine</span>
-                    bekannt
-                  </a-descriptions-item>
-                  <a-descriptions-item>
-                    <span slot="label"
-                      ><a-icon type="user" /><a-icon
-                        type="arrow-right"
-                        style="margin-right: 5px;"
-                      />
-                      Eigene Kontaktpersonen</span
-                    >
-                    <span v-if="exposureContacts.length > 0">{{
-                      exposureContacts.length
-                    }}</span>
-                    <span v-else>Keine</span>
-                    angegeben
-                  </a-descriptions-item>
-                </a-descriptions>
-              </a-card>
-            </a-col>
-
-            <a-col :md="8" :span="24">
-              <a-card align="left" title="Vorerkrankungen und Risikofaktoren">
-                <div v-bind:key="illness" v-for="illness in preIllnesses">
-                  {{ illness }}
-                </div>
-              </a-card>
-            </a-col>
-            <a-col :md="8" :span="24">
-              <a-card
-                :extra="'Stand: ' + formatTimestamp(patient.creationTimestamp)"
-                align="left"
-                title="Symptome"
-              >
-                <div v-bind:key="symptom" v-for="symptom in symptoms">
-                  {{ symptom }}
-                </div>
-              </a-card>
-            </a-col>
-          </a-row>
+        <a-tab-pane key="Cases" tab="Falldaten">
+          <div class="tool-row">
+            <div style="font-size: 18px; padding-left: 16px;">
+              Fall: COVID-19
+            </div>
+            <span style="flex: 1 1 auto;"></span>
+            <a-button icon="edit" @click="editPatientFalldaten">
+              Falldaten ändern
+            </a-button>
+          </div>
+          <CaseData
+            :allIncidents="incidents"
+            :preIllnesses="preIllnesses"
+            :patientInfectionSources="patientInfectionSources"
+            :exposureContacts="exposureContacts"
+          />
         </a-tab-pane>
         <a-tab-pane forceRender key="timeline" tab="Verlauf">
-          <a-card>
-            <a-timeline
-              mode="left"
-              style="text-align: left; margin-left: 40px;"
-              v-if="incidents.length"
-            >
-              <!-- List all the events recorded corresponding to the patient over time -->
-              <a-timeline-item
-                :color="timelineColor(incident.eventType)"
-                :key="incident.id"
-                v-for="incident in this.incidents"
-              >
-                {{ formatDate(incident.eventDate) }},
-                {{
-                  eventTypes.find((type) => type.id === incident.eventType)
-                    .label
-                }}
-                <div v-if="incident.versionUser">
-                  erfasst {{ formatTimestamp(incident.versionTimestamp) }} durch
-                  {{ incident.versionUser.institution.name }}
-                </div>
-                <div v-else>
-                  erfasst {{ formatTimestamp(incident.versionTimestamp) }}
-                </div>
-              </a-timeline-item>
-            </a-timeline>
-          </a-card>
+          <History :allIncidents="incidents" />
         </a-tab-pane>
         <a-tab-pane forceRender key="infection-chain" tab="Infektionskette">
           <a-row :gutter="8" style="margin-top: 8px;">
@@ -476,11 +388,10 @@ import moment, { Moment } from 'moment'
 import Api from '@/api'
 import * as permissions from '@/util/permissions'
 import {
-  LabTest,
+  ExposureContactFromServer,
   Patient,
   Timestamp,
-  ExposureContactFromServer,
-  Incident,
+  PatientLogDto,
 } from '@/api/SwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
@@ -494,47 +405,14 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import { Column } from 'ant-design-vue/types/table/column'
 import { TestTypeItem, testTypes } from '@/models/test-types'
-import ChangePatientStammdatenForm from '@/components/ChangePatientStammdatenForm.vue'
-import EditExposureContact from '@/components/EditExposureContact.vue'
+import CaseData from '@/components/other/CaseData.vue'
+import History from '@/components/other/History.vue'
+import ChangePatientStammdatenForm from '@/components/modals/ChangePatientStammdatenForm.vue'
+import EditExposureContact from '@/components/form-groups/EditExposureContact.vue'
 import { map } from '@/util/mapping'
 import { Modal } from 'ant-design-vue'
-
-const columnsTests: Partial<Column>[] = [
-  {
-    title: 'Test ID',
-    dataIndex: 'testId',
-    key: 'testId',
-  },
-  {
-    title: 'Test Typ',
-    dataIndex: 'testType',
-    key: 'testType',
-    scopedSlots: {
-      customRender: 'testType',
-    },
-  },
-  {
-    title: 'Test Status',
-    dataIndex: 'testStatus',
-    key: 'testStatus',
-    scopedSlots: {
-      customRender: 'testStatus',
-    },
-  },
-  {
-    title: 'Aktualisiert',
-    dataIndex: 'lastUpdate',
-    key: 'lastUpdate',
-    scopedSlots: {
-      customRender: 'lastUpdate',
-    },
-  },
-  {
-    title: 'Kommentar',
-    dataIndex: 'comment',
-    key: 'comment',
-  },
-]
+import ChangePatientFalldatenForm from '@/components/modals/ChangePatientFalldatenForm.vue'
+import { EXPOSURE_LOCATIONS, EXPOSURES_INTERNAL } from '@/models/exposures'
 
 const columnsExposureContacts: Partial<Column>[] = [
   {
@@ -627,12 +505,14 @@ interface State {
   patientStatus: EventTypeItem | undefined
   eventTypes: any[]
   symptoms: string[]
+  exposures: string[]
   preIllnesses: string[]
   dateOfBirth: string
+  dateOfDeath: string
+  dateOfHospitalization: string
   showChangePatientStammdatenForm: boolean
+  showChangePatientFalldatenForm: boolean
   gender: string
-  tests: LabTest[]
-  columnsTests: Partial<Column>[]
   columnsExposureContacts: Partial<Column>[]
   columnsIndexPatients: Partial<Column>[]
   testResults: TestResultType[]
@@ -640,14 +520,17 @@ interface State {
   dateOfReporting: string
   dateOfIllness: string
   dateFormat: string
-  incidents: any[]
+  incidents: PatientLogDto
 }
 
 export default Vue.extend({
   name: 'PatientDetails',
   components: {
     ChangePatientStammdatenForm,
+    ChangePatientFalldatenForm,
     EditExposureContact,
+    CaseData,
+    History,
   },
   computed: {
     ...authMapper.mapGetters({
@@ -685,17 +568,19 @@ export default Vue.extend({
       testResults: testResults,
       testTypes: testTypes,
       symptoms: [],
+      exposures: [],
       showChangePatientStammdatenForm: false,
+      showChangePatientFalldatenForm: false,
       preIllnesses: [],
       dateOfBirth: '',
+      dateOfDeath: '',
+      dateOfHospitalization: '',
       gender: '',
-      tests: [],
-      columnsTests,
       columnsExposureContacts,
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
-      incidents: [],
+      incidents: {},
     }
   },
 
@@ -729,12 +614,6 @@ export default Vue.extend({
       }
 
       this.incidents = await Api.getPatientLogUsingGet(patientId)
-      this.incidents.sort((a: Incident, b: Incident) => {
-        return (
-          a.eventDate!.localeCompare(b.eventDate!) ||
-          a.versionTimestamp!.localeCompare(b.versionTimestamp!)
-        )
-      })
 
       if (this.patient.events) {
         const event = this.patient.events.find(
@@ -755,6 +634,11 @@ export default Vue.extend({
       } else {
         this.dateOfIllness = this.dateOfReporting
       }
+      if (this.patient.dateOfHospitalization) {
+        this.dateOfHospitalization = moment(
+          this.patient.dateOfHospitalization
+        ).format(this.dateFormat)
+      }
 
       // Map patient attributes to their display representation
       this.patientStatus = eventTypes.find(
@@ -767,6 +651,19 @@ export default Vue.extend({
           )
           return patientSymptom ? patientSymptom.label : symptom
         }) || []
+      this.exposures =
+        this.patient.riskAreas?.map((exposure) => {
+          let patientExposure = EXPOSURES_INTERNAL.find(
+            (exposureFind) => exposureFind.value === exposure
+          )
+          if (!patientExposure) {
+            patientExposure = EXPOSURE_LOCATIONS.find(
+              (exposureFind) =>
+                'CONTACT_WITH_CORONA_' + exposureFind.value === exposure
+            )
+          }
+          return patientExposure ? patientExposure.label : exposure
+        }) || []
       this.preIllnesses =
         this.patient.preIllnesses?.map((preIllness) => {
           const patientIllness = PRE_ILLNESSES.find(
@@ -777,6 +674,9 @@ export default Vue.extend({
       this.dateOfBirth = moment(this.patient.dateOfBirth).format(
         this.dateFormat
       )
+      this.dateOfDeath = this.patient.dateOfDeath
+        ? moment(this.patient.dateOfDeath).format(this.dateFormat)
+        : '-'
       const patientGender = this.patient.gender || ''
       this.gender =
         patientGender === 'male'
@@ -794,24 +694,11 @@ export default Vue.extend({
         this.patientInfectionSources = []
       }
 
-      // Tests
-      this.tests = await Api.getLabTestForPatientUsingGet(patientId)
-
       // Retrieve exposure contacts data
       this.exposureContacts = await Api.getExposureContactsForPatientUsingGet(
         patientId
       )
       this.exposureContactsLoading = false
-    },
-    timelineColor(eventType: any) {
-      switch (eventType) {
-        case 'TEST_FINISHED_POSITIVE':
-          return 'red'
-        case 'TEST_FINISHED_NEGATIVE':
-          return 'green'
-        default:
-          return 'grey'
-      }
     },
     formatTimestamp(timestamp: Timestamp): string {
       const momentTimestamp = moment(timestamp)
@@ -821,16 +708,11 @@ export default Vue.extend({
         return 'Unbekannt'
       }
     },
-    formatDate(date: string): string {
-      const momentTimestamp = moment(date)
-      if (momentTimestamp.isValid()) {
-        return momentTimestamp.format('DD.MM.YYYY')
-      } else {
-        return 'Unbekannt'
-      }
-    },
     editPatientStammdaten(): void {
       this.showChangePatientStammdatenForm = true
+    },
+    editPatientFalldaten(): void {
+      this.showChangePatientFalldatenForm = true
     },
     handleActionClick(e: { key: string }) {
       switch (e.key) {
@@ -992,6 +874,13 @@ table.compact {
   font-weight: normal;
   color: rgba(0, 0, 0, 0.65);
 }
+
+.tool-row {
+  display: flex;
+  padding-bottom: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
 </style>
 
 <style lang="scss">
@@ -999,11 +888,13 @@ table.compact {
   table {
     width: unset;
   }
+
   .ant-table-tbody > tr > td {
     border-bottom: none;
     padding: 4px;
   }
 }
+
 .ant-descriptions-item {
   vertical-align: top;
 }

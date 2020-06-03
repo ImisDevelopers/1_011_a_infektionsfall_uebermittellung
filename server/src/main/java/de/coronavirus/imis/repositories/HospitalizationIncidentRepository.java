@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface HospitalizationIncidentRepository extends JpaRepository<HospitalizationIncident, String> {
 
-	List<AdministrativeIncident> findByPatientId(String patientId);
+	List<HospitalizationIncident> findByPatientId(String patientId);
 
 }
 

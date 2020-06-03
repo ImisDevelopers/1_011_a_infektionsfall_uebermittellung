@@ -2,7 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    id 'com.google.cloud.tools.jib' version '2.1.0'
+	id 'jacoco'
+	id 'com.google.cloud.tools.jib' version '2.3.0'
 }
 
 group = 'de.coronavirus'
@@ -11,6 +12,7 @@ sourceCompatibility = '11'
 ext {
     set('springCloudVersion', "Hoxton.SR3")
     set('mapStructVersion', "1.3.1.Final")
+	set('springfoxVersion',"2.9.2")
 }
 
 configurations {
@@ -23,33 +25,32 @@ repositories {
     mavenCentral()
 }
 
-test {
-    useJUnitPlatform()
-}
-
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'io.micrometer:micrometer-registry-prometheus'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
+	implementation 'com.google.cloud.sql:postgres-socket-factory:1.0.16'
+	//swagger
+	implementation "io.springfox:springfox-swagger-ui:${springfoxVersion}"
+	implementation "io.springfox:springfox-swagger2:${springfoxVersion}"
+	implementation "io.springfox:springfox-bean-validators:${springfoxVersion}"
+	implementation("io.springfox:springfox-swagger2:${springfoxVersion}") {
+		exclude module: 'mapstruct' // necessary in my case to not end up with multiple mapstruct versions
+	}
+	implementation "io.springfox:springfox-swagger-ui:${springfoxVersion}"
+	implementation 'io.micrometer:micrometer-registry-prometheus'
 
-    implementation 'io.jsonwebtoken:jjwt:0.9.1'
-    implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
-    implementation 'org.postgresql:postgresql:42.2.11'
-    implementation group: 'org.hibernate', name: 'hibernate-envers', version: '5.4.14.Final'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-    implementation 'io.springfox:springfox-swagger2:2.9.2'
-    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
-    implementation 'com.googlecode.perfect-hashes:perfect-hashes:1.0'
-    implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
-    implementation "org.mapstruct:mapstruct:${mapStructVersion}"
-
-    implementation("io.springfox:springfox-swagger2:2.9.2") {
-        exclude module: 'mapstruct' // necessary in my case to not end up with multiple mapstruct versions
-    }
-    implementation "io.springfox:springfox-bean-validators:2.9.2"
-    implementation "io.springfox:springfox-swagger-ui:2.9.2"
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.apache.commons:commons-lang3:3.9'
+	implementation 'com.googlecode.perfect-hashes:perfect-hashes:1.0'
+	implementation 'com.google.guava:guava:28.2-jre'
+	implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+	//hibernate etc
+	implementation 'org.hibernate:hibernate-search-orm:5.11.5.Final'
+	implementation 'org.hibernate:hibernate-envers:5.4.14.Final'
+	implementation 'org.postgresql:postgresql:42.2.11'
 
     compileOnly 'org.projectlombok:lombok'
 
@@ -67,12 +68,12 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 jib {
-    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server"
+    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server:${System.env.GITHUB_SHA}"
 }
 
 processResources {
@@ -85,13 +86,37 @@ bootJar {
     archiveFileName = "imis.jar"
     mainClassName = 'de.coronavirus.imis.App'
 }
+
+//  gradle server:test --tests "*GenerateSwagger" -x processResources  client:generateClient
+task runSwaggerGenerator(type: Test) {
+	include("*GenerateSwagger")
+}
+
 tasks.processResources.dependsOn(':client:assemble')
 tasks.jib.dependsOn('processResources')
 bootJar.dependsOn('processResources')
 
-test {
-    useJUnitPlatform()
+task generateTestData(type: Exec) {
+		commandLine 'python3', 'genPersons.py', '-u'
+		workingDir 'src/main/resources/sample_data'
 }
+tasks.bootRun.dependsOn('generateTestData')
+tasks.test.dependsOn('generateTestData')
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test // tests are required to run before generating the report
+	reports {
+		xml.enabled true
+		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
+
 
 compileJava {
     options.compilerArgs = [

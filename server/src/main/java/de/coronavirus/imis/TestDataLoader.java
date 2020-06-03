@@ -16,10 +16,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.time.LocalDate;
 
 
 @Component
@@ -38,10 +42,20 @@ public class TestDataLoader implements ApplicationRunner {
 
 	private static final ObjectMapper mapper = new ObjectMapper();
 
-	static <T> Object makeDTO(String testFileName, Class<T> clazz)
+	static <T> T makeDTO(InputStream dataInputStream, Class<T> clazz)
 			throws IOException {
 
-		return mapper.readValue(getResourceStream(testFileName), clazz);
+		return mapper.readValue(dataInputStream, clazz);
+	}
+	static <T> T makeDTO(String testFileName, Class<T> clazz)
+			throws IOException {
+
+		return makeDTO(getResourceStream(testFileName), clazz);
+	}
+	static <T> T makeDTO(Resource testResource, Class<T> clazz)
+			throws IOException {
+
+		return makeDTO(testResource.getInputStream(), clazz);
 	}
 
 	static BufferedInputStream getResourceStream(String resourcePath) throws IOException {
@@ -59,10 +73,18 @@ public class TestDataLoader implements ApplicationRunner {
 		log.info("Creating test data");
 		try {
 
-			log.info("Inserting patients");
-			for (int i = 0; i < 250; i++) {
-				var createPersonDTO = (CreatePatientDTO) makeDTO("persons" + File.separator + "person" + i + ".json", CreatePatientDTO.class);
-				patientService.addPatient(createPersonDTO, true);
+			ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());
+
+			try {
+				log.info("Inserting patients");
+				for (Resource patientTestDataResource : resourceResolver.getResources("sample_data/persons/person*.json")) {
+					var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
+					log.info("Create Patient {} {}", createPersonDTO.getLastName(), createPersonDTO.getFirstName());
+					patientService.addPatient(createPersonDTO, true);
+				}
+			} catch (Exception e) {
+				log.error("Exception occured during population with test patients:");
+				e.printStackTrace();
 			}
 
 			// SETUP OUR WORLD
@@ -149,6 +171,7 @@ public class TestDataLoader implements ApplicationRunner {
 			// FIXME: 22.03.20 report cannot be attached
 			var updateTestStatus = UpdateTestStatusDTO.builder()
 					.status(TestStatus.TEST_POSITIVE)
+					.eventDate(LocalDate.now())
 					.comment(comment)
 					.testId(testId)
 					.build();

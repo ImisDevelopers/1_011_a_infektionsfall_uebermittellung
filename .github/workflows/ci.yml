@@ -1,4 +1,4 @@
-name: Build and Test
+name: CI
 
 on:
   push:
@@ -18,18 +18,23 @@ env:
   GITHUB_SHA: ${{ github.sha }}
 
 jobs:
-  setup-build-publish-deploy:
-    name: Build and Test
+  run-test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-java@v1.3.0
       with:
         java-version: 1.11
     - uses: actions/checkout@v2
-    - uses: MichaelSp/eslint-action@master
+    - run: |
+        gradle test
+  run-lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - if: ${{ github.event_name == 'push' || ( github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository ) }}
+      uses: hallee/eslint-action@1.0.3
       with:
         repo-token: "${{secrets.GITHUB_TOKEN}}"
         source-root: "client"
-    - run: |
-        git fetch --unshallow
-        gradle build lint test

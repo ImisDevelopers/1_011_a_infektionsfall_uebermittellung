@@ -32,9 +32,8 @@ body {
 // CSS classes used by multiple components
 .imis-radio-group {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding-left: 15px;
+  flex-direction: row;
+  align-items: normal;
 
   > label {
     padding: 10px 0 10px 15px;

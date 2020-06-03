@@ -25,8 +25,4 @@ public class HospitalizationIncident extends Incident {
 
 	private boolean intensiveCare;
 
-	public HospitalizationIncident() {
-		super(IncidentType.hospitalization);
-	}
-
 }

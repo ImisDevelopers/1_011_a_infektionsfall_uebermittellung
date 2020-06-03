@@ -86,8 +86,10 @@
                 v-for="symptom in administrative.symptoms"
               >
                 {{
-                  SYMPTOMS.find((symptomFind) => symptomFind.value === symptom) ?
-                    SYMPTOMS.find((symptomFind) => symptomFind.value === symptom).label
+                  SYMPTOMS.find((symptomFind) => symptomFind.value === symptom)
+                    ? SYMPTOMS.find(
+                        (symptomFind) => symptomFind.value === symptom
+                      ).label
                     : symptom
                 }}
               </li>

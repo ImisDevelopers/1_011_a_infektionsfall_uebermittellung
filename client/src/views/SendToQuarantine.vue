@@ -325,11 +325,11 @@ export default Vue.extend({
         .then(() => {
           const h = this.$createElement
           this.$success({
-            title: 'Quarantänen aktualisiert.',
+            title: 'Quarantäne angeordnet.',
             content: h('div', {}, [
               h(
                 'div',
-                `Die Quarantänen von ${patientIds.length} Patienten wurden aktualisiert.`
+                `Der Quarantänestatus wurde für ${patientIds.length} Patienten aktualisiert.`
               ),
             ]),
           })
@@ -337,7 +337,7 @@ export default Vue.extend({
         })
         .catch((error: Error) => {
           const notification = {
-            message: 'Fehler beim Aktualisieren der Quarantänen',
+            message: 'Fehler beim Aktualisieren des Quarantänestatus',
             description: error.message,
           }
           this.$notification.error(notification)

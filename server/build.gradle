@@ -124,8 +124,7 @@ task buildSwaggerConfig(type: BootRun) {
 	def swaggerOutPath = "build/resources/swagger.json"
 	setDescription "Generate a Swagger documentation file in JSON format (`${swaggerOutPath}`)."
 
-	inputs.files sourceSets.main.allSource.srcDirs
-	outputs.file 'build/resources/swagger.json'
+	outputs.file swaggerOutPath
 
 	setClasspath sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
 	conventionMapping 'main', new MainClassConvention(project, {

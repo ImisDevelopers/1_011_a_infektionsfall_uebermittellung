@@ -5,35 +5,38 @@
       <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
           <a-form-item label="Straße, Hausnummer" :itemSelfUpdate="true">
-            <a-input-group compact>
-              <a-input
-                ref="street"
-                class="custom-input"
-                style="width: calc(100%);"
-                placeholder="Straße und Hausnummer"
-                v-decorator="[
-                  formFieldName('street'),
-                  {
-                    rules: [
-                      {
-                        required: $props.required !== false,
-                        message: 'Bitte Straße und Hausnummer eingeben',
-                      },
-                    ],
-                    initialValue: initialData('street'),
-                  },
-                ]"
-              />
-            </a-input-group>
+            <a-input
+              ref="street"
+              class="custom-input"
+              style="width: calc(100%);"
+              placeholder="Straße und Hausnummer"
+              v-decorator="[
+                formFieldName('street'),
+                {
+                  rules: [
+                    {
+                      required: $props.required !== false,
+                      message: 'Bitte Straße und Hausnummer eingeben',
+                    },
+                  ],
+                  initialValue: initialData('street'),
+                },
+              ]"
+            />
           </a-form-item>
         </a-col>
         <a-col :lg="12" :sm="24">
-          <a-form-item label="PLZ, Ort" :itemSelfUpdate="true">
-            <a-input-group compact>
+          <div style="display: flex;">
+            <!-- #438 We cant put plz and city into a combined input because then errors on city won't be displayed -->
+            <a-form-item
+              label="PLZ"
+              :itemSelfUpdate="true"
+              style="flex: 0 0 60pt;"
+              class="imis-plz-form-item"
+            >
               <a-auto-complete
                 ref="zip"
                 class="custom-input"
-                style="width: 60pt;"
                 placeholder="PLZ"
                 :dataSource="zips"
                 optionLabelProp="value"
@@ -42,6 +45,7 @@
                 :dropdownMenuStyle="{
                   width: 'max-content',
                 }"
+                :tabIndex="-1"
                 v-decorator="[
                   formFieldName('zip'),
                   {
@@ -55,10 +59,16 @@
                   },
                 ]"
               />
+            </a-form-item>
+            <a-form-item
+              label="Ort"
+              :itemSelfUpdate="true"
+              style="flex: 1 1 auto;"
+              class="imis-city-form-item"
+            >
               <a-input
                 ref="city"
                 class="custom-input"
-                style="width: calc(100% - 60pt);"
                 placeholder="Ort"
                 v-decorator="[
                   formFieldName('city'),
@@ -73,13 +83,13 @@
                   },
                 ]"
               />
-            </a-input-group>
-          </a-form-item>
+            </a-form-item>
+          </div>
         </a-col>
       </a-row>
       <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Land" :itemSelfUpdate="true">
+          <a-form-item label="Land" :selfUpdate="true">
             <a-select
               ref="country"
               class="custom-input"
@@ -247,6 +257,18 @@ export default mixins(FormGroupMixin).extend({
   input.custom-input,
   .custom-input input {
     text-align: left;
+  }
+}
+
+.imis-plz-form-item {
+  input {
+    border-radius: 4px 0 0 4px !important;
+  }
+}
+
+.imis-city-form-item {
+  input {
+    border-radius: 0 4px 4px 0 !important;
   }
 }
 </style>

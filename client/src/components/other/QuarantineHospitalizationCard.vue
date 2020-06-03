@@ -44,10 +44,21 @@
 
 <script lang="ts">
 import { getDate } from '../../util/helper-functions'
+import {
+  HospitalizationIncident,
+  QuarantineIncident,
+} from '../../api/SwaggerApi'
 
 export default {
   name: 'QuarantineHospitalizationCard',
-  props: ['quarantineIncidents', 'hospitalizationIncidents'],
+  props: {
+    hospitalizationIncidents: {
+      type: Array as () => HospitalizationIncident[],
+    },
+    quarantineIncidents: {
+      type: Array as () => QuarantineIncident[],
+    },
+  },
   methods: {
     getDate,
   },

@@ -87,7 +87,10 @@
               >
                 {{
                   SYMPTOMS.find((symptomFind) => symptomFind.value === symptom)
-                    .label || symptom
+                    ? SYMPTOMS.find(
+                        (symptomFind) => symptomFind.value === symptom
+                      ).label
+                    : symptom
                 }}
               </li>
             </ul>
@@ -122,19 +125,42 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { Incident } from '../../api/SwaggerApi'
+import {
+  PatientLogDto,
+  HospitalizationIncident,
+  QuarantineIncident,
+  AdministrativeIncident,
+  TestIncident,
+} from '../../api/SwaggerApi'
 import TestIncidentsCard from '../../components/other/TestIncidentsCard.vue'
 import QuarantineHospitalizationCard from '../../components/other/QuarantineHospitalizationCard.vue'
 import { getDate } from '../../util/helper-functions'
 import { SYMPTOMS } from '../../models/symptoms'
 
 interface State {
-  administrative: any // There's only one.
-  test: any[]
-  quarantine: any[]
-  hospitalization: any[]
+  administrative: AdministrativeIncident | undefined // There's only one.
+  test: TestIncident[]
+  quarantine: QuarantineIncident[]
+  hospitalization: HospitalizationIncident[]
   SYMPTOMS: any[]
 }
+
+const removeHistoric = (
+  incidents: Array<
+    | TestIncident
+    | HospitalizationIncident
+    | QuarantineIncident
+    | AdministrativeIncident
+  >
+) =>
+  incidents
+    .sort((a, b) => {
+      return (
+        b.id!.localeCompare(a.id!) ||
+        b.versionTimestamp!.localeCompare(a.versionTimestamp!)
+      )
+    })
+    .filter((cA, i) => incidents.findIndex((cB) => cB.id === cA.id) === i)
 
 export default Vue.extend({
   name: 'Incidents',
@@ -145,42 +171,22 @@ export default Vue.extend({
   watch: {
     allIncidents: {
       immediate: true,
-      handler(newI, oldI) {
-        let incidents: Incident[] = [...newI]
-
-        // Sort by ID and Version
-        incidents.sort((a: Incident, b: Incident) => {
-          return (
-            b.id!.localeCompare(a.id!) ||
-            b.versionTimestamp!.localeCompare(a.versionTimestamp!)
-          )
-        })
-
-        // Remove historic entries (keep latest version only)
-        incidents = incidents.filter(
-          (cA, i) => incidents.findIndex((cB) => cB.id === cA.id) === i
-        )
-
-        incidents.filter((elem, i) => incidents.indexOf(elem) === i)
-
-        // Categorize Incidents
-        this.administrative = incidents.filter((incident: Incident) =>
-          incident.id!.startsWith('administrative')
-        )[0] // There's only one (exactly one) per Case. This needs to be adapted once case support is enabled.
-        this.test = incidents.filter((incident: Incident) =>
-          incident.id!.startsWith('test')
-        )
-        this.quarantine = incidents.filter((incident: Incident) =>
-          incident.id!.startsWith('quarantine')
-        )
-        this.hospitalization = incidents.filter((incident: Incident) =>
-          incident.id!.startsWith('hospitalization')
-        )
+      handler(newI: PatientLogDto) {
+        const administrativeIncidents = [...newI.administrativeIncidents!]
+        const quarantineIncidents = [...newI.quarantineIncidents!]
+        const hospitalizationIncidents = [...newI.hospitalizationIncidents!]
+        const testIncidents = [...newI.testIncidents!]
+        this.administrative = removeHistoric(administrativeIncidents)[0]
+        this.quarantine = removeHistoric(quarantineIncidents)
+        this.hospitalization = removeHistoric(hospitalizationIncidents)
+        this.test = removeHistoric(testIncidents)
       },
     },
   },
   props: {
-    allIncidents: Array, // Array<Incident> not supported
+    allIncidents: {
+      type: Object as () => PatientLogDto,
+    },
     preIllnesses: Array, // Array<String> not supported
     patientInfectionSources: Array, // Api returns any
     exposureContacts: Array,

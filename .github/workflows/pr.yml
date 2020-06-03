@@ -21,7 +21,7 @@ env:
 
 jobs:
   stop-pr:
-    if: github.event.pull_request.closed == true
+    if: github.event.pull_request.closed == true || github.event.pull_request.merged == true
     name: Stop PR
     runs-on: ubuntu-latest
     steps:

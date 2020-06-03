@@ -68,22 +68,6 @@
             <SymptomsForm :form="form" />
 
             <a-form-item
-              :labelCol="{ div: 24 }"
-              :wrapperCol="{ div: 24 }"
-              class="no-double-colon-form-field"
-              label="Wie schnell sind die Beschwerden aufgetreten?"
-            >
-              <a-radio-group v-decorator="['speedOfSymptomsOutbreak']">
-                <a-radio value="suddenly">
-                  Plötzlich, innerhalb von einem Tag
-                </a-radio>
-                <a-radio value="slow">
-                  Langsam, innerhalb von mehreren Tagen
-                </a-radio>
-              </a-radio-group>
-            </a-form-item>
-
-            <a-form-item
               class="no-double-colon-form-field"
               :label="'Hat der Patient/die Patientin für diese Saison eine Influenza-Impfung erhalten?'"
               :labelCol="{ div: 24 }"
@@ -92,6 +76,7 @@
               <a-radio-group v-decorator="['fluImmunization']">
                 <a-radio value="true">Ja</a-radio>
                 <a-radio value="false">Nein</a-radio>
+                <a-radio value="">Nicht bekannt</a-radio>
               </a-radio-group>
             </a-form-item>
           </a-collapse-panel>
@@ -140,6 +125,7 @@ import IllnessStatusForm from '@/components/form-groups/IllnessStatusForm.vue'
 interface State {
   form: any
   createdPatient: Patient | null
+  showSpeedOfSymptoms: boolean
 }
 
 export default Vue.extend({
@@ -155,6 +141,7 @@ export default Vue.extend({
     return {
       form: this.$form.createForm(this, { name: 'coordinated' }),
       createdPatient: null,
+      showSpeedOfSymptoms: false,
     }
   },
   methods: {

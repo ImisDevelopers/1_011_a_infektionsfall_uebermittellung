@@ -30,7 +30,6 @@ task buildFrontend(type: YarnTask) {
 task lint(type: YarnTask) {
   setDescription "Run eslint on the frontend code."
   inputs.files sourceSet
-  outputs.files sourceSet
   args = ['run', 'lint']
 }
 
@@ -54,8 +53,8 @@ task generateClient(type: NpxTask) {
   args = ['-p', swaggerConfigPath, "-o", "./src/api", "-n", "SwaggerApi.ts"]
 }
 
-tasks.assemble.dependsOn('buildFrontend')
+tasks.assemble.dependsOn('lint', 'buildFrontend')
 tasks.test.dependsOn('assemble')
 tasks.lint.dependsOn('yarn_install', 'generateClient')
-tasks.buildFrontend.dependsOn('lint')
 tasks.buildFrontend.dependsOn('yarn_install')
+tasks.buildFrontend.mustRunAfter('lint')

@@ -85,13 +85,6 @@ public class PatientController {
 		return patientService.countQueryPatients(patientSearchParamsDTO);
 	}
 
-	@PostMapping("/quarantine/{id}")
-	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public ResponseEntity<Patient> requestQuarantine(@PathVariable("id") String patientId, @RequestBody RequestQuarantineDTO statusDTO) {
-		incidentService.addOrUpdateQuarantineIncident(patientId, statusDTO);
-		return ResponseEntity.ok(patientService.sendToQuarantine(patientId, statusDTO));
-	}
-
 	@PostMapping("/quarantine")
 	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
 	public void sendToQuarantine(@RequestBody SendToQuarantineDTO dto) {

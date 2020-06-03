@@ -757,7 +757,7 @@ export default Vue.extend({
       Vue.nextTick(() => {
         this.exposureContactForm.resetFields()
         this.exposureContactForm.setFieldsValue({
-          source: this.patient,
+          source: this.patient!.id,
         })
       })
     },
@@ -808,6 +808,7 @@ export default Vue.extend({
             await Api.updateExposureContactUsingPut(values)
           )
         } else {
+          console.log(values)
           this.exposureContacts.push(
             await Api.createExposureContactUsingPost(values)
           )

@@ -26,7 +26,6 @@ public abstract class PatientMapper {
 	@Mapping(target = "dateOfDeath", dateFormat = DATE_FORMAT)
 	@Mapping(target = "dateOfHospitalization", dateFormat = DATE_FORMAT)
 	@Mapping(target = "dateOfIllness", dateFormat = DATE_FORMAT)
-	@Mapping(target = "quarantineUntil", dateFormat = DATE_FORMAT)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "events", ignore = true)
 	public abstract Patient toPatient(CreatePatientDTO createPatient);

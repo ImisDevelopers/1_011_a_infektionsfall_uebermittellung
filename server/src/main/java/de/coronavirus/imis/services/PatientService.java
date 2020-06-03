@@ -102,20 +102,6 @@ public class PatientService {
 		return this.searchService.getResultSizePatientsDetail(patientSearchParamsDTO);
 	}
 
-	@Transactional
-	public Patient sendToQuarantine(final String patientID, final RequestQuarantineDTO dto) {
-
-		var patient = findPatientById(patientID).orElseThrow();
-
-		patient.setQuarantineUntil(PatientMapper.parseDate(dto.getDateUntil()));
-
-		patientRepository.saveAndFlush(patient);
-
-		eventService.createQuarantineEvent(patient, dto.getDateUntil(), dto.getComment());
-
-		return patient;
-	}
-
 	@SuppressWarnings("UnstableApiUsage")
 	private String makePatientId(Patient patient) {
 		return Hashing.sha256()

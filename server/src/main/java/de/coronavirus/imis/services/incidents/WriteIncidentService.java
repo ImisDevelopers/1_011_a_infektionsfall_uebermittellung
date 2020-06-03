@@ -72,34 +72,6 @@ public class WriteIncidentService {
 		return incident;
 	}
 
-	// Quarantine Incidents
-	@Transactional
-	public QuarantineIncident addOrUpdateQuarantineIncident(String patientId, RequestQuarantineDTO info) {
-		// Patient & Date
-		var patient = patientRepo.findById(patientId).orElseThrow();
-		var until = patientMapper.parseDate(info.getDateUntil());
-
-		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
-		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
-		var incident = incidentOptional.isEmpty()
-				? new QuarantineIncident()
-				: incidentOptional.get(0);
-
-		if(info.getEventDate()==null)
-			info.setEventDate(LocalDate.now());
-
-		// Apply to Incident
-		incident
-				.setComment(info.getComment())
-				.setUntil(until)
-				.setEventType(info.getStatus() != null ? info.getStatus() : EventType.QUARANTINE_SELECTED)
-				.setEventDate(info.getEventDate())
-				.setPatient(patient);
-		quarantineIncidentRepo.saveAndFlush(incident);
-
-		return incident;
-	}
-
 	// Administrative Incidents
 
 	// Todo: Pass in DTOs

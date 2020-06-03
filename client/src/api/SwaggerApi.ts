@@ -15,8 +15,8 @@ export interface AdministrativeIncident {
   comment?: string;
   dateOfIllness?: string;
   dateOfReporting?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
@@ -213,8 +213,8 @@ export interface HealthInsuranceCompanies {
 
 export interface HospitalizationIncident {
   caseId?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
@@ -429,7 +429,7 @@ export interface Patient {
   nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
-  patientStatus?:
+  patientStatus:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
@@ -506,10 +506,10 @@ export interface PatientEvent {
 }
 
 export interface PatientLogDto {
-  administrativeIncidents?: AdministrativeIncident[];
-  hospitalizationIncidents?: HospitalizationIncident[];
-  quarantineIncidents?: QuarantineIncident[];
-  testIncidents?: TestIncident[];
+  administrativeIncidents: AdministrativeIncident[];
+  hospitalizationIncidents: HospitalizationIncident[];
+  quarantineIncidents: QuarantineIncident[];
+  testIncidents: TestIncident[];
 }
 
 export interface PatientSearchParamsDTO {
@@ -586,8 +586,8 @@ export interface PatientSimpleSearchParamsDTO {
 export interface QuarantineIncident {
   caseId?: string;
   comment?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
@@ -662,8 +662,8 @@ export interface SendToQuarantineDTO {
 export interface TestIncident {
   caseId?: string;
   comment?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
@@ -785,7 +785,7 @@ const enum BodyType {
 }
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost/";
+  public baseUrl: string = "//localhost:8081/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -874,7 +874,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost/
+ * @baseUrl //localhost:8081/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {

@@ -35,10 +35,10 @@
 
 <script lang="ts">
 import { Column } from 'ant-design-vue/types/table/column'
-import moment, { Moment } from 'moment'
 import { testResults } from '../../models/event-types'
 import { testTypes } from '../../models/test-types'
 import { getDate } from '../../util/helper-functions'
+import { TestIncident } from '../../api/SwaggerApi'
 
 const columnsTests: Partial<Column>[] = [
   {
@@ -79,7 +79,7 @@ const columnsTests: Partial<Column>[] = [
 
 export default {
   name: 'TestIncidentsCard',
-  props: { testIncidents: Array },
+  props: { testIncidents: { type: Array as () => TestIncident[] } },
   data() {
     return {
       columnsTests,

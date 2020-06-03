@@ -2,7 +2,7 @@ package de.coronavirus.imis.api;
 
 import de.coronavirus.imis.api.dto.RequestLabTestDTO;
 import de.coronavirus.imis.domain.PatientEvent;
-import de.coronavirus.imis.services.IncidentService;
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import de.coronavirus.imis.services.PatientEventService;
 import de.coronavirus.imis.services.PatientService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DoctorController {
 	private final PatientEventService eventService;
 	private final PatientService patientService;
-	private final IncidentService incidentService;
+	private final WriteIncidentService incidentService;
 
 	@PostMapping("/create_appointment")
 	public PatientEvent addScheduledEvent(@RequestBody RequestLabTestDTO dto) {

@@ -23,6 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.time.LocalDate;
 
 
 @Component
@@ -78,6 +79,7 @@ public class TestDataLoader implements ApplicationRunner {
 				log.info("Inserting patients");
 				for (Resource patientTestDataResource : resourceResolver.getResources("sample_data/persons/person*.json")) {
 					var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
+					log.info("Create Patient {} {}", createPersonDTO.getLastName(), createPersonDTO.getFirstName());
 					patientService.addPatient(createPersonDTO, true);
 				}
 			} catch (Exception e) {
@@ -169,6 +171,7 @@ public class TestDataLoader implements ApplicationRunner {
 			// FIXME: 22.03.20 report cannot be attached
 			var updateTestStatus = UpdateTestStatusDTO.builder()
 					.status(TestStatus.TEST_POSITIVE)
+					.eventDate(LocalDate.now())
 					.comment(comment)
 					.testId(testId)
 					.build();

@@ -28,8 +28,8 @@ public class TestIncidentController {
   }
 
   @PostMapping("/test")
-  public TestIncident writeTest(@RequestBody TestIncident test) {
-	return testIncidentService.writeIncident(test);
+  public TestIncident setTest(@RequestBody TestIncident test) {
+	return testIncidentService.setIncident(test);
   }
 
 }

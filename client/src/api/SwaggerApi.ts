@@ -684,6 +684,7 @@ export interface TestIncident {
     | "HOSPITALIZATION_RELEASED"
     | "CASE_DATA_UPDATED";
   id?: string;
+  laboratory?: Laboratory;
   patient?: Patient;
   report?: string;
   status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
@@ -785,7 +786,7 @@ const enum BodyType {
 }
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8081/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -874,7 +875,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8081/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -1162,6 +1163,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         BodyType.Json,
         true,
       ),
+
+    /**
+     * @tags test-incident-controller
+     * @name setTestUsingPOST
+     * @summary setTest
+     * @request POST:/api/incidents/test
+     * @secure
+     */
+    setTestUsingPost: (test: TestIncident, params?: RequestParams) =>
+      this.request<TestIncident, any>(`/api/incidents/test`, "POST", params, test, BodyType.Json, true),
 
     /**
      * @tags test-incident-controller

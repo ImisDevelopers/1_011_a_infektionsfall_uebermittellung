@@ -25,7 +25,7 @@ public class TestIncidentService {
   }
 
   @Transactional
-  public TestIncident writeIncident(TestIncident test)
+  public TestIncident setIncident(TestIncident test)
   {
   	return testIncidentRepository.save(test);
   }

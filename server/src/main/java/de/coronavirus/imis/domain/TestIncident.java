@@ -29,7 +29,6 @@ public class TestIncident extends Incident {
 	private TestStatus status;
 
 	@ManyToOne
-	@JsonIgnore
 	@Audited(targetAuditMode = NOT_AUDITED)
 	private Laboratory laboratory;
 

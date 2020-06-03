@@ -68,7 +68,7 @@
           <a-radio-group
             class="imis-radio-group"
             v-decorator="[
-              'testType',
+              'type',
               {
                 rules: [
                   {
@@ -88,7 +88,7 @@
             </a-radio>
           </a-radio-group>
         </a-form-item>
-        <!-- TestType -->
+        <!-- Test Material -->
         <a-form-item label="Proben-Material">
           <a-radio-group
             class="imis-radio-group"
@@ -153,15 +153,15 @@
 </template>
 
 <script lang="ts">
-import { CreateLabTestDTO } from '@/api/SwaggerApi'
+import { TestIncident, Patient, InstitutionImpl } from '../api/SwaggerApi'
 import Vue from 'vue'
 import DateInput from '@/components/inputs/DateInput.vue'
-import Api from '@/api'
+import Api from '../api'
 import PatientInput from '@/components/inputs/PatientInput.vue'
 import LaboratoryInput from '@/components/inputs/LaboratoryInput.vue'
-import { TestTypeItem, testTypes } from '@/models/test-types'
-import { testResults } from '@/models/event-types'
-import { TestMaterialItem, testMaterials } from '@/models/test-materials'
+import { TestTypeItem, testTypes } from '../models/test-types'
+import { testResults } from '../models/event-types'
+import { TestMaterialItem, testMaterials } from '../models/test-materials'
 import moment from 'moment'
 
 interface State {
@@ -169,6 +169,21 @@ interface State {
   testTypes: TestTypeItem[]
   testMaterials: TestMaterialItem[]
   today: moment.Moment
+}
+
+function getDummyPatient (patientId:string) {
+  const patient:Patient = {
+    id: patientId,
+    patientStatus: "REGISTERED"
+  }
+  return patient
+}
+
+function getDummyInstitution (institutionId:string) {
+  const institution:InstitutionImpl = {
+    id: institutionId,
+  }
+  return institution
 }
 
 export default Vue.extend({
@@ -188,16 +203,22 @@ export default Vue.extend({
   },
   methods: {
     handleSubmit() {
-      this.form.validateFields((err: Error, values: CreateLabTestDTO) => {
+      this.form.validateFields((err: Error, values: any) => {
         if (err) {
           return
         }
-        const request = {
+        const request: TestIncident = {
           ...values,
+          laboratory: getDummyInstitution(values.laboratoryId),
+          patient: getDummyPatient(values.patientId),
+          eventType: "TEST_SUBMITTED_IN_PROGRESS",
+          status: "TEST_SUBMITTED",
         }
-
-        Api.createTestForPatientUsingPost(request)
-          .then((labTest) => {
+        console.log(request)
+        Api.setTestUsingPost(request)
+          .then((incident:TestIncident) => {
+            console.log(incident)
+            /*
             const createdLabTest = labTest
             const createdLabTestStatus =
               testResults.find(
@@ -212,8 +233,11 @@ export default Vue.extend({
                 h('div', `Test Status: ${createdLabTestStatus}`),
               ]),
             })
+            */
           })
-          .catch((err) => {
+          .catch((err:Error) => {
+            console.log(err)
+            /*
             let notification: any = {
               message: 'Fehler beim Anlegen des Tests.',
             }
@@ -245,6 +269,7 @@ export default Vue.extend({
               }
             }
             this.$notification.error(notification)
+            */
           })
       })
     },

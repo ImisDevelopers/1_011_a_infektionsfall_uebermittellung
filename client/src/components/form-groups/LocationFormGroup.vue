@@ -45,6 +45,7 @@
                 :dropdownMenuStyle="{
                   width: 'max-content',
                 }"
+                :tabIndex="-1"
                 v-decorator="[
                   formFieldName('zip'),
                   {
@@ -88,7 +89,7 @@
       </a-row>
       <a-row :gutter="12">
         <a-col :lg="12" :sm="24">
-          <a-form-item label="Land" :itemSelfUpdate="true">
+          <a-form-item label="Land" :selfUpdate="true">
             <a-select
               ref="country"
               class="custom-input"

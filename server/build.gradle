@@ -1,3 +1,8 @@
+import org.springframework.boot.gradle.plugin.MainClassConvention
+import org.springframework.boot.gradle.tasks.run.BootRun
+
+import java.util.function.Supplier;
+
 plugins {
     id 'org.springframework.boot' version '2.2.5.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
@@ -73,13 +78,7 @@ dependencyManagement {
 }
 
 jib {
-    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis-server:${System.env.GITHUB_SHA}"
-}
-
-processResources {
-    from('../client/dist') {
-        into 'static'
-    }
+    jib.to.image = "eu.gcr.io/onyx-yeti-271818/imis:${System.env.GITHUB_SHA}"
 }
 
 bootJar {
@@ -87,21 +86,17 @@ bootJar {
     mainClassName = 'de.coronavirus.imis.App'
 }
 
-//  gradle server:test --tests "*GenerateSwagger" -x processResources  client:generateClient
-task runSwaggerGenerator(type: Test) {
-	include("*GenerateSwagger")
-}
-
-tasks.processResources.dependsOn(':client:assemble')
-tasks.jib.dependsOn('processResources')
-bootJar.dependsOn('processResources')
-
 task generateTestData(type: Exec) {
-		commandLine 'python3', 'genPersons.py', '-u'
-		workingDir 'src/main/resources/sample_data'
+	setDescription "Generate test data to be loaded by the IMIS backend."
+
+	inputs.files fileTree(
+			dir: 'src/main/resources/sample_data',
+			includes: ['genPersons.py', 'persons/*'])
+	outputs.dir 'src/main/resources/sample_data/persons'
+
+	commandLine 'python3', 'genPersons.py', '-u'
+	workingDir 'src/main/resources/sample_data'
 }
-tasks.bootRun.dependsOn('generateTestData')
-tasks.test.dependsOn('generateTestData')
 
 test {
 	useJUnitPlatform()
@@ -117,9 +112,29 @@ jacocoTestReport {
 	}
 }
 
-
 compileJava {
     options.compilerArgs = [
         '-Amapstruct.defaultComponentModel=spring'
     ]
 }
+
+bootRun {}
+
+task buildSwaggerConfig(type: BootRun) {
+	def swaggerOutPath = "build/resources/swagger.json"
+	setDescription "Generate a Swagger documentation file in JSON format (`${swaggerOutPath}`)."
+
+	outputs.file swaggerOutPath
+
+	setClasspath sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
+	conventionMapping 'main', new MainClassConvention(project, {
+		-> sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
+	})
+	args "--spring.profiles.active=swagger-export", '--swagger-only',
+			"--swagger-export=${swaggerOutPath}"
+}
+
+// >>>>> DEPENDENCY MAPPINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+tasks.bootJar.dependsOn('processResources')
+tasks.buildSwaggerConfig.dependsOn(tasks.bootRun.getDependsOn())
+tasks.processResources.dependsOn('generateTestData')

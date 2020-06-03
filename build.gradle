@@ -6,29 +6,63 @@
  * User Manual available at https://docs.gradle.org/6.2.2/userguide/tutorial_java_projects.html
  */
 
-plugins {
-    // Apply the java plugin to add support for Java
-    id 'java'
-
-    // Apply the application plugin to add support for building a CLI application.
-    id 'application'
+// Build client and server files
+task assemble {
+	setDescription "Assembles all project files."
 }
 
-repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+// Build artifacts
+task build {
+	setDescription "Builds all project files and artifacts."
 }
 
-dependencies {
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:28.1-jre'
+// Copy frontend content to server resources
+task processClientResources(type: ProcessResources) {
+	setDescription "Update static server resources with recent frontend distribution."
 
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+	from 'client/dist'
+	into 'server/build/resources/main/static'
 }
 
-application {
-    // Define the main class for the application.
-    mainClassName = 'imis.App'
+// Run the backend (replaces :server:bootRun)
+task run {
+	setDescription "Run the IMIS system. The webserver is listening on port 80 by default."
+}
+// Run the frontend (replaces :client:serve)
+task runFrontendDev {
+	setDescription "Run a frontend development server supporting hot-reloading of modified " +
+			"frontend files. An IMIS server instance should be run separately using " +
+			"`:server:bootRun` task in order for the frontend code to be able to make REST API " +
+			"calls."
+}
+
+// Build a system Jar-File
+task jar {
+	setDescription "Generate a Jarfile of the IMIS system."
+}
+
+
+// Need info of subproject configurations (aka the tasks defined therein)
+evaluationDependsOn(":client")
+evaluationDependsOn(":server")
+
+
+// >>>>> DEPENDENCY MAPPINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+tasks.processClientResources.dependsOn(':client:assemble')
+
+tasks.assemble.dependsOn(':processClientResources')
+tasks.jar.dependsOn('assemble', ':server:bootJar')
+tasks.build.dependsOn('jar')
+
+tasks.run.dependsOn('assemble', ':server:bootRun')
+tasks.runFrontendDev.dependsOn(':client:serve')
+
+project(':client') {
+	tasks.generateClient.dependsOn(':server:buildSwaggerConfig')
+}
+
+project(':server') {
+	tasks.bootRun.mustRunAfter(':assemble')
+	tasks.bootJar.mustRunAfter(':assemble')
+	tasks.jib.dependsOn(':assemble')
 }

@@ -206,6 +206,11 @@ export interface GrantedAuthority {
   authority?: string;
 }
 
+export interface HealthInsuranceCompanies {
+  preDefined?: string[];
+  userDefined?: string[];
+}
+
 export interface HospitalizationIncident {
   caseId?: string;
   eventDate?: string;
@@ -780,7 +785,7 @@ const enum BodyType {
 }
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8081/";
+  public baseUrl: string = "//localhost/";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -869,7 +874,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8081/
+ * @baseUrl //localhost/
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -991,6 +996,23 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     addScheduledEventUsingPost: (dto: RequestLabTestDTO, params?: RequestParams) =>
       this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, BodyType.Json, true),
+
+    /**
+     * @tags enum-data-controller
+     * @name getHealthInsuranceCompaniesUsingGET
+     * @summary getHealthInsuranceCompanies
+     * @request GET:/api/enum-data/health-insurance-companies
+     * @secure
+     */
+    getHealthInsuranceCompaniesUsingGet: (params?: RequestParams) =>
+      this.request<HealthInsuranceCompanies, any>(
+        `/api/enum-data/health-insurance-companies`,
+        "GET",
+        params,
+        null,
+        BodyType.Json,
+        true,
+      ),
 
     /**
      * @tags exposure-contact-controller

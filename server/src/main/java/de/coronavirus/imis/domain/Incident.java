@@ -48,7 +48,7 @@ public abstract class Incident {
   @Enumerated(EnumType.STRING)
   private EventType eventType;
 
-  // Date on which this Event was officially registered / mandated. Set by user.
+  //@Column(columnDefinition = "DATE DEFAULT CURRENT_DATE") // Fallback does not work with @NotNull
   @NotNull
   private LocalDate eventDate;
 

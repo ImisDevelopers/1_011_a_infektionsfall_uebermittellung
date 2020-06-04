@@ -8,7 +8,6 @@
 
     <a-card>
       <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
-
         <!-- Labor -->
         <LaboratoryInput
           :form="form"
@@ -74,10 +73,10 @@
 
         <a-form-item label="Ergebnisdatum">
           <DateInput
-            :defaultValue="today"
             v-decorator="[
               'eventDate',
               {
+                initialValue: today,
                 rules: [
                   {
                     required: false,
@@ -119,7 +118,7 @@
 </template>
 
 <script lang="ts">
-import { Institution, LabTest } from '@/api/SwaggerApi'
+import { InstitutionImpl } from '@/api/SwaggerApi'
 import Vue from 'vue'
 import Api from '@/api'
 import TestInput from '@/components/inputs/TestInput.vue'
@@ -135,6 +134,7 @@ interface State {
   form: any
   fileBytes?: any
   today: moment.Moment
+  laboratories: Array<InstitutionImpl>
   testResults: any
 }
 
@@ -154,7 +154,7 @@ export default Vue.extend({
       form: this.$form.createForm(this),
       fileBytes: undefined,
       today: moment(),
-      // TODO: After simulation, remove the filter
+      laboratories: [],
       testResults: testResults.filter(
         (testResult) =>
           testResult.id === 'TEST_POSITIVE' || testResult.id === 'TEST_NEGATIVE'
@@ -163,7 +163,6 @@ export default Vue.extend({
   },
   async mounted() {
     if (!this.institution()) {
-      console.log('Loading institution')
       await this.getAuthenticatedInstitution()
     }
     const lab = this.institution()
@@ -179,6 +178,7 @@ export default Vue.extend({
     }
   },
   methods: {
+    getDummyInstitution,
     ...authMapper.mapActions({
       getAuthenticatedInstitution: 'getAuthenticatedInstitution',
     }),
@@ -214,36 +214,29 @@ export default Vue.extend({
           return
         }
 
-        const request:TestIncident = {
+        const request: TestIncident = {
           ...values,
-          eventType: values.status==='TEST_POSITIVE' ? 'TEST_FINISHED_POSITIVE' : 'TEST_FINISHED_NEGATIVE',
+          eventType:
+            values.status === 'TEST_POSITIVE'
+              ? 'TEST_FINISHED_POSITIVE'
+              : 'TEST_FINISHED_NEGATIVE',
           laboratory: getDummyInstitution(values.laboratoryId),
         }
 
         Api.setTestByTestAndLabIdUsingPost(request)
-          .then((incident:TestIncident) => {
-            console.log(incident)
-          })
-          .catch((err:Error) => {
-            console.log(err)
-          })
-
-        /*
-        Api.updateTestStatusUsingPut(values.laboratoryId, request)
-          .then((labTest) => {
-            this.form.resetFields(['testId', 'testResult', 'comment'])
-            this.fileBytes = null
-            const updatedLabTest = labTest
-            const updatedLabTestStatus =
-              testResults.find(
-                (testResult) => testResult.id === labTest.testStatus
-              )?.label || ''
+          .then((incident: TestIncident) => {
             const h = this.$createElement
             this.$success({
               title: 'Der Test wurde erfolgreich aktualisiert.',
               content: h('div', {}, [
-                h('div', `Test ID: ${updatedLabTest.testId}`),
-                h('div', `Neuer Test Status: ${updatedLabTestStatus}`),
+                h('div', `Test ID: ${incident.testId}`),
+                h(
+                  'div',
+                  `Neuer Test Status: ${
+                    testResults.find(
+                      (e: TestResultType) => e.id === incident.status
+                    ).label
+                  }`),
               ]),
             })
           })
@@ -252,9 +245,12 @@ export default Vue.extend({
               message: 'Fehler beim Hinzufügen des Testergebnisses.',
               description: err.message,
             }
+
+            if (err.message === 'TEST_NOT_FOUND') {
+              notification.description = 'Für diese Kombination aus Labor und Test-ID sind keine Daten hinterlegt.'
+            }
             this.$notification.error(notification)
           })
-          */
       })
     },
   },

@@ -34,8 +34,8 @@ public class PatientEvent {
 	@Enumerated(EnumType.STRING)
 	private Illness illness;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	private LabTest labTest;
+	//@ManyToOne(fetch = FetchType.EAGER)
+	//private LabTest labTest;
 
 	private Timestamp eventTimestamp;
 

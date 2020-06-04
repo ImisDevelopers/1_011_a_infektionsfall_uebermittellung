@@ -21,12 +21,9 @@ export interface AdministrativeIncident {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -86,16 +83,6 @@ export interface CreateInstitutionDTO {
   zip?: string;
 }
 
-export interface CreateLabTestDTO {
-  comment?: string;
-  eventDate?: string;
-  laboratoryId?: string;
-  patientId?: string;
-  testId?: string;
-  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
-  testType?: "PCR" | "ANTIBODY";
-}
-
 export interface CreatePatientDTO {
   city?: string;
   coronaContacts?: boolean;
@@ -122,12 +109,9 @@ export interface CreatePatientDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -219,12 +203,9 @@ export interface HospitalizationIncident {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -289,25 +270,8 @@ export interface InstitutionImpl {
   zip?: string;
 }
 
-export interface LabTest {
-  comment?: string;
-  id?: string;
-  lastUpdate?: string;
-  report?: string;
-  testId: string;
-  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
-  testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
-  testType?: "PCR" | "ANTIBODY";
-}
-
-export interface LabTestConstraintViolation {
-  constraint?: "LAB_UNIQUE_TEST_ID";
-  errorType?: string;
-  message?: string;
-}
-
 export interface Laboratory {
-  assignedLabTest?: LabTest[];
+  assignedTestIncidents?: TestIncident[];
   city?: string;
   comment?: string;
   email?: string;
@@ -433,12 +397,9 @@ export interface Patient {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -482,12 +443,9 @@ export interface PatientEvent {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -499,7 +457,6 @@ export interface PatientEvent {
     | "CASE_DATA_UPDATED";
   id?: string;
   illness?: "CORONA";
-  labTest?: LabTest;
   patient?: Patient;
   responsibleDoctor?: Doctor;
 }
@@ -533,12 +490,9 @@ export interface PatientSearchParamsDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -554,12 +508,9 @@ export interface PatientSearchParamsDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -591,12 +542,9 @@ export interface QuarantineIncident {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -636,12 +584,9 @@ export interface RequestQuarantineDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -667,12 +612,9 @@ export interface TestIncident {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -684,11 +626,11 @@ export interface TestIncident {
     | "CASE_DATA_UPDATED";
   id?: string;
   laboratory?: Laboratory;
+  material?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   patient?: Patient;
   report?: string;
-  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
+  status?: "TEST_SUBMITTED" | "TEST_POSITIVE" | "TEST_NEGATIVE";
   testId?: string;
-  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   type?: "PCR" | "ANTIBODY";
   versionTimestamp?: string;
   versionUser?: User;
@@ -709,14 +651,6 @@ export interface Timestamp {
 
 export interface TokenDTO {
   jwtToken?: string;
-}
-
-export interface UpdateTestStatusDTO {
-  comment?: string;
-  eventDate?: string;
-  file?: string;
-  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
-  testId?: string;
 }
 
 export interface User {
@@ -1258,60 +1192,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       ),
 
     /**
-     * @tags lab-test-controller
-     * @name createTestForPatientUsingPOST
-     * @summary createTestForPatient
-     * @request POST:/api/labtests
-     * @secure
-     */
-    createTestForPatientUsingPost: (createLabTestRequest: CreateLabTestDTO, params?: RequestParams) =>
-      this.request<LabTest, LabTestConstraintViolation>(
-        `/api/labtests`,
-        "POST",
-        params,
-        createLabTestRequest,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags lab-test-controller
-     * @name getLabTestForPatientUsingGET
-     * @summary getLabTestForPatient
-     * @request GET:/api/labtests/patient/{id}
-     * @secure
-     */
-    getLabTestForPatientUsingGet: (id: string, params?: RequestParams) =>
-      this.request<LabTest[], any>(`/api/labtests/patient/${id}`, "GET", params, null, BodyType.Json, true),
-
-    /**
-     * @tags lab-test-controller
-     * @name queryLabTestsByIdUsingGET
-     * @summary queryLabTestsById
-     * @request GET:/api/labtests/query
-     * @secure
-     */
-    queryLabTestsByIdUsingGet: (query: { labTestIdQuery: string }, params?: RequestParams) =>
-      this.request<LabTest[], any>(
-        `/api/labtests/query${this.addQueryParams(query)}`,
-        "GET",
-        params,
-        null,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags lab-test-controller
-     * @name updateTestStatusUsingPUT
-     * @summary updateTestStatus
-     * @request PUT:/api/labtests/{laboratoryId}
-     * @secure
-     */
-    updateTestStatusUsingPut: (laboratoryId: string, statusDTO: UpdateTestStatusDTO, params?: RequestParams) =>
-      this.request<LabTest, any>(`/api/labtests/${laboratoryId}`, "PUT", params, statusDTO, BodyType.Json, true),
-
-    /**
      * @tags patient-controller
      * @name getAllPatientsUsingGET
      * @summary getAllPatients
@@ -1512,72 +1392,72 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingGET
-     * @summary errorHtml
+     * @name errorUsingGET
+     * @summary error
      * @request GET:/error
      * @secure
      */
-    errorHtmlUsingGet: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "GET", params, null, BodyType.Json, true),
+    errorUsingGet: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "GET", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingHEAD
-     * @summary errorHtml
+     * @name errorUsingHEAD
+     * @summary error
      * @request HEAD:/error
      * @secure
      */
-    errorHtmlUsingHead: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, BodyType.Json, true),
+    errorUsingHead: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPOST
-     * @summary errorHtml
+     * @name errorUsingPOST
+     * @summary error
      * @request POST:/error
      * @secure
      */
-    errorHtmlUsingPost: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "POST", params, null, BodyType.Json, true),
+    errorUsingPost: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "POST", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPUT
-     * @summary errorHtml
+     * @name errorUsingPUT
+     * @summary error
      * @request PUT:/error
      * @secure
      */
-    errorHtmlUsingPut: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PUT", params, null, BodyType.Json, true),
+    errorUsingPut: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingDELETE
-     * @summary errorHtml
+     * @name errorUsingDELETE
+     * @summary error
      * @request DELETE:/error
      * @secure
      */
-    errorHtmlUsingDelete: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, BodyType.Json, true),
+    errorUsingDelete: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingOPTIONS
-     * @summary errorHtml
+     * @name errorUsingOPTIONS
+     * @summary error
      * @request OPTIONS:/error
      * @secure
      */
-    errorHtmlUsingOptions: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, BodyType.Json, true),
+    errorUsingOptions: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPATCH
-     * @summary errorHtml
+     * @name errorUsingPATCH
+     * @summary error
      * @request PATCH:/error
      * @secure
      */
-    errorHtmlUsingPatch: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, BodyType.Json, true),
+    errorUsingPatch: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, BodyType.Json, true),
   };
 }

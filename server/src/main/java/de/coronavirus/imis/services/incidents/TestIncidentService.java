@@ -1,10 +1,10 @@
 package de.coronavirus.imis.services.incidents;
 
-import de.coronavirus.imis.domain.Incident;
 import de.coronavirus.imis.domain.TestIncident;
 import de.coronavirus.imis.repositories.TestIncidentRepository;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Test;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -26,13 +26,19 @@ public class TestIncidentService {
   }
 
   public TestIncident getCurrentByTestAndLabId(String testId, String labId) {
-  	return testIncidentRepository.findByTestIdAndLaboratory_id(testId, labId).get(0);
+  	try {
+		return testIncidentRepository.findByTestIdAndLaboratory_id(testId, labId).get(0);
+	} catch (IndexOutOfBoundsException e) {
+  		throw new TestNotFoundException();
+	  }
   }
 
   @Transactional
   public TestIncident setIncident(TestIncident test)
   {
-  	return testIncidentRepository.save(test);
+	  return testIncidentRepository.save(test);
+
   }
 
+  public class TestNotFoundException extends RuntimeException{}
 }

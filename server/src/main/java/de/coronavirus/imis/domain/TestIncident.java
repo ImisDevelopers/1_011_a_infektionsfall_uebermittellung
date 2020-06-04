@@ -1,16 +1,11 @@
 package de.coronavirus.imis.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 
@@ -19,6 +14,12 @@ import static org.hibernate.envers.RelationTargetAuditMode.NOT_AUDITED;
 @Setter
 @Accessors(chain = true)
 @Audited
+@Table(uniqueConstraints = {
+	@UniqueConstraint(
+		name = "LAB_UNIQUE_TEST_ID",
+		columnNames = {"testId", "laboratory_id"}
+	)
+})
 public class TestIncident extends Incident {
 
 	private String testId;
@@ -36,7 +37,7 @@ public class TestIncident extends Incident {
 	private String comment;
 
 	@Enumerated(EnumType.STRING)
-	private TestMaterial testMaterial;
+	private TestMaterial material;
 
 	private byte[] report;
 

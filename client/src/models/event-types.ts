@@ -28,7 +28,7 @@ export const eventTypes: EventTypeItem[] = [
     icon: 'team',
   },
   {
-    id: 'TEST_SUBMITTED_IN_PROGRESS',
+    id: 'TEST_SUBMITTED',
     label: 'Test eingereicht',
     icon: 'clock-circle',
   },
@@ -41,21 +41,6 @@ export const eventTypes: EventTypeItem[] = [
     id: 'TEST_FINISHED_NEGATIVE',
     label: 'Test negativ',
     icon: 'stop',
-  },
-  {
-    id: 'TEST_FINISHED_INVALID',
-    label: 'Test invalide',
-    icon: 'warning',
-  },
-  {
-    id: 'TEST_FINISHED_RECOVERED',
-    label: 'Getestet und erholt',
-    icon: 'rollback',
-  },
-  {
-    id: 'TEST_FINISHED_NOT_RECOVERED',
-    label: 'Getestet und nicht erholt',
-    icon: 'logout',
   },
   {
     id: 'PATIENT_DEAD',
@@ -121,11 +106,6 @@ export const testResults: TestResultType[] = [
     icon: 'login',
   },
   {
-    id: 'TEST_IN_PROGRESS',
-    label: 'Test läuft',
-    icon: 'clock-circle',
-  },
-  {
     id: 'TEST_POSITIVE',
     label: 'Test positiv',
     icon: 'check',
@@ -134,10 +114,5 @@ export const testResults: TestResultType[] = [
     id: 'TEST_NEGATIVE',
     label: 'Test negativ',
     icon: 'stop',
-  },
-  {
-    id: 'TEST_INVALID',
-    label: 'Test invalide',
-    icon: 'warning',
   },
 ]

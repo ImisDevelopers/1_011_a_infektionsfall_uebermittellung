@@ -2,7 +2,6 @@ package de.coronavirus.imis.services.incidents;
 
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.RequestQuarantineDTO;
-import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;
 import de.coronavirus.imis.repositories.*;
@@ -29,50 +28,6 @@ public class WriteIncidentService {
 	private final AdministrativeIncidentRepository adminIncidentRepo;
 	private final HospitalizationIncidentRepository hospIncidentRepo;
 	private final DoctorRepository doctorRepo;
-
-	@Transactional
-	public TestIncident addTestIncident(CreateLabTestDTO info) {
-
-		if(info.getEventDate()==null)
-			info.setEventDate(LocalDate.now());
-
-		var incident = (TestIncident) new TestIncident()
-				.setTestId(info.getTestId())
-				.setTestMaterial(info.getTestMaterial())
-				.setComment(info.getComment())
-				.setType(info.getTestType())
-				.setStatus(TestStatus.TEST_SUBMITTED)
-				.setLaboratory(laboratoryRepo.findById(info.getLaboratoryId()).orElseThrow(LaboratoryNotFoundException::new))
-				.setEventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
-				.setPatient(patientRepo.findById(info.getPatientId()).orElseThrow(PatientNotFoundException::new))
-				.setEventDate(info.getEventDate());
-
-		testIncidentRepo.saveAndFlush(incident);
-		return incident;
-	}
-
-	/*
-	@Transactional
-	public TestIncident updateTestIncident(String laboratoryId, UpdateTestStatusDTO update) {
-
-		if(update.getEventDate()==null)
-			update.setEventDate(LocalDate.now());
-
-		var incident = testIncidentRepo.findByTestId(update.getTestId()).get(0);
-		var laboratory = laboratoryRepo.findById(laboratoryId).orElseThrow();
-		incident
-				.setLaboratory(laboratory)
-				.setStatus(update.getStatus())
-				.setComment(update.getComment())
-				.setReport(update.getFile())
-				.setEventType(testStatusToEvent(update.getStatus()))
-				.setEventDate(update.getEventDate());
-		// ToDo bei setStatus und setEventType: Semantik? Sinnvoll so?
-
-		testIncidentRepo.saveAndFlush(incident);
-		return incident;
-	}
-	*/
 
 	// Quarantine Incidents
 	@Transactional
@@ -272,19 +227,11 @@ public class WriteIncidentService {
 		EventType result;
 		switch (input) {
 			case TEST_NEGATIVE:
-				result = EventType.TEST_FINISHED_NEGATIVE;
-				break;
-			case TEST_SUBMITTED:
-			case TEST_IN_PROGRESS:
-				result = EventType.TEST_SUBMITTED_IN_PROGRESS;
-				break;
+				return EventType.TEST_FINISHED_NEGATIVE;
 			case TEST_POSITIVE:
-				result = EventType.TEST_FINISHED_POSITIVE;
-				break;
+				return EventType.TEST_FINISHED_POSITIVE;
 			default:
-				result = EventType.TEST_FINISHED_INVALID;
-
+				return EventType.TEST_SUBMITTED;
 		}
-		return result;
 	}
 }

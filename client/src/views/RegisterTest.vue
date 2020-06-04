@@ -93,7 +93,7 @@
           <a-radio-group
             class="imis-radio-group"
             v-decorator="[
-              'testMaterial',
+              'material',
               {
                 rules: [
                   {
@@ -116,10 +116,11 @@
 
         <a-form-item label="Abnahmedatum">
           <DateInput
-            :defaultValue="today"
+            :value="today"
             v-decorator="[
               'eventDate',
               {
+                initialValue: today,
                 rules: [
                   {
                     required: false,
@@ -188,6 +189,8 @@ export default Vue.extend({
     }
   },
   methods: {
+    getDummyInstitution,
+    getDummyPatient,
     handleSubmit() {
       this.form.validateFields((err: Error, values: any) => {
         if (err) {
@@ -197,64 +200,32 @@ export default Vue.extend({
           ...values,
           laboratory: getDummyInstitution(values.laboratoryId),
           patient: getDummyPatient(values.patientId),
-          eventType: "TEST_SUBMITTED_IN_PROGRESS",
+          eventType: "TEST_SUBMITTED",
           status: "TEST_SUBMITTED",
         }
         Api.setTestUsingPost(request)
-          .then((incident:TestIncident) => {
-            console.log(incident)
-            /*
-            const createdLabTest = labTest
-            const createdLabTestStatus =
-              testResults.find(
-                (testResult) => testResult.id === labTest.testStatus
-              )?.label || ''
+          .then((incident:TestIncident) => {            
             this.form.resetFields()
             const h = this.$createElement
             this.$success({
               title: 'Der Test wurde erfolgreich angelegt.',
               content: h('div', {}, [
-                h('div', `Test ID: ${createdLabTest.testId}`),
-                h('div', `Test Status: ${createdLabTestStatus}`),
+                h('div', `Test ID: ${incident.testId}`),
+                h('div', `Patient: ${incident.patient!.firstName} ${incident.patient!.lastName}`),
               ]),
             })
-            */
+            
           })
-          .catch((err:Error) => {
-            console.log(err)
-            /*
-            let notification: any = {
-              message: 'Fehler beim Anlegen des Tests.',
+          .catch((err) => {
+            const notification = {
+              message: 'Fehler beim Registrieren des Tests.',
+              description: err.message,
             }
 
-            if (
-              err.errorType === 'ConstraintViolation' &&
-              err.constraint === 'LAB_UNIQUE_TEST_ID'
-            ) {
-              this.form.setFields({
-                testId: {
-                  value: values['testId'],
-                  errors: [
-                    new Error(
-                      'Test-ID bereits einer anderen Probe zugeordnet!'
-                    ),
-                  ],
-                },
-              })
-
-              notification = {
-                ...notification,
-                description:
-                  'Eingegebene Test-ID wurde bereits einer anderen Probe zugeordnet!',
-              }
-            } else {
-              notification = {
-                ...notification,
-                description: err.message,
-              }
+            if (err.message === 'CONSTRAINT_VIOLATION') {
+              notification.description = 'Dieser Test bei diesem Labor ist bereits einem anderen Patienten zugeordnet.'
             }
             this.$notification.error(notification)
-            */
           })
       })
     },

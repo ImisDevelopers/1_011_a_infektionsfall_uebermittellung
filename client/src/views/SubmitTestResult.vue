@@ -8,7 +8,8 @@
 
     <a-card>
       <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
-        <!-- Labor -->
+
+        <!-- Labor
         <LaboratoryInput
           :form="form"
           :initial-labs="laboratories"
@@ -24,7 +25,7 @@
             },
           ]"
           label="Labor"
-        />
+        /> -->
 
         <!-- TestId -->
         <TestInput
@@ -49,7 +50,7 @@
           <a-radio-group
             class="imis-radio-group"
             v-decorator="[
-              'testResult',
+              'status',
               {
                 rules: [
                   {
@@ -127,15 +128,13 @@ import DateInput from '@/components/inputs/DateInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
 import moment from 'moment'
+import { TestIncident } from '../api/SwaggerApi'
 
 interface State {
   form: any
   fileBytes?: any
-  testResults: TestResultType[]
-  laboratories: Institution[]
-  updatedLabTest?: LabTest
-  updatedLabTestStatus: string
   today: moment.Moment
+  testResults: any
 }
 
 export default Vue.extend({
@@ -145,7 +144,7 @@ export default Vue.extend({
   },
   components: {
     TestInput,
-    LaboratoryInput,
+    //LaboratoryInput,
     DateInput,
   },
   props: {},
@@ -153,15 +152,12 @@ export default Vue.extend({
     return {
       form: this.$form.createForm(this),
       fileBytes: undefined,
+      today: moment(),
       // TODO: After simulation, remove the filter
       testResults: testResults.filter(
         (testResult) =>
           testResult.id === 'TEST_POSITIVE' || testResult.id === 'TEST_NEGATIVE'
       ),
-      laboratories: [],
-      updatedLabTest: undefined,
-      updatedLabTestStatus: '',
-      today: moment(),
     }
   },
   async mounted() {
@@ -217,15 +213,19 @@ export default Vue.extend({
           return
         }
 
-        const { testId } = values
-        const request = {
-          testId,
-          status: values.testResult,
-          comment: values.comment,
-          file: this.fileBytes,
-          eventDate: values.eventDate,
+        const request:TestIncident = {
+          ...values
         }
 
+        Api.setTestByTestIdUsingPost(request)
+          .then((incident:TestIncident) => {
+            console.log(incident)
+          })
+          .catch((err:Error) => {
+            console.log(err)
+          })
+
+        /*
         Api.updateTestStatusUsingPut(values.laboratoryId, request)
           .then((labTest) => {
             this.form.resetFields(['testId', 'testResult', 'comment'])
@@ -251,6 +251,7 @@ export default Vue.extend({
             }
             this.$notification.error(notification)
           })
+          */
       })
     },
   },

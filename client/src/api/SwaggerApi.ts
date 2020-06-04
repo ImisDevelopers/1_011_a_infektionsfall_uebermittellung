@@ -1192,6 +1192,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       ),
 
     /**
+     * @tags test-incident-controller
+     * @name setTestByTestIdUsingPOST
+     * @summary setTestByTestId
+     * @request POST:/api/incidents/test/test-id
+     * @secure
+     */
+    setTestByTestIdUsingPost: (test: TestIncident, params?: RequestParams) =>
+      this.request<TestIncident, any>(`/api/incidents/test/test-id`, "POST", params, test, BodyType.Json, true),
+
+    /**
      * @tags institution-controller
      * @name createInstitutionUsingPOST
      * @summary createInstitution

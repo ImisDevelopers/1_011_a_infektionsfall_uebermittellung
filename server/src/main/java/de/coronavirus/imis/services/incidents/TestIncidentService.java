@@ -4,6 +4,7 @@ import de.coronavirus.imis.domain.Incident;
 import de.coronavirus.imis.domain.TestIncident;
 import de.coronavirus.imis.repositories.TestIncidentRepository;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Test;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -22,6 +23,10 @@ public class TestIncidentService {
 
   public List<TestIncident> getCurrentByPatientId(String patientId) {
     return testIncidentRepository.findByPatientId(patientId);
+  }
+
+  public TestIncident getCurrentByTestId(String testId) {
+  	return testIncidentRepository.findByTestId(testId).get(0);
   }
 
   @Transactional

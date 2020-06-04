@@ -85,13 +85,6 @@ public class PatientController {
 		return patientService.countQueryPatients(patientSearchParamsDTO);
 	}
 
-	@PostMapping("/quarantine")
-	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public void sendToQuarantine(@RequestBody SendToQuarantineDTO dto) {
-		dto.getPatientIds().forEach(patientId ->
-			quarantineIncidentService.updateQuarantineIncident(patientId, EventType.QUARANTINE_MANDATED, dto.getEventDate()));
-	}
-
 	@PostMapping("/event/order-test")
 	@PreAuthorize("hasAnyRole('CLINIC', 'DEPARTMENT_OF_HEALTH', 'DOCTORS_OFFICE', 'TEST_SITE')")
 	public ResponseEntity<PatientEvent> createOrderTestEvent(OrderTestEventDTO eventDTO) {

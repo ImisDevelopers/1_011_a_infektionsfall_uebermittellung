@@ -35,10 +35,10 @@ jobs:
       run: |
         gcloud components install beta
 
-        gcloud run services delete imis-pr-${PR_NUMBER}
+        gcloud run services delete imis-pr-${PR_NUMBER} --platform=managed --region=europe-west1
 
   deploy-pr:
-    if: github.event.pull_request.closed != true
+    if: github.event.pull_request.closed != true &&  github.event.pull_request.merged != true
     name: Deploy PR
     runs-on: ubuntu-latest
     steps:
@@ -92,7 +92,7 @@ jobs:
         gcloud components install beta
 
         gcloud beta run deploy imis-pr-${PR_NUMBER} --image "$IMAGE" \
-                  --platform managed \
+                  --platform=managed \
                   --allow-unauthenticated \
                   --max-instances=3 \
                   --memory=512Mi --cpu=1000m \

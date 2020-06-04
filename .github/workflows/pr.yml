@@ -94,7 +94,7 @@ jobs:
         gcloud beta run deploy imis-pr-${PR_NUMBER} --image "$IMAGE" \
                   --platform=managed \
                   --allow-unauthenticated \
-                  --max-instances=3 \
+                  --max-instances=1 \
                   --memory=512Mi --cpu=1000m \
                   --concurrency=80 \
                   --set-env-vars="SPRING_PROFILES_ACTIVE=pull-request,SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}" \

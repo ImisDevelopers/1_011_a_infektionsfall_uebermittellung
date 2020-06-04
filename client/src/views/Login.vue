@@ -65,20 +65,23 @@
       <br/>
       <p>Demo-Zugänge:</p>
       <a-button
-          @click.prevent="handleLogin('test_testing_site','asdf')"
-          html-type="submit">
+        @click.prevent="handleLogin('test_testing_site','asdf')"
+        html-type="submit"
+        icon="unlock"
+      >
         Als Labor einloggen
       </a-button>
       <br />
       <p>
         Kennung <strong>test_testing_site</strong> mit Passwort <strong>asdf</strong>
       </p>
-          <a-button
-                  @click.prevent="handleLogin('test_department_of_health','asdf')"
-                  html-type="submit"
-          >
-            Als Gesundheitsamt einloggen
-          </a-button>
+      <a-button
+        @click.prevent="handleLogin('test_department_of_health','asdf')"
+        html-type="submit"
+        icon="unlock"
+      >
+        Als Gesundheitsamt einloggen
+      </a-button>
       <p>
         Kennung <strong>test_department_of_health</strong> mit Passwort
         <strong>asdf</strong>

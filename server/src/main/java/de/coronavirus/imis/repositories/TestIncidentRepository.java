@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface TestIncidentRepository extends JpaRepository<TestIncident, String> {
 
-	List<TestIncident> findByTestId(String testId);
+	List<TestIncident> findByTestIdAndLaboratory_id(String testId, String labId);
 
 	List<TestIncident> findByPatientId(String patientId);
 

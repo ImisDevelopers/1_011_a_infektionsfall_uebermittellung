@@ -51,6 +51,7 @@ public class WriteIncidentService {
 		return incident;
 	}
 
+	/*
 	@Transactional
 	public TestIncident updateTestIncident(String laboratoryId, UpdateTestStatusDTO update) {
 
@@ -71,6 +72,7 @@ public class WriteIncidentService {
 		testIncidentRepo.saveAndFlush(incident);
 		return incident;
 	}
+	*/
 
 	// Quarantine Incidents
 	@Transactional

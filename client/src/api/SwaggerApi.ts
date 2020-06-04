@@ -417,7 +417,6 @@ export interface Patient {
   dateOfIllness?: string;
   email?: string;
   employer?: string;
-  events?: PatientEvent[];
   firstName?: string;
   fluImmunization?: boolean;
   gender?: string;
@@ -1193,12 +1192,12 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags test-incident-controller
-     * @name setTestByTestIdUsingPOST
-     * @summary setTestByTestId
+     * @name setTestByTestAndLabIdUsingPOST
+     * @summary setTestByTestAndLabId
      * @request POST:/api/incidents/test/test-id
      * @secure
      */
-    setTestByTestIdUsingPost: (test: TestIncident, params?: RequestParams) =>
+    setTestByTestAndLabIdUsingPost: (test: TestIncident, params?: RequestParams) =>
       this.request<TestIncident, any>(`/api/incidents/test/test-id`, "POST", params, test, BodyType.Json, true),
 
     /**
@@ -1513,72 +1512,72 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorUsingGET
-     * @summary error
+     * @name errorHtmlUsingGET
+     * @summary errorHtml
      * @request GET:/error
      * @secure
      */
-    errorUsingGet: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "GET", params, null, BodyType.Json, true),
+    errorHtmlUsingGet: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "GET", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingHEAD
-     * @summary error
+     * @name errorHtmlUsingHEAD
+     * @summary errorHtml
      * @request HEAD:/error
      * @secure
      */
-    errorUsingHead: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, BodyType.Json, true),
+    errorHtmlUsingHead: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPOST
-     * @summary error
+     * @name errorHtmlUsingPOST
+     * @summary errorHtml
      * @request POST:/error
      * @secure
      */
-    errorUsingPost: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "POST", params, null, BodyType.Json, true),
+    errorHtmlUsingPost: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "POST", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPUT
-     * @summary error
+     * @name errorHtmlUsingPUT
+     * @summary errorHtml
      * @request PUT:/error
      * @secure
      */
-    errorUsingPut: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, BodyType.Json, true),
+    errorHtmlUsingPut: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "PUT", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingDELETE
-     * @summary error
+     * @name errorHtmlUsingDELETE
+     * @summary errorHtml
      * @request DELETE:/error
      * @secure
      */
-    errorUsingDelete: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, BodyType.Json, true),
+    errorHtmlUsingDelete: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingOPTIONS
-     * @summary error
+     * @name errorHtmlUsingOPTIONS
+     * @summary errorHtml
      * @request OPTIONS:/error
      * @secure
      */
-    errorUsingOptions: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, BodyType.Json, true),
+    errorHtmlUsingOptions: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorUsingPATCH
-     * @summary error
+     * @name errorHtmlUsingPATCH
+     * @summary errorHtml
      * @request PATCH:/error
      * @secure
      */
-    errorUsingPatch: (params?: RequestParams) =>
-      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, BodyType.Json, true),
+    errorHtmlUsingPatch: (params?: RequestParams) =>
+      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, BodyType.Json, true),
   };
 }

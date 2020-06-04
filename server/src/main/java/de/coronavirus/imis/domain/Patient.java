@@ -38,9 +38,7 @@ import lombok.experimental.Accessors;
 		property = "id")
 @Indexed
 public class Patient {
-	@OneToMany(mappedBy = "patient")
-	@OrderBy("eventTimestamp asc")
-	List<PatientEvent> events;
+
 	@Id
 	private String id;
 	@SortableField

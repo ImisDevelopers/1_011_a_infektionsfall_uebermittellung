@@ -9,7 +9,7 @@
     <a-card>
       <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
 
-        <!-- Labor
+        <!-- Labor -->
         <LaboratoryInput
           :form="form"
           :initial-labs="laboratories"
@@ -25,7 +25,7 @@
             },
           ]"
           label="Labor"
-        /> -->
+        />
 
         <!-- TestId -->
         <TestInput
@@ -129,6 +129,7 @@ import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
 import moment from 'moment'
 import { TestIncident } from '../api/SwaggerApi'
+import { getDummyInstitution } from '../util/helper-functions'
 
 interface State {
   form: any
@@ -144,7 +145,7 @@ export default Vue.extend({
   },
   components: {
     TestInput,
-    //LaboratoryInput,
+    LaboratoryInput,
     DateInput,
   },
   props: {},
@@ -214,10 +215,12 @@ export default Vue.extend({
         }
 
         const request:TestIncident = {
-          ...values
+          ...values,
+          eventType: values.status==='TEST_POSITIVE' ? 'TEST_FINISHED_POSITIVE' : 'TEST_FINISHED_NEGATIVE',
+          laboratory: getDummyInstitution(values.laboratoryId),
         }
 
-        Api.setTestByTestIdUsingPost(request)
+        Api.setTestByTestAndLabIdUsingPost(request)
           .then((incident:TestIncident) => {
             console.log(incident)
           })

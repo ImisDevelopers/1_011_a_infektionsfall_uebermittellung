@@ -25,8 +25,8 @@ public class TestIncidentService {
     return testIncidentRepository.findByPatientId(patientId);
   }
 
-  public TestIncident getCurrentByTestId(String testId) {
-  	return testIncidentRepository.findByTestId(testId).get(0);
+  public TestIncident getCurrentByTestAndLabId(String testId, String labId) {
+  	return testIncidentRepository.findByTestIdAndLaboratory_id(testId, labId).get(0);
   }
 
   @Transactional

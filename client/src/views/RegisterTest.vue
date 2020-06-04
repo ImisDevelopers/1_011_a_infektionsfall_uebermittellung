@@ -153,7 +153,7 @@
 </template>
 
 <script lang="ts">
-import { TestIncident, Patient, InstitutionImpl } from '../api/SwaggerApi'
+import { TestIncident } from '../api/SwaggerApi'
 import Vue from 'vue'
 import DateInput from '@/components/inputs/DateInput.vue'
 import Api from '../api'
@@ -163,27 +163,13 @@ import { TestTypeItem, testTypes } from '../models/test-types'
 import { testResults } from '../models/event-types'
 import { TestMaterialItem, testMaterials } from '../models/test-materials'
 import moment from 'moment'
+import { getDummyInstitution, getDummyPatient } from '../util/helper-functions'
 
 interface State {
   form: any
   testTypes: TestTypeItem[]
   testMaterials: TestMaterialItem[]
   today: moment.Moment
-}
-
-function getDummyPatient (patientId:string) {
-  const patient:Patient = {
-    id: patientId,
-    patientStatus: "REGISTERED"
-  }
-  return patient
-}
-
-function getDummyInstitution (institutionId:string) {
-  const institution:InstitutionImpl = {
-    id: institutionId,
-  }
-  return institution
 }
 
 export default Vue.extend({
@@ -214,7 +200,6 @@ export default Vue.extend({
           eventType: "TEST_SUBMITTED_IN_PROGRESS",
           status: "TEST_SUBMITTED",
         }
-        console.log(request)
         Api.setTestUsingPost(request)
           .then((incident:TestIncident) => {
             console.log(incident)

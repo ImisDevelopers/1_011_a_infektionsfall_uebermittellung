@@ -33,11 +33,12 @@ public class TestIncidentController {
   }
 
   @PostMapping("/test/test-id")
-  public TestIncident setTestByTestId(@RequestBody TestIncident test) {
-  	var existing = testIncidentService.getCurrentByTestId(test.getTestId());
+  public TestIncident setTestByTestAndLabId(@RequestBody TestIncident test) {
+  	var existing = testIncidentService.getCurrentByTestAndLabId(test.getTestId(), test.getLaboratory().getId());
   	existing.setStatus(test.getStatus());
   	existing.setEventDate(test.getEventDate());
   	existing.setComment(test.getComment());
+  	existing.setEventType(test.getEventType());
   	return testIncidentService.setIncident(existing);
   }
 

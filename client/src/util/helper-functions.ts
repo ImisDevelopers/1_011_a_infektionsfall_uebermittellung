@@ -7,16 +7,16 @@ export function getDate(date: string) {
   else return 'Keine Angabe'
 }
 
-export function getDummyPatient (patientId:string) {
-  const patient:Patient = {
+export function getDummyPatient(patientId: string) {
+  const patient: Patient = {
     id: patientId,
-    patientStatus: "REGISTERED"
+    patientStatus: 'REGISTERED',
   }
   return patient
 }
 
-export function getDummyInstitution (institutionId:string) {
-  const institution:InstitutionImpl = {
+export function getDummyInstitution(institutionId: string) {
+  const institution: InstitutionImpl = {
     id: institutionId,
   }
   return institution

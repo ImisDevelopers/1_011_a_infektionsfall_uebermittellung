@@ -90,12 +90,7 @@ export const eventTypes: EventTypeItem[] = [
 ]
 
 export interface TestResultType {
-  id:
-    | 'TEST_SUBMITTED'
-    | 'TEST_IN_PROGRESS'
-    | 'TEST_POSITIVE'
-    | 'TEST_NEGATIVE'
-    | 'TEST_INVALID'
+  id: 'TEST_SUBMITTED' | 'TEST_POSITIVE' | 'TEST_NEGATIVE'
   label: string
   icon: string
 }

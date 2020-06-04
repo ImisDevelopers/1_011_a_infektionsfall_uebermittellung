@@ -235,8 +235,13 @@ export default Vue.extend({
                   `Neuer Test Status: ${
                     testResults.find(
                       (e: TestResultType) => e.id === incident.status
-                    ).label
-                  }`),
+                    )
+                      ? testResults.find(
+                          (e: TestResultType) => e.id === incident.status
+                        )!.label
+                      : incident.status
+                  }`
+                ),
               ]),
             })
           })
@@ -247,7 +252,8 @@ export default Vue.extend({
             }
 
             if (err.message === 'TEST_NOT_FOUND') {
-              notification.description = 'Für diese Kombination aus Labor und Test-ID sind keine Daten hinterlegt.'
+              notification.description =
+                'Für diese Kombination aus Labor und Test-ID sind keine Daten hinterlegt.'
             }
             this.$notification.error(notification)
           })

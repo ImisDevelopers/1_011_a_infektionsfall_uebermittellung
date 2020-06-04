@@ -200,21 +200,25 @@ export default Vue.extend({
           ...values,
           laboratory: getDummyInstitution(values.laboratoryId),
           patient: getDummyPatient(values.patientId),
-          eventType: "TEST_SUBMITTED",
-          status: "TEST_SUBMITTED",
+          eventType: 'TEST_SUBMITTED',
+          status: 'TEST_SUBMITTED',
         }
         Api.setTestUsingPost(request)
-          .then((incident:TestIncident) => {            
+          .then((incident: TestIncident) => {
             this.form.resetFields()
             const h = this.$createElement
             this.$success({
               title: 'Der Test wurde erfolgreich angelegt.',
               content: h('div', {}, [
                 h('div', `Test ID: ${incident.testId}`),
-                h('div', `Patient: ${incident.patient!.firstName} ${incident.patient!.lastName}`),
+                h(
+                  'div',
+                  `Patient: ${incident.patient!.firstName} ${
+                    incident.patient!.lastName
+                  }`
+                ),
               ]),
             })
-            
           })
           .catch((err) => {
             const notification = {
@@ -223,7 +227,8 @@ export default Vue.extend({
             }
 
             if (err.message === 'CONSTRAINT_VIOLATION') {
-              notification.description = 'Dieser Test bei diesem Labor ist bereits einem anderen Patienten zugeordnet.'
+              notification.description =
+                'Dieser Test bei diesem Labor ist bereits einem anderen Patienten zugeordnet.'
             }
             this.$notification.error(notification)
           })

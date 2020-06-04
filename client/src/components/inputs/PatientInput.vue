@@ -7,7 +7,7 @@
     :placeholder="placeholder"
     :showSearch="true"
     :showArrow="false"
-    :filterOption=filterOption
+    :filterOption="filterOption"
     :value="value"
     @search="handleSearch"
   >

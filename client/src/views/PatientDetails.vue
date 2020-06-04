@@ -82,7 +82,7 @@
             </a-button>
           </div>
           <!-- Allgemein & Adresse -->
-          <a-row :gutter="8">
+          <a-row :gutter="8" type="flex">
             <a-col :md="12" :span="24">
               <a-card :extra="this.patient.id" align="left" title="Allgemein">
                 <table>
@@ -110,7 +110,7 @@
               </a-card>
             </a-col>
             <a-col :md="12" :span="24">
-              <a-card align="left" title="Adresse">
+              <a-card align="left" title="Adresse" style="height: 100%;">
                 <table>
                   <tr v-if="patient.stayCity">
                     <td colspan="2">Wohnort:</td>

@@ -429,7 +429,7 @@ export interface Patient {
   nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
-  patientStatus:
+  patientStatus?:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
@@ -451,7 +451,6 @@ export interface Patient {
     | "CASE_DATA_UPDATED";
   phoneNumber?: string;
   preIllnesses?: string[];
-  quarantineUntil?: string;
   riskAreas?: string[];
   riskOccupation?:
     | "NO_RISK_OCCUPATION"
@@ -626,32 +625,6 @@ export interface RequestLabTestDTO {
   doctorId?: string;
   laboratoryId?: string;
   patientId?: string;
-}
-
-export interface RequestQuarantineDTO {
-  comment?: string;
-  dateUntil?: string;
-  eventDate?: string;
-  status?:
-    | "REGISTERED"
-    | "SUSPECTED"
-    | "ORDER_TEST"
-    | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
-    | "TEST_FINISHED_POSITIVE"
-    | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
-    | "PATIENT_DEAD"
-    | "DOCTORS_VISIT"
-    | "QUARANTINE_SELECTED"
-    | "QUARANTINE_MANDATED"
-    | "QUARANTINE_RELEASED"
-    | "QUARANTINE_PROFESSIONBAN_RELEASED"
-    | "HOSPITALIZATION_MANDATED"
-    | "HOSPITALIZATION_RELEASED"
-    | "CASE_DATA_UPDATED";
 }
 
 export interface SendToQuarantineDTO {
@@ -1367,16 +1340,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags patient-controller
-     * @name requestQuarantineUsingPOST
-     * @summary requestQuarantine
-     * @request POST:/api/patients/quarantine/{id}
-     * @secure
-     */
-    requestQuarantineUsingPost: (id: string, statusDTO: RequestQuarantineDTO, params?: RequestParams) =>
-      this.request<Patient, any>(`/api/patients/quarantine/${id}`, "POST", params, statusDTO, BodyType.Json, true),
-
-    /**
-     * @tags patient-controller
      * @name queryPatientsUsingPOST
      * @summary queryPatients
      * @request POST:/api/patients/query
@@ -1509,72 +1472,72 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
   error = {
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingGET
-     * @summary errorHtml
+     * @name errorUsingGET
+     * @summary error
      * @request GET:/error
      * @secure
      */
-    errorHtmlUsingGet: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "GET", params, null, BodyType.Json, true),
+    errorUsingGet: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "GET", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingHEAD
-     * @summary errorHtml
+     * @name errorUsingHEAD
+     * @summary error
      * @request HEAD:/error
      * @secure
      */
-    errorHtmlUsingHead: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "HEAD", params, null, BodyType.Json, true),
+    errorUsingHead: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "HEAD", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPOST
-     * @summary errorHtml
+     * @name errorUsingPOST
+     * @summary error
      * @request POST:/error
      * @secure
      */
-    errorHtmlUsingPost: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "POST", params, null, BodyType.Json, true),
+    errorUsingPost: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "POST", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPUT
-     * @summary errorHtml
+     * @name errorUsingPUT
+     * @summary error
      * @request PUT:/error
      * @secure
      */
-    errorHtmlUsingPut: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PUT", params, null, BodyType.Json, true),
+    errorUsingPut: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PUT", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingDELETE
-     * @summary errorHtml
+     * @name errorUsingDELETE
+     * @summary error
      * @request DELETE:/error
      * @secure
      */
-    errorHtmlUsingDelete: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "DELETE", params, null, BodyType.Json, true),
+    errorUsingDelete: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "DELETE", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingOPTIONS
-     * @summary errorHtml
+     * @name errorUsingOPTIONS
+     * @summary error
      * @request OPTIONS:/error
      * @secure
      */
-    errorHtmlUsingOptions: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "OPTIONS", params, null, BodyType.Json, true),
+    errorUsingOptions: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "OPTIONS", params, null, BodyType.Json, true),
 
     /**
      * @tags basic-error-controller
-     * @name errorHtmlUsingPATCH
-     * @summary errorHtml
+     * @name errorUsingPATCH
+     * @summary error
      * @request PATCH:/error
      * @secure
      */
-    errorHtmlUsingPatch: (params?: RequestParams) =>
-      this.request<ModelAndView, any>(`/error`, "PATCH", params, null, BodyType.Json, true),
+    errorUsingPatch: (params?: RequestParams) =>
+      this.request<Record<string, object>, any>(`/error`, "PATCH", params, null, BodyType.Json, true),
   };
 }

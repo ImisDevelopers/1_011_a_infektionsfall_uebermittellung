@@ -28,7 +28,6 @@
                 ],
               },
             ]"
-            v-on:select="getExposureContacts"
             @selectPatient="(selectedPatient) => (patient = selectedPatient)"
           />
         </a-form-item>
@@ -172,6 +171,21 @@ interface State {
   sendContactsToQuarantine: boolean
 }
 
+function makeQuarantineIncident(
+  until: string,
+  eventDate: string,
+  comment: string,
+  patientId: string
+): QuarantineIncident {
+  return {
+    until: until,
+    eventDate: eventDate,
+    eventType: 'QUARANTINE_SELECTED',
+    comment: comment,
+    patient: { id: patientId } as any,
+  }
+}
+
 export default Vue.extend({
   name: 'RequestQuarantine',
   components: {
@@ -196,6 +210,7 @@ export default Vue.extend({
       today: moment(),
       contacts: [],
       sendContactsToQuarantine: false,
+      patient: undefined,
     }
   },
   methods: {
@@ -215,37 +230,27 @@ export default Vue.extend({
         if (err) {
           return
         }
-        const request = {
-          dateUntil: values.dateUntil.format('YYYY-MM-DD'),
-          eventDate: values.eventDate
-            ? values.eventDate.format('YYYY-MM-DD')
-            : undefined,
-          comment: values.comment,
-        }
 
+        const dateUntil = values.dateUntil.format('YYYY-MM-DD')
+        const eventDate = values.eventDate
+          ? values.eventDate.format('YYYY-MM-DD')
+          : undefined
+        const comment = values.comment
         const patientId = this.patient?.id || values.patientId
 
-        const quarantineIncident: QuarantineIncident = {
-          until: values.dateUntil.format('YYYY-MM-DD'),
-          eventDate: values.eventDate
-            ? values.eventDate.format('YYYY-MM-DD')
-            : undefined,
-          eventType: 'QUARANTINE_SELECTED',
-          comment: values.comment,
-          patient: { id: patientId } as any,
-        }
+        const quarantineIncident = makeQuarantineIncident(
+          dateUntil,
+          eventDate,
+          comment,
+          patientId
+        )
 
-        let quarantineUntil = ''
+        const quarantineUntil = moment(quarantineIncident.until).format(
+          'DD.MM.YYYY'
+        )
         try {
-          const incident = await Api.addOrUpdateQuarantineIncidentUsingPost(
-            quarantineIncident
-          )
+          await Api.addOrUpdateQuarantineIncidentUsingPost(quarantineIncident)
 
-          console.log(incident)
-
-          quarantineUntil = moment(quarantineIncident.until).format(
-            'DD.MM.YYYY'
-          )
           if (!this.sendContactsToQuarantine) {
             const h = this.$createElement
             const { firstName, lastName } = this.patient!
@@ -271,24 +276,28 @@ export default Vue.extend({
           const failedPatients = []
           for (const contactItem of this.contacts) {
             const contact = contactItem.contact
-            if (!contact) {
+            if (!contact || !contact.id) {
               continue
             }
-            const patientId = contact.id
-            if (!patientId) {
-              continue
-            }
+
             try {
-              await Api.requestQuarantineUsingPost(patientId, request)
+              await Api.addOrUpdateQuarantineIncidentUsingPost(
+                makeQuarantineIncident(
+                  dateUntil,
+                  eventDate,
+                  comment,
+                  contact.id
+                )
+              )
             } catch (e) {
-              console.error('Could not send ' + patientId + ' to quarantine:')
+              console.error('Could not send ' + contact.id + ' to quarantine:')
               console.error(e)
               const patientStr =
                 contact.firstName +
                 ' ' +
                 contact.lastName +
                 ' (ID: ' +
-                patientId +
+                contact.id +
                 ')'
               failedPatients.push(patientStr)
             }
@@ -326,7 +335,7 @@ export default Vue.extend({
       if (this.$route.params.patientId) {
         this.$router.push({
           name: 'patient-detail',
-          params: { id: this.patient.id },
+          params: { id: this.patient?.id },
         })
       }
     },

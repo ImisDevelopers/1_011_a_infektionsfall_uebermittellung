@@ -808,7 +808,6 @@ export default Vue.extend({
             await Api.updateExposureContactUsingPut(values)
           )
         } else {
-          console.log(values)
           this.exposureContacts.push(
             await Api.createExposureContactUsingPost(values)
           )

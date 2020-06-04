@@ -1,9 +1,5 @@
 <template>
-  <a-form-item
-    :label="'Bitte zutreffendes ankreuzen:'"
-    :labelCol="{ div: 24 }"
-    :wrapperCol="{ div: 24 }"
-  >
+  <a-form-item :wrapperCol="{ div: 24 }">
     <a-checkbox-group
       v-model="exposures"
       v-decorator="['exposures', { initialValue: exposures }]"

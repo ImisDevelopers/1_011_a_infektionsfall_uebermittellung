@@ -157,7 +157,7 @@
               <a-card align="left" title="Kontakt">
                 <table>
                   <tr>
-                    <td>Telefonnummer:</td>
+                    <td>Telefon:</td>
                     <td>{{ patient.phoneNumber }}</td>
                   </tr>
                   <tr>

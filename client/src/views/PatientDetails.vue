@@ -598,7 +598,7 @@ export default Vue.extend({
       this.exposureContactsLoading = true
       try {
         this.permissions = await permissions.checkAllowed({
-          sendToQuarantine: Api.sendToQuarantineUsingPost,
+          sendToQuarantine: Api.addOrUpdateQuarantineIncidentUsingPost,
         })
       } catch (err) {
         console.log(err)

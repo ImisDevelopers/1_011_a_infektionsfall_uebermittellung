@@ -309,15 +309,13 @@ export default Vue.extend({
         ? this.form.getFieldValue('eventDate').format('YYYY-MM-DD')
         : undefined
 
-      const incidentsForPost = this.quarantineIncidents.map((incident) => {
-        return {
-          ...incident,
-          patient: { id: incident.patient?.id },
-          versionUser: { id: incident.versionUser?.id },
-          eventType: 'QUARANTINE_MANDATED',
-          eventDate,
-        }
-      })
+      const incidentsForPost = this.quarantineIncidents.map((incident) => ({
+        ...incident,
+        patient: { id: incident.patient?.id },
+        versionUser: { id: incident.versionUser?.id },
+        eventType: 'QUARANTINE_MANDATED',
+        eventDate,
+      }))
 
       Api.addOrUpdateMultipleQuarantineIncidentsUsingPost(incidentsForPost)
         .then(() => {

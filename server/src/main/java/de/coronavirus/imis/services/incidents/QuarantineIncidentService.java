@@ -39,8 +39,8 @@ public class QuarantineIncidentService {
     }
 
     return latest.get().getEventType().equals(EventType.QUARANTINE_MANDATED)
-      && latest.get().getUntil().isEqual(LocalDate.now())
-      || latest.get().getUntil().isAfter(LocalDate.now());
+      && (latest.get().getUntil().isEqual(LocalDate.now())
+      || latest.get().getUntil().isAfter(LocalDate.now()));
   }
 
   public QuarantineIncident save(QuarantineIncident quarantineIncident) {

@@ -44,7 +44,7 @@ class QuarantineIncidentServiceTest {
 
     boolean hasActiveQuarantine = quarantineIncidentService.hasActiveQuarantine(patient);
 
-    assertThat(hasActiveQuarantine).isFalse();
+    assertThat(hasActiveQuarantine).isTrue();
 
   }
 
@@ -63,7 +63,7 @@ class QuarantineIncidentServiceTest {
 
     boolean hasActiveQuarantine = quarantineIncidentService.hasActiveQuarantine(patient);
 
-    assertThat(hasActiveQuarantine).isTrue();
+    assertThat(hasActiveQuarantine).isFalse();
 
   }
 

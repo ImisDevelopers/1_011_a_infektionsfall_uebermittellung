@@ -10,6 +10,41 @@
  * ---------------------------------------------------------------
  */
 
+export interface AdministrativeIncident {
+  caseId?: string;
+  comment?: string;
+  dateOfIllness?: string;
+  dateOfReporting?: string;
+  eventDate?: string;
+  eventType?:
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "ORDER_TEST"
+    | "SCHEDULED_FOR_TESTING"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID"
+    | "TEST_FINISHED_RECOVERED"
+    | "TEST_FINISHED_NOT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
+  id?: string;
+  illness?: "CORONA";
+  patient?: Patient;
+  responsibleDoctor?: Doctor;
+  symptoms?: string[];
+  versionTimestamp?: string;
+  versionUser?: User;
+}
+
 export type AggregationResultZip = object;
 
 export interface ApiFunctionSpec {
@@ -176,7 +211,12 @@ export interface GrantedAuthority {
   authority?: string;
 }
 
-export interface Incident {
+export interface HealthInsuranceCompanies {
+  preDefined?: string[];
+  userDefined?: string[];
+}
+
+export interface HospitalizationIncident {
   caseId?: string;
   eventDate?: string;
   eventType?:
@@ -200,7 +240,9 @@ export interface Incident {
     | "HOSPITALIZATION_RELEASED"
     | "CASE_DATA_UPDATED";
   id?: string;
+  intensiveCare?: boolean;
   patient?: Patient;
+  releasedOn?: string;
   versionTimestamp?: string;
   versionUser?: User;
 }
@@ -468,6 +510,13 @@ export interface PatientEvent {
   responsibleDoctor?: Doctor;
 }
 
+export interface PatientLogDto {
+  administrativeIncidents?: AdministrativeIncident[];
+  hospitalizationIncidents?: HospitalizationIncident[];
+  quarantineIncidents?: QuarantineIncident[];
+  testIncidents?: TestIncident[];
+}
+
 export interface PatientSearchParamsDTO {
   city?: string;
   doctorId?: string;
@@ -615,6 +664,41 @@ export interface SendToQuarantineDTO {
   patientIds?: string[];
 }
 
+export interface TestIncident {
+  caseId?: string;
+  comment?: string;
+  eventDate?: string;
+  eventType?:
+    | "REGISTERED"
+    | "SUSPECTED"
+    | "ORDER_TEST"
+    | "SCHEDULED_FOR_TESTING"
+    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_FINISHED_POSITIVE"
+    | "TEST_FINISHED_NEGATIVE"
+    | "TEST_FINISHED_INVALID"
+    | "TEST_FINISHED_RECOVERED"
+    | "TEST_FINISHED_NOT_RECOVERED"
+    | "PATIENT_DEAD"
+    | "DOCTORS_VISIT"
+    | "QUARANTINE_SELECTED"
+    | "QUARANTINE_MANDATED"
+    | "QUARANTINE_RELEASED"
+    | "QUARANTINE_PROFESSIONBAN_RELEASED"
+    | "HOSPITALIZATION_MANDATED"
+    | "HOSPITALIZATION_RELEASED"
+    | "CASE_DATA_UPDATED";
+  id?: string;
+  patient?: Patient;
+  report?: string;
+  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
+  testId?: string;
+  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
+  type?: "PCR" | "ANTIBODY";
+  versionTimestamp?: string;
+  versionUser?: User;
+}
+
 export interface Timestamp {
   date?: number;
   day?: number;
@@ -706,7 +790,7 @@ const enum BodyType {
 }
 
 class HttpClient<SecurityDataType> {
-  public baseUrl: string = "//localhost:8642/";
+  public baseUrl: string = "/v2/api-docs";
   private securityData: SecurityDataType = null as any;
   private securityWorker: ApiConfig<SecurityDataType>["securityWorker"] = (() => {}) as any;
 
@@ -795,7 +879,7 @@ class HttpClient<SecurityDataType> {
 /**
  * @title Api Documentation
  * @version 1.0
- * @baseUrl //localhost:8642/
+ * @baseUrl /v2/api-docs
  * Api Documentation
  */
 export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
@@ -936,6 +1020,23 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       this.request<PatientEvent, any>(`/api/doctor/create_appointment`, "POST", params, dto, BodyType.Json, true),
 
     /**
+     * @tags enum-data-controller
+     * @name getHealthInsuranceCompaniesUsingGET
+     * @summary getHealthInsuranceCompanies
+     * @request GET:/api/enum-data/health-insurance-companies
+     * @secure
+     */
+    getHealthInsuranceCompaniesUsingGet: (params?: RequestParams) =>
+      this.request<HealthInsuranceCompanies, any>(
+        `/api/enum-data/health-insurance-companies`,
+        "GET",
+        params,
+        null,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
      * @tags exposure-contact-controller
      * @name createExposureContactUsingPOST
      * @summary createExposureContact
@@ -1059,26 +1160,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags incident-controller
-     * @name getPatientCurrentUsingGET
-     * @summary getPatientCurrent
-     * @request GET:/api/incidents/patient/{id}
-     * @secure
-     */
-    getPatientCurrentUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/patient/${id}`, "GET", params, null, BodyType.Json, true),
-
-    /**
-     * @tags incident-controller
      * @name getPatientLogUsingGET
      * @summary getPatientLog
      * @request GET:/api/incidents/patient/{id}/log
      * @secure
      */
     getPatientLogUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/patient/${id}/log`, "GET", params, null, BodyType.Json, true),
+      this.request<PatientLogDto, any>(`/api/incidents/patient/${id}/log`, "GET", params, null, BodyType.Json, true),
 
     /**
-     * @tags incident-controller
+     * @tags quarantine-incident-controller
      * @name getSelectedForQuarantineUsingGET
      * @summary getSelectedForQuarantine
      * @request GET:/api/incidents/selected-for-quarantine
@@ -1095,77 +1186,18 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
       ),
 
     /**
-     * @tags incident-controller
-     * @name getIncidentUsingGET
-     * @summary getIncident
-     * @request GET:/api/incidents/{id}
-     * @secure
-     */
-    getIncidentUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident, any>(`/api/incidents/${id}`, "GET", params, null, BodyType.Json, true),
-
-    /**
-     * @tags incident-controller
-     * @name getLogUsingGET
-     * @summary getLog
-     * @request GET:/api/incidents/{id}/log
-     * @secure
-     */
-    getLogUsingGet: (id: string, params?: RequestParams) =>
-      this.request<Incident[], any>(`/api/incidents/${id}/log`, "GET", params, null, BodyType.Json, true),
-
-    /**
-     * @tags incident-controller
+     * @tags test-incident-controller
      * @name getPatientsCurrentByTypeUsingPOST
      * @summary getPatientsCurrentByType
-     * @request POST:/api/incidents/{type}/patient
+     * @request POST:/api/incidents/test/patient
      * @secure
      */
-    getPatientsCurrentByTypeUsingPost: (
-      type: "test" | "quarantine" | "administrative" | "hospitalization",
-      patientIds: string[],
-      params?: RequestParams,
-    ) =>
-      this.request<Record<string, Incident[]>, any>(
-        `/api/incidents/${type}/patient`,
+    getPatientsCurrentByTypeUsingPost: (patientIds: string[], params?: RequestParams) =>
+      this.request<Record<string, TestIncident[]>, any>(
+        `/api/incidents/test/patient`,
         "POST",
         params,
         patientIds,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags incident-controller
-     * @name getPatientCurrentByTypeUsingGET
-     * @summary getPatientCurrentByType
-     * @request GET:/api/incidents/{type}/patient/{id}
-     * @secure
-     */
-    getPatientCurrentByTypeUsingGet: (
-      id: string,
-      type: "test" | "quarantine" | "administrative" | "hospitalization",
-      params?: RequestParams,
-    ) =>
-      this.request<Incident[], any>(`/api/incidents/${type}/patient/${id}`, "GET", params, null, BodyType.Json, true),
-
-    /**
-     * @tags incident-controller
-     * @name getPatientLogByTypeUsingGET
-     * @summary getPatientLogByType
-     * @request GET:/api/incidents/{type}/patient/{id}/log
-     * @secure
-     */
-    getPatientLogByTypeUsingGet: (
-      id: string,
-      type: "test" | "quarantine" | "administrative" | "hospitalization",
-      params?: RequestParams,
-    ) =>
-      this.request<Incident[], any>(
-        `/api/incidents/${type}/patient/${id}/log`,
-        "GET",
-        params,
-        null,
         BodyType.Json,
         true,
       ),

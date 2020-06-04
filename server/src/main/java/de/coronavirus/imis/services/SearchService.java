@@ -1,51 +1,42 @@
 package de.coronavirus.imis.services;
 
 
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-
+import com.google.common.base.Strings;
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
+import de.coronavirus.imis.domain.Patient;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.FullTextQuery;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
-
-import com.google.common.base.Strings;
-import lombok.extern.slf4j.Slf4j;
-
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
-import de.coronavirus.imis.domain.Patient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.util.*;
 
 
 @Slf4j
 @Component
 public class SearchService {
 
-	private final EntityManagerFactory emf;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	public SearchService (EntityManagerFactory emf) {
-		this.emf = emf;
 		try {
-			getFullTextEntityManager().createIndexer().startAndWait();
+			Search.getFullTextEntityManager(emf.createEntityManager()).createIndexer().startAndWait();
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
 	}
-
 
 	/**
 	 * Method for searching with multiple selections all the parameters are used with 'and'
@@ -62,7 +53,6 @@ public class SearchService {
 		return (long) queryPatientDetailExec(dto).getResultSize();
 	}
 
-
 	/**
 	 * simple search with one textbox
 	 *
@@ -77,6 +67,7 @@ public class SearchService {
 		return (long) queryPatientsExec(query, null, 10, 0).getResultSize();
 	}
 
+	@Transactional
 	private FullTextQuery queryPatientsExec(String queryString, String orderBy, int pageSize, int offset) {
 		var queryBuilder = getFullTextEntityManager().getSearchFactory().buildQueryBuilder().forEntity(Patient.class).get();
 		Query query = null;
@@ -101,9 +92,10 @@ public class SearchService {
 	}
 
 	private FullTextEntityManager getFullTextEntityManager() {
-		return Search.getFullTextEntityManager(emf.createEntityManager());
+		return Search.getFullTextEntityManager(entityManager);
 	}
 
+	@Transactional
 	private FullTextQuery queryPatientDetailExec(PatientSearchParamsDTO dto) {
 		var queryBuilder = getFullTextEntityManager().getSearchFactory().buildQueryBuilder().forEntity(Patient.class).get().bool();
 		Map<String, Object> objectProps = beanProperties(dto);
@@ -125,7 +117,6 @@ public class SearchService {
 		}
 		return fulltextQuery.setMaxResults(maxResults).setFirstResult(firstResult);
 	}
-
 
 	private static Map<String, Object> beanProperties(Object bean) {
 		try {

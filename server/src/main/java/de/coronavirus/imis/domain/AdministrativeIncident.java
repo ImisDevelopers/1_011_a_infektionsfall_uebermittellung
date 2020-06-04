@@ -40,7 +40,4 @@ public class AdministrativeIncident extends Incident {
 	@Convert(converter = StringListConverter.class)
 	private List<String> symptoms;
 
-	public AdministrativeIncident() {
-		super(IncidentType.administrative);
-	}
 }

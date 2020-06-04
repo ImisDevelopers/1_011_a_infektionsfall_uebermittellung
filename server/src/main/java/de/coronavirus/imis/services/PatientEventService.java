@@ -33,11 +33,13 @@ public class PatientEventService {
 		patient.setPatientStatus(eventType);
 		patientRepository.save(patient);
 		final Timestamp eventTimestamp;
+
 		if (dateOfReporting != null) {
 			eventTimestamp = Timestamp.valueOf(dateOfReporting.atTime(12, 0));
 		} else {
 			eventTimestamp = Timestamp.from(Instant.now());
 		}
+
 		PatientEvent event = new PatientEvent()
 				.setEventTimestamp(eventTimestamp)
 				.setEventType(eventType)

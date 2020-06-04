@@ -389,9 +389,9 @@ import Api from '@/api'
 import * as permissions from '@/util/permissions'
 import {
   ExposureContactFromServer,
-  Incident,
   Patient,
   Timestamp,
+  PatientLogDto,
 } from '@/api/SwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
@@ -523,7 +523,7 @@ interface State {
   dateFormat: string
   country: string
   stayCountry: string
-  incidents: any[]
+  incidents: PatientLogDto
 }
 
 export default Vue.extend({
@@ -585,7 +585,7 @@ export default Vue.extend({
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
-      incidents: [],
+      incidents: {},
     }
   },
 
@@ -630,12 +630,6 @@ export default Vue.extend({
       }
 
       this.incidents = await Api.getPatientLogUsingGet(patientId)
-      this.incidents.sort((a: Incident, b: Incident) => {
-        return (
-          a.eventDate!.localeCompare(b.eventDate!) ||
-          a.versionTimestamp!.localeCompare(b.versionTimestamp!)
-        )
-      })
 
       if (this.patient.events) {
         const event = this.patient.events.find(

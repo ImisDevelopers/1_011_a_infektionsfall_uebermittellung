@@ -62,16 +62,29 @@
       </a-form-item>
     </a-form>
     <div>
+      <br />
       <p>Demo-Zugänge:</p>
-      <!--
-      <p><strong>test_lab</strong> mit Passwort <strong>asdf</strong></p>
-      <p><strong>test_doctor</strong> mit Passwort <strong>asdf</strong></p>
-      -->
+      <a-button
+        @click.prevent="handleLogin('test_testing_site', 'asdf')"
+        html-type="submit"
+        icon="unlock"
+      >
+        Als Labor einloggen
+      </a-button>
+      <br />
       <p>
-        <strong>test_testing_site</strong> mit Passwort <strong>asdf</strong>
+        Kennung <strong>test_testing_site</strong> mit Passwort
+        <strong>asdf</strong>
       </p>
+      <a-button
+        @click.prevent="handleLogin('test_department_of_health', 'asdf')"
+        html-type="submit"
+        icon="unlock"
+      >
+        Als Gesundheitsamt einloggen
+      </a-button>
       <p>
-        <strong>test_department_of_health</strong> mit Passwort
+        Kennung <strong>test_department_of_health</strong> mit Passwort
         <strong>asdf</strong>
       </p>
       <!--<router-link :to="{ name: 'register-institution', params: { id: 'demo' } }">Als Institution registrieren
@@ -95,7 +108,8 @@ export default Vue.extend({
     ...authMapper.mapActions({
       login: 'login',
     }),
-    handleLogin() {
+    handleLogin(username: string, password: string) {
+      this.form.setFieldsValue({ username: username, password: password })
       this.form.validateFields((err: any, values: any) => {
         if (err) {
           return

@@ -1,4 +1,4 @@
-package de.coronavirus.imis.services;
+package de.coronavirus.imis.services.incidents;
 
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.RequestQuarantineDTO;
@@ -7,18 +7,19 @@ import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;
 import de.coronavirus.imis.repositories.*;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.envers.AuditReader;
-import org.hibernate.envers.query.AuditEntity;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class IncidentService {
+@Deprecated
+public class WriteIncidentService {
 
 	private final TestIncidentRepository testIncidentRepo;
 	private final LaboratoryRepository laboratoryRepo;
@@ -28,99 +29,6 @@ public class IncidentService {
 	private final AdministrativeIncidentRepository adminIncidentRepo;
 	private final HospitalizationIncidentRepository hospIncidentRepo;
 	private final DoctorRepository doctorRepo;
-	private final AuditReader auditReader;
-	private final ApplicationContext ctx;
-
-	@Transactional
-	public List<QuarantineIncident> getPatientsSelectedForQuarantine() {
-		return this.quarantineIncidentRepo.findByEventType(EventType.QUARANTINE_SELECTED);
-	}
-
-	@Transactional
-	public Optional<QuarantineIncident> getQuarantineIncident(String patientId) {
-		final List<QuarantineIncident> incidents = getLog(QuarantineIncident.class, patientId, true);
-		if (incidents != null && !incidents.isEmpty()) {
-			return Optional.of(incidents.get(0));
-		} else {
-			return Optional.empty();
-		}
-	}
-
-	@Transactional
-	public List<Incident> getLog(String id, boolean byPatient) {
-		List<Incident> result = new ArrayList<>();
-
-		result.addAll(getLog(TestIncident.class, id, byPatient));
-		result.addAll(getLog(QuarantineIncident.class, id, byPatient));
-		result.addAll(getLog(AdministrativeIncident.class, id, byPatient));
-		result.addAll(getLog(HospitalizationIncident.class, id, byPatient));
-
-		result.sort(
-				Comparator.comparing(Incident::getVersionTimestamp)
-		);
-
-		return result;
-	}
-
-	@Transactional
-	public <T extends Incident> List<T> getLog(Class<T> T, String id, boolean byPatient) {
-		var query = auditReader.createQuery().forRevisionsOfEntity(T, true, false);
-		if (byPatient) {
-			query.add(AuditEntity.relatedId("patient").eq(id));
-		} else {
-			query.add(AuditEntity.id().eq(id));
-		}
-		return query.getResultList();
-	}
-
-	@Transactional
-	public Incident getCurrent(String id) {
-
-		String prefix = id.split("_")[0];
-		switch (IncidentType.valueOf(prefix)) {
-			case test:
-				return testIncidentRepo.findById(id).orElseThrow();
-			case quarantine:
-				return quarantineIncidentRepo.findById(id).orElseThrow();
-			case administrative:
-				return adminIncidentRepo.findById(id).orElseThrow();
-			case hospitalization:
-				return hospIncidentRepo.findById(id).orElseThrow();
-		}
-
-		return null;
-	}
-
-	@Transactional
-	public List<Incident> getCurrentByPatient(String patientId) {
-
-		List<Incident> result = new ArrayList<>();
-
-		result.addAll(testIncidentRepo.findByPatientId(patientId));
-		result.addAll(quarantineIncidentRepo.findByPatientId(patientId));
-		result.addAll(adminIncidentRepo.findByPatientId(patientId));
-		result.addAll(hospIncidentRepo.findByPatientId(patientId));
-
-		return result;
-	}
-
-	// TODO find strategy to prevent type casting here
-	@Transactional
-	public List<Incident> getCurrentByPatient(String patientId, IncidentType type) {
-
-		switch (type) {
-			case test:
-				return (List<Incident>) (List<?>) testIncidentRepo.findByPatientId(patientId);
-			case quarantine:
-				return (List<Incident>) (List<?>) quarantineIncidentRepo.findByPatientId(patientId);
-			case administrative:
-				return (List<Incident>) (List<?>) adminIncidentRepo.findByPatientId(patientId);
-			case hospitalization:
-				return (List<Incident>) (List<?>) hospIncidentRepo.findByPatientId(patientId);
-		}
-
-		return null;
-	}
 
 	@Transactional
 	public TestIncident addTestIncident(CreateLabTestDTO info) {
@@ -304,7 +212,7 @@ public class IncidentService {
 			}
 			hospIncidentRepo.saveAndFlush(hospitalizationIncident);
 		}
-		else
+		else if(newValues.getDateOfHospitalization() != null)
 		{
 			addHospitalizationIncident(newValues, newValues.getDateOfHospitalization(), isIntensiveCare);
 		}
@@ -344,7 +252,7 @@ public class IncidentService {
 
 
 	@Transactional
-	public void addHospitalizationIncident(Patient patient, LocalDate hospitalizedOn, Boolean intensiveCare) {
+	public void addHospitalizationIncident(Patient patient, @NotNull LocalDate hospitalizedOn, Boolean intensiveCare) {
 
 		boolean isIntensiveCare = Boolean.TRUE.equals(intensiveCare);
 

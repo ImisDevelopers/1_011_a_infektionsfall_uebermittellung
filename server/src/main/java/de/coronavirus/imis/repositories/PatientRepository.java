@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.SortedSet;
 
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, String>, JpaSpecificationExecutor<Patient> {
@@ -86,5 +87,6 @@ public interface PatientRepository extends JpaRepository<Patient, String>, JpaSp
 								  String patientStatus,
 								  String quarantineStatus);
 
-
+	@Query("SELECT DISTINCT p.insuranceCompany FROM Patient p")
+	SortedSet<String> findDistinctInsuranceCompanies();
 }

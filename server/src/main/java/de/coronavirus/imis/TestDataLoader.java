@@ -16,6 +16,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -23,13 +27,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.time.LocalDate;
 
 
 @Component
+@Profile("!swagger-export")
 @Slf4j
 @RequiredArgsConstructor
 public class TestDataLoader implements ApplicationRunner {
-
+	private final Environment env;
 
 	private final PatientService patientService;
 	private final InstitutionService institutionService;
@@ -67,23 +73,25 @@ public class TestDataLoader implements ApplicationRunner {
 		}
 	}
 
+	public void loadPatientTestData(ResourcePatternResolver resourceResolver) {
+		try {
+			log.info("Inserting patients");
+			for (Resource patientTestDataResource : resourceResolver.getResources("classpath:sample_data/persons/person*.json")) {
+				var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
+				log.info("Create Patient {} {}", createPersonDTO.getLastName(), createPersonDTO.getFirstName());
+				patientService.addPatient(createPersonDTO, true);
+			}
+		} catch (Exception e) {
+			log.error("Exception occured during population with test patients:");
+			e.printStackTrace();
+		}
+	}
 
 	public void run(ApplicationArguments args) {
 		log.info("Creating test data");
 		try {
 
 			ResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver(this.getClass().getClassLoader());
-
-			try {
-				log.info("Inserting patients");
-				for (Resource patientTestDataResource : resourceResolver.getResources("sample_data/persons/person*.json")) {
-					var createPersonDTO = makeDTO(patientTestDataResource, CreatePatientDTO.class);
-					patientService.addPatient(createPersonDTO, true);
-				}
-			} catch (Exception e) {
-				log.error("Exception occured during population with test patients:");
-				e.printStackTrace();
-			}
 
 			// SETUP OUR WORLD
 			log.info("Inserting laboratory");
@@ -105,7 +113,6 @@ public class TestDataLoader implements ApplicationRunner {
 			log.info("Inserting department of health");
 			var createDepartmentOfHealthDTO = (CreateInstitutionDTO) makeDTO("createDepartmentOfHealth.json", CreateInstitutionDTO.class);
 			var departmentOfHealth = institutionService.addInstitution(createDepartmentOfHealthDTO);
-
 
 			var user = User.builder()
 					.userRole(UserRole.USER_ROLE_ADMIN)
@@ -144,6 +151,10 @@ public class TestDataLoader implements ApplicationRunner {
 					.userRole(UserRole.USER_ROLE_ADMIN)
 					.build();
 			userRepository.saveAndFlush(departmentOfHealthUser);
+
+			// PATIENT TEST DATA
+			loadPatientTestData(resourceResolver);
+
 			// PERSON GETS SICK AND GOES TO THE DOCTOR
 			// PERSON GETS REGISTERED
 			var createPersonDTO = (CreatePatientDTO) makeDTO("createPerson.json", CreatePatientDTO.class);
@@ -169,6 +180,7 @@ public class TestDataLoader implements ApplicationRunner {
 			// FIXME: 22.03.20 report cannot be attached
 			var updateTestStatus = UpdateTestStatusDTO.builder()
 					.status(TestStatus.TEST_POSITIVE)
+					.eventDate(LocalDate.now())
 					.comment(comment)
 					.testId(testId)
 					.build();

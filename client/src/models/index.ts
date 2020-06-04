@@ -1,4 +1,11 @@
-import { CreateInstitutionDTO, RegisterUserRequest } from '@/api/SwaggerApi'
+import {
+  CreateInstitutionDTO,
+  RegisterUserRequest,
+  TestIncident,
+  HospitalizationIncident,
+  QuarantineIncident,
+  AdministrativeIncident,
+} from '@/api/SwaggerApi'
 
 export type InstitutionType = Exclude<
   CreateInstitutionDTO['institutionType'],
@@ -41,6 +48,12 @@ export type RiskOccupation =
   | 'DOCTOR'
   | 'CAREGIVER'
   | 'NURSE'
+
+export type Incident =
+  | TestIncident
+  | HospitalizationIncident
+  | QuarantineIncident
+  | AdministrativeIncident
 
 export interface Option {
   label: string

@@ -207,7 +207,6 @@ export default Vue.extend({
     }
     // Test Results for CSV download
     const testIncidents = await Api.getPatientsCurrentByTypeUsingPost(
-      'test',
       patientIDs
     )
     for (const patientId in testIncidents) {

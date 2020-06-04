@@ -34,7 +34,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final String GOVERNMENT_AGENCY = InstitutionType.GOVERNMENT_AGENCY.name();
 	private final String LABORATORY = InstitutionType.LABORATORY.name();
 	private final String TEST_SITE = InstitutionType.TEST_SITE.name();
-	private static final String API_PREFIX = "/api";
+	public static final String API_PREFIX = "/api";
 
 
 	@Bean
@@ -62,6 +62,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(OPTIONS, "/**").permitAll()
 				.antMatchers("/api/auth").permitAll()
 				.antMatchers("/api/countries").permitAll()
+				.mvcMatchers(API_PREFIX + "/enum-data/*").permitAll()
 				.mvcMatchers(POST, API_PREFIX + "/patients").permitAll()
 				.antMatchers(API_PREFIX + "/patients").hasAnyRole(DEPARTMENT_OF_HEALTH, CLINIC, DOCTORS_OFFICE, TEST_SITE)
 				.antMatchers(API_PREFIX + "/patients/quarantine/*").hasAnyRole(DEPARTMENT_OF_HEALTH)

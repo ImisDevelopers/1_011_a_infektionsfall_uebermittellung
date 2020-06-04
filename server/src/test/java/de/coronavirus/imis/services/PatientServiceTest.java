@@ -1,5 +1,6 @@
 package de.coronavirus.imis.services;
 
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ class PatientServiceTest {
 		final PatientService patientService = new PatientService(Mockito.mock(PatientRepository.class),
 				Mockito.mock(PatientEventService.class),
 				patientMapper,
-				Mockito.mock(IncidentService.class),
+				Mockito.mock(WriteIncidentService.class),
 				Mockito.mock(SearchService.class)
 		);
 		final PatientSearchParamsDTO patientSearchParamsDTO = new PatientSearchParamsDTO();

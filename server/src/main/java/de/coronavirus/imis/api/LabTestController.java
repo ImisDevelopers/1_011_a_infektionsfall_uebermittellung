@@ -3,7 +3,7 @@ package de.coronavirus.imis.api;
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.services.IncidentService;
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import de.coronavirus.imis.services.LabTestService;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -20,7 +20,7 @@ import java.util.Set;
 public class LabTestController {
 
 	private final LabTestService service;
-	private final IncidentService incidentService;
+	private final WriteIncidentService incidentService;
 
 	@PostMapping
 	@ApiResponses({

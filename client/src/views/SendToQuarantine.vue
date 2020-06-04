@@ -40,7 +40,7 @@
 
     <a-card
       style="max-width: 500px; margin: 2rem auto;"
-      bodyStyle="padding:0;"
+      :bodyStyle="{ padding: 0 }"
       v-for="quarantinesByZip of quarantinesByZip"
       :title="
         'PLZ ' +
@@ -83,7 +83,6 @@
       <a-form :form="form">
         <a-form-item label="Datum der Anordnung (optional):">
           <DateInput
-            :defaultValue="today"
             v-decorator="[
               'eventDate',
               {
@@ -93,6 +92,7 @@
                     message: 'Datum der Anordnung',
                   },
                 ],
+                initialValue: today,
               },
             ]"
           />
@@ -153,6 +153,7 @@ interface State {
   today: moment.Moment
   patientInfectionSources: Map<string, ExposureContactFromServer[]> // Patient-ID - ExposureContactFromServer list
   patientTestResults: Map<string, string[]> // Patient-ID - Test result list
+  quarantineIncidents: QuarantineIncident[]
 }
 
 export default Vue.extend({
@@ -160,10 +161,22 @@ export default Vue.extend({
   components: {
     DateInput,
   },
+  data(): State {
+    return {
+      quarantinesByZip: [],
+      columnsQuarantines: columnsQuarantines,
+      confirmVisible: false,
+      form: this.$form.createForm(this),
+      today: moment(),
+      patientInfectionSources: new Map<string, ExposureContactFromServer[]>(),
+      patientTestResults: new Map<string, string[]>(),
+      quarantineIncidents: [],
+    }
+  },
   async created() {
-    const quarantineIncidents = await Api.getSelectedForQuarantineUsingGet()
+    this.quarantineIncidents = await Api.getSelectedForQuarantineUsingGet()
     const quarantinesByZip: QuarantinesForZip[] = []
-    for (const quarantineIncident of quarantineIncidents) {
+    for (const quarantineIncident of this.quarantineIncidents) {
       const zip = quarantineIncident?.patient?.zip || 'Unbekannt'
       let byZip = quarantinesByZip.find((quarantine) => quarantine.zip === zip)
       if (!byZip) {
@@ -196,13 +209,8 @@ export default Vue.extend({
     const exposures = await Api.getExposureSourceContactsForPatientsUsingPost(
       patientIDs
     )
-    function notEmpty<TValue>(
-      value: TValue | null | undefined
-    ): value is TValue {
-      return value !== null && value !== undefined
-    }
     for (const patientId in exposures) {
-      const sources = exposures[patientId].filter(notEmpty)
+      const sources = exposures[patientId].filter(Boolean)
       this.patientInfectionSources.set(patientId, sources)
     }
     // Test Results for CSV download
@@ -214,17 +222,6 @@ export default Vue.extend({
         patientId,
         testIncidents[patientId].map((incident: any) => incident.status)
       )
-    }
-  },
-  data(): State {
-    return {
-      quarantinesByZip: [],
-      columnsQuarantines: columnsQuarantines,
-      confirmVisible: false,
-      form: this.$form.createForm(this),
-      today: moment(),
-      patientInfectionSources: new Map<string, ExposureContactFromServer[]>(),
-      patientTestResults: new Map<string, string[]>(),
     }
   },
   methods: {
@@ -307,21 +304,22 @@ export default Vue.extend({
     },
     updatePatients() {
       this.confirmVisible = false
-      const patientIds: string[] = []
-      for (const quarantinesByZip of this.quarantinesByZip) {
-        patientIds.push(
-          ...quarantinesByZip.quarantines.map(
-            (quarantine) => quarantine.patient?.id || ''
-          )
-        )
-      }
-      const request = {
-        patientIds: patientIds,
-        eventDate: this.form.getFieldValue('eventDate')
-          ? this.form.getFieldValue('eventDate').format('YYYY-MM-DD')
-          : undefined,
-      }
-      Api.sendToQuarantineUsingPost(request)
+
+      const eventDate = this.form.getFieldValue('eventDate')
+        ? this.form.getFieldValue('eventDate').format('YYYY-MM-DD')
+        : undefined
+
+      const incidentsForPost = this.quarantineIncidents.map((incident) => {
+        return {
+          ...incident,
+          patient: { id: incident.patient?.id },
+          versionUser: { id: incident.versionUser?.id },
+          eventType: 'QUARANTINE_MANDATED',
+          eventDate,
+        }
+      })
+
+      Api.addOrUpdateMultipleQuarantineIncidentsUsingPost(incidentsForPost)
         .then(() => {
           const h = this.$createElement
           this.$success({
@@ -329,7 +327,7 @@ export default Vue.extend({
             content: h('div', {}, [
               h(
                 'div',
-                `Der Quarantänestatus wurde für ${patientIds.length} Patienten aktualisiert.`
+                `Der Quarantänestatus wurde für ${incidentsForPost.length} Patienten aktualisiert.`
               ),
             ]),
           })

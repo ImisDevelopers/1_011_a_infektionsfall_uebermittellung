@@ -627,11 +627,6 @@ export interface RequestLabTestDTO {
   patientId?: string;
 }
 
-export interface SendToQuarantineDTO {
-  eventDate?: string;
-  patientIds?: string[];
-}
-
 export interface TestIncident {
   caseId?: string;
   comment?: string;
@@ -1138,6 +1133,26 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags quarantine-incident-controller
+     * @name addOrUpdateMultipleQuarantineIncidentsUsingPOST
+     * @summary addOrUpdateMultipleQuarantineIncidents
+     * @request POST:/api/incidents/quarantine/bulk
+     * @secure
+     */
+    addOrUpdateMultipleQuarantineIncidentsUsingPost: (
+      quarantineIncidents: QuarantineIncident[],
+      params?: RequestParams,
+    ) =>
+      this.request<QuarantineIncident[], any>(
+        `/api/incidents/quarantine/bulk`,
+        "POST",
+        params,
+        quarantineIncidents,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags quarantine-incident-controller
      * @name getSelectedForQuarantineUsingGET
      * @summary getSelectedForQuarantine
      * @request GET:/api/incidents/selected-for-quarantine
@@ -1327,16 +1342,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         BodyType.Json,
         true,
       ),
-
-    /**
-     * @tags patient-controller
-     * @name sendToQuarantineUsingPOST
-     * @summary sendToQuarantine
-     * @request POST:/api/patients/quarantine
-     * @secure
-     */
-    sendToQuarantineUsingPost: (dto: SendToQuarantineDTO, params?: RequestParams) =>
-      this.request<any, any>(`/api/patients/quarantine`, "POST", params, dto, BodyType.Json, true),
 
     /**
      * @tags patient-controller

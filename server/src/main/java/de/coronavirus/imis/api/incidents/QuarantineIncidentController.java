@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +23,11 @@ public class QuarantineIncidentController {
   @PostMapping("/quarantine")
   public QuarantineIncident addOrUpdateQuarantineIncident(@RequestBody QuarantineIncident quarantineIncident) {
     return quarantineIncidentService.save(quarantineIncident);
+  }
+
+  @PostMapping("/quarantine/bulk")
+  public List<QuarantineIncident> addOrUpdateMultipleQuarantineIncidents(@RequestBody List<QuarantineIncident> quarantineIncidents) {
+    return quarantineIncidents.stream().map(quarantineIncidentService::save).collect(Collectors.toList());
   }
 
 }

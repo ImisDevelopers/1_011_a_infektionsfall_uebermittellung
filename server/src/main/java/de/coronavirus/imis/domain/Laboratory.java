@@ -16,7 +16,7 @@ public class Laboratory extends InstitutionImpl {
 
 
 	@OneToMany(mappedBy = "laboratory")
-	private List<LabTest> assignedLabTest;
+	private List<TestIncident> assignedTestIncidents;
 
 
 	@Override

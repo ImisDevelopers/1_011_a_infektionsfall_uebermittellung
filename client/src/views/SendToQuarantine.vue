@@ -83,10 +83,10 @@
       <a-form :form="form">
         <a-form-item label="Datum der Anordnung (optional):">
           <DateInput
-            :defaultValue="today"
             v-decorator="[
               'eventDate',
               {
+                initialValue: today,
                 rules: [
                   {
                     required: false,

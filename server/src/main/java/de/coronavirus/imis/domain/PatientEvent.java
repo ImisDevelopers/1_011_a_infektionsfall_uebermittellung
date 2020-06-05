@@ -11,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Deprecated
 @Entity
 @Getter
 @Setter
@@ -33,9 +34,6 @@ public class PatientEvent {
 
 	@Enumerated(EnumType.STRING)
 	private Illness illness;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	private LabTest labTest;
 
 	private Timestamp eventTimestamp;
 

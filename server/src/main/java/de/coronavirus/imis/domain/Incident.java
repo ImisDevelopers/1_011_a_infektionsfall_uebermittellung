@@ -3,6 +3,7 @@ package de.coronavirus.imis.domain;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.coronavirus.imis.config.domain.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -47,7 +48,7 @@ public abstract class Incident {
   @Enumerated(EnumType.STRING)
   private EventType eventType;
 
-  // Date on which this Event was officially registered / mandated. Set by user.
+  //@Column(columnDefinition = "DATE DEFAULT CURRENT_DATE") // Fallback does not work with @NotNull
   @NotNull
   private LocalDate eventDate;
 

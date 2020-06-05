@@ -201,9 +201,7 @@
         </a-tab-pane>
         <a-tab-pane key="Cases" tab="Falldaten">
           <div class="tool-row">
-            <div style="font-size: 18px; padding-left: 16px;">
-              Fall: COVID-19
-            </div>
+            <div style="font-size: 18px; padding-left: 16px;" />
             <span style="flex: 1 1 auto;"></span>
             <a-button icon="edit" @click="editPatientFalldaten">
               Falldaten ändern
@@ -520,7 +518,7 @@ interface State {
   dateOfReporting: string
   dateOfIllness: string
   dateFormat: string
-  incidents: PatientLogDto
+  incidents: PatientLogDto | undefined
 }
 
 export default Vue.extend({
@@ -580,7 +578,7 @@ export default Vue.extend({
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
-      incidents: {},
+      incidents: undefined,
     }
   },
 
@@ -614,18 +612,6 @@ export default Vue.extend({
       }
 
       this.incidents = await Api.getPatientLogUsingGet(patientId)
-
-      if (this.patient.events) {
-        const event = this.patient.events.find(
-          (event) =>
-            event.eventType === 'REGISTERED' || event.eventType === 'SUSPECTED'
-        )
-        if (event) {
-          this.dateOfReporting = moment(event.eventTimestamp).format(
-            this.dateFormat
-          )
-        }
-      }
 
       if (this.patient.dateOfIllness) {
         this.dateOfIllness = moment(this.patient.dateOfIllness).format(

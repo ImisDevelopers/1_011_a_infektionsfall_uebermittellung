@@ -6,10 +6,10 @@
       @search="handleSearch"
       placeholder="Suche über ID, Name, Stadt"
       v-decorator="validation"
-      defaultActiveFirstOption="false"
+      :defaultActiveFirstOption="false"
       :showSearch="true"
       :showArrow="false"
-      filterOption="false"
+      :filterOption="false"
     >
       <a-select-option :key="laboratory.id" v-for="laboratory in result">
         {{ laboratory.name }} ({{ laboratory.city }})

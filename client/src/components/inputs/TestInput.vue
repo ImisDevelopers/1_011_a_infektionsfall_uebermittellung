@@ -1,10 +1,6 @@
 <template>
   <a-form-item :label="label">
-    <a-auto-complete
-      @search="handleSearch"
-      placeholder="Suche über ID"
-      v-decorator="validation"
-    >
+    <a-auto-complete placeholder="Suche über ID" v-decorator="validation">
       <template slot="dataSource">
         <a-select-option :key="testId" v-for="testId in result">{{
           testId
@@ -15,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import Api from '@/api'
+import Api from '../../api'
 import Vue from 'vue'
 
 /**
@@ -36,20 +32,6 @@ export default Vue.extend({
     return {
       result: [],
     }
-  },
-  methods: {
-    async handleSearch(value: string) {
-      let result: string[]
-      if (!value || value.length < 2) {
-        result = []
-      } else {
-        const labTests = await Api.queryLabTestsByIdUsingGet({
-          labTestIdQuery: value,
-        })
-        result = labTests.map((labTest) => labTest.testId)
-      }
-      this.result = result
-    },
   },
 })
 </script>

@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Deprecated
 public class PatientEventService {
 
 	private final PatientEventRepository patientEventRepository;
@@ -48,15 +49,13 @@ public class PatientEventService {
 		patientEventRepository.save(event);
 	}
 
-	public void createLabTestEvent(Patient patient, LabTest labTest,
-								   Optional<Illness> illness) {
+	public void createLabTestEvent(Patient patient, Optional<Illness> illness) {
 		var concreteIllness = illness.orElse(Illness.CORONA);
-		patient.setPatientStatus(EventType.TEST_SUBMITTED_IN_PROGRESS);
+		patient.setPatientStatus(EventType.TEST_SUBMITTED);
 		patientRepository.save(patient);
 		PatientEvent event = new PatientEvent()
 				.setEventTimestamp(Timestamp.from(Instant.now()))
-				.setEventType(EventType.TEST_SUBMITTED_IN_PROGRESS)
-				.setLabTest(labTest)
+				.setEventType(EventType.TEST_SUBMITTED)
 				.setIllness(concreteIllness)
 				.setPatient(patient);
 		patientEventRepository.saveAndFlush(event);
@@ -116,10 +115,6 @@ public class PatientEventService {
 
 	public List<PatientEvent> getAllForPatient(Patient patient) {
 		return patientEventRepository.findAllByPatient(patient);
-	}
-
-	public List<PatientEvent> getForLabTest(LabTest labTest) {
-		return patientEventRepository.findPatientEventByLabTest(labTest);
 	}
 
 

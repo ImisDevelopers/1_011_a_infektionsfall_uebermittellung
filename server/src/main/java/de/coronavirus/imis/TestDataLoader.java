@@ -3,15 +3,12 @@ package de.coronavirus.imis;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.coronavirus.imis.api.dto.CreateInstitutionDTO;
 import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.config.domain.User;
 import de.coronavirus.imis.config.domain.UserRepository;
 import de.coronavirus.imis.config.domain.UserRole;
-import de.coronavirus.imis.domain.LabTest;
-import de.coronavirus.imis.domain.Laboratory;
-import de.coronavirus.imis.domain.TestStatus;
-import de.coronavirus.imis.domain.TestType;
+import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.services.*;
+import de.coronavirus.imis.services.incidents.TestIncidentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -39,11 +36,11 @@ public class TestDataLoader implements ApplicationRunner {
 
 	private final PatientService patientService;
 	private final InstitutionService institutionService;
-	private final LabTestService labTestService;
 	private final PatientEventService eventService;
 	private final StatsService statsService;
 	private final UserRepository userRepository;
 	private final PasswordEncoder encoder;
+	private final TestIncidentService testIncidentService;
 
 	private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -167,24 +164,21 @@ public class TestDataLoader implements ApplicationRunner {
 			// LAB RECEIVES SAMPLE AND PROCESSES IT
 			final String testId = "42EF42";
 			final String comment = "comment";
-			var labTest = LabTest.builder()
-					.laboratory((Laboratory) laboratory)
-					.testId(testId)
-					.comment(comment)
-					.testType(TestType.PCR)
-					.build();
-			labTest = labTestService.createLabTest(person, labTest);
+			var testIncident = (TestIncident) new TestIncident()
+					.setTestId(testId)
+					.setComment(comment)
+					.setStatus(TestStatus.TEST_SUBMITTED)
+					.setType(TestType.PCR)
+					.setLaboratory((Laboratory) laboratory)
+					.setEventType(EventType.TEST_SUBMITTED)
+					.setPatient(person)
+					.setEventDate(LocalDate.now());
+			testIncidentService.setIncident(testIncident);
 
-
-			// LAB HAS RESULT AND SOTRES IT
-			// FIXME: 22.03.20 report cannot be attached
-			var updateTestStatus = UpdateTestStatusDTO.builder()
-					.status(TestStatus.TEST_POSITIVE)
-					.eventDate(LocalDate.now())
-					.comment(comment)
-					.testId(testId)
-					.build();
-			labTestService.updateTestStatus(laboratory.getId(), updateTestStatus);
+			testIncident
+					.setStatus(TestStatus.TEST_POSITIVE)
+					.setEventType(EventType.TEST_FINISHED_POSITIVE);
+			testIncidentService.setIncident(testIncident);
 
 			// HEALTH OFFICE WANTS TO SEE ALL DATA
 			var allPatients = patientService.getAllPatients();

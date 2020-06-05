@@ -1,7 +1,12 @@
 package de.coronavirus.imis.api.exception;
 
+import de.coronavirus.imis.api.incidents.TestIncidentController;
+import de.coronavirus.imis.services.incidents.TestIncidentService;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Builder;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,10 +25,22 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ApiExceptionHandler {
 
   @ExceptionHandler
-  ResponseEntity<FailureWithDetailsException.Response> handleFailuresWithDetails(FailureWithDetailsException e) {
-    return ResponseEntity
-      .status(e.getStatusCode())
-      .contentType(MediaType.APPLICATION_PROBLEM_JSON)
-      .body(e.createResponse());
+  ResponseEntity<ExceptionResponse> handle_DataIntegrityViolationException (DataIntegrityViolationException e){
+  	return ResponseEntity
+			.status(400)
+			.body(new ExceptionResponse("CONSTRAINT_VIOLATION"));
+  }
+
+  @ExceptionHandler
+  ResponseEntity<ExceptionResponse> handle_TestNotFoundException (TestIncidentController.TestNotFoundException e){
+  	return ResponseEntity
+			.status(400)
+			.body(new ExceptionResponse("TEST_NOT_FOUND"));
+  }
+
+  @AllArgsConstructor
+  @Data
+  public class ExceptionResponse {
+  	String message;
   }
 }

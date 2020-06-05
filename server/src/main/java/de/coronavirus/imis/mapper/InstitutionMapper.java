@@ -38,7 +38,6 @@ public abstract class InstitutionMapper {
 	public abstract Doctor toDoctor(CreateInstitutionDTO dto);
 
 	@Mapping(target = "users", ignore = true)
-	@Mapping(target = "assignedLabTest", ignore = true)
 	public abstract Laboratory toLaboratory(CreateInstitutionDTO dto);
 
 	@Mapping(target = "users", ignore = true)

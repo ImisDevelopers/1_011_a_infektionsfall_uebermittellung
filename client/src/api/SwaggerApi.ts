@@ -15,18 +15,15 @@ export interface AdministrativeIncident {
   comment?: string;
   dateOfIllness?: string;
   dateOfReporting?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -86,16 +83,6 @@ export interface CreateInstitutionDTO {
   zip?: string;
 }
 
-export interface CreateLabTestDTO {
-  comment?: string;
-  eventDate?: string;
-  laboratoryId?: string;
-  patientId?: string;
-  testId?: string;
-  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
-  testType?: "PCR" | "ANTIBODY";
-}
-
 export interface CreatePatientDTO {
   city?: string;
   coronaContacts?: boolean;
@@ -122,12 +109,9 @@ export interface CreatePatientDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -176,6 +160,10 @@ export interface Doctor {
   zip?: string;
 }
 
+export interface ExceptionResponse {
+  message?: string;
+}
+
 export interface ExposureContactContactView {
   firstName?: string;
   id?: string;
@@ -213,18 +201,15 @@ export interface HealthInsuranceCompanies {
 
 export interface HospitalizationIncident {
   caseId?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -289,25 +274,8 @@ export interface InstitutionImpl {
   zip?: string;
 }
 
-export interface LabTest {
-  comment?: string;
-  id?: string;
-  lastUpdate?: string;
-  report?: string;
-  testId: string;
-  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
-  testStatus?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
-  testType?: "PCR" | "ANTIBODY";
-}
-
-export interface LabTestConstraintViolation {
-  constraint?: "LAB_UNIQUE_TEST_ID";
-  errorType?: string;
-  message?: string;
-}
-
 export interface Laboratory {
-  assignedLabTest?: LabTest[];
+  assignedTestIncidents?: TestIncident[];
   city?: string;
   comment?: string;
   email?: string;
@@ -417,7 +385,6 @@ export interface Patient {
   dateOfIllness?: string;
   email?: string;
   employer?: string;
-  events?: PatientEvent[];
   firstName?: string;
   fluImmunization?: boolean;
   gender?: string;
@@ -429,17 +396,14 @@ export interface Patient {
   nationality?: string;
   occupation?: string;
   onIntensiveCareUnit?: boolean;
-  patientStatus?:
+  patientStatus:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -483,12 +447,9 @@ export interface PatientEvent {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -500,16 +461,15 @@ export interface PatientEvent {
     | "CASE_DATA_UPDATED";
   id?: string;
   illness?: "CORONA";
-  labTest?: LabTest;
   patient?: Patient;
   responsibleDoctor?: Doctor;
 }
 
 export interface PatientLogDto {
-  administrativeIncidents?: AdministrativeIncident[];
-  hospitalizationIncidents?: HospitalizationIncident[];
-  quarantineIncidents?: QuarantineIncident[];
-  testIncidents?: TestIncident[];
+  administrativeIncidents: AdministrativeIncident[];
+  hospitalizationIncidents: HospitalizationIncident[];
+  quarantineIncidents: QuarantineIncident[];
+  testIncidents: TestIncident[];
 }
 
 export interface PatientSearchParamsDTO {
@@ -534,12 +494,9 @@ export interface PatientSearchParamsDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -555,12 +512,9 @@ export interface PatientSearchParamsDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -586,18 +540,15 @@ export interface PatientSimpleSearchParamsDTO {
 export interface QuarantineIncident {
   caseId?: string;
   comment?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -637,12 +588,9 @@ export interface RequestQuarantineDTO {
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -662,18 +610,15 @@ export interface SendToQuarantineDTO {
 export interface TestIncident {
   caseId?: string;
   comment?: string;
-  eventDate?: string;
-  eventType?:
+  eventDate: string;
+  eventType:
     | "REGISTERED"
     | "SUSPECTED"
     | "ORDER_TEST"
     | "SCHEDULED_FOR_TESTING"
-    | "TEST_SUBMITTED_IN_PROGRESS"
+    | "TEST_SUBMITTED"
     | "TEST_FINISHED_POSITIVE"
     | "TEST_FINISHED_NEGATIVE"
-    | "TEST_FINISHED_INVALID"
-    | "TEST_FINISHED_RECOVERED"
-    | "TEST_FINISHED_NOT_RECOVERED"
     | "PATIENT_DEAD"
     | "DOCTORS_VISIT"
     | "QUARANTINE_SELECTED"
@@ -684,11 +629,12 @@ export interface TestIncident {
     | "HOSPITALIZATION_RELEASED"
     | "CASE_DATA_UPDATED";
   id?: string;
+  laboratory?: Laboratory;
+  material?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   patient?: Patient;
   report?: string;
-  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
+  status?: "TEST_SUBMITTED" | "TEST_POSITIVE" | "TEST_NEGATIVE";
   testId?: string;
-  testMaterial?: "RACHENABSTRICH" | "NASENABSTRICH" | "VOLLBLUT";
   type?: "PCR" | "ANTIBODY";
   versionTimestamp?: string;
   versionUser?: User;
@@ -709,14 +655,6 @@ export interface Timestamp {
 
 export interface TokenDTO {
   jwtToken?: string;
-}
-
-export interface UpdateTestStatusDTO {
-  comment?: string;
-  eventDate?: string;
-  file?: string;
-  status?: "TEST_SUBMITTED" | "TEST_IN_PROGRESS" | "TEST_POSITIVE" | "TEST_NEGATIVE" | "TEST_INVALID";
-  testId?: string;
 }
 
 export interface User {
@@ -1165,6 +1103,16 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
 
     /**
      * @tags test-incident-controller
+     * @name setTestUsingPOST
+     * @summary setTest
+     * @request POST:/api/incidents/test
+     * @secure
+     */
+    setTestUsingPost: (test: TestIncident, params?: RequestParams) =>
+      this.request<TestIncident, ExceptionResponse>(`/api/incidents/test`, "POST", params, test, BodyType.Json, true),
+
+    /**
+     * @tags test-incident-controller
      * @name getPatientsCurrentByTypeUsingPOST
      * @summary getPatientsCurrentByType
      * @request POST:/api/incidents/test/patient
@@ -1176,6 +1124,23 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         "POST",
         params,
         patientIds,
+        BodyType.Json,
+        true,
+      ),
+
+    /**
+     * @tags test-incident-controller
+     * @name setTestByTestAndLabIdUsingPOST
+     * @summary setTestByTestAndLabId
+     * @request POST:/api/incidents/test/test-id
+     * @secure
+     */
+    setTestByTestAndLabIdUsingPost: (test: TestIncident, params?: RequestParams) =>
+      this.request<TestIncident, ExceptionResponse>(
+        `/api/incidents/test/test-id`,
+        "POST",
+        params,
+        test,
         BodyType.Json,
         true,
       ),
@@ -1236,60 +1201,6 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
         BodyType.Json,
         true,
       ),
-
-    /**
-     * @tags lab-test-controller
-     * @name createTestForPatientUsingPOST
-     * @summary createTestForPatient
-     * @request POST:/api/labtests
-     * @secure
-     */
-    createTestForPatientUsingPost: (createLabTestRequest: CreateLabTestDTO, params?: RequestParams) =>
-      this.request<LabTest, LabTestConstraintViolation>(
-        `/api/labtests`,
-        "POST",
-        params,
-        createLabTestRequest,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags lab-test-controller
-     * @name getLabTestForPatientUsingGET
-     * @summary getLabTestForPatient
-     * @request GET:/api/labtests/patient/{id}
-     * @secure
-     */
-    getLabTestForPatientUsingGet: (id: string, params?: RequestParams) =>
-      this.request<LabTest[], any>(`/api/labtests/patient/${id}`, "GET", params, null, BodyType.Json, true),
-
-    /**
-     * @tags lab-test-controller
-     * @name queryLabTestsByIdUsingGET
-     * @summary queryLabTestsById
-     * @request GET:/api/labtests/query
-     * @secure
-     */
-    queryLabTestsByIdUsingGet: (query: { labTestIdQuery: string }, params?: RequestParams) =>
-      this.request<LabTest[], any>(
-        `/api/labtests/query${this.addQueryParams(query)}`,
-        "GET",
-        params,
-        null,
-        BodyType.Json,
-        true,
-      ),
-
-    /**
-     * @tags lab-test-controller
-     * @name updateTestStatusUsingPUT
-     * @summary updateTestStatus
-     * @request PUT:/api/labtests/{laboratoryId}
-     * @secure
-     */
-    updateTestStatusUsingPut: (laboratoryId: string, statusDTO: UpdateTestStatusDTO, params?: RequestParams) =>
-      this.request<LabTest, any>(`/api/labtests/${laboratoryId}`, "PUT", params, statusDTO, BodyType.Json, true),
 
     /**
      * @tags patient-controller

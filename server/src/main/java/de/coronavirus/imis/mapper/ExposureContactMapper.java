@@ -8,6 +8,7 @@ import de.coronavirus.imis.domain.ExposureContact;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.mapper.PatientMapper;
 import de.coronavirus.imis.repositories.PatientRepository;
+import de.coronavirus.imis.services.incidents.QuarantineIncidentService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -22,6 +23,9 @@ public abstract class ExposureContactMapper {
   @Autowired
   protected PatientRepository patientRepo;
 
+  @Autowired
+  protected QuarantineIncidentService quarantineIncidentService;
+
   @Mapping(target = "id", source = "common.id")
   @Mapping(target = "source", expression = "java( patientRepo.findById(dto.getSource()).orElse(null) )")
   @Mapping(target = "contact", expression = "java( patientRepo.findById(dto.getContact()).orElse(null) )")
@@ -34,6 +38,6 @@ public abstract class ExposureContactMapper {
   public abstract ExposureContactDTO.FromServer toExposureContactDTO(ExposureContact contact);
 
   @Mapping(target = "infected", expression = "java( patient.getPatientStatus() == EventType.TEST_FINISHED_POSITIVE )")
-  @Mapping(target = "inQuarantine", expression = "java( patient.getQuarantineUntil() != null && patient.getQuarantineUntil().isAfter(LocalDate.now()) )")
+  @Mapping(target = "inQuarantine", expression = "java( quarantineIncidentService.hasActiveQuarantine(patient) )")
   public abstract ExposureContactDTO.ContactView toContactView(Patient patient);
 }

@@ -1,7 +1,6 @@
 package de.coronavirus.imis.services.incidents;
 
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
-import de.coronavirus.imis.api.dto.RequestQuarantineDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;
@@ -70,60 +69,6 @@ public class WriteIncidentService {
 
 		testIncidentRepo.saveAndFlush(incident);
 		return incident;
-	}
-
-	// Quarantine Incidents
-	@Transactional
-	public QuarantineIncident addOrUpdateQuarantineIncident(String patientId, RequestQuarantineDTO info) {
-		// Patient & Date
-		var patient = patientRepo.findById(patientId).orElseThrow();
-		var until = patientMapper.parseDate(info.getDateUntil());
-
-		// There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
-		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
-		var incident = incidentOptional.isEmpty()
-				? new QuarantineIncident()
-				: incidentOptional.get(0);
-
-		if(info.getEventDate()==null)
-			info.setEventDate(LocalDate.now());
-
-		// Apply to Incident
-		incident
-				.setComment(info.getComment())
-				.setUntil(until)
-				.setEventType(info.getStatus() != null ? info.getStatus() : EventType.QUARANTINE_SELECTED)
-				.setEventDate(info.getEventDate())
-				.setPatient(patient);
-		quarantineIncidentRepo.saveAndFlush(incident);
-
-		return incident;
-	}
-
-	@Transactional
-	public void updateQuarantineIncident(String patientId, EventType status, LocalDate date) {
-
-		/*
-			There's only one QuarantineIncident per Person which is why we can find it without Incident Id here.
-
-			Note:
-			Having only one QuarantineIncident per Person is technically incorrect. If a patient is quarantined,
-			released and quarantined again, that should be a new incident (a new incident ID).
-			This improvement can be applied once there's a agreed strategy on how the frontend handles incidents.
-		 */
-
-		var incidentOptional = quarantineIncidentRepo.findByPatientId(patientId);
-		if (incidentOptional.isEmpty()) {
-			throw new QuarantineNotFoundException("No Quarantine for " + patientId);
-		}
-		var incident = incidentOptional.get(0);
-
-		date = date == null ? LocalDate.now() : date;
-
-		incident
-				.setEventDate(date)
-				.setEventType(status);
-		quarantineIncidentRepo.saveAndFlush(incident);
 	}
 
 	// Administrative Incidents

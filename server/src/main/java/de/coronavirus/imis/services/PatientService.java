@@ -1,28 +1,23 @@
 package de.coronavirus.imis.services;
 
+import com.google.common.hash.Hashing;
+import de.coronavirus.imis.api.dto.CreatePatientDTO;
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
+import de.coronavirus.imis.domain.EventType;
+import de.coronavirus.imis.domain.Patient;
+import de.coronavirus.imis.mapper.PatientMapper;
+import de.coronavirus.imis.repositories.PatientRepository;
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
-
-import de.coronavirus.imis.services.incidents.WriteIncidentService;
-import org.springframework.stereotype.Service;
-
-import com.google.common.hash.Hashing;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import de.coronavirus.imis.api.dto.CreatePatientDTO;
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
-import de.coronavirus.imis.api.dto.RequestQuarantineDTO;
-import de.coronavirus.imis.domain.EventType;
-import de.coronavirus.imis.domain.Patient;
-import de.coronavirus.imis.mapper.PatientMapper;
-import de.coronavirus.imis.repositories.PatientRepository;
 
 @Service
 @Slf4j
@@ -100,20 +95,6 @@ public class PatientService {
 
 	public Long countQueryPatients(PatientSearchParamsDTO patientSearchParamsDTO) {
 		return this.searchService.getResultSizePatientsDetail(patientSearchParamsDTO);
-	}
-
-	@Transactional
-	public Patient sendToQuarantine(final String patientID, final RequestQuarantineDTO dto) {
-
-		var patient = findPatientById(patientID).orElseThrow();
-
-		patient.setQuarantineUntil(PatientMapper.parseDate(dto.getDateUntil()));
-
-		patientRepository.saveAndFlush(patient);
-
-		eventService.createQuarantineEvent(patient, dto.getDateUntil(), dto.getComment());
-
-		return patient;
 	}
 
 	@SuppressWarnings("UnstableApiUsage")

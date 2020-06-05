@@ -57,7 +57,6 @@ export default Vue.extend({
         this.incidents = Object.values(newI)
           .flat()
           .sort((a: Incident, b: Incident) => {
-            console.log(a, b)
             return (
               a.eventDate!.localeCompare(b.eventDate!) ||
               a.versionTimestamp!.localeCompare(b.versionTimestamp!)

@@ -136,6 +136,7 @@ import TestIncidentsCard from '../../components/other/TestIncidentsCard.vue'
 import QuarantineHospitalizationCard from '../../components/other/QuarantineHospitalizationCard.vue'
 import { getDate } from '../../util/helper-functions'
 import { SYMPTOMS } from '../../models/symptoms'
+import { Incident } from '../../models'
 
 interface State {
   administrative: AdministrativeIncident | undefined // There's only one.
@@ -145,15 +146,10 @@ interface State {
   SYMPTOMS: any[]
 }
 
-const removeHistoric = (
-  incidents: Array<
-    | TestIncident
-    | HospitalizationIncident
-    | QuarantineIncident
-    | AdministrativeIncident
-  >
-) =>
-  incidents
+function removeHistoric<T extends { id?: string; versionTimestamp?: string }>(
+  incidents: Array<T>
+): Array<T> {
+  return incidents
     .sort((a, b) => {
       return (
         b.id!.localeCompare(a.id!) ||
@@ -161,6 +157,7 @@ const removeHistoric = (
       )
     })
     .filter((cA, i) => incidents.findIndex((cB) => cB.id === cA.id) === i)
+}
 
 export default Vue.extend({
   name: 'Incidents',
@@ -172,10 +169,10 @@ export default Vue.extend({
     allIncidents: {
       immediate: true,
       handler(newI: PatientLogDto) {
-        const administrativeIncidents = [...newI.administrativeIncidents!]
-        const quarantineIncidents = [...newI.quarantineIncidents!]
-        const hospitalizationIncidents = [...newI.hospitalizationIncidents!]
-        const testIncidents = [...newI.testIncidents!]
+        const administrativeIncidents = [...newI.administrativeIncidents]
+        const quarantineIncidents = [...newI.quarantineIncidents]
+        const hospitalizationIncidents = [...newI.hospitalizationIncidents]
+        const testIncidents = [...newI.testIncidents]
         this.administrative = removeHistoric(administrativeIncidents)[0]
         this.quarantine = removeHistoric(quarantineIncidents)
         this.hospitalization = removeHistoric(hospitalizationIncidents)

@@ -9,7 +9,7 @@
     <a-card>
       <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
         <!-- :colon="false" -->
-        <a-form-item label="Patienten-ID" v-if="this.givenPatientId">
+        <a-form-item label="Patienten-ID" v-if="this.$route.params.patientId">
           {{ this.$route.params.patientFirstName }}
           {{ this.$route.params.patientLastName }} ({{
             this.$route.params.patientId
@@ -28,7 +28,7 @@
                 ],
               },
             ]"
-            v-on:select="onPatientSwitch"
+            @selectPatient="(selectedPatient) => (patient = selectedPatient)"
           />
         </a-form-item>
 
@@ -152,7 +152,11 @@
 </template>
 
 <script lang="ts">
-import { ExposureContactFromServer, Patient } from '@/api/SwaggerApi'
+import {
+  ExposureContactFromServer,
+  Patient,
+  QuarantineIncident,
+} from '@/api/SwaggerApi'
 import Api from '@/api'
 import Vue from 'vue'
 import DateInput from '@/components/inputs/DateInput.vue'
@@ -167,34 +171,51 @@ interface State {
   sendContactsToQuarantine: boolean
 }
 
+function makeQuarantineIncident(
+  until: string,
+  eventDate: string,
+  comment: string,
+  patientId: string
+): QuarantineIncident {
+  return {
+    until: until,
+    eventDate: eventDate,
+    eventType: 'QUARANTINE_SELECTED',
+    comment: comment,
+    patient: { id: patientId } as any,
+  }
+}
+
 export default Vue.extend({
   name: 'RequestQuarantine',
   components: {
     PatientInput,
     DateInput,
   },
-  created() {
-    if (this.givenPatientId) {
-      this.onPatientSwitch(this.givenPatientId)
+  async mounted() {
+    if (this.$route.params.patientId) {
+      this.patient = await Api.getPatientForIdUsingGet(
+        this.$route.params.patientId
+      )
     }
+  },
+  watch: {
+    patient(newPatient: Patient) {
+      this.getExposureContacts(newPatient.id!)
+    },
   },
   data(): State {
     return {
       form: this.$form.createForm(this),
-      patient: undefined,
       today: moment(),
       contacts: [],
       sendContactsToQuarantine: false,
+      patient: undefined,
     }
-  },
-  computed: {
-    givenPatientId(): string | undefined {
-      return this.$route.params.patientId
-    },
   },
   methods: {
     moment,
-    async onPatientSwitch(patientId: string) {
+    async getExposureContacts(patientId: string) {
       this.contacts = await Api.getExposureContactsForPatientUsingGet(patientId)
     },
     showPatient(patientId: string) {
@@ -209,30 +230,34 @@ export default Vue.extend({
         if (err) {
           return
         }
-        const request = {
-          dateUntil: values.dateUntil.format('YYYY-MM-DD'),
-          eventDate: values.eventDate
-            ? values.eventDate.format('YYYY-MM-DD')
-            : undefined,
-          comment: values.comment,
-        }
-        const patientId = this.givenPatientId
-          ? this.givenPatientId
-          : values.patientId
 
-        let quarantineUntil = ''
+        const dateUntil = values.dateUntil.format('YYYY-MM-DD')
+        const eventDate = values.eventDate
+          ? values.eventDate.format('YYYY-MM-DD')
+          : undefined
+        const comment = values.comment
+        const patientId = this.patient?.id || values.patientId
+
+        const quarantineIncident = makeQuarantineIncident(
+          dateUntil,
+          eventDate,
+          comment,
+          patientId
+        )
+
+        const quarantineUntil = moment(quarantineIncident.until).format(
+          'DD.MM.YYYY'
+        )
         try {
-          const patient = await Api.requestQuarantineUsingPost(
-            patientId,
-            request
-          )
-          quarantineUntil = moment(patient.quarantineUntil).format('DD.MM.YYYY')
+          await Api.addOrUpdateQuarantineIncidentUsingPost(quarantineIncident)
+
           if (!this.sendContactsToQuarantine) {
             const h = this.$createElement
+            const { firstName, lastName } = this.patient!
             this.$success({
               title: 'Der Quarantänevermerk wurde erfasst.',
               content: h('div', {}, [
-                h('div', `Patient: ${patient.firstName} ${patient.lastName}`),
+                h('div', `Patient: ${firstName} ${lastName}`),
                 h('div', `In Quarantäne bis: ${quarantineUntil}`),
               ]),
             })
@@ -251,24 +276,28 @@ export default Vue.extend({
           const failedPatients = []
           for (const contactItem of this.contacts) {
             const contact = contactItem.contact
-            if (!contact) {
+            if (!contact || !contact.id) {
               continue
             }
-            const patientId = contact.id
-            if (!patientId) {
-              continue
-            }
+
             try {
-              await Api.requestQuarantineUsingPost(patientId, request)
+              await Api.addOrUpdateQuarantineIncidentUsingPost(
+                makeQuarantineIncident(
+                  dateUntil,
+                  eventDate,
+                  comment,
+                  contact.id
+                )
+              )
             } catch (e) {
-              console.error('Could not send ' + patientId + ' to quarantine:')
+              console.error('Could not send ' + contact.id + ' to quarantine:')
               console.error(e)
               const patientStr =
                 contact.firstName +
                 ' ' +
                 contact.lastName +
                 ' (ID: ' +
-                patientId +
+                contact.id +
                 ')'
               failedPatients.push(patientStr)
             }
@@ -303,10 +332,10 @@ export default Vue.extend({
     resetForm() {
       this.form.resetFields()
       this.contacts = []
-      if (this.givenPatientId) {
+      if (this.$route.params.patientId) {
         this.$router.push({
           name: 'patient-detail',
-          params: { id: this.givenPatientId },
+          params: { id: this.patient?.id },
         })
       }
     },

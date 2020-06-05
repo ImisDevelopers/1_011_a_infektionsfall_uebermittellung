@@ -79,7 +79,6 @@ public class Patient {
 	private boolean confirmed;
 	private String employer;
 	@Enumerated(EnumType.STRING)
-	@NotNull
 	private EventType patientStatus;
 	private Boolean fluImmunization;
 	private String speedOfSymptomsOutbreak;
@@ -108,8 +107,6 @@ public class Patient {
 	private LocalDate dateOfHospitalization;
 	private LocalDate dateOfIllness;
 	private Boolean onIntensiveCareUnit;
-
-	private LocalDate quarantineUntil;
 
 	@ApiModel("PatientIdentity")
 	@Getter

@@ -4,9 +4,10 @@ import de.coronavirus.imis.api.dto.*;
 import de.coronavirus.imis.domain.EventType;
 import de.coronavirus.imis.domain.Patient;
 import de.coronavirus.imis.domain.PatientEvent;
-import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import de.coronavirus.imis.services.PatientEventService;
 import de.coronavirus.imis.services.PatientService;
+import de.coronavirus.imis.services.incidents.QuarantineIncidentService;
+import de.coronavirus.imis.services.incidents.WriteIncidentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,6 +26,7 @@ public class PatientController {
 
 	private final PatientService patientService;
 	private final WriteIncidentService incidentService;
+	private final QuarantineIncidentService quarantineIncidentService;
 	private final PatientEventService eventService;
 
 	@PostMapping
@@ -81,19 +83,6 @@ public class PatientController {
 	@PreAuthorize("hasAnyRole('CLINIC', 'DEPARTMENT_OF_HEALTH', 'DOCTORS_OFFICE', 'TEST_SITE')")
 	public Long countQueryPatients(@RequestBody final PatientSearchParamsDTO patientSearchParamsDTO) {
 		return patientService.countQueryPatients(patientSearchParamsDTO);
-	}
-
-	@PostMapping("/quarantine/{id}")
-	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public ResponseEntity<Patient> requestQuarantine(@PathVariable("id") String patientId, @RequestBody RequestQuarantineDTO statusDTO) {
-		incidentService.addOrUpdateQuarantineIncident(patientId, statusDTO);
-		return ResponseEntity.ok(patientService.sendToQuarantine(patientId, statusDTO));
-	}
-
-	@PostMapping("/quarantine")
-	@PreAuthorize("hasAnyRole('DEPARTMENT_OF_HEALTH')")
-	public void sendToQuarantine(@RequestBody SendToQuarantineDTO dto) {
-		dto.getPatientIds().forEach(patientId -> this.incidentService.updateQuarantineIncident(patientId, EventType.QUARANTINE_MANDATED, dto.getEventDate()));
 	}
 
 	@PostMapping("/event/order-test")

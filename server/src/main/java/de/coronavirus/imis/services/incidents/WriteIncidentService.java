@@ -1,7 +1,6 @@
 package de.coronavirus.imis.services.incidents;
 
 import de.coronavirus.imis.api.dto.CreateLabTestDTO;
-import de.coronavirus.imis.api.dto.RequestQuarantineDTO;
 import de.coronavirus.imis.api.dto.UpdateTestStatusDTO;
 import de.coronavirus.imis.domain.*;
 import de.coronavirus.imis.mapper.PatientMapper;

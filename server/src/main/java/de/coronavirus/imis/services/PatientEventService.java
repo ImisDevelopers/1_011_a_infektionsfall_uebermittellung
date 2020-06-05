@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Deprecated
 public class PatientEventService {
 
 	private final PatientEventRepository patientEventRepository;
@@ -55,7 +56,6 @@ public class PatientEventService {
 		PatientEvent event = new PatientEvent()
 				.setEventTimestamp(Timestamp.from(Instant.now()))
 				.setEventType(EventType.TEST_SUBMITTED)
-				//.setLabTest(labTest)
 				.setIllness(concreteIllness)
 				.setPatient(patient);
 		patientEventRepository.saveAndFlush(event);

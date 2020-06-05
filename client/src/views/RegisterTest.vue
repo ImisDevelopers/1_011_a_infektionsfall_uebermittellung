@@ -164,7 +164,6 @@ import { TestTypeItem, testTypes } from '../models/test-types'
 import { testResults } from '../models/event-types'
 import { TestMaterialItem, testMaterials } from '../models/test-materials'
 import moment from 'moment'
-import { getDummyInstitution, getDummyPatient } from '../util/helper-functions'
 
 interface State {
   form: any
@@ -189,8 +188,6 @@ export default Vue.extend({
     }
   },
   methods: {
-    getDummyInstitution,
-    getDummyPatient,
     handleSubmit() {
       this.form.validateFields((err: Error, values: any) => {
         if (err) {
@@ -198,8 +195,12 @@ export default Vue.extend({
         }
         const request: TestIncident = {
           ...values,
-          laboratory: getDummyInstitution(values.laboratoryId),
-          patient: getDummyPatient(values.patientId),
+          laboratory: {
+            id: values.laboratoryId,
+          },
+          patient: {
+            id: values.patientId,
+          },
           eventType: 'TEST_SUBMITTED',
           status: 'TEST_SUBMITTED',
         }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -25,12 +26,12 @@ public class TestIncidentService {
     return testIncidentRepository.findByPatientId(patientId);
   }
 
-  public TestIncident getCurrentByTestAndLabId(String testId, String labId) {
-  	try {
-		return testIncidentRepository.findByTestIdAndLaboratory_id(testId, labId).get(0);
-	} catch (IndexOutOfBoundsException e) {
-  		throw new TestNotFoundException();
-	  }
+  public Optional<TestIncident> getCurrentByTestAndLabId(String testId, String labId) {
+  	var result = testIncidentRepository.findByTestIdAndLaboratory_id(testId, labId);
+  	if (!result.isEmpty())
+  		return Optional.empty();
+  	else
+  		return Optional.of(result.get(0));
   }
 
   @Transactional
@@ -39,6 +40,4 @@ public class TestIncidentService {
 	  return testIncidentRepository.save(test);
 
   }
-
-  public class TestNotFoundException extends RuntimeException{}
 }

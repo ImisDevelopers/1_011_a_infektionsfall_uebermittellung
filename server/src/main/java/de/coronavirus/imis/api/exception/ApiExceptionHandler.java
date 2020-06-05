@@ -1,5 +1,6 @@
 package de.coronavirus.imis.api.exception;
 
+import de.coronavirus.imis.api.incidents.TestIncidentController;
 import de.coronavirus.imis.services.incidents.TestIncidentService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +32,7 @@ public class ApiExceptionHandler {
   }
 
   @ExceptionHandler
-  ResponseEntity<ExceptionResponse> handle_TestNotFoundException (TestIncidentService.TestNotFoundException e){
+  ResponseEntity<ExceptionResponse> handle_TestNotFoundException (TestIncidentController.TestNotFoundException e){
   	return ResponseEntity
 			.status(400)
 			.body(new ExceptionResponse("TEST_NOT_FOUND"));

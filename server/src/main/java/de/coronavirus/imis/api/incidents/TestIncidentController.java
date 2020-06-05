@@ -35,17 +35,25 @@ public class TestIncidentController {
 	return testIncidentService.setIncident(test);
   }
 
+  // Preferred way to to this would be via setTest, but Incident is not known by Frontend when this Method gets called.
   @PostMapping("/test/test-id")
   @ApiResponses({
 		  @ApiResponse(code = 400, message = "TEST_NOT_FOUND", response = ApiExceptionHandler.ExceptionResponse.class)
   })
   public TestIncident setTestByTestAndLabId(@RequestBody TestIncident test) {
-  	var existing = testIncidentService.getCurrentByTestAndLabId(test.getTestId(), test.getLaboratory().getId());
-  	existing.setStatus(test.getStatus());
-  	existing.setEventDate(test.getEventDate());
-  	existing.setComment(test.getComment());
-  	existing.setEventType(test.getEventType());
-  	return testIncidentService.setIncident(existing);
+  	var existingOpt = testIncidentService.getCurrentByTestAndLabId(test.getTestId(), test.getLaboratory().getId());
+	if (existingOpt.isPresent())
+	{
+		var existing = existingOpt.get();
+		existing.setStatus(test.getStatus());
+		existing.setEventDate(test.getEventDate());
+		existing.setComment(test.getComment());
+		existing.setEventType(test.getEventType());
+		return testIncidentService.setIncident(existing);
+	}
+  	else
+		throw new TestNotFoundException();
   }
 
+  public class TestNotFoundException extends RuntimeException{}
 }

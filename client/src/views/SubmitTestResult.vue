@@ -118,7 +118,7 @@
 </template>
 
 <script lang="ts">
-import { InstitutionImpl } from '@/api/SwaggerApi'
+import { Laboratory } from '@/api/SwaggerApi'
 import Vue from 'vue'
 import Api from '@/api'
 import TestInput from '@/components/inputs/TestInput.vue'
@@ -128,13 +128,12 @@ import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
 import moment from 'moment'
 import { TestIncident } from '../api/SwaggerApi'
-import { getDummyInstitution } from '../util/helper-functions'
 
 interface State {
   form: any
   fileBytes?: any
   today: moment.Moment
-  laboratories: Array<InstitutionImpl>
+  laboratories: Array<Laboratory>
   testResults: any
 }
 
@@ -178,7 +177,6 @@ export default Vue.extend({
     }
   },
   methods: {
-    getDummyInstitution,
     ...authMapper.mapActions({
       getAuthenticatedInstitution: 'getAuthenticatedInstitution',
     }),
@@ -220,7 +218,9 @@ export default Vue.extend({
             values.status === 'TEST_POSITIVE'
               ? 'TEST_FINISHED_POSITIVE'
               : 'TEST_FINISHED_NEGATIVE',
-          laboratory: getDummyInstitution(values.laboratoryId),
+          laboratory: {
+            id: values.laboratoryId,
+          },
         }
 
         Api.setTestByTestAndLabIdUsingPost(request)

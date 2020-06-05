@@ -6,18 +6,3 @@ export function getDate(date: string) {
     return moment(date).format('DD.MM.YYYY')
   else return 'Keine Angabe'
 }
-
-export function getDummyPatient(patientId: string) {
-  const patient: Patient = {
-    id: patientId,
-    patientStatus: 'REGISTERED',
-  }
-  return patient
-}
-
-export function getDummyInstitution(institutionId: string) {
-  const institution: InstitutionImpl = {
-    id: institutionId,
-  }
-  return institution
-}

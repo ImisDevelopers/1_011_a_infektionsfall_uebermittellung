@@ -8,11 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@Deprecated
 public interface PatientEventRepository extends JpaRepository<PatientEvent, String> {
 
 	List<PatientEvent> findAllByPatient(Patient patient);
-
-	//List<PatientEvent> findPatientEventByLabTest(LabTest labTest);
 
 	PatientEvent findFirstByPatientOrderByEventTimestampDesc(Patient patient);
 

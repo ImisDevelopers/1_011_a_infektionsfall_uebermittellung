@@ -67,6 +67,7 @@
         <a-form-item label="Testtyp">
           <a-radio-group
             class="imis-radio-group"
+            default-value="PCR"
             v-decorator="[
               'type',
               {
@@ -89,9 +90,10 @@
           </a-radio-group>
         </a-form-item>
         <!-- Test Material -->
-        <a-form-item label="Proben-Material">
+        <a-form-item label="Probenmaterial">
           <a-radio-group
             class="imis-radio-group"
+            default-value="RACHENABSTRICH"
             v-decorator="[
               'material',
               {
@@ -114,7 +116,7 @@
           </a-radio-group>
         </a-form-item>
 
-        <a-form-item label="Abnahmedatum">
+        <a-form-item label="Probendatum">
           <DateInput
             :value="today"
             v-decorator="[
@@ -123,7 +125,7 @@
                 initialValue: today,
                 rules: [
                   {
-                    required: false,
+                    required: true,
                     message: 'Datum der Probenabnahme',
                   },
                 ],

@@ -192,7 +192,7 @@
           <a-icon
             @click="() => handlePatientClick(patient)"
             style="margin-right: 5px; cursor: pointer;"
-            type="import"
+            type="user"
           />
         </div>
         <div slot="name" slot-scope="patient">

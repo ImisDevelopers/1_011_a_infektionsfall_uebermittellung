@@ -117,6 +117,7 @@ const columnsQuarantines = [
   {
     title: 'Quarantäne bis',
     key: 'until',
+    dataIndex: 'until',
     scopedSlots: {
       customRender: 'until',
     },

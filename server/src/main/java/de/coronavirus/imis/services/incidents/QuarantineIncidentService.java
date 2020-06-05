@@ -5,7 +5,6 @@ import de.coronavirus.imis.repositories.QuarantineIncidentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -44,7 +43,10 @@ public class QuarantineIncidentService {
   }
 
   public QuarantineIncident save(QuarantineIncident quarantineIncident) {
-    return quarantineIncidentRepo.save(quarantineIncident);
+    return quarantineIncidentRepo.saveAndFlush(quarantineIncident);
   }
 
+  public Optional<QuarantineIncident> getIncidentById(String id) {
+    return quarantineIncidentRepo.findById(id);
+  }
 }

@@ -62,10 +62,10 @@
       </a-form-item>
     </a-form>
     <div>
-      <br/>
+      <br />
       <p>Demo-Zugänge:</p>
       <a-button
-        @click.prevent="handleLogin('test_testing_site','asdf')"
+        @click.prevent="handleLogin('test_testing_site', 'asdf')"
         html-type="submit"
         icon="unlock"
       >
@@ -73,10 +73,11 @@
       </a-button>
       <br />
       <p>
-        Kennung <strong>test_testing_site</strong> mit Passwort <strong>asdf</strong>
+        Kennung <strong>test_testing_site</strong> mit Passwort
+        <strong>asdf</strong>
       </p>
       <a-button
-        @click.prevent="handleLogin('test_department_of_health','asdf')"
+        @click.prevent="handleLogin('test_department_of_health', 'asdf')"
         html-type="submit"
         icon="unlock"
       >

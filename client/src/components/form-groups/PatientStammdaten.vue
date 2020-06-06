@@ -336,7 +336,7 @@ export interface State {
   disableOccupation: boolean
   riskOccupations: RiskOccupationOption[]
   showDateOfDeath: boolean
-  patientInput: Patient | undefined
+  patientInput: Patient
   initialDateOfBirth: Moment | undefined
   initialDateOfDeath: Moment | undefined
   initialRiskOccupation: string | undefined
@@ -354,12 +354,12 @@ export default Vue.extend({
 
     if (this.patient) {
       this.patientInput = this.patient
-      this.initialDateOfBirth = moment(this.patientInput!.dateOfBirth)
-      if (this.patientInput!.dateOfDeath) {
-        this.initialDateOfDeath = moment(this.patientInput!.dateOfDeath)
+      this.initialDateOfBirth = moment(this.patientInput.dateOfBirth)
+      if (this.patientInput.dateOfDeath) {
+        this.initialDateOfDeath = moment(this.patientInput.dateOfDeath)
       }
       this.initialRiskOccupation =
-        this.patientInput!.riskOccupation || 'NO_RISK_OCCUPATION'
+        this.patientInput.riskOccupation || 'NO_RISK_OCCUPATION'
       this.disableOccupation = false
     }
   },
@@ -373,7 +373,9 @@ export default Vue.extend({
       disableOccupation: true,
       riskOccupations: RISK_OCCUPATIONS,
       showDateOfDeath: false,
-      patientInput: undefined,
+      patientInput: {
+        patientStatus: 'REGISTERED',
+      },
       initialDateOfBirth: undefined,
       initialDateOfDeath: undefined,
       initialRiskOccupation: undefined,

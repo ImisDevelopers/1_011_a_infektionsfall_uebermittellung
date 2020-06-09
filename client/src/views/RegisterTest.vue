@@ -67,7 +67,6 @@
         <a-form-item label="Testtyp">
           <a-radio-group
             class="imis-radio-group"
-            default-value="PCR"
             v-decorator="[
               'type',
               {
@@ -77,6 +76,7 @@
                     message: 'Bitte geben Sie den Typen des Tests an.',
                   },
                 ],
+                initialValue: 'PCR',
               },
             ]"
           >
@@ -93,7 +93,6 @@
         <a-form-item label="Probenmaterial">
           <a-radio-group
             class="imis-radio-group"
-            default-value="RACHENABSTRICH"
             v-decorator="[
               'material',
               {
@@ -103,6 +102,7 @@
                     message: 'Bitte geben Sie das Material des Tests an.',
                   },
                 ],
+                initialValue: 'RACHENABSTRICH',
               },
             ]"
           >

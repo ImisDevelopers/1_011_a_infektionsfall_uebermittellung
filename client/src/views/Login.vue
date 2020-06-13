@@ -108,8 +108,10 @@ export default Vue.extend({
     ...authMapper.mapActions({
       login: 'login',
     }),
-    handleLogin(username: string, password: string) {
-      this.form.setFieldsValue({ username: username, password: password })
+    handleLogin(username?: string, password?: string) {
+      if (username && password) {
+        this.form.setFieldsValue({ username: username, password: password })
+      }
       this.form.validateFields((err: any, values: any) => {
         if (err) {
           return

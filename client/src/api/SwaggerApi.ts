@@ -63,6 +63,11 @@ export interface ChangePasswordDTO {
   oldPassword?: string;
 }
 
+export interface CountryDto {
+  code?: string;
+  name?: string;
+}
+
 export interface CreateInstitutionDTO {
   city?: string;
   comment?: string;
@@ -924,6 +929,23 @@ export class Api<SecurityDataType = any> extends HttpClient<SecurityDataType> {
      */
     changePasswordUsingPost: (changePasswordDTO: ChangePasswordDTO, params?: RequestParams) =>
       this.request<any, any>(`/api/auth/user/change-password`, "POST", params, changePasswordDTO, BodyType.Json, true),
+
+    /**
+     * @tags country-controller
+     * @name getCountriesUsingGET
+     * @summary getCountries
+     * @request GET:/api/countries
+     * @secure
+     */
+    getCountriesUsingGet: (query?: { language?: string }, params?: RequestParams) =>
+      this.request<CountryDto[], any>(
+        `/api/countries${this.addQueryParams(query)}`,
+        "GET",
+        params,
+        null,
+        BodyType.Json,
+        true,
+      ),
 
     /**
      * @tags doctor-controller

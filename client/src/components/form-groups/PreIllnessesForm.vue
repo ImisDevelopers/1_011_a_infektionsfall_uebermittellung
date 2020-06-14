@@ -1,10 +1,5 @@
 <template>
-  <a-form-item
-    class="no-double-colon-form-field"
-    :label="'Welche Vorerkrankungen und Risikofaktoren liegen vor?'"
-    :labelCol="{ div: 24 }"
-    :wrapperCol="{ div: 24 }"
-  >
+  <a-form-item class="no-double-colon-form-field" :wrapperCol="{ div: 24 }">
     <a-checkbox-group
       v-decorator="['preIllnesses', { initialValue: preIllnesses }]"
     >

@@ -82,7 +82,7 @@
             </a-button>
           </div>
           <!-- Allgemein & Adresse -->
-          <a-row :gutter="8">
+          <a-row :gutter="8" type="flex">
             <a-col :md="12" :span="24">
               <a-card :extra="this.patient.id" align="left" title="Allgemein">
                 <table>
@@ -110,7 +110,7 @@
               </a-card>
             </a-col>
             <a-col :md="12" :span="24">
-              <a-card align="left" title="Adresse">
+              <a-card align="left" title="Adresse" style="height: 100%;">
                 <table>
                   <tr v-if="patient.stayCity">
                     <td colspan="2">Wohnort:</td>
@@ -157,7 +157,7 @@
               <a-card align="left" title="Kontakt">
                 <table>
                   <tr>
-                    <td>Telefonnummer:</td>
+                    <td>Telefon:</td>
                     <td>{{ patient.phoneNumber }}</td>
                   </tr>
                   <tr>
@@ -201,9 +201,7 @@
         </a-tab-pane>
         <a-tab-pane key="Cases" tab="Falldaten">
           <div class="tool-row">
-            <div style="font-size: 18px; padding-left: 16px;">
-              Fall: COVID-19
-            </div>
+            <div style="font-size: 18px; padding-left: 16px;" />
             <span style="flex: 1 1 auto;"></span>
             <a-button icon="edit" @click="editPatientFalldaten">
               Falldaten ändern
@@ -523,7 +521,7 @@ interface State {
   dateFormat: string
   country: string
   stayCountry: string
-  incidents: PatientLogDto
+  incidents: PatientLogDto | undefined
 }
 
 export default Vue.extend({
@@ -585,7 +583,7 @@ export default Vue.extend({
       columnsIndexPatients,
       dateOfReporting: '',
       dateOfIllness: '',
-      incidents: {},
+      incidents: undefined,
     }
   },
 
@@ -630,18 +628,6 @@ export default Vue.extend({
       }
 
       this.incidents = await Api.getPatientLogUsingGet(patientId)
-
-      if (this.patient.events) {
-        const event = this.patient.events.find(
-          (event) =>
-            event.eventType === 'REGISTERED' || event.eventType === 'SUSPECTED'
-        )
-        if (event) {
-          this.dateOfReporting = moment(event.eventTimestamp).format(
-            this.dateFormat
-          )
-        }
-      }
 
       if (this.patient.dateOfIllness) {
         this.dateOfIllness = moment(this.patient.dateOfIllness).format(

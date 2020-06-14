@@ -1,11 +1,6 @@
 <template>
   <div>
-    <a-form-item
-      class="no-double-colon-form-field"
-      :label="'Welche Symptome weist der Patient/die Patientin auf?'"
-      :labelCol="{ div: 24 }"
-      :wrapperCol="{ div: 24 }"
-    >
+    <a-form-item class="no-double-colon-form-field" :wrapperCol="{ div: 24 }">
       <a-checkbox-group
         v-decorator="['symptoms', { initialValue: symptoms }]"
         @change="symptomsChanged"

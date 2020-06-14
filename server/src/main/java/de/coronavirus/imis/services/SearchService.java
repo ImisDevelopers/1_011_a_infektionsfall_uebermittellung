@@ -1,11 +1,20 @@
 package de.coronavirus.imis.services;
 
 
-import com.google.common.base.Strings;
-import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
-import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
-import de.coronavirus.imis.domain.Patient;
-import lombok.extern.slf4j.Slf4j;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.apache.lucene.search.Query;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.FullTextQuery;
@@ -13,14 +22,12 @@ import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-import java.beans.IntrospectionException;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.util.*;
+import com.google.common.base.Strings;
+import lombok.extern.slf4j.Slf4j;
+
+import de.coronavirus.imis.api.dto.PatientSearchParamsDTO;
+import de.coronavirus.imis.api.dto.PatientSimpleSearchParamsDTO;
+import de.coronavirus.imis.domain.Patient;
 
 
 @Slf4j
@@ -30,7 +37,7 @@ public class SearchService {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public SearchService (EntityManagerFactory emf) {
+	public SearchService(EntityManagerFactory emf) {
 		try {
 			Search.getFullTextEntityManager(emf.createEntityManager()).createIndexer().startAndWait();
 		} catch (InterruptedException e) {
@@ -44,11 +51,12 @@ public class SearchService {
 	 * @param dto parameters for the search
 	 * @return list of entities that match the specified search
 	 */
-
+	@Transactional
 	public List<Patient> queryPatientsDetail(PatientSearchParamsDTO dto) {
 		return queryPatientDetailExec(dto).getResultList();
 	}
 
+	@Transactional
 	public Long getResultSizePatientsDetail(PatientSearchParamsDTO dto) {
 		return (long) queryPatientDetailExec(dto).getResultSize();
 	}
@@ -67,7 +75,7 @@ public class SearchService {
 		return (long) queryPatientsExec(query, null, 10, 0).getResultSize();
 	}
 
-	@Transactional
+
 	private FullTextQuery queryPatientsExec(String queryString, String orderBy, int pageSize, int offset) {
 		var queryBuilder = getFullTextEntityManager().getSearchFactory().buildQueryBuilder().forEntity(Patient.class).get();
 		Query query = null;
@@ -95,7 +103,7 @@ public class SearchService {
 		return Search.getFullTextEntityManager(entityManager);
 	}
 
-	@Transactional
+
 	private FullTextQuery queryPatientDetailExec(PatientSearchParamsDTO dto) {
 		var queryBuilder = getFullTextEntityManager().getSearchFactory().buildQueryBuilder().forEntity(Patient.class).get().bool();
 		Map<String, Object> objectProps = beanProperties(dto);

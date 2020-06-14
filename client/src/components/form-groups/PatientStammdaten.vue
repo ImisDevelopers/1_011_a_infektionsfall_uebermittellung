@@ -373,7 +373,9 @@ export default Vue.extend({
       disableOccupation: true,
       riskOccupations: RISK_OCCUPATIONS,
       showDateOfDeath: false,
-      patientInput: {},
+      patientInput: {
+        patientStatus: 'REGISTERED',
+      },
       initialDateOfBirth: undefined,
       initialDateOfDeath: undefined,
       initialRiskOccupation: undefined,

@@ -36,11 +36,7 @@ public class PatientService {
 	private final SearchService searchService;
 
 	public List<Patient> getAllPatients() {
-		var patients = patientRepository.findAll();
-		return patients.stream().peek(patient -> {
-			var lastEvent = eventService.findFirstByPatientOrderByEventTimestampDesc(patient);
-			patient.setEvents(List.of(lastEvent));
-		}).collect(Collectors.toList());
+		return patientRepository.findAll();
 	}
 
 	public Optional<Patient> findPatientById(String id) {

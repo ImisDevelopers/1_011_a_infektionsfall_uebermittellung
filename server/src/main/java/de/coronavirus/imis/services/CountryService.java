@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +57,7 @@ public class CountryService {
 	}
 
 	private List<String> loadRessource(Resource resource) throws IOException {
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8))) {
 			return reader.lines().collect(Collectors.toList());
 		}
 	}

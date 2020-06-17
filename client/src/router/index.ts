@@ -50,7 +50,7 @@ const loginBeforeRouteLeave = (to: Route, from: Route, next: Function) => {
   }
 }
 
-export interface AppRoute extends RouteConfig {
+interface AppRouteExtensions {
   meta?: {
     navigationInfo?: {
       icon: string
@@ -60,6 +60,8 @@ export interface AppRoute extends RouteConfig {
     }
   }
 }
+
+export type AppRoute = RouteConfig & AppRouteExtensions
 
 const ALL_INSTITUTIONS: InstitutionRole[] = [
   'ROLE_TEST_SITE',
@@ -97,7 +99,7 @@ const appRoutes: AppRoute[] = [
           'ROLE_CLINIC',
           'ROLE_DOCTORS_OFFICE',
           'ROLE_TEST_SITE',
-        ],
+        ] as InstitutionRole[],
         showInSidenav: true,
       },
     },
@@ -115,7 +117,7 @@ const appRoutes: AppRoute[] = [
           'ROLE_CLINIC',
           'ROLE_DOCTORS_OFFICE',
           'ROLE_TEST_SITE',
-        ],
+        ] as InstitutionRole[],
         showInSidenav: true,
       },
     },
@@ -132,7 +134,7 @@ const appRoutes: AppRoute[] = [
           'ROLE_DEPARTMENT_OF_HEALTH',
           'ROLE_LABORATORY',
           'ROLE_TEST_SITE',
-        ],
+        ] as InstitutionRole[],
         showInSidenav: true,
       },
     },
@@ -146,7 +148,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'unordered-list',
         title: 'Alle Tests',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH', 'ROLE_LABORATORY', 'ROLE_TEST_SITE'] as InstitutionRole[],
         showInSidenav: true,
       },
     },
@@ -165,7 +167,7 @@ const appRoutes: AppRoute[] = [
           'ROLE_CLINIC',
           'ROLE_DOCTORS_OFFICE',
           'ROLE_TEST_SITE',
-        ],
+        ] as InstitutionRole[],
         showInSidenav: true,
       },
     },
@@ -178,7 +180,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'safety',
         title: 'Quarantäne vormerken',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'] as InstitutionRole[],
         showInSidenav: true,
       },
     },
@@ -191,7 +193,7 @@ const appRoutes: AppRoute[] = [
       navigationInfo: {
         icon: 'safety',
         title: 'In Quarantäne senden',
-        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'],
+        authorities: ['ROLE_DEPARTMENT_OF_HEALTH'] as InstitutionRole[],
         showInSidenav: true,
       },
     },

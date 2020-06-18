@@ -281,6 +281,7 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import PatientStammdaten from '@/components/form-groups/PatientStammdaten.vue'
 import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
+import {CaseDataDto, PersonDto, RequestParams, SormasSwaggerApi} from "@/api/SormasSwaggerApi";
 
 interface State {
   form: any
@@ -395,7 +396,7 @@ export default Vue.extend({
           return
         }
 
-        const request = {
+        const oldImisReq = {
           ...values,
           dateOfBirth: values.dateOfBirth.format('YYYY-MM-DD'),
           patientStatus: 'REGISTERED',
@@ -405,37 +406,118 @@ export default Vue.extend({
           riskAreas: [],
         }
 
-        if (!request.symptoms) {
-          request.symptoms = []
+        if (!oldImisReq.symptoms) {
+          oldImisReq.symptoms = []
         }
-        if (!request.preIllnesses) {
-          request.preIllnesses = []
+        if (!oldImisReq.preIllnesses) {
+          oldImisReq.preIllnesses = []
         }
         if (values.exposures) {
-          request.riskAreas = request.riskAreas.concat(values.exposures)
+          oldImisReq.riskAreas = oldImisReq.riskAreas.concat(values.exposures)
         }
         if (this.showOtherSymptoms) {
-          request.symptoms.push(values.symptomsOther)
+          oldImisReq.symptoms.push(values.symptomsOther)
         }
         if (this.showOtherPreIllnesses) {
-          request.preIllnesses.push(values.preIllnessesOther)
+          oldImisReq.preIllnesses.push(values.preIllnessesOther)
         }
         if (values.exposureLocation) {
-          request.riskAreas = request.riskAreas.concat(
+          oldImisReq.riskAreas = oldImisReq.riskAreas.concat(
             values.exposureLocation.map(
               (location: string) => 'CONTACT_WITH_CORONA_' + location
             )
           )
         }
-        request.weakenedImmuneSystem = !!request.preIllnesses // TODO: Do we need this field?
+        oldImisReq.weakenedImmuneSystem = !!oldImisReq.preIllnesses // TODO: Do we need this field?
           .find((illness: string) => illness === 'IMMUNODEFICIENCY')
-        request.coronaContacts = !!request.riskAreas // TODO: DO we need this field?
+        oldImisReq.coronaContacts = !!oldImisReq.riskAreas // TODO: DO we need this field?
           .find((riskArea: string) =>
             riskArea.startsWith('CONTACT_WITH_CORONA')
           )
-        Api.addPatientUsingPost(request).then((patient) => {
-          this.createdPatient = patient
-        })
+
+
+
+
+          // ==== SORMAS POST ====
+          const now = new Date().toISOString().split('.')[0]
+
+          function uuidv4() {
+              return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+                      /[xy]/g,
+                      function (c) {
+                          const r = (Math.random() * 16) | 0,
+                                  v = c == 'x' ? r : (r & 0x3) | 0x8
+                          return v.toString(16)
+                      }
+              ).toUpperCase()
+          }
+
+          const personUuid = uuidv4()
+          const caseUuid = uuidv4()
+
+          const birthDate = oldImisReq.dateOfBirth.split('-')
+
+          const apiPerson: PersonDto = {
+              creationDate: now,
+              changeDate: now,
+              uuid: personUuid,
+
+              firstName: oldImisReq.firstName,
+              lastName: oldImisReq.lastName,
+              sex: oldImisReq.gender.toUpperCase(),
+
+              birthdateDD: birthDate[2],
+              birthdateMM: birthDate[1],
+              birthdateYYYY: birthDate[0]
+          }
+
+
+          const apiCase: CaseDataDto = {
+              creationDate: now,
+              changeDate: now,
+              uuid: caseUuid,
+              disease: "CORONAVIRUS",
+              person: {
+                  uuid: personUuid
+              },
+              reportDate: now,
+              caseClassification: "NOT_CLASSIFIED",
+              investigationStatus: "PENDING",
+              region: {
+                  uuid: "SXAJMX-GJU72R-POK2TS-VR7NKGHY",
+              },
+              district: {
+                  uuid: "UCS4I7-ZGJHFO-X4RRTG-5DXO2BN4"
+              },
+              healthFacility: {
+                  uuid: "W7EFRL-NADHDB-MK4PZ3-6DFIKGRY"
+              },
+              reportingUser: {
+                  uuid: "XZUG2B-SWS5CB-SMNI4T-WZOECAZQ"
+              }
+          };
+
+          const headers: RequestParams = {
+              headers: {
+                  "Content-Type": "application/json",
+                  'Authorization': 'Basic ' + btoa('SurvOff:SurvOff')
+              },
+
+          };
+
+          let sormasSwaggerApi: SormasSwaggerApi = new SormasSwaggerApi<any>();
+          sormasSwaggerApi.persons
+                  .postPersons([apiPerson], headers)
+                  .then(function (r) {
+                      console.log("Posted person: " + r)
+                  })
+                  .then(function (r) {
+                      sormasSwaggerApi.cases.postCases([apiCase], headers)
+                  })
+                  .then(function (r) {
+                      console.log("Posted case: " + r)
+                  })
+
       })
     },
     onCheckedChange(e: Event) {

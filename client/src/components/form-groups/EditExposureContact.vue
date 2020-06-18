@@ -266,7 +266,7 @@ import Api from '@/api'
 import DateInput from '@/components/inputs/DateInput.vue'
 import PatientInput from '@/components/inputs/PatientInput.vue'
 import { FormGroupMixin } from '@/util/forms.ts'
-import { Patient } from '@/api/SwaggerApi'
+import { Patient } from '@/api/ImisSwaggerApi'
 
 const exposureContexts = [
   'Haushaltskontakt',

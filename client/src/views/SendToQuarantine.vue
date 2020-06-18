@@ -105,7 +105,7 @@
 <script lang="ts">
 import Api from '@/api'
 import Vue from 'vue'
-import { QuarantineIncident, ExposureContactFromServer } from '@/api/SwaggerApi'
+import { QuarantineIncident, ExposureContactFromServer } from '@/api/ImisSwaggerApi'
 import { Column } from 'ant-design-vue/types/table/column'
 import moment from 'moment'
 import { getPlzs } from '@/util/plz-service'

@@ -175,7 +175,7 @@ import { authMapper } from '@/store/modules/auth.module'
 import ChangePasswordForm from '@/components/modals/ChangePasswordForm.vue'
 import ChangeInstitutionForm from '@/components/modals/ChangeInstitutionForm.vue'
 import AddOrChangeUserForm from '@/components/modals/AddOrChangeUserForm.vue'
-import { UserDTO } from '@/api/SwaggerApi'
+import { UserDTO } from '@/api/ImisSwaggerApi'
 
 const tableColumns = [
   {

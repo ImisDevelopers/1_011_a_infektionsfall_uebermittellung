@@ -20,7 +20,7 @@
 <script lang="ts">
 import Api from '@/api'
 import mixins from 'vue-typed-mixins'
-import { Patient } from '@/api/SwaggerApi'
+import { Patient } from '@/api/ImisSwaggerApi'
 import { FormControlMixin } from '@/util/forms'
 
 declare interface State {

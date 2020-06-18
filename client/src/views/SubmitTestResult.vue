@@ -118,7 +118,7 @@
 </template>
 
 <script lang="ts">
-import { Laboratory } from '@/api/SwaggerApi'
+import { Laboratory } from '@/api/ImisSwaggerApi'
 import Vue from 'vue'
 import Api from '@/api'
 import TestInput from '@/components/inputs/TestInput.vue'
@@ -127,7 +127,7 @@ import DateInput from '@/components/inputs/DateInput.vue'
 import { authMapper } from '@/store/modules/auth.module'
 import { testResults, TestResultType } from '@/models/event-types'
 import moment from 'moment'
-import { TestIncident } from '../api/SwaggerApi'
+import { TestIncident } from '../api/ImisSwaggerApi'
 
 interface State {
   form: any

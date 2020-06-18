@@ -275,7 +275,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
+import { Patient } from '@/api/ImisSwaggerApi'
 import { Option } from '@/models'
 import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'

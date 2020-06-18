@@ -1,4 +1,4 @@
-import { CountryDto } from '@/api/SwaggerApi'
+import { CountryDto } from '@/api/ImisSwaggerApi'
 import Api from '@/api'
 
 let countries: CountryDto[] = []

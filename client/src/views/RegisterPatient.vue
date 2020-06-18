@@ -114,7 +114,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
+import { Patient } from '@/api/ImisSwaggerApi'
 import PatientStammdaten from '@/components/form-groups/PatientStammdaten.vue'
 import moment from 'moment'
 import SymptomsForm from '@/components/form-groups/SymptomsForm.vue'

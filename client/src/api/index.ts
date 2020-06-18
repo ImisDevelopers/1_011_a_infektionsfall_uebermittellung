@@ -1,4 +1,4 @@
-import { Api, RequestParams } from '@/api/SwaggerApi'
+import { Api, RequestParams } from '@/api/ImisSwaggerApi'
 
 let baseUrl: string = window.location.origin
 

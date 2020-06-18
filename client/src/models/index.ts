@@ -5,7 +5,7 @@ import {
   HospitalizationIncident,
   QuarantineIncident,
   AdministrativeIncident,
-} from '@/api/SwaggerApi'
+} from '@/api/ImisSwaggerApi'
 
 export type InstitutionType = Exclude<
   CreateInstitutionDTO['institutionType'],

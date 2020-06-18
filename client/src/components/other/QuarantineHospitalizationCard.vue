@@ -47,7 +47,7 @@ import { getDate } from '../../util/helper-functions'
 import {
   HospitalizationIncident,
   QuarantineIncident,
-} from '../../api/SwaggerApi'
+} from '../../api/ImisSwaggerApi'
 
 export default {
   name: 'QuarantineHospitalizationCard',

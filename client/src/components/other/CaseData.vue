@@ -131,7 +131,7 @@ import {
   QuarantineIncident,
   AdministrativeIncident,
   TestIncident,
-} from '../../api/SwaggerApi'
+} from '../../api/ImisSwaggerApi'
 import TestIncidentsCard from '../../components/other/TestIncidentsCard.vue'
 import QuarantineHospitalizationCard from '../../components/other/QuarantineHospitalizationCard.vue'
 import { getDate } from '../../util/helper-functions'

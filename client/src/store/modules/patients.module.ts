@@ -1,5 +1,5 @@
 import Api from '@/api'
-import { Patient } from '@/api/SwaggerApi'
+import { Patient } from '@/api/ImisSwaggerApi'
 import { Vue } from 'vue/types/vue'
 import {
   Actions,

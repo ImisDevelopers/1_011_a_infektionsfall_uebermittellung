@@ -1,5 +1,5 @@
 import Api from '@/api'
-import { Api as ApiDefs } from '@/api/SwaggerApi'
+import { Api as ApiDefs } from '@/api/ImisSwaggerApi'
 
 export interface ApiParams {
   path: string

@@ -26,7 +26,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { Timestamp, PatientLogDto } from '../../api/SwaggerApi'
+import { Timestamp, PatientLogDto } from '../../api/ImisSwaggerApi'
 import moment from 'moment'
 import { eventTypes, EventTypeItem } from '../../models/event-types'
 import { PatientStatus, Incident } from '../../models/index'

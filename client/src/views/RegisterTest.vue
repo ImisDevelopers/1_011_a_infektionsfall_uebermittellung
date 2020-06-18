@@ -156,7 +156,7 @@
 </template>
 
 <script lang="ts">
-import { TestIncident } from '../api/SwaggerApi'
+import { TestIncident } from '../api/ImisSwaggerApi'
 import Vue from 'vue'
 import DateInput from '@/components/inputs/DateInput.vue'
 import Api from '../api'

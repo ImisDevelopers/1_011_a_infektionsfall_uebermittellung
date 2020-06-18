@@ -152,7 +152,7 @@
 </template>
 
 <script lang="ts">
-import { ExposureContactFromServer, Patient } from '@/api/SwaggerApi'
+import { ExposureContactFromServer, Patient } from '@/api/ImisSwaggerApi'
 import Api from '@/api'
 import Vue from 'vue'
 import DateInput from '@/components/inputs/DateInput.vue'

@@ -13,7 +13,7 @@ client/.vscode
 cmake-build-*/
 
 # TODO
-#client/src/store/SwaggerApi.ts
+#client/src/store/ImisSwaggerApi.ts
 
 # File-based project format
 *.iws

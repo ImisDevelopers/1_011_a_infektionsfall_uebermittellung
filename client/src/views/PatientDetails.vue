@@ -390,7 +390,7 @@ import {
   Patient,
   Timestamp,
   PatientLogDto,
-} from '@/api/SwaggerApi'
+} from '@/api/ImisSwaggerApi'
 import { authMapper } from '@/store/modules/auth.module'
 import { patientMapper } from '@/store/modules/patients.module'
 import {

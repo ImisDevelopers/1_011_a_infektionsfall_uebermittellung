@@ -320,7 +320,7 @@ import {
 import Api from '@/api'
 import DateInput from '@/components/inputs/DateInput.vue'
 import LocationFormGroup from '@/components/form-groups/LocationFormGroup.vue'
-import { Patient, HealthInsuranceCompanies } from '@/api/SwaggerApi'
+import { Patient, HealthInsuranceCompanies } from '@/api/ImisSwaggerApi'
 import moment, { Moment } from 'moment'
 import { TextMatcher, TextMatcherResult } from '@/util/search'
 

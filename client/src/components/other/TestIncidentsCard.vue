@@ -38,7 +38,7 @@ import { Column } from 'ant-design-vue/types/table/column'
 import { testResults } from '../../models/event-types'
 import { testTypes } from '../../models/test-types'
 import { getDate } from '../../util/helper-functions'
-import { TestIncident } from '../../api/SwaggerApi'
+import { TestIncident } from '../../api/ImisSwaggerApi'
 
 const columnsTests: Partial<Column>[] = [
   {

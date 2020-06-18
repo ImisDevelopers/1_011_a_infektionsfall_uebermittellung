@@ -6,7 +6,7 @@ import {
   RegisterUserRequest,
   User,
   UserDTO,
-} from '@/api/SwaggerApi'
+} from '@/api/ImisSwaggerApi'
 import { config } from '@/config'
 import { InstitutionRole } from '@/models'
 import router, { AppRoute, navigationRoutes } from '@/router'

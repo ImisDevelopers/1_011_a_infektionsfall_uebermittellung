@@ -11,7 +11,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { ExposureContactContactView } from '@/api/SwaggerApi'
+import { ExposureContactContactView } from '@/api/ImisSwaggerApi'
 import Api from '@/api'
 
 interface State {

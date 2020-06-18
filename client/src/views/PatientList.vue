@@ -245,7 +245,7 @@ import {
   Patient,
   PatientSimpleSearchParamsDTO,
   PatientSearchParamsDTO,
-} from '@/api/SwaggerApi'
+} from '@/api/ImisSwaggerApi'
 import { eventTypes } from '@/models/event-types'
 import { PatientStatus } from '@/models'
 import { downloadCsv } from '@/util/export-service'

@@ -140,7 +140,7 @@ import mixins from 'vue-typed-mixins'
 import * as typing from '@/util/typing'
 import { getPlzs, Plz } from '@/util/plz-service'
 import { FormGroupMixin } from '@/util/forms'
-import { CountryDto } from '@/api/SwaggerApi'
+import { CountryDto } from '@/api/ImisSwaggerApi'
 import { getCountries } from '@/util/country-service'
 
 interface Input extends Vue {

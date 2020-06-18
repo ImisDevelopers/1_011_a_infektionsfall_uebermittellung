@@ -21,7 +21,7 @@
 <script lang="ts">
 import Api from '@/api'
 import Vue from 'vue'
-import { Laboratory } from '@/api/SwaggerApi'
+import { Laboratory } from '@/api/ImisSwaggerApi'
 
 /**
  * Input that supports 1d and 2d Barcodes

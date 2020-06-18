@@ -281,7 +281,12 @@ import { SYMPTOMS } from '@/models/symptoms'
 import { PRE_ILLNESSES } from '@/models/pre-illnesses'
 import PatientStammdaten from '@/components/form-groups/PatientStammdaten.vue'
 import { EXPOSURE_LOCATIONS, EXPOSURES_PUBLIC } from '@/models/exposures'
-import {CaseDataDto, PersonDto, RequestParams, SormasSwaggerApi} from "@/api/SormasSwaggerApi";
+import {
+  CaseDataDto,
+  PersonDto,
+  RequestParams,
+  SormasSwaggerApi,
+} from '@/api/SormasSwaggerApi'
 
 interface State {
   form: any
@@ -435,89 +440,82 @@ export default Vue.extend({
             riskArea.startsWith('CONTACT_WITH_CORONA')
           )
 
+        // ==== SORMAS POST ====
+        const now = new Date().toISOString().split('.')[0]
 
+        function uuidv4() {
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+            .replace(/[xy]/g, function (c) {
+              const r = (Math.random() * 16) | 0,
+                v = c == 'x' ? r : (r & 0x3) | 0x8
+              return v.toString(16)
+            })
+            .toUpperCase()
+        }
 
+        const personUuid = uuidv4()
+        const caseUuid = uuidv4()
 
-          // ==== SORMAS POST ====
-          const now = new Date().toISOString().split('.')[0]
+        const birthDate = oldImisReq.dateOfBirth.split('-')
 
-          function uuidv4() {
-              return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
-                      /[xy]/g,
-                      function (c) {
-                          const r = (Math.random() * 16) | 0,
-                                  v = c == 'x' ? r : (r & 0x3) | 0x8
-                          return v.toString(16)
-                      }
-              ).toUpperCase()
-          }
+        const apiPerson: PersonDto = {
+          creationDate: now,
+          changeDate: now,
+          uuid: personUuid,
 
-          const personUuid = uuidv4()
-          const caseUuid = uuidv4()
+          firstName: oldImisReq.firstName,
+          lastName: oldImisReq.lastName,
+          sex: oldImisReq.gender.toUpperCase(),
 
-          const birthDate = oldImisReq.dateOfBirth.split('-')
+          birthdateDD: birthDate[2],
+          birthdateMM: birthDate[1],
+          birthdateYYYY: birthDate[0],
+        }
 
-          const apiPerson: PersonDto = {
-              creationDate: now,
-              changeDate: now,
-              uuid: personUuid,
+        const apiCase: CaseDataDto = {
+          creationDate: now,
+          changeDate: now,
+          uuid: caseUuid,
+          disease: 'CORONAVIRUS',
+          person: {
+            uuid: personUuid,
+          },
+          reportDate: now,
+          caseClassification: 'NOT_CLASSIFIED',
+          investigationStatus: 'PENDING',
+          region: {
+            uuid: 'SXAJMX-GJU72R-POK2TS-VR7NKGHY',
+          },
+          district: {
+            uuid: 'UCS4I7-ZGJHFO-X4RRTG-5DXO2BN4',
+          },
+          healthFacility: {
+            uuid: 'W7EFRL-NADHDB-MK4PZ3-6DFIKGRY',
+          },
+          reportingUser: {
+            uuid: 'XZUG2B-SWS5CB-SMNI4T-WZOECAZQ',
+          },
+        }
 
-              firstName: oldImisReq.firstName,
-              lastName: oldImisReq.lastName,
-              sex: oldImisReq.gender.toUpperCase(),
+        const headers: RequestParams = {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Basic ' + btoa('SurvOff:SurvOff'),
+          },
+        }
 
-              birthdateDD: birthDate[2],
-              birthdateMM: birthDate[1],
-              birthdateYYYY: birthDate[0]
-          }
-
-
-          const apiCase: CaseDataDto = {
-              creationDate: now,
-              changeDate: now,
-              uuid: caseUuid,
-              disease: "CORONAVIRUS",
-              person: {
-                  uuid: personUuid
-              },
-              reportDate: now,
-              caseClassification: "NOT_CLASSIFIED",
-              investigationStatus: "PENDING",
-              region: {
-                  uuid: "SXAJMX-GJU72R-POK2TS-VR7NKGHY",
-              },
-              district: {
-                  uuid: "UCS4I7-ZGJHFO-X4RRTG-5DXO2BN4"
-              },
-              healthFacility: {
-                  uuid: "W7EFRL-NADHDB-MK4PZ3-6DFIKGRY"
-              },
-              reportingUser: {
-                  uuid: "XZUG2B-SWS5CB-SMNI4T-WZOECAZQ"
-              }
-          };
-
-          const headers: RequestParams = {
-              headers: {
-                  "Content-Type": "application/json",
-                  'Authorization': 'Basic ' + btoa('SurvOff:SurvOff')
-              },
-
-          };
-
-          let sormasSwaggerApi: SormasSwaggerApi = new SormasSwaggerApi<any>();
-          sormasSwaggerApi.persons
-                  .postPersons([apiPerson], headers)
-                  .then(function (r) {
-                      console.log("Posted person: " + r)
-                  })
-                  .then(function (r) {
-                      sormasSwaggerApi.cases.postCases([apiCase], headers)
-                  })
-                  .then(function (r) {
-                      console.log("Posted case: " + r)
-                  })
-
+        const sormasSwaggerApi: SormasSwaggerApi = new SormasSwaggerApi<any>()
+        sormasSwaggerApi.persons
+          .postPersons([apiPerson], headers)
+          .then(function (r) {
+            console.log('Posted person: ' + r)
+          })
+          .then(function (r) {
+            sormasSwaggerApi.cases.postCases([apiCase], headers)
+          })
+          .then(function (r) {
+            console.log('Posted case: ' + r)
+          })
       })
     },
     onCheckedChange(e: Event) {

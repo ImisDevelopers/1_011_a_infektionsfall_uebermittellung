@@ -85,7 +85,7 @@ jobs:
       run: |-
         export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
 
-        docker build -t ${IMAGE} -f client/Dockerfile.prod ./client && docker push ${IMAGE}
+        docker build -t ${IMAGE} -f Dockerfile.prod . && docker push ${IMAGE}
 
     - name: Deploy
       run: |

@@ -83,7 +83,9 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        gradle jib
+        export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
+
+        docker build -t ${IMAGE} -f client/Dockerfile.prod ./client && docker push ${IMAGE}
 
     - name: Deploy
       run: |
@@ -96,10 +98,7 @@ jobs:
                   --allow-unauthenticated \
                   --max-instances=1 \
                   --memory=512Mi --cpu=1000m \
-                  --concurrency=80 \
-                  --set-env-vars="SPRING_PROFILES_ACTIVE=pull-request,SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}" \
-                  --set-cloudsql-instances=onyx-yeti-271818:europe-west3:challenge-11 \
-                  --service-account=cloudsql-instance-service-acco@onyx-yeti-271818.iam.gserviceaccount.com \
+                  --concurrency=200 \
                   --region=europe-west1 \
                   --verbosity=debug
 

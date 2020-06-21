@@ -1,7 +1,0 @@
-
-
-
-Git commit SHA: '{{ .Values.gitSha }}' deployed to '{{ .Values.env }}' environment
-
-Check it out:  https://{{ $.Values.ingress.domain }}
-

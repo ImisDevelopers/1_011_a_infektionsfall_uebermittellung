@@ -1,0 +1,15 @@
+# build stage
+FROM node:current-alpine as build-stage
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install
+COPY . .
+RUN yarn run build
+
+# production stage
+FROM nginx:stable-alpine as production-stage
+RUN sed -i "s/80;/8080;/g" /etc/nginx/conf.d/*.conf
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
+

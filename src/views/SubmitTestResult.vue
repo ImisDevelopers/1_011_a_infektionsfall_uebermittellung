@@ -1,0 +1,266 @@
+<template>
+  <div style="max-width: 500px; margin: 0 auto;">
+    <a-page-header
+      title="Testresultat zuordnen"
+      sub-title=""
+      style="padding-left: 0; padding-right: 0;"
+    />
+
+    <a-card>
+      <a-form :form="form" layout="vertical" @submit.prevent="handleSubmit">
+        <!-- Labor -->
+        <LaboratoryInput
+          :form="form"
+          :initial-labs="laboratories"
+          :validation="[
+            'laboratoryId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte wählen Sie ein Labor aus.',
+                },
+              ],
+            },
+          ]"
+          label="Labor"
+        />
+
+        <!-- TestId -->
+        <TestInput
+          :form="form"
+          :validation="[
+            'testId',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Bitte geben Sie Ihre Test-ID ein.',
+                },
+              ],
+            },
+          ]"
+          label="Test-ID"
+          placeholder="z.B 1337-4237-9438"
+        />
+
+        <!-- TestResult -->
+        <a-form-item label="Testresultat">
+          <a-radio-group
+            class="imis-radio-group"
+            v-decorator="[
+              'status',
+              {
+                rules: [
+                  {
+                    required: true,
+                    message: 'Bitte geben Sie das Testresultat an.',
+                  },
+                ],
+              },
+            ]"
+          >
+            <a-radio
+              :key="testResult.id"
+              :value="testResult.id"
+              v-for="testResult in testResults"
+            >
+              <a-icon :type="testResult.icon" />
+              {{ testResult.label }}
+            </a-radio>
+          </a-radio-group>
+        </a-form-item>
+
+        <a-form-item label="Ergebnisdatum">
+          <DateInput
+            v-decorator="[
+              'eventDate',
+              {
+                initialValue: today,
+                rules: [
+                  {
+                    required: false,
+                    message: 'Datum der Probenabnahme',
+                  },
+                ],
+              },
+            ]"
+          />
+        </a-form-item>
+
+        <!-- Kommentar -->
+        <a-form-item label="Kommentar">
+          <a-textarea
+            :autoSize="{ minRows: 3, maxRows: 5 }"
+            placeholder="Kommentar hinzufügen"
+            v-decorator="['comment']"
+          />
+        </a-form-item>
+
+        <!-- Hochladen -->
+        <a-form-item :wrapper-col="{ span: 24 }">
+          <a-button v-on:click="uploadHint()">
+            <a-icon type="upload" />
+            Test Report hochladen
+          </a-button>
+        </a-form-item>
+        <a-divider />
+
+        <!-- Speichern -->
+        <a-form-item :wrapper-col="{ span: 24, offset: 0 }">
+          <a-button html-type="submit" type="primary">
+            Speichern
+          </a-button>
+        </a-form-item>
+      </a-form>
+    </a-card>
+  </div>
+</template>
+
+<script lang="ts">
+import { Laboratory } from '@/api/ImisSwaggerApi'
+import Vue from 'vue'
+import Api from '@/api'
+import TestInput from '@/components/inputs/TestInput.vue'
+import LaboratoryInput from '@/components/inputs/LaboratoryInput.vue'
+import DateInput from '@/components/inputs/DateInput.vue'
+import { authMapper } from '@/store/modules/auth.module'
+import { testResults, TestResultType } from '@/models/event-types'
+import moment from 'moment'
+import { TestIncident } from '../api/ImisSwaggerApi'
+
+interface State {
+  form: any
+  fileBytes?: any
+  today: moment.Moment
+  laboratories: Array<Laboratory>
+  testResults: any
+}
+
+export default Vue.extend({
+  name: 'SubmitTestResult',
+  computed: {
+    ...authMapper.mapGetters({ institution: 'institution' }),
+  },
+  components: {
+    TestInput,
+    LaboratoryInput,
+    DateInput,
+  },
+  props: {},
+  data(): State {
+    return {
+      form: this.$form.createForm(this),
+      fileBytes: undefined,
+      today: moment(),
+      laboratories: [],
+      testResults: testResults.filter(
+        (testResult) =>
+          testResult.id === 'TEST_POSITIVE' || testResult.id === 'TEST_NEGATIVE'
+      ),
+    }
+  },
+  async mounted() {
+    if (!this.institution()) {
+      await this.getAuthenticatedInstitution()
+    }
+    const lab = this.institution()
+    if (lab && lab.type === 'LABORATORY') {
+      this.laboratories = [lab]
+      this.form.setFieldsValue({
+        laboratoryId: lab.id,
+      })
+    } else {
+      this.form.setFieldsValue({
+        laboratoryId: '',
+      })
+    }
+  },
+  methods: {
+    ...authMapper.mapActions({
+      getAuthenticatedInstitution: 'getAuthenticatedInstitution',
+    }),
+    uploadHint() {
+      const notification = {
+        message:
+          'Das Labor kann hier den Bericht mit hochladen. Aus Sicherheitsgründen ist diese Funktion im Prototyp deaktiviert.',
+        description: '',
+      }
+      this.$notification.info(notification)
+    },
+    beforeUpload(file: File) {
+      const setFileBytes = (fileBytes: any) => {
+        this.fileBytes = fileBytes
+      }
+
+      const reader = new FileReader()
+      reader.onload = (e: any) => {
+        const utf8 = unescape(encodeURIComponent(e.target.result))
+        const array = []
+        for (let i = 0; i < utf8.length; i++) {
+          array.push(utf8.charCodeAt(i))
+        }
+        setFileBytes(array)
+      }
+      reader.readAsDataURL(file)
+
+      return false
+    },
+    handleSubmit() {
+      this.form.validateFields((err: Error, values: any) => {
+        if (err) {
+          return
+        }
+
+        const request: TestIncident = {
+          ...values,
+          eventType:
+            values.status === 'TEST_POSITIVE'
+              ? 'TEST_FINISHED_POSITIVE'
+              : 'TEST_FINISHED_NEGATIVE',
+          laboratory: {
+            id: values.laboratoryId,
+          },
+        }
+
+        Api.setTestByTestAndLabIdUsingPost(request)
+          .then((incident: TestIncident) => {
+            const h = this.$createElement
+            this.$success({
+              title: 'Der Test wurde erfolgreich aktualisiert.',
+              content: h('div', {}, [
+                h('div', `Test ID: ${incident.testId}`),
+                h(
+                  'div',
+                  `Neuer Test Status: ${
+                    testResults.find(
+                      (e: TestResultType) => e.id === incident.status
+                    )
+                      ? testResults.find(
+                          (e: TestResultType) => e.id === incident.status
+                        )!.label
+                      : incident.status
+                  }`
+                ),
+              ]),
+            })
+          })
+          .catch((err) => {
+            const notification = {
+              message: 'Fehler beim Hinzufügen des Testergebnisses.',
+              description: err.message,
+            }
+
+            if (err.message === 'TEST_NOT_FOUND') {
+              notification.description =
+                'Für diese Kombination aus Labor und Test-ID sind keine Daten hinterlegt.'
+            }
+            this.$notification.error(notification)
+          })
+      })
+    },
+  },
+})
+</script>
+
+<style scoped lang="scss"></style>

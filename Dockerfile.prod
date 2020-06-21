@@ -8,7 +8,7 @@ RUN yarn run build
 
 # production stage
 FROM nginx:stable-alpine as production-stage
-RUN sed  "s/80;/8080;/g" /etc/nginx/conf.d/*.conf
+RUN sed -i "s/80;/8080;/g" /etc/nginx/conf.d/*.conf
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]

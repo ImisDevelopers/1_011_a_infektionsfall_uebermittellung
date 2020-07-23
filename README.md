@@ -1,4 +1,7 @@
-[![IMIS Cover](client/public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
+# IMIS
+###### Infektions Melde und Informations System
+
+[![IMIS Cover](public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
 
   * [Demo](https://imis-prototyp.de)
   * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)

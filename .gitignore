@@ -8,12 +8,6 @@ client/.vscode
 .vscode
 **/.project
 **/.settings
-/.classpath
-# CMake
-cmake-build-*/
-
-# TODO
-#client/src/store/ImisSwaggerApi.ts
 
 # File-based project format
 *.iws
@@ -33,10 +27,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-### Java ###
-# Compiled class file
-*.class
-
 # Log file
 *.log
 
@@ -48,7 +38,6 @@ fabric.properties
 
 # Package Files #
 *.jar
-!gradle/wrapper/gradle-wrapper.jar
 *.war
 *.nar
 *.ear
@@ -66,13 +55,9 @@ hs_err_pid*
 
 ### Node
 node_modules
-client/dist
-# we use client/yarn.lock instead!
-client/package-lock.json
+dist
 
 # Log files
-client/npm-debug.log*
-client/yarn-debug.log*
-client/yarn-error.log*
-/build/
-/venv/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

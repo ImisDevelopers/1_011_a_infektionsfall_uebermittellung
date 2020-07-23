@@ -9,10 +9,6 @@ on:
     branches:
     - master
 
-# Environment variables available to all jobs and steps in this workflow
-env:
-  GITHUB_SHA: ${{ github.sha }}
-
 jobs:
   run-test:
     name: Test

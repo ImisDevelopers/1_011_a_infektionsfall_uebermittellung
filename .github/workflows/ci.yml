@@ -5,13 +5,9 @@ on:
     branches:
     - feature/*
     - master
-    - dev
-    - pilot
   pull_request:
     branches:
     - master
-    - dev
-    - pilot
 
 # Environment variables available to all jobs and steps in this workflow
 env:

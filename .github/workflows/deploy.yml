@@ -5,8 +5,7 @@ on:
     types: [published]
   push:
     branches:
-    - dev
-    - pilot
+    - master
 
 # Environment variables available to all jobs and steps in this workflow
 env:

@@ -22,15 +22,6 @@
         </a-button>
         <a-button
           :block="true"
-          href="https://devpost.com/software/imis-infektions-melde-und-informations-system"
-          icon="bulb"
-          shape="round"
-          type="primary"
-        >
-          <span>DevPost</span>
-        </a-button>
-        <a-button
-          :block="true"
           href="https://twitter.com/IMIS_team"
           icon="twitter"
           shape="round"

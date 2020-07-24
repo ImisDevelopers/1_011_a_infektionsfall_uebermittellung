@@ -75,7 +75,7 @@ jobs:
         yarn build
 
   run-lint:
-    name: Lint
+    name: ESLint check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -90,7 +90,7 @@ jobs:
     needs:
       - run-test
       - run-lint
-    name: Deploy PR
+    name: Deploy PR or Staging
     runs-on: ubuntu-latest
     steps:
     - name: Checkout

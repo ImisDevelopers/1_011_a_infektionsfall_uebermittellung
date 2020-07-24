@@ -8,8 +8,39 @@ on:
   pull_request:
     branches:
     - master
+    types:
+    - opened
+    - closed
+    - synchronize
+
+# Environment variables available to all jobs and steps in this workflow
+env:
+  GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}
+  GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
+  GITHUB_SHA: ${{ github.sha }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  REGISTRY_HOSTNAME: eu.gcr.io
 
 jobs:
+  stop-pr:
+    if: github.event.pull_request.closed == true || github.event.pull_request.merged == true
+    name: Stop PR
+    runs-on: ubuntu-latest
+    steps:
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_email: ${{ secrets.GKE_EMAIL }}
+        service_account_key: ${{ secrets.GKE_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT_ID }}
+    - name: Stop
+      run: |
+        gcloud components install beta
+
+        gcloud run services delete imis-pr-${PR_NUMBER} --platform=managed --region=europe-west1 --quiet
+
+
+
   run-test:
     name: Test
     runs-on: ubuntu-latest
@@ -53,3 +84,63 @@ jobs:
       with:
         repo-token: "${{secrets.GITHUB_TOKEN}}"
         source-root: "client"
+
+  deploy:
+    if: github.event.pull_request.closed != true &&  github.event.pull_request.merged != true
+    needs:
+      - run-test
+      - run-lint
+    name: Deploy PR
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Setup gcloud CLI
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_email: ${{ secrets.GKE_EMAIL }}
+        service_account_key: ${{ secrets.GKE_KEY }}
+        project_id: ${{ secrets.GKE_PROJECT_ID }}
+    # Configure docker to use the gcloud command-line tool as a credential helper
+    - run: |
+        # Set up docker to authenticate
+        # via gcloud command-line tool.
+        gcloud auth configure-docker
+
+    # Build and push image to Google Container Registry
+    - name: Build
+      run: |-
+        export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
+
+        docker build -t ${IMAGE} -f Dockerfile.prod . && docker push ${IMAGE}
+
+    - name: Deploy
+      run: |
+        export IMAGE="$REGISTRY_HOSTNAME/$GKE_PROJECT_ID/imis:$GITHUB_SHA"
+
+        gcloud components install beta
+
+        gcloud beta run deploy imis-pr-${PR_NUMBER:-staging} --image "$IMAGE" \
+                  --platform=managed \
+                  --allow-unauthenticated \
+                  --max-instances=1 \
+                  --memory=512Mi --cpu=1000m \
+                  --concurrency=200 \
+                  --region=europe-west1 \
+                  --verbosity=debug
+
+        PR_URL="$(gcloud beta run services describe imis-pr-${PR_NUMBER:-staging} --platform=managed --region=europe-west1 --format=yaml | grep -o 'url:.*' | uniq)"
+        echo "::set-env name=PR_COMMENT_MESSAGE::${PR_URL}"
+
+    - if: github.event.pull_request.closed != true &&  github.event.pull_request.merged != true
+      name: comment PR
+      uses: unsplash/comment-on-pr@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        msg: |
+          :arrow_right: Live preview at ${{ env.PR_COMMENT_MESSAGE }} :up:
+          :warning: First access might be very slow, database is shared. :eyes:
+        check_for_duplicate_msg: true

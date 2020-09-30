@@ -1,4 +1,7 @@
-[![IMIS Cover](client/public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
+# IMIS
+###### Infektions Melde und Informations System
+
+[![IMIS Cover](public/web-imis.png)](http://www.youtube.com/watch?v=XIIlMh3Lbsc "Pitch")
 
   * [Demo](https://imis-prototyp.de)
   * [Video pitch](https://www.youtube.com/watch?v=XIIlMh3Lbsc)
@@ -11,7 +14,6 @@ Dieses Projekt entstand im Rahmen des [#WirvsVirus](https://wirvsvirushackathon.
   
 # Development
 ### [Prod](https://imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=master&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/imisDevelopers/1_011_a_infektionsfall_uebermittellung?color=green)
-### [Dev](https://staing.imis-prototyp.de) ![Test](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Build%20and%20Test/badge.svg?branch=dev&event=push) ![Deploy](https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung/workflows/Deploy/badge.svg?branch=dev&event=push)
 
 ## General Guidelines
 

@@ -167,22 +167,22 @@
       </div>
     </div>
     <a class="link-section">
-      <a href="https://background.tagesspiegel.de/gesundheit/zivile-uebernahme">
+      <a title="Tagesspiegel Background" href="https://background.tagesspiegel.de/gesundheit/zivile-uebernahme">
         <img
             src="../assets/Tagesspiegel-Logo.jpg"
             class="pressreference"
         />
       </a>
-      <a href="https://e-health-com.de/details-news/vom-hackathon-in-die-gesundheitsaemter/">
+      <a title="EHEALTHCOM" href="https://e-health-com.de/details-news/vom-hackathon-in-die-gesundheitsaemter/">
         <img
             src="../assets/ehealthcomlogo.jpg"
             class="pressreference"
         />
       </a>
-      <a href="https://www.sueddeutsche.de/gesundheit/gesundheit-saarbruecken-studenten-beteiligen-sich-an-neuem-infektions-meldesystem-dpa.urn-newsml-dpa-com-20090101-200401-99-552503">
+      <a title="Sueddeutsche Zeitung" href="https://www.sueddeutsche.de/gesundheit/gesundheit-saarbruecken-studenten-beteiligen-sich-an-neuem-infektions-meldesystem-dpa.urn-newsml-dpa-com-20090101-200401-99-552503">
         <img src= "../assets/sueddeutsche-logo.jpg" class="pressreference"/>
       </a>
-      <a href="https://eu.eventscloud.com/emarketing/view.php?id=b1bed35378d229bdc3f6a7fcca68821b8c7281dad58d5fe957e1da30c32fd5c3-MjAyMC0wNiM1ZWY0YTAzMjU4YmEz">
+      <a title="Gesundheit_Digital" href="https://corona-digital.de/melde-tool-fuer-gesundheitsaemter/">
         <img
             src="../assets/hih-logo.png"
             class="pressreference"
@@ -225,7 +225,7 @@ export default Vue.extend({
       paragraph2:
           'Gesundheitsämter sind der Dreh- und Angelpunkt der Corona-Bekämpfung. Doch viele Arbeitsschritte gehen dort noch händisch und daher schleppend langsam vonstatten. Papierberge, Fax-Stapel, Zeitdruck und Frustration stehen schnellen Maßnahmen im Weg. Unser Ziel ist es, Arbeitsabläufe mit Bezug zum Infektionsschutz in Gesundheitsämtern zu digitalisieren. Dazu kooperieren wir mit dem Helmholtz-Zentrum für Infektionsforschung, indem wir aktiv Beträge zum Gesundheitsmanagement-System SORMAS Leisten. ',
       paragraph3:
-          'Als Open-Source-Projekt ist unser Ziel, in Kooperation mit anderen Projekten zur Schaffung einheitlicher Standards und der Entwicklung von hochwertiger Lösungen zur Pandemie-Bekämpfung in Deutschland und international beizutragen.',
+          'Als Open-Source-Projekt ist unser Ziel, in Kooperation mit anderen Projekten zur Schaffung einheitlicher Standards und der Entwicklung von hochwertigen Lösungen zur Pandemie-Bekämpfung in Deutschland und international beizutragen.',
     }
   },
 })
@@ -284,7 +284,6 @@ export default Vue.extend({
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
   color: rgba(255, 255, 255, 0.87);
 
   .first-section-text {
@@ -372,6 +371,10 @@ export default Vue.extend({
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
 
   > div {
     display: flex;

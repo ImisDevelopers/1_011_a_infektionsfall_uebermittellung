@@ -4,12 +4,12 @@
       <img
         aspect-ratio="1.7"
         src="../assets/logo.png"
-        style="vertical-align: middle;"
+        style="vertical-align: middle"
       />
-      <h1 class="header-text" style="margin: 0 0 0 15px;">
+      <h1 class="header-text" style="margin: 0 0 0 15px">
         Schnell. Einfach. Zuverlässig.
       </h1>
-      <span style="flex: 1 1 auto;"></span>
+      <span style="flex: 1 1 auto"></span>
       <div class="header-buttons">
         <a-button
           :block="true"
@@ -31,71 +31,76 @@
         </a-button>
         <a-button
           :block="true"
-          href="https://github.com/ImisDevelopers/1_011_a_infektionsfall_uebermittellung"
-          icon="github"
+          href="https://www.startnext.com/imis-infektionsmanagement"
+          icon="euro"
           shape="round"
           type="primary"
         >
-          <span>GitHub</span>
+          <span>Unterstützen</span>
         </a-button>
       </div>
     </div>
     <!-- Header is fixed, so it is not included in layout -->
-    <div style="height: 100px;"></div>
-    <div class="first-section" style="position: relative;">
-      <iframe
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        frameborder="0"
-        height="315"
-        src="https://www.youtube.com/embed/XIIlMh3Lbsc"
-        style="max-width: 100%;"
+    <div style="height: 100px"></div>
+    <div class="first-section" style="position: relative">
+      <div
+        style="max-width: 100%"
         width="560"
-      ></iframe>
+      ></div>
       <div class="first-section-text">
-        <div style="display: flex;">
-          <h2 style="color: white;">
+        <div style="display: flex">
+          <h2 style="color: white">
             Das Infektionsmelde- und Informationssystem
           </h2>
         </div>
-        <div style="text-align: left; font-size: 16px;">
+        <div style="text-align: left; font-size: 16px">
           {{ paragraph1 }}
         </div>
-        <br />
+        <br>
         <div style="text-align: left;">
           {{ paragraph2 }}
         </div>
+        <br />
+        <div style="text-align: left">
+          {{ paragraph3 }}
+        </div>
       </div>
     </div>
-    <div class="button-container">
+    <!-- <div class="button-container">
       <router-link
         :to="{ name: 'public-register' }"
-        style="margin: 10px 20px 10px 0;"
+        style="margin: 10px 20px 10px 0"
       >
         <a-button
           block
           icon="arrow-right"
           shape="round"
           size="large"
-          style="flex: 0 1 300px; margin-left: 20px;"
+          style="flex: 0 1 300px; margin-left: 20px"
           type="primary"
           >Zur Selbstregistrierung
         </a-button>
       </router-link>
-      <router-link :to="{ name: 'app' }" style="margin: 10px 0;">
+      <router-link :to="{ name: 'app' }" style="margin: 10px 0">
         <a-button
           block
           icon="arrow-right"
           shape="round"
           size="large"
-          style="flex: 0 1 300px; margin-left: 20px;"
+          style="flex: 0 1 300px; margin-left: 20px"
           type="primary"
           >Zur Live-Demo
         </a-button>
       </router-link>
+    </div> -->
+    <div class="link-section">
+        <img src="../assets/bss-logo.png" class="supporter-logo"/>
+        <img src="../assets/Solution-Enabler.png" class="supporter-logo"/>
+        <img src="../assets/pt-logo.png" class="supporter-logo"/>
+        <img src="../assets/tech4germany-logo.png" class="supporter-logo"/>
     </div>
     <!--<div class="second-section">
-      <h1 style="margin: 0;">
+      <h1 style="margin: 0">
         Der IMIS-Meldeprozess - Einfach, Schnell, Zentral
       </h1>
       <img src="../assets/imis-workflow.png" />
@@ -107,7 +112,7 @@
         icon="bulb"
         shape="round"
         size="large"
-        style="flex: 0 1 400px; margin-left: 20px;"
+        style="flex: 0 1 400px; margin-left: 20px"
         type="primary"
       >
         <span class="hidden-mobile"
@@ -115,13 +120,16 @@
         >
         <span class="hidden-desktop">Zur Prozessübersicht</span>
       </a-button>
-    </div>-->
+    </div> -->
+
+
+
     <div class="solution-enabler-section">
       <h1>Gemeinsam gegen COVID-19</h1>
-      <h2 style="max-width: 800px; text-align: center;">
+      <h2 style="max-width: 800px; text-align: center">
         IMIS ist aus dem
         <a href="https://wirvsvirushackathon.org/">#WirVsVirus</a>-Hackathon
-        hervorgegangen und wird nun von einem Team aus über 30 Leuten aktiv
+        hervorgegangen und wird seit dem von einem Team aus knapp einem Dutzend Leuten aktiv
         weiterentwickelt.
       </h2>
       <!--      <a-divider style="max-width: 1000px; min-width: 0"></a-divider>-->
@@ -153,22 +161,45 @@
         </div>
         <a-icon
           :style="{ fontSize: '128px', color: '#2c3e50' }"
-          style="margin-bottom: 25px;"
+          style="margin-bottom: 25px"
           type="team"
         />
       </div>
     </div>
+    <a class="link-section">
+      <a href="https://background.tagesspiegel.de/gesundheit/zivile-uebernahme">
+        <img
+            src="../assets/Tagesspiegel-Logo.jpg"
+            class="pressreference"
+        />
+      </a>
+      <a href="https://e-health-com.de/details-news/vom-hackathon-in-die-gesundheitsaemter/">
+        <img
+            src="../assets/ehealthcomlogo.jpg"
+            class="pressreference"
+        />
+      </a>
+      <a href="https://www.sueddeutsche.de/gesundheit/gesundheit-saarbruecken-studenten-beteiligen-sich-an-neuem-infektions-meldesystem-dpa.urn-newsml-dpa-com-20090101-200401-99-552503">
+        <img src= "../assets/sueddeutsche-logo.jpg" class="pressreference"/>
+      </a>
+      <a href="https://eu.eventscloud.com/emarketing/view.php?id=b1bed35378d229bdc3f6a7fcca68821b8c7281dad58d5fe957e1da30c32fd5c3-MjAyMC0wNiM1ZWY0YTAzMjU4YmEz">
+        <img
+            src="../assets/hih-logo.png"
+            class="pressreference"
+        />
+      </a>
+    </a>
     <div class="third-section">
       <div>
         <img
           aspect-ratio="1.7"
           src="../assets/logo.png"
-          style="vertical-align: middle; height: 100px;"
+          style="vertical-align: middle; height: 100px"
         />
       </div>
       <div>
         <span>Kontakt:</span>
-        <a-divider style="margin: 5px 0;"></a-divider>
+        <a-divider style="margin: 5px 0"></a-divider>
         <span>Andrey Eganov</span>
         <span>0681 / 500 66 72 0</span>
         <span>imis-team@gmx.de</span>
@@ -190,9 +221,11 @@ export default Vue.extend({
   data() {
     return {
       paragraph1:
-        'Das Sammeln und Verwalten der aktuellen Infektionszahlen erfordert extrem viel Zeit und Ressourcen. IMIS ist unsere Lösung für eine schnelle, sichere und einfache Infektionsfall-Erfassung für Ärzte, Gesundheitsämter und Labore. Damit ermöglichen wir, dass wichtige Ressourcen frei werden, die dann an anderer Stelle gewinnbringend eingesetzt werden können.',
+        'Wir wollen die Corona-Pandemie in den Griff bekommen und Leben retten. Unser Ansatz? Gesundheitsämter mit einer maßgeschneiderten digitalen Lösung ausstatten und durch schnelle Prozesse die Ausbreitung des Virus stoppen! ',
       paragraph2:
-        'Die COVID-19-Pandemie stellt für das bestehende Infektionsmeldewesen in Deutschland eine immense Herausforderung dar. Ärzte und über 400 Gesundheitsämter benutzen gegenwärtig einen uneinheitlichen Mix aus Telefon, Fax, E-Mails und Excel-Tabellen, um Fälle zusammenzutragen. Eine starke Auslastung der Gesundheitsämter und verspätete Meldungen sind die Folge. So erhalten Entscheider häufig nur lückenhafte Statistiken. Diese Lage sorgt für Unsicherheit und macht es schwer, angemessen auf die Krise zu reagieren. ',
+          'Gesundheitsämter sind der Dreh- und Angelpunkt der Corona-Bekämpfung. Doch viele Arbeitsschritte gehen dort noch händisch und daher schleppend langsam vonstatten. Papierberge, Fax-Stapel, Zeitdruck und Frustration stehen schnellen Maßnahmen im Weg. Unser Ziel ist es, Arbeitsabläufe mit Bezug zum Infektionsschutz in Gesundheitsämtern zu digitalisieren. Dazu kooperieren wir mit dem Helmholtz-Zentrum für Infektionsforschung, indem wir aktiv Beträge zum Gesundheitsmanagement-System SORMAS Leisten. ',
+      paragraph3:
+          'Als Open-Source-Projekt ist unser Ziel, in Kooperation mit anderen Projekten zur Schaffung einheitlicher Standards und der Entwicklung von hochwertiger Lösungen zur Pandemie-Bekämpfung in Deutschland und international beizutragen.',
     }
   },
 })
@@ -247,6 +280,10 @@ export default Vue.extend({
   /*background: #2c3e50;*/
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url('../assets/wave-bg.svg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   color: rgba(255, 255, 255, 0.87);
 
@@ -348,12 +385,39 @@ export default Vue.extend({
 .link-section {
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: #d3d3d3;
 
   span {
     margin-left: 5px;
   }
+}
+
+.pressreference {
+  margin:20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+  horiz-align: center;
+  height: 100px;
+  width: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  object-fit: contain;
+  background-color: #ffffff
+}
+
+.supporter-logo {
+  margin:5px;
+  padding: 5px;
+  vertical-align: middle;
+  horiz-align: center;
+  height: 80px;
+  width: 200px;
+  border-radius: 5px;
+  object-fit: contain;
 }
 
 @media (min-width: 1000px) {

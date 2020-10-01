@@ -308,6 +308,7 @@ export default Vue.extend({
 .solution-enabler-section {
   padding: 60px 50px 100px 50px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
 
@@ -333,7 +334,7 @@ export default Vue.extend({
     }
 
     div {
-      flex: 1 0 300px;
+      flex: 1 0 1px;
       text-align: left;
       margin: 25px;
     }
@@ -388,7 +389,8 @@ export default Vue.extend({
 .link-section {
   display: flex;
   justify-content: center;
-  padding: 20px 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background: #d3d3d3;
 
   span {
@@ -397,7 +399,7 @@ export default Vue.extend({
 }
 
 .pressreference {
-  margin:20px;
+  margin:1vw;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
@@ -405,7 +407,8 @@ export default Vue.extend({
   vertical-align: middle;
   horiz-align: center;
   height: 100px;
-  width: 200px;
+  width: 20vw;
+  max-width: 200px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   object-fit: contain;
@@ -413,12 +416,12 @@ export default Vue.extend({
 }
 
 .supporter-logo {
-  margin:5px;
-  padding: 5px;
+  margin:1%;
   vertical-align: middle;
   horiz-align: center;
   height: 80px;
-  width: 200px;
+  width: 20%;
+  max-width: 200px;
   border-radius: 5px;
   object-fit: contain;
 }

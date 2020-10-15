@@ -41,7 +41,9 @@
       </div>
     </div>
     <!-- Header is fixed, so it is not included in layout -->
-    <div style="height: 100px"></div>
+    <div style="height: 100px;"></div>
+    <div class="first-section" style="position: relative;">
+      <!-- insert Video here -->
     <div class="first-section" style="position: relative">
       <div
         style="max-width: 100%"
@@ -65,6 +67,7 @@
           {{ paragraph3 }}
         </div>
       </div>
+    </div>
     </div>
     <!-- <div class="button-container">
       <router-link
@@ -123,7 +126,13 @@
     </div> -->
 
 
-
+    <div class="solution-enabler-section">
+      <iframe src="https://drive.google.com/file/d/1uItlQiyvOyjl55ekD9HpXyTXeVz7MjJa/preview" width="880" height="495" allowfullscreen frameborder="0">bla</iframe>
+      <h4 style="max-width: 880px; horiz-align: left">Vorstellung einer für SORMAS entwickelten Funktion zur automatisierten Erstellung von Quarantäne-Bescheiden. <br>
+        Dank der modularen Bauweise kann jedes Gesundheitsamt selbst bestimmen, welche Daten Teil des Bescheids werden und welche nicht.
+        Die Funktion wird derzeit in diverse Sprachen übersetzt und wird mit dem nächsten SORMAS-Update in über 50 Gesundheitsämtern in Deutschland sowie international verfügbar sein.
+      </h4>
+    </div>
     <div class="solution-enabler-section">
       <h1>Gemeinsam gegen COVID-19</h1>
       <h2 style="max-width: 800px; text-align: center">

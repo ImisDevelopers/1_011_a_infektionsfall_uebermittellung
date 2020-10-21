@@ -127,7 +127,7 @@
 
 
     <div class="solution-enabler-section">
-      <iframe src="https://drive.google.com/file/d/1uItlQiyvOyjl55ekD9HpXyTXeVz7MjJa/preview" width="880" height="495" allowfullscreen frameborder="0">bla</iframe>
+      <iframe width="880" height="495" src="https://www.youtube.com/embed/oi6UI7clU5g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <h4 style="max-width: 880px; horiz-align: left">Vorstellung einer für SORMAS entwickelten Funktion zur automatisierten Erstellung von Quarantäne-Bescheiden. <br>
         Dank der modularen Bauweise kann jedes Gesundheitsamt selbst bestimmen, welche Daten Teil des Bescheids werden und welche nicht.
         Die Funktion wird derzeit in diverse Sprachen übersetzt und wird mit dem nächsten SORMAS-Update in über 50 Gesundheitsämtern in Deutschland sowie international verfügbar sein.

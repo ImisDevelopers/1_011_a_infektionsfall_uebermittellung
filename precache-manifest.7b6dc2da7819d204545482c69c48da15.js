@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c7d1f9f2d69ed9cd95ef",
-    "url": "/css/app.a4fa0bf8.css"
+    "revision": "357478f18b78ec7a3142",
+    "url": "/css/app.f53624c4.css"
   },
   {
     "revision": "730b0bf19dc9bea83a4b",
@@ -44,6 +44,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/sueddeutsche-logo.79b5ae0e.jpg"
   },
   {
+    "revision": "57672009c4e520bee7bc356c4f92c70b",
+    "url": "/img/tagesspiegel-background.57672009.jpeg"
+  },
+  {
     "revision": "b016f600adb0d02935ae21d38e9c643d",
     "url": "/img/tech4germany-logo.b016f600.png"
   },
@@ -52,12 +56,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/wave-bg.f14e94db.svg"
   },
   {
-    "revision": "b94e0d5c467dc4055733f8c5f988ff05",
+    "revision": "d4f57062360802f737c86b5a109c67e3",
     "url": "/index.html"
   },
   {
-    "revision": "c7d1f9f2d69ed9cd95ef",
-    "url": "/js/app.d81f74df.js"
+    "revision": "357478f18b78ec7a3142",
+    "url": "/js/app.4405b0eb.js"
   },
   {
     "revision": "730b0bf19dc9bea83a4b",

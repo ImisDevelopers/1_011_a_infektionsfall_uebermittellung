@@ -127,8 +127,10 @@
 
 
     <div class="solution-enabler-section">
-      <iframe width="880" height="495" src="https://www.youtube.com/embed/oi6UI7clU5g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <h4 style="max-width: 880px; horiz-align: left">Vorstellung einer für SORMAS entwickelten Funktion zur automatisierten Erstellung von Quarantäne-Bescheiden. <br>
+      <div style="max-width:880px; max-height:495px; width:80vw; height: 50.58vw; margin: 0 auto;">
+        <iframe style="width:100%;height:100%;" src="https://www.youtube.com/embed/oi6UI7clU5g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+        <h4 style="max-width: 880px; horiz-align: left">Vorstellung einer für SORMAS entwickelten Funktion zur automatisierten Erstellung von Quarantäne-Bescheiden. <br>
         Dank der modularen Bauweise kann jedes Gesundheitsamt selbst bestimmen, welche Daten Teil des Bescheids werden und welche nicht.
         Die Funktion wird derzeit in diverse Sprachen übersetzt und wird mit dem nächsten SORMAS-Update in über 50 Gesundheitsämtern in Deutschland sowie international verfügbar sein.
       </h4>
@@ -176,9 +178,15 @@
       </div>
     </div>
     <a class="link-section">
-      <a title="Tagesspiegel Background" href="https://background.tagesspiegel.de/gesundheit/zivile-uebernahme">
+      <a title="Tagesspiegel" href="https://www.tagesspiegel.de/wirtschaft/die-regierung-lobt-das-hackathon-experiment-sehnsucht-nach-ideen/26236622.html">
         <img
             src="../assets/Tagesspiegel-Logo.jpg"
+            class="pressreference"
+        />
+      </a>
+      <a title="Tagesspiegel Background" href="https://background.tagesspiegel.de/gesundheit/zivile-uebernahme">
+        <img
+            src="../assets/tagesspiegel-background.jpeg"
             class="pressreference"
         />
       </a>
@@ -416,7 +424,7 @@ export default Vue.extend({
   vertical-align: middle;
   horiz-align: center;
   height: 100px;
-  width: 20vw;
+  width: 16vw;
   max-width: 200px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;

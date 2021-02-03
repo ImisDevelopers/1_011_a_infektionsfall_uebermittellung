@@ -2,13 +2,16 @@
   <div>
     <div class="landing-header">
       <img
-        aspect-ratio="1.7"
-        src="../assets/logo.png"
-        style="vertical-align: middle"
+          aspect-ratio="1.7"
+          src="../assets/logo.png"
+          style="vertical-align: middle"
       />
-      <h1 class="header-text" style="margin: 0 0 0 15px">
-        Schnell. Einfach. Zuverlässig.
-      </h1>
+      <a href="/">
+        <h1 class="header-text" style="margin: 0 0 0 15px">
+          Schnell. Einfach. Zuverlässig.
+        </h1>
+      </a>
+
       <span style="flex: 1 1 auto"></span>
       <div class="header-buttons">
         <a-button
@@ -42,191 +45,35 @@
     </div>
     <!-- Header is fixed, so it is not included in layout -->
     <div style="height: 100px;"></div>
-    <div class="first-section" style="position: relative;">
-      <!-- insert Video here -->
     <div class="first-section" style="position: relative">
       <div
-        style="max-width: 100%"
-        width="560"
+          style="max-width: 100%"
+          width="560"
       ></div>
-      <div class="first-section-text">
-        <div style="display: flex">
-          <h2 style="color: white">
-            Das Infektionsmelde- und Informationssystem
-          </h2>
-        </div>
-        <div style="text-align: left; font-size: 16px">
-          {{ paragraph1 }}
+      <div>
+        <div>
+          <span>IMIS GbR</span>
+          <a-divider style="margin: 5px 0"></a-divider>
+          <span>Vertreten duch: Achim Löbke</span><br>
+          <span>Tüleck 1, 48336 Sassenberg</span><br>
+          <span>0681 / 500 66 72 0</span><br>
+          <span>imis-team@gmx.de</span><br>
         </div>
         <br>
-        <div style="text-align: left;">
-          {{ paragraph2 }}
+        <br>
+        <div style="text-align: left; font-size: 16px">
+          Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.
+          Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
+          Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
+           </div>
+        <br>
+        <div style="text-align: left; font-size: 16px">
+          Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
         </div>
-        <br />
-        <div style="text-align: left">
-          {{ paragraph3 }}
         </div>
-      </div>
-    </div>
-    </div>
-    <!-- <div class="button-container">
-      <router-link
-        :to="{ name: 'public-register' }"
-        style="margin: 10px 20px 10px 0"
-      >
-        <a-button
-          block
-          icon="arrow-right"
-          shape="round"
-          size="large"
-          style="flex: 0 1 300px; margin-left: 20px"
-          type="primary"
-          >Zur Selbstregistrierung
-        </a-button>
-      </router-link>
-      <router-link :to="{ name: 'app' }" style="margin: 10px 0">
-        <a-button
-          block
-          icon="arrow-right"
-          shape="round"
-          size="large"
-          style="flex: 0 1 300px; margin-left: 20px"
-          type="primary"
-          >Zur Live-Demo
-        </a-button>
-      </router-link>
-    </div> -->
-    <div class="link-section">
-        <img src="../assets/bss-logo.png" class="supporter-logo"/>
-        <img src="../assets/Solution-Enabler.png" class="supporter-logo"/>
-        <img src="../assets/pt-logo.png" class="supporter-logo"/>
-        <img src="../assets/tech4germany-logo.png" class="supporter-logo"/>
-    </div>
-    <!--<div class="second-section">
-      <h1 style="margin: 0">
-        Der IMIS-Meldeprozess - Einfach, Schnell, Zentral
-      </h1>
-      <img src="../assets/imis-workflow.png" />
-    </div>
-    <div class="link-section">
-      <a-button
-        block
-        href="https://drive.google.com/file/d/1hoQtGvO21p7_pQ63iDLoWzXB-FFfvKQJ/view?usp=sharing"
-        icon="bulb"
-        shape="round"
-        size="large"
-        style="flex: 0 1 400px; margin-left: 20px"
-        type="primary"
-      >
-        <span class="hidden-mobile"
-          >Hier geht's zu unserer Prozessübersicht</span
-        >
-        <span class="hidden-desktop">Zur Prozessübersicht</span>
-      </a-button>
-    </div> -->
+      <br>
+      <br>
 
-
-    <div class="solution-enabler-section">
-      <div style="max-width:880px; max-height:495px; width:80vw; height: 50.58vw; margin: 0 auto;">
-        <iframe style="width:100%;height:100%;" src="https://www.youtube.com/embed/oi6UI7clU5g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-        <h4 style="max-width: 880px; horiz-align: left">Vorstellung einer für SORMAS entwickelten Funktion zur automatisierten Erstellung von Quarantäne-Bescheiden. <br>
-        Dank der modularen Bauweise kann jedes Gesundheitsamt selbst bestimmen, welche Daten Teil des Bescheids werden und welche nicht.
-        Die Funktion wird derzeit in diverse Sprachen übersetzt und wird mit dem nächsten SORMAS-Update in über 50 Gesundheitsämtern in Deutschland sowie international verfügbar sein.
-      </h4>
-    </div>
-    <div class="solution-enabler-section">
-      <h1>Gemeinsam gegen COVID-19</h1>
-      <h2 style="max-width: 800px; text-align: center">
-        IMIS ist aus dem
-        <a href="https://wirvsvirushackathon.org/">#WirVsVirus</a>-Hackathon
-        hervorgegangen und wird seit dem von einem Team aus knapp einem Dutzend Leuten aktiv
-        weiterentwickelt.
-      </h2>
-      <!--      <a-divider style="max-width: 1000px; min-width: 0"></a-divider>-->
-      <div class="solution-enabler-program">
-        <img src="../assets/Solution-Enabler.png" />
-        <div>
-          <h2>
-            Als eines von 130 aus über 1500 Projekten ist IMIS in den
-            <a href="https://wirvsvirushackathon.org/weiterfuehrung-2/"
-              >Solution Enabler</a
-            >
-            aufgenommen worden.
-          </h2>
-          <h3>
-            Dadurch erhalten wir Zugriff auf Coaching- und
-            Unterstützungsangebote sowie Ressourcen und Expertise.
-          </h3>
-        </div>
-      </div>
-      <!--      <a-divider style="max-width: 1000px; min-width: 0"></a-divider>-->
-      <div class="solution-enabler-our-team">
-        <div>
-          <h2>Eine anspruchsvolle Aufgabe.</h2>
-          <h3>
-            Und deshalb sind wir ein vielfältiges Team aus Organisatoren und
-            Projektkoordinatoren, Frontend- und Backend-Entwicklern,
-            UI-Designern, Datenbankspezialisten und vielen mehr.
-          </h3>
-        </div>
-        <a-icon
-          :style="{ fontSize: '128px', color: '#2c3e50' }"
-          style="margin-bottom: 25px"
-          type="team"
-        />
-      </div>
-    </div>
-    <a class="link-section">
-      <a title="Tagesspiegel" href="https://www.tagesspiegel.de/wirtschaft/die-regierung-lobt-das-hackathon-experiment-sehnsucht-nach-ideen/26236622.html">
-        <img
-            src="../assets/Tagesspiegel-Logo.jpg"
-            class="pressreference"
-        />
-      </a>
-      <a title="Tagesspiegel Background" href="https://background.tagesspiegel.de/gesundheit/zivile-uebernahme">
-        <img
-            src="../assets/tagesspiegel-background.jpeg"
-            class="pressreference"
-        />
-      </a>
-      <a title="EHEALTHCOM" href="https://e-health-com.de/details-news/vom-hackathon-in-die-gesundheitsaemter/">
-        <img
-            src="../assets/ehealthcomlogo.jpg"
-            class="pressreference"
-        />
-      </a>
-      <a title="Sueddeutsche Zeitung" href="https://www.sueddeutsche.de/gesundheit/gesundheit-saarbruecken-studenten-beteiligen-sich-an-neuem-infektions-meldesystem-dpa.urn-newsml-dpa-com-20090101-200401-99-552503">
-        <img src= "../assets/sueddeutsche-logo.jpg" class="pressreference"/>
-      </a>
-      <a title="Gesundheit_Digital" href="https://corona-digital.de/melde-tool-fuer-gesundheitsaemter/">
-        <img
-            src="../assets/hih-logo.png"
-            class="pressreference"
-        />
-      </a>
-    </a>
-    <div class="third-section">
-      <div>
-        <img
-          aspect-ratio="1.7"
-          src="../assets/logo.png"
-          style="vertical-align: middle; height: 100px"
-        />
-      </div>
-      <div>
-        <span>Kontakt:</span>
-        <a-divider style="margin: 5px 0"></a-divider>
-        <span>Andrey Eganov</span>
-        <span>0681 / 500 66 72 0</span>
-        <span>imis-team@gmx.de</span>
-        <a title="Impressum" href="/impressum">Impressum</a>
-      </div>
-      <!--
-      <div style="justify-content: center">
-        &copy; 2020 Das IMIS Team
-      </div>
-      -->
     </div>
   </div>
 </template>
@@ -292,7 +139,7 @@ export default Vue.extend({
 .first-section {
   display: flex;
   padding: 50px 50px 75px 50px;
-  height: 600px;
+  height: calc(100vh - 100px);
   justify-content: center;
   align-items: center;
   /*background: #2c3e50;*/
@@ -394,6 +241,7 @@ export default Vue.extend({
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+
 
   > div {
     display: flex;

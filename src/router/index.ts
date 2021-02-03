@@ -3,6 +3,7 @@ import AccountView from '@/views/Account.vue'
 import AppRoot from '@/views/AppRoot.vue'
 import Dashboard from '@/views/Dashboard.vue'
 import LandingPage from '@/views/LandingPage.vue'
+import Impressum from '@/views/Impressum.vue'
 import Login from '@/views/Login.vue'
 import PatientDetails from '@/views/PatientDetails.vue'
 import PatientList from '@/views/PatientList.vue'
@@ -241,6 +242,11 @@ const routes = [
     path: '/',
     component: LandingPage,
   },
+	{
+		name: 'impressum',
+		path: '/impressum',
+		component: Impressum,
+	},
   {
     name: 'public-register',
     path: '/public-register',

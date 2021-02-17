@@ -1,3 +1,5 @@
+# This repository is deprecated!
+
 # IMIS
 ###### Infektions Melde und Informations System
 

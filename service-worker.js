@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/1_011_a_infektionsfall_uebermittellung/precache-manifest.7e810747995069aca93e2736ea78f9b0.js"
+  "/1_011_a_infektionsfall_uebermittellung/precache-manifest.18026a499ddb2878a73a90e51177d993.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "IMIS"});

@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "aa9b7b33990fe4b5c431",
-    "url": "/1_011_a_infektionsfall_uebermittellung/css/app.a3723a74.css"
+    "revision": "b78c0c7bcdd54ee212cc",
+    "url": "/1_011_a_infektionsfall_uebermittellung/css/app.e09f8f24.css"
   },
   {
     "revision": "e3dd896a94b3fce57876",
@@ -56,12 +56,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/1_011_a_infektionsfall_uebermittellung/img/wave-bg.f14e94db.svg"
   },
   {
-    "revision": "8bb3e648385fdd44992dd71562b48443",
+    "revision": "df5147e151f2cf30ebd5bf97d3707a53",
     "url": "/1_011_a_infektionsfall_uebermittellung/index.html"
   },
   {
-    "revision": "aa9b7b33990fe4b5c431",
-    "url": "/1_011_a_infektionsfall_uebermittellung/js/app.cd0f86f8.js"
+    "revision": "b78c0c7bcdd54ee212cc",
+    "url": "/1_011_a_infektionsfall_uebermittellung/js/app.286a4d72.js"
   },
   {
     "revision": "e3dd896a94b3fce57876",

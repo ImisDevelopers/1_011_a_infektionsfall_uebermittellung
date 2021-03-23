@@ -218,9 +218,8 @@
         <span>Kontakt:</span>
         <a-divider style="margin: 5px 0"></a-divider>
         <span>Andrey Eganov</span>
-        <span>0681 / 500 66 72 0</span>
         <span>imis-team@gmx.de</span>
-        <a title="Impressum" href="/impressum">Impressum</a>
+        <router-link to="impressum">Impressum</router-link>
       </div>
       <!--
       <div style="justify-content: center">

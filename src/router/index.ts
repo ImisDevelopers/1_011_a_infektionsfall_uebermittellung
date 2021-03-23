@@ -242,11 +242,11 @@ const routes = [
     path: '/',
     component: LandingPage,
   },
-	{
-		name: 'impressum',
-		path: '/impressum',
-		component: Impressum,
-	},
+  {
+    name: 'impressum',
+    path: '/impressum',
+    component: Impressum,
+  },
   {
     name: 'public-register',
     path: '/public-register',

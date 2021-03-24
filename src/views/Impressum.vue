@@ -56,7 +56,6 @@
           <a-divider style="margin: 5px 0"></a-divider>
           <span>Vertreten duch: Achim Löbke</span><br>
           <span>Tüleck 1, 48336 Sassenberg</span><br>
-          <span>0681 / 500 66 72 0</span><br>
           <span>imis-team@gmx.de</span><br>
         </div>
         <br>
